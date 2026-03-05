@@ -25,9 +25,9 @@ declare const _default: import('vue').DefineComponent<EnhancedTextareaProps, {},
 }, string, import('vue').PublicProps, Readonly<EnhancedTextareaProps> & Readonly<{
     "onUpdate:modelValue"?: ((payload: string | number) => any) | undefined;
 }>, {
-    size: "small" | "regular" | "large";
-    disabled: boolean;
     error: boolean;
+    disabled: boolean;
+    size: "small" | "regular" | "large";
     variant: "default" | "filled" | "bottomline";
     readonly: boolean;
     counter: boolean;

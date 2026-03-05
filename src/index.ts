@@ -1,5 +1,8 @@
 import './tokens.css'
 
+// Global component type declarations for Vue template autocomplete
+export {} from './global'
+
 // Utilities
 export { cn } from './lib/utils'
 

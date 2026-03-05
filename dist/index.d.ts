@@ -1,3 +1,4 @@
+export {} from './global';
 export { cn } from './lib/utils';
 export * from './components/accordion';
 export * from './components/avatar';

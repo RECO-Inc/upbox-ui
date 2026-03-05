@@ -37,14 +37,14 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_PublicProps, 
     remove: (args_0: FileClickEvent) => any;
     click: (args_0: FileClickEvent) => any;
     download: (args_0: number) => any;
-    upload: (args_0: UploaderFile) => any;
     "update:inputFiles": (value: UploaderFile[]) => any;
+    upload: (args_0: UploaderFile) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
     onRemove?: ((args_0: FileClickEvent) => any) | undefined;
     onClick?: ((args_0: FileClickEvent) => any) | undefined;
     onDownload?: ((args_0: number) => any) | undefined;
-    onUpload?: ((args_0: UploaderFile) => any) | undefined;
     "onUpdate:inputFiles"?: ((value: UploaderFile[]) => any) | undefined;
+    onUpload?: ((args_0: UploaderFile) => any) | undefined;
 }>, {
     readonly: boolean;
     errorMessage: string;
