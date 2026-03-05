@@ -355,7 +355,7 @@ const mn = /* @__PURE__ */ l({
   setup(t) {
     const s = t;
     return (a, o) => (r(), b("ol", {
-      class: m(e(p)("flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5", s.class))
+      class: m(e(p)("flex flex-wrap items-center gap-1.5 break-words text-sm text-base-60 sm:gap-2.5", s.class))
     }, [
       d(a.$slots, "default")
     ], 2));
@@ -2644,7 +2644,7 @@ const mn = /* @__PURE__ */ l({
     const a = t, o = s, n = _(a, "class"), c = j(n, o);
     return (u, y) => (r(), f(e(Kt), x(e(c), {
       class: e(p)(
-        "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-base-30 focus:text-base-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         a.class
       )
     }), {
@@ -2695,7 +2695,7 @@ const mn = /* @__PURE__ */ l({
     return (u, y) => (r(), f(e(Wt), null, {
       default: i(() => [
         g(e(Jt), x(e(c), {
-          class: e(p)("z-50 min-w-32 overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2", a.class)
+          class: e(p)("z-50 min-w-32 overflow-hidden rounded-md border bg-base-10 p-1 text-base-100 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2", a.class)
         }), {
           default: i(() => [
             d(u.$slots, "default")
@@ -2735,7 +2735,7 @@ const mn = /* @__PURE__ */ l({
     const s = t, a = _(s, "class"), o = F(a);
     return (n, c) => (r(), f(e(Qt), x(e(o), {
       class: e(p)(
-        "relative flex cursor-default select-none items-center rounded-sm gap-2 px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&>svg]:size-4 [&>svg]:shrink-0",
+        "relative flex cursor-default select-none items-center rounded-sm gap-2 px-2 py-1.5 text-sm outline-none transition-colors focus:bg-base-30 focus:text-base-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&>svg]:size-4 [&>svg]:shrink-0",
         t.inset && "pl-8",
         s.class
       )
@@ -2797,7 +2797,7 @@ const mn = /* @__PURE__ */ l({
     const a = t, o = s, n = _(a, "class"), c = j(n, o);
     return (u, y) => (r(), f(e(ta), x(e(c), {
       class: e(p)(
-        "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-base-30 focus:text-base-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         a.class
       )
     }), {
@@ -2825,7 +2825,7 @@ const mn = /* @__PURE__ */ l({
   setup(t) {
     const s = t, a = _(s, "class");
     return (o, n) => (r(), f(e(aa), x(e(a), {
-      class: e(p)("-mx-1 my-1 h-px bg-muted", s.class)
+      class: e(p)("-mx-1 my-1 h-px bg-base-30", s.class)
     }), null, 16, ["class"]));
   }
 }), dl = /* @__PURE__ */ l({
@@ -2886,7 +2886,7 @@ const mn = /* @__PURE__ */ l({
   setup(t, { emit: s }) {
     const a = t, o = s, n = _(a, "class"), c = j(n, o);
     return (u, y) => (r(), f(e(oa), x(e(c), {
-      class: e(p)("z-50 min-w-32 overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2", a.class)
+      class: e(p)("z-50 min-w-32 overflow-hidden rounded-md border bg-base-10 p-1 text-base-100 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2", a.class)
     }), {
       default: i(() => [
         d(u.$slots, "default")
@@ -2907,7 +2907,7 @@ const mn = /* @__PURE__ */ l({
     const s = t, a = _(s, "class"), o = F(a);
     return (n, c) => (r(), f(e(ra), x(e(o), {
       class: e(p)(
-        "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent",
+        "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-base-30 data-[state=open]:bg-base-30",
         s.class
       )
     }), {
@@ -3305,7 +3305,7 @@ const gl = /* @__PURE__ */ l({
     const s = t, { formDescriptionId: a } = ge();
     return (o, n) => (r(), b("p", {
       id: e(a),
-      class: m(e(p)("text-sm text-muted-foreground", s.class))
+      class: m(e(p)("text-sm text-base-60", s.class))
     }, [
       d(o.$slots, "default")
     ], 10, cr));
@@ -3763,7 +3763,7 @@ const gl = /* @__PURE__ */ l({
     const s = t;
     return (a, o) => (r(), f(e(fa), {
       "data-slot": "input",
-      class: m(e(p)("flex h-9 w-full rounded-md border border-input bg-transparent py-1 text-sm text-center shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50", s.class))
+      class: m(e(p)("flex h-9 w-full rounded-md border border-base-40 bg-transparent py-1 text-sm text-center shadow-sm transition-colors placeholder:text-base-60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-80 disabled:cursor-not-allowed disabled:opacity-50", s.class))
     }, null, 8, ["class"]));
   }
 }), jl = /* @__PURE__ */ l({
@@ -4394,7 +4394,7 @@ const gl = /* @__PURE__ */ l({
         }, { ...e(c), ...u.$attrs }), {
           default: i(() => [
             d(u.$slots, "default"),
-            g(e(de), { class: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-base-10 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-base-20" }, {
+            g(e(de), { class: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-base-10 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-primary-80 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-base-20" }, {
               default: i(() => [
                 g(e(ue), { class: "w-4 h-4" })
               ]),
@@ -5399,7 +5399,7 @@ const _i = /* @__PURE__ */ pe(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
   setup(t) {
     const s = t;
     return (a, o) => (r(), b("caption", {
-      class: m(e(p)("mt-4 text-sm text-muted-foreground", s.class))
+      class: m(e(p)("mt-4 text-sm text-base-60", s.class))
     }, [
       d(a.$slots, "default")
     ], 2));
@@ -5486,7 +5486,7 @@ const _i = /* @__PURE__ */ pe(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
   setup(t) {
     const s = t;
     return (a, o) => (r(), b("tfoot", {
-      class: m(e(p)("border-t bg-muted/50 font-medium [&>tr]:last:border-b-0", s.class))
+      class: m(e(p)("border-t bg-base-30/50 font-medium [&>tr]:last:border-b-0", s.class))
     }, [
       d(a.$slots, "default")
     ], 2));
@@ -5593,7 +5593,7 @@ const _i = /* @__PURE__ */ pe(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
   setup(t) {
     const s = t, a = _(s, "class");
     return (o, n) => (r(), f(e(Ka), x({
-      class: e(p)("mt-2 ring-offset-base-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2", s.class)
+      class: e(p)("mt-2 ring-offset-base-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-80 focus-visible:ring-offset-2", s.class)
     }, e(a)), {
       default: i(() => [
         d(o.$slots, "default")
@@ -5802,7 +5802,7 @@ const _i = /* @__PURE__ */ pe(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
     }, 16, ["class"]));
   }
 }), et = q(
-  "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-base-30 data-[state=on]:text-base-100 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors hover:bg-base-30 hover:text-base-60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-80 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-base-30 data-[state=on]:text-base-100 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
