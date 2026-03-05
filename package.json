@@ -18,12 +18,14 @@
     },
     "./style.css": "./dist/upbox-ui.css",
     "./tailwind-preset": {
+      "import": "./tailwind-preset.mjs",
       "require": "./tailwind-preset.cjs"
     }
   },
   "files": [
     "dist",
-    "tailwind-preset.cjs"
+    "tailwind-preset.cjs",
+    "tailwind-preset.mjs"
   ],
   "sideEffects": [
     "*.css"
