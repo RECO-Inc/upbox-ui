@@ -62,3 +62,81 @@ export const Sizes: Story = {
     `,
   }),
 }
+
+export const Checked: Story = {
+  render: () => ({
+    components: { Switch, Label },
+    setup() {
+      const checked = ref(true)
+      return { checked }
+    },
+    template: `
+      <div class="flex items-center gap-3">
+        <Switch v-model="checked" />
+        <Label>Checked (On)</Label>
+      </div>
+    `,
+  }),
+}
+
+export const Unchecked: Story = {
+  render: () => ({
+    components: { Switch, Label },
+    setup() {
+      const checked = ref(false)
+      return { checked }
+    },
+    template: `
+      <div class="flex items-center gap-3">
+        <Switch v-model="checked" />
+        <Label>Unchecked (Off)</Label>
+      </div>
+    `,
+  }),
+}
+
+export const Disabled: Story = {
+  render: () => ({
+    components: { Switch, Label },
+    template: `
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <Switch :disabled="true" :default-checked="false" />
+          <Label>Disabled Off</Label>
+        </div>
+        <div class="flex items-center gap-3">
+          <Switch :disabled="true" :default-checked="true" />
+          <Label>Disabled On</Label>
+        </div>
+      </div>
+    `,
+  }),
+}
+
+export const WithFormLabel: Story = {
+  render: () => ({
+    components: { Switch, Label },
+    setup() {
+      const notifications = ref(true)
+      const marketing = ref(false)
+      const updates = ref(true)
+      return { notifications, marketing, updates }
+    },
+    template: `
+      <div class="flex flex-col gap-4 w-64">
+        <div class="flex items-center justify-between">
+          <Label for="notifications">Push notifications</Label>
+          <Switch id="notifications" v-model="notifications" />
+        </div>
+        <div class="flex items-center justify-between">
+          <Label for="marketing">Marketing emails</Label>
+          <Switch id="marketing" v-model="marketing" />
+        </div>
+        <div class="flex items-center justify-between">
+          <Label for="updates">Product updates</Label>
+          <Switch id="updates" v-model="updates" />
+        </div>
+      </div>
+    `,
+  }),
+}
