@@ -1,356 +1,179 @@
-import type {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Badge,
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-  Button,
-  Calendar,
-  CalendarCell,
-  CalendarCellTrigger,
-  CalendarFooter,
-  CalendarGrid,
-  CalendarGridBody,
-  CalendarGridHead,
-  CalendarGridRow,
-  CalendarHeadCell,
-  CalendarHeader,
-  CalendarHeading,
-  CalendarMonthGrid,
-  CalendarNextButton,
-  CalendarPrevButton,
-  CalendarTimeSelect,
-  CalendarYearGrid,
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Checkbox,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogScrollContent,
-  DialogTitle,
-  DialogTrigger,
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerTitle,
-  DropdownFilter,
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-  Empty,
-  FileItem,
-  FileUploader,
-  FormControl,
-  FormDescription,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-  InputGroupText,
-  InputGroupTextarea,
-  Label,
-  NumberField,
-  NumberFieldContent,
-  NumberFieldDecrement,
-  NumberFieldIncrement,
-  NumberFieldInput,
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationFirst,
-  PaginationItem,
-  PaginationLast,
-  PaginationNext,
-  PaginationPrevious,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  RadioGroup,
-  RadioGroupItem,
-  RangeCalendar,
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectItemText,
-  SelectLabel,
-  SelectScrollDownButton,
-  SelectScrollUpButton,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-  Separator,
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupAction,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarInput,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuAction,
-  SidebarMenuBadge,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSkeleton,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-  SidebarProvider,
-  SidebarRail,
-  SidebarSeparator,
-  SidebarTrigger,
-  Skeleton,
-  Spinner,
-  Stepper,
-  Switch,
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableEmpty,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-  Textarea,
-  Toaster,
-  Toggle,
-  ToggleGroup,
-  ToggleGroupItem,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '.'
-
 declare module 'vue' {
   export interface GlobalComponents {
-    Accordion: typeof Accordion
-    AccordionContent: typeof AccordionContent
-    AccordionItem: typeof AccordionItem
-    AccordionTrigger: typeof AccordionTrigger
-    Avatar: typeof Avatar
-    AvatarFallback: typeof AvatarFallback
-    AvatarImage: typeof AvatarImage
-    Badge: typeof Badge
-    Breadcrumb: typeof Breadcrumb
-    BreadcrumbEllipsis: typeof BreadcrumbEllipsis
-    BreadcrumbItem: typeof BreadcrumbItem
-    BreadcrumbLink: typeof BreadcrumbLink
-    BreadcrumbList: typeof BreadcrumbList
-    BreadcrumbPage: typeof BreadcrumbPage
-    BreadcrumbSeparator: typeof BreadcrumbSeparator
-    Button: typeof Button
-    Calendar: typeof Calendar
-    CalendarCell: typeof CalendarCell
-    CalendarCellTrigger: typeof CalendarCellTrigger
-    CalendarFooter: typeof CalendarFooter
-    CalendarGrid: typeof CalendarGrid
-    CalendarGridBody: typeof CalendarGridBody
-    CalendarGridHead: typeof CalendarGridHead
-    CalendarGridRow: typeof CalendarGridRow
-    CalendarHeadCell: typeof CalendarHeadCell
-    CalendarHeader: typeof CalendarHeader
-    CalendarHeading: typeof CalendarHeading
-    CalendarMonthGrid: typeof CalendarMonthGrid
-    CalendarNextButton: typeof CalendarNextButton
-    CalendarPrevButton: typeof CalendarPrevButton
-    CalendarTimeSelect: typeof CalendarTimeSelect
-    CalendarYearGrid: typeof CalendarYearGrid
-    Card: typeof Card
-    CardContent: typeof CardContent
-    CardDescription: typeof CardDescription
-    CardFooter: typeof CardFooter
-    CardHeader: typeof CardHeader
-    CardTitle: typeof CardTitle
-    Checkbox: typeof Checkbox
-    Dialog: typeof Dialog
-    DialogClose: typeof DialogClose
-    DialogContent: typeof DialogContent
-    DialogDescription: typeof DialogDescription
-    DialogFooter: typeof DialogFooter
-    DialogHeader: typeof DialogHeader
-    DialogScrollContent: typeof DialogScrollContent
-    DialogTitle: typeof DialogTitle
-    DialogTrigger: typeof DialogTrigger
-    Drawer: typeof Drawer
-    DrawerContent: typeof DrawerContent
-    DrawerDescription: typeof DrawerDescription
-    DrawerFooter: typeof DrawerFooter
-    DrawerHeader: typeof DrawerHeader
-    DrawerOverlay: typeof DrawerOverlay
-    DrawerTitle: typeof DrawerTitle
-    DropdownFilter: typeof DropdownFilter
-    DropdownMenu: typeof DropdownMenu
-    DropdownMenuCheckboxItem: typeof DropdownMenuCheckboxItem
-    DropdownMenuContent: typeof DropdownMenuContent
-    DropdownMenuGroup: typeof DropdownMenuGroup
-    DropdownMenuItem: typeof DropdownMenuItem
-    DropdownMenuLabel: typeof DropdownMenuLabel
-    DropdownMenuRadioGroup: typeof DropdownMenuRadioGroup
-    DropdownMenuRadioItem: typeof DropdownMenuRadioItem
-    DropdownMenuSeparator: typeof DropdownMenuSeparator
-    DropdownMenuShortcut: typeof DropdownMenuShortcut
-    DropdownMenuSub: typeof DropdownMenuSub
-    DropdownMenuSubContent: typeof DropdownMenuSubContent
-    DropdownMenuSubTrigger: typeof DropdownMenuSubTrigger
-    DropdownMenuTrigger: typeof DropdownMenuTrigger
-    Empty: typeof Empty
-    FileItem: typeof FileItem
-    FileUploader: typeof FileUploader
-    FormControl: typeof FormControl
-    FormDescription: typeof FormDescription
-    FormItem: typeof FormItem
-    FormLabel: typeof FormLabel
-    FormMessage: typeof FormMessage
-    Input: typeof Input
-    InputGroup: typeof InputGroup
-    InputGroupAddon: typeof InputGroupAddon
-    InputGroupButton: typeof InputGroupButton
-    InputGroupInput: typeof InputGroupInput
-    InputGroupText: typeof InputGroupText
-    InputGroupTextarea: typeof InputGroupTextarea
-    Label: typeof Label
-    NumberField: typeof NumberField
-    NumberFieldContent: typeof NumberFieldContent
-    NumberFieldDecrement: typeof NumberFieldDecrement
-    NumberFieldIncrement: typeof NumberFieldIncrement
-    NumberFieldInput: typeof NumberFieldInput
-    Pagination: typeof Pagination
-    PaginationContent: typeof PaginationContent
-    PaginationEllipsis: typeof PaginationEllipsis
-    PaginationFirst: typeof PaginationFirst
-    PaginationItem: typeof PaginationItem
-    PaginationLast: typeof PaginationLast
-    PaginationNext: typeof PaginationNext
-    PaginationPrevious: typeof PaginationPrevious
-    Popover: typeof Popover
-    PopoverContent: typeof PopoverContent
-    PopoverTrigger: typeof PopoverTrigger
-    RadioGroup: typeof RadioGroup
-    RadioGroupItem: typeof RadioGroupItem
-    RangeCalendar: typeof RangeCalendar
-    Select: typeof Select
-    SelectContent: typeof SelectContent
-    SelectGroup: typeof SelectGroup
-    SelectItem: typeof SelectItem
-    SelectItemText: typeof SelectItemText
-    SelectLabel: typeof SelectLabel
-    SelectScrollDownButton: typeof SelectScrollDownButton
-    SelectScrollUpButton: typeof SelectScrollUpButton
-    SelectSeparator: typeof SelectSeparator
-    SelectTrigger: typeof SelectTrigger
-    SelectValue: typeof SelectValue
-    Separator: typeof Separator
-    Sheet: typeof Sheet
-    SheetClose: typeof SheetClose
-    SheetContent: typeof SheetContent
-    SheetDescription: typeof SheetDescription
-    SheetFooter: typeof SheetFooter
-    SheetHeader: typeof SheetHeader
-    SheetTitle: typeof SheetTitle
-    SheetTrigger: typeof SheetTrigger
-    Sidebar: typeof Sidebar
-    SidebarContent: typeof SidebarContent
-    SidebarFooter: typeof SidebarFooter
-    SidebarGroup: typeof SidebarGroup
-    SidebarGroupAction: typeof SidebarGroupAction
-    SidebarGroupContent: typeof SidebarGroupContent
-    SidebarGroupLabel: typeof SidebarGroupLabel
-    SidebarHeader: typeof SidebarHeader
-    SidebarInput: typeof SidebarInput
-    SidebarInset: typeof SidebarInset
-    SidebarMenu: typeof SidebarMenu
-    SidebarMenuAction: typeof SidebarMenuAction
-    SidebarMenuBadge: typeof SidebarMenuBadge
-    SidebarMenuButton: typeof SidebarMenuButton
-    SidebarMenuItem: typeof SidebarMenuItem
-    SidebarMenuSkeleton: typeof SidebarMenuSkeleton
-    SidebarMenuSub: typeof SidebarMenuSub
-    SidebarMenuSubButton: typeof SidebarMenuSubButton
-    SidebarMenuSubItem: typeof SidebarMenuSubItem
-    SidebarProvider: typeof SidebarProvider
-    SidebarRail: typeof SidebarRail
-    SidebarSeparator: typeof SidebarSeparator
-    SidebarTrigger: typeof SidebarTrigger
-    Skeleton: typeof Skeleton
-    Spinner: typeof Spinner
-    Stepper: typeof Stepper
-    Switch: typeof Switch
-    Table: typeof Table
-    TableBody: typeof TableBody
-    TableCaption: typeof TableCaption
-    TableCell: typeof TableCell
-    TableEmpty: typeof TableEmpty
-    TableFooter: typeof TableFooter
-    TableHead: typeof TableHead
-    TableHeader: typeof TableHeader
-    TableRow: typeof TableRow
-    Tabs: typeof Tabs
-    TabsContent: typeof TabsContent
-    TabsList: typeof TabsList
-    TabsTrigger: typeof TabsTrigger
-    Textarea: typeof Textarea
-    Toaster: typeof Toaster
-    Toggle: typeof Toggle
-    ToggleGroup: typeof ToggleGroup
-    ToggleGroupItem: typeof ToggleGroupItem
-    Tooltip: typeof Tooltip
-    TooltipContent: typeof TooltipContent
-    TooltipProvider: typeof TooltipProvider
-    TooltipTrigger: typeof TooltipTrigger
+    Accordion: typeof import('./components/accordion')['Accordion']
+    AccordionContent: typeof import('./components/accordion')['AccordionContent']
+    AccordionItem: typeof import('./components/accordion')['AccordionItem']
+    AccordionTrigger: typeof import('./components/accordion')['AccordionTrigger']
+    Avatar: typeof import('./components/avatar')['Avatar']
+    AvatarFallback: typeof import('./components/avatar')['AvatarFallback']
+    AvatarImage: typeof import('./components/avatar')['AvatarImage']
+    Badge: typeof import('./components/badge')['Badge']
+    Breadcrumb: typeof import('./components/breadcrumb')['Breadcrumb']
+    BreadcrumbEllipsis: typeof import('./components/breadcrumb')['BreadcrumbEllipsis']
+    BreadcrumbItem: typeof import('./components/breadcrumb')['BreadcrumbItem']
+    BreadcrumbLink: typeof import('./components/breadcrumb')['BreadcrumbLink']
+    BreadcrumbList: typeof import('./components/breadcrumb')['BreadcrumbList']
+    BreadcrumbPage: typeof import('./components/breadcrumb')['BreadcrumbPage']
+    BreadcrumbSeparator: typeof import('./components/breadcrumb')['BreadcrumbSeparator']
+    Button: typeof import('./components/button')['Button']
+    Calendar: typeof import('./components/calendar')['Calendar']
+    CalendarCell: typeof import('./components/calendar')['CalendarCell']
+    CalendarCellTrigger: typeof import('./components/calendar')['CalendarCellTrigger']
+    CalendarFooter: typeof import('./components/calendar')['CalendarFooter']
+    CalendarGrid: typeof import('./components/calendar')['CalendarGrid']
+    CalendarGridBody: typeof import('./components/calendar')['CalendarGridBody']
+    CalendarGridHead: typeof import('./components/calendar')['CalendarGridHead']
+    CalendarGridRow: typeof import('./components/calendar')['CalendarGridRow']
+    CalendarHeadCell: typeof import('./components/calendar')['CalendarHeadCell']
+    CalendarHeader: typeof import('./components/calendar')['CalendarHeader']
+    CalendarHeading: typeof import('./components/calendar')['CalendarHeading']
+    CalendarMonthGrid: typeof import('./components/calendar')['CalendarMonthGrid']
+    CalendarNextButton: typeof import('./components/calendar')['CalendarNextButton']
+    CalendarPrevButton: typeof import('./components/calendar')['CalendarPrevButton']
+    CalendarTimeSelect: typeof import('./components/calendar')['CalendarTimeSelect']
+    CalendarYearGrid: typeof import('./components/calendar')['CalendarYearGrid']
+    Card: typeof import('./components/card')['Card']
+    CardContent: typeof import('./components/card')['CardContent']
+    CardDescription: typeof import('./components/card')['CardDescription']
+    CardFooter: typeof import('./components/card')['CardFooter']
+    CardHeader: typeof import('./components/card')['CardHeader']
+    CardTitle: typeof import('./components/card')['CardTitle']
+    Checkbox: typeof import('./components/checkbox')['Checkbox']
+    Dialog: typeof import('./components/dialog')['Dialog']
+    DialogClose: typeof import('./components/dialog')['DialogClose']
+    DialogContent: typeof import('./components/dialog')['DialogContent']
+    DialogDescription: typeof import('./components/dialog')['DialogDescription']
+    DialogFooter: typeof import('./components/dialog')['DialogFooter']
+    DialogHeader: typeof import('./components/dialog')['DialogHeader']
+    DialogScrollContent: typeof import('./components/dialog')['DialogScrollContent']
+    DialogTitle: typeof import('./components/dialog')['DialogTitle']
+    DialogTrigger: typeof import('./components/dialog')['DialogTrigger']
+    Drawer: typeof import('./components/drawer')['Drawer']
+    DrawerContent: typeof import('./components/drawer')['DrawerContent']
+    DrawerDescription: typeof import('./components/drawer')['DrawerDescription']
+    DrawerFooter: typeof import('./components/drawer')['DrawerFooter']
+    DrawerHeader: typeof import('./components/drawer')['DrawerHeader']
+    DrawerOverlay: typeof import('./components/drawer')['DrawerOverlay']
+    DrawerTitle: typeof import('./components/drawer')['DrawerTitle']
+    DropdownFilter: typeof import('./components/dropdown-filter')['DropdownFilter']
+    DropdownMenu: typeof import('./components/dropdown-menu')['DropdownMenu']
+    DropdownMenuCheckboxItem: typeof import('./components/dropdown-menu')['DropdownMenuCheckboxItem']
+    DropdownMenuContent: typeof import('./components/dropdown-menu')['DropdownMenuContent']
+    DropdownMenuGroup: typeof import('./components/dropdown-menu')['DropdownMenuGroup']
+    DropdownMenuItem: typeof import('./components/dropdown-menu')['DropdownMenuItem']
+    DropdownMenuLabel: typeof import('./components/dropdown-menu')['DropdownMenuLabel']
+    DropdownMenuRadioGroup: typeof import('./components/dropdown-menu')['DropdownMenuRadioGroup']
+    DropdownMenuRadioItem: typeof import('./components/dropdown-menu')['DropdownMenuRadioItem']
+    DropdownMenuSeparator: typeof import('./components/dropdown-menu')['DropdownMenuSeparator']
+    DropdownMenuShortcut: typeof import('./components/dropdown-menu')['DropdownMenuShortcut']
+    DropdownMenuSub: typeof import('./components/dropdown-menu')['DropdownMenuSub']
+    DropdownMenuSubContent: typeof import('./components/dropdown-menu')['DropdownMenuSubContent']
+    DropdownMenuSubTrigger: typeof import('./components/dropdown-menu')['DropdownMenuSubTrigger']
+    DropdownMenuTrigger: typeof import('./components/dropdown-menu')['DropdownMenuTrigger']
+    Empty: typeof import('./components/empty')['Empty']
+    FileItem: typeof import('./components/file-uploader')['FileItem']
+    FileUploader: typeof import('./components/file-uploader')['FileUploader']
+    FormControl: typeof import('./components/form')['FormControl']
+    FormDescription: typeof import('./components/form')['FormDescription']
+    FormItem: typeof import('./components/form')['FormItem']
+    FormLabel: typeof import('./components/form')['FormLabel']
+    FormMessage: typeof import('./components/form')['FormMessage']
+    Input: typeof import('./components/input')['Input']
+    InputGroup: typeof import('./components/input-group')['InputGroup']
+    InputGroupAddon: typeof import('./components/input-group')['InputGroupAddon']
+    InputGroupButton: typeof import('./components/input-group')['InputGroupButton']
+    InputGroupInput: typeof import('./components/input-group')['InputGroupInput']
+    InputGroupText: typeof import('./components/input-group')['InputGroupText']
+    InputGroupTextarea: typeof import('./components/input-group')['InputGroupTextarea']
+    Label: typeof import('./components/label')['Label']
+    NumberField: typeof import('./components/number-field')['NumberField']
+    NumberFieldContent: typeof import('./components/number-field')['NumberFieldContent']
+    NumberFieldDecrement: typeof import('./components/number-field')['NumberFieldDecrement']
+    NumberFieldIncrement: typeof import('./components/number-field')['NumberFieldIncrement']
+    NumberFieldInput: typeof import('./components/number-field')['NumberFieldInput']
+    Pagination: typeof import('./components/pagination')['Pagination']
+    PaginationContent: typeof import('./components/pagination')['PaginationContent']
+    PaginationEllipsis: typeof import('./components/pagination')['PaginationEllipsis']
+    PaginationFirst: typeof import('./components/pagination')['PaginationFirst']
+    PaginationItem: typeof import('./components/pagination')['PaginationItem']
+    PaginationLast: typeof import('./components/pagination')['PaginationLast']
+    PaginationNext: typeof import('./components/pagination')['PaginationNext']
+    PaginationPrevious: typeof import('./components/pagination')['PaginationPrevious']
+    Popover: typeof import('./components/popover')['Popover']
+    PopoverContent: typeof import('./components/popover')['PopoverContent']
+    PopoverTrigger: typeof import('./components/popover')['PopoverTrigger']
+    RadioGroup: typeof import('./components/radio-group')['RadioGroup']
+    RadioGroupItem: typeof import('./components/radio-group')['RadioGroupItem']
+    RangeCalendar: typeof import('./components/calendar')['RangeCalendar']
+    Select: typeof import('./components/select')['Select']
+    SelectContent: typeof import('./components/select')['SelectContent']
+    SelectGroup: typeof import('./components/select')['SelectGroup']
+    SelectItem: typeof import('./components/select')['SelectItem']
+    SelectItemText: typeof import('./components/select')['SelectItemText']
+    SelectLabel: typeof import('./components/select')['SelectLabel']
+    SelectScrollDownButton: typeof import('./components/select')['SelectScrollDownButton']
+    SelectScrollUpButton: typeof import('./components/select')['SelectScrollUpButton']
+    SelectSeparator: typeof import('./components/select')['SelectSeparator']
+    SelectTrigger: typeof import('./components/select')['SelectTrigger']
+    SelectValue: typeof import('./components/select')['SelectValue']
+    Separator: typeof import('./components/separator')['Separator']
+    Sheet: typeof import('./components/sheet')['Sheet']
+    SheetClose: typeof import('./components/sheet')['SheetClose']
+    SheetContent: typeof import('./components/sheet')['SheetContent']
+    SheetDescription: typeof import('./components/sheet')['SheetDescription']
+    SheetFooter: typeof import('./components/sheet')['SheetFooter']
+    SheetHeader: typeof import('./components/sheet')['SheetHeader']
+    SheetTitle: typeof import('./components/sheet')['SheetTitle']
+    SheetTrigger: typeof import('./components/sheet')['SheetTrigger']
+    Sidebar: typeof import('./components/sidebar')['Sidebar']
+    SidebarContent: typeof import('./components/sidebar')['SidebarContent']
+    SidebarFooter: typeof import('./components/sidebar')['SidebarFooter']
+    SidebarGroup: typeof import('./components/sidebar')['SidebarGroup']
+    SidebarGroupAction: typeof import('./components/sidebar')['SidebarGroupAction']
+    SidebarGroupContent: typeof import('./components/sidebar')['SidebarGroupContent']
+    SidebarGroupLabel: typeof import('./components/sidebar')['SidebarGroupLabel']
+    SidebarHeader: typeof import('./components/sidebar')['SidebarHeader']
+    SidebarInput: typeof import('./components/sidebar')['SidebarInput']
+    SidebarInset: typeof import('./components/sidebar')['SidebarInset']
+    SidebarMenu: typeof import('./components/sidebar')['SidebarMenu']
+    SidebarMenuAction: typeof import('./components/sidebar')['SidebarMenuAction']
+    SidebarMenuBadge: typeof import('./components/sidebar')['SidebarMenuBadge']
+    SidebarMenuButton: typeof import('./components/sidebar')['SidebarMenuButton']
+    SidebarMenuItem: typeof import('./components/sidebar')['SidebarMenuItem']
+    SidebarMenuSkeleton: typeof import('./components/sidebar')['SidebarMenuSkeleton']
+    SidebarMenuSub: typeof import('./components/sidebar')['SidebarMenuSub']
+    SidebarMenuSubButton: typeof import('./components/sidebar')['SidebarMenuSubButton']
+    SidebarMenuSubItem: typeof import('./components/sidebar')['SidebarMenuSubItem']
+    SidebarProvider: typeof import('./components/sidebar')['SidebarProvider']
+    SidebarRail: typeof import('./components/sidebar')['SidebarRail']
+    SidebarSeparator: typeof import('./components/sidebar')['SidebarSeparator']
+    SidebarTrigger: typeof import('./components/sidebar')['SidebarTrigger']
+    Skeleton: typeof import('./components/skeleton')['Skeleton']
+    Spinner: typeof import('./components/spinner')['Spinner']
+    Stepper: typeof import('./components/stepper')['Stepper']
+    Switch: typeof import('./components/switch')['Switch']
+    Table: typeof import('./components/table')['Table']
+    TableBody: typeof import('./components/table')['TableBody']
+    TableCaption: typeof import('./components/table')['TableCaption']
+    TableCell: typeof import('./components/table')['TableCell']
+    TableEmpty: typeof import('./components/table')['TableEmpty']
+    TableFooter: typeof import('./components/table')['TableFooter']
+    TableHead: typeof import('./components/table')['TableHead']
+    TableHeader: typeof import('./components/table')['TableHeader']
+    TableRow: typeof import('./components/table')['TableRow']
+    Tabs: typeof import('./components/tabs')['Tabs']
+    TabsContent: typeof import('./components/tabs')['TabsContent']
+    TabsList: typeof import('./components/tabs')['TabsList']
+    TabsTrigger: typeof import('./components/tabs')['TabsTrigger']
+    Textarea: typeof import('./components/textarea')['Textarea']
+    Toaster: typeof import('./components/sonner')['Toaster']
+    Toggle: typeof import('./components/toggle')['Toggle']
+    ToggleGroup: typeof import('./components/toggle-group')['ToggleGroup']
+    ToggleGroupItem: typeof import('./components/toggle-group')['ToggleGroupItem']
+    Tooltip: typeof import('./components/tooltip')['Tooltip']
+    TooltipContent: typeof import('./components/tooltip')['TooltipContent']
+    TooltipProvider: typeof import('./components/tooltip')['TooltipProvider']
+    TooltipTrigger: typeof import('./components/tooltip')['TooltipTrigger']
   }
 }
 
