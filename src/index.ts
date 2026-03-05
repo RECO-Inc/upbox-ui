@@ -1,3 +1,5 @@
+import './tokens.css'
+
 // Utilities
 export { cn } from './lib/utils'
 
