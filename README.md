@@ -62,7 +62,7 @@ import { Button, Card, CardHeader, CardTitle, CardContent } from '@reco-inc/upbo
       <CardTitle>Title</CardTitle>
     </CardHeader>
     <CardContent>
-      <Button variant="primary" size="md">Click</Button>
+      <Button variant="primary" size="regular">Click</Button>
     </CardContent>
   </Card>
 </template>
