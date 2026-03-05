@@ -1,0 +1,79 @@
+<script lang="ts" setup>
+import type { HTMLAttributes } from "vue"
+import { computed } from "vue"
+import { ChevronLeft, ChevronRight } from "lucide-vue-next"
+import { cn } from "../../lib/utils"
+import { buttonVariants } from "../button"
+import { useI18n } from "vue-i18n"
+
+interface Props {
+  class?: HTMLAttributes["class"]
+  year: number
+  selectedMonth?: number
+}
+
+const props = defineProps<Props>()
+
+const emit = defineEmits<{
+  (e: 'select', month: number): void
+  (e: 'prevYear'): void
+  (e: 'nextYear'): void
+  (e: 'clickYear'): void
+}>()
+
+const { t } = useI18n()
+
+const months = computed(() => {
+  return Array.from({ length: 12 }, (_, i) => ({
+    value: i + 1,
+    label: `${i + 1}${t('word.time.month')}`
+  }))
+})
+</script>
+
+<template>
+  <div :class="cn('p-4', props.class)">
+    <div class="grid grid-cols-3 gap-1">
+      <!-- Header -->
+      <button
+        :class="cn(
+          buttonVariants({ variant: 'assistant', style: 'outlined' }),
+          'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100'
+        )"
+        @click="emit('prevYear')"
+      >
+        <ChevronLeft class="h-4 w-4" />
+      </button>
+      <div
+        class="flex items-center justify-center text-sm font-bold text-base-90 cursor-pointer select-none hover:text-primary-80"
+        @click="emit('clickYear')"
+      >
+        {{ year }}년
+      </div>
+      <button
+        :class="cn(
+          buttonVariants({ variant: 'assistant', style: 'outlined' }),
+          'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 justify-self-end'
+        )"
+        @click="emit('nextYear')"
+      >
+        <ChevronRight class="h-4 w-4" />
+      </button>
+
+      <!-- Month cells -->
+      <div
+        v-for="month in months"
+        :key="month.value"
+        :class="cn(
+          'py-4 px-6 text-sm font-bold text-base-90 text-center cursor-pointer select-none transition-colors',
+          month.value === selectedMonth
+            ? 'bg-primary-90 text-base-20 rounded hover:bg-primary-70'
+            : 'hover:bg-base-30'
+        )"
+        @click="emit('select', month.value)"
+      >
+        {{ month.label }}
+      </div>
+    </div>
+  </div>
+</template>
