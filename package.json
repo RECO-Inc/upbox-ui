@@ -1,5 +1,8 @@
 {
-  "name": "@upbox/ui",
+  "name": "@reco-inc/upbox-ui",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "version": "0.1.0",
   "type": "module",
   "description": "Upbox Design System - Vue 3 Component Library",
@@ -13,7 +16,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
     },
-    "./style.css": "./dist/ui.css",
+    "./style.css": "./dist/upbox-ui.css",
     "./tailwind-preset": {
       "require": "./tailwind-preset.cjs"
     }

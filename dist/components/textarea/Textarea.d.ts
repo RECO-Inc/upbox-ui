@@ -1,0 +1,42 @@
+import { HTMLAttributes } from 'vue';
+export interface EnhancedTextareaProps {
+    variant?: 'default' | 'filled' | 'bottomline';
+    size?: 'small' | 'regular' | 'large';
+    error?: boolean;
+    modelValue?: string | number;
+    defaultValue?: string | number;
+    class?: HTMLAttributes['class'];
+    label?: string;
+    required?: boolean;
+    errorMessage?: string;
+    counter?: boolean;
+    maxLength?: number;
+    byteMode?: boolean;
+    disabled?: boolean;
+    readonly?: boolean;
+    placeholder?: string;
+    autoResize?: boolean;
+    minHeight?: number;
+    maxHeight?: number;
+    rows?: number;
+}
+declare const _default: import('vue').DefineComponent<EnhancedTextareaProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
+    "update:modelValue": (payload: string | number) => any;
+}, string, import('vue').PublicProps, Readonly<EnhancedTextareaProps> & Readonly<{
+    "onUpdate:modelValue"?: ((payload: string | number) => any) | undefined;
+}>, {
+    size: "small" | "regular" | "large";
+    disabled: boolean;
+    error: boolean;
+    variant: "default" | "filled" | "bottomline";
+    readonly: boolean;
+    counter: boolean;
+    byteMode: boolean;
+    autoResize: boolean;
+    minHeight: number;
+    maxHeight: number;
+    rows: number;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
+    textareaRef: HTMLTextAreaElement;
+}, HTMLDivElement>;
+export default _default;
