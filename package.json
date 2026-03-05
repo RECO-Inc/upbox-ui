@@ -17,6 +17,9 @@
       "import": "./dist/index.mjs"
     },
     "./style.css": "./dist/upbox-ui.css",
+    "./global": {
+      "types": "./dist/global.d.ts"
+    },
     "./tailwind-preset": {
       "import": "./tailwind-preset.mjs",
       "require": "./tailwind-preset.cjs"
