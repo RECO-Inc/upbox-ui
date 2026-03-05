@@ -5,7 +5,7 @@ declare const meta: Meta<{
         size?: import('.').AvatarVariants["size"];
         shape?: import('.').AvatarVariants["shape"];
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {
-        size: "sm" | "base" | "lg" | null;
+        size: "base" | "sm" | "lg" | null;
         shape: "circle" | "square" | null;
     }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
         P: {};
@@ -19,7 +19,7 @@ declare const meta: Meta<{
         size?: import('.').AvatarVariants["size"];
         shape?: import('.').AvatarVariants["shape"];
     }> & Readonly<{}>, {}, {}, {}, {}, {
-        size: "sm" | "base" | "lg" | null;
+        size: "base" | "sm" | "lg" | null;
         shape: "circle" | "square" | null;
     }>;
     __isFragment?: never;
@@ -30,7 +30,7 @@ declare const meta: Meta<{
     size?: import('.').AvatarVariants["size"];
     shape?: import('.').AvatarVariants["shape"];
 }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {
-    size: "sm" | "base" | "lg" | null;
+    size: "base" | "sm" | "lg" | null;
     shape: "circle" | "square" | null;
 }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
     $slots: {

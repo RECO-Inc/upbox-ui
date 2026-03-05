@@ -12,7 +12,7 @@ interface Props extends RadioGroupItemProps {
     error?: boolean;
 }
 declare const _default: import('vue').DefineComponent<Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<Props> & Readonly<{}>, {
-    error: boolean;
     size: "small" | "regular" | "large" | null;
+    error: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;

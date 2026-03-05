@@ -25,8 +25,8 @@ declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, 
 }, string, import('vue').PublicProps, Readonly<Props> & Readonly<{
     "onUpdate:modelValue"?: ((value: boolean | "indeterminate") => any) | undefined;
 }>, {
-    error: boolean;
     size: "small" | "regular" | "large" | null;
+    error: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

@@ -4,9 +4,9 @@ declare const meta: Meta<import('vue').DefineComponent<import('./Textarea').Enha
 }, string, import('vue').PublicProps, Readonly<import('./Textarea').EnhancedTextareaProps> & Readonly<{
     "onUpdate:modelValue"?: ((payload: string | number) => any) | undefined;
 }>, {
-    error: boolean;
     disabled: boolean;
     size: "small" | "regular" | "large";
+    error: boolean;
     variant: "default" | "filled" | "bottomline";
     readonly: boolean;
     counter: boolean;

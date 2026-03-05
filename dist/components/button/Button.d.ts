@@ -28,9 +28,9 @@ declare const __VLS_component: import('vue').DefineComponent<EnhancedButtonProps
     size: "xsmall" | "small" | "regular" | "large" | "xlarge";
     loading: boolean;
     variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
-    buttonStyle: "filled" | "outlined" | "text";
     block: boolean;
     round: boolean;
+    buttonStyle: "filled" | "outlined" | "text";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLButtonElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

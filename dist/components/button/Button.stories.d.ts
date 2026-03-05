@@ -10,9 +10,9 @@ declare const meta: Meta<{
         size: "xsmall" | "small" | "regular" | "large" | "xlarge";
         loading: boolean;
         variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
-        buttonStyle: "filled" | "outlined" | "text";
         block: boolean;
         round: boolean;
+        buttonStyle: "filled" | "outlined" | "text";
     }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLButtonElement, import('vue').ComponentProvideOptions, {
         P: {};
         B: {};
@@ -28,9 +28,9 @@ declare const meta: Meta<{
         size: "xsmall" | "small" | "regular" | "large" | "xlarge";
         loading: boolean;
         variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
-        buttonStyle: "filled" | "outlined" | "text";
         block: boolean;
         round: boolean;
+        buttonStyle: "filled" | "outlined" | "text";
     }>;
     __isFragment?: never;
     __isTeleport?: never;
@@ -45,9 +45,9 @@ declare const meta: Meta<{
     size: "xsmall" | "small" | "regular" | "large" | "xlarge";
     loading: boolean;
     variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
-    buttonStyle: "filled" | "outlined" | "text";
     block: boolean;
     round: boolean;
+    buttonStyle: "filled" | "outlined" | "text";
 }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
     $slots: {
         default?(_: {}): any;

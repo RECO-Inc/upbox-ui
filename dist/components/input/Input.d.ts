@@ -25,10 +25,10 @@ declare const _default: import('vue').DefineComponent<EnhancedInputProps, {}, {}
 }, string, import('vue').PublicProps, Readonly<EnhancedInputProps> & Readonly<{
     "onUpdate:modelValue"?: ((payload: string | number) => any) | undefined;
 }>, {
-    error: boolean;
     disabled: boolean;
     type: string;
     size: "small" | "regular" | "large";
+    error: boolean;
     variant: "default" | "filled" | "bottomline";
     readonly: boolean;
     clearable: boolean;

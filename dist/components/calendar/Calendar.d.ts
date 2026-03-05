@@ -27,14 +27,14 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+    "update:modelValue": (value: DateValue | DateValue[] | undefined) => any;
     change: (value: Date | null) => any;
     reset: () => any;
-    "update:modelValue": (value: DateValue | DateValue[] | undefined) => any;
     "update:placeholder": (value: DateValue | undefined) => any;
 }, string, import('vue').PublicProps, Readonly<Props> & Readonly<{
+    "onUpdate:modelValue"?: ((value: DateValue | DateValue[] | undefined) => any) | undefined;
     onChange?: ((value: Date | null) => any) | undefined;
     onReset?: (() => any) | undefined;
-    "onUpdate:modelValue"?: ((value: DateValue | DateValue[] | undefined) => any) | undefined;
     "onUpdate:placeholder"?: ((value: DateValue | undefined) => any) | undefined;
 }>, {
     noDate: boolean;

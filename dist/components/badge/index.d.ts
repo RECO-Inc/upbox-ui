@@ -1,8 +1,8 @@
 import { VariantProps } from 'class-variance-authority';
 export { default as Badge } from './Badge';
 export declare const badgeVariants: (props?: ({
-    variant?: "error" | "base" | "primary" | "positive" | "info" | "warning" | null | undefined;
-    size?: "small" | "regular" | "xsmall" | "xxsmall" | null | undefined;
+    variant?: "error" | "base" | "primary" | "info" | "positive" | "warning" | null | undefined;
+    size?: "small" | "xxsmall" | "xsmall" | "regular" | null | undefined;
     deep?: boolean | null | undefined;
     outline?: boolean | null | undefined;
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;

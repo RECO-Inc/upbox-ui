@@ -24,10 +24,10 @@ declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, 
     click: (args_0: {
         data: UploaderFile;
     }) => any;
+    download: () => any;
     reload: (args_0: {
         data: UploaderFile;
     }) => any;
-    download: () => any;
 }, string, import('vue').PublicProps, Readonly<Props> & Readonly<{
     onRemove?: ((args_0: {
         data: UploaderFile;
@@ -35,10 +35,10 @@ declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, 
     onClick?: ((args_0: {
         data: UploaderFile;
     }) => any) | undefined;
+    onDownload?: (() => any) | undefined;
     onReload?: ((args_0: {
         data: UploaderFile;
     }) => any) | undefined;
-    onDownload?: (() => any) | undefined;
 }>, {
     readonly: boolean;
     downloadable: boolean;
