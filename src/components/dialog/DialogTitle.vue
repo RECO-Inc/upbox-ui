@@ -17,7 +17,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     v-bind="forwardedProps"
     :class="
       cn(
-        'text-size-18 text-base-90 font-semibold leading-none tracking-tight',
+        'text-size-20 text-base-90 font-bold leading-none tracking-tight',
         props.class,
       )
     "
