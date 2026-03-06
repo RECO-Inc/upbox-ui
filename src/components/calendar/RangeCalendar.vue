@@ -172,19 +172,19 @@ function onDone() {
     <template v-if="viewMode === 'DATE'">
       <RangeCalendarRoot
         v-slot="{ grid, weekDays }"
-        :class="cn('p-4', props.class)"
+        :class="cn('p-[16px]', props.class)"
         v-bind="forwarded"
         :placeholder="placeholder as unknown as RangeCalendarRootProps['placeholder']"
         @update:placeholder="(val) => placeholder = val as CalendarDate"
       >
-        <RangeCalendarHeader class="relative flex w-full items-center justify-between pt-1">
+        <RangeCalendarHeader class="relative flex w-full items-center justify-between pt-[4px]">
           <RangeCalendarPrev
             :class="cn(
               buttonVariants({ variant: 'assistant', style: 'outlined' }),
-              'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100'
+              'h-[28px] w-[28px] bg-transparent p-0 opacity-50 hover:opacity-100'
             )"
           >
-            <ChevronLeft class="h-4 w-4" />
+            <ChevronLeft class="h-[16px] w-[16px]" />
           </RangeCalendarPrev>
           <RangeCalendarHeading
             class="text-sm font-medium cursor-pointer select-none"
@@ -193,33 +193,33 @@ function onDone() {
           <RangeCalendarNext
             :class="cn(
               buttonVariants({ variant: 'assistant', style: 'outlined' }),
-              'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100'
+              'h-[28px] w-[28px] bg-transparent p-0 opacity-50 hover:opacity-100'
             )"
           >
-            <ChevronRight class="h-4 w-4" />
+            <ChevronRight class="h-[16px] w-[16px]" />
           </RangeCalendarNext>
         </RangeCalendarHeader>
 
-        <div class="flex flex-col gap-y-4 mt-4 sm:flex-row sm:gap-x-4 sm:gap-y-0">
+        <div class="flex flex-col gap-y-[16px] mt-[16px] sm:flex-row sm:gap-x-[16px] sm:gap-y-0">
           <RangeCalendarGrid v-for="month in grid" :key="month.value.toString()">
             <RangeCalendarGridHead>
               <RangeCalendarGridRow class="range-calendar-grid-row flex">
                 <RangeCalendarHeadCell
                   v-for="day in weekDays" :key="day"
-                  class="w-9 rounded-md text-[0.8rem] font-normal text-base-60"
+                  class="w-[36px] rounded-md text-[0.8rem] font-normal text-base-60"
                 >
                   {{ day }}
                 </RangeCalendarHeadCell>
               </RangeCalendarGridRow>
             </RangeCalendarGridHead>
             <RangeCalendarGridBody>
-              <RangeCalendarGridRow v-for="(weekDates, index) in month.rows" :key="`weekDate-${index}`" class="range-calendar-grid-row flex mt-2 w-full">
+              <RangeCalendarGridRow v-for="(weekDates, index) in month.rows" :key="`weekDate-${index}`" class="range-calendar-grid-row flex mt-[8px] w-full">
                 <RangeCalendarCell
                   v-for="weekDate in weekDates"
                   :key="weekDate.toString()"
                   :date="weekDate"
                   :class="cn(
-                    'relative p-0 text-center text-sm w-9 h-9',
+                    'relative p-0 text-center text-sm w-[36px] h-[36px]',
                     'focus-within:relative focus-within:z-20',
                     // Range selection - highlight included dates (between start and end)
                     '[&:has([data-selected]:not([data-selection-start]):not([data-selection-end]))]:bg-info-20',
@@ -238,7 +238,7 @@ function onDone() {
                     :month="month.value"
                     :class="cn(
                       // Base styles - 36x36 cell size matching original
-                      'inline-flex items-center justify-center w-9 h-9 p-0 text-sm font-normal rounded transition-colors cursor-pointer select-none',
+                      'inline-flex items-center justify-center w-[36px] h-[36px] p-0 text-sm font-normal rounded transition-colors cursor-pointer select-none',
                       'text-base-90 hover:bg-base-30',
                       // Today
                       '[&[data-today]:not([data-selected])]:bg-base-20 [&[data-today]:not([data-selected])]:text-primary-80 [&[data-today]:not([data-selected])]:font-semibold',

@@ -37,7 +37,7 @@ export const Positions: Story = {
     components: { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider, Button },
     template: `
       <TooltipProvider>
-        <div class="flex gap-4 p-12">
+        <div class="flex gap-[16px] p-[48px]">
           <Tooltip>
             <TooltipTrigger as-child><Button variant="assistant">Top</Button></TooltipTrigger>
             <TooltipContent side="top"><p>Top tooltip</p></TooltipContent>

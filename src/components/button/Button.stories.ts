@@ -42,7 +42,7 @@ export const Variants: Story = {
   render: () => ({
     components: { Button },
     template: `
-      <div class="flex flex-wrap gap-3 items-center">
+      <div class="flex flex-wrap gap-[12px] items-center">
         <Button variant="primary">Primary</Button>
         <Button variant="error">Error</Button>
         <Button variant="positive">Positive</Button>
@@ -58,7 +58,7 @@ export const Styles: Story = {
   render: () => ({
     components: { Button },
     template: `
-      <div class="flex flex-wrap gap-3 items-center">
+      <div class="flex flex-wrap gap-[12px] items-center">
         <Button variant="primary" btnStyle="filled">Filled</Button>
         <Button variant="primary" btnStyle="outlined">Outlined</Button>
         <Button variant="primary" btnStyle="text">Text</Button>
@@ -71,7 +71,7 @@ export const Sizes: Story = {
   render: () => ({
     components: { Button },
     template: `
-      <div class="flex flex-wrap gap-3 items-end">
+      <div class="flex flex-wrap gap-[12px] items-end">
         <Button size="xsmall">XSmall</Button>
         <Button size="small">Small</Button>
         <Button size="regular">Regular</Button>
@@ -105,6 +105,6 @@ export const Block: Story = {
   render: (args) => ({
     components: { Button },
     setup: () => ({ args }),
-    template: '<div class="w-80"><Button v-bind="args">Block Button</Button></div>',
+    template: '<div class="w-[320px]"><Button v-bind="args">Block Button</Button></div>',
   }),
 }

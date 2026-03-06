@@ -60,12 +60,12 @@ export const WithForm: Story = {
             <DialogTitle>Edit Profile</DialogTitle>
             <DialogDescription>Make changes to your profile here.</DialogDescription>
           </DialogHeader>
-          <div class="grid gap-4 py-4">
-            <div class="grid grid-cols-4 items-center gap-4">
+          <div class="grid gap-[16px] py-[16px]">
+            <div class="grid grid-cols-4 items-center gap-[16px]">
               <Label class="text-right">Name</Label>
               <Input class="col-span-3" placeholder="Enter name" />
             </div>
-            <div class="grid grid-cols-4 items-center gap-4">
+            <div class="grid grid-cols-4 items-center gap-[16px]">
               <Label class="text-right">Email</Label>
               <Input class="col-span-3" placeholder="Enter email" />
             </div>

@@ -25,7 +25,7 @@ export const Default: Story = {
       return { value }
     },
     template: `
-      <div class="w-60">
+      <div class="w-[240px]">
         <Select v-model="value">
           <SelectTrigger>
             <SelectValue placeholder="Select an option" />
@@ -50,7 +50,7 @@ export const WithGroups: Story = {
       return { value }
     },
     template: `
-      <div class="w-60">
+      <div class="w-[240px]">
         <Select v-model="value">
           <SelectTrigger>
             <SelectValue placeholder="Select a fruit" />

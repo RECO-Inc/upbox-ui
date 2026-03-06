@@ -20,7 +20,7 @@ export const Default: Story = {
   render: () => ({
     components: { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button },
     template: `
-      <Card class="w-96">
+      <Card class="w-[384px]">
         <CardHeader>
           <CardTitle>Card Title</CardTitle>
           <CardDescription>Card description goes here.</CardDescription>
@@ -28,7 +28,7 @@ export const Default: Story = {
         <CardContent>
           <p>Card content area. You can put any content here.</p>
         </CardContent>
-        <CardFooter class="flex justify-end gap-2">
+        <CardFooter class="flex justify-end gap-[8px]">
           <Button variant="assistant">Cancel</Button>
           <Button variant="primary">Save</Button>
         </CardFooter>
@@ -41,7 +41,7 @@ export const Simple: Story = {
   render: () => ({
     components: { Card, CardHeader, CardTitle, CardContent },
     template: `
-      <Card class="w-96">
+      <Card class="w-[384px]">
         <CardHeader>
           <CardTitle>Notifications</CardTitle>
         </CardHeader>

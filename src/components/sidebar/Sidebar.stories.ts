@@ -44,8 +44,8 @@ export const Default: Story = {
       <SidebarProvider style="min-height: 400px;">
         <Sidebar collapsible="offcanvas">
           <SidebarHeader>
-            <div class="flex items-center gap-2 px-2 py-1">
-              <div class="w-6 h-6 bg-primary-80 rounded" />
+            <div class="flex items-center gap-[8px] px-[8px] py-[4px]">
+              <div class="w-[24px] h-[24px] bg-primary-80 rounded" />
               <span class="font-bold text-base-100">Upbox UI</span>
             </div>
           </SidebarHeader>
@@ -105,8 +105,8 @@ export const Default: Story = {
             </SidebarMenu>
           </SidebarFooter>
         </Sidebar>
-        <main class="flex-1 p-6">
-          <div class="flex items-center gap-2 mb-4">
+        <main class="flex-1 p-[24px]">
+          <div class="flex items-center gap-[8px] mb-[16px]">
             <SidebarTrigger />
             <h1 class="text-size-18 font-bold text-base-100">Dashboard</h1>
           </div>
@@ -135,8 +135,8 @@ export const NonCollapsible: Story = {
       <SidebarProvider style="min-height: 400px;">
         <Sidebar collapsible="none">
           <SidebarHeader>
-            <div class="flex items-center gap-2 px-2 py-1">
-              <div class="w-6 h-6 bg-primary-80 rounded" />
+            <div class="flex items-center gap-[8px] px-[8px] py-[4px]">
+              <div class="w-[24px] h-[24px] bg-primary-80 rounded" />
               <span class="font-bold text-base-100">App</span>
             </div>
           </SidebarHeader>
@@ -159,8 +159,8 @@ export const NonCollapsible: Story = {
             </SidebarGroup>
           </SidebarContent>
         </Sidebar>
-        <main class="flex-1 p-6">
-          <h1 class="text-size-18 font-bold text-base-100 mb-2">Non-Collapsible Sidebar</h1>
+        <main class="flex-1 p-[24px]">
+          <h1 class="text-size-18 font-bold text-base-100 mb-[8px]">Non-Collapsible Sidebar</h1>
           <p class="text-size-14 text-base-60">This sidebar is always visible and cannot be collapsed.</p>
         </main>
       </SidebarProvider>
@@ -185,8 +185,8 @@ export const RightSide: Story = {
     },
     template: `
       <SidebarProvider style="min-height: 400px;">
-        <main class="flex-1 p-6">
-          <div class="flex items-center justify-between mb-4">
+        <main class="flex-1 p-[24px]">
+          <div class="flex items-center justify-between mb-[16px]">
             <h1 class="text-size-18 font-bold text-base-100">Right Sidebar</h1>
             <SidebarTrigger />
           </div>
@@ -194,7 +194,7 @@ export const RightSide: Story = {
         </main>
         <Sidebar side="right" collapsible="offcanvas">
           <SidebarHeader>
-            <div class="px-2 py-1 font-bold text-base-100">Details</div>
+            <div class="px-[8px] py-[4px] font-bold text-base-100">Details</div>
           </SidebarHeader>
           <SidebarContent>
             <SidebarGroup>
@@ -239,8 +239,8 @@ export const FloatingVariant: Story = {
       <SidebarProvider style="min-height: 400px;" class="bg-base-20">
         <Sidebar variant="floating" collapsible="offcanvas">
           <SidebarHeader>
-            <div class="flex items-center gap-2 px-2 py-1">
-              <div class="w-6 h-6 bg-primary-80 rounded" />
+            <div class="flex items-center gap-[8px] px-[8px] py-[4px]">
+              <div class="w-[24px] h-[24px] bg-primary-80 rounded" />
               <span class="font-bold text-base-100">Floating</span>
             </div>
           </SidebarHeader>
@@ -263,8 +263,8 @@ export const FloatingVariant: Story = {
             </SidebarGroup>
           </SidebarContent>
         </Sidebar>
-        <main class="flex-1 p-6">
-          <div class="flex items-center gap-2 mb-4">
+        <main class="flex-1 p-[24px]">
+          <div class="flex items-center gap-[8px] mb-[16px]">
             <SidebarTrigger />
             <h1 class="text-size-18 font-bold text-base-100">Floating Sidebar</h1>
           </div>

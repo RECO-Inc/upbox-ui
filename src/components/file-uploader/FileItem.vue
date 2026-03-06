@@ -55,7 +55,7 @@ function handleDownload(e: Event) {
 <template>
   <div
     :class="cn(
-      'file-item flex items-center py-1 px-2 rounded cursor-pointer transition-colors hover:bg-primary-20',
+      'file-item flex items-center py-[4px] px-[8px] rounded cursor-pointer transition-colors hover:bg-primary-20',
       props.class
     )"
     @click="handleClick"
@@ -77,38 +77,38 @@ function handleDownload(e: Event) {
     </div>
 
     <!-- Status (uploading/error) -->
-    <div v-if="file.state !== 'done' && file.state !== 'download'" class="flex items-center ml-2">
+    <div v-if="file.state !== 'done' && file.state !== 'download'" class="flex items-center ml-[8px]">
       <template v-if="file.state === 'error'">
-        <AlertCircle class="w-5 h-5 text-error-70 mr-1" />
+        <AlertCircle class="w-[20px] h-[20px] text-error-70 mr-[4px]" />
         <span class="text-[10px] text-error-70 whitespace-nowrap">업로드 실패</span>
       </template>
       <template v-else>
-        <span class="text-[10px] text-base-60 whitespace-nowrap mr-2">업로드 중...</span>
-        <Loader2 class="w-4 h-4 text-base-60 animate-spin" />
+        <span class="text-[10px] text-base-60 whitespace-nowrap mr-[8px]">업로드 중...</span>
+        <Loader2 class="w-[16px] h-[16px] text-base-60 animate-spin" />
       </template>
     </div>
 
     <!-- Actions -->
-    <div class="flex-shrink-0 flex items-center gap-1 ml-2">
+    <div class="flex-shrink-0 flex items-center gap-[4px] ml-[8px]">
       <!-- Remove button -->
       <button
         v-if="!readonly && (file.state === 'done' || file.state === 'error')"
         type="button"
-        class="p-1 rounded hover:bg-base-30 text-base-80 transition-colors"
+        class="p-[4px] rounded hover:bg-base-30 text-base-80 transition-colors"
         @click="handleRemove"
       >
-        <X class="w-5 h-5" />
+        <X class="w-[20px] h-[20px]" />
       </button>
 
       <!-- Download button -->
       <button
         v-if="downloadable && file.state === 'done'"
         type="button"
-        class="flex items-center gap-1 p-1 rounded text-size-12 text-base-60 hover:bg-base-30 transition-colors"
+        class="flex items-center gap-[4px] p-[4px] rounded text-size-12 text-base-60 hover:bg-base-30 transition-colors"
         @click="handleDownload"
       >
         다운로드
-        <Download class="w-5 h-5" />
+        <Download class="w-[20px] h-[20px]" />
       </button>
     </div>
   </div>

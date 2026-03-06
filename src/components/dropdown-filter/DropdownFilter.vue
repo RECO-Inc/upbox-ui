@@ -82,11 +82,11 @@ const multiCountText = computed(() => {
 const sizeClasses = computed(() => {
   switch (props.size) {
     case 'small':
-      return 'h-8 px-2 text-size-12';
+      return 'h-[32px] px-[8px] text-size-12';
     case 'large':
-      return 'h-12 px-4 text-size-16';
+      return 'h-[48px] px-[16px] text-size-16';
     default:
-      return 'h-10 px-3 text-size-14';
+      return 'h-[40px] px-[12px] text-size-14';
   }
 });
 
@@ -168,7 +168,7 @@ function onReset() {
             isPickerDisabled && 'opacity-50 cursor-not-allowed'
           )"
         >
-          <div class="flex items-center gap-1 overflow-hidden text-size-13">
+          <div class="flex items-center gap-[4px] overflow-hidden text-size-13">
             <span v-if="shownText" :class="cn('truncate font-bold', props.displayStyle === 'highlight' ? 'text-base-10' : 'text-primary-80')">{{ shownText }}</span>
             <span v-else class="text-base-50">{{ props.placeholder }}</span>
             <span v-if="multiCountText" :class="cn('shrink-0 font-bold', props.displayStyle === 'highlight' ? 'text-base-10' : 'text-primary-80')">{{ multiCountText }}</span>
@@ -176,18 +176,18 @@ function onReset() {
           <ChevronDown
             :class="cn(
               'shrink-0 transition-transform duration-200',
-              props.size === 'small' ? 'h-4 w-4' : 'h-5 w-5',
+              props.size === 'small' ? 'h-[16px] w-[16px]' : 'h-[20px] w-[20px]',
               isOpen && 'rotate-180'
             )"
           />
         </button>
       </PopoverTrigger>
       <PopoverContent
-        class="w-auto min-w-[200px] max-w-[320px] p-2"
+        class="w-auto min-w-[200px] max-w-[320px] p-[8px]"
         align="start"
       >
         <!-- Search -->
-        <div v-if="props.search" class="mb-2">
+        <div v-if="props.search" class="mb-[8px]">
           <Input
             v-model="searchKeyword"
             :placeholder="t('common.search')"
@@ -201,7 +201,7 @@ function onReset() {
           <!-- Select All -->
           <div
             v-if="props.canAll && !props.single && searchKeyword === ''"
-            class="flex items-center gap-2 px-2 py-2 rounded cursor-pointer hover:bg-primary-10"
+            class="flex items-center gap-[8px] px-[8px] py-[8px] rounded cursor-pointer hover:bg-primary-10"
             @click="clickAll"
           >
             <Checkbox
@@ -215,7 +215,7 @@ function onReset() {
             <div
               v-for="item in filteredOptions"
               :key="String(item.value)"
-              class="flex items-center gap-2 px-2 py-2 rounded cursor-pointer hover:bg-primary-10"
+              class="flex items-center gap-[8px] px-[8px] py-[8px] rounded cursor-pointer hover:bg-primary-10"
               @click="onClickItem(item)"
             >
               <Checkbox
@@ -227,12 +227,12 @@ function onReset() {
               </slot>
               <Check
                 v-if="props.single && isItemSelected(item)"
-                class="h-4 w-4 text-info-80"
+                class="h-[16px] w-[16px] text-info-80"
               />
             </div>
           </template>
           <template v-else>
-            <div class="px-2 py-4 text-center text-size-14 text-base-50">
+            <div class="px-[8px] py-[16px] text-center text-size-14 text-base-50">
               {{ t('common.noData') }}
             </div>
           </template>
@@ -241,7 +241,7 @@ function onReset() {
         <!-- Footer -->
         <div
           v-if="!props.single"
-          class="flex items-center justify-between mt-2 pt-2 border-t border-base-30"
+          class="flex items-center justify-between mt-[8px] pt-[8px] border-t border-base-30"
         >
           <Button
             variant="usually"
@@ -249,7 +249,7 @@ function onReset() {
             size="xsmall"
             @click="onReset"
           >
-            <RotateCcw class="mr-1 h-3 w-3" />
+            <RotateCcw class="mr-[4px] h-[12px] w-[12px]" />
             {{ t('common.reset') }}
           </Button>
           <span class="text-size-12 text-base-60">

@@ -15,9 +15,9 @@ const textareaVariants = cva(
         bottomline: 'border-0 border-b border-base-40 rounded-none bg-transparent hover:border-base-50',
       },
       size: {
-        small: 'px-3 py-[7px] text-size-12',
-        regular: 'px-4 py-[9px] text-size-14',
-        large: 'px-4 py-[11px] text-size-15',
+        small: 'px-[12px] py-[7px] text-size-12',
+        regular: 'px-[16px] py-[9px] text-size-14',
+        large: 'px-[16px] py-[11px] text-size-15',
       },
       error: {
         true: 'border-error-80 focus-visible:border-error-80 focus-visible:ring-0 hover:border-error-80',
@@ -167,10 +167,10 @@ watch(textareaRef, () => {
     <!-- Label -->
     <label
       v-if="label"
-      class="inline-block mb-2 text-size-14 text-base-80 font-medium"
+      class="inline-block mb-[8px] text-size-14 text-base-80 font-medium"
     >
       {{ label }}
-      <span v-if="required" class="text-error-70 ml-1">*</span>
+      <span v-if="required" class="text-error-70 ml-[4px]">*</span>
     </label>
 
     <!-- Textarea -->
@@ -197,7 +197,7 @@ watch(textareaRef, () => {
     <!-- Bottom Row: Error Message & Counter -->
     <div
       v-if="errorMessage || counter"
-      class="flex justify-between items-start mt-1"
+      class="flex justify-between items-start mt-[4px]"
     >
       <!-- Error Message -->
       <span

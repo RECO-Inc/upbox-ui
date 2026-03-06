@@ -32,7 +32,7 @@ export const Variants: Story = {
   render: () => ({
     components: { Input },
     template: `
-      <div class="flex flex-col gap-3 w-80">
+      <div class="flex flex-col gap-[12px] w-[320px]">
         <Input variant="default" placeholder="Default" />
         <Input variant="filled" placeholder="Filled" />
         <Input variant="bottomline" placeholder="Bottomline" />
@@ -45,7 +45,7 @@ export const Sizes: Story = {
   render: () => ({
     components: { Input },
     template: `
-      <div class="flex flex-col gap-3 w-80">
+      <div class="flex flex-col gap-[12px] w-[320px]">
         <Input size="small" placeholder="Small" />
         <Input size="regular" placeholder="Regular" />
         <Input size="large" placeholder="Large" />

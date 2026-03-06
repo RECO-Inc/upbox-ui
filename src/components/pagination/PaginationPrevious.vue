@@ -18,13 +18,13 @@ const forwarded = useForwardProps(delegatedProps)
   <PaginationPrev
     data-slot="pagination-previous"
     :class="cn(
-      'inline-flex items-center justify-center w-[30px] h-[30px] min-w-[30px] rounded-[4px] text-size-14 text-base-90 bg-transparent border border-base-80 cursor-pointer select-none transition-colors mr-0.5 disabled:border-base-40 disabled:cursor-not-allowed',
+      'inline-flex items-center justify-center w-[30px] h-[30px] min-w-[30px] rounded-[4px] text-size-14 text-base-90 bg-transparent border border-base-80 cursor-pointer select-none transition-colors mr-[2px] disabled:border-base-40 disabled:cursor-not-allowed',
       props.class
     )"
     v-bind="forwarded"
   >
     <slot>
-      <ChevronLeftIcon class="h-4 w-4" />
+      <ChevronLeftIcon class="h-[16px] w-[16px]" />
     </slot>
   </PaginationPrev>
 </template>

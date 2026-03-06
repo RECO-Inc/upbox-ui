@@ -19,7 +19,7 @@ export const Default: Story = {
   render: () => ({
     components: { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText },
     template: `
-      <div class="w-80">
+      <div class="w-[320px]">
         <InputGroup>
           <InputGroupAddon>
             <InputGroupText>https://</InputGroupText>
@@ -35,7 +35,7 @@ export const InlineStartAddon: Story = {
   render: () => ({
     components: { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText },
     template: `
-      <div class="flex flex-col gap-4 w-80">
+      <div class="flex flex-col gap-[16px] w-[320px]">
         <InputGroup>
           <InputGroupAddon align="inline-start">
             <InputGroupText>$</InputGroupText>
@@ -57,7 +57,7 @@ export const InlineEndAddon: Story = {
   render: () => ({
     components: { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText },
     template: `
-      <div class="flex flex-col gap-4 w-80">
+      <div class="flex flex-col gap-[16px] w-[320px]">
         <InputGroup>
           <InputGroupInput placeholder="Price" />
           <InputGroupAddon align="inline-end">
@@ -79,7 +79,7 @@ export const BothSideAddons: Story = {
   render: () => ({
     components: { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText },
     template: `
-      <div class="w-80">
+      <div class="w-[320px]">
         <InputGroup>
           <InputGroupAddon align="inline-start">
             <InputGroupText>$</InputGroupText>
@@ -98,7 +98,7 @@ export const WithButton: Story = {
   render: () => ({
     components: { InputGroup, InputGroupAddon, InputGroupInput, InputGroupButton },
     template: `
-      <div class="flex flex-col gap-4 w-80">
+      <div class="flex flex-col gap-[16px] w-[320px]">
         <InputGroup>
           <InputGroupInput placeholder="Search..." />
           <InputGroupAddon align="inline-end">
@@ -120,7 +120,7 @@ export const BlockStartAddon: Story = {
   render: () => ({
     components: { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText },
     template: `
-      <div class="w-80">
+      <div class="w-[320px]">
         <InputGroup>
           <InputGroupAddon align="block-start">
             <InputGroupText>Label</InputGroupText>
@@ -136,7 +136,7 @@ export const BlockEndAddon: Story = {
   render: () => ({
     components: { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText },
     template: `
-      <div class="w-80">
+      <div class="w-[320px]">
         <InputGroup>
           <InputGroupInput placeholder="Enter value..." />
           <InputGroupAddon align="block-end">
@@ -152,7 +152,7 @@ export const WithTextarea: Story = {
   render: () => ({
     components: { InputGroup, InputGroupAddon, InputGroupTextarea, InputGroupText },
     template: `
-      <div class="w-80">
+      <div class="w-[320px]">
         <InputGroup>
           <InputGroupAddon align="block-start">
             <InputGroupText>Description</InputGroupText>

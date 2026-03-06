@@ -32,13 +32,13 @@ const years = computed(() => {
 </script>
 
 <template>
-  <div :class="cn('p-4', props.class)">
-    <div class="grid grid-cols-4 gap-1">
+  <div :class="cn('p-[16px]', props.class)">
+    <div class="grid grid-cols-4 gap-[4px]">
       <div
         v-for="year in years"
         :key="year.value"
         :class="cn(
-          'py-2 px-4 text-sm font-bold text-base-90 text-center cursor-pointer select-none transition-colors',
+          'py-[8px] px-[16px] text-sm font-bold text-base-90 text-center cursor-pointer select-none transition-colors',
           year.value === selectedYear
             ? 'bg-primary-90 text-base-20 rounded hover:bg-primary-70'
             : 'hover:bg-base-30'

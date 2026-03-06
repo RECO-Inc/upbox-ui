@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority"
 export { default as Badge } from "./Badge.vue"
 
 export const badgeVariants = cva(
-  "inline-flex gap-0.5 items-center justify-center rounded-[3px] box-border whitespace-nowrap font-semibold",
+  "inline-flex gap-[2px] items-center justify-center rounded-[3px] box-border whitespace-nowrap font-semibold",
   {
     variants: {
       variant: {
@@ -16,10 +16,10 @@ export const badgeVariants = cva(
         warning: "border-warning-70",
       },
       size: {
-        xxsmall: "h-4 px-1.5 text-size-11",       // height: 16px, padding: 0 6px
-        xsmall: "h-5 px-1.5 py-0.5 text-size-11", // height: 20px, padding: 2px 6px
-        small: "h-6 px-1.5 py-1 text-size-12",    // height: 24px, padding: 4px 6px
-        regular: "h-8 px-2 py-1.5 text-size-14",  // height: 32px, padding: 6px 8px
+        xxsmall: "h-[16px] px-[6px] text-size-11",       // height: 16px, padding: 0 6px
+        xsmall: "h-[20px] px-[6px] py-[2px] text-size-11", // height: 20px, padding: 2px 6px
+        small: "h-[24px] px-[6px] py-[4px] text-size-12",    // height: 24px, padding: 4px 6px
+        regular: "h-[32px] px-[8px] py-[6px] text-size-14",  // height: 32px, padding: 6px 8px
       },
       deep: {
         true: "",

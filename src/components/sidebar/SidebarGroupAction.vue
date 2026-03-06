@@ -15,8 +15,8 @@ const props = defineProps<PrimitiveProps & {
     :as="as"
     :as-child="asChild"
     :class="cn(
-      'absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-base-100 outline-none ring-primary-80 transition-transform hover:bg-base-30 hover:text-base-100 focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
-      'after:absolute after:-inset-2 after:md:hidden',
+      'absolute right-[12px] top-[14px] flex aspect-square w-[20px] items-center justify-center rounded-md p-0 text-base-100 outline-none ring-primary-80 transition-transform hover:bg-base-30 hover:text-base-100 focus-visible:ring-2 [&>svg]:size-[16px] [&>svg]:shrink-0',
+      'after:absolute after:-inset-[8px] after:md:hidden',
       'group-data-[collapsible=icon]:hidden',
       props.class,
     )"

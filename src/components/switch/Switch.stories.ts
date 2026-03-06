@@ -27,7 +27,7 @@ export const Default: Story = {
       return { args, checked }
     },
     template: `
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-[12px]">
         <Switch id="sw" v-model="checked" v-bind="args" />
         <Label for="sw">{{ checked ? 'On' : 'Off' }}</Label>
       </div>
@@ -45,16 +45,16 @@ export const Sizes: Story = {
       return { a, b, c }
     },
     template: `
-      <div class="flex items-center gap-6">
-        <div class="flex items-center gap-2">
+      <div class="flex items-center gap-[24px]">
+        <div class="flex items-center gap-[8px]">
           <Switch size="small" v-model="a" />
           <Label>Small</Label>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-[8px]">
           <Switch size="regular" v-model="b" />
           <Label>Regular</Label>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-[8px]">
           <Switch size="large" v-model="c" />
           <Label>Large</Label>
         </div>
@@ -71,7 +71,7 @@ export const Checked: Story = {
       return { checked }
     },
     template: `
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-[12px]">
         <Switch v-model="checked" />
         <Label>Checked (On)</Label>
       </div>
@@ -87,7 +87,7 @@ export const Unchecked: Story = {
       return { checked }
     },
     template: `
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-[12px]">
         <Switch v-model="checked" />
         <Label>Unchecked (Off)</Label>
       </div>
@@ -99,12 +99,12 @@ export const Disabled: Story = {
   render: () => ({
     components: { Switch, Label },
     template: `
-      <div class="flex flex-col gap-4">
-        <div class="flex items-center gap-3">
+      <div class="flex flex-col gap-[16px]">
+        <div class="flex items-center gap-[12px]">
           <Switch :disabled="true" :default-checked="false" />
           <Label>Disabled Off</Label>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-[12px]">
           <Switch :disabled="true" :default-checked="true" />
           <Label>Disabled On</Label>
         </div>
@@ -123,7 +123,7 @@ export const WithFormLabel: Story = {
       return { notifications, marketing, updates }
     },
     template: `
-      <div class="flex flex-col gap-4 w-64">
+      <div class="flex flex-col gap-[16px] w-[256px]">
         <div class="flex items-center justify-between">
           <Label for="notifications">Push notifications</Label>
           <Switch id="notifications" v-model="notifications" />

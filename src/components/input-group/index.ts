@@ -11,18 +11,18 @@ export { default as InputGroupText } from "./InputGroupText.vue"
 export { default as InputGroupTextarea } from "./InputGroupTextarea.vue"
 
 export const inputGroupAddonVariants = cva(
-  "text-base-60 flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-size-14 font-medium select-none [&>svg:not([class*='size-'])]:size-4 [&>kbd]:rounded-[calc(var(--radius)-5px)] group-data-[disabled=true]/input-group:opacity-50",
+  "text-base-60 flex h-auto cursor-text items-center justify-center gap-[8px] py-[6px] text-size-14 font-medium select-none [&>svg:not([class*='size-'])]:size-[16px] [&>kbd]:rounded-[calc(var(--radius)-5px)] group-data-[disabled=true]/input-group:opacity-50",
   {
     variants: {
       align: {
         "inline-start":
-          "order-first pl-3 has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]",
+          "order-first pl-[12px] has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]",
         "inline-end":
-          "order-last pr-3 has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem]",
+          "order-last pr-[12px] has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem]",
         "block-start":
-          "order-first w-full justify-start px-3 pt-3 [.border-b]:pb-3 group-has-[>input]/input-group:pt-2.5",
+          "order-first w-full justify-start px-[12px] pt-[12px] [.border-b]:pb-[12px] group-has-[>input]/input-group:pt-[10px]",
         "block-end":
-          "order-last w-full justify-start px-3 pb-3 [.border-t]:pt-3 group-has-[>input]/input-group:pb-2.5",
+          "order-last w-full justify-start px-[12px] pb-[12px] [.border-t]:pt-[12px] group-has-[>input]/input-group:pb-[10px]",
       },
     },
     defaultVariants: {
@@ -34,14 +34,14 @@ export const inputGroupAddonVariants = cva(
 export type InputGroupVariants = VariantProps<typeof inputGroupAddonVariants>
 
 export const inputGroupButtonVariants = cva(
-  "text-size-14 shadow-none flex gap-2 items-center",
+  "text-size-14 shadow-none flex gap-[8px] items-center",
   {
     variants: {
       size: {
-        "xs": "h-6 gap-1 px-2 rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-3.5 has-[>svg]:px-2",
-        "sm": "h-8 px-2.5 gap-1.5 rounded-md has-[>svg]:px-2.5",
-        "icon-xs": "size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
-        "icon-sm": "size-8 p-0 has-[>svg]:p-0",
+        "xs": "h-[24px] gap-[4px] px-[8px] rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-[14px] has-[>svg]:px-[8px]",
+        "sm": "h-[32px] px-[10px] gap-[6px] rounded-md has-[>svg]:px-[10px]",
+        "icon-xs": "size-[24px] rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
+        "icon-sm": "size-[32px] p-0 has-[>svg]:p-0",
       },
     },
     defaultVariants: {

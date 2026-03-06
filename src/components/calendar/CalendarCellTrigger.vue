@@ -16,7 +16,7 @@ const forwardedProps = useForwardProps(delegatedProps)
   <CalendarCellTrigger
     :class="cn(
       // Base styles - 36x36 cell size matching original
-      'inline-flex items-center justify-center w-9 h-9 p-0 text-sm font-normal rounded transition-colors cursor-pointer select-none',
+      'inline-flex items-center justify-center w-[36px] h-[36px] p-0 text-sm font-normal rounded transition-colors cursor-pointer select-none',
       'text-base-90 hover:bg-base-30',
       // Today
       '[&[data-today]:not([data-selected])]:bg-base-20 [&[data-today]:not([data-selected])]:text-primary-80 [&[data-today]:not([data-selected])]:font-semibold',

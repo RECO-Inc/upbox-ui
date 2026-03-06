@@ -21,11 +21,11 @@ const buttonVariants = cva(
         text: '!border-none !bg-transparent shadow-none p-0',
       },
       size: {
-        xsmall: 'h-6 px-[6px] py-1 text-size-12 rounded-[2.4px]',
-        small: 'h-8 px-2 py-[6px] text-size-13 rounded-[3.2px]',
-        regular: 'h-10 px-4 py-[10px] text-size-14 rounded-[4px]',
-        large: 'h-12 px-4 py-3 text-size-16 rounded-[4.8px]',
-        xlarge: 'h-14 px-4 py-4 text-size-16 rounded-[5.6px]',
+        xsmall: 'h-[24px] px-[6px] py-[4px] text-size-12 rounded-[2.4px]',
+        small: 'h-[32px] px-[8px] py-[6px] text-size-13 rounded-[3.2px]',
+        regular: 'h-[40px] px-[16px] py-[10px] text-size-14 rounded-[4px]',
+        large: 'h-[48px] px-[16px] py-[12px] text-size-16 rounded-[4.8px]',
+        xlarge: 'h-[56px] px-[16px] py-[16px] text-size-16 rounded-[5.6px]',
       },
       block: {
         true: 'w-full',
@@ -201,7 +201,7 @@ const handleClick = (event: MouseEvent) => {
     )"
     @click="handleClick"
   >
-    <Spinner v-if="loading" class="mr-2 h-4 w-4" />
+    <Spinner v-if="loading" class="mr-[8px] h-[16px] w-[16px]" />
     <slot />
   </button>
 </template>

@@ -35,7 +35,7 @@ export const Variants: Story = {
   render: () => ({
     components: { Badge },
     template: `
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-[8px]">
         <Badge variant="base">Base</Badge>
         <Badge variant="primary">Primary</Badge>
         <Badge variant="info">Info</Badge>
@@ -51,7 +51,7 @@ export const Deep: Story = {
   render: () => ({
     components: { Badge },
     template: `
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-[8px]">
         <Badge variant="base" deep>Base</Badge>
         <Badge variant="primary" deep>Primary</Badge>
         <Badge variant="info" deep>Info</Badge>
@@ -67,7 +67,7 @@ export const Outline: Story = {
   render: () => ({
     components: { Badge },
     template: `
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-[8px]">
         <Badge variant="base" outline>Base</Badge>
         <Badge variant="primary" outline>Primary</Badge>
         <Badge variant="info" outline>Info</Badge>
@@ -83,7 +83,7 @@ export const Sizes: Story = {
   render: () => ({
     components: { Badge },
     template: `
-      <div class="flex flex-wrap gap-2 items-center">
+      <div class="flex flex-wrap gap-[8px] items-center">
         <Badge variant="primary" size="xxsmall">XXSmall</Badge>
         <Badge variant="primary" size="xsmall">XSmall</Badge>
         <Badge variant="primary" size="small">Small</Badge>

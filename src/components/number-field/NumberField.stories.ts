@@ -33,7 +33,7 @@ export const Default: Story = {
       return { value }
     },
     template: `
-      <div class="p-8 w-48">
+      <div class="p-[32px] w-[192px]">
         <NumberField v-model="value">
           <NumberFieldContent>
             <NumberFieldDecrement />
@@ -41,7 +41,7 @@ export const Default: Story = {
             <NumberFieldIncrement />
           </NumberFieldContent>
         </NumberField>
-        <p class="mt-4 text-sm text-base-60">Value: {{ value }}</p>
+        <p class="mt-[16px] text-sm text-base-60">Value: {{ value }}</p>
       </div>
     `,
   }),
@@ -61,7 +61,7 @@ export const WithMinMax: Story = {
       return { value }
     },
     template: `
-      <div class="p-8 w-48">
+      <div class="p-[32px] w-[192px]">
         <NumberField v-model="value" :min="0" :max="10">
           <NumberFieldContent>
             <NumberFieldDecrement />
@@ -69,7 +69,7 @@ export const WithMinMax: Story = {
             <NumberFieldIncrement />
           </NumberFieldContent>
         </NumberField>
-        <p class="mt-4 text-sm text-base-60">Value: {{ value }} (min: 0, max: 10)</p>
+        <p class="mt-[16px] text-sm text-base-60">Value: {{ value }} (min: 0, max: 10)</p>
       </div>
     `,
   }),
@@ -89,7 +89,7 @@ export const WithStep: Story = {
       return { value }
     },
     template: `
-      <div class="p-8 w-48">
+      <div class="p-[32px] w-[192px]">
         <NumberField v-model="value" :step="5">
           <NumberFieldContent>
             <NumberFieldDecrement />
@@ -97,7 +97,7 @@ export const WithStep: Story = {
             <NumberFieldIncrement />
           </NumberFieldContent>
         </NumberField>
-        <p class="mt-4 text-sm text-base-60">Value: {{ value }} (step: 5)</p>
+        <p class="mt-[16px] text-sm text-base-60">Value: {{ value }} (step: 5)</p>
       </div>
     `,
   }),
@@ -117,7 +117,7 @@ export const Disabled: Story = {
       return { value }
     },
     template: `
-      <div class="p-8 w-48">
+      <div class="p-[32px] w-[192px]">
         <NumberField v-model="value" disabled>
           <NumberFieldContent>
             <NumberFieldDecrement />
@@ -145,9 +145,9 @@ export const WithLabel: Story = {
       return { quantity, price }
     },
     template: `
-      <div class="p-8 flex flex-col gap-4 w-48">
+      <div class="p-[32px] flex flex-col gap-[16px] w-[192px]">
         <div>
-          <label class="text-sm font-medium block mb-1">Quantity</label>
+          <label class="text-sm font-medium block mb-[4px]">Quantity</label>
           <NumberField v-model="quantity" :min="1" :max="99">
             <NumberFieldContent>
               <NumberFieldDecrement />
@@ -157,7 +157,7 @@ export const WithLabel: Story = {
           </NumberField>
         </div>
         <div>
-          <label class="text-sm font-medium block mb-1">Price ($)</label>
+          <label class="text-sm font-medium block mb-[4px]">Price ($)</label>
           <NumberField v-model="price" :min="0" :step="10">
             <NumberFieldContent>
               <NumberFieldDecrement />
@@ -183,13 +183,13 @@ export const InputOnly: Story = {
       return { value }
     },
     template: `
-      <div class="p-8 w-48">
+      <div class="p-[32px] w-[192px]">
         <NumberField v-model="value">
           <NumberFieldContent>
             <NumberFieldInput />
           </NumberFieldContent>
         </NumberField>
-        <p class="mt-4 text-sm text-base-60">Input only (no buttons)</p>
+        <p class="mt-[16px] text-sm text-base-60">Input only (no buttons)</p>
       </div>
     `,
   }),

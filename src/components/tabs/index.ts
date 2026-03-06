@@ -11,9 +11,9 @@ export const tabsListVariants = cva(
   {
     variants: {
       variant: {
-        default: "items-end gap-6",
-        round: "items-end gap-2",
-        box: "rounded p-1",
+        default: "items-end gap-[24px]",
+        round: "items-end gap-[8px]",
+        box: "rounded p-[4px]",
       },
       color: {
         navy: "",
@@ -58,8 +58,8 @@ export const tabsTriggerVariants = cva(
   {
     variants: {
       variant: {
-        default: "py-2 font-bold text-base-50 border-b-2 border-transparent data-[state=active]:text-primary-80 data-[state=active]:border-primary-80",
-        round: "px-2 font-normal text-base-60 border border-base-40 bg-base-10 rounded-full data-[state=active]:text-info-90 data-[state=active]:border-info-90 data-[state=active]:font-bold",
+        default: "py-[8px] font-bold text-base-50 border-b-2 border-transparent data-[state=active]:text-primary-80 data-[state=active]:border-primary-80",
+        round: "px-[8px] font-normal text-base-60 border border-base-40 bg-base-10 rounded-full data-[state=active]:text-info-90 data-[state=active]:border-info-90 data-[state=active]:font-bold",
         box: "font-bold rounded transition-[background-color] duration-500 data-[state=active]:bg-base-10",
       },
       color: {
@@ -78,23 +78,23 @@ export const tabsTriggerVariants = cva(
       {
         variant: "default",
         size: "regular",
-        class: "h-10 text-size-16",
+        class: "h-[40px] text-size-16",
       },
       {
         variant: "default",
         size: "small",
-        class: "h-8 text-size-14",
+        class: "h-[32px] text-size-14",
       },
       // round variant sizes
       {
         variant: "round",
         size: "regular",
-        class: "py-2 text-size-14",
+        class: "py-[8px] text-size-14",
       },
       {
         variant: "round",
         size: "small",
-        class: "py-1.5 text-size-14",
+        class: "py-[6px] text-size-14",
       },
       // box + color
       {
@@ -111,22 +111,22 @@ export const tabsTriggerVariants = cva(
       {
         variant: "box",
         size: "small",
-        class: "px-3 h-6 text-size-12",
+        class: "px-[12px] h-[24px] text-size-12",
       },
       {
         variant: "box",
         size: "regular",
-        class: "px-3.5 h-8 text-size-14",
+        class: "px-[14px] h-[32px] text-size-14",
       },
       {
         variant: "box",
         size: "large",
-        class: "px-4 h-10 text-size-15",
+        class: "px-[16px] h-[40px] text-size-15",
       },
       {
         variant: "box",
         size: "xlarge",
-        class: "px-4 h-12 text-size-16",
+        class: "px-[16px] h-[48px] text-size-16",
       },
     ],
     defaultVariants: {

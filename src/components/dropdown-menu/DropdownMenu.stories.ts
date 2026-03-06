@@ -32,10 +32,10 @@ export const Default: Story = {
       DropdownMenuSeparator,
     },
     template: `
-      <div class="flex justify-center p-8">
+      <div class="flex justify-center p-[32px]">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <button class="px-4 py-2 rounded border border-base-40 bg-base-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">
               Open Menu
             </button>
           </DropdownMenuTrigger>
@@ -66,14 +66,14 @@ export const WithShortcuts: Story = {
       DropdownMenuShortcut,
     },
     template: `
-      <div class="flex justify-center p-8">
+      <div class="flex justify-center p-[32px]">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <button class="px-4 py-2 rounded border border-base-40 bg-base-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">
               Open Menu
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent class="w-56">
+          <DropdownMenuContent class="w-[224px]">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
@@ -111,14 +111,14 @@ export const WithCheckboxItems: Story = {
       DropdownMenuSeparator,
     },
     template: `
-      <div class="flex justify-center p-8">
+      <div class="flex justify-center p-[32px]">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <button class="px-4 py-2 rounded border border-base-40 bg-base-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">
               View Options
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent class="w-56">
+          <DropdownMenuContent class="w-[224px]">
             <DropdownMenuLabel>Appearance</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuCheckboxItem :checked="true">Status Bar</DropdownMenuCheckboxItem>
@@ -146,14 +146,14 @@ export const WithSubMenu: Story = {
       DropdownMenuSubContent,
     },
     template: `
-      <div class="flex justify-center p-8">
+      <div class="flex justify-center p-[32px]">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <button class="px-4 py-2 rounded border border-base-40 bg-base-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">
               Open Menu
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent class="w-56">
+          <DropdownMenuContent class="w-[224px]">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
@@ -186,10 +186,10 @@ export const WithDisabledItems: Story = {
       DropdownMenuSeparator,
     },
     template: `
-      <div class="flex justify-center p-8">
+      <div class="flex justify-center p-[32px]">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <button class="px-4 py-2 rounded border border-base-40 bg-base-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">
               Open Menu
             </button>
           </DropdownMenuTrigger>

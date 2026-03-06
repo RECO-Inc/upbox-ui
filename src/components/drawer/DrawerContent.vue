@@ -19,11 +19,11 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
     <DrawerOverlay />
     <DrawerContent
       v-bind="forwardedProps" :class="cn(
-        'fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border border-base-50 bg-base-10',
+        'fixed inset-x-0 bottom-0 z-50 mt-[96px] flex h-auto flex-col rounded-t-[10px] border border-base-50 bg-base-10',
         props.class,
       )"
     >
-      <div class="mx-auto mt-4 h-2 w-[100px] rounded-full bg-base-30" />
+      <div class="mx-auto mt-[16px] h-[8px] w-[100px] rounded-full bg-base-30" />
       <slot />
     </DrawerContent>
   </DrawerPortal>

@@ -22,7 +22,7 @@ const { t } = useI18n()
 <template>
   <div
     :class="cn(
-      'flex items-center justify-between gap-2.5 px-4 pb-2',
+      'flex items-center justify-between gap-[10px] px-[16px] pb-[8px]',
       props.class
     )"
   >
@@ -36,7 +36,7 @@ const { t } = useI18n()
         @mousedown.prevent
         @click="emit('reset')"
       >
-        <RotateCcw class="w-4 h-4 mr-1" />
+        <RotateCcw class="w-[16px] h-[16px] mr-[4px]" />
         {{ t('word.reset') }}
       </Button>
     </slot>

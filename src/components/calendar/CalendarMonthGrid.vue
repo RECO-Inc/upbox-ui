@@ -32,17 +32,17 @@ const months = computed(() => {
 </script>
 
 <template>
-  <div :class="cn('p-4', props.class)">
-    <div class="grid grid-cols-3 gap-1">
+  <div :class="cn('p-[16px]', props.class)">
+    <div class="grid grid-cols-3 gap-[4px]">
       <!-- Header -->
       <button
         :class="cn(
           buttonVariants({ variant: 'assistant', style: 'outlined' }),
-          'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100'
+          'h-[28px] w-[28px] bg-transparent p-0 opacity-50 hover:opacity-100'
         )"
         @click="emit('prevYear')"
       >
-        <ChevronLeft class="h-4 w-4" />
+        <ChevronLeft class="h-[16px] w-[16px]" />
       </button>
       <div
         class="flex items-center justify-center text-sm font-bold text-base-90 cursor-pointer select-none hover:text-primary-80"
@@ -53,11 +53,11 @@ const months = computed(() => {
       <button
         :class="cn(
           buttonVariants({ variant: 'assistant', style: 'outlined' }),
-          'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 justify-self-end'
+          'h-[28px] w-[28px] bg-transparent p-0 opacity-50 hover:opacity-100 justify-self-end'
         )"
         @click="emit('nextYear')"
       >
-        <ChevronRight class="h-4 w-4" />
+        <ChevronRight class="h-[16px] w-[16px]" />
       </button>
 
       <!-- Month cells -->
@@ -65,7 +65,7 @@ const months = computed(() => {
         v-for="month in months"
         :key="month.value"
         :class="cn(
-          'py-4 px-6 text-sm font-bold text-base-90 text-center cursor-pointer select-none transition-colors',
+          'py-[16px] px-[24px] text-sm font-bold text-base-90 text-center cursor-pointer select-none transition-colors',
           month.value === selectedMonth
             ? 'bg-primary-90 text-base-20 rounded hover:bg-primary-70'
             : 'hover:bg-base-30'

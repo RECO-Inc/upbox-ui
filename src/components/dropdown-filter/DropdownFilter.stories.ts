@@ -42,13 +42,13 @@ export const Default: Story = {
       return { selected, sampleOptions }
     },
     template: `
-      <div class="p-8 w-64">
+      <div class="p-[32px] w-[256px]">
         <DropdownFilter
           v-model="selected"
           :options="sampleOptions"
           placeholder="Select items"
         />
-        <p class="mt-4 text-sm text-base-60">Selected: {{ selected.join(', ') || 'none' }}</p>
+        <p class="mt-[16px] text-sm text-base-60">Selected: {{ selected.join(', ') || 'none' }}</p>
       </div>
     `,
   }),
@@ -64,17 +64,17 @@ export const Sizes: Story = {
       return { selectedSmall, selectedRegular, selectedLarge, sampleOptions }
     },
     template: `
-      <div class="p-8 flex flex-col gap-4 w-64">
+      <div class="p-[32px] flex flex-col gap-[16px] w-[256px]">
         <div>
-          <p class="text-sm font-medium mb-1">Small</p>
+          <p class="text-sm font-medium mb-[4px]">Small</p>
           <DropdownFilter v-model="selectedSmall" :options="sampleOptions" placeholder="Small" size="small" />
         </div>
         <div>
-          <p class="text-sm font-medium mb-1">Regular</p>
+          <p class="text-sm font-medium mb-[4px]">Regular</p>
           <DropdownFilter v-model="selectedRegular" :options="sampleOptions" placeholder="Regular" size="regular" />
         </div>
         <div>
-          <p class="text-sm font-medium mb-1">Large</p>
+          <p class="text-sm font-medium mb-[4px]">Large</p>
           <DropdownFilter v-model="selectedLarge" :options="sampleOptions" placeholder="Large" size="large" />
         </div>
       </div>
@@ -92,17 +92,17 @@ export const DisplayStyles: Story = {
       return { selectedDefault, selectedFilled, selectedHighlight, sampleOptions }
     },
     template: `
-      <div class="p-8 flex flex-col gap-4 w-64">
+      <div class="p-[32px] flex flex-col gap-[16px] w-[256px]">
         <div>
-          <p class="text-sm font-medium mb-1">Default</p>
+          <p class="text-sm font-medium mb-[4px]">Default</p>
           <DropdownFilter v-model="selectedDefault" :options="sampleOptions" displayStyle="default" />
         </div>
         <div>
-          <p class="text-sm font-medium mb-1">Filled</p>
+          <p class="text-sm font-medium mb-[4px]">Filled</p>
           <DropdownFilter v-model="selectedFilled" :options="sampleOptions" displayStyle="filled" />
         </div>
         <div>
-          <p class="text-sm font-medium mb-1">Highlight</p>
+          <p class="text-sm font-medium mb-[4px]">Highlight</p>
           <DropdownFilter v-model="selectedHighlight" :options="sampleOptions" displayStyle="highlight" />
         </div>
       </div>
@@ -118,7 +118,7 @@ export const SingleSelect: Story = {
       return { selected, sampleOptions }
     },
     template: `
-      <div class="p-8 w-64">
+      <div class="p-[32px] w-[256px]">
         <DropdownFilter
           v-model="selected"
           :options="sampleOptions"
@@ -126,7 +126,7 @@ export const SingleSelect: Story = {
           :single="true"
           :can-all="false"
         />
-        <p class="mt-4 text-sm text-base-60">Selected: {{ selected[0] ?? 'none' }}</p>
+        <p class="mt-[16px] text-sm text-base-60">Selected: {{ selected[0] ?? 'none' }}</p>
       </div>
     `,
   }),
@@ -140,14 +140,14 @@ export const WithSearch: Story = {
       return { selected, sampleOptions }
     },
     template: `
-      <div class="p-8 w-64">
+      <div class="p-[32px] w-[256px]">
         <DropdownFilter
           v-model="selected"
           :options="sampleOptions"
           placeholder="Search and filter"
           :search="true"
         />
-        <p class="mt-4 text-sm text-base-60">Selected: {{ selected.join(', ') || 'none' }}</p>
+        <p class="mt-[16px] text-sm text-base-60">Selected: {{ selected.join(', ') || 'none' }}</p>
       </div>
     `,
   }),
@@ -161,7 +161,7 @@ export const Disabled: Story = {
       return { selected, sampleOptions }
     },
     template: `
-      <div class="p-8 w-64">
+      <div class="p-[32px] w-[256px]">
         <DropdownFilter
           v-model="selected"
           :options="sampleOptions"
@@ -181,13 +181,13 @@ export const WithPreselected: Story = {
       return { selected, sampleOptions }
     },
     template: `
-      <div class="p-8 w-64">
+      <div class="p-[32px] w-[256px]">
         <DropdownFilter
           v-model="selected"
           :options="sampleOptions"
           placeholder="Select items"
         />
-        <p class="mt-4 text-sm text-base-60">Selected: {{ selected.join(', ') }}</p>
+        <p class="mt-[16px] text-sm text-base-60">Selected: {{ selected.join(', ') }}</p>
       </div>
     `,
   }),

@@ -19,7 +19,7 @@ export const Default: Story = {
   render: () => ({
     components: { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage },
     template: `
-      <Form class="w-full max-w-sm space-y-6">
+      <Form class="w-full max-w-sm space-y-[24px]">
         <FormField name="email">
           <FormItem>
             <FormLabel>Email</FormLabel>
@@ -27,7 +27,7 @@ export const Default: Story = {
               <input
                 type="email"
                 placeholder="Enter your email"
-                class="w-full px-3 py-2 border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
+                class="w-full px-[12px] py-[8px] border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
               />
             </FormControl>
             <FormDescription>This is your registered email address.</FormDescription>
@@ -51,7 +51,7 @@ export const WithValidation: Story = {
       return { required, minLength }
     },
     template: `
-      <Form class="w-full max-w-sm space-y-6">
+      <Form class="w-full max-w-sm space-y-[24px]">
         <FormField name="username" :rules="required">
           <FormItem>
             <FormLabel>Username</FormLabel>
@@ -59,7 +59,7 @@ export const WithValidation: Story = {
               <input
                 type="text"
                 placeholder="Enter username"
-                class="w-full px-3 py-2 border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
+                class="w-full px-[12px] py-[8px] border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
               />
             </FormControl>
             <FormDescription>Your unique display name.</FormDescription>
@@ -73,7 +73,7 @@ export const WithValidation: Story = {
               <input
                 type="password"
                 placeholder="Enter password"
-                class="w-full px-3 py-2 border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
+                class="w-full px-[12px] py-[8px] border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
               />
             </FormControl>
             <FormDescription>Must be at least 8 characters long.</FormDescription>
@@ -82,7 +82,7 @@ export const WithValidation: Story = {
         </FormField>
         <button
           type="submit"
-          class="w-full px-4 py-2 bg-primary-80 text-base-10 rounded font-bold text-size-14"
+          class="w-full px-[16px] py-[8px] bg-primary-80 text-base-10 rounded font-bold text-size-14"
         >
           Submit
         </button>
@@ -95,7 +95,7 @@ export const MultipleFields: Story = {
   render: () => ({
     components: { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage },
     template: `
-      <Form class="w-full max-w-sm space-y-4">
+      <Form class="w-full max-w-sm space-y-[16px]">
         <FormField name="firstName">
           <FormItem>
             <FormLabel>First Name</FormLabel>
@@ -103,7 +103,7 @@ export const MultipleFields: Story = {
               <input
                 type="text"
                 placeholder="John"
-                class="w-full px-3 py-2 border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
+                class="w-full px-[12px] py-[8px] border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
               />
             </FormControl>
           </FormItem>
@@ -115,7 +115,7 @@ export const MultipleFields: Story = {
               <input
                 type="text"
                 placeholder="Doe"
-                class="w-full px-3 py-2 border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
+                class="w-full px-[12px] py-[8px] border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
               />
             </FormControl>
           </FormItem>
@@ -127,7 +127,7 @@ export const MultipleFields: Story = {
               <textarea
                 placeholder="Tell us about yourself"
                 rows="3"
-                class="w-full px-3 py-2 border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80 resize-none"
+                class="w-full px-[12px] py-[8px] border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80 resize-none"
               />
             </FormControl>
             <FormDescription>A brief description about yourself.</FormDescription>
@@ -135,7 +135,7 @@ export const MultipleFields: Story = {
         </FormField>
         <button
           type="submit"
-          class="w-full px-4 py-2 bg-primary-80 text-base-10 rounded font-bold text-size-14"
+          class="w-full px-[16px] py-[8px] bg-primary-80 text-base-10 rounded font-bold text-size-14"
         >
           Save Profile
         </button>

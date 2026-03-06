@@ -22,11 +22,11 @@ const buttonVariants = cva(
         text: 'border-none bg-transparent shadow-none p-0',
       },
       size: {
-        xsmall: 'h-6 px-[6px] py-1 text-size-12 rounded-[2.4px]',
-        small: 'h-8 px-2 py-[6px] text-size-13 rounded-[3.2px]',
-        regular: 'h-10 px-4 py-[10px] text-size-14 rounded-[4px]',
-        medium: 'h-12 px-4 py-3 text-size-16 rounded-[4.8px]',
-        large: 'h-14 px-4 py-4 text-size-16 rounded-[5.6px]',
+        xsmall: 'h-[24px] px-[6px] py-[4px] text-size-12 rounded-[2.4px]',
+        small: 'h-[32px] px-[8px] py-[6px] text-size-13 rounded-[3.2px]',
+        regular: 'h-[40px] px-[16px] py-[10px] text-size-14 rounded-[4px]',
+        medium: 'h-[48px] px-[16px] py-[12px] text-size-16 rounded-[4.8px]',
+        large: 'h-[56px] px-[16px] py-[16px] text-size-16 rounded-[5.6px]',
       },
       block: {
         true: 'w-full',
@@ -180,17 +180,17 @@ const emit = defineEmits<{
 const iconSize = computed(() => {
   switch (props.size) {
     case 'xsmall':
-      return 'w-4 h-4'
+      return 'w-[16px] h-[16px]'
     case 'small':
-      return 'w-5 h-5'
+      return 'w-[20px] h-[20px]'
     case 'regular':
-      return 'w-5 h-5'
+      return 'w-[20px] h-[20px]'
     case 'medium':
-      return 'w-6 h-6'
+      return 'w-[24px] h-[24px]'
     case 'large':
-      return 'w-6 h-6'
+      return 'w-[24px] h-[24px]'
     default:
-      return 'w-5 h-5'
+      return 'w-[20px] h-[20px]'
   }
 })
 
@@ -217,7 +217,7 @@ const handleClick = (event: MouseEvent) => {
     @click="handleClick"
   >
     <!-- Loading Spinner -->
-    <Spinner v-if="loading" :class="cn('mr-2', iconSize)" />
+    <Spinner v-if="loading" :class="cn('mr-[8px]', iconSize)" />
 
     <!-- Icon Only -->
     <component
@@ -230,7 +230,7 @@ const handleClick = (event: MouseEvent) => {
     <component
       v-else-if="iconLeft && !loading"
       :is="iconLeft"
-      :class="cn('mr-2', iconSize)"
+      :class="cn('mr-[8px]', iconSize)"
     />
 
     <!-- Label/Slot -->
@@ -242,7 +242,7 @@ const handleClick = (event: MouseEvent) => {
     <component
       v-if="iconRight && !loading && !iconOnly"
       :is="iconRight"
-      :class="cn('ml-2', iconSize)"
+      :class="cn('ml-[8px]', iconSize)"
     />
   </button>
 </template>

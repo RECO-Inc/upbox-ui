@@ -68,7 +68,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
           : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
         // Adjust the padding for floating and inset variants.
         variant === 'floating' || variant === 'inset'
-          ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+_2px)]'
+          ? 'p-[8px] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+_2px)]'
           : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]',
         props.class,
       )"

@@ -16,9 +16,9 @@ const inputVariants = cva(
         bottomline: 'border-0 border-b border-base-40 rounded-none bg-transparent hover:border-base-50',
       },
       size: {
-        small: 'h-8 px-3 py-[7px] text-size-12',
-        regular: 'h-10 px-4 py-[9px] text-size-14',
-        large: 'h-12 px-4 py-[11px] text-size-15',
+        small: 'h-[32px] px-[12px] py-[7px] text-size-12',
+        regular: 'h-[40px] px-[16px] py-[9px] text-size-14',
+        large: 'h-[48px] px-[16px] py-[11px] text-size-15',
       },
       error: {
         true: 'border-error-80 focus-visible:border-error-80 focus-visible:ring-0 hover:border-error-80',
@@ -144,7 +144,7 @@ const hasPaddingRight = computed(() => {
 
 const inputPaddingClass = computed(() => {
   return cn(
-    hasPaddingRight.value && 'pr-10'
+    hasPaddingRight.value && 'pr-[40px]'
   )
 })
 </script>
@@ -154,10 +154,10 @@ const inputPaddingClass = computed(() => {
     <!-- Label -->
     <label
       v-if="label"
-      class="inline-block mb-2 text-size-14 text-base-80 font-medium"
+      class="inline-block mb-[8px] text-size-14 text-base-80 font-medium"
     >
       {{ label }}
-      <span v-if="required" class="text-error-70 ml-1">*</span>
+      <span v-if="required" class="text-error-70 ml-[4px]">*</span>
     </label>
 
     <!-- Input Wrapper -->
@@ -186,7 +186,7 @@ const inputPaddingClass = computed(() => {
       <!-- Right Side Elements Container -->
       <div
         v-if="hasPaddingRight"
-        class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2"
+        class="absolute right-[12px] top-1/2 -translate-y-1/2 flex items-center gap-[8px]"
       >
         <!-- Subfix Text -->
         <span v-if="subfix" class="text-size-14 text-base-60">
@@ -200,7 +200,7 @@ const inputPaddingClass = computed(() => {
           @click="handleClear"
           class="text-base-50 hover:text-base-70 transition-colors"
         >
-          <X class="w-4 h-4" />
+          <X class="w-[16px] h-[16px]" />
         </button>
 
         <!-- Password Toggle -->
@@ -210,8 +210,8 @@ const inputPaddingClass = computed(() => {
           @click="togglePasswordVisibility"
           class="text-base-50 hover:text-base-70 transition-colors"
         >
-          <Eye v-if="!showPassword" class="w-4 h-4" />
-          <EyeOff v-else class="w-4 h-4" />
+          <Eye v-if="!showPassword" class="w-[16px] h-[16px]" />
+          <EyeOff v-else class="w-[16px] h-[16px]" />
         </button>
       </div>
     </div>
@@ -219,7 +219,7 @@ const inputPaddingClass = computed(() => {
     <!-- Bottom Row: Error Message & Counter -->
     <div
       v-if="errorMessage || counter"
-      class="flex justify-between items-start mt-1"
+      class="flex justify-between items-start mt-[4px]"
     >
       <!-- Error Message -->
       <span

@@ -16,12 +16,12 @@ const props = defineProps<{
 const sizeClasses = computed(() => {
   switch (props.size) {
     case "small":
-      return "p-2.5" // 10px
+      return "p-[10px]" // 10px
     case "large":
-      return "py-6 px-4" // 24px 16px
+      return "py-[24px] px-[16px]" // 24px 16px
     case "regular":
     default:
-      return "p-4" // 16px
+      return "p-[16px]" // 16px
   }
 })
 </script>
@@ -36,12 +36,12 @@ const sizeClasses = computed(() => {
       )
     "
   >
-    <div class="flex items-center gap-1">
+    <div class="flex items-center gap-[4px]">
       <slot />
       <TooltipProvider v-if="tooltip">
         <Tooltip>
           <TooltipTrigger as-child>
-            <CircleHelp class="h-4 w-4 text-base-60 cursor-pointer" />
+            <CircleHelp class="h-[16px] w-[16px] text-base-60 cursor-pointer" />
           </TooltipTrigger>
           <TooltipContent>
             <p class="whitespace-pre-line">{{ tooltip }}</p>

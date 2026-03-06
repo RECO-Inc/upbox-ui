@@ -13,13 +13,13 @@ const props = defineProps<{
     role="group"
     :class="cn(
       'group/input-group border-base-50 bg-base-10 relative flex w-full items-center rounded-md border shadow-sm transition-[color,box-shadow] outline-none',
-      'h-9 min-w-0 has-[>textarea]:h-auto',
+      'h-[36px] min-w-0 has-[>textarea]:h-auto',
 
       // Variants based on alignment.
-      'has-[>[data-align=inline-start]]:[&>input]:pl-2',
-      'has-[>[data-align=inline-end]]:[&>input]:pr-2',
-      'has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3',
-      'has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3',
+      'has-[>[data-align=inline-start]]:[&>input]:pl-[8px]',
+      'has-[>[data-align=inline-end]]:[&>input]:pr-[8px]',
+      'has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-[12px]',
+      'has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-[12px]',
 
       // Focus state.
       'has-[[data-slot=input-group-control]:focus-visible]:ring-primary-80 has-[[data-slot=input-group-control]:focus-visible]:ring-1',

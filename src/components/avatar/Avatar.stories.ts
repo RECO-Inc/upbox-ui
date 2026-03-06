@@ -37,7 +37,7 @@ export const Sizes: Story = {
   render: () => ({
     components: { Avatar, AvatarFallback },
     template: `
-      <div class="flex items-end gap-4">
+      <div class="flex items-end gap-[16px]">
         <Avatar size="sm">
           <AvatarFallback class="bg-primary-20 text-primary-80 font-semibold">SM</AvatarFallback>
         </Avatar>
@@ -56,7 +56,7 @@ export const Shapes: Story = {
   render: () => ({
     components: { Avatar, AvatarFallback },
     template: `
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-[16px]">
         <Avatar shape="circle">
           <AvatarFallback class="bg-primary-20 text-primary-80 font-semibold">C</AvatarFallback>
         </Avatar>

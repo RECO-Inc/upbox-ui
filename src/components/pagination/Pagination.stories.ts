@@ -35,7 +35,7 @@ export const Default: Story = {
       return { page }
     },
     template: `
-      <div class="p-8">
+      <div class="p-[32px]">
         <Pagination v-model:page="page" :total="100" :items-per-page="10" :sibling-count="1" show-edges>
           <PaginationContent v-slot="{ items }">
             <PaginationFirst />
@@ -54,7 +54,7 @@ export const Default: Story = {
             <PaginationLast />
           </PaginationContent>
         </Pagination>
-        <p class="mt-4 text-center text-sm text-base-60">Current page: {{ page }}</p>
+        <p class="mt-[16px] text-center text-sm text-base-60">Current page: {{ page }}</p>
       </div>
     `,
   }),
@@ -74,7 +74,7 @@ export const SimpleNavigation: Story = {
       return { page }
     },
     template: `
-      <div class="p-8">
+      <div class="p-[32px]">
         <Pagination v-model:page="page" :total="50" :items-per-page="10" :sibling-count="1">
           <PaginationContent v-slot="{ items }">
             <PaginationPrevious />
@@ -90,7 +90,7 @@ export const SimpleNavigation: Story = {
             <PaginationNext />
           </PaginationContent>
         </Pagination>
-        <p class="mt-4 text-center text-sm text-base-60">Page {{ page }} of 5</p>
+        <p class="mt-[16px] text-center text-sm text-base-60">Page {{ page }} of 5</p>
       </div>
     `,
   }),
@@ -111,7 +111,7 @@ export const WithEllipsis: Story = {
       return { page }
     },
     template: `
-      <div class="p-8">
+      <div class="p-[32px]">
         <Pagination v-model:page="page" :total="200" :items-per-page="10" :sibling-count="1">
           <PaginationContent v-slot="{ items }">
             <PaginationPrevious />
@@ -128,7 +128,7 @@ export const WithEllipsis: Story = {
             <PaginationNext />
           </PaginationContent>
         </Pagination>
-        <p class="mt-4 text-center text-sm text-base-60">Page {{ page }} of 20</p>
+        <p class="mt-[16px] text-center text-sm text-base-60">Page {{ page }} of 20</p>
       </div>
     `,
   }),
@@ -151,7 +151,7 @@ export const FirstPage: Story = {
       return { page }
     },
     template: `
-      <div class="p-8">
+      <div class="p-[32px]">
         <Pagination v-model:page="page" :total="100" :items-per-page="10" :sibling-count="1" show-edges>
           <PaginationContent v-slot="{ items }">
             <PaginationFirst />
@@ -170,7 +170,7 @@ export const FirstPage: Story = {
             <PaginationLast />
           </PaginationContent>
         </Pagination>
-        <p class="mt-4 text-center text-sm text-base-60">First page (Prev/First disabled)</p>
+        <p class="mt-[16px] text-center text-sm text-base-60">First page (Prev/First disabled)</p>
       </div>
     `,
   }),

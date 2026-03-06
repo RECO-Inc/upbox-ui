@@ -22,11 +22,11 @@ export const buttonVariants = cva(
         text: '!border-none !bg-transparent shadow-none p-0',
       },
       size: {
-        xs: 'h-6 px-[6px] py-1 text-size-12 rounded-[2.4px]',
-        sm: 'h-8 px-2 py-[6px] text-size-13 rounded-[3.2px]',
-        md: 'h-10 px-4 py-[10px] text-size-14 rounded-[4px]',
-        lg: 'h-12 px-4 py-3 text-size-16 rounded-[4.8px]',
-        xl: 'h-14 px-4 py-4 text-size-16 rounded-[5.6px]',
+        xs: 'h-[24px] px-[6px] py-[4px] text-size-12 rounded-[2.4px]',
+        sm: 'h-[32px] px-[8px] py-[6px] text-size-13 rounded-[3.2px]',
+        md: 'h-[40px] px-[16px] py-[10px] text-size-14 rounded-[4px]',
+        lg: 'h-[48px] px-[16px] py-[12px] text-size-16 rounded-[4.8px]',
+        xl: 'h-[56px] px-[16px] py-[16px] text-size-16 rounded-[5.6px]',
       },
       block: {
         true: 'w-full',

@@ -28,7 +28,7 @@ export const Default: Story = {
       return { args, checked }
     },
     template: `
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-[8px]">
         <Checkbox id="cb" v-model="checked" v-bind="args" />
         <Label for="cb" class="cursor-pointer">Accept terms</Label>
       </div>
@@ -46,16 +46,16 @@ export const Sizes: Story = {
       return { a, b, c }
     },
     template: `
-      <div class="flex items-center gap-6">
-        <div class="flex items-center gap-2">
+      <div class="flex items-center gap-[24px]">
+        <div class="flex items-center gap-[8px]">
           <Checkbox id="s" size="small" v-model="a" />
           <Label for="s">Small</Label>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-[8px]">
           <Checkbox id="r" size="regular" v-model="b" />
           <Label for="r">Regular</Label>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-[8px]">
           <Checkbox id="l" size="large" v-model="c" />
           <Label for="l">Large</Label>
         </div>
@@ -73,7 +73,7 @@ export const ErrorState: Story = {
       return { args, checked }
     },
     template: `
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-[8px]">
         <Checkbox id="err" v-model="checked" v-bind="args" />
         <Label for="err" class="text-error-80">Required field</Label>
       </div>

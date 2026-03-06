@@ -31,7 +31,7 @@ export const Variants: Story = {
   render: () => ({
     components: { Textarea },
     template: `
-      <div class="flex flex-col gap-3 w-80">
+      <div class="flex flex-col gap-[12px] w-[320px]">
         <Textarea variant="default" placeholder="Default" :rows="3" />
         <Textarea variant="filled" placeholder="Filled" :rows="3" />
         <Textarea variant="bottomline" placeholder="Bottomline" :rows="3" />

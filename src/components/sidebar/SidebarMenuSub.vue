@@ -11,7 +11,7 @@ const props = defineProps<{
   <ul
     data-sidebar="menu-badge"
     :class="cn(
-      'mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-base-40 px-2.5 py-0.5',
+      'mx-[14px] flex min-w-0 translate-x-px flex-col gap-[4px] border-l border-base-40 px-[10px] py-[2px]',
       'group-data-[collapsible=icon]:hidden',
       props.class,
     )"

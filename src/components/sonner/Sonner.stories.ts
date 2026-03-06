@@ -62,7 +62,7 @@ export const ToastTypes: Story = {
       return { showDefault, showSuccess, showError, showWarning, showInfo }
     },
     template: `
-      <div class="flex flex-wrap gap-3">
+      <div class="flex flex-wrap gap-[12px]">
         <Button variant="usually" @click="showDefault">Default</Button>
         <Button variant="positive" @click="showSuccess">Success</Button>
         <Button variant="error" @click="showError">Error</Button>
@@ -151,7 +151,7 @@ export const CustomDuration: Story = {
       return { showLongToast, showShortToast }
     },
     template: `
-      <div class="flex gap-3">
+      <div class="flex gap-[12px]">
         <Button variant="primary" @click="showLongToast">Long (10s)</Button>
         <Button variant="usually" @click="showShortToast">Short (1.5s)</Button>
       </div>

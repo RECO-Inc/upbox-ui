@@ -33,7 +33,7 @@ function onClickStep(step: StepItem) {
 <template>
   <div
     :class="cn(
-      'flex flex-wrap items-center justify-center bg-primary-100 rounded-md p-3 sm:p-4 gap-x-4 sm:gap-x-11 gap-y-2 text-size-13',
+      'flex flex-wrap items-center justify-center bg-primary-100 rounded-md p-[12px] sm:p-[16px] gap-x-[16px] sm:gap-x-[44px] gap-y-[8px] text-size-13',
       props.class
     )"
   >
@@ -61,13 +61,13 @@ function onClickStep(step: StepItem) {
         </template>
 
         <!-- Label -->
-        <span class="ml-2 text-base-10 whitespace-nowrap">{{ step.label }}</span>
+        <span class="ml-[8px] text-base-10 whitespace-nowrap">{{ step.label }}</span>
       </div>
 
       <!-- Divider -->
       <div
         v-if="stepIdx !== steps.length - 1"
-        class="w-px h-3 bg-base-30 opacity-40 hidden sm:block"
+        class="w-px h-[12px] bg-base-30 opacity-40 hidden sm:block"
       />
     </template>
   </div>

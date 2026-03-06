@@ -216,7 +216,7 @@ function onDownloadFile(index: number) {
     )"
   >
     <!-- Label -->
-    <label v-if="props.label" class="block mb-2 text-size-14 text-base-90 font-bold">
+    <label v-if="props.label" class="block mb-[8px] text-size-14 text-base-90 font-bold">
       {{ props.label }}
     </label>
 
@@ -224,7 +224,7 @@ function onDownloadFile(index: number) {
     <div
       v-if="!props.readonly"
       :class="cn(
-        'dropbox flex justify-center bg-base-20 border border-dashed border-base-40 rounded-lg p-6 transition-colors',
+        'dropbox flex justify-center bg-base-20 border border-dashed border-base-40 rounded-lg p-[24px] transition-colors',
         state.dragging && 'border-2 border-primary-90 opacity-70',
         props.errorMessage && 'border-error-80',
         uploadState === 'error' && 'border-error-80 bg-error-20'
@@ -237,13 +237,13 @@ function onDownloadFile(index: number) {
       <div class="drop-grid grid grid-cols-[auto_auto] items-center">
         <!-- Icon -->
         <div class="drop-icon justify-self-end self-center">
-          <Cloud class="w-12 h-12 text-base-50" />
+          <Cloud class="w-[48px] h-[48px] text-base-50" />
         </div>
 
         <!-- Content -->
-        <div class="drop text-base-80 ml-4">
-          <div class="description mb-1">
-            <div class="condition-caption text-size-12 text-base-60 mb-1">
+        <div class="drop text-base-80 ml-[16px]">
+          <div class="description mb-[4px]">
+            <div class="condition-caption text-size-12 text-base-60 mb-[4px]">
               {{ t('ui.component.fileUploader.title', { size: props.maxSize, ext: displayExts }) }}
             </div>
             <div class="condition text-size-14 text-base-80 font-bold">
@@ -274,7 +274,7 @@ function onDownloadFile(index: number) {
 
           <!-- Error state -->
           <div v-else-if="uploadState === 'error'" class="state-error flex items-center">
-            <AlertTriangle class="w-6 h-6 text-error-70 mr-1" />
+            <AlertTriangle class="w-[24px] h-[24px] text-error-70 mr-[4px]" />
             <span class="error text-size-12 text-error-70 font-bold">
               {{ t('ui.component.fileUploader.uploadStatusError') }}
             </span>
@@ -284,14 +284,14 @@ function onDownloadFile(index: number) {
     </div>
 
     <!-- Error message -->
-    <div v-if="props.errorMessage" class="error-message mt-2 text-size-12 text-error-70">
+    <div v-if="props.errorMessage" class="error-message mt-[8px] text-size-12 text-error-70">
       {{ props.errorMessage }}
     </div>
 
     <!-- File List -->
     <div
       v-if="inputFiles && inputFiles.length > 0"
-      class="files-list flex flex-col gap-2 mt-4"
+      class="files-list flex flex-col gap-[8px] mt-[16px]"
     >
       <FileItem
         v-for="(file, index) in inputFiles"
@@ -314,7 +314,7 @@ function onDownloadFile(index: number) {
     </div>
 
     <!-- Empty state for readonly -->
-    <div v-else-if="props.readonly" class="empty-list-container text-size-14 text-base-60 text-center py-6">
+    <div v-else-if="props.readonly" class="empty-list-container text-size-14 text-base-60 text-center py-[24px]">
       {{ t('ui.component.fileUploader.empty') }}
     </div>
   </div>

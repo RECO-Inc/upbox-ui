@@ -16,9 +16,9 @@ const radioVariants = cva(
   {
     variants: {
       size: {
-        small: "h-3 w-3",      // 12px
-        regular: "h-4 w-4",    // 16px
-        large: "h-5 w-5",      // 20px
+        small: "h-[12px] w-[12px]",      // 12px
+        regular: "h-[16px] w-[16px]",    // 16px
+        large: "h-[20px] w-[20px]",      // 20px
       },
       error: {
         true: "border-error-80 data-[state=checked]:border-error-80 data-[state=checked]:bg-error-80",
@@ -50,9 +50,9 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 const indicatorSize = computed(() => {
   switch (props.size) {
-    case "small": return "h-1 w-1"      // 4px
-    case "large": return "h-2 w-2"      // 8px
-    default: return "h-1.5 w-1.5"       // 6px
+    case "small": return "h-[4px] w-[4px]"      // 4px
+    case "large": return "h-[8px] w-[8px]"      // 8px
+    default: return "h-[6px] w-[6px]"       // 6px
   }
 })
 </script>

@@ -13,13 +13,13 @@ const props = defineProps<{
 const sizeClasses = computed(() => {
   switch (props.size) {
     case "small":
-      return "p-2.5" // 10px
+      return "p-[10px]" // 10px
     case "large":
-      return "py-6 px-4" // 24px 16px
+      return "py-[24px] px-[16px]" // 24px 16px
     case "regular":
-      return "p-4" // 16px
+      return "p-[16px]" // 16px
     default:
-      return "py-2 px-4" // 8px 16px (기본값)
+      return "py-[8px] px-[16px]" // 8px 16px (기본값)
   }
 })
 </script>
