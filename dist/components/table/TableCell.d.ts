@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'vue';
-export type TableCellSize = "small" | "regular" | "large";
+export type TableCellSize = "sm" | "md" | "lg";
 type __VLS_Props = {
     class?: HTMLAttributes["class"];
     size?: TableCellSize;

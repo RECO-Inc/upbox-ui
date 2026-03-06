@@ -3,7 +3,7 @@ declare const meta: Meta<{
     new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('reka-ui').ToggleGroupRootProps<import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]> & {
         class?: import('vue').HTMLAttributes["class"];
         variant?: "default" | "outline" | null | undefined;
-        size?: "default" | "sm" | "lg" | null | undefined;
+        size?: "sm" | "lg" | "md" | null | undefined;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((payload: import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
@@ -18,7 +18,7 @@ declare const meta: Meta<{
     }, Readonly<import('reka-ui').ToggleGroupRootProps<import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]> & {
         class?: import('vue').HTMLAttributes["class"];
         variant?: "default" | "outline" | null | undefined;
-        size?: "default" | "sm" | "lg" | null | undefined;
+        size?: "sm" | "lg" | "md" | null | undefined;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((payload: import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]) => any) | undefined;
     }>, {}, {}, {}, {}, {}>;
@@ -28,7 +28,7 @@ declare const meta: Meta<{
 } & import('vue').ComponentOptionsBase<Readonly<import('reka-ui').ToggleGroupRootProps<import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]> & {
     class?: import('vue').HTMLAttributes["class"];
     variant?: "default" | "outline" | null | undefined;
-    size?: "default" | "sm" | "lg" | null | undefined;
+    size?: "sm" | "lg" | "md" | null | undefined;
 }> & Readonly<{
     "onUpdate:modelValue"?: ((payload: import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]) => any) | undefined;
 }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {

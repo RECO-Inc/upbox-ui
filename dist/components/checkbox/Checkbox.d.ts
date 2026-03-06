@@ -2,7 +2,7 @@ import { CheckboxRootProps } from 'reka-ui';
 import { HTMLAttributes } from 'vue';
 import { VariantProps } from 'class-variance-authority';
 declare const checkboxVariants: (props?: ({
-    size?: "small" | "regular" | "large" | null | undefined;
+    size?: "sm" | "lg" | "md" | null | undefined;
     error?: boolean | null | undefined;
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
 type CheckboxVariants = VariantProps<typeof checkboxVariants>;
@@ -25,7 +25,7 @@ declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, 
 }, string, import('vue').PublicProps, Readonly<Props> & Readonly<{
     "onUpdate:modelValue"?: ((value: boolean | "indeterminate") => any) | undefined;
 }>, {
-    size: "small" | "regular" | "large" | null;
+    size: "sm" | "lg" | "md" | null;
     error: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;

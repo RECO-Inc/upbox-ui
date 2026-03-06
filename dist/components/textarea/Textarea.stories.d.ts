@@ -5,7 +5,7 @@ declare const meta: Meta<import('vue').DefineComponent<import('./Textarea').Enha
     "onUpdate:modelValue"?: ((payload: string | number) => any) | undefined;
 }>, {
     disabled: boolean;
-    size: "small" | "regular" | "large";
+    size: "sm" | "md" | "lg";
     error: boolean;
     variant: "default" | "filled" | "bottomline";
     readonly: boolean;

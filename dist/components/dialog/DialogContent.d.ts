@@ -1,7 +1,9 @@
 import { DialogContentProps } from 'reka-ui';
 import { HTMLAttributes } from 'vue';
+export type DialogSize = "sm" | "md" | "lg" | "xl" | "full";
 type __VLS_Props = DialogContentProps & {
     class?: HTMLAttributes["class"];
+    size?: DialogSize;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -26,7 +28,9 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
     onInteractOutside?: ((event: import('reka-ui').PointerDownOutsideEvent | import('reka-ui').FocusOutsideEvent) => any) | undefined;
     onOpenAutoFocus?: ((event: Event) => any) | undefined;
     onCloseAutoFocus?: ((event: Event) => any) | undefined;
-}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}>, {
+    size: DialogSize;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {

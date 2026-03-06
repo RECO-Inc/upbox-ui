@@ -7,7 +7,7 @@ declare const meta: Meta<{
     }, import('vue').PublicProps, {
         disabled: boolean;
         type: "button" | "submit" | "reset";
-        size: "xsmall" | "small" | "regular" | "large" | "xlarge";
+        size: "xs" | "sm" | "md" | "lg" | "xl";
         loading: boolean;
         variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
         block: boolean;
@@ -25,7 +25,7 @@ declare const meta: Meta<{
     }>, {}, {}, {}, {}, {
         disabled: boolean;
         type: "button" | "submit" | "reset";
-        size: "xsmall" | "small" | "regular" | "large" | "xlarge";
+        size: "xs" | "sm" | "md" | "lg" | "xl";
         loading: boolean;
         variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
         block: boolean;
@@ -42,7 +42,7 @@ declare const meta: Meta<{
 }, string, {
     disabled: boolean;
     type: "button" | "submit" | "reset";
-    size: "xsmall" | "small" | "regular" | "large" | "xlarge";
+    size: "xs" | "sm" | "md" | "lg" | "xl";
     loading: boolean;
     variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
     block: boolean;

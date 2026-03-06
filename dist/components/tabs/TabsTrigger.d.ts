@@ -17,7 +17,7 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<Props> & Readonly<{}>, {
-    size: "small" | "regular" | "large" | "xlarge" | null;
+    size: "sm" | "lg" | "md" | "xl" | null;
     color: "navy" | "grey" | null;
     variant: "default" | "box" | "round" | null;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
