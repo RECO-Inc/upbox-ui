@@ -114,10 +114,10 @@ export const SmallSize: Story = {
     components: { Tabs, TabsList, TabsTrigger, TabsContent },
     template: `
       <Tabs default-value="tab1" class="w-[384px]">
-        <TabsList size="small">
-          <TabsTrigger value="tab1" size="small">Account</TabsTrigger>
-          <TabsTrigger value="tab2" size="small">Password</TabsTrigger>
-          <TabsTrigger value="tab3" size="small">Settings</TabsTrigger>
+        <TabsList size="sm">
+          <TabsTrigger value="tab1" size="sm">Account</TabsTrigger>
+          <TabsTrigger value="tab2" size="sm">Password</TabsTrigger>
+          <TabsTrigger value="tab3" size="sm">Settings</TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
           <p class="text-size-14 text-base-60 p-[16px]">Account settings content.</p>
@@ -138,10 +138,10 @@ export const LargeSize: Story = {
     components: { Tabs, TabsList, TabsTrigger, TabsContent },
     template: `
       <Tabs default-value="tab1" class="w-[384px]">
-        <TabsList variant="box" size="large">
-          <TabsTrigger value="tab1" variant="box" size="large">Account</TabsTrigger>
-          <TabsTrigger value="tab2" variant="box" size="large">Password</TabsTrigger>
-          <TabsTrigger value="tab3" variant="box" size="large">Settings</TabsTrigger>
+        <TabsList variant="box" size="lg">
+          <TabsTrigger value="tab1" variant="box" size="lg">Account</TabsTrigger>
+          <TabsTrigger value="tab2" variant="box" size="lg">Password</TabsTrigger>
+          <TabsTrigger value="tab3" variant="box" size="lg">Settings</TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
           <p class="text-size-14 text-base-60 p-[16px]">Account settings content.</p>
@@ -162,10 +162,10 @@ export const XlargeSize: Story = {
     components: { Tabs, TabsList, TabsTrigger, TabsContent },
     template: `
       <Tabs default-value="tab1" class="w-[384px]">
-        <TabsList variant="box" size="xlarge">
-          <TabsTrigger value="tab1" variant="box" size="xlarge">Account</TabsTrigger>
-          <TabsTrigger value="tab2" variant="box" size="xlarge">Password</TabsTrigger>
-          <TabsTrigger value="tab3" variant="box" size="xlarge">Settings</TabsTrigger>
+        <TabsList variant="box" size="xl">
+          <TabsTrigger value="tab1" variant="box" size="xl">Account</TabsTrigger>
+          <TabsTrigger value="tab2" variant="box" size="xl">Password</TabsTrigger>
+          <TabsTrigger value="tab3" variant="box" size="xl">Settings</TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
           <p class="text-size-14 text-base-60 p-[16px]">Account settings content.</p>

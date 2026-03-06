@@ -22,11 +22,11 @@ const buttonVariants = cva(
         text: 'border-none bg-transparent shadow-none p-0',
       },
       size: {
-        xsmall: 'h-[24px] px-[6px] py-[4px] text-size-12 rounded-[2.4px]',
-        small: 'h-[32px] px-[8px] py-[6px] text-size-13 rounded-[3.2px]',
-        regular: 'h-[40px] px-[16px] py-[10px] text-size-14 rounded-[4px]',
-        medium: 'h-[48px] px-[16px] py-[12px] text-size-16 rounded-[4.8px]',
-        large: 'h-[56px] px-[16px] py-[16px] text-size-16 rounded-[5.6px]',
+        xs: 'h-[24px] px-[6px] py-[4px] text-size-12 rounded-[2.4px]',
+        sm: 'h-[32px] px-[8px] py-[6px] text-size-13 rounded-[3.2px]',
+        md: 'h-[40px] px-[16px] py-[10px] text-size-14 rounded-[4px]',
+        lg: 'h-[48px] px-[16px] py-[12px] text-size-16 rounded-[4.8px]',
+        xl: 'h-[56px] px-[16px] py-[16px] text-size-16 rounded-[5.6px]',
       },
       block: {
         true: 'w-full',
@@ -112,27 +112,27 @@ const buttonVariants = cva(
       },
       // Round variants by size
       {
-        size: 'xsmall',
+        size: 'xs',
         round: true,
         class: 'rounded-full',
       },
       {
-        size: 'small',
+        size: 'sm',
         round: true,
         class: 'rounded-full',
       },
       {
-        size: 'regular',
+        size: 'md',
         round: true,
         class: 'rounded-full',
       },
       {
-        size: 'medium',
+        size: 'lg',
         round: true,
         class: 'rounded-full',
       },
       {
-        size: 'large',
+        size: 'xl',
         round: true,
         class: 'rounded-full',
       },
@@ -140,7 +140,7 @@ const buttonVariants = cva(
     defaultVariants: {
       variant: 'primary',
       style: 'filled',
-      size: 'regular',
+      size: 'md',
       block: false,
       round: false,
     },
@@ -150,7 +150,7 @@ const buttonVariants = cva(
 export interface EnhancedButtonProps {
   variant?: 'primary' | 'error' | 'positive' | 'usually' | 'assistant' | 'info'
   style?: 'filled' | 'outlined' | 'text'
-  size?: 'xsmall' | 'small' | 'regular' | 'medium' | 'large'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   block?: boolean
   round?: boolean
   disabled?: boolean
@@ -165,7 +165,7 @@ export interface EnhancedButtonProps {
 const props = withDefaults(defineProps<EnhancedButtonProps>(), {
   variant: 'primary',
   style: 'filled',
-  size: 'regular',
+  size: 'md',
   block: false,
   round: false,
   disabled: false,
@@ -179,15 +179,15 @@ const emit = defineEmits<{
 
 const iconSize = computed(() => {
   switch (props.size) {
-    case 'xsmall':
+    case 'xs':
       return 'w-[16px] h-[16px]'
-    case 'small':
+    case 'sm':
       return 'w-[20px] h-[20px]'
-    case 'regular':
+    case 'md':
       return 'w-[20px] h-[20px]'
-    case 'medium':
+    case 'lg':
       return 'w-[24px] h-[24px]'
-    case 'large':
+    case 'xl':
       return 'w-[24px] h-[24px]'
     default:
       return 'w-[20px] h-[20px]'

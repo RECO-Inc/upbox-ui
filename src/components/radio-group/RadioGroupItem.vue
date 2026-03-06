@@ -16,9 +16,9 @@ const radioVariants = cva(
   {
     variants: {
       size: {
-        small: "h-[12px] w-[12px]",      // 12px
-        regular: "h-[16px] w-[16px]",    // 16px
-        large: "h-[20px] w-[20px]",      // 20px
+        sm: "h-[12px] w-[12px]",      // 12px
+        md: "h-[16px] w-[16px]",    // 16px
+        lg: "h-[20px] w-[20px]",      // 20px
       },
       error: {
         true: "border-error-80 data-[state=checked]:border-error-80 data-[state=checked]:bg-error-80",
@@ -26,7 +26,7 @@ const radioVariants = cva(
       },
     },
     defaultVariants: {
-      size: "regular",
+      size: "md",
       error: false,
     },
   }
@@ -41,7 +41,7 @@ interface Props extends RadioGroupItemProps {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  size: "regular",
+  size: "md",
   error: false,
 })
 
@@ -50,8 +50,8 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 const indicatorSize = computed(() => {
   switch (props.size) {
-    case "small": return "h-[4px] w-[4px]"      // 4px
-    case "large": return "h-[8px] w-[8px]"      // 8px
+    case "sm": return "h-[4px] w-[4px]"      // 4px
+    case "lg": return "h-[8px] w-[8px]"      // 8px
     default: return "h-[6px] w-[6px]"       // 6px
   }
 })

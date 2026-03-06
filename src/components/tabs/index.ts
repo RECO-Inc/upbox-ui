@@ -20,10 +20,10 @@ export const tabsListVariants = cva(
         grey: "",
       },
       size: {
-        small: "",
-        regular: "",
-        large: "",
-        xlarge: "",
+        sm: "",
+        md: "",
+        lg: "",
+        xl: "",
       },
     },
     compoundVariants: [
@@ -41,14 +41,14 @@ export const tabsListVariants = cva(
       // box + xlarge
       {
         variant: "box",
-        size: "xlarge",
+        size: "xl",
         class: "rounded-lg",
       },
     ],
     defaultVariants: {
       variant: "default",
       color: "navy",
-      size: "regular",
+      size: "md",
     },
   },
 )
@@ -67,33 +67,33 @@ export const tabsTriggerVariants = cva(
         grey: "",
       },
       size: {
-        small: "",
-        regular: "",
-        large: "",
-        xlarge: "",
+        sm: "",
+        md: "",
+        lg: "",
+        xl: "",
       },
     },
     compoundVariants: [
       // default variant sizes
       {
         variant: "default",
-        size: "regular",
+        size: "md",
         class: "h-[40px] text-size-16",
       },
       {
         variant: "default",
-        size: "small",
+        size: "sm",
         class: "h-[32px] text-size-14",
       },
       // round variant sizes
       {
         variant: "round",
-        size: "regular",
+        size: "md",
         class: "py-[8px] text-size-14",
       },
       {
         variant: "round",
-        size: "small",
+        size: "sm",
         class: "py-[6px] text-size-14",
       },
       // box + color
@@ -110,29 +110,29 @@ export const tabsTriggerVariants = cva(
       // box sizes
       {
         variant: "box",
-        size: "small",
+        size: "sm",
         class: "px-[12px] h-[24px] text-size-12",
       },
       {
         variant: "box",
-        size: "regular",
+        size: "md",
         class: "px-[14px] h-[32px] text-size-14",
       },
       {
         variant: "box",
-        size: "large",
+        size: "lg",
         class: "px-[16px] h-[40px] text-size-15",
       },
       {
         variant: "box",
-        size: "xlarge",
+        size: "xl",
         class: "px-[16px] h-[48px] text-size-16",
       },
     ],
     defaultVariants: {
       variant: "default",
       color: "navy",
-      size: "regular",
+      size: "md",
     },
   },
 )

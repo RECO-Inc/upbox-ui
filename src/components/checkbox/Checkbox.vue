@@ -12,9 +12,9 @@ const checkboxVariants = cva(
   {
     variants: {
       size: {
-        small: "h-[12px] w-[12px] rounded-[3px]",      // 12px
-        regular: "h-[16px] w-[16px] rounded",           // 16px
-        large: "h-[20px] w-[20px] rounded-[5px]",       // 20px
+        sm: "h-[12px] w-[12px] rounded-[3px]",      // 12px
+        md: "h-[16px] w-[16px] rounded",           // 16px
+        lg: "h-[20px] w-[20px] rounded-[5px]",       // 20px
       },
       error: {
         true: "border-error-80 data-[state=checked]:border-error-80 data-[state=checked]:bg-error-80 data-[state=indeterminate]:border-error-80 data-[state=indeterminate]:bg-error-80",
@@ -22,7 +22,7 @@ const checkboxVariants = cva(
       },
     },
     defaultVariants: {
-      size: "regular",
+      size: "md",
       error: false,
     },
   }
@@ -37,7 +37,7 @@ interface Props extends CheckboxRootProps {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  size: "regular",
+  size: "md",
   error: false,
 })
 
@@ -48,8 +48,8 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 
 const iconSize = computed(() => {
   switch (props.size) {
-    case "small": return "h-[10px] w-[10px]"   // 10px
-    case "large": return "h-[16px] w-[16px]"       // 16px
+    case "sm": return "h-[10px] w-[10px]"   // 10px
+    case "lg": return "h-[16px] w-[16px]"       // 16px
     default: return "h-[14px] w-[14px]"        // 14px
   }
 })

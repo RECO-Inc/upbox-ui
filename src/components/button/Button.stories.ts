@@ -18,7 +18,7 @@ const meta = {
     },
     size: {
       control: 'select',
-      options: ['xsmall', 'small', 'regular', 'large', 'xlarge'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
     block: { control: 'boolean' },
     disabled: { control: 'boolean' },
@@ -30,7 +30,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-  args: { variant: 'primary', size: 'regular' },
+  args: { variant: 'primary', size: 'md' },
   render: (args) => ({
     components: { Button },
     setup: () => ({ args }),
@@ -72,11 +72,11 @@ export const Sizes: Story = {
     components: { Button },
     template: `
       <div class="flex flex-wrap gap-[12px] items-end">
-        <Button size="xsmall">XSmall</Button>
-        <Button size="small">Small</Button>
-        <Button size="regular">Regular</Button>
-        <Button size="large">Large</Button>
-        <Button size="xlarge">XLarge</Button>
+        <Button size="xs">XSmall</Button>
+        <Button size="sm">Small</Button>
+        <Button size="md">Regular</Button>
+        <Button size="lg">Large</Button>
+        <Button size="xl">XLarge</Button>
       </div>
     `,
   }),

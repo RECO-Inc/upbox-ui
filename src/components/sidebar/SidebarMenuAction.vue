@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<PrimitiveProps & {
       'absolute right-[4px] top-[6px] flex aspect-square w-[20px] items-center justify-center rounded-md p-0 text-base-100 outline-none ring-primary-80 transition-transform hover:bg-base-30 hover:text-base-100 focus-visible:ring-2 peer-hover/menu-button:text-base-100 [&>svg]:size-[16px] [&>svg]:shrink-0',
       'after:absolute after:-inset-[8px] after:md:hidden',
       'peer-data-[size=sm]/menu-button:top-[4px]',
-      'peer-data-[size=default]/menu-button:top-[6px]',
+      'peer-data-[size=md]/menu-button:top-[6px]',
       'peer-data-[size=lg]/menu-button:top-[10px]',
       'group-data-[collapsible=icon]:hidden',
       showOnHover

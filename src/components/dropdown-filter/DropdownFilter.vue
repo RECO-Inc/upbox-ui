@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<{
   single?: boolean;
   search?: boolean;
   placeholder?: string;
-  size?: 'small' | 'regular' | 'large';
+  size?: 'sm' | 'md' | 'lg';
   displayStyle?: 'default' | 'filled' | 'highlight';
 }>(), {
   disabled: false,
@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<{
   single: false,
   search: false,
   placeholder: '',
-  size: 'regular',
+  size: 'md',
   displayStyle: 'default',
 });
 
@@ -81,9 +81,9 @@ const multiCountText = computed(() => {
 
 const sizeClasses = computed(() => {
   switch (props.size) {
-    case 'small':
+    case 'sm':
       return 'h-[32px] px-[8px] text-size-12';
-    case 'large':
+    case 'lg':
       return 'h-[48px] px-[16px] text-size-16';
     default:
       return 'h-[40px] px-[12px] text-size-14';
@@ -176,7 +176,7 @@ function onReset() {
           <ChevronDown
             :class="cn(
               'shrink-0 transition-transform duration-200',
-              props.size === 'small' ? 'h-[16px] w-[16px]' : 'h-[20px] w-[20px]',
+              props.size === 'sm' ? 'h-[16px] w-[16px]' : 'h-[20px] w-[20px]',
               isOpen && 'rotate-180'
             )"
           />
@@ -191,7 +191,7 @@ function onReset() {
           <Input
             v-model="searchKeyword"
             :placeholder="t('common.search')"
-            size="small"
+            size="sm"
             clearable
           />
         </div>
@@ -246,7 +246,7 @@ function onReset() {
           <Button
             variant="usually"
             button-style="outlined"
-            size="xsmall"
+            size="xs"
             @click="onReset"
           >
             <RotateCcw class="mr-[4px] h-[12px] w-[12px]" />

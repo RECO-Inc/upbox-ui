@@ -17,7 +17,7 @@ interface Props extends TabsTriggerProps {
 const props = withDefaults(defineProps<Props>(), {
   variant: "default",
   color: "navy",
-  size: "regular",
+  size: "md",
 })
 
 const delegatedProps = reactiveOmit(props, "class", "variant", "color", "size")

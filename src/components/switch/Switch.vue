@@ -15,13 +15,13 @@ const switchVariants = cva(
   {
     variants: {
       size: {
-        small: "h-[14px] w-[24px]",     // 24x14
-        regular: "h-[18px] w-[30px]",   // 30x18
-        large: "h-[22px] w-[38px]",     // 38x22
+        sm: "h-[14px] w-[24px]",     // 24x14
+        md: "h-[18px] w-[30px]",   // 30x18
+        lg: "h-[22px] w-[38px]",     // 38x22
       },
     },
     defaultVariants: {
-      size: "regular",
+      size: "md",
     },
   }
 )
@@ -31,13 +31,13 @@ const thumbVariants = cva(
   {
     variants: {
       size: {
-        small: "h-[10px] w-[10px] data-[state=checked]:translate-x-[10px] data-[state=unchecked]:translate-x-[2px]",
-        regular: "h-[14px] w-[14px] data-[state=checked]:translate-x-[12px] data-[state=unchecked]:translate-x-[2px]",
-        large: "h-[16px] w-[16px] data-[state=checked]:translate-x-[17px] data-[state=unchecked]:translate-x-[3px]",
+        sm: "h-[10px] w-[10px] data-[state=checked]:translate-x-[10px] data-[state=unchecked]:translate-x-[2px]",
+        md: "h-[14px] w-[14px] data-[state=checked]:translate-x-[12px] data-[state=unchecked]:translate-x-[2px]",
+        lg: "h-[16px] w-[16px] data-[state=checked]:translate-x-[17px] data-[state=unchecked]:translate-x-[3px]",
       },
     },
     defaultVariants: {
-      size: "regular",
+      size: "md",
     },
   }
 )
@@ -50,7 +50,7 @@ interface Props extends SwitchRootProps {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  size: "regular",
+  size: "md",
 })
 
 const emits = defineEmits<SwitchRootEmits>()

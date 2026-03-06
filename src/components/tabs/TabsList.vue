@@ -17,7 +17,7 @@ interface Props extends TabsListProps {
 const props = withDefaults(defineProps<Props>(), {
   variant: "default",
   color: "navy",
-  size: "regular",
+  size: "md",
 })
 
 const delegatedProps = reactiveOmit(props, "class", "variant", "color", "size")
