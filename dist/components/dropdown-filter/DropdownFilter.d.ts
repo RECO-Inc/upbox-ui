@@ -17,7 +17,7 @@ declare const _default: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>
         single?: boolean;
         search?: boolean;
         placeholder?: string;
-        size?: "sm" | "md" | "lg";
+        size?: "small" | "regular" | "large";
         displayStyle?: "default" | "filled" | "highlight";
     }) & Partial<{}>> & import('vue').PublicProps;
     expose(exposed: import('vue').ShallowUnwrapRef<{}>): void;

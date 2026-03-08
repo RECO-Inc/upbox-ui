@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<ToggleProps & {
   size?: ToggleVariants["size"]
 }>(), {
   variant: "default",
-  size: "md",
+  size: "regular",
   disabled: false,
 })
 

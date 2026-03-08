@@ -10,9 +10,9 @@ export const avatarVariant = cva(
   {
     variants: {
       size: {
-        sm: "h-[40px] w-[40px] text-xs",
+        small: "h-[40px] w-[40px] text-xs",
         base: "h-[64px] w-[64px] text-2xl",
-        lg: "h-[128px] w-[128px] text-5xl",
+        large: "h-[128px] w-[128px] text-5xl",
       },
       shape: {
         circle: "rounded-full",

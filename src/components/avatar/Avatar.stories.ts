@@ -10,7 +10,7 @@ const meta = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'base', 'lg'],
+      options: ['small', 'base', 'large'],
     },
     shape: {
       control: 'select',
@@ -38,13 +38,13 @@ export const Sizes: Story = {
     components: { Avatar, AvatarFallback },
     template: `
       <div class="flex items-end gap-[16px]">
-        <Avatar size="sm">
+        <Avatar size="small">
           <AvatarFallback class="bg-primary-20 text-primary-80 font-semibold">SM</AvatarFallback>
         </Avatar>
         <Avatar size="base">
           <AvatarFallback class="bg-info-30 text-info-80 font-semibold">MD</AvatarFallback>
         </Avatar>
-        <Avatar size="lg">
+        <Avatar size="large">
           <AvatarFallback class="bg-positive-30 text-positive-80 font-semibold">LG</AvatarFallback>
         </Avatar>
       </div>

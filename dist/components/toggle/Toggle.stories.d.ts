@@ -10,7 +10,7 @@ declare const meta: Meta<{
         "update:modelValue": (value: boolean) => any;
     }, import('vue').PublicProps, {
         disabled: boolean;
-        size: "sm" | "lg" | "md" | null;
+        size: "small" | "large" | "regular" | null;
         variant: "default" | "outline" | null;
     }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
         P: {};
@@ -27,7 +27,7 @@ declare const meta: Meta<{
         "onUpdate:modelValue"?: ((value: boolean) => any) | undefined;
     }>, {}, {}, {}, {}, {
         disabled: boolean;
-        size: "sm" | "lg" | "md" | null;
+        size: "small" | "large" | "regular" | null;
         variant: "default" | "outline" | null;
     }>;
     __isFragment?: never;
@@ -43,7 +43,7 @@ declare const meta: Meta<{
     "update:modelValue": (value: boolean) => any;
 }, string, {
     disabled: boolean;
-    size: "sm" | "lg" | "md" | null;
+    size: "small" | "large" | "regular" | null;
     variant: "default" | "outline" | null;
 }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
     $slots: {

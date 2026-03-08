@@ -16,9 +16,9 @@ const inputVariants = cva(
         bottomline: 'border-0 border-b border-base-40 rounded-none bg-transparent hover:border-base-50',
       },
       size: {
-        sm: 'h-[32px] px-[12px] py-[7px] text-size-12',
-        md: 'h-[40px] px-[16px] py-[9px] text-size-14',
-        lg: 'h-[48px] px-[16px] py-[11px] text-size-15',
+        small: 'h-[32px] px-[12px] py-[7px] text-size-12',
+        regular: 'h-[40px] px-[16px] py-[9px] text-size-14',
+        large: 'h-[48px] px-[16px] py-[11px] text-size-15',
       },
       error: {
         true: 'border-error-80 focus-visible:border-error-80 focus-visible:ring-0 hover:border-error-80',
@@ -31,7 +31,7 @@ const inputVariants = cva(
     },
     defaultVariants: {
       variant: 'default',
-      size: 'md',
+      size: 'regular',
       error: false,
       readonly: false,
     },
@@ -55,7 +55,7 @@ const wrapperVariants = cva(
 
 export interface EnhancedInputProps {
   variant?: 'default' | 'filled' | 'bottomline'
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'small' | 'regular' | 'large'
   error?: boolean
   modelValue?: string | number
   defaultValue?: string | number
@@ -77,7 +77,7 @@ export interface EnhancedInputProps {
 
 const props = withDefaults(defineProps<EnhancedInputProps>(), {
   variant: 'default',
-  size: 'md',
+  size: 'regular',
   error: false,
   disabled: false,
   readonly: false,

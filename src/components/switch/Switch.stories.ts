@@ -10,7 +10,7 @@ const meta = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['small', 'regular', 'large'],
     },
     disabled: { control: 'boolean' },
   },
@@ -47,15 +47,15 @@ export const Sizes: Story = {
     template: `
       <div class="flex items-center gap-[24px]">
         <div class="flex items-center gap-[8px]">
-          <Switch size="sm" v-model="a" />
+          <Switch size="small" v-model="a" />
           <Label>Small</Label>
         </div>
         <div class="flex items-center gap-[8px]">
-          <Switch size="md" v-model="b" />
+          <Switch size="regular" v-model="b" />
           <Label>Regular</Label>
         </div>
         <div class="flex items-center gap-[8px]">
-          <Switch size="lg" v-model="c" />
+          <Switch size="large" v-model="c" />
           <Label>Large</Label>
         </div>
       </div>

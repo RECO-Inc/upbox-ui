@@ -20,7 +20,7 @@ declare const meta: Meta<(<T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setu
         single?: boolean | undefined;
         search?: boolean | undefined;
         placeholder?: string | undefined;
-        size?: "sm" | "md" | "lg" | undefined;
+        size?: "small" | "regular" | "large" | undefined;
         displayStyle?: "default" | "filled" | "highlight" | undefined;
     } & import('vue').PublicProps;
     expose(exposed: import('vue').ShallowUnwrapRef<{}>): void;

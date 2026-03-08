@@ -2,7 +2,7 @@ import { SwitchRootProps } from 'reka-ui';
 import { HTMLAttributes } from 'vue';
 import { VariantProps } from 'class-variance-authority';
 declare const switchVariants: (props?: ({
-    size?: "sm" | "lg" | "md" | null | undefined;
+    size?: "small" | "large" | "regular" | null | undefined;
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
 type SwitchVariants = VariantProps<typeof switchVariants>;
 interface Props extends SwitchRootProps {
@@ -23,7 +23,7 @@ declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, 
 }, string, import('vue').PublicProps, Readonly<Props> & Readonly<{
     "onUpdate:modelValue"?: ((payload: boolean) => any) | undefined;
 }>, {
-    size: "sm" | "lg" | "md" | null;
+    size: "small" | "large" | "regular" | null;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

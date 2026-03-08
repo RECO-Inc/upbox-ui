@@ -18,7 +18,7 @@ const meta = {
     },
     size: {
       control: 'select',
-      options: ['default', 'sm', 'lg'],
+      options: ['default', 'small', 'large'],
     },
   },
 } satisfies Meta<typeof ToggleGroup>
@@ -97,7 +97,7 @@ export const Sizes: Story = {
       <div class="flex flex-col gap-[16px]">
         <div>
           <p class="text-size-13 font-bold mb-[8px] text-base-80">Small</p>
-          <ToggleGroup type="single" default-value="a" size="sm">
+          <ToggleGroup type="single" default-value="a" size="small">
             <ToggleGroupItem value="a">Small A</ToggleGroupItem>
             <ToggleGroupItem value="b">Small B</ToggleGroupItem>
             <ToggleGroupItem value="c">Small C</ToggleGroupItem>
@@ -113,7 +113,7 @@ export const Sizes: Story = {
         </div>
         <div>
           <p class="text-size-13 font-bold mb-[8px] text-base-80">Large</p>
-          <ToggleGroup type="single" default-value="a" size="lg">
+          <ToggleGroup type="single" default-value="a" size="large">
             <ToggleGroupItem value="a">Large A</ToggleGroupItem>
             <ToggleGroupItem value="b">Large B</ToggleGroupItem>
             <ToggleGroupItem value="c">Large C</ToggleGroupItem>

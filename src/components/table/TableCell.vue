@@ -3,7 +3,7 @@ import type { HTMLAttributes } from "vue"
 import { computed } from "vue"
 import { cn } from "../../lib/utils"
 
-export type TableCellSize = "sm" | "md" | "lg"
+export type TableCellSize = "small" | "regular" | "large"
 
 const props = defineProps<{
   class?: HTMLAttributes["class"]
@@ -12,11 +12,11 @@ const props = defineProps<{
 
 const sizeClasses = computed(() => {
   switch (props.size) {
-    case "sm":
+    case "small":
       return "p-[10px]" // 10px
-    case "lg":
+    case "large":
       return "py-[24px] px-[16px]" // 24px 16px
-    case "md":
+    case "regular":
       return "p-[16px]" // 16px
     default:
       return "py-[8px] px-[16px]" // 8px 16px (기본값)

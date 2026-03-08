@@ -143,14 +143,14 @@ export const CellSizes: Story = {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead size="sm">Name</TableHead>
-                <TableHead size="sm">Value</TableHead>
+                <TableHead size="small">Name</TableHead>
+                <TableHead size="small">Value</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell size="sm">Row 1</TableCell>
-                <TableCell size="sm">Data</TableCell>
+                <TableCell size="small">Row 1</TableCell>
+                <TableCell size="small">Data</TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -177,14 +177,14 @@ export const CellSizes: Story = {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead size="lg">Name</TableHead>
-                <TableHead size="lg">Value</TableHead>
+                <TableHead size="large">Name</TableHead>
+                <TableHead size="large">Value</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell size="lg">Row 1</TableCell>
-                <TableCell size="lg">Data</TableCell>
+                <TableCell size="large">Row 1</TableCell>
+                <TableCell size="large">Data</TableCell>
               </TableRow>
             </TableBody>
           </Table>

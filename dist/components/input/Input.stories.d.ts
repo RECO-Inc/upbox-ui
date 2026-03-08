@@ -6,7 +6,7 @@ declare const meta: Meta<import('vue').DefineComponent<import('./Input').Enhance
 }>, {
     disabled: boolean;
     type: string;
-    size: "sm" | "md" | "lg";
+    size: "small" | "regular" | "large";
     error: boolean;
     variant: "default" | "filled" | "bottomline";
     readonly: boolean;

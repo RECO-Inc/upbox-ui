@@ -38,14 +38,14 @@ export const inputGroupButtonVariants = cva(
   {
     variants: {
       size: {
-        "xs": "h-[24px] gap-[4px] px-[8px] rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-[14px] has-[>svg]:px-[8px]",
-        "sm": "h-[32px] px-[10px] gap-[6px] rounded-md has-[>svg]:px-[10px]",
+        "xsmall": "h-[24px] gap-[4px] px-[8px] rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-[14px] has-[>svg]:px-[8px]",
+        "small": "h-[32px] px-[10px] gap-[6px] rounded-md has-[>svg]:px-[10px]",
         "icon-xs": "size-[24px] rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
         "icon-sm": "size-[32px] p-0 has-[>svg]:p-0",
       },
     },
     defaultVariants: {
-      size: "xs",
+      size: "xsmall",
     },
   },
 )

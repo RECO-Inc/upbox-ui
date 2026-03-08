@@ -13,13 +13,13 @@ import {
 } from "reka-ui"
 import { cn } from "../../lib/utils"
 
-export type DialogSize = "sm" | "md" | "lg" | "xl" | "full"
+export type DialogSize = "small" | "regular" | "large" | "xlarge" | "full"
 
 const DIALOG_SIZE_MAP: Record<DialogSize, string> = {
-  sm: "max-w-[328px]",
-  md: "max-w-[564px]",
-  lg: "max-w-[934px]",
-  xl: "max-w-[1124px]",
+  small: "max-w-[328px]",
+  regular: "max-w-[564px]",
+  large: "max-w-[934px]",
+  xlarge: "max-w-[1124px]",
   full: "max-w-[100vw]",
 }
 
@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<DialogContentProps & {
   class?: HTMLAttributes["class"]
   size?: DialogSize
 }>(), {
-  size: "md",
+  size: "regular",
 })
 const emits = defineEmits<DialogContentEmits>()
 

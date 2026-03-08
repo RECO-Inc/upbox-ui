@@ -5,7 +5,7 @@ import { Button } from '../button'
 import { inputGroupButtonVariants } from "."
 
 const props = withDefaults(defineProps<InputGroupButtonProps>(), {
-  size: "xs",
+  size: "xsmall",
   variant: "assistant",
 })
 </script>

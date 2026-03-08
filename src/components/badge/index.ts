@@ -16,10 +16,10 @@ export const badgeVariants = cva(
         warning: "border-warning-70",
       },
       size: {
-        "2xs": "h-[16px] px-[6px] text-size-11",       // height: 16px, padding: 0 6px
-        xs: "h-[20px] px-[6px] py-[2px] text-size-11", // height: 20px, padding: 2px 6px
-        sm: "h-[24px] px-[6px] py-[4px] text-size-12",    // height: 24px, padding: 4px 6px
-        md: "h-[32px] px-[8px] py-[6px] text-size-14",  // height: 32px, padding: 6px 8px
+        "xxsmall": "h-[16px] px-[6px] text-size-11",       // height: 16px, padding: 0 6px
+        xsmall: "h-[20px] px-[6px] py-[2px] text-size-11", // height: 20px, padding: 2px 6px
+        small: "h-[24px] px-[6px] py-[4px] text-size-12",    // height: 24px, padding: 4px 6px
+        regular: "h-[32px] px-[8px] py-[6px] text-size-14",  // height: 32px, padding: 6px 8px
       },
       deep: {
         true: "",
@@ -55,7 +55,7 @@ export const badgeVariants = cva(
     ],
     defaultVariants: {
       variant: "base",
-      size: "sm",
+      size: "small",
       deep: false,
       outline: false,
     },

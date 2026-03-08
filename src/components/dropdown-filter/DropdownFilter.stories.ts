@@ -9,7 +9,7 @@ const meta = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['small', 'regular', 'large'],
     },
     displayStyle: {
       control: 'select',
@@ -67,15 +67,15 @@ export const Sizes: Story = {
       <div class="p-[32px] flex flex-col gap-[16px] w-[256px]">
         <div>
           <p class="text-sm font-medium mb-[4px]">Small</p>
-          <DropdownFilter v-model="selectedSmall" :options="sampleOptions" placeholder="Small" size="sm" />
+          <DropdownFilter v-model="selectedSmall" :options="sampleOptions" placeholder="Small" size="small" />
         </div>
         <div>
           <p class="text-sm font-medium mb-[4px]">Regular</p>
-          <DropdownFilter v-model="selectedRegular" :options="sampleOptions" placeholder="Regular" size="md" />
+          <DropdownFilter v-model="selectedRegular" :options="sampleOptions" placeholder="Regular" size="regular" />
         </div>
         <div>
           <p class="text-sm font-medium mb-[4px]">Large</p>
-          <DropdownFilter v-model="selectedLarge" :options="sampleOptions" placeholder="Large" size="lg" />
+          <DropdownFilter v-model="selectedLarge" :options="sampleOptions" placeholder="Large" size="large" />
         </div>
       </div>
     `,

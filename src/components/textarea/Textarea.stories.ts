@@ -12,7 +12,7 @@ const meta = {
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['small', 'regular', 'large'],
     },
     error: { control: 'boolean' },
     disabled: { control: 'boolean' },

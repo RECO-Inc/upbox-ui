@@ -12,7 +12,7 @@ const meta = {
     },
     size: {
       control: 'select',
-      options: ['2xs', 'xs', 'sm', 'md'],
+      options: ['xxsmall', 'xsmall', 'small', 'regular'],
     },
     deep: { control: 'boolean' },
     outline: { control: 'boolean' },
@@ -84,10 +84,10 @@ export const Sizes: Story = {
     components: { Badge },
     template: `
       <div class="flex flex-wrap gap-[8px] items-center">
-        <Badge variant="primary" size="2xs">XXSmall</Badge>
-        <Badge variant="primary" size="xs">XSmall</Badge>
-        <Badge variant="primary" size="sm">Small</Badge>
-        <Badge variant="primary" size="md">Regular</Badge>
+        <Badge variant="primary" size="xxsmall">XXSmall</Badge>
+        <Badge variant="primary" size="xsmall">XSmall</Badge>
+        <Badge variant="primary" size="small">Small</Badge>
+        <Badge variant="primary" size="regular">Regular</Badge>
       </div>
     `,
   }),

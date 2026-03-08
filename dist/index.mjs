@@ -141,7 +141,7 @@ const mn = /* @__PURE__ */ l({
   __name: "Avatar",
   props: {
     class: { type: [Boolean, null, String, Object, Array] },
-    size: { default: "sm" },
+    size: { default: "small" },
     shape: { default: "circle" }
   },
   setup(t) {
@@ -194,9 +194,9 @@ const mn = /* @__PURE__ */ l({
   {
     variants: {
       size: {
-        sm: "h-[40px] w-[40px] text-xs",
+        small: "h-[40px] w-[40px] text-xs",
         base: "h-[64px] w-[64px] text-2xl",
-        lg: "h-[128px] w-[128px] text-5xl"
+        large: "h-[128px] w-[128px] text-5xl"
       },
       shape: {
         circle: "rounded-full",
@@ -234,13 +234,13 @@ const mn = /* @__PURE__ */ l({
         warning: "border-warning-70"
       },
       size: {
-        "2xs": "h-[16px] px-[6px] text-size-11",
+        xxsmall: "h-[16px] px-[6px] text-size-11",
         // height: 16px, padding: 0 6px
-        xs: "h-[20px] px-[6px] py-[2px] text-size-11",
+        xsmall: "h-[20px] px-[6px] py-[2px] text-size-11",
         // height: 20px, padding: 2px 6px
-        sm: "h-[24px] px-[6px] py-[4px] text-size-12",
+        small: "h-[24px] px-[6px] py-[4px] text-size-12",
         // height: 24px, padding: 4px 6px
-        md: "h-[32px] px-[8px] py-[6px] text-size-14"
+        regular: "h-[32px] px-[8px] py-[6px] text-size-14"
         // height: 32px, padding: 6px 8px
       },
       deep: {
@@ -277,7 +277,7 @@ const mn = /* @__PURE__ */ l({
     ],
     defaultVariants: {
       variant: "base",
-      size: "sm",
+      size: "small",
       deep: !1,
       outline: !1
     }
@@ -411,7 +411,7 @@ const mn = /* @__PURE__ */ l({
   props: {
     variant: { default: "primary" },
     buttonStyle: { default: "filled" },
-    size: { default: "md" },
+    size: { default: "regular" },
     block: { type: Boolean, default: !1 },
     round: { type: Boolean, default: !1 },
     disabled: { type: Boolean, default: !1 },
@@ -439,11 +439,11 @@ const mn = /* @__PURE__ */ l({
             text: "!border-none !bg-transparent shadow-none p-0"
           },
           size: {
-            xs: "h-[24px] px-[6px] py-[4px] text-size-12 rounded-[2.4px]",
-            sm: "h-[32px] px-[8px] py-[6px] text-size-13 rounded-[3.2px]",
-            md: "h-[40px] px-[16px] py-[10px] text-size-14 rounded-[4px]",
-            lg: "h-[48px] px-[16px] py-[12px] text-size-16 rounded-[4.8px]",
-            xl: "h-[56px] px-[16px] py-[16px] text-size-16 rounded-[5.6px]"
+            xsmall: "h-[24px] px-[6px] py-[4px] text-size-12 rounded-[2.4px]",
+            small: "h-[32px] px-[8px] py-[6px] text-size-13 rounded-[3.2px]",
+            regular: "h-[40px] px-[16px] py-[10px] text-size-14 rounded-[4px]",
+            large: "h-[48px] px-[16px] py-[12px] text-size-16 rounded-[4.8px]",
+            xlarge: "h-[56px] px-[16px] py-[16px] text-size-16 rounded-[5.6px]"
           },
           block: {
             true: "w-full",
@@ -535,27 +535,27 @@ const mn = /* @__PURE__ */ l({
           },
           // Round variants by size
           {
-            size: "xs",
+            size: "xsmall",
             round: !0,
             class: "rounded-full"
           },
           {
-            size: "sm",
+            size: "small",
             round: !0,
             class: "rounded-full"
           },
           {
-            size: "md",
+            size: "regular",
             round: !0,
             class: "rounded-full"
           },
           {
-            size: "lg",
+            size: "large",
             round: !0,
             class: "rounded-full"
           },
           {
-            size: "xl",
+            size: "xlarge",
             round: !0,
             class: "rounded-full"
           }
@@ -563,7 +563,7 @@ const mn = /* @__PURE__ */ l({
         defaultVariants: {
           variant: "primary",
           style: "filled",
-          size: "md",
+          size: "regular",
           block: !1,
           round: !1
         }
@@ -611,11 +611,11 @@ const mn = /* @__PURE__ */ l({
         text: "!border-none !bg-transparent shadow-none p-0"
       },
       size: {
-        xs: "h-[24px] px-[6px] py-[4px] text-size-12 rounded-[2.4px]",
-        sm: "h-[32px] px-[8px] py-[6px] text-size-13 rounded-[3.2px]",
-        md: "h-[40px] px-[16px] py-[10px] text-size-14 rounded-[4px]",
-        lg: "h-[48px] px-[16px] py-[12px] text-size-16 rounded-[4.8px]",
-        xl: "h-[56px] px-[16px] py-[16px] text-size-16 rounded-[5.6px]"
+        xsmall: "h-[24px] px-[6px] py-[4px] text-size-12 rounded-[2.4px]",
+        small: "h-[32px] px-[8px] py-[6px] text-size-13 rounded-[3.2px]",
+        regular: "h-[40px] px-[16px] py-[10px] text-size-14 rounded-[4px]",
+        large: "h-[48px] px-[16px] py-[12px] text-size-16 rounded-[4.8px]",
+        xlarge: "h-[56px] px-[16px] py-[16px] text-size-16 rounded-[5.6px]"
       },
       block: {
         true: "w-full",
@@ -707,27 +707,27 @@ const mn = /* @__PURE__ */ l({
       },
       // Round variants by size
       {
-        size: "xs",
+        size: "xsmall",
         round: !0,
         class: "rounded-full"
       },
       {
-        size: "sm",
+        size: "small",
         round: !0,
         class: "rounded-full"
       },
       {
-        size: "md",
+        size: "regular",
         round: !0,
         class: "rounded-full"
       },
       {
-        size: "lg",
+        size: "large",
         round: !0,
         class: "rounded-full"
       },
       {
-        size: "xl",
+        size: "xlarge",
         round: !0,
         class: "rounded-full"
       }
@@ -735,7 +735,7 @@ const mn = /* @__PURE__ */ l({
     defaultVariants: {
       variant: "primary",
       style: "filled",
-      size: "md",
+      size: "regular",
       block: !1,
       round: !1
     }
@@ -1641,7 +1641,7 @@ const mn = /* @__PURE__ */ l({
         x(e(ie), {
           variant: "assistant",
           style: {},
-          size: "xs",
+          size: "xsmall",
           onFocus: p[0] || (p[0] = ee(() => {
           }, ["prevent"])),
           onFocusout: p[1] || (p[1] = ee(() => {
@@ -1662,7 +1662,7 @@ const mn = /* @__PURE__ */ l({
       }, () => [
         x(e(ie), {
           variant: "primary",
-          size: "sm",
+          size: "small",
           onFocus: p[4] || (p[4] = ee(() => {
           }, ["prevent"])),
           onFocusout: p[5] || (p[5] = ee(() => {
@@ -1768,7 +1768,7 @@ const mn = /* @__PURE__ */ l({
   __name: "Checkbox",
   props: {
     class: { type: [Boolean, null, String, Object, Array] },
-    size: { default: "md" },
+    size: { default: "regular" },
     error: { type: Boolean, default: !1 },
     defaultValue: {},
     modelValue: {},
@@ -1789,11 +1789,11 @@ const mn = /* @__PURE__ */ l({
       {
         variants: {
           size: {
-            sm: "h-[12px] w-[12px] rounded-[3px]",
+            small: "h-[12px] w-[12px] rounded-[3px]",
             // 12px
-            md: "h-[16px] w-[16px] rounded",
+            regular: "h-[16px] w-[16px] rounded",
             // 16px
-            lg: "h-[20px] w-[20px] rounded-[5px]"
+            large: "h-[20px] w-[20px] rounded-[5px]"
             // 20px
           },
           error: {
@@ -1802,16 +1802,16 @@ const mn = /* @__PURE__ */ l({
           }
         },
         defaultVariants: {
-          size: "md",
+          size: "regular",
           error: !1
         }
       }
     ), o = t, n = s, c = _(o, "class", "size", "error"), p = j(c, n), g = z(() => {
       switch (o.size) {
-        case "sm":
+        case "small":
           return "h-[10px] w-[10px]";
         // 10px
-        case "lg":
+        case "large":
           return "h-[16px] w-[16px]";
         // 16px
         default:
@@ -1886,15 +1886,15 @@ const mn = /* @__PURE__ */ l({
     asChild: { type: Boolean },
     as: {},
     class: { type: [Boolean, null, String, Object, Array] },
-    size: { default: "md" }
+    size: { default: "regular" }
   },
   emits: ["escapeKeyDown", "pointerDownOutside", "focusOutside", "interactOutside", "openAutoFocus", "closeAutoFocus"],
   setup(t, { emit: s }) {
     const a = {
-      sm: "max-w-[328px]",
-      md: "max-w-[564px]",
-      lg: "max-w-[934px]",
-      xl: "max-w-[1124px]",
+      small: "max-w-[328px]",
+      regular: "max-w-[564px]",
+      large: "max-w-[934px]",
+      xlarge: "max-w-[1124px]",
       full: "max-w-[100vw]"
     }, o = t, n = s, c = _(o, "class", "size"), p = j(c, n);
     return (g, y) => (r(), f(e(he), null, {
@@ -2297,7 +2297,7 @@ const mn = /* @__PURE__ */ l({
   __name: "Input",
   props: {
     variant: { default: "default" },
-    size: { default: "md" },
+    size: { default: "regular" },
     error: { type: Boolean, default: !1 },
     modelValue: {},
     defaultValue: {},
@@ -2328,9 +2328,9 @@ const mn = /* @__PURE__ */ l({
             bottomline: "border-0 border-b border-base-40 rounded-none bg-transparent hover:border-base-50"
           },
           size: {
-            sm: "h-[32px] px-[12px] py-[7px] text-size-12",
-            md: "h-[40px] px-[16px] py-[9px] text-size-14",
-            lg: "h-[48px] px-[16px] py-[11px] text-size-15"
+            small: "h-[32px] px-[12px] py-[7px] text-size-12",
+            regular: "h-[40px] px-[16px] py-[9px] text-size-14",
+            large: "h-[48px] px-[16px] py-[11px] text-size-15"
           },
           error: {
             true: "border-error-80 focus-visible:border-error-80 focus-visible:ring-0 hover:border-error-80",
@@ -2343,7 +2343,7 @@ const mn = /* @__PURE__ */ l({
         },
         defaultVariants: {
           variant: "default",
-          size: "md",
+          size: "regular",
           error: !1,
           readonly: !1
         }
@@ -2461,7 +2461,7 @@ const mn = /* @__PURE__ */ l({
     single: { type: Boolean, default: !1 },
     search: { type: Boolean, default: !1 },
     placeholder: { default: "" },
-    size: { default: "md" },
+    size: { default: "regular" },
     displayStyle: { default: "default" }
   }, {
     modelValue: { required: !0, default: () => [] },
@@ -2471,9 +2471,9 @@ const mn = /* @__PURE__ */ l({
   setup(t, { emit: s }) {
     const a = se(t, "modelValue"), o = t, n = s, { t: c } = le(), p = Y(!1), g = Y(""), y = z(() => o.disabled || o.readonly), S = z(() => o.options.filter((A) => A.isActive !== !1 && A.label.toLowerCase().includes(g.value.toLowerCase()))), P = z(() => a.value.length >= S.value.length && S.value.length > 0), O = z(() => a.value.length > 0), W = z(() => !a.value || a.value.length === 0 ? "" : a.value.length === 1 ? o.options.find((B) => B.value === a.value[0])?.label ?? c("common.noData") : o.options.find((K) => K.value === a.value[0])?.label ?? c("common.noData")), X = z(() => a.value.length <= 1 ? "" : c("ui.component.dropdownFilter.countMore", { count: a.value.length - 1 })), V = z(() => {
       switch (o.size) {
-        case "sm":
+        case "small":
           return "h-[32px] px-[8px] text-size-12";
-        case "lg":
+        case "large":
           return "h-[48px] px-[16px] text-size-16";
         default:
           return "h-[40px] px-[12px] text-size-14";
@@ -2544,7 +2544,7 @@ const mn = /* @__PURE__ */ l({
                 x(e(be), {
                   class: m(e(u)(
                     "shrink-0 transition-transform duration-200",
-                    o.size === "sm" ? "h-[16px] w-[16px]" : "h-[20px] w-[20px]",
+                    o.size === "small" ? "h-[16px] w-[16px]" : "h-[20px] w-[20px]",
                     p.value && "rotate-180"
                   ))
                 }, null, 8, ["class"])
@@ -2562,7 +2562,7 @@ const mn = /* @__PURE__ */ l({
                   modelValue: g.value,
                   "onUpdate:modelValue": K[0] || (K[0] = (B) => g.value = B),
                   placeholder: e(c)("common.search"),
-                  size: "sm",
+                  size: "small",
                   clearable: ""
                 }, null, 8, ["modelValue", "placeholder"])
               ])) : k("", !0),
@@ -2597,7 +2597,7 @@ const mn = /* @__PURE__ */ l({
                 x(e(ie), {
                   variant: "usually",
                   "button-style": "outlined",
-                  size: "xs",
+                  size: "xsmall",
                   onClick: G
                 }, {
                   default: i(() => [
@@ -3439,7 +3439,7 @@ const xl = /* @__PURE__ */ l({
   __name: "InputGroupButton",
   props: {
     variant: { default: "assistant" },
-    size: { default: "xs" },
+    size: { default: "xsmall" },
     class: { type: [Boolean, null, String, Object, Array] }
   },
   setup(t) {
@@ -3505,7 +3505,7 @@ const xl = /* @__PURE__ */ l({
   __name: "Textarea",
   props: {
     variant: { default: "default" },
-    size: { default: "md" },
+    size: { default: "regular" },
     error: { type: Boolean, default: !1 },
     modelValue: {},
     defaultValue: {},
@@ -3536,9 +3536,9 @@ const xl = /* @__PURE__ */ l({
             bottomline: "border-0 border-b border-base-40 rounded-none bg-transparent hover:border-base-50"
           },
           size: {
-            sm: "px-[12px] py-[7px] text-size-12",
-            md: "px-[16px] py-[9px] text-size-14",
-            lg: "px-[16px] py-[11px] text-size-15"
+            small: "px-[12px] py-[7px] text-size-12",
+            regular: "px-[16px] py-[9px] text-size-14",
+            large: "px-[16px] py-[11px] text-size-15"
           },
           error: {
             true: "border-error-80 focus-visible:border-error-80 focus-visible:ring-0 hover:border-error-80",
@@ -3551,7 +3551,7 @@ const xl = /* @__PURE__ */ l({
         },
         defaultVariants: {
           variant: "default",
-          size: "md",
+          size: "regular",
           error: !1,
           readonly: !1
         }
@@ -3662,14 +3662,14 @@ const xl = /* @__PURE__ */ l({
   {
     variants: {
       size: {
-        xs: "h-[24px] gap-[4px] px-[8px] rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-[14px] has-[>svg]:px-[8px]",
-        sm: "h-[32px] px-[10px] gap-[6px] rounded-md has-[>svg]:px-[10px]",
+        xsmall: "h-[24px] gap-[4px] px-[8px] rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-[14px] has-[>svg]:px-[8px]",
+        small: "h-[32px] px-[10px] gap-[6px] rounded-md has-[>svg]:px-[10px]",
         "icon-xs": "size-[24px] rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
         "icon-sm": "size-[32px] p-0 has-[>svg]:p-0"
       }
     },
     defaultVariants: {
-      size: "xs"
+      size: "xsmall"
     }
   }
 ), zl = /* @__PURE__ */ l({
@@ -3869,7 +3869,7 @@ const xl = /* @__PURE__ */ l({
     value: {},
     asChild: { type: Boolean },
     as: {},
-    size: { default: "sm" },
+    size: { default: "small" },
     class: { type: [Boolean, null, String, Object, Array] },
     isActive: { type: Boolean }
   },
@@ -3992,7 +3992,7 @@ const xl = /* @__PURE__ */ l({
   __name: "RadioGroupItem",
   props: {
     class: { type: [Boolean, null, String, Object, Array] },
-    size: { default: "md" },
+    size: { default: "regular" },
     error: { type: Boolean, default: !1 },
     id: {},
     value: {},
@@ -4008,11 +4008,11 @@ const xl = /* @__PURE__ */ l({
       {
         variants: {
           size: {
-            sm: "h-[12px] w-[12px]",
+            small: "h-[12px] w-[12px]",
             // 12px
-            md: "h-[16px] w-[16px]",
+            regular: "h-[16px] w-[16px]",
             // 16px
-            lg: "h-[20px] w-[20px]"
+            large: "h-[20px] w-[20px]"
             // 20px
           },
           error: {
@@ -4021,16 +4021,16 @@ const xl = /* @__PURE__ */ l({
           }
         },
         defaultVariants: {
-          size: "md",
+          size: "regular",
           error: !1
         }
       }
     ), a = t, o = _(a, "class", "size", "error"), n = F(o), c = z(() => {
       switch (a.size) {
-        case "sm":
+        case "small":
           return "h-[4px] w-[4px]";
         // 4px
-        case "lg":
+        case "large":
           return "h-[8px] w-[8px]";
         // 8px
         default:
@@ -4774,9 +4774,9 @@ const xl = /* @__PURE__ */ l({
       class: m(e(u)(
         "absolute right-[4px] top-[6px] flex aspect-square w-[20px] items-center justify-center rounded-md p-0 text-base-100 outline-none ring-primary-80 transition-transform hover:bg-base-30 hover:text-base-100 focus-visible:ring-2 peer-hover/menu-button:text-base-100 [&>svg]:size-[16px] [&>svg]:shrink-0",
         "after:absolute after:-inset-[8px] after:md:hidden",
-        "peer-data-[size=sm]/menu-button:top-[4px]",
-        "peer-data-[size=md]/menu-button:top-[6px]",
-        "peer-data-[size=lg]/menu-button:top-[10px]",
+        "peer-data-[size=small]/menu-button:top-[4px]",
+        "peer-data-[size=regular]/menu-button:top-[6px]",
+        "peer-data-[size=large]/menu-button:top-[10px]",
         "group-data-[collapsible=icon]:hidden",
         t.showOnHover && "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-base-100 md:opacity-0",
         s.class
@@ -4802,9 +4802,9 @@ const xl = /* @__PURE__ */ l({
       class: m(e(u)(
         "absolute right-[4px] flex h-[20px] min-w-[20px] items-center justify-center rounded-md px-[4px] text-xs font-medium tabular-nums text-base-100 select-none pointer-events-none",
         "peer-hover/menu-button:text-base-100 peer-data-[active=true]/menu-button:text-base-100",
-        "peer-data-[size=sm]/menu-button:top-[4px]",
-        "peer-data-[size=md]/menu-button:top-[6px]",
-        "peer-data-[size=lg]/menu-button:top-[10px]",
+        "peer-data-[size=small]/menu-button:top-[4px]",
+        "peer-data-[size=regular]/menu-button:top-[6px]",
+        "peer-data-[size=large]/menu-button:top-[10px]",
         "group-data-[collapsible=icon]:hidden",
         s.class
       ))
@@ -4912,7 +4912,7 @@ const xl = /* @__PURE__ */ l({
   __name: "SidebarMenuButtonChild",
   props: {
     variant: { default: "default" },
-    size: { default: "md" },
+    size: { default: "regular" },
     isActive: { type: Boolean },
     class: { type: [Boolean, null, String, Object, Array] },
     asChild: { type: Boolean },
@@ -4939,7 +4939,7 @@ const xl = /* @__PURE__ */ l({
   __name: "SidebarMenuButton",
   props: {
     variant: { default: "default" },
-    size: { default: "md" },
+    size: { default: "regular" },
     isActive: { type: Boolean },
     class: { type: [Boolean, null, String, Object, Array] },
     asChild: { type: Boolean },
@@ -5054,7 +5054,7 @@ const xl = /* @__PURE__ */ l({
   props: {
     asChild: { type: Boolean },
     as: { default: "a" },
-    size: { default: "md" },
+    size: { default: "regular" },
     isActive: { type: Boolean },
     class: { type: [Boolean, null, String, Object, Array] }
   },
@@ -5069,8 +5069,8 @@ const xl = /* @__PURE__ */ l({
       class: m(e(u)(
         "flex h-[28px] min-w-0 -translate-x-px items-center gap-[8px] overflow-hidden rounded-md px-[8px] text-base-100 outline-none ring-primary-80 hover:bg-base-30 hover:text-base-100 focus-visible:ring-2 active:bg-base-30 active:text-base-100 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-[16px] [&>svg]:shrink-0 [&>svg]:text-base-100",
         "data-[active=true]:bg-base-30 data-[active=true]:text-base-100",
-        t.size === "sm" && "text-xs",
-        t.size === "md" && "text-sm",
+        t.size === "small" && "text-xs",
+        t.size === "regular" && "text-sm",
         "group-data-[collapsible=icon]:hidden",
         s.class
       ))
@@ -5210,14 +5210,14 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
         outline: "bg-base-10 shadow-[0_0_0_1px_hsl(var(--base-40))] hover:bg-primary-20 hover:shadow-[0_0_0_1px_hsl(var(--base-30))]"
       },
       size: {
-        md: "text-size-16",
-        sm: "text-size-14",
-        lg: "text-size-18 group-data-[collapsible=icon]:!p-0"
+        regular: "text-size-16",
+        small: "text-size-14",
+        large: "text-size-18 group-data-[collapsible=icon]:!p-0"
       }
     },
     defaultVariants: {
       variant: "default",
-      size: "md"
+      size: "regular"
     }
   }
 ), Ci = /* @__PURE__ */ l({
@@ -5308,7 +5308,7 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
   __name: "Switch",
   props: {
     class: { type: [Boolean, null, String, Object, Array] },
-    size: { default: "md" },
+    size: { default: "regular" },
     defaultValue: {},
     modelValue: {},
     disabled: { type: Boolean },
@@ -5328,16 +5328,16 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
       {
         variants: {
           size: {
-            sm: "h-[14px] w-[24px]",
+            small: "h-[14px] w-[24px]",
             // 24x14
-            md: "h-[18px] w-[30px]",
+            regular: "h-[18px] w-[30px]",
             // 30x18
-            lg: "h-[22px] w-[38px]"
+            large: "h-[22px] w-[38px]"
             // 38x22
           }
         },
         defaultVariants: {
-          size: "md"
+          size: "regular"
         }
       }
     ), o = q(
@@ -5345,13 +5345,13 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
       {
         variants: {
           size: {
-            sm: "h-[10px] w-[10px] data-[state=checked]:translate-x-[10px] data-[state=unchecked]:translate-x-[2px]",
-            md: "h-[14px] w-[14px] data-[state=checked]:translate-x-[12px] data-[state=unchecked]:translate-x-[2px]",
-            lg: "h-[16px] w-[16px] data-[state=checked]:translate-x-[17px] data-[state=unchecked]:translate-x-[3px]"
+            small: "h-[10px] w-[10px] data-[state=checked]:translate-x-[10px] data-[state=unchecked]:translate-x-[2px]",
+            regular: "h-[14px] w-[14px] data-[state=checked]:translate-x-[12px] data-[state=unchecked]:translate-x-[2px]",
+            large: "h-[16px] w-[16px] data-[state=checked]:translate-x-[17px] data-[state=unchecked]:translate-x-[3px]"
           }
         },
         defaultVariants: {
-          size: "md"
+          size: "regular"
         }
       }
     ), n = t, c = s, p = _(n, "class", "size"), g = j(p, c);
@@ -5421,13 +5421,13 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
   setup(t) {
     const s = t, a = z(() => {
       switch (s.size) {
-        case "sm":
+        case "small":
           return "p-[10px]";
         // 10px
-        case "lg":
+        case "large":
           return "py-[24px] px-[16px]";
         // 24px 16px
-        case "md":
+        case "regular":
           return "p-[16px]";
         // 16px
         default:
@@ -5509,10 +5509,10 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
   setup(t) {
     const s = t, a = z(() => {
       switch (s.size) {
-        case "sm":
+        case "small":
           return "p-[10px]";
         // 10px
-        case "lg":
+        case "large":
           return "py-[24px] px-[16px]";
         default:
           return "p-[16px]";
@@ -5615,7 +5615,7 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
     class: { type: [Boolean, null, String, Object, Array] },
     variant: { default: "default" },
     color: { default: "navy" },
-    size: { default: "md" },
+    size: { default: "regular" },
     loop: { type: Boolean },
     asChild: { type: Boolean },
     as: {}
@@ -5637,7 +5637,7 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
     class: { type: [Boolean, null, String, Object, Array] },
     variant: { default: "default" },
     color: { default: "navy" },
-    size: { default: "md" },
+    size: { default: "regular" },
     value: {},
     disabled: { type: Boolean },
     asChild: { type: Boolean },
@@ -5670,10 +5670,10 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
         grey: ""
       },
       size: {
-        sm: "",
-        md: "",
-        lg: "",
-        xl: ""
+        small: "",
+        regular: "",
+        large: "",
+        xlarge: ""
       }
     },
     compoundVariants: [
@@ -5691,14 +5691,14 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
       // box + xlarge
       {
         variant: "box",
-        size: "xl",
+        size: "xlarge",
         class: "rounded-lg"
       }
     ],
     defaultVariants: {
       variant: "default",
       color: "navy",
-      size: "md"
+      size: "regular"
     }
   }
 ), tn = q(
@@ -5715,33 +5715,33 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
         grey: ""
       },
       size: {
-        sm: "",
-        md: "",
-        lg: "",
-        xl: ""
+        small: "",
+        regular: "",
+        large: "",
+        xlarge: ""
       }
     },
     compoundVariants: [
       // default variant sizes
       {
         variant: "default",
-        size: "md",
+        size: "regular",
         class: "h-[40px] text-size-16"
       },
       {
         variant: "default",
-        size: "sm",
+        size: "small",
         class: "h-[32px] text-size-14"
       },
       // round variant sizes
       {
         variant: "round",
-        size: "md",
+        size: "regular",
         class: "py-[8px] text-size-14"
       },
       {
         variant: "round",
-        size: "sm",
+        size: "small",
         class: "py-[6px] text-size-14"
       },
       // box + color
@@ -5758,29 +5758,29 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
       // box sizes
       {
         variant: "box",
-        size: "sm",
+        size: "small",
         class: "px-[12px] h-[24px] text-size-12"
       },
       {
         variant: "box",
-        size: "md",
+        size: "regular",
         class: "px-[14px] h-[32px] text-size-14"
       },
       {
         variant: "box",
-        size: "lg",
+        size: "large",
         class: "px-[16px] h-[40px] text-size-15"
       },
       {
         variant: "box",
-        size: "xl",
+        size: "xlarge",
         class: "px-[16px] h-[48px] text-size-16"
       }
     ],
     defaultVariants: {
       variant: "default",
       color: "navy",
-      size: "md"
+      size: "regular"
     }
   }
 ), Ei = /* @__PURE__ */ l({
@@ -5795,7 +5795,7 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
     required: { type: Boolean },
     class: { type: [Boolean, null, String, Object, Array] },
     variant: { default: "default" },
-    size: { default: "md" }
+    size: { default: "regular" }
   },
   emits: ["update:modelValue"],
   setup(t, { emit: s }) {
@@ -5818,14 +5818,14 @@ const _i = /* @__PURE__ */ ue(Er, [["render", Lr]]), wi = /* @__PURE__ */ l({
         outline: "border border-base-40 bg-transparent shadow-sm hover:bg-base-30 hover:text-base-100"
       },
       size: {
-        md: "h-[36px] px-[8px] min-w-[36px]",
-        sm: "h-[32px] px-[6px] min-w-[32px]",
-        lg: "h-[40px] px-[10px] min-w-[40px]"
+        regular: "h-[36px] px-[8px] min-w-[36px]",
+        small: "h-[32px] px-[6px] min-w-[32px]",
+        large: "h-[40px] px-[10px] min-w-[40px]"
       }
     },
     defaultVariants: {
       variant: "default",
-      size: "md"
+      size: "regular"
     }
   }
 ), Li = /* @__PURE__ */ l({

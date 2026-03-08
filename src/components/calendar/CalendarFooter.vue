@@ -30,7 +30,7 @@ const { t } = useI18n()
       <Button
         variant="assistant"
         style="text"
-        size="xs"
+        size="xsmall"
         @focus.prevent
         @focusout.prevent.stop
         @mousedown.prevent
@@ -43,7 +43,7 @@ const { t } = useI18n()
     <slot name="done" :on-done="() => emit('done')">
       <Button
         variant="primary"
-        size="sm"
+        size="small"
         @focus.prevent
         @focusout.prevent.stop
         @mousedown.prevent

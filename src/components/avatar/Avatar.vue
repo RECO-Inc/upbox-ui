@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<{
   size?: AvatarVariants["size"]
   shape?: AvatarVariants["shape"]
 }>(), {
-  size: "sm",
+  size: "small",
   shape: "circle",
 })
 </script>

@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<PaginationListItemProps & {
   class?: HTMLAttributes["class"]
   isActive?: boolean
 }>(), {
-  size: "sm",
+  size: "small",
 })
 
 const delegatedProps = reactiveOmit(props, "class", "size", "isActive")

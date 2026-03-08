@@ -10,7 +10,7 @@ const meta = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['small', 'regular', 'large'],
     },
     error: { control: 'boolean' },
     disabled: { control: 'boolean' },
@@ -48,15 +48,15 @@ export const Sizes: Story = {
     template: `
       <div class="flex items-center gap-[24px]">
         <div class="flex items-center gap-[8px]">
-          <Checkbox id="s" size="sm" v-model="a" />
+          <Checkbox id="s" size="small" v-model="a" />
           <Label for="s">Small</Label>
         </div>
         <div class="flex items-center gap-[8px]">
-          <Checkbox id="r" size="md" v-model="b" />
+          <Checkbox id="r" size="regular" v-model="b" />
           <Label for="r">Regular</Label>
         </div>
         <div class="flex items-center gap-[8px]">
-          <Checkbox id="l" size="lg" v-model="c" />
+          <Checkbox id="l" size="large" v-model="c" />
           <Label for="l">Large</Label>
         </div>
       </div>

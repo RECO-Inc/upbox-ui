@@ -12,7 +12,7 @@ export declare const inputGroupAddonVariants: (props?: ({
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
 export type InputGroupVariants = VariantProps<typeof inputGroupAddonVariants>;
 export declare const inputGroupButtonVariants: (props?: ({
-    size?: "sm" | "xs" | "icon-xs" | "icon-sm" | null | undefined;
+    size?: "small" | "xsmall" | "icon-xs" | "icon-sm" | null | undefined;
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
 export type InputGroupButtonVariants = VariantProps<typeof inputGroupButtonVariants>;
 export interface InputGroupButtonProps {

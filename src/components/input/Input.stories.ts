@@ -12,7 +12,7 @@ const meta = {
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['small', 'regular', 'large'],
     },
     error: { control: 'boolean' },
     disabled: { control: 'boolean' },
@@ -46,9 +46,9 @@ export const Sizes: Story = {
     components: { Input },
     template: `
       <div class="flex flex-col gap-[12px] w-[320px]">
-        <Input size="sm" placeholder="Small" />
-        <Input size="md" placeholder="Regular" />
-        <Input size="lg" placeholder="Large" />
+        <Input size="small" placeholder="Small" />
+        <Input size="regular" placeholder="Regular" />
+        <Input size="large" placeholder="Large" />
       </div>
     `,
   }),

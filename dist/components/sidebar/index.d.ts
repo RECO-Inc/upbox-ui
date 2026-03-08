@@ -32,6 +32,6 @@ export { default as SidebarTrigger } from './SidebarTrigger';
 export { useSidebar } from './utils';
 export declare const sidebarMenuButtonVariants: (props?: ({
     variant?: "default" | "outline" | null | undefined;
-    size?: "sm" | "lg" | "md" | null | undefined;
+    size?: "small" | "large" | "regular" | null | undefined;
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
 export type SidebarMenuButtonVariants = VariantProps<typeof sidebarMenuButtonVariants>;

@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'vue';
 export interface EnhancedInputProps {
     variant?: 'default' | 'filled' | 'bottomline';
-    size?: 'sm' | 'md' | 'lg';
+    size?: 'small' | 'regular' | 'large';
     error?: boolean;
     modelValue?: string | number;
     defaultValue?: string | number;
@@ -27,7 +27,7 @@ declare const _default: import('vue').DefineComponent<EnhancedInputProps, {}, {}
 }>, {
     disabled: boolean;
     type: string;
-    size: "sm" | "md" | "lg";
+    size: "small" | "regular" | "large";
     error: boolean;
     variant: "default" | "filled" | "bottomline";
     readonly: boolean;

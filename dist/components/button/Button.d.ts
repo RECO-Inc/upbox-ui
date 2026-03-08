@@ -1,7 +1,7 @@
 export interface EnhancedButtonProps {
     variant?: 'primary' | 'error' | 'positive' | 'usually' | 'assistant' | 'info';
     buttonStyle?: 'filled' | 'outlined' | 'text';
-    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+    size?: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge';
     block?: boolean;
     round?: boolean;
     disabled?: boolean;
@@ -25,7 +25,7 @@ declare const __VLS_component: import('vue').DefineComponent<EnhancedButtonProps
 }>, {
     disabled: boolean;
     type: "button" | "submit" | "reset";
-    size: "xs" | "sm" | "md" | "lg" | "xl";
+    size: "xsmall" | "small" | "regular" | "large" | "xlarge";
     loading: boolean;
     variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
     block: boolean;

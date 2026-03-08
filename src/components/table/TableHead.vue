@@ -5,7 +5,7 @@ import { cn } from "../../lib/utils"
 import { CircleHelp } from "lucide-vue-next"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../tooltip"
 
-export type TableHeadSize = "sm" | "md" | "lg"
+export type TableHeadSize = "small" | "regular" | "large"
 
 const props = defineProps<{
   class?: HTMLAttributes["class"]
@@ -15,11 +15,11 @@ const props = defineProps<{
 
 const sizeClasses = computed(() => {
   switch (props.size) {
-    case "sm":
+    case "small":
       return "p-[10px]" // 10px
-    case "lg":
+    case "large":
       return "py-[24px] px-[16px]" // 24px 16px
-    case "md":
+    case "regular":
     default:
       return "p-[16px]" // 16px
   }

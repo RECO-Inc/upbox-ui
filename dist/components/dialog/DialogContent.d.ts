@@ -1,6 +1,6 @@
 import { DialogContentProps } from 'reka-ui';
 import { HTMLAttributes } from 'vue';
-export type DialogSize = "sm" | "md" | "lg" | "xl" | "full";
+export type DialogSize = "small" | "regular" | "large" | "xlarge" | "full";
 type __VLS_Props = DialogContentProps & {
     class?: HTMLAttributes["class"];
     size?: DialogSize;

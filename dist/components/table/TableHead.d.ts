@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'vue';
-export type TableHeadSize = "sm" | "md" | "lg";
+export type TableHeadSize = "small" | "regular" | "large";
 type __VLS_Props = {
     class?: HTMLAttributes["class"];
     size?: TableHeadSize;

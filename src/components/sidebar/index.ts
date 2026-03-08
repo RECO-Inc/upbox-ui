@@ -45,14 +45,14 @@ export const sidebarMenuButtonVariants = cva(
           "bg-base-10 shadow-[0_0_0_1px_hsl(var(--base-40))] hover:bg-primary-20 hover:shadow-[0_0_0_1px_hsl(var(--base-30))]",
       },
       size: {
-        md: "text-size-16",
-        sm: "text-size-14",
-        lg: "text-size-18 group-data-[collapsible=icon]:!p-0",
+        regular: "text-size-16",
+        small: "text-size-14",
+        large: "text-size-18 group-data-[collapsible=icon]:!p-0",
       },
     },
     defaultVariants: {
       variant: "default",
-      size: "md",
+      size: "regular",
     },
   },
 )
