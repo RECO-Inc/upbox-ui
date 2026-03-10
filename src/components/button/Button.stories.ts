@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { fn } from 'storybook/test'
+import { ChevronLeft, ChevronRight, Search, Plus } from 'lucide-vue-next'
 import Button from './Button.vue'
 
 const meta = {
@@ -97,6 +98,32 @@ export const Disabled: Story = {
     components: { Button },
     setup: () => ({ args }),
     template: '<Button v-bind="args">Disabled</Button>',
+  }),
+}
+
+export const WithIcons: Story = {
+  render: () => ({
+    components: { Button, ChevronLeft, ChevronRight, Search, Plus },
+    setup: () => ({}),
+    template: `
+      <div class="flex flex-wrap gap-[12px] items-center">
+        <Button>
+          <ChevronLeft class="w-[16px] h-[16px] mr-[4px]" />
+          Icon Left
+        </Button>
+        <Button>
+          Icon Right
+          <ChevronRight class="w-[16px] h-[16px] ml-[4px]" />
+        </Button>
+        <Button>
+          <Search class="w-[16px] h-[16px]" />
+        </Button>
+        <Button buttonStyle="outlined">
+          <Plus class="w-[16px] h-[16px] mr-[4px]" />
+          Add Item
+        </Button>
+      </div>
+    `,
   }),
 }
 
