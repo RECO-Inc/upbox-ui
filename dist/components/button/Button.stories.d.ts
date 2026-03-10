@@ -11,7 +11,6 @@ declare const meta: Meta<{
         loading: boolean;
         variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
         block: boolean;
-        round: boolean;
         buttonStyle: "filled" | "outlined" | "text";
     }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLButtonElement, import('vue').ComponentProvideOptions, {
         P: {};
@@ -29,7 +28,6 @@ declare const meta: Meta<{
         loading: boolean;
         variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
         block: boolean;
-        round: boolean;
         buttonStyle: "filled" | "outlined" | "text";
     }>;
     __isFragment?: never;
@@ -46,7 +44,6 @@ declare const meta: Meta<{
     loading: boolean;
     variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
     block: boolean;
-    round: boolean;
     buttonStyle: "filled" | "outlined" | "text";
 }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
     $slots: {

@@ -3,7 +3,6 @@ export interface EnhancedButtonProps {
     buttonStyle?: 'filled' | 'outlined' | 'text';
     size?: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge';
     block?: boolean;
-    round?: boolean;
     disabled?: boolean;
     loading?: boolean;
     type?: 'button' | 'submit' | 'reset';
@@ -29,7 +28,6 @@ declare const __VLS_component: import('vue').DefineComponent<EnhancedButtonProps
     loading: boolean;
     variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
     block: boolean;
-    round: boolean;
     buttonStyle: "filled" | "outlined" | "text";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLButtonElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;

@@ -31,10 +31,6 @@ const buttonVariants = cva(
         true: 'w-full',
         false: '',
       },
-      round: {
-        true: '',
-        false: '',
-      },
     },
     compoundVariants: [
       // Primary outlined
@@ -115,39 +111,12 @@ const buttonVariants = cva(
         style: 'text',
         class: '!text-info-80 hover:!bg-info-20',
       },
-      // Round variants by size
-      {
-        size: 'xsmall',
-        round: true,
-        class: 'rounded-full',
-      },
-      {
-        size: 'small',
-        round: true,
-        class: 'rounded-full',
-      },
-      {
-        size: 'regular',
-        round: true,
-        class: 'rounded-full',
-      },
-      {
-        size: 'large',
-        round: true,
-        class: 'rounded-full',
-      },
-      {
-        size: 'xlarge',
-        round: true,
-        class: 'rounded-full',
-      },
     ],
     defaultVariants: {
       variant: 'primary',
       style: 'filled',
       size: 'regular',
       block: false,
-      round: false,
     },
   }
 )
@@ -157,7 +126,6 @@ export interface EnhancedButtonProps {
   buttonStyle?: 'filled' | 'outlined' | 'text'
   size?: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge'
   block?: boolean
-  round?: boolean
   disabled?: boolean
   loading?: boolean
   type?: 'button' | 'submit' | 'reset'
@@ -169,7 +137,6 @@ const props = withDefaults(defineProps<EnhancedButtonProps>(), {
   buttonStyle: 'filled',
   size: 'regular',
   block: false,
-  round: false,
   disabled: false,
   loading: false,
   type: 'button',
@@ -195,7 +162,6 @@ const handleClick = (event: MouseEvent) => {
         style: props.buttonStyle,
         size: props.size,
         block: props.block,
-        round: props.round,
       }),
       props.class
     )"

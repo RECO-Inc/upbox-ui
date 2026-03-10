@@ -32,10 +32,6 @@ export const buttonVariants = cva(
         true: 'w-full',
         false: '',
       },
-      round: {
-        true: '',
-        false: '',
-      },
     },
     compoundVariants: [
       // Primary outlined
@@ -116,39 +112,12 @@ export const buttonVariants = cva(
         style: 'text',
         class: '!text-info-80 hover:!bg-info-20',
       },
-      // Round variants by size
-      {
-        size: 'xsmall',
-        round: true,
-        class: 'rounded-full',
-      },
-      {
-        size: 'small',
-        round: true,
-        class: 'rounded-full',
-      },
-      {
-        size: 'regular',
-        round: true,
-        class: 'rounded-full',
-      },
-      {
-        size: 'large',
-        round: true,
-        class: 'rounded-full',
-      },
-      {
-        size: 'xlarge',
-        round: true,
-        class: 'rounded-full',
-      },
     ],
     defaultVariants: {
       variant: 'primary',
       style: 'filled',
       size: 'regular',
       block: false,
-      round: false,
     },
   }
 )

@@ -413,7 +413,6 @@ const mn = /* @__PURE__ */ l({
     buttonStyle: { default: "filled" },
     size: { default: "regular" },
     block: { type: Boolean, default: !1 },
-    round: { type: Boolean, default: !1 },
     disabled: { type: Boolean, default: !1 },
     loading: { type: Boolean, default: !1 },
     type: { default: "button" },
@@ -447,10 +446,6 @@ const mn = /* @__PURE__ */ l({
           },
           block: {
             true: "w-full",
-            false: ""
-          },
-          round: {
-            true: "",
             false: ""
           }
         },
@@ -532,40 +527,13 @@ const mn = /* @__PURE__ */ l({
             variant: "info",
             style: "text",
             class: "!text-info-80 hover:!bg-info-20"
-          },
-          // Round variants by size
-          {
-            size: "xsmall",
-            round: !0,
-            class: "rounded-full"
-          },
-          {
-            size: "small",
-            round: !0,
-            class: "rounded-full"
-          },
-          {
-            size: "regular",
-            round: !0,
-            class: "rounded-full"
-          },
-          {
-            size: "large",
-            round: !0,
-            class: "rounded-full"
-          },
-          {
-            size: "xlarge",
-            round: !0,
-            class: "rounded-full"
           }
         ],
         defaultVariants: {
           variant: "primary",
           style: "filled",
           size: "regular",
-          block: !1,
-          round: !1
+          block: !1
         }
       }
     ), o = t, n = s, c = (p) => {
@@ -579,8 +547,7 @@ const mn = /* @__PURE__ */ l({
           variant: o.variant,
           style: o.buttonStyle,
           size: o.size,
-          block: o.block,
-          round: o.round
+          block: o.block
         }),
         o.class
       )),
@@ -619,10 +586,6 @@ const mn = /* @__PURE__ */ l({
       },
       block: {
         true: "w-full",
-        false: ""
-      },
-      round: {
-        true: "",
         false: ""
       }
     },
@@ -704,40 +667,13 @@ const mn = /* @__PURE__ */ l({
         variant: "info",
         style: "text",
         class: "!text-info-80 hover:!bg-info-20"
-      },
-      // Round variants by size
-      {
-        size: "xsmall",
-        round: !0,
-        class: "rounded-full"
-      },
-      {
-        size: "small",
-        round: !0,
-        class: "rounded-full"
-      },
-      {
-        size: "regular",
-        round: !0,
-        class: "rounded-full"
-      },
-      {
-        size: "large",
-        round: !0,
-        class: "rounded-full"
-      },
-      {
-        size: "xlarge",
-        round: !0,
-        class: "rounded-full"
       }
     ],
     defaultVariants: {
       variant: "primary",
       style: "filled",
       size: "regular",
-      block: !1,
-      round: !1
+      block: !1
     }
   }
 ), js = { class: "calendar-wrapper" }, Ps = { class: "flex flex-col gap-y-[16px] mt-[16px] sm:flex-row sm:gap-x-[16px] sm:gap-y-0" }, Ms = /* @__PURE__ */ l({
