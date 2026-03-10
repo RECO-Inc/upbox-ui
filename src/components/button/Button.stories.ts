@@ -12,7 +12,7 @@ const meta = {
       control: 'select',
       options: ['primary', 'error', 'positive', 'usually', 'assistant', 'info'],
     },
-    btnStyle: {
+    buttonStyle: {
       control: 'select',
       options: ['filled', 'outlined', 'text'],
     },
@@ -59,9 +59,9 @@ export const Styles: Story = {
     components: { Button },
     template: `
       <div class="flex flex-wrap gap-[12px] items-center">
-        <Button variant="primary" btnStyle="filled">Filled</Button>
-        <Button variant="primary" btnStyle="outlined">Outlined</Button>
-        <Button variant="primary" btnStyle="text">Text</Button>
+        <Button variant="primary" buttonStyle="filled">Filled</Button>
+        <Button variant="primary" buttonStyle="outlined">Outlined</Button>
+        <Button variant="primary" buttonStyle="text">Text</Button>
       </div>
     `,
   }),
