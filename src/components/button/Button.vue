@@ -8,16 +8,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-primary-80 border-primary-80 hover:bg-primary-90 hover:border-primary-90 active:bg-primary-100 active:border-primary-100',
-        error: 'bg-error-80 border-error-80 hover:bg-error-70 hover:border-error-70 active:bg-error-100 active:border-error-100',
-        positive: 'bg-positive-80 border-positive-80 hover:bg-positive-70 hover:border-positive-70',
-        usually: 'bg-base-60 border-base-60 hover:bg-base-70 hover:border-base-70',
-        assistant: 'bg-base-30 border-base-30 hover:bg-base-40 hover:border-base-40 active:bg-base-50 active:border-base-50',
-        info: 'bg-info-80 border-info-80 hover:bg-info-70 hover:border-info-70',
+        primary: 'bg-navy-80 border-navy-80 hover:bg-navy-90 hover:border-navy-90 active:bg-navy-100 active:border-navy-100',
+        error: 'bg-red-80 border-red-80 hover:bg-red-70 hover:border-red-70 active:bg-red-100 active:border-red-100',
+        positive: 'bg-green-80 border-green-80 hover:bg-green-70 hover:border-green-70',
+        usually: 'bg-grey-60 border-grey-60 hover:bg-grey-70 hover:border-grey-70',
+        assistant: 'bg-grey-30 border-grey-30 hover:bg-grey-40 hover:border-grey-40 active:bg-grey-50 active:border-grey-50',
+        info: 'bg-blue-80 border-blue-80 hover:bg-blue-70 hover:border-blue-70',
       },
       style: {
-        filled: '!text-base-10',
-        outlined: '!bg-base-10',
+        filled: '!text-grey-10',
+        outlined: '!bg-grey-10',
         text: '!border-none !bg-transparent shadow-none p-0',
       },
       size: {
@@ -37,79 +37,79 @@ const buttonVariants = cva(
       {
         variant: 'primary',
         style: 'outlined',
-        class: 'border-primary-100 !text-primary-100 hover:bg-primary-20 hover:border-primary-90 hover:!text-primary-90 active:bg-primary-30 active:border-primary-80 active:!text-primary-90',
+        class: 'border-navy-100 !text-navy-100 hover:bg-navy-20 hover:border-navy-90 hover:!text-navy-90 active:bg-navy-30 active:border-navy-80 active:!text-navy-90',
       },
       // Primary text
       {
         variant: 'primary',
         style: 'text',
-        class: '!text-primary-80 hover:!bg-primary-20',
+        class: '!text-navy-80 hover:!bg-navy-20',
       },
       // Error outlined
       {
         variant: 'error',
         style: 'outlined',
-        class: 'border-error-80 !text-error-80 hover:bg-error-20 hover:border-error-70 hover:!text-error-70 active:bg-error-40 active:border-error-80 active:!text-error-80',
+        class: 'border-red-80 !text-red-80 hover:bg-red-20 hover:border-red-70 hover:!text-red-70 active:bg-red-40 active:border-red-80 active:!text-red-80',
       },
       // Error text
       {
         variant: 'error',
         style: 'text',
-        class: '!text-error-80 hover:!bg-error-20',
+        class: '!text-red-80 hover:!bg-red-20',
       },
       // Positive outlined
       {
         variant: 'positive',
         style: 'outlined',
-        class: 'border-positive-80 !text-positive-80 hover:bg-positive-20 hover:border-positive-70 hover:!text-positive-70 active:bg-positive-30 active:border-positive-80 active:!text-positive-80',
+        class: 'border-green-80 !text-green-80 hover:bg-green-20 hover:border-green-70 hover:!text-green-70 active:bg-green-30 active:border-green-80 active:!text-green-80',
       },
       // Positive text
       {
         variant: 'positive',
         style: 'text',
-        class: '!text-positive-80 hover:!bg-positive-20',
+        class: '!text-green-80 hover:!bg-green-20',
       },
       // Usually outlined
       {
         variant: 'usually',
         style: 'outlined',
-        class: 'border-base-70 !text-base-70 hover:bg-base-20 hover:border-base-60 hover:!text-base-60 active:bg-base-30 active:border-base-70 active:!text-base-70',
+        class: 'border-grey-70 !text-grey-70 hover:bg-grey-20 hover:border-grey-60 hover:!text-grey-60 active:bg-grey-30 active:border-grey-70 active:!text-grey-70',
       },
       // Usually text
       {
         variant: 'usually',
         style: 'text',
-        class: '!text-base-80 hover:!bg-base-20',
+        class: '!text-grey-80 hover:!bg-grey-20',
       },
       // Assistant filled (텍스트 색상만 다름)
       {
         variant: 'assistant',
         style: 'filled',
-        class: '!text-base-70 active:!text-base-80',
+        class: '!text-grey-70 active:!text-grey-80',
       },
       // Assistant outlined
       {
         variant: 'assistant',
         style: 'outlined',
-        class: 'border-base-60 !text-base-80 hover:bg-base-20 hover:border-base-70 hover:!text-base-80 active:bg-base-30 active:border-base-80 active:!text-base-80',
+        class: 'border-grey-60 !text-grey-80 hover:bg-grey-20 hover:border-grey-70 hover:!text-grey-80 active:bg-grey-30 active:border-grey-80 active:!text-grey-80',
       },
       // Assistant text
       {
         variant: 'assistant',
         style: 'text',
-        class: '!text-base-60 hover:!bg-base-20',
+        class: '!text-grey-60 hover:!bg-grey-20',
       },
       // Info outlined
       {
         variant: 'info',
         style: 'outlined',
-        class: 'border-info-80 !text-info-80 hover:bg-info-20 hover:border-info-70 hover:!text-info-70 active:bg-info-30 active:border-info-80 active:!text-info-80',
+        class: 'border-blue-80 !text-blue-80 hover:bg-blue-20 hover:border-blue-70 hover:!text-blue-70 active:bg-blue-30 active:border-blue-80 active:!text-blue-80',
       },
       // Info text
       {
         variant: 'info',
         style: 'text',
-        class: '!text-info-80 hover:!bg-info-20',
+        class: '!text-blue-80 hover:!bg-blue-20',
       },
     ],
     defaultVariants: {

@@ -24,13 +24,13 @@ export const Default: Story = {
           <TabsTrigger value="tab3">Settings</TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
-          <p class="text-size-14 text-base-60 p-[16px]">Account settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Account settings content.</p>
         </TabsContent>
         <TabsContent value="tab2">
-          <p class="text-size-14 text-base-60 p-[16px]">Password settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Password settings content.</p>
         </TabsContent>
         <TabsContent value="tab3">
-          <p class="text-size-14 text-base-60 p-[16px]">General settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">General settings content.</p>
         </TabsContent>
       </Tabs>
     `,
@@ -48,13 +48,13 @@ export const BoxNavy: Story = {
           <TabsTrigger value="tab3" variant="box" color="navy">Settings</TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
-          <p class="text-size-14 text-base-60 p-[16px]">Account settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Account settings content.</p>
         </TabsContent>
         <TabsContent value="tab2">
-          <p class="text-size-14 text-base-60 p-[16px]">Password settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Password settings content.</p>
         </TabsContent>
         <TabsContent value="tab3">
-          <p class="text-size-14 text-base-60 p-[16px]">General settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">General settings content.</p>
         </TabsContent>
       </Tabs>
     `,
@@ -72,13 +72,13 @@ export const BoxGrey: Story = {
           <TabsTrigger value="tab3" variant="box" color="grey">Settings</TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
-          <p class="text-size-14 text-base-60 p-[16px]">Account settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Account settings content.</p>
         </TabsContent>
         <TabsContent value="tab2">
-          <p class="text-size-14 text-base-60 p-[16px]">Password settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Password settings content.</p>
         </TabsContent>
         <TabsContent value="tab3">
-          <p class="text-size-14 text-base-60 p-[16px]">General settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">General settings content.</p>
         </TabsContent>
       </Tabs>
     `,
@@ -96,13 +96,13 @@ export const Round: Story = {
           <TabsTrigger value="tab3" variant="round">Settings</TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
-          <p class="text-size-14 text-base-60 p-[16px]">Account settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Account settings content.</p>
         </TabsContent>
         <TabsContent value="tab2">
-          <p class="text-size-14 text-base-60 p-[16px]">Password settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Password settings content.</p>
         </TabsContent>
         <TabsContent value="tab3">
-          <p class="text-size-14 text-base-60 p-[16px]">General settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">General settings content.</p>
         </TabsContent>
       </Tabs>
     `,
@@ -120,13 +120,13 @@ export const SmallSize: Story = {
           <TabsTrigger value="tab3" size="small">Settings</TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
-          <p class="text-size-14 text-base-60 p-[16px]">Account settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Account settings content.</p>
         </TabsContent>
         <TabsContent value="tab2">
-          <p class="text-size-14 text-base-60 p-[16px]">Password settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Password settings content.</p>
         </TabsContent>
         <TabsContent value="tab3">
-          <p class="text-size-14 text-base-60 p-[16px]">General settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">General settings content.</p>
         </TabsContent>
       </Tabs>
     `,
@@ -144,13 +144,13 @@ export const LargeSize: Story = {
           <TabsTrigger value="tab3" variant="box" size="large">Settings</TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
-          <p class="text-size-14 text-base-60 p-[16px]">Account settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Account settings content.</p>
         </TabsContent>
         <TabsContent value="tab2">
-          <p class="text-size-14 text-base-60 p-[16px]">Password settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Password settings content.</p>
         </TabsContent>
         <TabsContent value="tab3">
-          <p class="text-size-14 text-base-60 p-[16px]">General settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">General settings content.</p>
         </TabsContent>
       </Tabs>
     `,
@@ -168,13 +168,13 @@ export const XlargeSize: Story = {
           <TabsTrigger value="tab3" variant="box" size="xlarge">Settings</TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
-          <p class="text-size-14 text-base-60 p-[16px]">Account settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Account settings content.</p>
         </TabsContent>
         <TabsContent value="tab2">
-          <p class="text-size-14 text-base-60 p-[16px]">Password settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">Password settings content.</p>
         </TabsContent>
         <TabsContent value="tab3">
-          <p class="text-size-14 text-base-60 p-[16px]">General settings content.</p>
+          <p class="text-size-14 text-grey-60 p-[16px]">General settings content.</p>
         </TabsContent>
       </Tabs>
     `,

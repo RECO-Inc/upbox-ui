@@ -206,7 +206,7 @@ function onDone() {
               <RangeCalendarGridRow class="range-calendar-grid-row flex">
                 <RangeCalendarHeadCell
                   v-for="day in weekDays" :key="day"
-                  class="w-[36px] rounded-md text-[0.8rem] font-normal text-base-60"
+                  class="w-[36px] rounded-md text-[0.8rem] font-normal text-grey-60"
                 >
                   {{ day }}
                 </RangeCalendarHeadCell>
@@ -222,15 +222,15 @@ function onDone() {
                     'relative p-0 text-center text-sm w-[36px] h-[36px]',
                     'focus-within:relative focus-within:z-20',
                     // Range selection - highlight included dates (between start and end)
-                    '[&:has([data-selected]:not([data-selection-start]):not([data-selection-end]))]:bg-info-20',
+                    '[&:has([data-selected]:not([data-selection-start]):not([data-selection-end]))]:bg-blue-20',
                     // First selected (range start) - rounded left, solid bg on cell too
-                    '[&:has([data-selection-start])]:rounded-l [&:has([data-selection-start])]:bg-info-20',
+                    '[&:has([data-selection-start])]:rounded-l [&:has([data-selection-start])]:bg-blue-20',
                     // Last selected (range end) - rounded right, solid bg on cell too
-                    '[&:has([data-selection-end])]:rounded-r [&:has([data-selection-end])]:bg-info-20',
+                    '[&:has([data-selection-end])]:rounded-r [&:has([data-selection-end])]:bg-blue-20',
                     // When start and end are same date
                     '[&:has([data-selection-start][data-selection-end])]:rounded',
                     // Outside view selected
-                    '[&:has([data-selected][data-outside-view])]:bg-info-20/50'
+                    '[&:has([data-selected][data-outside-view])]:bg-blue-20/50'
                   )"
                 >
                   <RangeCalendarCellTrigger
@@ -239,20 +239,20 @@ function onDone() {
                     :class="cn(
                       // Base styles - 36x36 cell size matching original
                       'inline-flex items-center justify-center w-[36px] h-[36px] p-0 text-sm font-normal rounded transition-colors cursor-pointer select-none',
-                      'text-base-90 hover:bg-base-30',
+                      'text-grey-90 hover:bg-grey-30',
                       // Today
-                      '[&[data-today]:not([data-selected])]:bg-base-20 [&[data-today]:not([data-selected])]:text-primary-80 [&[data-today]:not([data-selected])]:font-semibold',
+                      '[&[data-today]:not([data-selected])]:bg-grey-20 [&[data-today]:not([data-selected])]:text-navy-80 [&[data-today]:not([data-selected])]:font-semibold',
                       // Selected dates in between (not start/end) - text color only, bg from cell
-                      '[&[data-selected]:not([data-selection-start]):not([data-selection-end])]:text-info-90 [&[data-selected]:not([data-selection-start]):not([data-selection-end])]:bg-transparent',
+                      '[&[data-selected]:not([data-selection-start]):not([data-selection-end])]:text-blue-90 [&[data-selected]:not([data-selection-start]):not([data-selection-end])]:bg-transparent',
                       // Start/End dates - solid background
-                      'data-[selection-start]:bg-info-80 data-[selection-start]:text-base-10 data-[selection-start]:hover:bg-info-90',
-                      'data-[selection-end]:bg-info-80 data-[selection-end]:text-base-10 data-[selection-end]:hover:bg-info-90',
+                      'data-[selection-start]:bg-blue-80 data-[selection-start]:text-grey-10 data-[selection-start]:hover:bg-blue-90',
+                      'data-[selection-end]:bg-blue-80 data-[selection-end]:text-grey-10 data-[selection-end]:hover:bg-blue-90',
                       // Disabled
-                      'data-[disabled]:text-base-50 data-[disabled]:bg-base-20 data-[disabled]:cursor-not-allowed',
+                      'data-[disabled]:text-grey-50 data-[disabled]:bg-grey-20 data-[disabled]:cursor-not-allowed',
                       // Unavailable
-                      'data-[unavailable]:text-error-70 data-[unavailable]:line-through',
+                      'data-[unavailable]:text-red-70 data-[unavailable]:line-through',
                       // Outside months
-                      'data-[outside-view]:text-base-50'
+                      'data-[outside-view]:text-grey-50'
                     )"
                   />
                 </RangeCalendarCell>
@@ -311,21 +311,21 @@ function onDone() {
 
 <style scoped>
 .calendar-wrapper {
-  @apply bg-base-10;
+  @apply bg-grey-10;
 }
 
 /* Sunday (first column) - red color for date cells */
 .range-calendar-grid-row :deep(> td:first-child button) {
-  color: var(--color-error-70) !important;
+  color: var(--color-red-70) !important;
 }
 .range-calendar-grid-row :deep(> td:first-child button[data-outside-view]) {
-  color: var(--color-error-50) !important;
+  color: var(--color-red-50) !important;
 }
 .range-calendar-grid-row :deep(> td:first-child button[data-selected]) {
-  color: var(--color-base-10) !important;
+  color: var(--color-grey-10) !important;
 }
 /* Sunday header (first column) */
 .range-calendar-grid-row :deep(> th:first-child) {
-  color: var(--color-error-70) !important;
+  color: var(--color-red-70) !important;
 }
 </style>

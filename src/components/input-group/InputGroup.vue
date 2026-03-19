@@ -12,7 +12,7 @@ const props = defineProps<{
     data-slot="input-group"
     role="group"
     :class="cn(
-      'group/input-group border-base-50 bg-base-10 relative flex w-full items-center rounded-md border shadow-sm transition-[color,box-shadow] outline-none',
+      'group/input-group border-grey-50 bg-grey-10 relative flex w-full items-center rounded-md border shadow-sm transition-[color,box-shadow] outline-none',
       'h-[36px] min-w-0 has-[>textarea]:h-auto',
 
       // Variants based on alignment.
@@ -22,7 +22,7 @@ const props = defineProps<{
       'has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-[12px]',
 
       // Focus state.
-      'has-[[data-slot=input-group-control]:focus-visible]:ring-primary-80 has-[[data-slot=input-group-control]:focus-visible]:ring-1',
+      'has-[[data-slot=input-group-control]:focus-visible]:ring-navy-80 has-[[data-slot=input-group-control]:focus-visible]:ring-1',
 
       props.class,
     )"

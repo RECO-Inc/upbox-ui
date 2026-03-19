@@ -54,7 +54,7 @@ export const Default: Story = {
             <PaginationLast />
           </PaginationContent>
         </Pagination>
-        <p class="mt-[16px] text-center text-sm text-base-60">Current page: {{ page }}</p>
+        <p class="mt-[16px] text-center text-sm text-grey-60">Current page: {{ page }}</p>
       </div>
     `,
   }),
@@ -90,7 +90,7 @@ export const SimpleNavigation: Story = {
             <PaginationNext />
           </PaginationContent>
         </Pagination>
-        <p class="mt-[16px] text-center text-sm text-base-60">Page {{ page }} of 5</p>
+        <p class="mt-[16px] text-center text-sm text-grey-60">Page {{ page }} of 5</p>
       </div>
     `,
   }),
@@ -128,7 +128,7 @@ export const WithEllipsis: Story = {
             <PaginationNext />
           </PaginationContent>
         </Pagination>
-        <p class="mt-[16px] text-center text-sm text-base-60">Page {{ page }} of 20</p>
+        <p class="mt-[16px] text-center text-sm text-grey-60">Page {{ page }} of 20</p>
       </div>
     `,
   }),
@@ -170,7 +170,7 @@ export const FirstPage: Story = {
             <PaginationLast />
           </PaginationContent>
         </Pagination>
-        <p class="mt-[16px] text-center text-sm text-base-60">First page (Prev/First disabled)</p>
+        <p class="mt-[16px] text-center text-sm text-grey-60">First page (Prev/First disabled)</p>
       </div>
     `,
   }),

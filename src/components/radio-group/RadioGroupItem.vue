@@ -12,7 +12,7 @@ import {
 import { cva, type VariantProps } from "class-variance-authority"
 
 const radioVariants = cva(
-  "peer aspect-square rounded-full border-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-80 disabled:cursor-not-allowed disabled:opacity-50 bg-base-10 data-[state=checked]:text-base-10",
+  "peer aspect-square rounded-full border-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-navy-80 disabled:cursor-not-allowed disabled:opacity-50 bg-grey-10 data-[state=checked]:text-grey-10",
   {
     variants: {
       size: {
@@ -21,8 +21,8 @@ const radioVariants = cva(
         large: "h-[20px] w-[20px]",      // 20px
       },
       error: {
-        true: "border-error-80 data-[state=checked]:border-error-80 data-[state=checked]:bg-error-80",
-        false: "border-base-40 data-[state=checked]:border-primary-80 data-[state=checked]:bg-primary-80",
+        true: "border-red-80 data-[state=checked]:border-red-80 data-[state=checked]:bg-red-80",
+        false: "border-grey-40 data-[state=checked]:border-navy-80 data-[state=checked]:bg-navy-80",
       },
     },
     defaultVariants: {
@@ -62,12 +62,12 @@ const indicatorSize = computed(() => {
     v-bind="forwardedProps"
     :class="[
       radioVariants({ size, error }),
-      'disabled:bg-base-30 disabled:border-base-40',
+      'disabled:bg-grey-30 disabled:border-grey-40',
       props.class,
     ]"
   >
     <RadioGroupIndicator class="flex items-center justify-center">
-      <span :class="['rounded-full bg-base-10', indicatorSize]" />
+      <span :class="['rounded-full bg-grey-10', indicatorSize]" />
     </RadioGroupIndicator>
   </RadioGroupItem>
 </template>

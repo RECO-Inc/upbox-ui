@@ -17,7 +17,7 @@ export const Horizontal: Story = {
       <div class="w-[240px]">
         <div class="text-size-14 font-semibold">Title</div>
         <Separator class="my-[12px]" />
-        <div class="text-size-14 text-base-60">Content below separator.</div>
+        <div class="text-size-14 text-grey-60">Content below separator.</div>
       </div>
     `,
   }),

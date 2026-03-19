@@ -31,10 +31,10 @@ export const Colored: Story = {
     components: { Spinner },
     template: `
       <div class="flex items-center gap-[16px]">
-        <Spinner class="size-[24px] text-primary-80" />
-        <Spinner class="size-[24px] text-info-80" />
-        <Spinner class="size-[24px] text-positive-80" />
-        <Spinner class="size-[24px] text-error-80" />
+        <Spinner class="size-[24px] text-navy-80" />
+        <Spinner class="size-[24px] text-blue-80" />
+        <Spinner class="size-[24px] text-green-80" />
+        <Spinner class="size-[24px] text-red-80" />
       </div>
     `,
   }),

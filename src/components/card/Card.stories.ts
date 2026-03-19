@@ -46,7 +46,7 @@ export const Simple: Story = {
           <CardTitle>Notifications</CardTitle>
         </CardHeader>
         <CardContent>
-          <p class="text-size-14 text-base-60">You have 3 unread messages.</p>
+          <p class="text-size-14 text-grey-60">You have 3 unread messages.</p>
         </CardContent>
       </Card>
     `,

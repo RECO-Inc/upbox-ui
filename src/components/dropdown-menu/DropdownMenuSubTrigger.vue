@@ -20,7 +20,7 @@ const forwardedProps = useForwardProps(delegatedProps)
   <DropdownMenuSubTrigger
     v-bind="forwardedProps"
     :class="cn(
-      'flex cursor-default select-none items-center rounded-sm px-[8px] py-[6px] text-sm outline-none focus:bg-base-30 data-[state=open]:bg-base-30',
+      'flex cursor-default select-none items-center rounded-sm px-[8px] py-[6px] text-sm outline-none focus:bg-grey-30 data-[state=open]:bg-grey-30',
       props.class,
     )"
   >

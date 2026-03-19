@@ -18,7 +18,7 @@ const forwarded = useForwardProps(delegatedProps)
   <PaginationLast
     data-slot="pagination-last"
     :class="cn(
-      'inline-flex items-center justify-center h-[36px] px-[10px] text-size-14 font-medium text-base-80 bg-transparent border-none hover:bg-base-20 transition-colors gap-[4px] sm:pr-[10px]',
+      'inline-flex items-center justify-center h-[36px] px-[10px] text-size-14 font-medium text-grey-80 bg-transparent border-none hover:bg-grey-20 transition-colors gap-[4px] sm:pr-[10px]',
       props.class
     )"
     v-bind="forwarded"

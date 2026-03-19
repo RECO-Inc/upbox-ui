@@ -11,7 +11,7 @@ import {
 import { cva, type VariantProps } from "class-variance-authority"
 
 const switchVariants = cva(
-  "peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-base-10 focus-visible:ring-primary-80 disabled:cursor-not-allowed data-[state=checked]:bg-primary-80 data-[state=unchecked]:bg-base-50 disabled:bg-base-40",
+  "peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-grey-10 focus-visible:ring-navy-80 disabled:cursor-not-allowed data-[state=checked]:bg-navy-80 data-[state=unchecked]:bg-grey-50 disabled:bg-grey-40",
   {
     variants: {
       size: {
@@ -27,7 +27,7 @@ const switchVariants = cva(
 )
 
 const thumbVariants = cva(
-  "pointer-events-none block rounded-full ring-0 transition-transform bg-base-10",
+  "pointer-events-none block rounded-full ring-0 transition-transform bg-grey-10",
   {
     variants: {
       size: {

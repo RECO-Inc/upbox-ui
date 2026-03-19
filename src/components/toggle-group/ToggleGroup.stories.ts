@@ -52,7 +52,7 @@ export const Multiple: Story = {
     },
     template: `
       <div class="flex flex-col gap-[12px]">
-        <p class="text-size-13 text-base-60">Selected: {{ value.join(', ') || 'none' }}</p>
+        <p class="text-size-13 text-grey-60">Selected: {{ value.join(', ') || 'none' }}</p>
         <ToggleGroup type="multiple" v-model="value">
           <ToggleGroupItem value="bold">Bold</ToggleGroupItem>
           <ToggleGroupItem value="italic">Italic</ToggleGroupItem>
@@ -70,7 +70,7 @@ export const Variants: Story = {
     template: `
       <div class="flex flex-col gap-[16px]">
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-base-80">Default variant</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Default variant</p>
           <ToggleGroup type="single" default-value="a" variant="default">
             <ToggleGroupItem value="a">Option A</ToggleGroupItem>
             <ToggleGroupItem value="b">Option B</ToggleGroupItem>
@@ -78,7 +78,7 @@ export const Variants: Story = {
           </ToggleGroup>
         </div>
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-base-80">Outline variant</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Outline variant</p>
           <ToggleGroup type="single" default-value="a" variant="outline">
             <ToggleGroupItem value="a">Option A</ToggleGroupItem>
             <ToggleGroupItem value="b">Option B</ToggleGroupItem>
@@ -96,7 +96,7 @@ export const Sizes: Story = {
     template: `
       <div class="flex flex-col gap-[16px]">
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-base-80">Small</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Small</p>
           <ToggleGroup type="single" default-value="a" size="small">
             <ToggleGroupItem value="a">Small A</ToggleGroupItem>
             <ToggleGroupItem value="b">Small B</ToggleGroupItem>
@@ -104,7 +104,7 @@ export const Sizes: Story = {
           </ToggleGroup>
         </div>
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-base-80">Default</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Default</p>
           <ToggleGroup type="single" default-value="a" size="default">
             <ToggleGroupItem value="a">Default A</ToggleGroupItem>
             <ToggleGroupItem value="b">Default B</ToggleGroupItem>
@@ -112,7 +112,7 @@ export const Sizes: Story = {
           </ToggleGroup>
         </div>
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-base-80">Large</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Large</p>
           <ToggleGroup type="single" default-value="a" size="large">
             <ToggleGroupItem value="a">Large A</ToggleGroupItem>
             <ToggleGroupItem value="b">Large B</ToggleGroupItem>
@@ -130,7 +130,7 @@ export const Disabled: Story = {
     template: `
       <div class="flex flex-col gap-[16px]">
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-base-80">Group disabled</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Group disabled</p>
           <ToggleGroup type="single" default-value="a" :disabled="true">
             <ToggleGroupItem value="a">Option A</ToggleGroupItem>
             <ToggleGroupItem value="b">Option B</ToggleGroupItem>
@@ -138,7 +138,7 @@ export const Disabled: Story = {
           </ToggleGroup>
         </div>
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-base-80">Individual item disabled</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Individual item disabled</p>
           <ToggleGroup type="single" default-value="a">
             <ToggleGroupItem value="a">Option A</ToggleGroupItem>
             <ToggleGroupItem value="b" :disabled="true">Disabled</ToggleGroupItem>

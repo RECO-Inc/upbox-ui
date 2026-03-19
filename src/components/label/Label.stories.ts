@@ -29,7 +29,7 @@ export const WithInput: Story = {
           id="email"
           type="email"
           placeholder="Enter your email"
-          class="px-[12px] py-[8px] border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
+          class="px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
         />
       </div>
     `,
@@ -47,7 +47,7 @@ export const MultipleLabels: Story = {
             id="name"
             type="text"
             placeholder="Enter your name"
-            class="px-[12px] py-[8px] border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
+            class="px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
           />
         </div>
         <div class="flex flex-col gap-[8px]">
@@ -56,7 +56,7 @@ export const MultipleLabels: Story = {
             id="email2"
             type="email"
             placeholder="Enter your email"
-            class="px-[12px] py-[8px] border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
+            class="px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
           />
         </div>
         <div class="flex flex-col gap-[8px]">
@@ -65,7 +65,7 @@ export const MultipleLabels: Story = {
             id="phone"
             type="tel"
             placeholder="Enter your phone number"
-            class="px-[12px] py-[8px] border border-base-40 rounded text-size-14 text-base-80 focus:outline-none focus:border-primary-80"
+            class="px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
           />
         </div>
       </div>
@@ -78,7 +78,7 @@ export const WithCheckbox: Story = {
     components: { Label },
     template: `
       <div class="flex items-center gap-[8px]">
-        <input id="terms" type="checkbox" class="w-[16px] h-[16px] accent-primary-80" />
+        <input id="terms" type="checkbox" class="w-[16px] h-[16px] accent-navy-80" />
         <Label for="terms">I agree to the terms and conditions</Label>
       </div>
     `,

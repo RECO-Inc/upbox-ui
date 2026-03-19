@@ -51,7 +51,7 @@ export const Sizes: Story = {
     template: `
       <div class="flex gap-[32px]">
         <div>
-          <p class="text-size-12 text-base-60 mb-[8px]">Small</p>
+          <p class="text-size-12 text-grey-60 mb-[8px]">Small</p>
           <RadioGroup v-model="v1">
             <div class="flex items-center gap-[8px]">
               <RadioGroupItem value="a" size="small" />
@@ -64,7 +64,7 @@ export const Sizes: Story = {
           </RadioGroup>
         </div>
         <div>
-          <p class="text-size-12 text-base-60 mb-[8px]">Regular</p>
+          <p class="text-size-12 text-grey-60 mb-[8px]">Regular</p>
           <RadioGroup v-model="v2">
             <div class="flex items-center gap-[8px]">
               <RadioGroupItem value="a" size="regular" />
@@ -77,7 +77,7 @@ export const Sizes: Story = {
           </RadioGroup>
         </div>
         <div>
-          <p class="text-size-12 text-base-60 mb-[8px]">Large</p>
+          <p class="text-size-12 text-grey-60 mb-[8px]">Large</p>
           <RadioGroup v-model="v3">
             <div class="flex items-center gap-[8px]">
               <RadioGroupItem value="a" size="large" />

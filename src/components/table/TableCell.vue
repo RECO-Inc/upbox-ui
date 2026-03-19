@@ -28,7 +28,7 @@ const sizeClasses = computed(() => {
   <td
     :class="
       cn(
-        'align-middle text-base-90 text-size-13 break-words max-w-full [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5',
+        'align-middle text-grey-90 text-size-13 break-words max-w-full [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5',
         sizeClasses,
         props.class,
       )

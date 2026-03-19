@@ -33,7 +33,7 @@ export const Default: Story = {
       <div class="flex justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Sheet
             </button>
           </SheetTrigger>
@@ -45,11 +45,11 @@ export const Default: Story = {
               </SheetDescription>
             </SheetHeader>
             <div class="py-[16px]">
-              <p class="text-sm text-base-60">Sheet content goes here.</p>
+              <p class="text-sm text-grey-60">Sheet content goes here.</p>
             </div>
             <SheetFooter>
               <SheetClose>
-                <button class="px-[16px] py-[8px] rounded border border-base-40 text-sm font-medium">
+                <button class="px-[16px] py-[8px] rounded border border-grey-40 text-sm font-medium">
                   Close
                 </button>
               </SheetClose>
@@ -75,7 +75,7 @@ export const RightSide: Story = {
       <div class="flex justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Right Sheet
             </button>
           </SheetTrigger>
@@ -85,7 +85,7 @@ export const RightSide: Story = {
               <SheetDescription>Slides in from the right side.</SheetDescription>
             </SheetHeader>
             <div class="py-[16px]">
-              <p class="text-sm text-base-60">Content for the right sheet.</p>
+              <p class="text-sm text-grey-60">Content for the right sheet.</p>
             </div>
           </SheetContent>
         </Sheet>
@@ -108,7 +108,7 @@ export const LeftSide: Story = {
       <div class="flex justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Left Sheet
             </button>
           </SheetTrigger>
@@ -118,7 +118,7 @@ export const LeftSide: Story = {
               <SheetDescription>Slides in from the left side.</SheetDescription>
             </SheetHeader>
             <div class="py-[16px]">
-              <p class="text-sm text-base-60">Content for the left sheet.</p>
+              <p class="text-sm text-grey-60">Content for the left sheet.</p>
             </div>
           </SheetContent>
         </Sheet>
@@ -141,7 +141,7 @@ export const TopSide: Story = {
       <div class="flex justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Top Sheet
             </button>
           </SheetTrigger>
@@ -151,7 +151,7 @@ export const TopSide: Story = {
               <SheetDescription>Slides in from the top.</SheetDescription>
             </SheetHeader>
             <div class="py-[16px]">
-              <p class="text-sm text-base-60">Content for the top sheet.</p>
+              <p class="text-sm text-grey-60">Content for the top sheet.</p>
             </div>
           </SheetContent>
         </Sheet>
@@ -174,7 +174,7 @@ export const BottomSide: Story = {
       <div class="flex justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Bottom Sheet
             </button>
           </SheetTrigger>
@@ -184,7 +184,7 @@ export const BottomSide: Story = {
               <SheetDescription>Slides in from the bottom.</SheetDescription>
             </SheetHeader>
             <div class="py-[16px]">
-              <p class="text-sm text-base-60">Content for the bottom sheet.</p>
+              <p class="text-sm text-grey-60">Content for the bottom sheet.</p>
             </div>
           </SheetContent>
         </Sheet>
@@ -207,7 +207,7 @@ export const AllSides: Story = {
       <div class="flex flex-wrap gap-[12px] justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">Right</button>
+            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">Right</button>
           </SheetTrigger>
           <SheetContent side="right">
             <SheetHeader>
@@ -218,7 +218,7 @@ export const AllSides: Story = {
         </Sheet>
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">Left</button>
+            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">Left</button>
           </SheetTrigger>
           <SheetContent side="left">
             <SheetHeader>
@@ -229,7 +229,7 @@ export const AllSides: Story = {
         </Sheet>
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">Top</button>
+            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">Top</button>
           </SheetTrigger>
           <SheetContent side="top">
             <SheetHeader>
@@ -240,7 +240,7 @@ export const AllSides: Story = {
         </Sheet>
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-base-40 bg-base-10 text-sm font-medium">Bottom</button>
+            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">Bottom</button>
           </SheetTrigger>
           <SheetContent side="bottom">
             <SheetHeader>

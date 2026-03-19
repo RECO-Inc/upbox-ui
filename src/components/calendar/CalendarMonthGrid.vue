@@ -45,7 +45,7 @@ const months = computed(() => {
         <ChevronLeft class="h-[16px] w-[16px]" />
       </button>
       <div
-        class="flex items-center justify-center text-sm font-bold text-base-90 cursor-pointer select-none hover:text-primary-80"
+        class="flex items-center justify-center text-sm font-bold text-grey-90 cursor-pointer select-none hover:text-navy-80"
         @click="emit('clickYear')"
       >
         {{ year }}년
@@ -65,10 +65,10 @@ const months = computed(() => {
         v-for="month in months"
         :key="month.value"
         :class="cn(
-          'py-[16px] px-[24px] text-sm font-bold text-base-90 text-center cursor-pointer select-none transition-colors',
+          'py-[16px] px-[24px] text-sm font-bold text-grey-90 text-center cursor-pointer select-none transition-colors',
           month.value === selectedMonth
-            ? 'bg-primary-90 text-base-20 rounded hover:bg-primary-70'
-            : 'hover:bg-base-30'
+            ? 'bg-navy-90 text-grey-20 rounded hover:bg-navy-70'
+            : 'hover:bg-grey-30'
         )"
         @click="emit('select', month.value)"
       >

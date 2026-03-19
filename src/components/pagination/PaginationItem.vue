@@ -24,7 +24,7 @@ const delegatedProps = reactiveOmit(props, "class", "size", "isActive")
     v-bind="delegatedProps"
     :class="cn(
       'inline-flex items-center justify-center w-[30px] h-[30px] min-w-[30px] rounded-[4px] text-size-14 cursor-pointer select-none transition-colors',
-      isActive ? 'bg-info-30 text-info-90 hover:bg-info-30' : 'text-base-90',
+      isActive ? 'bg-blue-30 text-blue-90 hover:bg-blue-30' : 'text-grey-90',
       props.class)"
   >
     <slot />

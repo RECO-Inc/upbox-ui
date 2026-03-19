@@ -139,7 +139,7 @@ export const CellSizes: Story = {
     template: `
       <div class="flex flex-col gap-[24px]">
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-base-80">Small cells</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Small cells</p>
           <Table>
             <TableHeader>
               <TableRow>
@@ -156,7 +156,7 @@ export const CellSizes: Story = {
           </Table>
         </div>
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-base-80">Regular cells (default)</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Regular cells (default)</p>
           <Table>
             <TableHeader>
               <TableRow>
@@ -173,7 +173,7 @@ export const CellSizes: Story = {
           </Table>
         </div>
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-base-80">Large cells</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Large cells</p>
           <Table>
             <TableHeader>
               <TableRow>

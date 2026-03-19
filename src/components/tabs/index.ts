@@ -31,12 +31,12 @@ export const tabsListVariants = cva(
       {
         variant: "box",
         color: "navy",
-        class: "bg-primary-80",
+        class: "bg-navy-80",
       },
       {
         variant: "box",
         color: "grey",
-        class: "bg-base-30",
+        class: "bg-grey-30",
       },
       // box + xlarge
       {
@@ -58,9 +58,9 @@ export const tabsTriggerVariants = cva(
   {
     variants: {
       variant: {
-        default: "py-[8px] font-bold text-base-50 border-b-2 border-transparent data-[state=active]:text-primary-80 data-[state=active]:border-primary-80",
-        round: "px-[8px] font-normal text-base-60 border border-base-40 bg-base-10 rounded-full data-[state=active]:text-info-90 data-[state=active]:border-info-90 data-[state=active]:font-bold",
-        box: "font-bold rounded transition-[background-color] duration-500 data-[state=active]:bg-base-10",
+        default: "py-[8px] font-bold text-grey-50 border-b-2 border-transparent data-[state=active]:text-navy-80 data-[state=active]:border-navy-80",
+        round: "px-[8px] font-normal text-grey-60 border border-grey-40 bg-grey-10 rounded-full data-[state=active]:text-blue-90 data-[state=active]:border-blue-90 data-[state=active]:font-bold",
+        box: "font-bold rounded transition-[background-color] duration-500 data-[state=active]:bg-grey-10",
       },
       color: {
         navy: "",
@@ -100,12 +100,12 @@ export const tabsTriggerVariants = cva(
       {
         variant: "box",
         color: "navy",
-        class: "text-base-10 data-[state=active]:text-primary-90",
+        class: "text-grey-10 data-[state=active]:text-navy-90",
       },
       {
         variant: "box",
         color: "grey",
-        class: "text-base-60 data-[state=active]:text-base-80",
+        class: "text-grey-60 data-[state=active]:text-grey-80",
       },
       // box sizes
       {

@@ -6,13 +6,13 @@ import { cn } from '../../lib/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 const textareaVariants = cva(
-  'flex w-full rounded-[4px] border transition-all duration-300 placeholder:text-base-50 focus-visible:outline-none focus-visible:border-info-80 focus-visible:ring-2 focus-visible:ring-info-40 disabled:cursor-not-allowed disabled:opacity-50 resize-none hover:border-base-50',
+  'flex w-full rounded-[4px] border transition-all duration-300 placeholder:text-grey-50 focus-visible:outline-none focus-visible:border-blue-80 focus-visible:ring-2 focus-visible:ring-blue-40 disabled:cursor-not-allowed disabled:opacity-50 resize-none hover:border-grey-50',
   {
     variants: {
       variant: {
-        default: 'border-base-40 bg-base-10',
-        filled: 'border-transparent bg-base-20',
-        bottomline: 'border-0 border-b border-base-40 rounded-none bg-transparent hover:border-base-50',
+        default: 'border-grey-40 bg-grey-10',
+        filled: 'border-transparent bg-grey-20',
+        bottomline: 'border-0 border-b border-grey-40 rounded-none bg-transparent hover:border-grey-50',
       },
       size: {
         small: 'px-[12px] py-[7px] text-size-12',
@@ -20,11 +20,11 @@ const textareaVariants = cva(
         large: 'px-[16px] py-[11px] text-size-15',
       },
       error: {
-        true: 'border-error-80 focus-visible:border-error-80 focus-visible:ring-0 hover:border-error-80',
+        true: 'border-red-80 focus-visible:border-red-80 focus-visible:ring-0 hover:border-red-80',
         false: '',
       },
       readonly: {
-        true: 'cursor-default focus-visible:border-base-30 focus-visible:ring-0 bg-base-20 border-base-30 hover:border-base-30',
+        true: 'cursor-default focus-visible:border-grey-30 focus-visible:ring-0 bg-grey-20 border-grey-30 hover:border-grey-30',
         false: '',
       },
     },
@@ -167,10 +167,10 @@ watch(textareaRef, () => {
     <!-- Label -->
     <label
       v-if="label"
-      class="inline-block mb-[8px] text-size-14 text-base-80 font-medium"
+      class="inline-block mb-[8px] text-size-14 text-grey-80 font-medium"
     >
       {{ label }}
-      <span v-if="required" class="text-error-70 ml-[4px]">*</span>
+      <span v-if="required" class="text-red-70 ml-[4px]">*</span>
     </label>
 
     <!-- Textarea -->
@@ -189,7 +189,7 @@ watch(textareaRef, () => {
           error: hasError,
           readonly: props.readonly
         }),
-        'text-base-80',
+        'text-grey-80',
         props.class
       )"
     />
@@ -202,7 +202,7 @@ watch(textareaRef, () => {
       <!-- Error Message -->
       <span
         v-if="errorMessage"
-        class="text-size-12 text-error-70"
+        class="text-size-12 text-red-70"
       >
         {{ errorMessage }}
       </span>
@@ -211,7 +211,7 @@ watch(textareaRef, () => {
       <!-- Counter -->
       <span
         v-if="counter"
-        class="text-size-12 text-base-50 ml-auto"
+        class="text-size-12 text-grey-50 ml-auto"
       >
         {{ counterText }}
       </span>

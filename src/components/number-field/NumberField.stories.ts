@@ -41,7 +41,7 @@ export const Default: Story = {
             <NumberFieldIncrement />
           </NumberFieldContent>
         </NumberField>
-        <p class="mt-[16px] text-sm text-base-60">Value: {{ value }}</p>
+        <p class="mt-[16px] text-sm text-grey-60">Value: {{ value }}</p>
       </div>
     `,
   }),
@@ -69,7 +69,7 @@ export const WithMinMax: Story = {
             <NumberFieldIncrement />
           </NumberFieldContent>
         </NumberField>
-        <p class="mt-[16px] text-sm text-base-60">Value: {{ value }} (min: 0, max: 10)</p>
+        <p class="mt-[16px] text-sm text-grey-60">Value: {{ value }} (min: 0, max: 10)</p>
       </div>
     `,
   }),
@@ -97,7 +97,7 @@ export const WithStep: Story = {
             <NumberFieldIncrement />
           </NumberFieldContent>
         </NumberField>
-        <p class="mt-[16px] text-sm text-base-60">Value: {{ value }} (step: 5)</p>
+        <p class="mt-[16px] text-sm text-grey-60">Value: {{ value }} (step: 5)</p>
       </div>
     `,
   }),
@@ -189,7 +189,7 @@ export const InputOnly: Story = {
             <NumberFieldInput />
           </NumberFieldContent>
         </NumberField>
-        <p class="mt-[16px] text-sm text-base-60">Input only (no buttons)</p>
+        <p class="mt-[16px] text-sm text-grey-60">Input only (no buttons)</p>
       </div>
     `,
   }),

@@ -75,7 +75,7 @@ export const ErrorState: Story = {
     template: `
       <div class="flex items-center gap-[8px]">
         <Checkbox id="err" v-model="checked" v-bind="args" />
-        <Label for="err" class="text-error-80">Required field</Label>
+        <Label for="err" class="text-red-80">Required field</Label>
       </div>
     `,
   }),

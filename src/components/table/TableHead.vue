@@ -30,7 +30,7 @@ const sizeClasses = computed(() => {
   <th
     :class="
       cn(
-        'text-left align-middle text-base-90 bg-base-20 text-size-13 whitespace-nowrap border-b border-base-30 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5',
+        'text-left align-middle text-grey-90 bg-grey-20 text-size-13 whitespace-nowrap border-b border-grey-30 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5',
         sizeClasses,
         props.class
       )
@@ -41,7 +41,7 @@ const sizeClasses = computed(() => {
       <TooltipProvider v-if="tooltip">
         <Tooltip>
           <TooltipTrigger as-child>
-            <CircleHelp class="h-[16px] w-[16px] text-base-60 cursor-pointer" />
+            <CircleHelp class="h-[16px] w-[16px] text-grey-60 cursor-pointer" />
           </TooltipTrigger>
           <TooltipContent>
             <p class="whitespace-pre-line">{{ tooltip }}</p>

@@ -24,16 +24,16 @@ const forwardedProps = useForwardProps(delegatedProps)
 <style scoped>
 /* Sunday (first column) - red color for date cells */
 .calendar-grid-row :deep(> td:first-child button) {
-  color: var(--color-error-70) !important;
+  color: var(--color-red-70) !important;
 }
 .calendar-grid-row :deep(> td:first-child button[data-outside-view]) {
-  color: var(--color-error-50) !important;
+  color: var(--color-red-50) !important;
 }
 .calendar-grid-row :deep(> td:first-child button[data-selected]) {
-  color: var(--color-base-10) !important;
+  color: var(--color-grey-10) !important;
 }
 /* Sunday header (first column) */
 .calendar-grid-row :deep(> th:first-child) {
-  color: var(--color-error-70) !important;
+  color: var(--color-red-70) !important;
 }
 </style>

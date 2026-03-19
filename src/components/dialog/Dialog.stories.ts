@@ -34,7 +34,7 @@ export const Default: Story = {
             <DialogTitle>Dialog Title</DialogTitle>
             <DialogDescription>This is a dialog description.</DialogDescription>
           </DialogHeader>
-          <p class="text-size-14 text-base-70">Dialog body content goes here.</p>
+          <p class="text-size-14 text-grey-70">Dialog body content goes here.</p>
           <DialogFooter>
             <DialogClose as-child>
               <Button variant="assistant">Cancel</Button>

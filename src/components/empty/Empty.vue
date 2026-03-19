@@ -15,7 +15,7 @@ const { t } = useI18n()
 <template>
   <div
     :class="cn(
-      'flex items-center justify-center w-full p-[16px] bg-base-20 text-size-14 text-base-60',
+      'flex items-center justify-center w-full p-[16px] bg-grey-20 text-size-14 text-grey-60',
       props.class
     )"
   >

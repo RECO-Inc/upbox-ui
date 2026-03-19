@@ -29,7 +29,7 @@ const delegatedProps = reactiveOmit(props, "class")
       <slot />
       <slot name="icon">
         <ChevronDown
-          class="h-[16px] w-[16px] shrink-0 text-base-60 transition-transform duration-200"
+          class="h-[16px] w-[16px] shrink-0 text-grey-60 transition-transform duration-200"
         />
       </slot>
     </AccordionTrigger>

@@ -59,7 +59,7 @@ function onClickSecond(s: number) {
 </script>
 
 <template>
-  <div :class="cn('flex items-stretch text-center text-base-90', props.class)">
+  <div :class="cn('flex items-stretch text-center text-grey-90', props.class)">
     <!-- Hour -->
     <div class="flex flex-col flex-wrap py-[16px] px-[12px] h-[280px]">
       <label class="h-[24px] text-sm font-bold mr-[14px]">{{ t('word.hours') }}</label>
@@ -68,8 +68,8 @@ function onClickSecond(s: number) {
           v-for="h in hourList"
           :key="`h-${h}`"
           :class="cn(
-            'py-[6px] px-[16px] cursor-pointer select-none text-base-90 transition-colors',
-            h === hour ? 'selected bg-primary-90 text-base-10' : 'bg-base-10 hover:bg-base-30'
+            'py-[6px] px-[16px] cursor-pointer select-none text-grey-90 transition-colors',
+            h === hour ? 'selected bg-navy-90 text-grey-10' : 'bg-grey-10 hover:bg-grey-30'
           )"
           @click="onClickHour(h)"
         >
@@ -86,8 +86,8 @@ function onClickSecond(s: number) {
           v-for="m in minuteList"
           :key="`m-${m}`"
           :class="cn(
-            'py-[6px] px-[16px] cursor-pointer select-none text-base-90 transition-colors',
-            m === minute ? 'selected bg-primary-90 text-base-10' : 'bg-base-10 hover:bg-base-30'
+            'py-[6px] px-[16px] cursor-pointer select-none text-grey-90 transition-colors',
+            m === minute ? 'selected bg-navy-90 text-grey-10' : 'bg-grey-10 hover:bg-grey-30'
           )"
           @click="onClickMinute(m)"
         >
@@ -104,8 +104,8 @@ function onClickSecond(s: number) {
           v-for="s in secondList"
           :key="`s-${s}`"
           :class="cn(
-            'py-[6px] px-[16px] cursor-pointer select-none text-base-90 transition-colors',
-            s === second ? 'selected bg-primary-90 text-base-10' : 'bg-base-10 hover:bg-base-30'
+            'py-[6px] px-[16px] cursor-pointer select-none text-grey-90 transition-colors',
+            s === second ? 'selected bg-navy-90 text-grey-10' : 'bg-grey-10 hover:bg-grey-30'
           )"
           @click="onClickSecond(s)"
         >

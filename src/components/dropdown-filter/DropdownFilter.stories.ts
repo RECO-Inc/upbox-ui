@@ -48,7 +48,7 @@ export const Default: Story = {
           :options="sampleOptions"
           placeholder="Select items"
         />
-        <p class="mt-[16px] text-sm text-base-60">Selected: {{ selected.join(', ') || 'none' }}</p>
+        <p class="mt-[16px] text-sm text-grey-60">Selected: {{ selected.join(', ') || 'none' }}</p>
       </div>
     `,
   }),
@@ -126,7 +126,7 @@ export const SingleSelect: Story = {
           :single="true"
           :can-all="false"
         />
-        <p class="mt-[16px] text-sm text-base-60">Selected: {{ selected[0] ?? 'none' }}</p>
+        <p class="mt-[16px] text-sm text-grey-60">Selected: {{ selected[0] ?? 'none' }}</p>
       </div>
     `,
   }),
@@ -147,7 +147,7 @@ export const WithSearch: Story = {
           placeholder="Search and filter"
           :search="true"
         />
-        <p class="mt-[16px] text-sm text-base-60">Selected: {{ selected.join(', ') || 'none' }}</p>
+        <p class="mt-[16px] text-sm text-grey-60">Selected: {{ selected.join(', ') || 'none' }}</p>
       </div>
     `,
   }),
@@ -187,7 +187,7 @@ export const WithPreselected: Story = {
           :options="sampleOptions"
           placeholder="Select items"
         />
-        <p class="mt-[16px] text-sm text-base-60">Selected: {{ selected.join(', ') }}</p>
+        <p class="mt-[16px] text-sm text-grey-60">Selected: {{ selected.join(', ') }}</p>
       </div>
     `,
   }),

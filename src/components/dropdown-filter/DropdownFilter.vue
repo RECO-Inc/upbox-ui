@@ -95,15 +95,15 @@ const displayClasses = computed(() => {
 
   if (isSelectSome.value) {
     if (props.displayStyle === 'highlight') {
-      classes.push('bg-primary-80 border-primary-80 text-base-10');
+      classes.push('bg-navy-80 border-navy-80 text-grey-10');
     } else {
-      classes.push('bg-primary-20 border-primary-20 text-primary-90');
+      classes.push('bg-navy-20 border-navy-20 text-navy-90');
     }
   } else {
     if (props.displayStyle === 'filled') {
-      classes.push('bg-base-20 border-base-20 text-base-90');
+      classes.push('bg-grey-20 border-grey-20 text-grey-90');
     } else {
-      classes.push('bg-base-10 border-base-40 text-base-60');
+      classes.push('bg-grey-10 border-grey-40 text-grey-60');
     }
   }
 
@@ -169,9 +169,9 @@ function onReset() {
           )"
         >
           <div class="flex items-center gap-[4px] overflow-hidden text-size-13">
-            <span v-if="shownText" :class="cn('truncate font-bold', props.displayStyle === 'highlight' ? 'text-base-10' : 'text-primary-80')">{{ shownText }}</span>
-            <span v-else class="text-base-50">{{ props.placeholder }}</span>
-            <span v-if="multiCountText" :class="cn('shrink-0 font-bold', props.displayStyle === 'highlight' ? 'text-base-10' : 'text-primary-80')">{{ multiCountText }}</span>
+            <span v-if="shownText" :class="cn('truncate font-bold', props.displayStyle === 'highlight' ? 'text-grey-10' : 'text-navy-80')">{{ shownText }}</span>
+            <span v-else class="text-grey-50">{{ props.placeholder }}</span>
+            <span v-if="multiCountText" :class="cn('shrink-0 font-bold', props.displayStyle === 'highlight' ? 'text-grey-10' : 'text-navy-80')">{{ multiCountText }}</span>
           </div>
           <ChevronDown
             :class="cn(
@@ -201,7 +201,7 @@ function onReset() {
           <!-- Select All -->
           <div
             v-if="props.canAll && !props.single && searchKeyword === ''"
-            class="flex items-center gap-[8px] px-[8px] py-[8px] rounded cursor-pointer hover:bg-primary-10"
+            class="flex items-center gap-[8px] px-[8px] py-[8px] rounded cursor-pointer hover:bg-navy-10"
             @click="clickAll"
           >
             <Checkbox
@@ -215,7 +215,7 @@ function onReset() {
             <div
               v-for="item in filteredOptions"
               :key="String(item.value)"
-              class="flex items-center gap-[8px] px-[8px] py-[8px] rounded cursor-pointer hover:bg-primary-10"
+              class="flex items-center gap-[8px] px-[8px] py-[8px] rounded cursor-pointer hover:bg-navy-10"
               @click="onClickItem(item)"
             >
               <Checkbox
@@ -227,12 +227,12 @@ function onReset() {
               </slot>
               <Check
                 v-if="props.single && isItemSelected(item)"
-                class="h-[16px] w-[16px] text-info-80"
+                class="h-[16px] w-[16px] text-blue-80"
               />
             </div>
           </template>
           <template v-else>
-            <div class="px-[8px] py-[16px] text-center text-size-14 text-base-50">
+            <div class="px-[8px] py-[16px] text-center text-size-14 text-grey-50">
               {{ t('common.noData') }}
             </div>
           </template>
@@ -241,7 +241,7 @@ function onReset() {
         <!-- Footer -->
         <div
           v-if="!props.single"
-          class="flex items-center justify-between mt-[8px] pt-[8px] border-t border-base-30"
+          class="flex items-center justify-between mt-[8px] pt-[8px] border-t border-grey-30"
         >
           <Button
             variant="usually"
@@ -252,8 +252,8 @@ function onReset() {
             <RotateCcw class="mr-[4px] h-[12px] w-[12px]" />
             {{ t('common.reset') }}
           </Button>
-          <span class="text-size-12 text-base-60">
-            <span class="text-info-80 font-bold">{{ modelValue.length }}</span>
+          <span class="text-size-12 text-grey-60">
+            <span class="text-blue-80 font-bold">{{ modelValue.length }}</span>
             {{ t('ui.component.dropdownFilter.selected') }}
           </span>
         </div>

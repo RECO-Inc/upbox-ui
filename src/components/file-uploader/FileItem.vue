@@ -55,7 +55,7 @@ function handleDownload(e: Event) {
 <template>
   <div
     :class="cn(
-      'file-item flex items-center py-[4px] px-[8px] rounded cursor-pointer transition-colors hover:bg-primary-20',
+      'file-item flex items-center py-[4px] px-[8px] rounded cursor-pointer transition-colors hover:bg-navy-20',
       props.class
     )"
     @click="handleClick"
@@ -67,11 +67,11 @@ function handleDownload(e: Event) {
     <div class="flex-1 min-w-0">
       <p :class="cn(
         'text-size-13 break-words',
-        file.state === 'error' ? 'text-error-80' : 'text-info-90'
+        file.state === 'error' ? 'text-red-80' : 'text-blue-90'
       )">
         {{ fileName }}
       </p>
-      <p class="text-size-12 text-base-60">
+      <p class="text-size-12 text-grey-60">
         <slot name="description" :index="0" />
       </p>
     </div>
@@ -79,12 +79,12 @@ function handleDownload(e: Event) {
     <!-- Status (uploading/error) -->
     <div v-if="file.state !== 'done' && file.state !== 'download'" class="flex items-center ml-[8px]">
       <template v-if="file.state === 'error'">
-        <AlertCircle class="w-[20px] h-[20px] text-error-70 mr-[4px]" />
-        <span class="text-[10px] text-error-70 whitespace-nowrap">업로드 실패</span>
+        <AlertCircle class="w-[20px] h-[20px] text-red-70 mr-[4px]" />
+        <span class="text-[10px] text-red-70 whitespace-nowrap">업로드 실패</span>
       </template>
       <template v-else>
-        <span class="text-[10px] text-base-60 whitespace-nowrap mr-[8px]">업로드 중...</span>
-        <Loader2 class="w-[16px] h-[16px] text-base-60 animate-spin" />
+        <span class="text-[10px] text-grey-60 whitespace-nowrap mr-[8px]">업로드 중...</span>
+        <Loader2 class="w-[16px] h-[16px] text-grey-60 animate-spin" />
       </template>
     </div>
 
@@ -94,7 +94,7 @@ function handleDownload(e: Event) {
       <button
         v-if="!readonly && (file.state === 'done' || file.state === 'error')"
         type="button"
-        class="p-[4px] rounded hover:bg-base-30 text-base-80 transition-colors"
+        class="p-[4px] rounded hover:bg-grey-30 text-grey-80 transition-colors"
         @click="handleRemove"
       >
         <X class="w-[20px] h-[20px]" />
@@ -104,7 +104,7 @@ function handleDownload(e: Event) {
       <button
         v-if="downloadable && file.state === 'done'"
         type="button"
-        class="flex items-center gap-[4px] p-[4px] rounded text-size-12 text-base-60 hover:bg-base-30 transition-colors"
+        class="flex items-center gap-[4px] p-[4px] rounded text-size-12 text-grey-60 hover:bg-grey-30 transition-colors"
         @click="handleDownload"
       >
         다운로드

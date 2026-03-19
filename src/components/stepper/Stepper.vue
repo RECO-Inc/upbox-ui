@@ -33,7 +33,7 @@ function onClickStep(step: StepItem) {
 <template>
   <div
     :class="cn(
-      'flex flex-wrap items-center justify-center bg-primary-100 rounded-md p-[12px] sm:p-[16px] gap-x-[16px] sm:gap-x-[44px] gap-y-[8px] text-size-13',
+      'flex flex-wrap items-center justify-center bg-navy-100 rounded-md p-[12px] sm:p-[16px] gap-x-[16px] sm:gap-x-[44px] gap-y-[8px] text-size-13',
       props.class
     )"
   >
@@ -49,25 +49,25 @@ function onClickStep(step: StepItem) {
       >
         <!-- Complete Icon -->
         <template v-if="step.isComplete">
-          <CheckCircle class="w-[18px] h-[18px] text-base-10 shrink-0" />
+          <CheckCircle class="w-[18px] h-[18px] text-grey-10 shrink-0" />
         </template>
         <!-- Step Number -->
         <template v-else>
           <span
-            class="inline-flex items-center justify-center w-[18px] h-[18px] rounded-full bg-base-10 text-primary-80 text-size-11 shrink-0"
+            class="inline-flex items-center justify-center w-[18px] h-[18px] rounded-full bg-grey-10 text-navy-80 text-size-11 shrink-0"
           >
             {{ stepIdx + 1 }}
           </span>
         </template>
 
         <!-- Label -->
-        <span class="ml-[8px] text-base-10 whitespace-nowrap">{{ step.label }}</span>
+        <span class="ml-[8px] text-grey-10 whitespace-nowrap">{{ step.label }}</span>
       </div>
 
       <!-- Divider -->
       <div
         v-if="stepIdx !== steps.length - 1"
-        class="w-px h-[12px] bg-base-30 opacity-40 hidden sm:block"
+        class="w-px h-[12px] bg-grey-30 opacity-40 hidden sm:block"
       />
     </template>
   </div>

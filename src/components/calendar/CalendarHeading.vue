@@ -37,8 +37,8 @@ function handleClick() {
   <CalendarHeading
     v-slot="{ headingValue }"
     :class="cn(
-      'text-sm font-bold text-base-90',
-      props.clickable && 'cursor-pointer select-none hover:text-primary-80',
+      'text-sm font-bold text-grey-90',
+      props.clickable && 'cursor-pointer select-none hover:text-navy-80',
       props.class
     )"
     v-bind="forwardedProps"
