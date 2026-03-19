@@ -58,4 +58,5 @@ export declare const Styles: Story;
 export declare const Sizes: Story;
 export declare const Loading: Story;
 export declare const Disabled: Story;
+export declare const WithIcons: Story;
 export declare const Block: Story;
