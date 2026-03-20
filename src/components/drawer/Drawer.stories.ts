@@ -23,7 +23,7 @@ export const Default: Story = {
       <div class="flex justify-center p-[32px]">
         <Drawer>
           <DrawerTrigger as-child>
-            <button class="px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded font-bold text-size-14">
+            <button class="px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded-sm font-bold text-size-14">
               Open Drawer
             </button>
           </DrawerTrigger>
@@ -39,12 +39,12 @@ export const Default: Story = {
             </div>
             <DrawerFooter>
               <DrawerClose as-child>
-                <button class="w-full px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded font-bold text-size-14">
+                <button class="w-full px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded-sm font-bold text-size-14">
                   Confirm
                 </button>
               </DrawerClose>
               <DrawerClose as-child>
-                <button class="w-full px-[16px] py-[8px] border border-grey-40 text-grey-70 rounded font-bold text-size-14">
+                <button class="w-full px-[16px] py-[8px] border border-grey-40 text-grey-70 rounded-sm font-bold text-size-14">
                   Cancel
                 </button>
               </DrawerClose>
@@ -63,7 +63,7 @@ export const WithLongContent: Story = {
       <div class="flex justify-center p-[32px]">
         <Drawer>
           <DrawerTrigger as-child>
-            <button class="px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded font-bold text-size-14">
+            <button class="px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded-sm font-bold text-size-14">
               Open Long Drawer
             </button>
           </DrawerTrigger>
@@ -88,7 +88,7 @@ export const WithLongContent: Story = {
             </div>
             <DrawerFooter>
               <DrawerClose as-child>
-                <button class="w-full px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded font-bold text-size-14">
+                <button class="w-full px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded-sm font-bold text-size-14">
                   Accept
                 </button>
               </DrawerClose>

@@ -223,9 +223,9 @@ function onDone() {
                     'focus-within:relative focus-within:z-20',
                     // Range selection - highlight included dates (between start and end)
                     '[&:has([data-selected]:not([data-selection-start]):not([data-selection-end]))]:bg-blue-20',
-                    // First selected (range start) - rounded left, solid bg on cell too
+                    // First selected (range start) - rounded-sm left, solid bg on cell too
                     '[&:has([data-selection-start])]:rounded-l [&:has([data-selection-start])]:bg-blue-20',
-                    // Last selected (range end) - rounded right, solid bg on cell too
+                    // Last selected (range end) - rounded-sm right, solid bg on cell too
                     '[&:has([data-selection-end])]:rounded-r [&:has([data-selection-end])]:bg-blue-20',
                     // When start and end are same date
                     '[&:has([data-selection-start][data-selection-end])]:rounded',
@@ -238,7 +238,7 @@ function onDone() {
                     :month="month.value"
                     :class="cn(
                       // Base styles - 36x36 cell size matching original
-                      'inline-flex items-center justify-center w-[36px] h-[36px] p-0 text-sm font-normal rounded transition-colors cursor-pointer select-none',
+                      'inline-flex items-center justify-center w-[36px] h-[36px] p-0 text-sm font-normal rounded-sm transition-colors cursor-pointer select-none',
                       'text-grey-90 hover:bg-grey-30',
                       // Today
                       '[&[data-today]:not([data-selected])]:bg-grey-20 [&[data-today]:not([data-selected])]:text-navy-80 [&[data-today]:not([data-selected])]:font-semibold',

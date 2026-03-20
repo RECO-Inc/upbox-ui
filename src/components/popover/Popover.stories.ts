@@ -19,7 +19,7 @@ export const Default: Story = {
       <div class="flex justify-center p-[64px]">
         <Popover>
           <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Popover
             </button>
           </PopoverTrigger>
@@ -40,7 +40,7 @@ export const Alignments: Story = {
       <div class="flex gap-[24px] justify-center p-[64px]">
         <Popover>
           <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Start
             </button>
           </PopoverTrigger>
@@ -51,7 +51,7 @@ export const Alignments: Story = {
         </Popover>
         <Popover>
           <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Center
             </button>
           </PopoverTrigger>
@@ -62,7 +62,7 @@ export const Alignments: Story = {
         </Popover>
         <Popover>
           <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               End
             </button>
           </PopoverTrigger>
@@ -83,7 +83,7 @@ export const Sides: Story = {
       <div class="flex gap-[24px] flex-wrap justify-center p-[64px]">
         <Popover>
           <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Top
             </button>
           </PopoverTrigger>
@@ -93,7 +93,7 @@ export const Sides: Story = {
         </Popover>
         <Popover>
           <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Bottom
             </button>
           </PopoverTrigger>
@@ -103,7 +103,7 @@ export const Sides: Story = {
         </Popover>
         <Popover>
           <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Left
             </button>
           </PopoverTrigger>
@@ -113,7 +113,7 @@ export const Sides: Story = {
         </Popover>
         <Popover>
           <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Right
             </button>
           </PopoverTrigger>
@@ -133,7 +133,7 @@ export const WithForm: Story = {
       <div class="flex justify-center p-[64px]">
         <Popover>
           <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Edit Profile
             </button>
           </PopoverTrigger>
@@ -146,11 +146,11 @@ export const WithForm: Story = {
               <div class="grid gap-[8px]">
                 <div class="grid grid-cols-3 items-center gap-[16px]">
                   <label class="text-sm text-right">Width</label>
-                  <input class="col-span-2 h-[32px] rounded border border-grey-40 px-[8px] text-sm" placeholder="100px" />
+                  <input class="col-span-2 h-[32px] rounded-sm border border-grey-40 px-[8px] text-sm" placeholder="100px" />
                 </div>
                 <div class="grid grid-cols-3 items-center gap-[16px]">
                   <label class="text-sm text-right">Height</label>
-                  <input class="col-span-2 h-[32px] rounded border border-grey-40 px-[8px] text-sm" placeholder="auto" />
+                  <input class="col-span-2 h-[32px] rounded-sm border border-grey-40 px-[8px] text-sm" placeholder="auto" />
                 </div>
               </div>
             </div>

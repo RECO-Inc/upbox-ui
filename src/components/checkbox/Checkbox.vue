@@ -8,12 +8,12 @@ import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from "reka-ui"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const checkboxVariants = cva(
-  "grid place-content-center peer shrink-0 rounded border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-navy-80 disabled:cursor-not-allowed bg-grey-10 data-[state=checked]:text-grey-10 data-[state=indeterminate]:text-grey-10",
+  "grid place-content-center peer shrink-0 rounded-sm border-2 transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-navy-80 disabled:cursor-not-allowed bg-grey-10 data-[state=checked]:text-grey-10 data-[state=indeterminate]:text-grey-10",
   {
     variants: {
       size: {
         small: "h-[12px] w-[12px] rounded-[3px]",      // 12px
-        regular: "h-[16px] w-[16px] rounded",           // 16px
+        regular: "h-[16px] w-[16px] rounded-sm",           // 16px
         large: "h-[20px] w-[20px] rounded-[5px]",       // 20px
       },
       error: {

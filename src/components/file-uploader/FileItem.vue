@@ -55,7 +55,7 @@ function handleDownload(e: Event) {
 <template>
   <div
     :class="cn(
-      'file-item flex items-center py-[4px] px-[8px] rounded cursor-pointer transition-colors hover:bg-navy-20',
+      'file-item flex items-center py-[4px] px-[8px] rounded-sm cursor-pointer transition-colors hover:bg-navy-20',
       props.class
     )"
     @click="handleClick"
@@ -94,7 +94,7 @@ function handleDownload(e: Event) {
       <button
         v-if="!readonly && (file.state === 'done' || file.state === 'error')"
         type="button"
-        class="p-[4px] rounded hover:bg-grey-30 text-grey-80 transition-colors"
+        class="p-[4px] rounded-sm hover:bg-grey-30 text-grey-80 transition-colors"
         @click="handleRemove"
       >
         <X class="w-[20px] h-[20px]" />
@@ -104,7 +104,7 @@ function handleDownload(e: Event) {
       <button
         v-if="downloadable && file.state === 'done'"
         type="button"
-        class="flex items-center gap-[4px] p-[4px] rounded text-size-12 text-grey-60 hover:bg-grey-30 transition-colors"
+        class="flex items-center gap-[4px] p-[4px] rounded-sm text-size-12 text-grey-60 hover:bg-grey-30 transition-colors"
         @click="handleDownload"
       >
         다운로드

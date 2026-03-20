@@ -36,7 +36,7 @@ export { default as SidebarTrigger } from "./SidebarTrigger.vue"
 export { useSidebar } from "./utils"
 
 export const sidebarMenuButtonVariants = cva(
-  "peer/menu-button flex w-full items-center gap-[16px] overflow-hidden rounded p-[16px] text-left font-bold outline-none transition-[background-color,color] duration-200 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-[32px] aria-disabled:pointer-events-none aria-disabled:opacity-50 group-data-[collapsible=icon]:!size-[32px] group-data-[collapsible=icon]:!p-[8px] group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:gap-0 [&>span:last-child]:truncate [&>svg]:size-[16px] [&>svg]:shrink-0 hover:bg-navy-20 data-[active=true]:bg-navy-80 data-[active=true]:text-grey-10 data-[active=true]:font-bold data-[active=true]:[&>svg]:text-grey-10",
+  "peer/menu-button flex w-full items-center gap-[16px] overflow-hidden rounded-sm p-[16px] text-left font-bold outline-hidden transition-[background-color,color] duration-200 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-[32px] aria-disabled:pointer-events-none aria-disabled:opacity-50 group-data-[collapsible=icon]:!size-[32px] group-data-[collapsible=icon]:!p-[8px] group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:gap-0 [&>span:last-child]:truncate [&>svg]:size-[16px] [&>svg]:shrink-0 hover:bg-navy-20 data-[active=true]:bg-navy-80 data-[active=true]:text-grey-10 data-[active=true]:font-bold data-[active=true]:[&>svg]:text-grey-10",
   {
     variants: {
       variant: {

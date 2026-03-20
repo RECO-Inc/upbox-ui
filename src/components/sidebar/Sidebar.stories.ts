@@ -45,7 +45,7 @@ export const Default: Story = {
         <Sidebar collapsible="offcanvas">
           <SidebarHeader>
             <div class="flex items-center gap-[8px] px-[8px] py-[4px]">
-              <div class="w-[24px] h-[24px] bg-navy-80 rounded" />
+              <div class="w-[24px] h-[24px] bg-navy-80 rounded-sm" />
               <span class="font-bold text-grey-100">Upbox UI</span>
             </div>
           </SidebarHeader>
@@ -136,7 +136,7 @@ export const NonCollapsible: Story = {
         <Sidebar collapsible="none">
           <SidebarHeader>
             <div class="flex items-center gap-[8px] px-[8px] py-[4px]">
-              <div class="w-[24px] h-[24px] bg-navy-80 rounded" />
+              <div class="w-[24px] h-[24px] bg-navy-80 rounded-sm" />
               <span class="font-bold text-grey-100">App</span>
             </div>
           </SidebarHeader>
@@ -240,7 +240,7 @@ export const FloatingVariant: Story = {
         <Sidebar variant="floating" collapsible="offcanvas">
           <SidebarHeader>
             <div class="flex items-center gap-[8px] px-[8px] py-[4px]">
-              <div class="w-[24px] h-[24px] bg-navy-80 rounded" />
+              <div class="w-[24px] h-[24px] bg-navy-80 rounded-sm" />
               <span class="font-bold text-grey-100">Floating</span>
             </div>
           </SidebarHeader>
@@ -268,7 +268,7 @@ export const FloatingVariant: Story = {
             <SidebarTrigger />
             <h1 class="text-size-18 font-bold text-grey-100">Floating Sidebar</h1>
           </div>
-          <p class="text-size-14 text-grey-60">The floating variant adds rounded corners and a shadow to the sidebar panel.</p>
+          <p class="text-size-14 text-grey-60">The floating variant adds rounded-sm corners and a shadow to the sidebar panel.</p>
         </main>
       </SidebarProvider>
     `,

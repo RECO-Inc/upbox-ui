@@ -163,7 +163,7 @@ function onReset() {
           type="button"
           :disabled="isPickerDisabled"
           :class="cn(
-            'flex w-full items-center justify-between rounded border transition-colors cursor-pointer',
+            'flex w-full items-center justify-between rounded-sm border transition-colors cursor-pointer',
             displayClasses,
             isPickerDisabled && 'opacity-50 cursor-not-allowed'
           )"
@@ -201,7 +201,7 @@ function onReset() {
           <!-- Select All -->
           <div
             v-if="props.canAll && !props.single && searchKeyword === ''"
-            class="flex items-center gap-[8px] px-[8px] py-[8px] rounded cursor-pointer hover:bg-navy-10"
+            class="flex items-center gap-[8px] px-[8px] py-[8px] rounded-sm cursor-pointer hover:bg-navy-10"
             @click="clickAll"
           >
             <Checkbox
@@ -215,7 +215,7 @@ function onReset() {
             <div
               v-for="item in filteredOptions"
               :key="String(item.value)"
-              class="flex items-center gap-[8px] px-[8px] py-[8px] rounded cursor-pointer hover:bg-navy-10"
+              class="flex items-center gap-[8px] px-[8px] py-[8px] rounded-sm cursor-pointer hover:bg-navy-10"
               @click="onClickItem(item)"
             >
               <Checkbox

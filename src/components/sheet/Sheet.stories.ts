@@ -33,7 +33,7 @@ export const Default: Story = {
       <div class="flex justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Sheet
             </button>
           </SheetTrigger>
@@ -49,7 +49,7 @@ export const Default: Story = {
             </div>
             <SheetFooter>
               <SheetClose>
-                <button class="px-[16px] py-[8px] rounded border border-grey-40 text-sm font-medium">
+                <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 text-sm font-medium">
                   Close
                 </button>
               </SheetClose>
@@ -75,7 +75,7 @@ export const RightSide: Story = {
       <div class="flex justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Right Sheet
             </button>
           </SheetTrigger>
@@ -108,7 +108,7 @@ export const LeftSide: Story = {
       <div class="flex justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Left Sheet
             </button>
           </SheetTrigger>
@@ -141,7 +141,7 @@ export const TopSide: Story = {
       <div class="flex justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Top Sheet
             </button>
           </SheetTrigger>
@@ -174,7 +174,7 @@ export const BottomSide: Story = {
       <div class="flex justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Bottom Sheet
             </button>
           </SheetTrigger>
@@ -207,7 +207,7 @@ export const AllSides: Story = {
       <div class="flex flex-wrap gap-[12px] justify-center p-[32px]">
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">Right</button>
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">Right</button>
           </SheetTrigger>
           <SheetContent side="right">
             <SheetHeader>
@@ -218,7 +218,7 @@ export const AllSides: Story = {
         </Sheet>
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">Left</button>
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">Left</button>
           </SheetTrigger>
           <SheetContent side="left">
             <SheetHeader>
@@ -229,7 +229,7 @@ export const AllSides: Story = {
         </Sheet>
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">Top</button>
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">Top</button>
           </SheetTrigger>
           <SheetContent side="top">
             <SheetHeader>
@@ -240,7 +240,7 @@ export const AllSides: Story = {
         </Sheet>
         <Sheet>
           <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">Bottom</button>
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">Bottom</button>
           </SheetTrigger>
           <SheetContent side="bottom">
             <SheetHeader>

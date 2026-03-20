@@ -54,13 +54,13 @@ export const tabsListVariants = cva(
 )
 
 export const tabsTriggerVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 select-none cursor-pointer",
+  "inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 select-none cursor-pointer",
   {
     variants: {
       variant: {
         default: "py-[8px] font-bold text-grey-50 border-b-2 border-transparent data-[state=active]:text-navy-80 data-[state=active]:border-navy-80",
         round: "px-[8px] font-normal text-grey-60 border border-grey-40 bg-grey-10 rounded-full data-[state=active]:text-blue-90 data-[state=active]:border-blue-90 data-[state=active]:font-bold",
-        box: "font-bold rounded transition-[background-color] duration-500 data-[state=active]:bg-grey-10",
+        box: "font-bold rounded-sm transition-[background-color] duration-500 data-[state=active]:bg-grey-10",
       },
       color: {
         navy: "",

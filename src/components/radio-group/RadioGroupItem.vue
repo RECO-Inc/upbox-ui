@@ -12,7 +12,7 @@ import {
 import { cva, type VariantProps } from "class-variance-authority"
 
 const radioVariants = cva(
-  "peer aspect-square rounded-full border-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-navy-80 disabled:cursor-not-allowed disabled:opacity-50 bg-grey-10 data-[state=checked]:text-grey-10",
+  "peer aspect-square rounded-full border-2 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-navy-80 disabled:cursor-not-allowed disabled:opacity-50 bg-grey-10 data-[state=checked]:text-grey-10",
   {
     variants: {
       size: {

@@ -35,7 +35,7 @@ export const Default: Story = {
       <div class="flex justify-center p-[32px]">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Menu
             </button>
           </DropdownMenuTrigger>
@@ -69,7 +69,7 @@ export const WithShortcuts: Story = {
       <div class="flex justify-center p-[32px]">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Menu
             </button>
           </DropdownMenuTrigger>
@@ -114,7 +114,7 @@ export const WithCheckboxItems: Story = {
       <div class="flex justify-center p-[32px]">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               View Options
             </button>
           </DropdownMenuTrigger>
@@ -149,7 +149,7 @@ export const WithSubMenu: Story = {
       <div class="flex justify-center p-[32px]">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Menu
             </button>
           </DropdownMenuTrigger>
@@ -189,7 +189,7 @@ export const WithDisabledItems: Story = {
       <div class="flex justify-center p-[32px]">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <button class="px-[16px] py-[8px] rounded border border-grey-40 bg-grey-10 text-sm font-medium">
+            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
               Open Menu
             </button>
           </DropdownMenuTrigger>

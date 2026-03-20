@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<PrimitiveProps & {
   <Primitive
     data-sidebar="menu-action"
     :class="cn(
-      'absolute right-[4px] top-[6px] flex aspect-square w-[20px] items-center justify-center rounded-md p-0 text-grey-100 outline-none ring-navy-80 transition-transform hover:bg-grey-30 hover:text-grey-100 focus-visible:ring-2 peer-hover/menu-button:text-grey-100 [&>svg]:size-[16px] [&>svg]:shrink-0',
+      'absolute right-[4px] top-[6px] flex aspect-square w-[20px] items-center justify-center rounded-md p-0 text-grey-100 outline-hidden ring-navy-80 transition-transform hover:bg-grey-30 hover:text-grey-100 focus-visible:ring-2 peer-hover/menu-button:text-grey-100 [&>svg]:size-[16px] [&>svg]:shrink-0',
       'after:absolute after:-inset-[8px] after:md:hidden',
       'peer-data-[size=small]/menu-button:top-[4px]',
       'peer-data-[size=regular]/menu-button:top-[6px]',

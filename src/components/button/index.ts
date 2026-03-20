@@ -5,7 +5,7 @@ export { default as Button } from "./Button.vue"
 
 // LinkFrontApp style button variants (for main Button component)
 export const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap font-bold transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 border [&_svg]:pointer-events-none [&_svg]:shrink-0',
+  'inline-flex items-center justify-center whitespace-nowrap font-bold transition-colors focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 border [&_svg]:pointer-events-none [&_svg]:shrink-0',
   {
     variants: {
       variant: {

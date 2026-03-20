@@ -67,7 +67,7 @@ const months = computed(() => {
         :class="cn(
           'py-[16px] px-[24px] text-sm font-bold text-grey-90 text-center cursor-pointer select-none transition-colors',
           month.value === selectedMonth
-            ? 'bg-navy-90 text-grey-20 rounded hover:bg-navy-70'
+            ? 'bg-navy-90 text-grey-20 rounded-sm hover:bg-navy-70'
             : 'hover:bg-grey-30'
         )"
         @click="emit('select', month.value)"

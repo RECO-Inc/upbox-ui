@@ -59,7 +59,7 @@ const shadows = [
 
         <!-- Meta -->
         <div class="flex flex-col items-center gap-1.5 max-w-[200px]">
-          <code class="bg-white px-2 py-0.5 rounded text-size-13 text-navy-80 border border-grey-30">
+          <code class="bg-white px-2 py-0.5 rounded-sm text-size-13 text-navy-80 border border-grey-30">
             {{ shadow.token }}
           </code>
           <span class="text-[11px] text-grey-60 text-center leading-relaxed">{{ shadow.cssVar }}</span>
@@ -93,7 +93,7 @@ const shadows = [
             />
           </td>
           <td class="p-3">
-            <code class="bg-grey-20 px-2 py-0.5 rounded text-size-13 text-navy-80">{{ shadow.token }}</code>
+            <code class="bg-grey-20 px-2 py-0.5 rounded-sm text-size-13 text-navy-80">{{ shadow.token }}</code>
           </td>
           <td class="p-3 text-grey-70 font-mono text-[12px]">{{ shadow.cssVar }}</td>
         </tr>

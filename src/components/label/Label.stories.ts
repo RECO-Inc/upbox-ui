@@ -29,7 +29,7 @@ export const WithInput: Story = {
           id="email"
           type="email"
           placeholder="Enter your email"
-          class="px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
+          class="px-[12px] py-[8px] border border-grey-40 rounded-sm text-size-14 text-grey-80 focus:outline-hidden focus:border-navy-80"
         />
       </div>
     `,
@@ -47,7 +47,7 @@ export const MultipleLabels: Story = {
             id="name"
             type="text"
             placeholder="Enter your name"
-            class="px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
+            class="px-[12px] py-[8px] border border-grey-40 rounded-sm text-size-14 text-grey-80 focus:outline-hidden focus:border-navy-80"
           />
         </div>
         <div class="flex flex-col gap-[8px]">
@@ -56,7 +56,7 @@ export const MultipleLabels: Story = {
             id="email2"
             type="email"
             placeholder="Enter your email"
-            class="px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
+            class="px-[12px] py-[8px] border border-grey-40 rounded-sm text-size-14 text-grey-80 focus:outline-hidden focus:border-navy-80"
           />
         </div>
         <div class="flex flex-col gap-[8px]">
@@ -65,7 +65,7 @@ export const MultipleLabels: Story = {
             id="phone"
             type="tel"
             placeholder="Enter your phone number"
-            class="px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
+            class="px-[12px] py-[8px] border border-grey-40 rounded-sm text-size-14 text-grey-80 focus:outline-hidden focus:border-navy-80"
           />
         </div>
       </div>

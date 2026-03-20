@@ -71,7 +71,7 @@ const BAR_SCALE = 5
         class="grid grid-cols-[160px_1fr_80px] border-b border-grey-30 last:border-b-0 items-center"
       >
         <div class="p-4">
-          <code class="bg-grey-20 px-2 py-0.5 rounded text-size-13 text-navy-80">{{ item.token }}</code>
+          <code class="bg-grey-20 px-2 py-0.5 rounded-sm text-size-13 text-navy-80">{{ item.token }}</code>
         </div>
         <div class="p-4 border-l border-grey-30 flex items-center">
           <div
@@ -103,7 +103,7 @@ const BAR_SCALE = 5
       </thead>
       <tbody>
         <tr v-for="item in semanticMargin" :key="item.token" class="border-b border-grey-30">
-          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded text-size-13 text-navy-80">{{ item.token }}</code></td>
+          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded-sm text-size-13 text-navy-80">{{ item.token }}</code></td>
           <td class="p-3 text-grey-80">{{ item.ref }}</td>
           <td class="p-3 text-grey-70">{{ item.px }}px</td>
           <td class="p-3">
@@ -129,7 +129,7 @@ const BAR_SCALE = 5
       </thead>
       <tbody>
         <tr v-for="item in semanticPadding" :key="item.token" class="border-b border-grey-30">
-          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded text-size-13 text-navy-80">{{ item.token }}</code></td>
+          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded-sm text-size-13 text-navy-80">{{ item.token }}</code></td>
           <td class="p-3 text-grey-80">{{ item.ref }}</td>
           <td class="p-3 text-grey-70">{{ item.px }}px</td>
           <td class="p-3">

@@ -27,7 +27,7 @@ export const Default: Story = {
               <input
                 type="email"
                 placeholder="Enter your email"
-                class="w-full px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
+                class="w-full px-[12px] py-[8px] border border-grey-40 rounded-sm text-size-14 text-grey-80 focus:outline-hidden focus:border-navy-80"
               />
             </FormControl>
             <FormDescription>This is your registered email address.</FormDescription>
@@ -59,7 +59,7 @@ export const WithValidation: Story = {
               <input
                 type="text"
                 placeholder="Enter username"
-                class="w-full px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
+                class="w-full px-[12px] py-[8px] border border-grey-40 rounded-sm text-size-14 text-grey-80 focus:outline-hidden focus:border-navy-80"
               />
             </FormControl>
             <FormDescription>Your unique display name.</FormDescription>
@@ -73,7 +73,7 @@ export const WithValidation: Story = {
               <input
                 type="password"
                 placeholder="Enter password"
-                class="w-full px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
+                class="w-full px-[12px] py-[8px] border border-grey-40 rounded-sm text-size-14 text-grey-80 focus:outline-hidden focus:border-navy-80"
               />
             </FormControl>
             <FormDescription>Must be at least 8 characters long.</FormDescription>
@@ -82,7 +82,7 @@ export const WithValidation: Story = {
         </FormField>
         <button
           type="submit"
-          class="w-full px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded font-bold text-size-14"
+          class="w-full px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded-sm font-bold text-size-14"
         >
           Submit
         </button>
@@ -103,7 +103,7 @@ export const MultipleFields: Story = {
               <input
                 type="text"
                 placeholder="John"
-                class="w-full px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
+                class="w-full px-[12px] py-[8px] border border-grey-40 rounded-sm text-size-14 text-grey-80 focus:outline-hidden focus:border-navy-80"
               />
             </FormControl>
           </FormItem>
@@ -115,7 +115,7 @@ export const MultipleFields: Story = {
               <input
                 type="text"
                 placeholder="Doe"
-                class="w-full px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80"
+                class="w-full px-[12px] py-[8px] border border-grey-40 rounded-sm text-size-14 text-grey-80 focus:outline-hidden focus:border-navy-80"
               />
             </FormControl>
           </FormItem>
@@ -127,7 +127,7 @@ export const MultipleFields: Story = {
               <textarea
                 placeholder="Tell us about yourself"
                 rows="3"
-                class="w-full px-[12px] py-[8px] border border-grey-40 rounded text-size-14 text-grey-80 focus:outline-none focus:border-navy-80 resize-none"
+                class="w-full px-[12px] py-[8px] border border-grey-40 rounded-sm text-size-14 text-grey-80 focus:outline-hidden focus:border-navy-80 resize-none"
               />
             </FormControl>
             <FormDescription>A brief description about yourself.</FormDescription>
@@ -135,7 +135,7 @@ export const MultipleFields: Story = {
         </FormField>
         <button
           type="submit"
-          class="w-full px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded font-bold text-size-14"
+          class="w-full px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded-sm font-bold text-size-14"
         >
           Save Profile
         </button>

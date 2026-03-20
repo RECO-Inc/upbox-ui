@@ -158,7 +158,7 @@ const semanticStatus = [
       <tbody>
         <tr v-for="item in semanticCta" :key="item.token" class="border-b border-grey-30">
           <td class="p-3"><div class="w-8 h-8 rounded-md border border-grey-30" :style="{ backgroundColor: item.hex }" /></td>
-          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded text-size-13 text-navy-80">{{ item.token }}</code></td>
+          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded-sm text-size-13 text-navy-80">{{ item.token }}</code></td>
           <td class="p-3 text-grey-80">{{ item.ref }}</td>
           <td class="p-3 text-grey-70">{{ item.desc }}</td>
         </tr>
@@ -178,7 +178,7 @@ const semanticStatus = [
       <tbody>
         <tr v-for="item in semanticLabel" :key="item.token" class="border-b border-grey-30">
           <td class="p-3"><div class="w-8 h-8 rounded-md border border-grey-30" :style="{ backgroundColor: item.hex }" /></td>
-          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded text-size-13 text-navy-80">{{ item.token }}</code></td>
+          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded-sm text-size-13 text-navy-80">{{ item.token }}</code></td>
           <td class="p-3 text-grey-80">{{ item.ref }}</td>
         </tr>
       </tbody>
@@ -197,7 +197,7 @@ const semanticStatus = [
       <tbody>
         <tr v-for="item in semanticBg" :key="item.token" class="border-b border-grey-30">
           <td class="p-3"><div class="w-8 h-8 rounded-md border border-grey-30" :style="{ backgroundColor: item.hex }" /></td>
-          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded text-size-13 text-navy-80">{{ item.token }}</code></td>
+          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded-sm text-size-13 text-navy-80">{{ item.token }}</code></td>
           <td class="p-3 text-grey-80">{{ item.ref }}</td>
         </tr>
       </tbody>
@@ -217,7 +217,7 @@ const semanticStatus = [
       <tbody>
         <tr v-for="item in semanticStatus" :key="item.token" class="border-b border-grey-30">
           <td class="p-3"><div class="w-8 h-8 rounded-md border border-grey-30" :style="{ backgroundColor: item.hex }" /></td>
-          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded text-size-13 text-navy-80">{{ item.token }}</code></td>
+          <td class="p-3"><code class="bg-grey-20 px-2 py-0.5 rounded-sm text-size-13 text-navy-80">{{ item.token }}</code></td>
           <td class="p-3 text-grey-80">{{ item.ref }}</td>
           <td class="p-3 text-grey-70">{{ item.desc }}</td>
         </tr>

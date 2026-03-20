@@ -1,5 +1,6 @@
 @import "pretendard/dist/web/static/pretendard.css";
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @layer base {
   *,
@@ -8,6 +9,11 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-grey-30, currentColor);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 
   :root {
