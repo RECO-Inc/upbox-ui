@@ -9,5 +9,5 @@ export { default as SheetTitle } from './SheetTitle';
 export { default as SheetTrigger } from './SheetTrigger';
 export declare const sheetVariants: (props?: ({
     side?: "bottom" | "left" | "right" | "top" | null | undefined;
-} & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
+} & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type SheetVariants = VariantProps<typeof sheetVariants>;

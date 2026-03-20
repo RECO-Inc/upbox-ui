@@ -3,7 +3,7 @@ import { HTMLAttributes } from 'vue';
 import { VariantProps } from 'class-variance-authority';
 declare const switchVariants: (props?: ({
     size?: "small" | "large" | "regular" | null | undefined;
-} & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
+} & import('class-variance-authority/types').ClassProp) | undefined) => string;
 type SwitchVariants = VariantProps<typeof switchVariants>;
 interface Props extends SwitchRootProps {
     class?: HTMLAttributes["class"];

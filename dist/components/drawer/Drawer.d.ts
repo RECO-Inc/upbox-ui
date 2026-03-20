@@ -9,18 +9,18 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<DrawerRootProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
-    close: () => any;
-    drag: (percentageDragged: number) => any;
     "update:open": (open: boolean) => any;
     animationEnd: (open: boolean) => any;
+    drag: (percentageDragged: number) => any;
     release: (open: boolean) => any;
+    close: () => any;
     "update:activeSnapPoint": (val: string | number) => any;
 }, string, import('vue').PublicProps, Readonly<DrawerRootProps> & Readonly<{
-    onClose?: (() => any) | undefined;
-    onDrag?: ((percentageDragged: number) => any) | undefined;
     "onUpdate:open"?: ((open: boolean) => any) | undefined;
     onAnimationEnd?: ((open: boolean) => any) | undefined;
+    onDrag?: ((percentageDragged: number) => any) | undefined;
     onRelease?: ((open: boolean) => any) | undefined;
+    onClose?: (() => any) | undefined;
     "onUpdate:activeSnapPoint"?: ((val: string | number) => any) | undefined;
 }>, {
     shouldScaleBackground: boolean;

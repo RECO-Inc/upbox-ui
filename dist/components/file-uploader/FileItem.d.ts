@@ -18,24 +18,24 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-    remove: (args_0: {
-        data: UploaderFile;
-    }) => any;
     click: (args_0: {
         data: UploaderFile;
     }) => any;
     download: () => any;
+    remove: (args_0: {
+        data: UploaderFile;
+    }) => any;
     reload: (args_0: {
         data: UploaderFile;
     }) => any;
 }, string, import('vue').PublicProps, Readonly<Props> & Readonly<{
-    onRemove?: ((args_0: {
-        data: UploaderFile;
-    }) => any) | undefined;
     onClick?: ((args_0: {
         data: UploaderFile;
     }) => any) | undefined;
     onDownload?: (() => any) | undefined;
+    onRemove?: ((args_0: {
+        data: UploaderFile;
+    }) => any) | undefined;
     onReload?: ((args_0: {
         data: UploaderFile;
     }) => any) | undefined;

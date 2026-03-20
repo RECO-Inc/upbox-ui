@@ -5,5 +5,5 @@ export declare const buttonVariants: (props?: ({
     style?: "text" | "filled" | "outlined" | null | undefined;
     size?: "small" | "large" | "xsmall" | "regular" | "xlarge" | null | undefined;
     block?: boolean | null | undefined;
-} & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
+} & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type ButtonVariants = VariantProps<typeof buttonVariants>;

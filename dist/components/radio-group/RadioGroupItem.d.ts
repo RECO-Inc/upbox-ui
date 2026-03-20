@@ -4,7 +4,7 @@ import { VariantProps } from 'class-variance-authority';
 declare const radioVariants: (props?: ({
     size?: "small" | "large" | "regular" | null | undefined;
     error?: boolean | null | undefined;
-} & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
+} & import('class-variance-authority/types').ClassProp) | undefined) => string;
 type RadioVariants = VariantProps<typeof radioVariants>;
 interface Props extends RadioGroupItemProps {
     class?: HTMLAttributes["class"];
