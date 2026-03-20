@@ -1,8 +1,6 @@
 import type { Preview } from '@storybook/vue3-vite'
 import { setup } from '@storybook/vue3-vite'
 import { createI18n } from 'vue-i18n'
-import 'pretendard/dist/web/static/pretendard.css'
-import '../src/tokens.css'
 import './storybook.css'
 
 const i18n = createI18n({
