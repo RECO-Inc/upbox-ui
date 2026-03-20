@@ -23,12 +23,14 @@
     "./tailwind-preset": {
       "import": "./tailwind-preset.mjs",
       "require": "./tailwind-preset.cjs"
-    }
+    },
+    "./tailwind-theme.css": "./tailwind-theme.css"
   },
   "files": [
     "dist",
     "tailwind-preset.cjs",
-    "tailwind-preset.mjs"
+    "tailwind-preset.mjs",
+    "tailwind-theme.css"
   ],
   "sideEffects": [
     "*.css"
@@ -52,7 +54,6 @@
     "lucide-vue-next": "^0.546.0",
     "reka-ui": "^2.6.0",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss-animate": "^1.0.7",
     "vaul-vue": "^0.4.1",
     "vee-validate": "^4.15.1",
     "vue-sonner": "^2.0.9"
@@ -64,17 +65,16 @@
     "@storybook/addon-onboarding": "^10.3.0",
     "@storybook/addon-vitest": "^10.3.0",
     "@storybook/vue3-vite": "^10.3.0",
+    "@tailwindcss/vite": "^4.2.2",
     "@types/node": "^24.6.0",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitest/browser-playwright": "^4.0.18",
     "@vitest/coverage-v8": "^4.0.18",
     "@vue/tsconfig": "^0.8.1",
-    "autoprefixer": "^10.4.21",
     "playwright": "^1.58.2",
-    "postcss": "^8.5.6",
     "pretendard": "^1.3.9",
     "storybook": "^10.3.0",
-    "tailwindcss": "^3.4.18",
+    "tailwindcss": "^4.2.2",
     "typescript": "~5.9.3",
     "vite": "^7.1.7",
     "vite-plugin-dts": "^4.5.3",

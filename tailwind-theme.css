@@ -1,98 +1,45 @@
-@import "pretendard/dist/web/static/pretendard.css";
-@import "tailwindcss";
-
-@layer base {
-  :root {
-    /* Shadcn UI semantic colors */
-    --radius: 0.125rem;
-    --background: var(--color-grey-10);
-    --foreground: var(--color-grey-100);
-    --popover: var(--color-grey-10);
-    --popover-foreground: var(--color-grey-100);
-    --accent: var(--color-grey-30);
-    --accent-foreground: var(--color-grey-100);
-    --muted: var(--color-grey-30);
-    --muted-foreground: var(--color-grey-60);
-    --border: var(--color-grey-40);
-
-    /* CTA colors */
-    --color-cta-primary: var(--color-navy-80);
-    --color-cta-destructive: var(--color-red-80);
-    --color-cta-secondary: var(--color-grey-60);
-    --color-cta-tertiary: var(--color-grey-30);
-
-    /* Label colors */
-    --color-label-1: var(--color-grey-60);
-    --color-label-2: var(--color-grey-90);
-
-    /* Background colors */
-    --color-bg-1: var(--color-grey-20);
-    --color-bg-2: var(--color-grey-30);
-
-    /* Status colors */
-    --color-status-informative: var(--color-blue-80);
-    --color-status-positive: var(--color-green-80);
-    --color-status-negative: var(--color-red-80);
-    --color-status-warning: var(--color-orange-80);
-  }
-
-  .dark {
-    --color-grey-10: #0D152A;
-    --color-grey-20: #303445;
-    --color-grey-30: #555C6C;
-    --color-grey-40: #6F7789;
-    --color-grey-50: #8E94A3;
-    --color-grey-60: #AFB4BF;
-    --color-grey-70: #D3D6DE;
-    --color-grey-80: #ECEDF0;
-    --color-grey-90: #F8F8F9;
-    --color-grey-100: #FFFFFF;
-
-    --color-navy-20: #081E38;
-    --color-navy-30: #1D3756;
-    --color-navy-40: #264870;
-    --color-navy-50: #385B85;
-    --color-navy-60: #4D7099;
-    --color-navy-70: #85A2C7;
-    --color-navy-80: #C5D6EC;
-    --color-navy-90: #DAE7F5;
-    --color-navy-100: #F4F7FC;
-  }
-}
+/* @reco-inc/upbox-ui Tailwind v4 Theme
+ * Import this file in your project's CSS entry:
+ *   @import "@reco-inc/upbox-ui/tailwind-theme.css";
+ *
+ * This registers all design tokens as Tailwind v4 theme values
+ * and provides semantic typography @utility classes.
+ * Your project must process this file with Tailwind v4.
+ */
 
 @theme {
   /* Font family */
   --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 
-  /* Text sizes */
-  --text-size-9: 0.56rem;
-  --text-size-9--line-height: 0.84rem;
-  --text-size-10: 0.62rem;
-  --text-size-10--line-height: 0.92rem;
-  --text-size-11: 0.688rem;
-  --text-size-11--line-height: 1rem;
-  --text-size-12: 0.750rem;
-  --text-size-12--line-height: 1rem;
-  --text-size-13: 0.813rem;
-  --text-size-13--line-height: 1.250rem;
-  --text-size-14: 0.875rem;
-  --text-size-14--line-height: 1.250rem;
-  --text-size-15: 0.938rem;
-  --text-size-15--line-height: 1.5rem;
-  --text-size-16: 1rem;
-  --text-size-16--line-height: 1.5rem;
-  --text-size-18: 1.125rem;
-  --text-size-18--line-height: 1.75rem;
-  --text-size-20: 1.250rem;
-  --text-size-20--line-height: 1.75rem;
-  --text-size-22: 1.375rem;
-  --text-size-22--line-height: 2rem;
-  --text-size-24: 1.5rem;
-  --text-size-24--line-height: 2rem;
-  --text-size-28: 1.75rem;
-  --text-size-28--line-height: 2.25rem;
-  --text-size-32: 2rem;
-  --text-size-32--line-height: 3rem;
+  /* Font sizes */
+  --text-size-9: var(--text-size-9);
+  --text-size-9--line-height: var(--text-size-9--line-height);
+  --text-size-10: var(--text-size-10);
+  --text-size-10--line-height: var(--text-size-10--line-height);
+  --text-size-11: var(--text-size-11);
+  --text-size-11--line-height: var(--text-size-11--line-height);
+  --text-size-12: var(--text-size-12);
+  --text-size-12--line-height: var(--text-size-12--line-height);
+  --text-size-13: var(--text-size-13);
+  --text-size-13--line-height: var(--text-size-13--line-height);
+  --text-size-14: var(--text-size-14);
+  --text-size-14--line-height: var(--text-size-14--line-height);
+  --text-size-15: var(--text-size-15);
+  --text-size-15--line-height: var(--text-size-15--line-height);
+  --text-size-16: var(--text-size-16);
+  --text-size-16--line-height: var(--text-size-16--line-height);
+  --text-size-18: var(--text-size-18);
+  --text-size-18--line-height: var(--text-size-18--line-height);
+  --text-size-20: var(--text-size-20);
+  --text-size-20--line-height: var(--text-size-20--line-height);
+  --text-size-22: var(--text-size-22);
+  --text-size-22--line-height: var(--text-size-22--line-height);
+  --text-size-24: var(--text-size-24);
+  --text-size-24--line-height: var(--text-size-24--line-height);
+  --text-size-28: var(--text-size-28);
+  --text-size-28--line-height: var(--text-size-28--line-height);
+  --text-size-32: var(--text-size-32);
+  --text-size-32--line-height: var(--text-size-32--line-height);
 
   /* Font weights */
   --font-weight-thin: 100;
@@ -106,111 +53,100 @@
   --font-weight-black: 900;
 
   /* Colors - Grey */
-  --color-grey-10: #FFFFFF;
-  --color-grey-20: #F8F8F9;
-  --color-grey-30: #ECEDF0;
-  --color-grey-40: #D3D6DE;
-  --color-grey-50: #AFB4BF;
-  --color-grey-60: #8E94A3;
-  --color-grey-70: #6F7789;
-  --color-grey-80: #555C6C;
-  --color-grey-90: #303445;
-  --color-grey-100: #0D152A;
+  --color-grey-10: var(--color-grey-10);
+  --color-grey-20: var(--color-grey-20);
+  --color-grey-30: var(--color-grey-30);
+  --color-grey-40: var(--color-grey-40);
+  --color-grey-50: var(--color-grey-50);
+  --color-grey-60: var(--color-grey-60);
+  --color-grey-70: var(--color-grey-70);
+  --color-grey-80: var(--color-grey-80);
+  --color-grey-90: var(--color-grey-90);
+  --color-grey-100: var(--color-grey-100);
 
   /* Colors - Navy */
-  --color-navy-20: #F4F7FC;
-  --color-navy-30: #DAE7F5;
-  --color-navy-40: #C5D6EC;
-  --color-navy-50: #85A2C7;
-  --color-navy-60: #4D7099;
-  --color-navy-70: #385B85;
-  --color-navy-80: #264870;
-  --color-navy-90: #1D3756;
-  --color-navy-100: #081E38;
+  --color-navy-20: var(--color-navy-20);
+  --color-navy-30: var(--color-navy-30);
+  --color-navy-40: var(--color-navy-40);
+  --color-navy-50: var(--color-navy-50);
+  --color-navy-60: var(--color-navy-60);
+  --color-navy-70: var(--color-navy-70);
+  --color-navy-80: var(--color-navy-80);
+  --color-navy-90: var(--color-navy-90);
+  --color-navy-100: var(--color-navy-100);
 
   /* Colors - Blue */
-  --color-blue-20: #F5F9FF;
-  --color-blue-30: #E1EDFF;
-  --color-blue-40: #B9D5FF;
-  --color-blue-50: #93BEFF;
-  --color-blue-60: #64A2FF;
-  --color-blue-70: #3D8BFF;
-  --color-blue-80: #0066FF;
-  --color-blue-90: #004FC5;
-  --color-blue-100: #003C96;
+  --color-blue-20: var(--color-blue-20);
+  --color-blue-30: var(--color-blue-30);
+  --color-blue-40: var(--color-blue-40);
+  --color-blue-50: var(--color-blue-50);
+  --color-blue-60: var(--color-blue-60);
+  --color-blue-70: var(--color-blue-70);
+  --color-blue-80: var(--color-blue-80);
+  --color-blue-90: var(--color-blue-90);
+  --color-blue-100: var(--color-blue-100);
 
   /* Colors - Green */
-  --color-green-20: #F1F9F6;
-  --color-green-30: #DBEEE9;
-  --color-green-40: #B3D7CC;
-  --color-green-50: #8EC0B1;
-  --color-green-60: #66AF99;
-  --color-green-70: #4DA288;
-  --color-green-80: #1A8766;
-  --color-green-90: #107B5A;
-  --color-green-100: #006E4D;
+  --color-green-20: var(--color-green-20);
+  --color-green-30: var(--color-green-30);
+  --color-green-40: var(--color-green-40);
+  --color-green-50: var(--color-green-50);
+  --color-green-60: var(--color-green-60);
+  --color-green-70: var(--color-green-70);
+  --color-green-80: var(--color-green-80);
+  --color-green-90: var(--color-green-90);
+  --color-green-100: var(--color-green-100);
 
   /* Colors - Red */
-  --color-red-20: #FFF6F6;
-  --color-red-30: #FBEAEA;
-  --color-red-40: #FDC9C9;
-  --color-red-50: #F8A8A8;
-  --color-red-60: #F27D7E;
-  --color-red-70: #ED4242;
-  --color-red-80: #E11D1D;
-  --color-red-90: #C21919;
-  --color-red-100: #851111;
+  --color-red-20: var(--color-red-20);
+  --color-red-30: var(--color-red-30);
+  --color-red-40: var(--color-red-40);
+  --color-red-50: var(--color-red-50);
+  --color-red-60: var(--color-red-60);
+  --color-red-70: var(--color-red-70);
+  --color-red-80: var(--color-red-80);
+  --color-red-90: var(--color-red-90);
+  --color-red-100: var(--color-red-100);
 
   /* Colors - Orange */
-  --color-orange-20: #FFF2E4;
-  --color-orange-30: #FFE9D1;
-  --color-orange-40: #FFDBB3;
-  --color-orange-50: #FFBB63;
-  --color-orange-60: #FFA037;
-  --color-orange-70: #F68511;
-  --color-orange-80: #E46F00;
-  --color-orange-90: #CB5D00;
-  --color-orange-100: #B14C00;
+  --color-orange-20: var(--color-orange-20);
+  --color-orange-30: var(--color-orange-30);
+  --color-orange-40: var(--color-orange-40);
+  --color-orange-50: var(--color-orange-50);
+  --color-orange-60: var(--color-orange-60);
+  --color-orange-70: var(--color-orange-70);
+  --color-orange-80: var(--color-orange-80);
+  --color-orange-90: var(--color-orange-90);
+  --color-orange-100: var(--color-orange-100);
 
-  /* Semantic colors */
-  --color-cta-primary: var(--color-navy-80);
-  --color-cta-destructive: var(--color-red-80);
-  --color-cta-secondary: var(--color-grey-60);
-  --color-cta-tertiary: var(--color-grey-30);
-  --color-label-1: var(--color-grey-60);
-  --color-label-2: var(--color-grey-90);
-  --color-bg-1: var(--color-grey-20);
-  --color-bg-2: var(--color-grey-30);
-  --color-status-informative: var(--color-blue-80);
-  --color-status-positive: var(--color-green-80);
-  --color-status-negative: var(--color-red-80);
-  --color-status-warning: var(--color-orange-80);
+  /* Semantic colors - CTA */
+  --color-cta-primary: var(--color-cta-primary);
+  --color-cta-destructive: var(--color-cta-destructive);
+  --color-cta-secondary: var(--color-cta-secondary);
+  --color-cta-tertiary: var(--color-cta-tertiary);
 
-  /* Spacing */
+  /* Semantic colors - Label */
+  --color-label-1: var(--color-label-1);
+  --color-label-2: var(--color-label-2);
+
+  /* Semantic colors - Background */
+  --color-bg-1: var(--color-bg-1);
+  --color-bg-2: var(--color-bg-2);
+
+  /* Semantic colors - Status */
+  --color-status-informative: var(--color-status-informative);
+  --color-status-positive: var(--color-status-positive);
+  --color-status-negative: var(--color-status-negative);
+  --color-status-warning: var(--color-status-warning);
+
+  /* Spacing base unit */
   --spacing: 0.25rem;
-  --space-2: 0.125rem;
-  --space-4: 0.25rem;
-  --space-6: 0.375rem;
-  --space-8: 0.5rem;
-  --space-12: 0.75rem;
-  --space-16: 1rem;
-  --space-20: 1.25rem;
-  --space-24: 1.5rem;
-  --space-28: 1.75rem;
-  --space-32: 2rem;
-  --space-36: 2.25rem;
-  --space-40: 2.5rem;
-  --space-48: 3rem;
-  --space-56: 3.5rem;
-  --space-64: 4rem;
-  --space-80: 5rem;
-  --space-112: 7rem;
 
   /* Shadows */
-  --shadow-small: 0px 1px 2px 0px rgba(13, 21, 42, 0.08);
-  --shadow-regular: 0px 2px 4px 0px rgba(13, 21, 42, 0.08);
-  --shadow-medium: 0px 4px 8px 0px rgba(13, 21, 42, 0.08);
-  --shadow-large: 0px 8px 16px 0px rgba(13, 21, 42, 0.08);
+  --shadow-small: var(--shadow-small);
+  --shadow-regular: var(--shadow-regular);
+  --shadow-medium: var(--shadow-medium);
+  --shadow-large: var(--shadow-large);
 
   /* Border radius */
   --radius-lg: 0.125rem;

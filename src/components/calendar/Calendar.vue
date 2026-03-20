@@ -258,6 +258,6 @@ function onDone() {
 
 <style scoped>
 .calendar-wrapper {
-  @apply bg-grey-10;
+  background-color: var(--color-grey-10);
 }
 </style>

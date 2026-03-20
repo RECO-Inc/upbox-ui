@@ -1,5 +1,3 @@
-import tailwindcssAnimate from 'tailwindcss-animate'
-
 export default {
   darkMode: ['class'],
   theme: {
@@ -238,5 +236,5 @@ export default {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [],
 }
