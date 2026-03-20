@@ -20,7 +20,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
 <template>
   <div
     v-if="collapsible === 'none'"
-    :class="cn('flex h-full w-[--sidebar-width] flex-col bg-grey-10 text-grey-100', props.class)"
+    :class="cn('flex h-full w-(--sidebar-width) flex-col bg-grey-10 text-grey-100', props.class)"
     v-bind="$attrs"
   >
     <slot />
@@ -31,7 +31,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
       data-sidebar="sidebar"
       data-mobile="true"
       :side="side"
-      class="w-[--sidebar-width] bg-grey-10 p-0 text-grey-100 [&>button]:hidden"
+      class="w-(--sidebar-width) bg-grey-10 p-0 text-grey-100 [&>button]:hidden"
       :style="{
         '--sidebar-width': SIDEBAR_WIDTH_MOBILE,
       }"
@@ -52,24 +52,24 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
     <!-- This is what handles the sidebar gap on desktop  -->
     <div
       :class="cn(
-        'duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear',
+        'duration-200 relative h-svh w-(--sidebar-width) bg-transparent transition-[width] ease-linear',
         'group-data-[collapsible=offcanvas]:w-0',
         'group-data-[side=right]:rotate-180',
         variant === 'floating' || variant === 'inset'
           ? 'group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]'
-          : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]',
+          : 'group-data-[collapsible=icon]:w-(--sidebar-width-icon)',
       )"
     />
     <div
       :class="cn(
-        'duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex',
+        'duration-200 fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] ease-linear md:flex',
         side === 'left'
           ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
           : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
         // Adjust the padding for floating and inset variants.
         variant === 'floating' || variant === 'inset'
           ? 'p-[8px] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+_2px)]'
-          : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]',
+          : 'group-data-[collapsible=icon]:w-(--sidebar-width-icon)',
         props.class,
       )"
       v-bind="$attrs"

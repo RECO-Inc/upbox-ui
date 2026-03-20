@@ -4063,7 +4063,7 @@ const xl = /* @__PURE__ */ l({
           default: i(() => [
             x(e(Sr)),
             x(e(ka), {
-              class: y(e(p)("p-[4px]", t.position === "popper" && "h-[--reka-select-trigger-height] w-full min-w-[--reka-select-trigger-width]"))
+              class: y(e(p)("p-[4px]", t.position === "popper" && "h-(--reka-select-trigger-height) w-full min-w-(--reka-select-trigger-width)"))
             }, {
               default: i(() => [
                 d(u.$slots, "default")
@@ -4466,7 +4466,7 @@ const xl = /* @__PURE__ */ l({
     const s = t, { isMobile: a, state: o, openMobile: n, setOpenMobile: c } = me();
     return (u, m) => t.collapsible === "none" ? (r(), g("div", h({
       key: 0,
-      class: e(p)("flex h-full w-[--sidebar-width] flex-col bg-grey-10 text-grey-100", s.class)
+      class: e(p)("flex h-full w-(--sidebar-width) flex-col bg-grey-10 text-grey-100", s.class)
     }, u.$attrs), [
       d(u.$slots, "default")
     ], 16)) : e(a) ? (r(), f(e(zr), h({
@@ -4478,7 +4478,7 @@ const xl = /* @__PURE__ */ l({
           "data-sidebar": "sidebar",
           "data-mobile": "true",
           side: t.side,
-          class: "w-[--sidebar-width] bg-grey-10 p-0 text-grey-100 [&>button]:hidden",
+          class: "w-(--sidebar-width) bg-grey-10 p-0 text-grey-100 [&>button]:hidden",
           style: Me({
             "--sidebar-width": e(jr)
           })
@@ -4502,18 +4502,18 @@ const xl = /* @__PURE__ */ l({
     }, [
       w("div", {
         class: y(e(p)(
-          "duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear",
+          "duration-200 relative h-svh w-(--sidebar-width) bg-transparent transition-[width] ease-linear",
           "group-data-[collapsible=offcanvas]:w-0",
           "group-data-[side=right]:rotate-180",
-          t.variant === "floating" || t.variant === "inset" ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]" : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]"
+          t.variant === "floating" || t.variant === "inset" ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]" : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
         ))
       }, null, 2),
       w("div", h({
         class: e(p)(
-          "duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex",
+          "duration-200 fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] ease-linear md:flex",
           t.side === "left" ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]" : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
           // Adjust the padding for floating and inset variants.
-          t.variant === "floating" || t.variant === "inset" ? "p-[8px] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+_2px)]" : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]",
+          t.variant === "floating" || t.variant === "inset" ? "p-[8px] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+_2px)]" : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)",
           s.class
         )
       }, u.$attrs), [
@@ -4961,7 +4961,7 @@ const xl = /* @__PURE__ */ l({
         "data-sidebar": "menu-skeleton-icon"
       })) : k("", !0),
       x(e(Ae), {
-        class: "h-[16px] flex-1 max-w-[--skeleton-width]",
+        class: "h-[16px] flex-1 max-w-(--skeleton-width)",
         "data-sidebar": "menu-skeleton-text",
         style: Me({ "--skeleton-width": a.value })
       }, null, 8, ["style"])
