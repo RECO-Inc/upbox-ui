@@ -16,7 +16,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
     },
-    "./style.css": "./dist/upbox-ui.css",
+    "./style.css": "./src/style.css",
     "./global": {
       "types": "./dist/global.d.ts"
     },
@@ -28,6 +28,7 @@
   },
   "files": [
     "dist",
+    "src/style.css",
     "tailwind-preset.cjs",
     "tailwind-preset.mjs",
     "tailwind-theme.css"
