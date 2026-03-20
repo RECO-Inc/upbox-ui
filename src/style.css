@@ -2,6 +2,14 @@
 @import "tailwindcss";
 
 @layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-grey-30, currentColor);
+  }
+
   :root {
     /* Shadcn UI semantic colors */
     --radius: 0.125rem;
