@@ -28,6 +28,7 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontSize: {
+        // Primitive sizes
         'size-9': ['var(--text-size-9)', { lineHeight: 'var(--text-size-9--line-height)' }],
         'size-10': ['var(--text-size-10)', { lineHeight: 'var(--text-size-10--line-height)' }],
         'size-11': ['var(--text-size-11)', { lineHeight: 'var(--text-size-11--line-height)' }],
@@ -42,6 +43,59 @@ export default {
         'size-24': ['var(--text-size-24)', { lineHeight: 'var(--text-size-24--line-height)' }],
         'size-28': ['var(--text-size-28)', { lineHeight: 'var(--text-size-28--line-height)' }],
         'size-32': ['var(--text-size-32)', { lineHeight: 'var(--text-size-32--line-height)' }],
+
+        // Semantic Typography - Page Title (Bold)
+        'page-title-1': ['var(--text-size-28)', { lineHeight: 'var(--text-size-28--line-height)', fontWeight: '700' }],
+        'page-title-2': ['var(--text-size-24)', { lineHeight: 'var(--text-size-24--line-height)', fontWeight: '700' }],
+        'page-title-3': ['var(--text-size-22)', { lineHeight: 'var(--text-size-22--line-height)', fontWeight: '700' }],
+        'page-title-4': ['var(--text-size-20)', { lineHeight: 'var(--text-size-20--line-height)', fontWeight: '700' }],
+
+        // Semantic Typography - Headline (Bold)
+        'h1': ['var(--text-size-24)', { lineHeight: 'var(--text-size-24--line-height)', fontWeight: '700' }],
+        'h2': ['var(--text-size-22)', { lineHeight: 'var(--text-size-22--line-height)', fontWeight: '700' }],
+        'h3': ['var(--text-size-20)', { lineHeight: 'var(--text-size-20--line-height)', fontWeight: '700' }],
+        'h4': ['var(--text-size-18)', { lineHeight: 'var(--text-size-18--line-height)', fontWeight: '700' }],
+        'h5': ['var(--text-size-16)', { lineHeight: 'var(--text-size-16--line-height)', fontWeight: '700' }],
+
+        // Semantic Typography - Title (Semi-Bold)
+        'title-1': ['var(--text-size-20)', { lineHeight: 'var(--text-size-20--line-height)', fontWeight: '600' }],
+        'title-2': ['var(--text-size-18)', { lineHeight: 'var(--text-size-18--line-height)', fontWeight: '600' }],
+        'title-3': ['var(--text-size-16)', { lineHeight: 'var(--text-size-16--line-height)', fontWeight: '600' }],
+        'title-4': ['var(--text-size-15)', { lineHeight: 'var(--text-size-15--line-height)', fontWeight: '600' }],
+
+        // Semantic Typography - Label (Bold)
+        'label-1': ['var(--text-size-16)', { lineHeight: 'var(--text-size-16--line-height)', fontWeight: '700' }],
+        'label-2': ['var(--text-size-15)', { lineHeight: 'var(--text-size-15--line-height)', fontWeight: '700' }],
+        'label-3': ['var(--text-size-14)', { lineHeight: 'var(--text-size-14--line-height)', fontWeight: '700' }],
+        'label-4': ['var(--text-size-13)', { lineHeight: 'var(--text-size-13--line-height)', fontWeight: '700' }],
+        'label-5': ['var(--text-size-12)', { lineHeight: 'var(--text-size-12--line-height)', fontWeight: '700' }],
+        'label-6': ['var(--text-size-11)', { lineHeight: 'var(--text-size-11--line-height)', fontWeight: '700' }],
+
+        // Semantic Typography - Body (Regular)
+        'body-1': ['var(--text-size-16)', { lineHeight: 'var(--text-size-16--line-height)', fontWeight: '400' }],
+        'body-2': ['var(--text-size-15)', { lineHeight: 'var(--text-size-15--line-height)', fontWeight: '400' }],
+        'body-3': ['var(--text-size-14)', { lineHeight: 'var(--text-size-14--line-height)', fontWeight: '400' }],
+        'body-4': ['var(--text-size-13)', { lineHeight: 'var(--text-size-13--line-height)', fontWeight: '400' }],
+        'body-5': ['var(--text-size-12)', { lineHeight: 'var(--text-size-12--line-height)', fontWeight: '400' }],
+
+        // Semantic Typography - Body Semi-Bold
+        'body-1-sb': ['var(--text-size-16)', { lineHeight: 'var(--text-size-16--line-height)', fontWeight: '600' }],
+        'body-2-sb': ['var(--text-size-15)', { lineHeight: 'var(--text-size-15--line-height)', fontWeight: '600' }],
+        'body-3-sb': ['var(--text-size-14)', { lineHeight: 'var(--text-size-14--line-height)', fontWeight: '600' }],
+        'body-4-sb': ['var(--text-size-13)', { lineHeight: 'var(--text-size-13--line-height)', fontWeight: '600' }],
+        'body-5-sb': ['var(--text-size-12)', { lineHeight: 'var(--text-size-12--line-height)', fontWeight: '600' }],
+
+        // Semantic Typography - Body Bold
+        'body-1-b': ['var(--text-size-16)', { lineHeight: 'var(--text-size-16--line-height)', fontWeight: '700' }],
+        'body-2-b': ['var(--text-size-15)', { lineHeight: 'var(--text-size-15--line-height)', fontWeight: '700' }],
+        'body-3-b': ['var(--text-size-14)', { lineHeight: 'var(--text-size-14--line-height)', fontWeight: '700' }],
+        'body-4-b': ['var(--text-size-13)', { lineHeight: 'var(--text-size-13--line-height)', fontWeight: '700' }],
+        'body-5-b': ['var(--text-size-12)', { lineHeight: 'var(--text-size-12--line-height)', fontWeight: '700' }],
+
+        // Semantic Typography - Caption (Regular)
+        'caption-1': ['var(--text-size-13)', { lineHeight: 'var(--text-size-13--line-height)', fontWeight: '400' }],
+        'caption-2': ['var(--text-size-12)', { lineHeight: 'var(--text-size-12--line-height)', fontWeight: '400' }],
+        'caption-3': ['var(--text-size-11)', { lineHeight: 'var(--text-size-11--line-height)', fontWeight: '400' }],
       },
       fontWeight: {
         thin: 'var(--font-weight-thin)',
