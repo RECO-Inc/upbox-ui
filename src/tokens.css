@@ -132,8 +132,9 @@
   --color-label-2: var(--color-grey-90);
 
   /* Background colors */
-  --color-bg-1: var(--color-grey-20);
-  --color-bg-2: var(--color-grey-30);
+  --color-bg-1: var(--color-grey-10);
+  --color-bg-2: var(--color-grey-20);
+  --color-bg-3: var(--color-grey-30);
 
   /* Status colors */
   --color-status-informative: var(--color-blue-80);

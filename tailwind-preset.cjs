@@ -188,6 +188,7 @@ module.exports = {
         bg: {
           1: 'var(--color-bg-1)',
           2: 'var(--color-bg-2)',
+          3: 'var(--color-bg-3)',
         },
         status: {
           informative: 'var(--color-status-informative)',

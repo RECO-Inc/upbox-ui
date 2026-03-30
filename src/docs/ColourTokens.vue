@@ -100,8 +100,9 @@ const semanticLabel = [
 ]
 
 const semanticBg = [
-  { token: 'background/bg1', hex: '#F8F8F9', ref: 'grey-20' },
-  { token: 'background/bg2', hex: '#ECEDF0', ref: 'grey-30' },
+  { token: 'background/bg1', hex: '#FFFFFF', ref: 'grey-10' },
+  { token: 'background/bg2', hex: '#F8F8F9', ref: 'grey-20' },
+  { token: 'background/bg3', hex: '#ECEDF0', ref: 'grey-30' },
 ]
 
 const semanticStatus = [
