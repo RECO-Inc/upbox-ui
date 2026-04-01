@@ -78,10 +78,10 @@ export const IconOnly: Story = {
     components: { Fab, Plus, ChevronUp },
     template: `
       <div class="flex flex-wrap gap-[12px] items-center">
-        <Fab fabStyle="basic"><Plus /></Fab>
-        <Fab fabStyle="colorfilled"><Plus /></Fab>
-        <Fab fabStyle="basic"><ChevronUp /></Fab>
-        <Fab fabStyle="colorfilled"><ChevronUp /></Fab>
+        <Fab fabStyle="basic" icon-only><Plus /></Fab>
+        <Fab fabStyle="colorfilled" icon-only><Plus /></Fab>
+        <Fab fabStyle="basic" icon-only><ChevronUp /></Fab>
+        <Fab fabStyle="colorfilled" icon-only><ChevronUp /></Fab>
       </div>
     `,
   }),
