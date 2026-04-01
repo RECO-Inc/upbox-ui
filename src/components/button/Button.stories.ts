@@ -87,7 +87,7 @@ export const Loading: Story = {
   render: (args) => ({
     components: { Button },
     setup: () => ({ args }),
-    template: '<Button v-bind="args">Button</Button>',
+    template: '<Button v-bind="args" />',
   }),
 }
 
