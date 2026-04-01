@@ -2,7 +2,7 @@ import { StoryObj } from '@storybook/vue3-vite';
 declare const meta: {
     title: string;
     component: {
-        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('./Button').EnhancedButtonProps> & Readonly<{
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('./Button').ButtonProps> & Readonly<{
             onClick?: ((event: MouseEvent) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
             click: (event: MouseEvent) => any;
@@ -11,9 +11,9 @@ declare const meta: {
             type: "button" | "submit" | "reset";
             size: "xsmall" | "small" | "regular" | "large" | "xlarge";
             loading: boolean;
-            variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
+            variant: "primary" | "destructive" | "secondary" | "tertiary";
             block: boolean;
-            buttonStyle: "filled" | "outlined" | "text";
+            buttonStyle: "filled" | "outlined";
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLButtonElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -21,21 +21,21 @@ declare const meta: {
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<import('./Button').EnhancedButtonProps> & Readonly<{
+        }, Readonly<import('./Button').ButtonProps> & Readonly<{
             onClick?: ((event: MouseEvent) => any) | undefined;
         }>, {}, {}, {}, {}, {
             disabled: boolean;
             type: "button" | "submit" | "reset";
             size: "xsmall" | "small" | "regular" | "large" | "xlarge";
             loading: boolean;
-            variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
+            variant: "primary" | "destructive" | "secondary" | "tertiary";
             block: boolean;
-            buttonStyle: "filled" | "outlined" | "text";
+            buttonStyle: "filled" | "outlined";
         }>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('vue').ComponentOptionsBase<Readonly<import('./Button').EnhancedButtonProps> & Readonly<{
+    } & import('vue').ComponentOptionsBase<Readonly<import('./Button').ButtonProps> & Readonly<{
         onClick?: ((event: MouseEvent) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         click: (event: MouseEvent) => any;
@@ -44,9 +44,9 @@ declare const meta: {
         type: "button" | "submit" | "reset";
         size: "xsmall" | "small" | "regular" | "large" | "xlarge";
         loading: boolean;
-        variant: "primary" | "error" | "positive" | "usually" | "assistant" | "info";
+        variant: "primary" | "destructive" | "secondary" | "tertiary";
         block: boolean;
-        buttonStyle: "filled" | "outlined" | "text";
+        buttonStyle: "filled" | "outlined";
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             default?(_: {}): any;
@@ -84,7 +84,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export declare const Primary: Story;
 export declare const Variants: Story;
-export declare const Styles: Story;
 export declare const Sizes: Story;
 export declare const Loading: Story;
 export declare const Disabled: Story;

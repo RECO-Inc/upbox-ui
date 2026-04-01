@@ -11,11 +11,11 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'error', 'positive', 'usually', 'assistant', 'info'],
+      options: ['primary', 'destructive', 'secondary', 'tertiary'],
     },
     buttonStyle: {
       control: 'select',
-      options: ['filled', 'outlined', 'text'],
+      options: ['filled', 'outlined'],
     },
     size: {
       control: 'select',
@@ -43,26 +43,25 @@ export const Variants: Story = {
   render: () => ({
     components: { Button },
     template: `
-      <div class="flex flex-wrap gap-[12px] items-center">
-        <Button variant="primary">Primary</Button>
-        <Button variant="error">Error</Button>
-        <Button variant="positive">Positive</Button>
-        <Button variant="usually">Usually</Button>
-        <Button variant="assistant">Assistant</Button>
-        <Button variant="info">Info</Button>
-      </div>
-    `,
-  }),
-}
-
-export const Styles: Story = {
-  render: () => ({
-    components: { Button },
-    template: `
-      <div class="flex flex-wrap gap-[12px] items-center">
-        <Button variant="primary" buttonStyle="filled">Filled</Button>
-        <Button variant="primary" buttonStyle="outlined">Outlined</Button>
-        <Button variant="primary" buttonStyle="text">Text</Button>
+      <div class="flex flex-col gap-[24px]">
+        <div>
+          <p class="text-size-13 text-grey-60 mb-[8px]">Filled</p>
+          <div class="flex flex-wrap gap-[12px] items-center">
+            <Button variant="primary">Primary</Button>
+            <Button variant="destructive">Destructive</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="tertiary">Tertiary</Button>
+          </div>
+        </div>
+        <div>
+          <p class="text-size-13 text-grey-60 mb-[8px]">Outlined</p>
+          <div class="flex flex-wrap gap-[12px] items-center">
+            <Button variant="primary" buttonStyle="outlined">Primary</Button>
+            <Button variant="destructive" buttonStyle="outlined">Destructive</Button>
+            <Button variant="secondary" buttonStyle="outlined">Secondary</Button>
+            <Button variant="tertiary" buttonStyle="outlined">Tertiary</Button>
+          </div>
+        </div>
       </div>
     `,
   }),
@@ -93,11 +92,30 @@ export const Loading: Story = {
 }
 
 export const Disabled: Story = {
-  args: { variant: 'primary', disabled: true },
-  render: (args) => ({
+  render: () => ({
     components: { Button },
-    setup: () => ({ args }),
-    template: '<Button v-bind="args">Disabled</Button>',
+    template: `
+      <div class="flex flex-col gap-[24px]">
+        <div>
+          <p class="text-size-13 text-grey-60 mb-[8px]">Filled</p>
+          <div class="flex flex-wrap gap-[12px] items-center">
+            <Button variant="primary" disabled>Primary</Button>
+            <Button variant="destructive" disabled>Destructive</Button>
+            <Button variant="secondary" disabled>Secondary</Button>
+            <Button variant="tertiary" disabled>Tertiary</Button>
+          </div>
+        </div>
+        <div>
+          <p class="text-size-13 text-grey-60 mb-[8px]">Outlined</p>
+          <div class="flex flex-wrap gap-[12px] items-center">
+            <Button variant="primary" buttonStyle="outlined" disabled>Primary</Button>
+            <Button variant="destructive" buttonStyle="outlined" disabled>Destructive</Button>
+            <Button variant="secondary" buttonStyle="outlined" disabled>Secondary</Button>
+            <Button variant="tertiary" buttonStyle="outlined" disabled>Tertiary</Button>
+          </div>
+        </div>
+      </div>
+    `,
   }),
 }
 
