@@ -49,6 +49,7 @@
     "vue-i18n": "^11.0.0"
   },
   "dependencies": {
+    "@figma/code-connect": "^1.4.2",
     "@internationalized/date": "^3.10.0",
     "@vueuse/core": "^14.0.0",
     "class-variance-authority": "^0.7.1",
