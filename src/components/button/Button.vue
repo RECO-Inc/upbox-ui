@@ -101,7 +101,7 @@ const handleClick = (event: MouseEvent) => {
     )"
     @click="handleClick"
   >
-    <Spinner v-if="loading" class="mr-[8px] h-[16px] w-[16px]" />
-    <slot />
+    <Spinner v-if="loading" class="h-[16px] w-[16px]" />
+    <slot v-else />
   </button>
 </template>
