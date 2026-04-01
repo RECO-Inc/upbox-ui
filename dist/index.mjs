@@ -542,6 +542,7 @@ const bn = /* @__PURE__ */ l({
   props: {
     fabStyle: { default: "basic" },
     size: { default: "regular" },
+    iconOnly: { type: Boolean, default: !1 },
     disabled: { type: Boolean, default: !1 },
     class: {}
   },
@@ -560,11 +561,16 @@ const bn = /* @__PURE__ */ l({
             small: "h-[40px] px-[8px] text-size-14 [&_svg]:size-[20px]",
             regular: "h-[48px] px-[16px] text-size-15 [&_svg]:size-[24px]",
             medium: "h-[56px] px-[16px] text-size-16 [&_svg]:size-[24px]"
+          },
+          iconOnly: {
+            true: "aspect-square rounded-full p-0",
+            false: ""
           }
         },
         defaultVariants: {
           fabStyle: "basic",
-          size: "regular"
+          size: "regular",
+          iconOnly: !1
         }
       }
     ), o = t, n = s, p = (i) => {
@@ -573,7 +579,7 @@ const bn = /* @__PURE__ */ l({
     return (i, m) => (r(), g("button", {
       type: "button",
       disabled: t.disabled,
-      class: y(e(u)(e(a)({ fabStyle: o.fabStyle, size: o.size }), o.class)),
+      class: y(e(u)(e(a)({ fabStyle: o.fabStyle, size: o.size, iconOnly: o.iconOnly }), o.class)),
       onClick: p
     }, [
       d(i.$slots, "default")

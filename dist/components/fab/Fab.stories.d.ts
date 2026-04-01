@@ -10,6 +10,7 @@ declare const meta: {
             disabled: boolean;
             size: "xsmall" | "small" | "regular" | "medium";
             fabStyle: "basic" | "colorfilled";
+            iconOnly: boolean;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLButtonElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -23,6 +24,7 @@ declare const meta: {
             disabled: boolean;
             size: "xsmall" | "small" | "regular" | "medium";
             fabStyle: "basic" | "colorfilled";
+            iconOnly: boolean;
         }>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -35,6 +37,7 @@ declare const meta: {
         disabled: boolean;
         size: "xsmall" | "small" | "regular" | "medium";
         fabStyle: "basic" | "colorfilled";
+        iconOnly: boolean;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             default?(_: {}): any;

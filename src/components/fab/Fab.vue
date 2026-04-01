@@ -16,10 +16,15 @@ const fabVariants = cva(
         regular: 'h-[48px] px-[16px] text-size-15 [&_svg]:size-[24px]',
         medium: 'h-[56px] px-[16px] text-size-16 [&_svg]:size-[24px]',
       },
+      iconOnly: {
+        true: 'aspect-square rounded-full p-0',
+        false: '',
+      },
     },
     defaultVariants: {
       fabStyle: 'basic',
       size: 'regular',
+      iconOnly: false,
     },
   }
 )
@@ -27,6 +32,7 @@ const fabVariants = cva(
 export interface FabProps {
   fabStyle?: 'basic' | 'colorfilled'
   size?: 'xsmall' | 'small' | 'regular' | 'medium'
+  iconOnly?: boolean
   disabled?: boolean
   class?: string
 }
@@ -34,6 +40,7 @@ export interface FabProps {
 const props = withDefaults(defineProps<FabProps>(), {
   fabStyle: 'basic',
   size: 'regular',
+  iconOnly: false,
   disabled: false,
 })
 
@@ -51,7 +58,7 @@ const handleClick = (event: MouseEvent) => {
   <button
     type="button"
     :disabled="disabled"
-    :class="cn(fabVariants({ fabStyle: props.fabStyle, size: props.size }), props.class)"
+    :class="cn(fabVariants({ fabStyle: props.fabStyle, size: props.size, iconOnly: props.iconOnly }), props.class)"
     @click="handleClick"
   >
     <slot />

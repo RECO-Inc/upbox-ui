@@ -1,6 +1,7 @@
 export interface FabProps {
     fabStyle?: 'basic' | 'colorfilled';
     size?: 'xsmall' | 'small' | 'regular' | 'medium';
+    iconOnly?: boolean;
     disabled?: boolean;
     class?: string;
 }
@@ -21,6 +22,7 @@ declare const __VLS_component: import('vue').DefineComponent<FabProps, {}, {}, {
     disabled: boolean;
     size: "xsmall" | "small" | "regular" | "medium";
     fabStyle: "basic" | "colorfilled";
+    iconOnly: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLButtonElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
