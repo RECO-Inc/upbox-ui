@@ -17,10 +17,16 @@ const fabVariants = cva(
         medium: 'h-[56px] px-[16px] text-size-16 [&_svg]:size-[24px]',
       },
       iconOnly: {
-        true: 'aspect-square rounded-full p-0',
+        true: 'rounded-full',
         false: '',
       },
     },
+    compoundVariants: [
+      { iconOnly: true, size: 'xsmall', class: 'size-[32px] px-0 py-0' },
+      { iconOnly: true, size: 'small', class: 'size-[40px] px-0 py-0' },
+      { iconOnly: true, size: 'regular', class: 'size-[48px] px-0 py-0' },
+      { iconOnly: true, size: 'medium', class: 'size-[56px] px-0 py-0' },
+    ],
     defaultVariants: {
       fabStyle: 'basic',
       size: 'regular',
