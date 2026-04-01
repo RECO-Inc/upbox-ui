@@ -568,10 +568,10 @@ const bn = /* @__PURE__ */ l({
           }
         },
         compoundVariants: [
-          { iconOnly: !0, size: "xsmall", class: "size-[32px] px-0 py-0" },
-          { iconOnly: !0, size: "small", class: "size-[40px] px-0 py-0" },
-          { iconOnly: !0, size: "regular", class: "size-[48px] px-0 py-0" },
-          { iconOnly: !0, size: "medium", class: "size-[56px] px-0 py-0" }
+          { iconOnly: !0, size: "xsmall", class: "w-[32px] h-[32px] px-0 py-0 gap-0" },
+          { iconOnly: !0, size: "small", class: "w-[40px] h-[40px] px-0 py-0 gap-0" },
+          { iconOnly: !0, size: "regular", class: "w-[48px] h-[48px] px-0 py-0 gap-0" },
+          { iconOnly: !0, size: "medium", class: "w-[56px] h-[56px] px-0 py-0 gap-0" }
         ],
         defaultVariants: {
           fabStyle: "basic",
