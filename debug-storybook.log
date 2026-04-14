@@ -1,0 +1,26 @@
+[15:13:47.237] [INFO] storybook v10.3.3
+[15:13:47.555] [DEBUG] Getting package.json info for /Users/hslee/Documents/project/upbox-ui/package.json...
+[15:13:48.250] [WARN] No story files found for the specified pattern: [34msrc/**/*.mdx[39m
+[15:13:48.399] [DEBUG] Serving static files from [36mnode_modules/.pnpm/@chromatic-com+storybook@5.0.1_storybook@10.3.3_@testing-library+dom@10.4.1_prettier@2._39841890035079fc43c2138b90112e19/node_modules/@chromatic-com/storybook/assets[39m at [36m/addon-visual-tests-assets[39m
+[15:13:48.399] [INFO] Starting...
+[15:13:48.402] [WARN] unable to find package.json for @vueuse/core
+[15:13:48.459] [ERROR] [38;2;241;97;97mError: Build failed with 21 errors:
+node_modules/.pnpm/storybook-addon-designs@6.3.1_react@19.2.4/node_modules/storybook-addon-designs/esm/register/components/Figma.js:2:20: ERROR: Could not resolve "@storybook/theming"
+node_modules/.pnpm/storybook-addon-designs@6.3.1_react@19.2.4/node_modules/storybook-addon-designs/esm/register/components/Figspec.js:54:28: ERROR: Could not resolve "@storybook/components"
+node_modules/.pnpm/storybook-addon-designs@6.3.1_react@19.2.4/node_modules/storybook-addon-designs/esm/register/components/Figspec.js:55:25: ERROR: Could not resolve "@storybook/theming"
+node_modules/.pnpm/storybook-addon-designs@6.3.1_react@19.2.4/node_modules/storybook-addon-designs/esm/register/components/IFrame.js:6:25: ERROR: Could not resolve "@storybook/theming"
+node_modules/.pnpm/storybook-addon-designs@6.3.1_react@19.2.4/node_modules/storybook-addon-designs/esm/register/components/IFrame.js:7:28: ERROR: Could not resolve "@storybook/components"
+...[39m
+    at failureErrorWithLog (./node_modules/.pnpm/esbuild@0.27.3/node_modules/esbuild/lib/main.js:1467:15)
+    at ./node_modules/.pnpm/esbuild@0.27.3/node_modules/esbuild/lib/main.js:926:25
+    at runOnEndCallbacks (./node_modules/.pnpm/esbuild@0.27.3/node_modules/esbuild/lib/main.js:1307:45)
+    at buildResponseToResult (./node_modules/.pnpm/esbuild@0.27.3/node_modules/esbuild/lib/main.js:924:7)
+    at ./node_modules/.pnpm/esbuild@0.27.3/node_modules/esbuild/lib/main.js:951:16
+    at responseCallbacks.<computed> (./node_modules/.pnpm/esbuild@0.27.3/node_modules/esbuild/lib/main.js:603:9)
+    at handleIncomingPacket (./node_modules/.pnpm/esbuild@0.27.3/node_modules/esbuild/lib/main.js:658:12)
+    at Socket.readFromStdout (./node_modules/.pnpm/esbuild@0.27.3/node_modules/esbuild/lib/main.js:581:7)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+[15:13:48.463] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
+[17:41:50.721] [PROMPT] Would you like to send anonymous crash reports to improve Storybook and fix bugs faster? {"choice":false}

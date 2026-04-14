@@ -7,6 +7,27 @@ const meta = {
   title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
+  parameters: {
+    // Design 패널(Figma 임베드) — @storybook/addon-designs
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/-%EC%B5%9C%EC%A2%85-Component-_v02?node-id=3220-15782&t=JDvcCjmuA9iRUQDV-4',
+    },
+    figma: {
+      // Code Connect 등 — Figma에서 "Copy link to selection" URL
+      url: 'https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/-%EC%B5%9C%EC%A2%85-Component-_v02?node-id=3220-15782&t=JDvcCjmuA9iRUQDV-4',
+      // Figma 프로퍼티 → Vue prop 매핑 (Figma 패널의 실제 프로퍼티명 확인 후 수정)
+      propMapping: {
+        'Variant':  'variant',   // primary | error | positive | usually | assistant | info
+        'Style':    'buttonStyle', // filled | outlined | text
+        'Size':     'size',      // xsmall | small | regular | large | xlarge
+        'Label':    '(slot)',    // default slot
+        'Disabled': 'disabled',
+        'Loading':  'loading',
+        'Block':    'block',
+      },
+    },
+  },
   args: { onClick: fn() },
   argTypes: {
     variant: {

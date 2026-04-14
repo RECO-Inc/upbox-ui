@@ -53,6 +53,20 @@ declare const meta: {
         };
     });
     tags: string[];
+    parameters: {
+        figma: {
+            url: string;
+            propMapping: {
+                Variant: string;
+                Style: string;
+                Size: string;
+                Label: string;
+                Disabled: string;
+                Loading: string;
+                Block: string;
+            };
+        };
+    };
     args: {
         onClick: import('storybook/test').Mock<(...args: any[]) => any>;
     };
