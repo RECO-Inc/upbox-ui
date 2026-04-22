@@ -6,10 +6,6 @@ export {
   type InputFrameContextSize,
 } from "./inputFrameContext"
 export {
-  inputFrameIconDirectSizeClasses,
-  inputFrameIconSvgSizeClasses,
-} from "./inputFrameIconSize"
-export {
   inputFrameVariants,
   type InputFrameVariantProps,
 } from "./inputFrameVariants"
