@@ -3,10 +3,8 @@ declare const meta: {
     title: string;
     component: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('./FieldContainer').FieldContainerProps> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {
-            disabled: boolean;
             size: import('./injectionKeys').FieldSize;
             required: boolean;
-            hideLabel: boolean;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -15,19 +13,15 @@ declare const meta: {
             M: {};
             Defaults: {};
         }, Readonly<import('./FieldContainer').FieldContainerProps> & Readonly<{}>, {}, {}, {}, {}, {
-            disabled: boolean;
             size: import('./injectionKeys').FieldSize;
             required: boolean;
-            hideLabel: boolean;
         }>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
     } & import('vue').ComponentOptionsBase<Readonly<import('./FieldContainer').FieldContainerProps> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {
-        disabled: boolean;
         size: import('./injectionKeys').FieldSize;
         required: boolean;
-        hideLabel: boolean;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             tooltip?(_: {}): any;
@@ -65,12 +59,6 @@ declare const meta: {
         required: {
             control: "boolean";
         };
-        disabled: {
-            control: "boolean";
-        };
-        hideLabel: {
-            control: "boolean";
-        };
     };
 };
 export default meta;
@@ -81,6 +69,6 @@ export declare const WithValidation: Story;
 export declare const ErrorOverridesDescription: Story;
 export declare const WithTextarea: Story;
 export declare const WithSelect: Story;
-export declare const HideLabel: Story;
+export declare const AccessibleWithoutVisualLabel: Story;
 export declare const Disabled: Story;
 export declare const PlainInput: Story;
