@@ -13,30 +13,38 @@ import { Meta } from '@storybook/addon-docs/blocks'
 - **Components** — Button, Input, Select, FieldContainer 등 실사용 컴포넌트
 - **Tokens** — 원본 팔레트·변수 레퍼런스 (보조용)
 
-## 설치 & 사용
+## 설치 & 사용 (Tailwind v4)
+
+컨슈머 3개 저장소 모두 Tailwind v4를 사용합니다.
 
 ```bash
 pnpm add @reco-inc/upbox-ui
 ```
 
-`tokens.css` import + Tailwind preset 연결 (Tailwind v3 컨슈머):
+**CSS 엔트리 (예: `src/style.css`)**:
 
-```js
-// tailwind.config.js
-import preset from '@reco-inc/upbox-ui/tailwind-preset'
+```css
+@import 'tailwindcss';
 
-export default {
-  presets: [preset],
-  content: ['./src/**/*.{vue,ts,tsx}', './node_modules/@reco-inc/upbox-ui/dist/**/*.{js,mjs}'],
+/* upbox-ui 토큰 변수 */
+@import '@reco-inc/upbox-ui/tokens.css';
+
+/* Tailwind v4는 @theme에 색상이 등록돼야 유틸리티가 생성됨 */
+@theme {
+  --color-grey-10: var(--color-grey-10);
+  --color-grey-20: var(--color-grey-20);
+  /* ... 필요한 토큰 선언 ... */
 }
+
+/* upbox-ui dist에서 쓰인 Tailwind 클래스 스캔 */
+@source '../node_modules/@reco-inc/upbox-ui/dist/**/*.{js,mjs}';
 ```
+
+**main.ts에서 CSS 로드**:
 
 ```ts
-// main.ts
-import '@reco-inc/upbox-ui/tokens.css'
+import './style.css'
 ```
-
-Tailwind v4 컨슈머는 `@theme` 블록에 색상을 등록하고 `@source`로 dist 스캔 필요 (프로젝트 CLAUDE.md 참고).
 
 ## 기본 예시
 
