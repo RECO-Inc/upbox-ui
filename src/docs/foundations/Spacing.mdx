@@ -1,0 +1,46 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import * as SpacingStories from '../SpacingTokens.stories'
+
+<Meta title="Foundations/Spacing" />
+
+# Spacing
+
+모든 간격(padding, margin, gap)은 **4의 배수 스케일**을 따릅니다.
+
+## 스케일
+
+`2 / 4 / 6 / 8 / 12 / 16 / 20 / 24 / 28 / 32 / 36 / 40 / 48 / 56 / 64 / 80 / 112` px.
+
+Tailwind 클래스로 직접 사용:
+
+```html
+<div class="flex flex-col gap-[16px]">
+  <div class="p-[24px]">...</div>
+</div>
+```
+
+## 컨테이너/폼 기본값
+
+- **FieldContainer 간격**: `gap-[4px]` (label-control-footer)
+- **섹션 간격**: `gap-[24px]` 또는 `gap-[32px]`
+- **페이지 좌우 여백**: `px-[24px]` 모바일, `px-[32px]` 데스크탑
+- **인라인 요소 간격**: `gap-[8px]`
+
+## Do / Don't
+
+✅ **Do** — 스케일 값 사용
+```html
+<div class="flex gap-[8px] p-[16px]">
+  <span class="mr-[4px]">*</span>
+  <span>Label</span>
+</div>
+```
+
+❌ **Don't** — 스케일 외 값
+```html
+<div class="p-[17px] gap-[5px]">...</div>
+```
+
+## 예시
+
+<Canvas of={SpacingStories.Default} />

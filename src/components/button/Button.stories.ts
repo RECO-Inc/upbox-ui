@@ -6,7 +6,6 @@ import Button from './Button.vue'
 const meta = {
   title: 'Components/Button',
   component: Button,
-  tags: ['autodocs'],
   args: { onClick: fn() },
   argTypes: {
     variant: {

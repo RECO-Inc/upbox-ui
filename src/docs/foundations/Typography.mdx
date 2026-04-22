@@ -1,0 +1,50 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import * as TypographyStories from '../TypographyTokens.stories'
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+타이포그래피는 크기 스케일 + 의미 기반 프리셋 조합으로 제공됩니다.
+
+## 프리셋 분류
+
+| 카테고리 | 클래스 예시 | 용도 |
+|---|---|---|
+| **Page Title** | `text-page-title-1` ~ `text-page-title-4` | 페이지 최상단 헤더 (28/24/22/20) |
+| **Heading** | `text-h1` ~ `text-h5` | 섹션 제목 (24/22/20/18/16) |
+| **Title** | `text-title-1` ~ `text-title-4` | 카드/블록 제목 (20/18/16/15, Semi-Bold) |
+| **Label** | `text-label-1` ~ `text-label-5` | 폼 라벨, 강조 텍스트 (16/15/14/13/12, Bold) |
+| **Body** | `text-body-1` ~ `text-body-5` | 본문 (16/15/14/13/12, Regular) |
+| **Caption** | `text-caption-1` ~ `text-caption-3` | 보조/힌트 (13/12/10) |
+
+## 크기 토큰
+
+9/10/11/12/13/14/15/16/18/20/22/24/28/32 (`text-size-*`). 프리셋이 부족한 예외 상황에만 직접 사용.
+
+## Font Family
+
+Pretendard 단일. `font-family`는 Tailwind preset의 기본값으로 통일. 가중치는 `font-regular | font-medium | font-semibold | font-bold`.
+
+## Do / Don't
+
+✅ **Do**
+```html
+<h1 class="text-page-title-1">대시보드</h1>
+<h2 class="text-h3">기본 정보</h2>
+<p class="text-body-3">본문 텍스트입니다.</p>
+<p class="text-caption-3">힌트 텍스트</p>
+```
+
+❌ **Don't**
+```html
+<!-- 임의 크기/굵기 조합 -->
+<h1 class="text-[32px] font-[700]">대시보드</h1>
+
+<!-- 디자인 시스템에 없는 클래스 -->
+<p class="text-xl">본문</p>
+```
+
+## 예시
+
+<Canvas of={TypographyStories.Default} />

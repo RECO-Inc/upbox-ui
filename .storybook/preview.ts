@@ -60,6 +60,19 @@ const preview: Preview = {
     a11y: {
       test: 'todo',
     },
+    docs: {
+      toc: { headingSelector: 'h2, h3' },
+    },
+    options: {
+      storySort: {
+        order: [
+          'Welcome',
+          'Foundations', ['Color', 'Typography', 'Spacing', 'Shadow'],
+          'Components',
+          'Tokens',
+        ],
+      },
+    },
   },
 }
 

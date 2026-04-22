@@ -13,7 +13,6 @@ import Button from '../button/Button.vue'
 const meta = {
   title: 'Components/FieldContainer',
   component: FieldContainer,
-  tags: ['autodocs'],
   argTypes: {
     size: { control: 'select', options: ['small', 'regular', 'large'] },
     label: { control: 'text' },

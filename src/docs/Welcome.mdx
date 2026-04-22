@@ -1,0 +1,72 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Welcome" />
+
+# Upbox UI
+
+> Vue 3 기반 Upbox 디자인 시스템 컴포넌트 라이브러리.
+> Figma 정의를 코드로 구현하고, 컨슈머 프로젝트 전반의 UI 일관성을 보장합니다.
+
+## 구성
+
+- **Foundations** — 색상, 타이포그래피, 간격, 섀도 등 디자인 토큰
+- **Components** — Button, Input, Select, FieldContainer 등 실사용 컴포넌트
+- **Tokens** — 원본 팔레트·변수 레퍼런스 (보조용)
+
+## 설치 & 사용
+
+```bash
+pnpm add @reco-inc/upbox-ui
+```
+
+`tokens.css` import + Tailwind preset 연결 (Tailwind v3 컨슈머):
+
+```js
+// tailwind.config.js
+import preset from '@reco-inc/upbox-ui/tailwind-preset'
+
+export default {
+  presets: [preset],
+  content: ['./src/**/*.{vue,ts,tsx}', './node_modules/@reco-inc/upbox-ui/dist/**/*.{js,mjs}'],
+}
+```
+
+```ts
+// main.ts
+import '@reco-inc/upbox-ui/tokens.css'
+```
+
+Tailwind v4 컨슈머는 `@theme` 블록에 색상을 등록하고 `@source`로 dist 스캔 필요 (프로젝트 CLAUDE.md 참고).
+
+## 기본 예시
+
+```vue
+<script setup lang="ts">
+import { Button, FieldContainer, Input } from '@reco-inc/upbox-ui'
+</script>
+
+<template>
+  <FieldContainer name="email" label="Email" required>
+    <Input type="email" placeholder="you@example.com" />
+  </FieldContainer>
+
+  <Button variant="primary">확인</Button>
+</template>
+```
+
+## 철학
+
+1. **Figma가 진실의 원천** — Figma 변경 → 토큰/컴포넌트 동기화
+2. **컴포넌트는 기본(primitive)에 충실** — 복합 UI는 FieldContainer처럼 명시적 조합 래퍼로
+3. **토큰은 Semantic 우선** — hex 직접 사용 지양, 의미 기반 토큰 체인 사용
+4. **접근성은 기본 기능** — aria-*, focus-visible, 키보드 네비게이션 보장
+
+## 컨슈머 프로젝트
+
+- Upbox-2.0-Front-Boilerplate (Tailwind v3)
+- Upbox-2.0-Customer-Report (Tailwind v3)
+- Upbox-2.0-Front-Application (Tailwind v4)
+
+## 기여
+
+이슈/PR은 [RECO-Inc/upbox-ui](https://github.com/RECO-Inc/upbox-ui) 레포에서 관리합니다.
