@@ -10,10 +10,10 @@ declare const meta: {
             disabled: boolean;
             type: "button" | "submit" | "reset";
             size: "xsmall" | "small" | "regular" | "large" | "xlarge";
+            theme: "filled" | "outlined";
             loading: boolean;
             variant: "primary" | "destructive" | "secondary" | "tertiary";
             block: boolean;
-            buttonStyle: "filled" | "outlined";
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLButtonElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -27,10 +27,10 @@ declare const meta: {
             disabled: boolean;
             type: "button" | "submit" | "reset";
             size: "xsmall" | "small" | "regular" | "large" | "xlarge";
+            theme: "filled" | "outlined";
             loading: boolean;
             variant: "primary" | "destructive" | "secondary" | "tertiary";
             block: boolean;
-            buttonStyle: "filled" | "outlined";
         }>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -43,10 +43,10 @@ declare const meta: {
         disabled: boolean;
         type: "button" | "submit" | "reset";
         size: "xsmall" | "small" | "regular" | "large" | "xlarge";
+        theme: "filled" | "outlined";
         loading: boolean;
         variant: "primary" | "destructive" | "secondary" | "tertiary";
         block: boolean;
-        buttonStyle: "filled" | "outlined";
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             default?(_: {}): any;
@@ -61,7 +61,7 @@ declare const meta: {
             control: "select";
             options: string[];
         };
-        buttonStyle: {
+        theme: {
             control: "select";
             options: string[];
         };
@@ -89,3 +89,12 @@ export declare const Loading: Story;
 export declare const Disabled: Story;
 export declare const WithIcons: Story;
 export declare const Block: Story;
+/**
+ * # 모든 버튼 한눈에 보기
+ *
+ * ## 속성들 3차원으로 표시
+ * - enabled, disabled, hovered, pressed
+ * - primary, destructive, secondary, tertiary
+ * - xsmall, small, regular, large, xlarge
+ */
+export declare const Overview: Story;
