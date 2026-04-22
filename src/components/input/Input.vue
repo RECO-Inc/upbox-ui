@@ -10,7 +10,7 @@ import { FIELD_CONTROL_INJECTION_KEY } from '../form/injectionKeys'
 defineOptions({ inheritAttrs: false })
 
 const inputVariants = cva(
-  'flex w-full rounded-[4px] border transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-grey-50 focus-visible:outline-hidden focus-visible:border-blue-80 focus-visible:ring-2 focus-visible:ring-blue-40 disabled:cursor-not-allowed disabled:bg-grey-20 disabled:border-grey-40 disabled:hover:border-grey-40 hover:border-grey-50',
+  'flex w-full rounded-[4px] border transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-grey-50 focus-visible:outline-hidden focus-visible:border-blue-80 focus-visible:ring-2 focus-visible:ring-blue-40 disabled:cursor-not-allowed disabled:bg-grey-20 disabled:border-grey-40 disabled:hover:border-grey-40 disabled:text-grey-50 hover:border-grey-50',
   {
     variants: {
       variant: {
@@ -28,7 +28,7 @@ const inputVariants = cva(
         false: '',
       },
       readonly: {
-        true: 'cursor-default focus-visible:border-grey-30 focus-visible:ring-0 bg-grey-20 border-grey-30 hover:border-grey-30',
+        true: 'cursor-default focus-visible:border-grey-40 focus-visible:ring-0 bg-grey-20 border-grey-40 hover:border-grey-40',
         false: '',
       },
     },
