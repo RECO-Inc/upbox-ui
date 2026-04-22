@@ -11,8 +11,8 @@ declare const meta: {
         error: boolean;
         variant: "default" | "filled" | "bottomline";
         readonly: boolean;
-        counter: boolean;
         byteMode: boolean;
+        counter: boolean;
         autoResize: boolean;
         minHeight: number;
         maxHeight: number;

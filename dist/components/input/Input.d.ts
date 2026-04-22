@@ -8,8 +8,6 @@ export interface EnhancedInputProps {
     class?: HTMLAttributes['class'];
     clearable?: boolean;
     password?: boolean;
-    subfix?: string;
-    counter?: boolean;
     maxLength?: number;
     byteMode?: boolean;
     disabled?: boolean;
@@ -17,7 +15,16 @@ export interface EnhancedInputProps {
     placeholder?: string;
     type?: string;
 }
-declare const _default: import('vue').DefineComponent<EnhancedInputProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
+declare function __VLS_template(): {
+    attrs: Partial<{}>;
+    slots: {
+        default?(_: {}): any;
+    };
+    refs: {};
+    rootEl: any;
+};
+type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
+declare const __VLS_component: import('vue').DefineComponent<EnhancedInputProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
     "update:modelValue": (payload: string | number) => any;
 }, string, import('vue').PublicProps, Readonly<EnhancedInputProps> & Readonly<{
     "onUpdate:modelValue"?: ((payload: string | number) => any) | undefined;
@@ -30,7 +37,12 @@ declare const _default: import('vue').DefineComponent<EnhancedInputProps, {}, {}
     readonly: boolean;
     clearable: boolean;
     password: boolean;
-    counter: boolean;
     byteMode: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
+type __VLS_WithTemplateSlots<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
+};

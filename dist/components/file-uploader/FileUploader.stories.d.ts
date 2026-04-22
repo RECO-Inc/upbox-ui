@@ -19,10 +19,10 @@ declare const meta: {
             "update:inputFiles": (value: UploaderFile[]) => any;
         }, import('vue').PublicProps, {
             readonly: boolean;
-            maxCount: number;
             downloadable: boolean;
             supportExt: string[];
             maxSize: number;
+            maxCount: number;
             removable: boolean;
             errorMessage: string;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {
@@ -44,10 +44,10 @@ declare const meta: {
             "onUpdate:inputFiles"?: ((value: UploaderFile[]) => any) | undefined;
         }>, {}, {}, {}, {}, {
             readonly: boolean;
-            maxCount: number;
             downloadable: boolean;
             supportExt: string[];
             maxSize: number;
+            maxCount: number;
             removable: boolean;
             errorMessage: string;
         }>;
@@ -70,10 +70,10 @@ declare const meta: {
         "update:inputFiles": (value: UploaderFile[]) => any;
     }, string, {
         readonly: boolean;
-        maxCount: number;
         downloadable: boolean;
         supportExt: string[];
         maxSize: number;
+        maxCount: number;
         removable: boolean;
         errorMessage: string;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {

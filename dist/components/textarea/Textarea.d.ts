@@ -27,8 +27,8 @@ declare const _default: import('vue').DefineComponent<EnhancedTextareaProps, {},
     error: boolean;
     variant: "default" | "filled" | "bottomline";
     readonly: boolean;
-    counter: boolean;
     byteMode: boolean;
+    counter: boolean;
     autoResize: boolean;
     minHeight: number;
     maxHeight: number;
