@@ -37,7 +37,7 @@ import {
 
 type ViewMode = 'DATE' | 'MONTH' | 'YEAR'
 
-interface Props extends CalendarRootProps {
+export interface Props extends CalendarRootProps {
   class?: HTMLAttributes["class"]
   /** 날짜 선택을 할 수 없다. 년 월만 보여줌 */
   noDate?: boolean

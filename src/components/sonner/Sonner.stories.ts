@@ -121,7 +121,7 @@ export const WithPromise: Story = {
         })
         toast.promise(promise, {
           loading: 'Uploading file...',
-          success: (data) => `${data.name} uploaded successfully!`,
+          success: (data: any) => `${data.name} uploaded successfully!`,
           error: 'Upload failed. Please try again.',
         })
       }

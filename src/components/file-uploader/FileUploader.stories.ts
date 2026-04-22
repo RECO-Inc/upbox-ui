@@ -20,6 +20,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+  args: {},
   render: () => ({
     components: { FileUploader },
     setup() {
@@ -41,6 +42,7 @@ export const Default: Story = {
 }
 
 export const WithExistingFiles: Story = {
+  args: {},
   render: () => ({
     components: { FileUploader },
     setup() {
@@ -94,6 +96,7 @@ export const WithExistingFiles: Story = {
 }
 
 export const Readonly: Story = {
+  args: {},
   render: () => ({
     components: { FileUploader },
     setup() {
@@ -130,6 +133,7 @@ export const Readonly: Story = {
 }
 
 export const ReadonlyEmpty: Story = {
+  args: {},
   render: () => ({
     components: { FileUploader },
     setup() {
@@ -149,6 +153,7 @@ export const ReadonlyEmpty: Story = {
 }
 
 export const WithError: Story = {
+  args: {},
   render: () => ({
     components: { FileUploader },
     setup() {
@@ -168,6 +173,7 @@ export const WithError: Story = {
 }
 
 export const CustomExtensions: Story = {
+  args: {},
   render: () => ({
     components: { FileUploader },
     setup() {
@@ -189,6 +195,7 @@ export const CustomExtensions: Story = {
 }
 
 export const Downloadable: Story = {
+  args: {},
   render: () => ({
     components: { FileUploader },
     setup() {

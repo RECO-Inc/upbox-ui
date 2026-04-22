@@ -44,7 +44,7 @@ const thumbVariants = cva(
 
 type SwitchVariants = VariantProps<typeof switchVariants>
 
-interface Props extends SwitchRootProps {
+export interface Props extends SwitchRootProps {
   class?: HTMLAttributes["class"]
   size?: SwitchVariants["size"]
 }

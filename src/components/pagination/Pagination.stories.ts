@@ -19,6 +19,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+  args: {},
   render: () => ({
     components: {
       Pagination,
@@ -61,6 +62,7 @@ export const Default: Story = {
 }
 
 export const SimpleNavigation: Story = {
+  args: {},
   render: () => ({
     components: {
       Pagination,
@@ -97,6 +99,7 @@ export const SimpleNavigation: Story = {
 }
 
 export const WithEllipsis: Story = {
+  args: {},
   render: () => ({
     components: {
       Pagination,
@@ -135,6 +138,7 @@ export const WithEllipsis: Story = {
 }
 
 export const FirstPage: Story = {
+  args: {},
   render: () => ({
     components: {
       Pagination,

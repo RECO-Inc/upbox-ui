@@ -17,7 +17,7 @@ import FileItem from './FileItem.vue'
 
 const inputFiles = defineModel<UploaderFile[]>('inputFiles', { required: true, default: () => [] })
 
-interface Props {
+export interface Props {
   supportExt?: string[]
   label?: string
   maxSize?: number // MB

@@ -4,7 +4,7 @@ import DropdownFilter from './DropdownFilter.vue'
 
 const meta = {
   title: 'Components/DropdownFilter',
-  component: DropdownFilter,
+  component: DropdownFilter as any,
   tags: ['autodocs'],
   argTypes: {
     size: {
@@ -35,6 +35,7 @@ const sampleOptions = [
 ]
 
 export const Default: Story = {
+  args: {},
   render: () => ({
     components: { DropdownFilter },
     setup() {
@@ -55,6 +56,7 @@ export const Default: Story = {
 }
 
 export const Sizes: Story = {
+  args: {},
   render: () => ({
     components: { DropdownFilter },
     setup() {
@@ -83,6 +85,7 @@ export const Sizes: Story = {
 }
 
 export const DisplayStyles: Story = {
+  args: {},
   render: () => ({
     components: { DropdownFilter },
     setup() {
@@ -111,6 +114,7 @@ export const DisplayStyles: Story = {
 }
 
 export const SingleSelect: Story = {
+  args: {},
   render: () => ({
     components: { DropdownFilter },
     setup() {
@@ -133,6 +137,7 @@ export const SingleSelect: Story = {
 }
 
 export const WithSearch: Story = {
+  args: {},
   render: () => ({
     components: { DropdownFilter },
     setup() {
@@ -154,6 +159,7 @@ export const WithSearch: Story = {
 }
 
 export const Disabled: Story = {
+  args: {},
   render: () => ({
     components: { DropdownFilter },
     setup() {
@@ -174,6 +180,7 @@ export const Disabled: Story = {
 }
 
 export const WithPreselected: Story = {
+  args: {},
   render: () => ({
     components: { DropdownFilter },
     setup() {

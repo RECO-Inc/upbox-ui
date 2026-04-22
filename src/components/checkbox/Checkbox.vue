@@ -30,7 +30,7 @@ const checkboxVariants = cva(
 
 type CheckboxVariants = VariantProps<typeof checkboxVariants>
 
-interface Props extends CheckboxRootProps {
+export interface Props extends CheckboxRootProps {
   class?: HTMLAttributes["class"]
   size?: CheckboxVariants["size"]
   error?: boolean

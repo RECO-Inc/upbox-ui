@@ -45,5 +45,5 @@ export const ErrorState: Story = {
 }
 
 export const WithMaxLength: Story = {
-  args: { placeholder: 'Max 100 chars', maxLength: 100, showCount: true },
+  args: { placeholder: 'Max 100 chars', maxLength: 100, counter: true },
 }
