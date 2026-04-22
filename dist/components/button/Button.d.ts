@@ -1,6 +1,6 @@
 export interface ButtonProps {
     variant?: 'primary' | 'destructive' | 'secondary' | 'tertiary';
-    buttonStyle?: 'filled' | 'outlined';
+    theme?: 'filled' | 'outlined';
     size?: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge';
     block?: boolean;
     disabled?: boolean;
@@ -25,10 +25,10 @@ declare const __VLS_component: import('vue').DefineComponent<ButtonProps, {}, {}
     disabled: boolean;
     type: "button" | "submit" | "reset";
     size: "xsmall" | "small" | "regular" | "large" | "xlarge";
+    theme: "filled" | "outlined";
     loading: boolean;
     variant: "primary" | "destructive" | "secondary" | "tertiary";
     block: boolean;
-    buttonStyle: "filled" | "outlined";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLButtonElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

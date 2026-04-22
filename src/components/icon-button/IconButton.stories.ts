@@ -4,7 +4,7 @@ import { Search, Plus, X, Trash2, Settings } from 'lucide-vue-next'
 import IconButton from './IconButton.vue'
 
 const meta = {
-  title: 'Components/IconButton',
+  title: 'Components/Button/IconButton',
   component: IconButton,
   tags: ['autodocs'],
   args: { onClick: fn() },
