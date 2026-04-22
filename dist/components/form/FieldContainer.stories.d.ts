@@ -45,6 +45,9 @@ declare const meta: {
         };
     });
     tags: string[];
+    args: {
+        name: string;
+    };
     argTypes: {
         size: {
             control: "select";

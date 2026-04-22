@@ -90,6 +90,9 @@ declare const meta: {
         };
     });
     tags: string[];
+    args: {
+        inputFiles: never[];
+    };
     argTypes: {
         readonly: {
             control: "boolean";
