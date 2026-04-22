@@ -1,4 +1,4 @@
-import { SelectRootProps } from 'reka-ui';
+import { AcceptableValue, SelectRootProps } from 'reka-ui';
 type __VLS_Props = SelectRootProps;
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -10,10 +10,10 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-    "update:modelValue": (value: import('reka-ui').AcceptableValue) => any;
+    "update:modelValue": (value: AcceptableValue) => any;
     "update:open": (value: boolean) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
-    "onUpdate:modelValue"?: ((value: import('reka-ui').AcceptableValue) => any) | undefined;
+    "onUpdate:modelValue"?: ((value: AcceptableValue) => any) | undefined;
     "onUpdate:open"?: ((value: boolean) => any) | undefined;
 }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;

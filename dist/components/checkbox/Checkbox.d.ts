@@ -6,7 +6,7 @@ declare const checkboxVariants: (props?: ({
     error?: boolean | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 type CheckboxVariants = VariantProps<typeof checkboxVariants>;
-interface Props extends CheckboxRootProps {
+export interface Props extends CheckboxRootProps {
     class?: HTMLAttributes["class"];
     size?: CheckboxVariants["size"];
     error?: boolean;

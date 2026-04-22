@@ -19,7 +19,7 @@ declare const meta: {
         rows: number;
     }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
         textareaRef: HTMLTextAreaElement;
-    }, HTMLDivElement>;
+    }, any>;
     tags: string[];
     argTypes: {
         variant: {

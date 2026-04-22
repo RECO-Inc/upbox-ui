@@ -1,5 +1,5 @@
 import { UploaderFile, FileClickEvent } from './types';
-interface Props {
+export interface Props {
     supportExt?: string[];
     label?: string;
     maxSize?: number;
@@ -47,12 +47,12 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_PublicProps, 
     "onUpdate:inputFiles"?: ((value: UploaderFile[]) => any) | undefined;
 }>, {
     readonly: boolean;
-    errorMessage: string;
+    maxCount: number;
     downloadable: boolean;
     supportExt: string[];
     maxSize: number;
-    maxCount: number;
     removable: boolean;
+    errorMessage: string;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
     inputRef: HTMLInputElement;
 }, HTMLDivElement>;

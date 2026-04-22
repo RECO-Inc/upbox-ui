@@ -1,6 +1,6 @@
-import { HTMLAttributes } from 'vue';
+import { FieldControlBindings } from './injectionKeys';
 type __VLS_Props = {
-    class?: HTMLAttributes["class"];
+    bindings: FieldControlBindings;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;

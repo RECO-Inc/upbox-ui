@@ -5,7 +5,7 @@ declare const switchVariants: (props?: ({
     size?: "small" | "large" | "regular" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 type SwitchVariants = VariantProps<typeof switchVariants>;
-interface Props extends SwitchRootProps {
+export interface Props extends SwitchRootProps {
     class?: HTMLAttributes["class"];
     size?: SwitchVariants["size"];
 }

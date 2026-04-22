@@ -6,9 +6,6 @@ export interface EnhancedTextareaProps {
     modelValue?: string | number;
     defaultValue?: string | number;
     class?: HTMLAttributes['class'];
-    label?: string;
-    required?: boolean;
-    errorMessage?: string;
     counter?: boolean;
     maxLength?: number;
     byteMode?: boolean;
@@ -38,5 +35,5 @@ declare const _default: import('vue').DefineComponent<EnhancedTextareaProps, {},
     rows: number;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
     textareaRef: HTMLTextAreaElement;
-}, HTMLDivElement>;
+}, any>;
 export default _default;

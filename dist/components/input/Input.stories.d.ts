@@ -16,7 +16,7 @@ declare const meta: {
         password: boolean;
         counter: boolean;
         byteMode: boolean;
-    }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
+    }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
     tags: string[];
     argTypes: {
         variant: {

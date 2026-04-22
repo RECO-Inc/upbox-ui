@@ -6,11 +6,8 @@ export interface EnhancedInputProps {
     modelValue?: string | number;
     defaultValue?: string | number;
     class?: HTMLAttributes['class'];
-    label?: string;
-    required?: boolean;
     clearable?: boolean;
     password?: boolean;
-    errorMessage?: string;
     subfix?: string;
     counter?: boolean;
     maxLength?: number;
@@ -35,5 +32,5 @@ declare const _default: import('vue').DefineComponent<EnhancedInputProps, {}, {}
     password: boolean;
     counter: boolean;
     byteMode: boolean;
-}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;

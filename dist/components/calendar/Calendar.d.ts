@@ -1,7 +1,7 @@
 import { CalendarRootProps } from 'reka-ui';
 import { HTMLAttributes } from 'vue';
 import { DateValue } from '@internationalized/date';
-interface Props extends CalendarRootProps {
+export interface Props extends CalendarRootProps {
     class?: HTMLAttributes["class"];
     /** 날짜 선택을 할 수 없다. 년 월만 보여줌 */
     noDate?: boolean;
