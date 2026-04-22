@@ -5,7 +5,7 @@ export type FieldSize = "small" | "regular" | "large"
 export interface FieldControlBindings {
   modelValue?: unknown
   "onUpdate:modelValue"?: (value: unknown) => void
-  onBlur?: () => void
+  onBlur?: (e?: Event) => void
 }
 
 export const FORM_ITEM_INJECTION_KEY

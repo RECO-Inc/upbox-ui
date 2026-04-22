@@ -7,6 +7,7 @@ const meta = {
   title: 'Components/FileUploader',
   component: FileUploader,
   tags: ['autodocs'],
+  args: { inputFiles: [] },
   argTypes: {
     readonly: { control: 'boolean' },
     removable: { control: 'boolean' },

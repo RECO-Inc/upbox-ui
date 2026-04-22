@@ -13,6 +13,7 @@ const meta = {
   title: 'Components/Pagination',
   component: Pagination,
   tags: ['autodocs'],
+  args: { itemsPerPage: 10 },
 } satisfies Meta<typeof Pagination>
 
 export default meta

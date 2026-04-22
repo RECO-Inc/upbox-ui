@@ -14,6 +14,7 @@ const meta = {
   title: 'Components/FieldContainer',
   component: FieldContainer,
   tags: ['autodocs'],
+  args: { name: 'field' },
   argTypes: {
     size: { control: 'select', options: ['small', 'regular', 'large'] },
     label: { control: 'text' },
