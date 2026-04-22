@@ -4,6 +4,7 @@ import Textarea from './Textarea.vue'
 const meta = {
   title: 'Components/Textarea',
   component: Textarea,
+  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',

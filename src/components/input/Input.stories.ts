@@ -4,6 +4,7 @@ import Input from './Input.vue'
 const meta = {
   title: 'Components/Input',
   component: Input,
+  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',
