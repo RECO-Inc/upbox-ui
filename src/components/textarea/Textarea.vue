@@ -9,7 +9,7 @@ import { FIELD_CONTROL_INJECTION_KEY } from '../form/injectionKeys'
 defineOptions({ inheritAttrs: false })
 
 const textareaVariants = cva(
-  'flex w-full rounded-[4px] border transition-all duration-300 placeholder:text-grey-50 focus-visible:outline-hidden focus-visible:border-blue-80 focus-visible:ring-2 focus-visible:ring-blue-40 disabled:cursor-not-allowed disabled:opacity-50 resize-none hover:border-grey-50',
+  'flex w-full rounded-[4px] border transition-all duration-300 placeholder:text-grey-50 focus-visible:outline-hidden focus-visible:border-blue-80 focus-visible:ring-2 focus-visible:ring-blue-40 disabled:cursor-not-allowed disabled:bg-grey-20 disabled:border-grey-40 disabled:hover:border-grey-40 resize-none hover:border-grey-50',
   {
     variants: {
       variant: {
@@ -45,7 +45,7 @@ const wrapperVariants = cva(
   {
     variants: {
       disabled: {
-        true: 'opacity-50 cursor-not-allowed',
+        true: 'cursor-not-allowed',
         false: '',
       },
     },
