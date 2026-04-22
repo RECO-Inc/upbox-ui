@@ -20,17 +20,13 @@ export interface FieldContainerProps {
   size?: FieldSize
   label?: string
   description?: string
-  hideLabel?: boolean
   required?: boolean
-  disabled?: boolean
   class?: HTMLAttributes['class']
 }
 
 const props = withDefaults(defineProps<FieldContainerProps>(), {
   size: 'regular',
-  hideLabel: false,
   required: false,
-  disabled: false,
 })
 
 const sizeRef = toRef(props, 'size')
@@ -50,13 +46,10 @@ const requiredMarkSize = computed(() =>
     :initial-value="initialValue"
     :validate-on-mount="validateOnMount"
   >
-    <FormItem :class="cn(disabled && 'opacity-50 pointer-events-none', props.class)">
+    <FormItem :class="props.class">
       <div
         v-if="label || $slots.tooltip"
-        :class="cn(
-          'flex items-center',
-          hideLabel && 'sr-only',
-        )"
+        class="flex items-center"
       >
         <span
           v-if="required"

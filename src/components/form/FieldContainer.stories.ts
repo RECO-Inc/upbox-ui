@@ -19,8 +19,6 @@ const meta = {
     label: { control: 'text' },
     description: { control: 'text' },
     required: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    hideLabel: { control: 'boolean' },
   },
 } satisfies Meta<typeof FieldContainer>
 
@@ -161,14 +159,14 @@ export const WithSelect: Story = {
   }),
 }
 
-export const HideLabel: Story = {
+export const AccessibleWithoutVisualLabel: Story = {
   args: {},
   render: () => ({
     components: { Form, FieldContainer, Input },
     template: `
       <Form class="w-full max-w-sm">
-        <FieldContainer name="search" label="검색" hide-label description="키워드를 입력하세요">
-          <Input placeholder="검색..." />
+        <FieldContainer name="search" description="라벨 없이 aria-label로 스크린리더 대응">
+          <Input aria-label="검색" placeholder="검색..." />
         </FieldContainer>
       </Form>
     `,
@@ -181,7 +179,7 @@ export const Disabled: Story = {
     components: { Form, FieldContainer, Input },
     template: `
       <Form class="w-full max-w-sm">
-        <FieldContainer name="readonly" label="읽기 전용 필드" description="이 필드는 수정할 수 없습니다" disabled initial-value="고정 값">
+        <FieldContainer name="readonly" label="읽기 전용 필드" description="Input 자체의 disabled가 시각/상호작용 모두 담당" initial-value="고정 값">
           <Input disabled />
         </FieldContainer>
       </Form>
