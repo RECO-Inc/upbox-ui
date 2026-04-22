@@ -39,4 +39,10 @@ declare const meta: {
 export default meta;
 type Story = StoryObj<typeof meta>;
 export declare const Default: Story;
+export declare const Error: Story;
 export declare const Sizes: Story;
+/**
+ * Figma `Radio_parts`(12266:12938) 3(크기)×6(활성·비활성·읽기전용 × 미선택/선택) 격자.
+ * 셀마다 `RadioGroup` 1개·옵션 `on` 1개로 격리된 상태를 표시합니다.
+ */
+export declare const FigmaComponentSet: Story;
