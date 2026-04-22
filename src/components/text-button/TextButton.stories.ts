@@ -4,7 +4,7 @@ import { Search, Trash2, ChevronRight } from 'lucide-vue-next'
 import TextButton from './TextButton.vue'
 
 const meta = {
-  title: 'Components/TextButton',
+  title: 'Components/Button/TextButton',
   component: TextButton,
   tags: ['autodocs'],
   args: { onClick: fn() },

@@ -13,7 +13,7 @@ const buttonVariants = cva(
         secondary: '',
         tertiary: '',
       },
-      style: {
+      theme: {
         filled: '',
         outlined: 'border',
       },
@@ -31,24 +31,24 @@ const buttonVariants = cva(
     },
     compoundVariants: [
       // === Primary ===
-      { variant: 'primary', style: 'filled', class: 'bg-navy-80 border border-navy-80 text-grey-10 hover:bg-navy-90 hover:border-navy-90 active:bg-navy-100 active:border-navy-100' },
-      { variant: 'primary', style: 'outlined', class: 'bg-grey-10 border-cta-primary text-cta-primary hover:bg-navy-20 active:bg-navy-30' },
+      { variant: 'primary', theme: 'filled', class: 'bg-navy-80 border border-navy-80 text-grey-10 hover:bg-navy-90 hover:border-navy-90 active:bg-navy-100 active:border-navy-100' },
+      { variant: 'primary', theme: 'outlined', class: 'bg-grey-10 border-cta-primary text-cta-primary hover:bg-navy-20 active:bg-navy-30' },
 
       // === Destructive ===
-      { variant: 'destructive', style: 'filled', class: 'bg-red-80 border border-red-80 text-grey-10 hover:bg-red-90 hover:border-red-90 active:bg-red-100 active:border-red-100' },
-      { variant: 'destructive', style: 'outlined', class: 'bg-grey-10 border-red-80 text-red-80 hover:bg-red-20 active:bg-red-30' },
+      { variant: 'destructive', theme: 'filled', class: 'bg-red-80 border border-red-80 text-grey-10 hover:bg-red-90 hover:border-red-90 active:bg-red-100 active:border-red-100' },
+      { variant: 'destructive', theme: 'outlined', class: 'bg-grey-10 border-red-80 text-red-80 hover:bg-red-20 active:bg-red-30' },
 
       // === Secondary ===
-      { variant: 'secondary', style: 'filled', class: 'bg-grey-60 border border-grey-60 text-grey-10 hover:bg-grey-70 hover:border-grey-70 active:bg-grey-80 active:border-grey-80' },
-      { variant: 'secondary', style: 'outlined', class: 'bg-grey-10 border-grey-60 text-grey-60 hover:bg-grey-20 active:bg-grey-30' },
+      { variant: 'secondary', theme: 'filled', class: 'bg-grey-60 border border-grey-60 text-grey-10 hover:bg-grey-70 hover:border-grey-70 active:bg-grey-80 active:border-grey-80' },
+      { variant: 'secondary', theme: 'outlined', class: 'bg-grey-10 border-grey-60 text-grey-60 hover:bg-grey-20 active:bg-grey-30' },
 
       // === Tertiary ===
-      { variant: 'tertiary', style: 'filled', class: 'bg-grey-30 border border-grey-30 text-grey-70 hover:bg-grey-40 hover:border-grey-40 active:bg-grey-50 active:border-grey-50 active:text-grey-80' },
-      { variant: 'tertiary', style: 'outlined', class: 'bg-grey-10 border-grey-30 text-grey-70 hover:bg-grey-20 hover:border-grey-40 active:bg-grey-30 active:border-grey-50' },
+      { variant: 'tertiary', theme: 'filled', class: 'bg-grey-30 border border-grey-30 text-grey-70 hover:bg-grey-40 hover:border-grey-40 active:bg-grey-50 active:border-grey-50 active:text-grey-80' },
+      { variant: 'tertiary', theme: 'outlined', class: 'bg-grey-10 border-grey-30 text-grey-70 hover:bg-grey-20 hover:border-grey-40 active:bg-grey-30 active:border-grey-50' },
     ],
     defaultVariants: {
       variant: 'primary',
-      style: 'filled',
+      theme: 'filled',
       size: 'regular',
       block: false,
     },
@@ -57,7 +57,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps {
   variant?: 'primary' | 'destructive' | 'secondary' | 'tertiary'
-  buttonStyle?: 'filled' | 'outlined'
+  theme?: 'filled' | 'outlined'
   size?: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge'
   block?: boolean
   disabled?: boolean
@@ -68,7 +68,7 @@ export interface ButtonProps {
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   variant: 'primary',
-  buttonStyle: 'filled',
+  theme: 'filled',
   size: 'regular',
   block: false,
   disabled: false,
@@ -93,7 +93,7 @@ const handleClick = (event: MouseEvent) => {
     :class="cn(
       buttonVariants({
         variant: props.variant,
-        style: props.buttonStyle,
+        theme: props.theme,
         size: props.size,
         block: props.block,
       }),
