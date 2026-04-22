@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { computed, ref, watch, nextTick } from 'vue'
+import { computed, inject, ref, watch, nextTick } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { cn } from '../../lib/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { FIELD_CONTROL_INJECTION_KEY } from '../form/injectionKeys'
+
+defineOptions({ inheritAttrs: false })
 
 const textareaVariants = cva(
   'flex w-full rounded-[4px] border transition-all duration-300 placeholder:text-grey-50 focus-visible:outline-hidden focus-visible:border-blue-80 focus-visible:ring-2 focus-visible:ring-blue-40 disabled:cursor-not-allowed disabled:opacity-50 resize-none hover:border-grey-50',
@@ -59,9 +62,6 @@ export interface EnhancedTextareaProps {
   modelValue?: string | number
   defaultValue?: string | number
   class?: HTMLAttributes['class']
-  label?: string
-  required?: boolean
-  errorMessage?: string
   counter?: boolean
   maxLength?: number
   byteMode?: boolean
@@ -92,13 +92,31 @@ const emits = defineEmits<{
   (e: 'update:modelValue', payload: string | number): void
 }>()
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const fieldControl = inject(FIELD_CONTROL_INJECTION_KEY, null)
+
+const localVModel = useVModel(props, 'modelValue', emits, {
   passive: true,
   defaultValue: props.defaultValue,
 })
 
+const modelValue = computed<string | number>({
+  get: () => (fieldControl
+    ? (fieldControl.value.modelValue as string | number)
+    : localVModel.value) ?? '',
+  set: (v) => {
+    if (fieldControl) {
+      fieldControl.value['onUpdate:modelValue']?.(v)
+    } else {
+      localVModel.value = v
+    }
+  },
+})
+
+const handleBlur = () => {
+  fieldControl?.value.onBlur?.()
+}
+
 const textareaRef = ref<HTMLTextAreaElement | null>(null)
-const hasError = computed(() => props.error || !!props.errorMessage)
 
 const getByteLength = (str: string): number => {
   return new Blob([str]).size
@@ -127,13 +145,10 @@ const adjustHeight = async () => {
   const textarea = textareaRef.value
   if (!textarea) return
 
-  // Reset height to auto to get the correct scrollHeight
   textarea.style.height = 'auto'
 
-  // Calculate new height
   let newHeight = textarea.scrollHeight
 
-  // Apply min/max constraints
   if (props.minHeight) {
     newHeight = Math.max(newHeight, props.minHeight)
   }
@@ -141,10 +156,8 @@ const adjustHeight = async () => {
     newHeight = Math.min(newHeight, props.maxHeight)
   }
 
-  // Set new height
   textarea.style.height = `${newHeight}px`
 
-  // Handle scrolling if max height is reached
   if (props.maxHeight && textarea.scrollHeight > props.maxHeight) {
     textarea.style.overflowY = 'auto'
   } else {
@@ -156,7 +169,6 @@ watch(modelValue, () => {
   adjustHeight()
 }, { immediate: true })
 
-// Initial adjustment after mount
 watch(textareaRef, () => {
   adjustHeight()
 })
@@ -164,57 +176,36 @@ watch(textareaRef, () => {
 
 <template>
   <div :class="wrapperVariants({ disabled: props.disabled })">
-    <!-- Label -->
-    <label
-      v-if="label"
-      class="inline-block mb-[8px] text-size-14 text-grey-80 font-medium"
-    >
-      {{ label }}
-      <span v-if="required" class="text-red-70 ml-[4px]">*</span>
-    </label>
-
-    <!-- Textarea -->
     <textarea
       ref="textareaRef"
+      v-bind="$attrs"
       v-model="modelValue"
       :disabled="disabled"
       :readonly="readonly"
       :placeholder="placeholder"
       :maxlength="maxLength"
       :rows="autoResize ? 1 : rows"
+      @blur="handleBlur"
       :class="cn(
         textareaVariants({
           variant: props.variant,
           size: props.size,
-          error: hasError,
+          error: props.error,
           readonly: props.readonly
         }),
         'text-grey-80',
+        counter && 'pb-[24px]',
         props.class
       )"
     />
 
-    <!-- Bottom Row: Error Message & Counter -->
-    <div
-      v-if="errorMessage || counter"
-      class="flex justify-between items-start mt-[4px]"
+    <!-- Counter (bottom-right, inside container per Figma) -->
+    <span
+      v-if="counter"
+      class="absolute right-[16px] bottom-[8px] text-size-10 leading-[16px] text-grey-60 text-right whitespace-nowrap pointer-events-none"
     >
-      <!-- Error Message -->
-      <span
-        v-if="errorMessage"
-        class="text-size-12 text-red-70"
-      >
-        {{ errorMessage }}
-      </span>
-      <span v-else></span>
-
-      <!-- Counter -->
-      <span
-        v-if="counter"
-        class="text-size-12 text-grey-50 ml-auto"
-      >
-        {{ counterText }}
-      </span>
-    </div>
+      <span>{{ currentCount }}</span><span v-if="maxLength" class="text-grey-90">/{{ maxCount }}</span>
+      <span v-if="byteMode" class="text-grey-60"> byte</span>
+    </span>
   </div>
 </template>

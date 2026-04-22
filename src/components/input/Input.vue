@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { computed, ref, watch } from 'vue'
+import { computed, inject, ref } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { cn } from '../../lib/utils'
 import { X, Eye, EyeOff } from 'lucide-vue-next'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { FIELD_CONTROL_INJECTION_KEY } from '../form/injectionKeys'
+
+defineOptions({ inheritAttrs: false })
 
 const inputVariants = cva(
   'flex w-full rounded-[4px] border transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-grey-50 focus-visible:outline-hidden focus-visible:border-blue-80 focus-visible:ring-2 focus-visible:ring-blue-40 disabled:cursor-not-allowed disabled:opacity-50 hover:border-grey-50',
@@ -60,11 +63,8 @@ export interface EnhancedInputProps {
   modelValue?: string | number
   defaultValue?: string | number
   class?: HTMLAttributes['class']
-  label?: string
-  required?: boolean
   clearable?: boolean
   password?: boolean
-  errorMessage?: string
   subfix?: string
   counter?: boolean
   maxLength?: number
@@ -92,10 +92,29 @@ const emits = defineEmits<{
   (e: 'update:modelValue', payload: string | number): void
 }>()
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const fieldControl = inject(FIELD_CONTROL_INJECTION_KEY, null)
+
+const localVModel = useVModel(props, 'modelValue', emits, {
   passive: true,
   defaultValue: props.defaultValue,
 })
+
+const modelValue = computed<string | number>({
+  get: () => (fieldControl
+    ? (fieldControl.value.modelValue as string | number)
+    : localVModel.value) ?? '',
+  set: (v) => {
+    if (fieldControl) {
+      fieldControl.value['onUpdate:modelValue']?.(v)
+    } else {
+      localVModel.value = v
+    }
+  },
+})
+
+const handleBlur = () => {
+  fieldControl?.value.onBlur?.()
+}
 
 const showPassword = ref(false)
 const inputType = computed(() => {
@@ -104,8 +123,6 @@ const inputType = computed(() => {
   }
   return props.type
 })
-
-const hasError = computed(() => props.error || !!props.errorMessage)
 
 const getByteLength = (str: string): number => {
   return new Blob([str]).size
@@ -139,7 +156,7 @@ const togglePasswordVisibility = () => {
 }
 
 const hasPaddingRight = computed(() => {
-  return showClearButton.value || props.password || !!props.subfix
+  return showClearButton.value || props.password || !!props.subfix || props.counter
 })
 
 const inputPaddingClass = computed(() => {
@@ -151,30 +168,22 @@ const inputPaddingClass = computed(() => {
 
 <template>
   <div :class="wrapperVariants({ disabled: props.disabled })">
-    <!-- Label -->
-    <label
-      v-if="label"
-      class="inline-block mb-[8px] text-size-14 text-grey-80 font-medium"
-    >
-      {{ label }}
-      <span v-if="required" class="text-red-70 ml-[4px]">*</span>
-    </label>
-
     <!-- Input Wrapper -->
     <div class="relative">
-      <!-- Input -->
       <input
+        v-bind="$attrs"
         v-model="modelValue"
         :type="inputType"
         :disabled="disabled"
         :readonly="readonly"
         :placeholder="placeholder"
         :maxlength="maxLength"
+        @blur="handleBlur"
         :class="cn(
           inputVariants({
             variant: props.variant,
             size: props.size,
-            error: hasError,
+            error: props.error,
             readonly: props.readonly
           }),
           inputPaddingClass,
@@ -213,30 +222,13 @@ const inputPaddingClass = computed(() => {
           <Eye v-if="!showPassword" class="w-[16px] h-[16px]" />
           <EyeOff v-else class="w-[16px] h-[16px]" />
         </button>
+
+        <!-- Counter -->
+        <span v-if="counter" class="text-size-10 leading-[16px] text-grey-60 text-right whitespace-nowrap">
+          <span>{{ currentCount }}</span><span v-if="maxLength" class="text-grey-90">/{{ maxCount }}</span>
+          <span v-if="byteMode" class="text-grey-60"> byte</span>
+        </span>
       </div>
-    </div>
-
-    <!-- Bottom Row: Error Message & Counter -->
-    <div
-      v-if="errorMessage || counter"
-      class="flex justify-between items-start mt-[4px]"
-    >
-      <!-- Error Message -->
-      <span
-        v-if="errorMessage"
-        class="text-size-12 text-red-70"
-      >
-        {{ errorMessage }}
-      </span>
-      <span v-else></span>
-
-      <!-- Counter -->
-      <span
-        v-if="counter"
-        class="text-size-12 text-grey-50 ml-auto"
-      >
-        {{ counterText }}
-      </span>
     </div>
   </div>
 </template>
