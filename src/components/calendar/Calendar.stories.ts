@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import Calendar from './Calendar.vue'
 
 const meta = {
-  title: 'Components/Calendar',
+  title: 'Components/Date/Calendar',
   component: Calendar,
   tags: ['autodocs'],
 } satisfies Meta<typeof Calendar>

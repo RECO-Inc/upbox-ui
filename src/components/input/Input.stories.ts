@@ -7,7 +7,7 @@ import InputCount from './InputCount.vue'
 import InputUnit from './InputUnit.vue'
 
 const meta = {
-  title: 'Components/Input',
+  title: 'Components/Form/Input',
   component: Input,
   tags: ['autodocs'],
   argTypes: {

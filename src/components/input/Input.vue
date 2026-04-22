@@ -6,7 +6,7 @@ import { cva } from 'class-variance-authority'
 import { cn } from '../../lib/utils'
 import { X, Eye, EyeOff } from 'lucide-vue-next'
 import { FIELD_CONTROL_INJECTION_KEY } from '../form/injectionKeys'
-import { InputFrame, inputFrameIconDirectSizeClasses } from '../input-frame'
+import { InputFrame, InputIcon } from '../input-frame'
 import { INPUT_TRAILING_CONTEXT_KEY } from './inputContext'
 
 defineOptions({ inheritAttrs: false })
@@ -83,6 +83,9 @@ const handleBlur = () => {
   fieldControl?.value.onBlur?.()
 }
 
+/**********************
+ * # password
+ **********************/
 const showPassword = ref(false)
 const inputType = computed(() => {
   if (props.password) {
@@ -90,6 +93,9 @@ const inputType = computed(() => {
   }
   return props.type
 })
+const togglePasswordVisibility = () => {
+  showPassword.value = !showPassword.value
+}
 
 
 /**********************
@@ -119,9 +125,6 @@ const handleClear = () => {
   modelValue.value = ''
 }
 
-const togglePasswordVisibility = () => {
-  showPassword.value = !showPassword.value
-}
 
 const hasDefaultSlot = computed(() => Boolean(slots.default))
 
@@ -131,8 +134,6 @@ const hasTrailing = computed(
     || showClearButton.value
     || props.password
 )
-
-const trailingIconSizeClass = computed(() => inputFrameIconDirectSizeClasses(props.size))
 </script>
 
 <template>
@@ -174,12 +175,9 @@ const trailingIconSizeClass = computed(() => inputFrameIconDirectSizeClasses(pro
             @click="handleClear"
             class="shrink-0 text-grey-50 transition-colors hover:text-grey-70"
           >
-            <X
-              :class="cn(
-                'shrink-0 text-grey-50 transition-colors hover:text-grey-70',
-                trailingIconSizeClass,
-              )"
-            />
+            <InputIcon class="text-inherit">
+              <X />
+            </InputIcon>
           </button>
           <button
             v-if="password"
@@ -187,20 +185,12 @@ const trailingIconSizeClass = computed(() => inputFrameIconDirectSizeClasses(pro
             @click="togglePasswordVisibility"
             class="shrink-0 text-grey-50 transition-colors hover:text-grey-70"
           >
-            <Eye
-              v-if="!showPassword"
-              :class="cn(
-                'shrink-0 text-grey-50 transition-colors hover:text-grey-70',
-                trailingIconSizeClass,
-              )"
-            />
-            <EyeOff
-              v-else
-              :class="cn(
-                'shrink-0 text-grey-50 transition-colors hover:text-grey-70',
-                trailingIconSizeClass,
-              )"
-            />
+            <InputIcon v-if="!showPassword" class="text-inherit">
+              <Eye />
+            </InputIcon>
+            <InputIcon v-else class="text-inherit">
+              <EyeOff />
+            </InputIcon>
           </button>
         </div>
       </div>

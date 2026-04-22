@@ -4,7 +4,7 @@ import InputFrame from './InputFrame.vue'
 import InputIcon from './InputIcon.vue'
 
 const meta = {
-  title: 'Components/InputFrame',
+  title: 'Components/Form/InputFrame',
   component: InputFrame,
   tags: ['autodocs'],
   argTypes: {

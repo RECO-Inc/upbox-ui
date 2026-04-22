@@ -82,6 +82,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export declare const Default: Story;
 export declare const Sizes: Story;
+export declare const WithInputIcon: Story;
 export declare const Variants: Story;
 export declare const StateActive: Story;
 export declare const StateError: Story;
