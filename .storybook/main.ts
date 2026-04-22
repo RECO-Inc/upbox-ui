@@ -1,5 +1,6 @@
 import type { StorybookConfig } from '@storybook/vue3-vite'
 import remarkGfm from 'remark-gfm'
+import rehypePrettyCode from 'rehype-pretty-code'
 
 const config: StorybookConfig = {
   stories: [
@@ -16,6 +17,15 @@ const config: StorybookConfig = {
         mdxPluginOptions: {
           mdxCompileOptions: {
             remarkPlugins: [remarkGfm],
+            rehypePlugins: [
+              [
+                rehypePrettyCode,
+                {
+                  theme: 'github-light',
+                  keepBackground: true,
+                },
+              ],
+            ],
           },
         },
       },

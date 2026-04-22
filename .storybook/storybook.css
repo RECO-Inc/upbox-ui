@@ -1,3 +1,69 @@
 @import "pretendard/dist/web/static/pretendard.css";
 @import "tailwindcss";
 @import "../src/style.css";
+
+/* Storybook Docs code block styling */
+
+/* rehype-pretty-code wraps <pre> in a <figure data-rehype-pretty-code-figure> */
+.sbdocs.sbdocs-content [data-rehype-pretty-code-figure] {
+  margin: 16px 0;
+}
+
+.sbdocs.sbdocs-content [data-rehype-pretty-code-figure] pre {
+  border: 1px solid var(--color-grey-30, #ecedf0);
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.sbdocs.sbdocs-content [data-rehype-pretty-code-figure] pre code {
+  background: transparent;
+  padding: 0;
+  font-family: "SF Mono", Menlo, Consolas, Monaco, "Courier New", monospace;
+}
+
+/* Fallback for any non-highlighted plain pre blocks */
+.sbdocs.sbdocs-content pre:not([data-rehype-pretty-code-figure] pre) {
+  background: var(--color-grey-20, #f8f8f9);
+  border: 1px solid var(--color-grey-30, #ecedf0);
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+  color: var(--color-grey-90, #303445);
+  font-family: "SF Mono", Menlo, Consolas, Monaco, "Courier New", monospace;
+}
+
+.sbdocs.sbdocs-content :not(pre) > code {
+  background: var(--color-grey-20, #f8f8f9);
+  border: 1px solid var(--color-grey-30, #ecedf0);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: "SF Mono", Menlo, Consolas, Monaco, "Courier New", monospace;
+  color: var(--color-navy-80, #264870);
+}
+
+.sbdocs.sbdocs-content table {
+  border-collapse: collapse;
+  margin: 16px 0;
+  width: 100%;
+}
+
+.sbdocs.sbdocs-content table th,
+.sbdocs.sbdocs-content table td {
+  border: 1px solid var(--color-grey-30, #ecedf0);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+}
+
+.sbdocs.sbdocs-content table th {
+  background: var(--color-grey-20, #f8f8f9);
+  font-weight: 700;
+  color: var(--color-grey-90, #303445);
+}
