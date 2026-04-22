@@ -15,8 +15,7 @@ const { toggleSidebar } = useSidebar()
 <template>
   <Button
     data-sidebar="trigger"
-    variant="usually"
-    button-style="text"
+    variant="secondary"
     :class="cn('h-[28px] w-[28px]', props.class)"
     @click="toggleSidebar"
   >

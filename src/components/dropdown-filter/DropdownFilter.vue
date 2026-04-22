@@ -244,7 +244,7 @@ function onReset() {
           class="flex items-center justify-between mt-[8px] pt-[8px] border-t border-grey-30"
         >
           <Button
-            variant="usually"
+            variant="secondary"
             button-style="outlined"
             size="xsmall"
             @click="onReset"

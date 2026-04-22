@@ -28,7 +28,7 @@ const { t } = useI18n()
   >
     <slot name="reset" :on-reset="() => emit('reset')">
       <Button
-        variant="assistant"
+        variant="tertiary"
         style="text"
         size="xsmall"
         @focus.prevent

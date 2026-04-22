@@ -180,7 +180,7 @@ function onDone() {
         <RangeCalendarHeader class="relative flex w-full items-center justify-between pt-[4px]">
           <RangeCalendarPrev
             :class="cn(
-              buttonVariants({ variant: 'assistant', style: 'outlined' }),
+              buttonVariants({ variant: 'tertiary', style: 'outlined' }),
               'h-[28px] w-[28px] bg-transparent p-0 opacity-50 hover:opacity-100'
             )"
           >
@@ -192,7 +192,7 @@ function onDone() {
           />
           <RangeCalendarNext
             :class="cn(
-              buttonVariants({ variant: 'assistant', style: 'outlined' }),
+              buttonVariants({ variant: 'tertiary', style: 'outlined' }),
               'h-[28px] w-[28px] bg-transparent p-0 opacity-50 hover:opacity-100'
             )"
           >
