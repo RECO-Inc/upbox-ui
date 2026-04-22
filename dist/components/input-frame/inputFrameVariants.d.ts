@@ -1,7 +1,7 @@
 import { VariantProps } from 'class-variance-authority';
 /**
- * input·select·date 등 “값이 들어가는 한 줄 필드”의 공통 껍데기.
- * 포커스는 자식(input·button)에 맞추기 위해 `focus-within` 사용.
+ * input, select, date 등의 값 표시 부분 공통 껍데기
+ * - 혹시나 재사용할까 싶어서..
  */
 export declare const inputFrameVariants: (props?: ({
     variant?: "default" | "filled" | "bottomline" | null | undefined;

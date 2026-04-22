@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { Search } from 'lucide-vue-next'
 import InputFrame from './InputFrame.vue'
+import InputIcon from './InputIcon.vue'
 
 const meta = {
   title: 'Components/InputFrame',
@@ -58,6 +60,41 @@ export const Sizes: Story = {
   }),
 }
 
+export const WithInputIcon: Story = {
+  name: 'With InputIcon',
+  render: () => ({
+    components: { InputFrame, InputIcon, Search },
+    template: `
+      <div class="flex w-[360px] flex-col gap-[12px]">
+        <InputFrame size="small">
+          <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
+            <span class="min-w-0 flex-1 text-grey-80 text-size-12">텍스트 (small)</span>
+            <InputIcon>
+              <Search />
+            </InputIcon>
+          </div>
+        </InputFrame>
+        <InputFrame size="regular">
+          <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
+            <span class="min-w-0 flex-1 text-grey-80 text-size-14">텍스트 (regular)</span>
+            <InputIcon>
+              <Search />
+            </InputIcon>
+          </div>
+        </InputFrame>
+        <InputFrame size="large">
+          <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
+            <span class="min-w-0 flex-1 text-grey-80 text-size-16">텍스트 (large)</span>
+            <InputIcon>
+              <Search />
+            </InputIcon>
+          </div>
+        </InputFrame>
+      </div>
+    `,
+  }),
+}
+
 export const Variants: Story = {
   render: () => ({
     components: { InputFrame },
@@ -77,22 +114,80 @@ export const Variants: Story = {
   }),
 }
 
-export const States: Story = {
+export const StateActive: Story = {
+  name: "State / Active",
   render: () => ({
     components: { InputFrame },
     template: `
       <div class="flex w-[360px] flex-col gap-[12px]">
-        <InputFrame>
-          <span class="min-w-0 flex-1 text-grey-80">활성</span>
+        <InputFrame size="small">
+          <span class="min-w-0 flex-1 text-grey-80 text-size-12">활성 (small)</span>
         </InputFrame>
-        <InputFrame :error="true">
-          <span class="min-w-0 flex-1 text-grey-80">에러</span>
+        <InputFrame size="regular">
+          <span class="min-w-0 flex-1 text-grey-80 text-size-14">활성 (regular)</span>
         </InputFrame>
-        <InputFrame :readonly="true">
-          <span class="min-w-0 flex-1 text-grey-80">읽기 전용</span>
+        <InputFrame size="large">
+          <span class="min-w-0 flex-1 text-grey-80 text-size-16">활성 (large)</span>
         </InputFrame>
-        <InputFrame :disabled="true">
-          <span class="min-w-0 flex-1 text-grey-50">비활성</span>
+      </div>
+    `,
+  }),
+}
+
+export const StateError: Story = {
+  name: "State / Error",
+  render: () => ({
+    components: { InputFrame },
+    template: `
+      <div class="flex w-[360px] flex-col gap-[12px]">
+        <InputFrame size="small" :error="true">
+          <span class="min-w-0 flex-1 text-grey-80 text-size-12">에러 (small)</span>
+        </InputFrame>
+        <InputFrame size="regular" :error="true">
+          <span class="min-w-0 flex-1 text-grey-80 text-size-14">에러 (regular)</span>
+        </InputFrame>
+        <InputFrame size="large" :error="true">
+          <span class="min-w-0 flex-1 text-grey-80 text-size-16">에러 (large)</span>
+        </InputFrame>
+      </div>
+    `,
+  }),
+}
+
+export const StateReadOnly: Story = {
+  name: "State / Read only",
+  render: () => ({
+    components: { InputFrame },
+    template: `
+      <div class="flex w-[360px] flex-col gap-[12px]">
+        <InputFrame size="small" :readonly="true">
+          <span class="min-w-0 flex-1 text-grey-80 text-size-12">읽기 전용 (small)</span>
+        </InputFrame>
+        <InputFrame size="regular" :readonly="true">
+          <span class="min-w-0 flex-1 text-grey-80 text-size-14">읽기 전용 (regular)</span>
+        </InputFrame>
+        <InputFrame size="large" :readonly="true">
+          <span class="min-w-0 flex-1 text-grey-80 text-size-16">읽기 전용 (large)</span>
+        </InputFrame>
+      </div>
+    `,
+  }),
+}
+
+export const StateDisabled: Story = {
+  name: "State / Disabled",
+  render: () => ({
+    components: { InputFrame },
+    template: `
+      <div class="flex w-[360px] flex-col gap-[12px]">
+        <InputFrame size="small" :disabled="true">
+          <span class="min-w-0 flex-1 text-grey-50 text-size-12">비활성 (small)</span>
+        </InputFrame>
+        <InputFrame size="regular" :disabled="true">
+          <span class="min-w-0 flex-1 text-grey-50 text-size-14">비활성 (regular)</span>
+        </InputFrame>
+        <InputFrame size="large" :disabled="true">
+          <span class="min-w-0 flex-1 text-grey-50 text-size-16">비활성 (large)</span>
         </InputFrame>
       </div>
     `,

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { computed } from "vue"
+import { computed, provide } from "vue"
 import { cn } from "../../lib/utils"
+import { INPUT_FRAME_CONTEXT_KEY } from "./inputFrameContext"
 import {
   inputFrameVariants,
   type InputFrameVariantProps,
@@ -25,6 +26,10 @@ const props = withDefaults(
     disabled: false,
   },
 )
+
+provide(INPUT_FRAME_CONTEXT_KEY, {
+  size: computed(() => props.size ?? "regular"),
+})
 
 const rootClass = computed(() =>
   cn(

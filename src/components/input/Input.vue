@@ -6,7 +6,7 @@ import { cva } from 'class-variance-authority'
 import { cn } from '../../lib/utils'
 import { X, Eye, EyeOff } from 'lucide-vue-next'
 import { FIELD_CONTROL_INJECTION_KEY } from '../form/injectionKeys'
-import { InputFrame } from '../input-frame'
+import { InputFrame, inputFrameIconDirectSizeClasses } from '../input-frame'
 import { INPUT_TRAILING_CONTEXT_KEY } from './inputContext'
 
 defineOptions({ inheritAttrs: false })
@@ -131,6 +131,8 @@ const hasTrailing = computed(
     || showClearButton.value
     || props.password
 )
+
+const trailingIconSizeClass = computed(() => inputFrameIconDirectSizeClasses(props.size))
 </script>
 
 <template>
@@ -172,7 +174,12 @@ const hasTrailing = computed(
             @click="handleClear"
             class="shrink-0 text-grey-50 transition-colors hover:text-grey-70"
           >
-            <X class="h-[16px] w-[16px]" />
+            <X
+              :class="cn(
+                'shrink-0 text-grey-50 transition-colors hover:text-grey-70',
+                trailingIconSizeClass,
+              )"
+            />
           </button>
           <button
             v-if="password"
@@ -180,8 +187,20 @@ const hasTrailing = computed(
             @click="togglePasswordVisibility"
             class="shrink-0 text-grey-50 transition-colors hover:text-grey-70"
           >
-            <Eye v-if="!showPassword" class="h-[16px] w-[16px]" />
-            <EyeOff v-else class="h-[16px] w-[16px]" />
+            <Eye
+              v-if="!showPassword"
+              :class="cn(
+                'shrink-0 text-grey-50 transition-colors hover:text-grey-70',
+                trailingIconSizeClass,
+              )"
+            />
+            <EyeOff
+              v-else
+              :class="cn(
+                'shrink-0 text-grey-50 transition-colors hover:text-grey-70',
+                trailingIconSizeClass,
+              )"
+            />
           </button>
         </div>
       </div>

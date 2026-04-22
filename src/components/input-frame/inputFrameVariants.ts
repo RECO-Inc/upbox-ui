@@ -1,15 +1,15 @@
 import { cva, type VariantProps } from "class-variance-authority"
 
 /**
- * input·select·date 등 “값이 들어가는 한 줄 필드”의 공통 껍데기.
- * 포커스는 자식(input·button)에 맞추기 위해 `focus-within` 사용.
+ * input, select, date 등의 값 표시 부분 공통 껍데기
+ * - 혹시나 재사용할까 싶어서..
  */
 export const inputFrameVariants = cva(
   [
     "flex w-full items-center gap-0 rounded-[4px] border transition-all duration-300",
-    "hover:border-grey-50",
+    "hover:border-grey-60",
     "focus-within:outline-hidden",
-    "focus-within:border-blue-80 focus-within:ring-2 focus-within:ring-blue-40",
+    "focus-within:border-blue-80 focus-within:ring-1 focus-within:ring-blue-50 focus-within:hover:border-blue-80",
   ].join(" "),
   {
     variants: {

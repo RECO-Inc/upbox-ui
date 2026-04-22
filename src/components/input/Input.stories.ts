@@ -58,27 +58,102 @@ export const Sizes: Story = {
     `,
   }),
 }
+
 export const ErrorState: Story = {
-  args: { error: true, placeholder: 'Error state', modelValue: 'Invalid value' },
+  render: () => ({
+    components: { Input },
+    template: `
+      <div class="flex flex-col gap-[12px] w-[320px]">
+        <Input size="small" error placeholder="Error state" model-value="Invalid value" />
+        <Input size="regular" error placeholder="Error state" model-value="Invalid value" />
+        <Input size="large" error placeholder="Error state" model-value="Invalid value" />
+      </div>
+    `,
+  }),
 }
 
+/**
+ * - 드래그, 포커싱, 입력 모두 불가능함
+ * - 서버에 전달도 안됨
+ */
 export const Disabled: Story = {
-  args: { disabled: true, placeholder: 'Disabled', modelValue: 'Cannot edit' },
+  render: () => ({
+    components: { Input },
+    template: `
+      <div class="flex flex-col gap-[12px] w-[320px]">
+        <Input size="small" disabled placeholder="Disabled" model-value="Cannot edit" />
+        <Input size="regular" disabled placeholder="Disabled" model-value="Cannot edit" />
+        <Input size="large" disabled placeholder="Disabled" model-value="Cannot edit" />
+      </div>
+    `,
+  }),
 }
 
+/**
+ * - readonly 속성은 드래그, 포커싱은 가능
+ * - 대신 입력 불가능함
+ * - 서버에 값도 전달되는 속성임
+ */
 export const ReadOnly: Story = {
-  args: { readonly: true, modelValue: 'Read only value' },
+  render: () => ({
+    components: { Input },
+    template: `
+      <div class="flex flex-col gap-[12px] w-[320px]">
+        <Input size="small" readonly model-value="Read only value" />
+        <Input size="regular" readonly model-value="Read only value" />
+        <Input size="large" readonly model-value="Read only value" />
+      </div>
+    `,
+  }),
 }
 
-
+/**
+ * - 눈 표시 있음. 눈 누르면 비밀번호 토글됨
+ * - type=password, 네이티브만
+ * 
+ */
 export const Password: Story = {
-  args: { type: 'password', placeholder: 'Enter password...' },
+  render: () => ({
+    components: { Input },
+    setup() {
+      const withToggle = ref('secret1')
+      const withoutToggle = ref('secret2')
+      return { withToggle, withoutToggle }
+    },
+    template: `
+      <div class="flex w-[360px] flex-col gap-[16px]">
+        <div class="flex flex-col gap-[8px]">
+          <p class="text-size-12 text-grey-60">눈 표시 있음 (password 토글)</p>
+          <div class="flex flex-col gap-[12px]">
+            <Input v-model="withToggle" size="small" password placeholder="Enter password..." />
+            <Input v-model="withToggle" size="regular" password placeholder="Enter password..." />
+            <Input v-model="withToggle" size="large" password placeholder="Enter password..." />
+          </div>
+        </div>
+        <div class="flex flex-col gap-[8px]">
+          <p class="text-size-12 text-grey-60">눈 표시 없음 (type=password, 네이티브만)</p>
+          <div class="flex flex-col gap-[12px]">
+            <Input v-model="withoutToggle" size="small" type="password" placeholder="Enter password..." />
+            <Input v-model="withoutToggle" size="regular" type="password" placeholder="Enter password..." />
+            <Input v-model="withoutToggle" size="large" type="password" placeholder="Enter password..." />
+          </div>
+        </div>
+      </div>
+    `,
+  }),
 }
 
+/**
+ * - 지우기 버튼 누르면 값 지워짐
+ */
 export const Clearable: Story = {
   args: { clearable: true, placeholder: 'Type to clear...', modelValue: 'Clearable text' },
 }
 
+/**
+ * - `<InputIcon>` 를 활용
+ * - 아이콘 크기는 `<Input>` 의 크기에 맞춰서 자동 조정됨
+ */
 export const WithSuffixIcon: Story = {
   render: () => ({
     components: { Input, InputIcon, Search },
@@ -94,6 +169,10 @@ export const WithSuffixIcon: Story = {
   }),
 }
 
+/**
+ * - `<InputCount>` 를 활용
+ * - count 는 `<Input>` 에서 관리함 (maxLength, byteMode 등을 provide 함~)
+ */
 export const WithCount: Story = {
   render: () => ({
     components: { Input, InputCount },
@@ -118,6 +197,11 @@ export const WithCount: Story = {
     `,
   }),
 }
+
+/**
+ * - `<InputUnit>` 를 활용
+ * - Unit 은 아무거나 넣어주면 됨~
+ */
 export const WithUnit: Story = {
   render: () => ({
     components: { Input, InputUnit },

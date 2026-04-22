@@ -87,11 +87,23 @@ type Story = StoryObj<typeof meta>;
 export declare const Default: Story;
 export declare const Variants: Story;
 export declare const Sizes: Story;
-export declare const Password: Story;
-export declare const Clearable: Story;
-export declare const WithSuffixIcon: Story;
-export declare const WithCount: Story;
-export declare const WithUnit: Story;
 export declare const ErrorState: Story;
 export declare const Disabled: Story;
 export declare const ReadOnly: Story;
+export declare const Password: Story;
+export declare const Clearable: Story;
+/**
+ * `<InputIcon>` 를 활용
+ * 아이콘 크기는 `<Input>` 의 크기에 맞춰서 자동 조정됨
+ */
+export declare const WithSuffixIcon: Story;
+/**
+ * `<InputCount>` 를 활용
+ * count 는 `<Input>` 에서 관리함 (maxLength, byteMode 등을 provide 함~)
+ */
+export declare const WithCount: Story;
+/**
+ * `<InputUnit>` 를 활용
+ * Unit 은 아무거나 넣어주면 됨~
+ */
+export declare const WithUnit: Story;

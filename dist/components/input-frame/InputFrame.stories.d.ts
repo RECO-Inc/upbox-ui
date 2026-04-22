@@ -83,4 +83,7 @@ type Story = StoryObj<typeof meta>;
 export declare const Default: Story;
 export declare const Sizes: Story;
 export declare const Variants: Story;
-export declare const States: Story;
+export declare const StateActive: Story;
+export declare const StateError: Story;
+export declare const StateReadOnly: Story;
+export declare const StateDisabled: Story;
