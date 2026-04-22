@@ -2320,9 +2320,9 @@ const $n = /* @__PURE__ */ l({
             bottomline: "border-0 border-b border-grey-40 rounded-none bg-transparent hover:border-grey-50"
           },
           size: {
-            small: "h-[32px] px-[12px] py-[7px] text-size-12",
+            small: "h-[32px] px-[8px] py-[8px] text-size-12",
             regular: "h-[40px] px-[16px] py-[9px] text-size-14",
-            large: "h-[48px] px-[16px] py-[11px] text-size-15"
+            large: "h-[48px] px-[16px] py-[11px] text-size-16"
           },
           error: {
             true: "border-red-80 focus-visible:border-red-80 focus-visible:ring-0 hover:border-red-80",
@@ -3640,8 +3640,8 @@ const xr = /* @__PURE__ */ l({
           },
           size: {
             small: "px-[12px] py-[7px] text-size-12",
-            regular: "px-[16px] py-[9px] text-size-14",
-            large: "px-[16px] py-[11px] text-size-15"
+            regular: "p-[16px] text-size-14",
+            large: "px-[16px] py-[11px] text-size-16"
           },
           error: {
             true: "border-red-80 focus-visible:border-red-80 focus-visible:ring-0 hover:border-red-80",

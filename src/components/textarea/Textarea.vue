@@ -19,8 +19,8 @@ const textareaVariants = cva(
       },
       size: {
         small: 'px-[12px] py-[7px] text-size-12',
-        regular: 'px-[16px] py-[9px] text-size-14',
-        large: 'px-[16px] py-[11px] text-size-15',
+        regular: 'p-[16px] text-size-14',
+        large: 'px-[16px] py-[11px] text-size-16',
       },
       error: {
         true: 'border-red-80 focus-visible:border-red-80 focus-visible:ring-0 hover:border-red-80',
