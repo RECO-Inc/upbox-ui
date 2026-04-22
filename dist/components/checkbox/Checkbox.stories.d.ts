@@ -63,9 +63,16 @@ declare const meta: {
 export default meta;
 type Story = StoryObj<typeof meta>;
 export declare const Default: Story;
-export declare const Indeterminate: Story;
 export declare const Sizes: Story;
+export declare const ErrorState: Story;
+export declare const Indeterminate: Story;
+/**
+ * 전체 선택의 사용 케이스
+ * - 하나라도 선택 됨 -> 부분 선택
+ * - 모두 선택 됨 -> 체크
+ * - 모두 해제 됨 -> 미체크
+ */
+export declare const SelectAllWithItems: Story;
 export declare const Disabled: Story;
 /** 한판에 보기: 3(크기)×9(활성/비활성/읽기전용 × 미/체/부) */
 export declare const FigmaComponentSet: Story;
-export declare const ErrorState: Story;

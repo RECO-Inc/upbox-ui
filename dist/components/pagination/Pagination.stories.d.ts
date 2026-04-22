@@ -38,6 +38,9 @@ declare const meta: {
         };
     });
     tags: string[];
+    args: {
+        itemsPerPage: number;
+    };
 };
 export default meta;
 type Story = StoryObj<typeof meta>;
