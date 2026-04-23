@@ -11,6 +11,8 @@ const props = withDefaults(
     size?: InputFrameVariantProps["size"]
     readonly?: boolean
     disabled?: boolean
+    /** 비어 있을 때(입력 가능할 때)만 표시. 미지정이면 YYYY-MM-DD */
+    placeholder?: string
     class?: HTMLAttributes["class"]
   }>(),
   {
@@ -48,6 +50,15 @@ const canType = computed(
 )
 
 const display = computed(() => formatSlotsToDisplay(slots.value))
+
+/** InputFrame `has-[input:placeholder-shown]:text-grey-50` 이 여러 input 중 하나면 전체 톤이 밝아지는 문제 — 이 필드에 표시가 있을 때는 직접 grey-80 */
+const inputTextClass = computed(() => {
+  if (props.disabled)
+    return "text-inherit"
+  if (display.value.length > 0)
+    return "text-grey-80"
+  return "text-inherit"
+})
 
 const draftError = computed(() => isSlotsInvalid(slots.value))
 
@@ -323,9 +334,14 @@ function insertDigit(d: string) {
 }
 
 function onKeydown(e: KeyboardEvent) {
-  if (!canType.value)
-    return
   if (e.isComposing)
+    return
+  if (e.key === "Enter") {
+    e.preventDefault()
+    inputRef.value?.blur()
+    return
+  }
+  if (!canType.value)
     return
   if (e.ctrlKey || e.metaKey) {
     if (e.key === "a" || e.key === "A") {
@@ -453,11 +469,11 @@ watch(
         type="text"
         :readonly="!canType"
         :disabled="props.disabled"
-        :placeholder="canType ? 'YYYY-MM-DD' : undefined"
+        :placeholder="canType ? (props.placeholder ?? 'YYYY-MM-DD') : undefined"
         inputmode="numeric"
         autocomplete="off"
-        class="min-h-0 h-full w-full min-w-0 border-0 bg-transparent text-inherit outline-none placeholder:text-inherit tabular-nums read-only:cursor-default"
-        :class="labelSizeClass"
+        class="min-h-0 h-full w-full min-w-0 border-0 bg-transparent outline-none placeholder:text-inherit tabular-nums read-only:cursor-default"
+        :class="[labelSizeClass, inputTextClass]"
         @click="onInputClick"
         @select="onInputSelect"
         @focus="onFocus"

@@ -2,7 +2,6 @@
 import type { HTMLAttributes } from "vue"
 import { computed, ref } from "vue"
 import { Calendar as CalendarGlyph } from "lucide-vue-next"
-import { CalendarDate } from "@internationalized/date"
 import { PopoverTrigger } from "reka-ui"
 import { cn } from "../../lib/utils"
 import {
@@ -10,16 +9,19 @@ import {
   InputIcon,
   type InputFrameVariantProps,
 } from "../input-frame"
-import DateInput from "./DateInput.vue"
+import type { DatePeriodValue } from "./datePeriodTypes"
+import DatePeriodInput from "./DatePeriodInput.vue"
 
 const props = withDefaults(
   defineProps<{
-    modelValue?: CalendarDate | null
+    modelValue?: DatePeriodValue | null
     variant?: InputFrameVariantProps["variant"]
     size?: InputFrameVariantProps["size"]
     error?: boolean
     readonly?: boolean
     disabled?: boolean
+    startPlaceholder?: string
+    endPlaceholder?: string
     class?: HTMLAttributes["class"]
   }>(),
   {
@@ -33,7 +35,7 @@ const props = withDefaults(
 )
 
 const emit = defineEmits<{
-  "update:modelValue": [value: CalendarDate | null]
+  "update:modelValue": [value: DatePeriodValue | null]
 }>()
 
 const draftErrorFromInput = ref(false)
@@ -57,11 +59,13 @@ function onUpdateDraftError(v: boolean) {
     :class="cn('w-full min-w-0', props.class)"
   >
     <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
-      <DateInput
+      <DatePeriodInput
         :model-value="modelValue"
         :size="props.size"
         :readonly="props.readonly"
         :disabled="props.disabled"
+        :start-placeholder="startPlaceholder"
+        :end-placeholder="endPlaceholder"
         @update:model-value="(v) => emit('update:modelValue', v)"
         @update:draft-error="onUpdateDraftError"
       />
