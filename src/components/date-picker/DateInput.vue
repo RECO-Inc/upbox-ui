@@ -3,6 +3,7 @@ import type { HTMLAttributes } from "vue"
 import { computed, nextTick, ref, watch } from "vue"
 import { CalendarDate, parseDate } from "@internationalized/date"
 import { cn } from "../../lib/utils"
+import { useInputFrameDesign } from "../input-frame"
 import type { InputFrameVariantProps } from "../input-frame"
 
 const props = withDefaults(
@@ -28,6 +29,9 @@ const emit = defineEmits<{
   "update:draftError": [value: boolean]
 }>()
 
+const design = useInputFrameDesign(() => props)
+const isFrameDisabled = design.disabled
+
 const inputRef = ref<HTMLInputElement | null>(null)
 /** 8자리: 연4·월2·일2 — 빈칸은 '' */
 const slots = ref<string[]>(Array.from({ length: 8 }, () => ""))
@@ -38,22 +42,22 @@ const snapshotAtFocus = ref<CalendarDate | null | undefined>(undefined)
 const invalidateShake = ref(false)
 
 const labelSizeClass = computed(() => {
-  if (props.size === "small")
+  if (design.size.value === "small")
     return "text-size-12"
-  if (props.size === "large")
+  if (design.size.value === "large")
     return "text-size-16"
   return "text-size-14"
 })
 
 const canType = computed(
-  () => !props.disabled && !props.readonly,
+  () => !design.disabled.value && !design.readonly.value,
 )
 
 const display = computed(() => formatSlotsToDisplay(slots.value))
 
 /** InputFrame `has-[input:placeholder-shown]:text-grey-50` 이 여러 input 중 하나면 전체 톤이 밝아지는 문제 — 이 필드에 표시가 있을 때는 직접 grey-80 */
 const inputTextClass = computed(() => {
-  if (props.disabled)
+  if (design.disabled.value)
     return "text-inherit"
   if (display.value.length > 0)
     return "text-grey-80"
@@ -468,7 +472,7 @@ watch(
         :value="display"
         type="text"
         :readonly="!canType"
-        :disabled="props.disabled"
+        :disabled="isFrameDisabled"
         :placeholder="canType ? (props.placeholder ?? 'YYYY-MM-DD') : undefined"
         inputmode="numeric"
         autocomplete="off"

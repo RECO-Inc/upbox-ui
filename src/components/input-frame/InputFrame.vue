@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "vue"
 import { computed, provide } from "vue"
 import { cn } from "../../lib/utils"
-import { INPUT_FRAME_CONTEXT_KEY } from "./inputFrameContext"
+import { INPUT_FRAME_CONTEXT_KEY, useInputFrameDesign } from "./inputFrameContext"
 import {
   inputFrameVariants,
   type InputFrameVariantProps,
@@ -27,18 +27,24 @@ const props = withDefaults(
   },
 )
 
+const design = useInputFrameDesign(() => props)
+
 provide(INPUT_FRAME_CONTEXT_KEY, {
-  size: computed(() => props.size ?? "regular"),
+  variant: design.variant,
+  size: design.size,
+  error: design.error,
+  readonly: design.readonly,
+  disabled: design.disabled,
 })
 
 const rootClass = computed(() =>
   cn(
     inputFrameVariants({
-      variant: props.variant,
-      size: props.size,
-      error: props.error,
-      readonly: props.readonly,
-      disabled: props.disabled,
+      variant: design.variant.value,
+      size: design.size.value,
+      error: design.error.value,
+      readonly: design.readonly.value,
+      disabled: design.disabled.value,
     }),
     props.class,
   ),
@@ -48,7 +54,7 @@ const rootClass = computed(() =>
 <template>
   <div
     :class="rootClass"
-    :data-disabled="props.disabled ? '' : undefined"
+    :data-disabled="design.disabled ? '' : undefined"
   >
     <slot />
   </div>

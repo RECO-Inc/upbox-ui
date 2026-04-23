@@ -2,7 +2,7 @@ import { StoryObj } from '@storybook/vue3-vite';
 declare const meta: {
     title: string;
     component: {
-        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('./Input').EnhancedInputProps> & Readonly<{
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('./TextField').TextFieldProps> & Readonly<{
             "onUpdate:modelValue"?: ((payload: string | number) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
             "update:modelValue": (payload: string | number) => any;
@@ -23,7 +23,7 @@ declare const meta: {
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<import('./Input').EnhancedInputProps> & Readonly<{
+        }, Readonly<import('./TextField').TextFieldProps> & Readonly<{
             "onUpdate:modelValue"?: ((payload: string | number) => any) | undefined;
         }>, {}, {}, {}, {}, {
             disabled: boolean;
@@ -39,7 +39,7 @@ declare const meta: {
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('vue').ComponentOptionsBase<Readonly<import('./Input').EnhancedInputProps> & Readonly<{
+    } & import('vue').ComponentOptionsBase<Readonly<import('./TextField').TextFieldProps> & Readonly<{
         "onUpdate:modelValue"?: ((payload: string | number) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
         "update:modelValue": (payload: string | number) => any;
@@ -111,16 +111,16 @@ export declare const Password: Story;
 export declare const Clearable: Story;
 /**
  * - `<InputIcon>` 를 활용
- * - 아이콘 크기는 `<Input>` 의 크기에 맞춰서 자동 조정됨
+ * - 아이콘 크기는 `<TextField>` 의 크기에 맞춰서 자동 조정됨
  */
 export declare const WithSuffixIcon: Story;
 /**
- * - `<InputCount>` 를 활용
- * - count 는 `<Input>` 에서 관리함 (maxLength, byteMode 등을 provide 함~)
+ * - `<TextFieldCount>` 를 활용
+ * - count 는 `<TextField>` 에서 관리함 (maxLength, byteMode 등을 provide 함~)
  */
 export declare const WithCount: Story;
 /**
- * - `<InputUnit>` 를 활용
+ * - `<TextFieldUnit>` 를 활용
  * - Unit 은 아무거나 넣어주면 됨~
  */
 export declare const WithUnit: Story;

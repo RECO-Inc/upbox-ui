@@ -125,14 +125,6 @@ const handleClear = () => {
   modelValue.value = ""
 }
 
-const hasDefaultSlot = computed(() => Boolean(slots.default))
-
-const hasTrailing = computed(
-  () =>
-    hasDefaultSlot.value
-    || showClearButton.value
-    || props.password,
-)
 </script>
 
 <template>
@@ -164,36 +156,31 @@ const hasTrailing = computed(
           )"
           @blur="handleBlur"
         />
-        <div
-          v-if="hasTrailing"
-          class="flex shrink-0 items-center gap-[8px] text-inherit opacity-60"
+        <button
+          v-if="showClearButton"
+          type="button"
+          class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
+          @click="handleClear"
         >
-          <button
-            v-if="showClearButton"
-            type="button"
-            class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
-            @click="handleClear"
-          >
-            <InputIcon class="text-inherit">
-              <X />
-            </InputIcon>
-          </button>
-          <button
-            v-if="password"
-            type="button"
-            class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
-            @click="togglePasswordVisibility"
-          >
-            <InputIcon v-if="!showPassword" class="text-inherit">
-              <Eye />
-            </InputIcon>
-            <InputIcon v-else class="text-inherit">
-              <EyeOff />
-            </InputIcon>
-          </button>
-        </div>
+          <InputIcon class="text-inherit">
+            <X />
+          </InputIcon>
+        </button>
+        <button
+          v-if="password"
+          type="button"
+          class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
+          @click="togglePasswordVisibility"
+        >
+          <InputIcon v-if="!showPassword" class="text-inherit">
+            <Eye />
+          </InputIcon>
+          <InputIcon v-else class="text-inherit">
+            <EyeOff />
+          </InputIcon>
+        </button>
+        <slot />
       </div>
-      <slot />
     </InputFrame>
   </div>
 </template>

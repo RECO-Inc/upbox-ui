@@ -1,11 +1,11 @@
 import { HTMLAttributes } from 'vue';
-export interface EnhancedInputProps {
-    variant?: 'default' | 'filled' | 'bottomline';
-    size?: 'small' | 'regular' | 'large';
+export interface TextFieldProps {
+    variant?: "default" | "filled" | "bottomline";
+    size?: "small" | "regular" | "large";
     error?: boolean;
     modelValue?: string | number;
     defaultValue?: string | number;
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
     clearable?: boolean;
     password?: boolean;
     maxLength?: number;
@@ -24,9 +24,9 @@ declare function __VLS_template(): {
     rootEl: any;
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
-declare const __VLS_component: import('vue').DefineComponent<EnhancedInputProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
+declare const __VLS_component: import('vue').DefineComponent<TextFieldProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
     "update:modelValue": (payload: string | number) => any;
-}, string, import('vue').PublicProps, Readonly<EnhancedInputProps> & Readonly<{
+}, string, import('vue').PublicProps, Readonly<TextFieldProps> & Readonly<{
     "onUpdate:modelValue"?: ((payload: string | number) => any) | undefined;
 }>, {
     disabled: boolean;

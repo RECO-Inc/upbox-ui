@@ -78,7 +78,7 @@ declare module 'vue' {
         FormItem: typeof import('./components/form')['FormItem'];
         FormLabel: typeof import('./components/form')['FormLabel'];
         FormMessage: typeof import('./components/form')['FormMessage'];
-        Input: typeof import('./components/input')['Input'];
+        TextField: typeof import('./components/text-field')['TextField'];
         InputGroup: typeof import('./components/input-group')['InputGroup'];
         InputGroupAddon: typeof import('./components/input-group')['InputGroupAddon'];
         InputGroupButton: typeof import('./components/input-group')['InputGroupButton'];

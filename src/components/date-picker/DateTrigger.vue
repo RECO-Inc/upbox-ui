@@ -59,9 +59,6 @@ function onUpdateDraftError(v: boolean) {
     <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
       <DateInput
         :model-value="modelValue"
-        :size="props.size"
-        :readonly="props.readonly"
-        :disabled="props.disabled"
         @update:model-value="(v) => emit('update:modelValue', v)"
         @update:draft-error="onUpdateDraftError"
       />

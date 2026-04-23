@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'vue';
 type __VLS_Props = {
     /**
-     * 부모 `Input` 밖에서 쓸 때만. `Input` 자식이면 `Input`의 model·`maxLength`·`byteMode`가 우선
+     * 부모 `TextField` 밖에서 쓸 때만. `TextField` 자식이면 `TextField`의 model·`maxLength`·`byteMode`가 우선
      */
     current?: number;
     maxLength?: number;
