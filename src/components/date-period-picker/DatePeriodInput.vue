@@ -5,7 +5,7 @@ import { CalendarDate } from "@internationalized/date"
 import { cn } from "../../lib/utils"
 import type { InputFrameVariantProps } from "../input-frame"
 import type { DatePeriodValue } from "./datePeriodTypes"
-import DateInput from "./DateInput.vue"
+import DateInput from "../date-picker/DateInput.vue"
 
 const props = withDefaults(
   defineProps<{

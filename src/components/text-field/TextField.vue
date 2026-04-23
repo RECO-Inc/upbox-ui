@@ -1,38 +1,38 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import { computed, inject, provide, ref, useSlots } from 'vue'
-import { useVModel } from '@vueuse/core'
-import { cva } from 'class-variance-authority'
-import { cn } from '../../lib/utils'
-import { X, Eye, EyeOff } from 'lucide-vue-next'
-import { FIELD_CONTROL_INJECTION_KEY } from '../form/injectionKeys'
-import { InputFrame, InputIcon } from '../input-frame'
-import { INPUT_TRAILING_CONTEXT_KEY } from './inputContext'
+import type { HTMLAttributes } from "vue"
+import { computed, inject, provide, ref, useSlots } from "vue"
+import { useVModel } from "@vueuse/core"
+import { cva } from "class-variance-authority"
+import { cn } from "../../lib/utils"
+import { X, Eye, EyeOff } from "lucide-vue-next"
+import { FIELD_CONTROL_INJECTION_KEY } from "../form/injectionKeys"
+import { InputFrame, InputIcon } from "../input-frame"
+import { TEXT_FIELD_TRAILING_CONTEXT_KEY } from "./textFieldContext"
 
 defineOptions({ inheritAttrs: false })
 
 const wrapperVariants = cva(
-  'relative w-full',
+  "relative w-full",
   {
     variants: {
       disabled: {
-        true: 'cursor-not-allowed',
-        false: '',
+        true: "cursor-not-allowed",
+        false: "",
       },
     },
     defaultVariants: {
       disabled: false,
     },
-  }
+  },
 )
 
-export interface EnhancedInputProps {
-  variant?: 'default' | 'filled' | 'bottomline'
-  size?: 'small' | 'regular' | 'large'
+export interface TextFieldProps {
+  variant?: "default" | "filled" | "bottomline"
+  size?: "small" | "regular" | "large"
   error?: boolean
   modelValue?: string | number
   defaultValue?: string | number
-  class?: HTMLAttributes['class']
+  class?: HTMLAttributes["class"]
   clearable?: boolean
   password?: boolean
   maxLength?: number
@@ -43,25 +43,25 @@ export interface EnhancedInputProps {
   type?: string
 }
 
-const props = withDefaults(defineProps<EnhancedInputProps>(), {
-  variant: 'default',
-  size: 'regular',
+const props = withDefaults(defineProps<TextFieldProps>(), {
+  variant: "default",
+  size: "regular",
   error: false,
   disabled: false,
   readonly: false,
   clearable: false,
   password: false,
   byteMode: false,
-  type: 'text',
+  type: "text",
 })
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', payload: string | number): void
+  (e: "update:modelValue", payload: string | number): void
 }>()
 
 const slots = useSlots()
 const fieldControl = inject(FIELD_CONTROL_INJECTION_KEY, null)
-const localVModel = useVModel(props, 'modelValue', emits, {
+const localVModel = useVModel(props, "modelValue", emits, {
   passive: true,
   defaultValue: props.defaultValue,
 })
@@ -69,11 +69,12 @@ const localVModel = useVModel(props, 'modelValue', emits, {
 const modelValue = computed<string | number>({
   get: () => (fieldControl
     ? (fieldControl.value.modelValue as string | number)
-    : localVModel.value) ?? '',
+    : localVModel.value) ?? "",
   set: (v) => {
     if (fieldControl) {
-      fieldControl.value['onUpdate:modelValue']?.(v)
-    } else {
+      fieldControl.value["onUpdate:modelValue"]?.(v)
+    }
+    else {
       localVModel.value = v
     }
   },
@@ -89,14 +90,13 @@ const handleBlur = () => {
 const showPassword = ref(false)
 const inputType = computed(() => {
   if (props.password) {
-    return showPassword.value ? 'text' : 'password'
+    return showPassword.value ? "text" : "password"
   }
   return props.type
 })
 const togglePasswordVisibility = () => {
   showPassword.value = !showPassword.value
 }
-
 
 /**********************
  * # Count provide
@@ -106,10 +106,10 @@ const getByteLength = (str: string): number => {
   return new Blob([str]).size
 }
 const currentCount = computed(() => {
-  const value = String(modelValue.value || '')
+  const value = String(modelValue.value || "")
   return props.byteMode ? getByteLength(value) : value.length
 })
-provide(INPUT_TRAILING_CONTEXT_KEY, {
+provide(TEXT_FIELD_TRAILING_CONTEXT_KEY, {
   currentCount,
   maxLength: maxLengthForContext,
   byteMode: computed(() => props.byteMode),
@@ -122,9 +122,8 @@ const showClearButton = computed(() => {
   return props.clearable && modelValue.value && !props.disabled && !props.readonly
 })
 const handleClear = () => {
-  modelValue.value = ''
+  modelValue.value = ""
 }
-
 
 const hasDefaultSlot = computed(() => Boolean(slots.default))
 
@@ -132,7 +131,7 @@ const hasTrailing = computed(
   () =>
     hasDefaultSlot.value
     || showClearButton.value
-    || props.password
+    || props.password,
 )
 </script>
 
@@ -155,15 +154,15 @@ const hasTrailing = computed(
           :readonly="readonly"
           :placeholder="placeholder"
           :maxlength="maxLength"
-          @blur="handleBlur"
           :class="cn(
             'min-h-0 h-full min-w-0 flex-1 border-0 bg-transparent',
             'text-inherit outline-none',
             'file:border-0 file:bg-transparent file:text-sm file:font-medium',
             'placeholder:text-inherit',
             'disabled:cursor-not-allowed',
-            props.class
+            props.class,
           )"
+          @blur="handleBlur"
         />
         <div
           v-if="hasTrailing"
@@ -172,8 +171,8 @@ const hasTrailing = computed(
           <button
             v-if="showClearButton"
             type="button"
-            @click="handleClear"
             class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
+            @click="handleClear"
           >
             <InputIcon class="text-inherit">
               <X />
@@ -182,8 +181,8 @@ const hasTrailing = computed(
           <button
             v-if="password"
             type="button"
-            @click="togglePasswordVisibility"
             class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
+            @click="togglePasswordVisibility"
           >
             <InputIcon v-if="!showPassword" class="text-inherit">
               <Eye />

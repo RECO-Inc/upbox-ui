@@ -5,7 +5,7 @@ import { ChevronDown, Check, RotateCcw } from "lucide-vue-next";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { Checkbox } from "../checkbox";
 import { Button } from "../button";
-import { Input } from "../input";
+import { TextField } from "../text-field";
 import { cn } from "../../lib/utils";
 
 export interface DropdownFilterOption<V = unknown> {
@@ -188,7 +188,7 @@ function onReset() {
       >
         <!-- Search -->
         <div v-if="props.search" class="mb-[8px]">
-          <Input
+          <TextField
             v-model="searchKeyword"
             :placeholder="t('common.search')"
             size="small"

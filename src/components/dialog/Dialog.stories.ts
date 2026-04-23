@@ -9,7 +9,7 @@ import DialogDescription from './DialogDescription.vue'
 import DialogFooter from './DialogFooter.vue'
 import DialogClose from './DialogClose.vue'
 import { Button } from '../button'
-import { Input } from '../input'
+import { TextField } from '../text-field'
 import { Label } from '../label'
 
 const meta = {
@@ -49,7 +49,7 @@ export const Default: Story = {
 
 export const WithForm: Story = {
   render: () => ({
-    components: { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose, Button, Input, Label },
+    components: { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose, Button, TextField, Label },
     template: `
       <Dialog>
         <DialogTrigger as-child>
@@ -63,11 +63,11 @@ export const WithForm: Story = {
           <div class="grid gap-[16px] py-[16px]">
             <div class="grid grid-cols-4 items-center gap-[16px]">
               <Label class="text-right">Name</Label>
-              <Input class="col-span-3" placeholder="Enter name" />
+              <TextField class="col-span-3" placeholder="Enter name" />
             </div>
             <div class="grid grid-cols-4 items-center gap-[16px]">
               <Label class="text-right">Email</Label>
-              <Input class="col-span-3" placeholder="Enter email" />
+              <TextField class="col-span-3" placeholder="Enter email" />
             </div>
           </div>
           <DialogFooter>

@@ -2,12 +2,12 @@
 import type { HTMLAttributes } from "vue"
 import { computed, inject } from "vue"
 import { cn } from "../../lib/utils"
-import { INPUT_TRAILING_CONTEXT_KEY } from "./inputContext"
+import { TEXT_FIELD_TRAILING_CONTEXT_KEY } from "./textFieldContext"
 
 const props = withDefaults(
   defineProps<{
     /**
-     * 부모 `Input` 밖에서 쓸 때만. `Input` 자식이면 `Input`의 model·`maxLength`·`byteMode`가 우선
+     * 부모 `TextField` 밖에서 쓸 때만. `TextField` 자식이면 `TextField`의 model·`maxLength`·`byteMode`가 우선
      */
     current?: number
     maxLength?: number
@@ -17,7 +17,7 @@ const props = withDefaults(
   {},
 )
 
-const context = inject(INPUT_TRAILING_CONTEXT_KEY, null)
+const context = inject(TEXT_FIELD_TRAILING_CONTEXT_KEY, null)
 
 const current = computed(() => {
   if (context)
