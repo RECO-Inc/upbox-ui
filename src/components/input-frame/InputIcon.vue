@@ -24,7 +24,7 @@ const iconSvgSizeClass = computed(() => {
 <template>
   <span
     :class="cn(
-      'inline-flex items-center justify-center text-grey-50',
+      'inline-flex items-center justify-center text-inherit',
       iconSvgSizeClass,
       props.class,
     )"

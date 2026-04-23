@@ -38,16 +38,18 @@ const rootClass = computed(() =>
       size: props.size,
       error: props.error,
       readonly: props.readonly,
+      disabled: props.disabled,
     }),
-    props.disabled
-    && "pointer-events-none cursor-not-allowed border-grey-40 bg-grey-20 hover:border-grey-40",
     props.class,
   ),
 )
 </script>
 
 <template>
-  <div :class="rootClass">
+  <div
+    :class="rootClass"
+    :data-disabled="props.disabled ? '' : undefined"
+  >
     <slot />
   </div>
 </template>

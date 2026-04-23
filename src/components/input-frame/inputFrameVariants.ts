@@ -7,6 +7,11 @@ import { cva, type VariantProps } from "class-variance-authority"
 export const inputFrameVariants = cva(
   [
     "flex w-full items-center gap-0 rounded-[4px] border transition-all duration-300",
+    "text-grey-80",
+    /* 값 미입력(placeholder) 톤 — 하위는 text-inherit */
+    "not-data-[disabled]:has-[input:placeholder-shown]:text-grey-50",
+    "not-data-[disabled]:has-[[data-placeholder]]:text-grey-50",
+    "not-data-[disabled]:has-[[data-reka-date-field-segment][data-placeholder]]:text-grey-50",
     "hover:border-grey-60",
     "focus-within:outline-hidden",
     "focus-within:border-blue-80 focus-within:ring-1 focus-within:ring-blue-50 focus-within:hover:border-blue-80",
@@ -32,12 +37,18 @@ export const inputFrameVariants = cva(
         true: "cursor-default focus-within:border-grey-40 focus-within:ring-0 bg-grey-20 border-grey-40 hover:border-grey-40",
         false: "",
       },
+      disabled: {
+        true:
+          "text-grey-40 pointer-events-none cursor-not-allowed border-grey-40 bg-grey-20 hover:border-grey-40 focus-within:border-grey-40 focus-within:ring-0",
+        false: "",
+      },
     },
     defaultVariants: {
       variant: "default",
       size: "regular",
       error: false,
       readonly: false,
+      disabled: false,
     },
   },
 )

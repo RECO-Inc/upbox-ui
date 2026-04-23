@@ -8,5 +8,6 @@ export declare const inputFrameVariants: (props?: ({
     size?: "small" | "large" | "regular" | null | undefined;
     error?: boolean | null | undefined;
     readonly?: boolean | null | undefined;
+    disabled?: boolean | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type InputFrameVariantProps = VariantProps<typeof inputFrameVariants>;

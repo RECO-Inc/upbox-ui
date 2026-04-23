@@ -158,22 +158,22 @@ const hasTrailing = computed(
           @blur="handleBlur"
           :class="cn(
             'min-h-0 h-full min-w-0 flex-1 border-0 bg-transparent',
-            'text-grey-80 outline-none',
+            'text-inherit outline-none',
             'file:border-0 file:bg-transparent file:text-sm file:font-medium',
-            'placeholder:text-grey-50',
-            'disabled:cursor-not-allowed disabled:text-grey-50',
+            'placeholder:text-inherit',
+            'disabled:cursor-not-allowed',
             props.class
           )"
         />
         <div
           v-if="hasTrailing"
-          class="flex shrink-0 items-center gap-[8px] text-grey-50"
+          class="flex shrink-0 items-center gap-[8px] text-inherit opacity-60"
         >
           <button
             v-if="showClearButton"
             type="button"
             @click="handleClear"
-            class="shrink-0 text-grey-50 transition-colors hover:text-grey-70"
+            class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
           >
             <InputIcon class="text-inherit">
               <X />
@@ -183,7 +183,7 @@ const hasTrailing = computed(
             v-if="password"
             type="button"
             @click="togglePasswordVisibility"
-            class="shrink-0 text-grey-50 transition-colors hover:text-grey-70"
+            class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
           >
             <InputIcon v-if="!showPassword" class="text-inherit">
               <Eye />
