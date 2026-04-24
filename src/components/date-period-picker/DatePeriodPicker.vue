@@ -7,32 +7,28 @@ import { CalendarDate } from "@internationalized/date"
 import { Popover, PopoverContent } from "../popover"
 import { RangeCalendar } from "../calendar"
 import { cn } from "../../lib/utils"
-import type { InputFrameVariantProps } from "../input-frame"
+import {
+  pickInputFrameDesign,
+  useInputFrameInjectProvide,
+  type InputFrameDesignProps,
+} from "../input-frame"
 import type { DatePeriodValue } from "./datePeriodTypes"
 import DatePeriodTrigger from "./DatePeriodTrigger.vue"
 
 const props = withDefaults(
-  defineProps<{
-    modelValue?: DatePeriodValue | null
-    startPlaceholder?: string
-    endPlaceholder?: string
-    variant?: InputFrameVariantProps["variant"]
-    size?: InputFrameVariantProps["size"]
-    error?: boolean
-    readonly?: boolean
-    disabled?: boolean
-    class?: HTMLAttributes["class"]
-    popoverContentClass?: HTMLAttributes["class"]
-  }>(),
+  defineProps<
+    InputFrameDesignProps & {
+      modelValue?: DatePeriodValue | null
+      startPlaceholder?: string
+      endPlaceholder?: string
+      class?: HTMLAttributes["class"]
+      popoverContentClass?: HTMLAttributes["class"]
+    }
+  >(),
   {
     modelValue: null,
     startPlaceholder: "시작일 선택",
     endPlaceholder: "종료일 선택",
-    variant: "default",
-    size: "regular",
-    error: false,
-    readonly: false,
-    disabled: false,
   },
 )
 
@@ -90,6 +86,8 @@ watch(
       open.value = false
   },
 )
+
+useInputFrameInjectProvide(() => pickInputFrameDesign(props))
 </script>
 
 <template>
@@ -98,11 +96,6 @@ watch(
       v-model="model"
       :start-placeholder="props.startPlaceholder"
       :end-placeholder="props.endPlaceholder"
-      :variant="props.variant"
-      :size="props.size"
-      :error="props.error"
-      :readonly="props.readonly"
-      :disabled="props.disabled"
       :class="props.class"
     />
     <PopoverContent

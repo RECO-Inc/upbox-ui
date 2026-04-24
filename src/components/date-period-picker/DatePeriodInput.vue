@@ -3,25 +3,18 @@ import type { HTMLAttributes } from "vue"
 import { computed, ref } from "vue"
 import { CalendarDate } from "@internationalized/date"
 import { cn } from "../../lib/utils"
-import type { InputFrameVariantProps } from "../input-frame"
 import type { DatePeriodValue } from "./datePeriodTypes"
 import DateInput from "../date-picker/DateInput.vue"
 
 const props = withDefaults(
   defineProps<{
     modelValue?: DatePeriodValue | null
-    size?: InputFrameVariantProps["size"]
-    readonly?: boolean
-    disabled?: boolean
     startPlaceholder?: string
     endPlaceholder?: string
     class?: HTMLAttributes["class"]
   }>(),
   {
     modelValue: null,
-    size: "regular",
-    readonly: false,
-    disabled: false,
     startPlaceholder: "시작일 선택",
     endPlaceholder: "종료일 선택",
   },
@@ -66,9 +59,6 @@ function onEndUpdate(v: CalendarDate | null) {
   >
     <DateInput
       :model-value="value.start"
-      :size="props.size"
-      :readonly="props.readonly"
-      :disabled="props.disabled"
       :placeholder="startPlaceholder"
       class="min-w-0 flex-1"
       @update:model-value="onStartUpdate"
@@ -80,9 +70,6 @@ function onEndUpdate(v: CalendarDate | null) {
     >→</span>
     <DateInput
       :model-value="value.end"
-      :size="props.size"
-      :readonly="props.readonly"
-      :disabled="props.disabled"
       :placeholder="endPlaceholder"
       class="min-w-0 flex-1"
       @update:model-value="onEndUpdate"

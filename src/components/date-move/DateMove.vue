@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { computed, provide, type HTMLAttributes } from "vue"
+import { computed, type HTMLAttributes } from "vue"
 import { ChevronLeft, ChevronRight } from "lucide-vue-next"
 import { IconButton } from "../icon-button"
 import {
-  INPUT_FRAME_CONTEXT_KEY,
-  useInputFrameDesign,
+  type InputFrameDesignProps,
+  pickInputFrameDesign,
+  useInputFrameInjectProvide,
 } from "../input-frame"
-import type { InputFrameVariantProps } from "../input-frame"
 import { cn } from "../../lib/utils"
 import type { DateMoveModel } from "./dateMoveUtils"
 import { shiftDateMoveModel } from "./dateMoveUtils"
@@ -15,36 +15,17 @@ import { shiftDateMoveModel } from "./dateMoveUtils"
  * # 이전/다음 달로 `modelValue` 를 월 단위 이동한다.
  * - DatePicker 혹은 DatePeriodPicker 를 품는다. 그 데이터를 이동시킴.
  */
-const props = withDefaults(
-  defineProps<{
-    modelValue?: DateMoveModel
-    variant?: InputFrameVariantProps["variant"]
-    size?: InputFrameVariantProps["size"]
-    error?: boolean
-    readonly?: boolean
-    disabled?: boolean
-    class?: HTMLAttributes["class"]
-  }>(),
+const props = defineProps<
   {
-    size: "regular",
-    error: false,
-    readonly: false,
-    disabled: false,
-  },
-)
+    modelValue?: DateMoveModel
+    class?: HTMLAttributes["class"]
+  } & InputFrameDesignProps
+>()
 const emit = defineEmits<{
   "update:modelValue": [value: DateMoveModel]
 }>()
 
-const design = useInputFrameDesign(() => props)
-
-provide(INPUT_FRAME_CONTEXT_KEY, {
-  variant: design.variant,
-  size: design.size,
-  error: design.error,
-  readonly: design.readonly,
-  disabled: design.disabled,
-})
+const design = useInputFrameInjectProvide(() => pickInputFrameDesign(props))
 
 const isFrameDisabled = design.disabled
 

@@ -8,39 +8,32 @@ import { cn } from "../../lib/utils"
 import {
   InputFrame,
   InputIcon,
-  type InputFrameVariantProps,
+  pickInputFrameDesign,
+  useInputFrameDesign,
 } from "../input-frame"
 import DateInput from "./DateInput.vue"
 
 const props = withDefaults(
   defineProps<{
     modelValue?: CalendarDate | null
-    variant?: InputFrameVariantProps["variant"]
-    size?: InputFrameVariantProps["size"]
-    error?: boolean
-    readonly?: boolean
-    disabled?: boolean
     class?: HTMLAttributes["class"]
   }>(),
-  {
-    modelValue: null,
-    variant: "default",
-    size: "regular",
-    error: false,
-    readonly: false,
-    disabled: false,
-  },
+  { modelValue: null },
 )
 
 const emit = defineEmits<{
   "update:modelValue": [value: CalendarDate | null]
 }>()
 
+const design = useInputFrameDesign(() => pickInputFrameDesign({}))
+
 const draftErrorFromInput = ref(false)
-
-const isTriggerDisabled = computed(() => props.disabled || props.readonly)
-
-const frameError = computed(() => props.error || draftErrorFromInput.value)
+const isTriggerDisabled = computed(
+  () => design.disabled.value || design.readonly.value,
+)
+const frameError = computed(
+  () => design.error.value || draftErrorFromInput.value,
+)
 
 function onUpdateDraftError(v: boolean) {
   draftErrorFromInput.value = v
@@ -49,11 +42,7 @@ function onUpdateDraftError(v: boolean) {
 
 <template>
   <InputFrame
-    :variant="props.variant"
-    :size="props.size"
     :error="frameError"
-    :readonly="props.readonly"
-    :disabled="props.disabled"
     :class="cn('w-full min-w-0', props.class)"
   >
     <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
@@ -63,7 +52,7 @@ function onUpdateDraftError(v: boolean) {
         @update:draft-error="onUpdateDraftError"
       />
       <PopoverTrigger
-        v-if="!props.readonly"
+        v-if="!design.readonly.value"
         as-child
         :disabled="isTriggerDisabled"
       >

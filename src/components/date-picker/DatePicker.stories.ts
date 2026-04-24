@@ -9,6 +9,10 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {
     size: { control: "select", options: ["small", "regular", "large"] },
+    variant: { control: "select", options: ["default", "filled", "bottomline"] },
+    error: { control: "boolean" },
+    readonly: { control: "boolean" },
+    disabled: { control: "boolean" },
   },
 } satisfies Meta<typeof DatePicker>
 
@@ -16,15 +20,15 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => ({
+  render: (args) => ({
     components: { DatePicker },
     setup() {
       const v = ref<CalendarDate | null>(null)
-      return { v }
+      return { v, args }
     },
     template: `
       <div class="w-[360px]">
-        <DatePicker v-model="v" />
+        <DatePicker v-model="v" v-bind="args" />
       </div>
     `,
   }),

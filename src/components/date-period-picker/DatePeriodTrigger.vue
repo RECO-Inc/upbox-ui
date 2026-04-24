@@ -7,7 +7,8 @@ import { cn } from "../../lib/utils"
 import {
   InputFrame,
   InputIcon,
-  type InputFrameVariantProps,
+  pickInputFrameDesign,
+  useInputFrameDesign,
 } from "../input-frame"
 import type { DatePeriodValue } from "./datePeriodTypes"
 import DatePeriodInput from "./DatePeriodInput.vue"
@@ -15,34 +16,27 @@ import DatePeriodInput from "./DatePeriodInput.vue"
 const props = withDefaults(
   defineProps<{
     modelValue?: DatePeriodValue | null
-    variant?: InputFrameVariantProps["variant"]
-    size?: InputFrameVariantProps["size"]
-    error?: boolean
-    readonly?: boolean
-    disabled?: boolean
     startPlaceholder?: string
     endPlaceholder?: string
     class?: HTMLAttributes["class"]
   }>(),
-  {
-    modelValue: null,
-    variant: "default",
-    size: "regular",
-    error: false,
-    readonly: false,
-    disabled: false,
-  },
+  { modelValue: null },
 )
 
 const emit = defineEmits<{
   "update:modelValue": [value: DatePeriodValue | null]
 }>()
 
+const design = useInputFrameDesign(() => pickInputFrameDesign({}))
+
 const draftErrorFromInput = ref(false)
-
-const isTriggerDisabled = computed(() => props.disabled || props.readonly)
-
-const frameError = computed(() => props.error || draftErrorFromInput.value)
+const isReadonly = computed(() => design.readonly.value)
+const isTriggerDisabled = computed(
+  () => design.disabled.value || design.readonly.value,
+)
+const frameError = computed(
+  () => design.error.value || draftErrorFromInput.value,
+)
 
 function onUpdateDraftError(v: boolean) {
   draftErrorFromInput.value = v
@@ -51,26 +45,19 @@ function onUpdateDraftError(v: boolean) {
 
 <template>
   <InputFrame
-    :variant="props.variant"
-    :size="props.size"
     :error="frameError"
-    :readonly="props.readonly"
-    :disabled="props.disabled"
     :class="cn('w-full min-w-0', props.class)"
   >
     <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
       <DatePeriodInput
         :model-value="modelValue"
-        :size="props.size"
-        :readonly="props.readonly"
-        :disabled="props.disabled"
         :start-placeholder="startPlaceholder"
         :end-placeholder="endPlaceholder"
         @update:model-value="(v) => emit('update:modelValue', v)"
         @update:draft-error="onUpdateDraftError"
       />
       <PopoverTrigger
-        v-if="!props.readonly"
+        v-if="!isReadonly"
         as-child
         :disabled="isTriggerDisabled"
       >

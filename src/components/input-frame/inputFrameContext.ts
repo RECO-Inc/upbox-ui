@@ -1,5 +1,5 @@
 import type { ComputedRef, InjectionKey } from "vue"
-import { computed, inject } from "vue"
+import { computed, inject, provide } from "vue"
 import type { InputFrameVariantProps } from "./inputFrameVariants"
 
 export type InputFrameContextSize = NonNullable<InputFrameVariantProps["size"]>
@@ -16,7 +16,7 @@ export interface InputFrameContext {
 export const INPUT_FRAME_CONTEXT_KEY
   = Symbol() as InjectionKey<InputFrameContext>
 
-type InputFrameLocalDesign = {
+export type InputFrameDesignProps = {
   variant?: InputFrameVariantProps["variant"]
   size?: InputFrameVariantProps["size"]
   error?: boolean
@@ -24,40 +24,69 @@ type InputFrameLocalDesign = {
   disabled?: boolean
 }
 
-/**
- * 상위 `InputFrame`에서 주입된 디자인이 있으면 그 값을 쓰고, 없을 때만 `local`을 사용한다.
- * `InputFrame` 내부·날짜 입력 등 껍데기 밖/안에서 동일한 규칙을 쓰기 위한 composable.
- */
-export function useInputFrameDesign(
-  getLocal: () => InputFrameLocalDesign,
-) {
-  const parent = inject(INPUT_FRAME_CONTEXT_KEY, null)
+export function pickInputFrameDesign(
+  p: InputFrameDesignProps & Record<string, unknown>,
+): InputFrameDesignProps {
+  return {
+    variant: p.variant,
+    size: p.size,
+    error: p.error,
+    readonly: p.readonly,
+    disabled: p.disabled,
+  }
+}
 
+function buildInputFrameContext(
+  getLocal: () => InputFrameDesignProps,
+  parent: InputFrameContext | null,
+): InputFrameContext {
   return {
     variant: computed(
-      () => parent?.variant.value
-        ?? getLocal().variant
+      () => getLocal().variant
+        ?? parent?.variant.value
         ?? "default",
     ),
     size: computed(
-      () => parent?.size.value
-        ?? getLocal().size
+      () => getLocal().size
+        ?? parent?.size.value
         ?? "regular",
     ),
     error: computed(
-      () => parent?.error.value
-        ?? getLocal().error
+      () => getLocal().error
+        ?? parent?.error.value
         ?? false,
     ),
     readonly: computed(
-      () => parent?.readonly.value
-        ?? getLocal().readonly
+      () => getLocal().readonly
+        ?? parent?.readonly.value
         ?? false,
     ),
     disabled: computed(
-      () => parent?.disabled.value
-        ?? getLocal().disabled
+      () => getLocal().disabled
+        ?? parent?.disabled.value
         ?? false,
     ),
   }
+}
+
+/**
+ * props 를 넘기지 않은 필드(`undefined`)는 inject 된 상위 디자인을 쓴다. (최소 변경 useInputFrameDesign 쪽과 동일 규칙)
+ */
+export function useInputFrameDesign(
+  getLocal: () => InputFrameDesignProps,
+): InputFrameContext {
+  const parent = inject(INPUT_FRAME_CONTEXT_KEY, null)
+  return buildInputFrameContext(getLocal, parent)
+}
+
+/**
+ * inject → 병합 → provide 를 한 번에. InputFrame, DateMove, DatePicker 래퍼 등.
+ */
+export function useInputFrameInjectProvide(
+  getLocal: () => InputFrameDesignProps,
+): InputFrameContext {
+  const parent = inject(INPUT_FRAME_CONTEXT_KEY, null)
+  const design = buildInputFrameContext(getLocal, parent)
+  provide(INPUT_FRAME_CONTEXT_KEY, design)
+  return design
 }

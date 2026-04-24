@@ -12,9 +12,8 @@ export const inputFrameVariants = cva(
     "not-data-[disabled]:has-[input:placeholder-shown]:text-grey-50",
     "not-data-[disabled]:has-[[data-placeholder]]:text-grey-50",
     "not-data-[disabled]:has-[[data-reka-date-field-segment][data-placeholder]]:text-grey-50",
-    "hover:border-grey-60",
     "focus-within:outline-hidden",
-    "focus-within:border-blue-80 focus-within:ring-1 focus-within:ring-blue-50 focus-within:hover:border-blue-80",
+    "focus-within:border-blue-80 focus-within:ring-1 focus-within:ring-blue-50",
   ].join(" "),
   {
     variants: {
@@ -22,7 +21,7 @@ export const inputFrameVariants = cva(
         default: "border-grey-40 bg-grey-10",
         filled: "border-transparent bg-grey-20",
         bottomline:
-          "border-0 border-b border-grey-40 rounded-none bg-transparent hover:border-grey-50",
+          "border-0 border-b border-grey-40 rounded-none bg-transparent",
       },
       size: {
         small: "h-[32px] min-h-[32px] px-[8px] text-size-12",
@@ -30,16 +29,16 @@ export const inputFrameVariants = cva(
         large: "h-[48px] min-h-[48px] px-[16px] text-size-16",
       },
       error: {
-        true: "border-red-80 focus-within:border-red-80 focus-within:ring-0 hover:border-red-80",
+        true: "border-red-80 focus-within:border-red-80 focus-within:ring-0",
         false: "",
       },
       readonly: {
-        true: "cursor-default focus-within:border-grey-40 focus-within:ring-0 bg-grey-20 border-grey-40 hover:border-grey-40",
+        true: "cursor-default focus-within:border-grey-40 focus-within:ring-0 bg-grey-20 border-grey-40",
         false: "",
       },
       disabled: {
         true:
-          "text-grey-40 pointer-events-none cursor-not-allowed border-grey-40 bg-grey-20 hover:border-grey-40 focus-within:border-grey-40 focus-within:ring-0",
+          "text-grey-40 pointer-events-none cursor-not-allowed border-grey-40 bg-grey-20 focus-within:border-grey-40 focus-within:ring-0",
         false: "",
       },
     },

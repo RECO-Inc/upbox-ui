@@ -1,41 +1,35 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { computed, provide } from "vue"
+import { computed } from "vue"
 import { cn } from "../../lib/utils"
-import { INPUT_FRAME_CONTEXT_KEY, useInputFrameDesign } from "./inputFrameContext"
 import {
-  inputFrameVariants,
-  type InputFrameVariantProps,
-} from "./inputFrameVariants"
+  type InputFrameDesignProps,
+  pickInputFrameDesign,
+  useInputFrameInjectProvide,
+} from "./inputFrameContext"
+import { inputFrameVariants } from "./inputFrameVariants"
 
+/**
+ * design 키는 미지정이면 `undefined` 로 둬서 inject 병합 시 상위를 따른다.
+ * (optional boolean 을 넘기지 않았을 때 런타임이 `false` 로 잡혀 `??` 가 상위를 덮는 것을 막음)
+ */
 const props = withDefaults(
-  defineProps<{
-    variant?: InputFrameVariantProps["variant"]
-    size?: InputFrameVariantProps["size"]
-    error?: boolean
-    readonly?: boolean
-    /** `pointer-events-none`·비활성 톤(자식 `disabled`와 함께 쓰는 것을 권장) */
-    disabled?: boolean
-    class?: HTMLAttributes["class"]
-  }>(),
+  defineProps<
+    InputFrameDesignProps & {
+      class?: HTMLAttributes["class"]
+    }
+  >(),
   {
-    variant: "default",
-    size: "regular",
-    error: false,
-    readonly: false,
-    disabled: false,
+    variant: undefined,
+    size: undefined,
+    error: undefined,
+    readonly: undefined,
+    disabled: undefined,
   },
 )
 
-const design = useInputFrameDesign(() => props)
-
-provide(INPUT_FRAME_CONTEXT_KEY, {
-  variant: design.variant,
-  size: design.size,
-  error: design.error,
-  readonly: design.readonly,
-  disabled: design.disabled,
-})
+const design = useInputFrameInjectProvide(() => pickInputFrameDesign(props))
+const isFrameDisabled = design.disabled
 
 const rootClass = computed(() =>
   cn(
@@ -54,7 +48,7 @@ const rootClass = computed(() =>
 <template>
   <div
     :class="rootClass"
-    :data-disabled="design.disabled ? '' : undefined"
+    :data-disabled="isFrameDisabled ? '' : undefined"
   >
     <slot />
   </div>

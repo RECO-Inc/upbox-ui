@@ -3,7 +3,10 @@ import type { HTMLAttributes } from "vue"
 import { computed, nextTick, ref, watch } from "vue"
 import { CalendarDate, parseDate } from "@internationalized/date"
 import { cn } from "../../lib/utils"
-import { useInputFrameDesign } from "../input-frame"
+import {
+  pickInputFrameDesign,
+  useInputFrameDesign,
+} from "../input-frame"
 import type { InputFrameVariantProps } from "../input-frame"
 
 const props = withDefaults(
@@ -16,12 +19,7 @@ const props = withDefaults(
     placeholder?: string
     class?: HTMLAttributes["class"]
   }>(),
-  {
-    modelValue: null,
-    size: "regular",
-    readonly: false,
-    disabled: false,
-  },
+  { modelValue: null },
 )
 
 const emit = defineEmits<{
@@ -29,7 +27,7 @@ const emit = defineEmits<{
   "update:draftError": [value: boolean]
 }>()
 
-const design = useInputFrameDesign(() => props)
+const design = useInputFrameDesign(() => pickInputFrameDesign(props))
 const isFrameDisabled = design.disabled
 
 const inputRef = ref<HTMLInputElement | null>(null)
