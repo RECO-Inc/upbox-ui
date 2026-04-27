@@ -8,7 +8,7 @@ import {
   InputFrame,
   InputIcon,
   pickInputFrameDesign,
-  useInputFrameDesign,
+  useInputFrameInjectProvide,
 } from "../input-frame"
 import type { DatePeriodValue } from "./datePeriodTypes"
 import DatePeriodInput from "./DatePeriodInput.vue"
@@ -27,7 +27,7 @@ const emit = defineEmits<{
   "update:modelValue": [value: DatePeriodValue | null]
 }>()
 
-const design = useInputFrameDesign(() => pickInputFrameDesign({}))
+const design = useInputFrameInjectProvide(() => pickInputFrameDesign({}))
 
 const draftErrorFromInput = ref(false)
 const isReadonly = computed(() => design.readonly.value)

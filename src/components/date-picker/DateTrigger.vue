@@ -9,23 +9,17 @@ import {
   InputFrame,
   InputIcon,
   pickInputFrameDesign,
-  useInputFrameDesign,
+  useInputFrameInjectProvide,
 } from "../input-frame"
 import DateInput from "./DateInput.vue"
 
-const props = withDefaults(
-  defineProps<{
-    modelValue?: CalendarDate | null
-    class?: HTMLAttributes["class"]
-  }>(),
-  { modelValue: null },
-)
-
-const emit = defineEmits<{
-  "update:modelValue": [value: CalendarDate | null]
-}>()
-
-const design = useInputFrameDesign(() => pickInputFrameDesign({}))
+const modelValue = defineModel<CalendarDate | null>();
+const props = withDefaults(defineProps<{ 
+  class?: HTMLAttributes["class"] 
+}>(), { 
+  class: undefined 
+})
+const design = useInputFrameInjectProvide(() => pickInputFrameDesign({}))
 
 const draftErrorFromInput = ref(false)
 const isTriggerDisabled = computed(
@@ -47,8 +41,7 @@ function onUpdateDraftError(v: boolean) {
   >
     <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
       <DateInput
-        :model-value="modelValue"
-        @update:model-value="(v) => emit('update:modelValue', v)"
+        v-model="modelValue"
         @update:draft-error="onUpdateDraftError"
       />
       <PopoverTrigger

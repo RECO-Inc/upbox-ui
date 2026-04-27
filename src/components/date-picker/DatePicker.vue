@@ -12,6 +12,11 @@ import {
 } from "../input-frame"
 import DateTrigger from "./DateTrigger.vue"
 
+/**
+ * `InputFrame` 병합은 `getLocal().x ?? parent` 이다. optional boolean 이 런타임 `false` 면
+ * 상위 `DateMove` 의 `disabled` 등을 쓸 수 없다. 미지정은 `DateInput` 과 같이 `undefined` 로 둔다.
+ */
+const modelValue = defineModel<CalendarDate | null>();
 const props = withDefaults(
   defineProps<
     InputFrameDesignProps & {
@@ -21,35 +26,31 @@ const props = withDefaults(
       popoverContentClass?: HTMLAttributes["class"]
     }
   >(),
-  { placeholder: "날짜 선택" },
+  {
+    placeholder: "날짜 선택",
+    variant: undefined,
+    size: undefined,
+    error: undefined,
+    readonly: undefined,
+    disabled: undefined,
+  },
 )
-
+const design = useInputFrameInjectProvide(() => pickInputFrameDesign(props))
 const emits = defineEmits<{
   (e: "update:modelValue", value: CalendarDate | null | undefined): void
 }>()
 
 const open = ref(false)
-const modelValue = computed<CalendarDate | null | undefined>({
-  get: () => props.modelValue,
-  set: (v) => {
-    emits("update:modelValue", v)
-  },
-})
+
+const isCalendarLocked = computed(() => !!props.readonly || !!props.disabled)
 
 watch(
-  () => props.readonly,
-  (ro) => {
-    if (ro)
+  isCalendarLocked,
+  (locked) => {
+    if (locked)
       open.value = false
   },
-)
-
-watch(
-  () => props.disabled,
-  (d) => {
-    if (d)
-      open.value = false
-  },
+  { immediate: true },
 )
 
 function onCalendarUpdate(v: DateValue | DateValue[] | undefined) {
@@ -64,7 +65,6 @@ function onCalendarUpdate(v: DateValue | DateValue[] | undefined) {
   open.value = false
 }
 
-useInputFrameInjectProvide(() => pickInputFrameDesign(props))
 </script>
 
 <template>

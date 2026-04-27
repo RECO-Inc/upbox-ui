@@ -29,6 +29,11 @@ const props = withDefaults(
     modelValue: null,
     startPlaceholder: "시작일 선택",
     endPlaceholder: "종료일 선택",
+    disabled: undefined,
+    readonly: undefined,
+    variant: undefined,
+    size: undefined,
+    error: undefined,
   },
 )
 
@@ -71,20 +76,15 @@ function onRangeUpdate(v: DateRange) {
     open.value = false
 }
 
-watch(
-  () => props.readonly,
-  (ro) => {
-    if (ro)
-      open.value = false
-  },
-)
+const isPeriodLocked = computed(() => !!props.readonly || !!props.disabled)
 
 watch(
-  () => props.disabled,
-  (d) => {
-    if (d)
+  isPeriodLocked,
+  (locked) => {
+    if (locked)
       open.value = false
   },
+  { immediate: true },
 )
 
 useInputFrameInjectProvide(() => pickInputFrameDesign(props))

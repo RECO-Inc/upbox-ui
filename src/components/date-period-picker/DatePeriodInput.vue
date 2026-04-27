@@ -44,12 +44,12 @@ function onEndDraftError(v: boolean) {
   emitDraft()
 }
 
-function onStartUpdate(v: CalendarDate | null) {
-  emit("update:modelValue", { start: v, end: value.value.end })
+function onStartUpdate(v: CalendarDate | null | undefined) {
+  emit("update:modelValue", { start: v ?? null, end: value.value.end })
 }
 
-function onEndUpdate(v: CalendarDate | null) {
-  emit("update:modelValue", { start: value.value.start, end: v })
+function onEndUpdate(v: CalendarDate | null | undefined) {
+  emit("update:modelValue", { start: value.value.start, end: v ?? null })
 }
 </script>
 

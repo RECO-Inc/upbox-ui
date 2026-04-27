@@ -24,6 +24,12 @@ export type InputFrameDesignProps = {
   disabled?: boolean
 }
 
+/**
+ * # 공통 디자인 속성 추출
+ * - variant, size, error, readonly, disabled 속성을 추출
+ * @param p 컴포넌트 props
+ * @returns 공통 디자인 속성
+ */
 export function pickInputFrameDesign(
   p: InputFrameDesignProps & Record<string, unknown>,
 ): InputFrameDesignProps {
@@ -36,6 +42,12 @@ export function pickInputFrameDesign(
   }
 }
 
+/**
+ * # 공통 디자인 속성 병합
+ * @param getLocal 컴포넌트 props 
+ * @param parent inject 된 상위 디자인
+ * @returns 공통 디자인 속성
+ */
 function buildInputFrameContext(
   getLocal: () => InputFrameDesignProps,
   parent: InputFrameContext | null,

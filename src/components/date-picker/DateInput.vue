@@ -5,13 +5,18 @@ import { CalendarDate, parseDate } from "@internationalized/date"
 import { cn } from "../../lib/utils"
 import {
   pickInputFrameDesign,
-  useInputFrameDesign,
+  useInputFrameInjectProvide,
 } from "../input-frame"
 import type { InputFrameVariantProps } from "../input-frame"
 
+/**
+ * `readonly`/`disabled` 를 내려주지 않을 때(대부분 inject 에만 둘 때) 런타임 `false` 가 되면
+ * `buildInputFrameContext` 가 상위 `readonly: true` 를 씹는다. 미지정은 `undefined` 로 둔다.
+ */
+
+const modelValue = defineModel<CalendarDate | null>();
 const props = withDefaults(
   defineProps<{
-    modelValue?: CalendarDate | null
     size?: InputFrameVariantProps["size"]
     readonly?: boolean
     disabled?: boolean
@@ -19,15 +24,18 @@ const props = withDefaults(
     placeholder?: string
     class?: HTMLAttributes["class"]
   }>(),
-  { modelValue: null },
+  {
+    size: undefined,
+    readonly: undefined,
+    disabled: undefined,
+  },
 )
 
 const emit = defineEmits<{
-  "update:modelValue": [value: CalendarDate | null]
   "update:draftError": [value: boolean]
 }>()
 
-const design = useInputFrameDesign(() => pickInputFrameDesign(props))
+const design = useInputFrameInjectProvide(() => pickInputFrameDesign(props))
 const isFrameDisabled = design.disabled
 
 const inputRef = ref<HTMLInputElement | null>(null)
@@ -64,17 +72,14 @@ const inputTextClass = computed(() => {
 
 const draftError = computed(() => isSlotsInvalid(slots.value))
 
-watch(
-  draftError,
-  (v) => {
-    emit("update:draftError", v)
-  },
-  { immediate: true },
-)
+function emitDraftError() {
+  emit("update:draftError", isSlotsInvalid(slots.value))
+}
 
 function clearSlots() {
   slots.value = Array.from({ length: 8 }, () => "")
   activeDigit.value = 0
+  emitDraftError()
 }
 
 function calendarToSlots(c: CalendarDate): string[] {
@@ -270,11 +275,14 @@ function alignDigitSelection() {
 
 function onFocus() {
   isFocused.value = true
-  snapshotAtFocus.value = props.modelValue ?? null
-  if (props.modelValue)
-    slots.value = calendarToSlots(props.modelValue)
-  else
+  snapshotAtFocus.value = modelValue.value ?? null
+  if (modelValue.value) {
+    slots.value = calendarToSlots(modelValue.value)
+    emitDraftError()
+  }
+  else {
     clearSlots()
+  }
   /* 클릭→포커스면 click 이 끝난 뒤 캅이 잡힘. tab 만 오면 setTimeout 을 쓴다. */
   setTimeout(() => {
     if (!isFocused.value)
@@ -288,13 +296,17 @@ function onBlur() {
   const snap = snapshotAtFocus.value
   if (canCommit(slots.value)) {
     const d = parseSlotsToCalendar(slots.value)
-    emit("update:modelValue", d)
+    modelValue.value = d
+    emitDraftError()
   }
   else {
-    if (snap)
+    if (snap) {
       slots.value = calendarToSlots(snap as CalendarDate)
-    else
+      emitDraftError()
+    }
+    else {
       clearSlots()
+    }
   }
   snapshotAtFocus.value = undefined
 }
@@ -333,6 +345,26 @@ function insertDigit(d: string) {
   applySelection()
   if (isSlotsInvalid(slots.value))
     showInvalidFormatFeedback()
+  emitDraftError()
+}
+
+/** 빈칸은 0으로 보고, 해당 자릿수만 0~9에서 순환 */
+function stepActiveDigit(delta: 1 | -1) {
+  if (!canType.value)
+    return
+  const i = activeDigit.value
+  const next = [...slots.value] as string[]
+  const cur = next[i] ?? ""
+  const n = cur === "" ? 0 : Number(cur)
+  if (Number.isNaN(n) || n < 0 || n > 9)
+    return
+  const newN = (n + delta + 10) % 10
+  next[i] = String(newN)
+  slots.value = next
+  applySelection()
+  if (isSlotsInvalid(slots.value))
+    showInvalidFormatFeedback()
+  emitDraftError()
 }
 
 function onKeydown(e: KeyboardEvent) {
@@ -343,8 +375,11 @@ function onKeydown(e: KeyboardEvent) {
     inputRef.value?.blur()
     return
   }
-  if (!canType.value)
+  if (!canType.value) {
+    if (e.key === "ArrowUp" || e.key === "ArrowDown")
+      e.preventDefault()
     return
+  }
   if (e.ctrlKey || e.metaKey) {
     if (e.key === "a" || e.key === "A") {
       e.preventDefault()
@@ -374,6 +409,16 @@ function onKeydown(e: KeyboardEvent) {
     applySelection()
     return
   }
+  if (e.key === "ArrowUp") {
+    e.preventDefault()
+    stepActiveDigit(1)
+    return
+  }
+  if (e.key === "ArrowDown") {
+    e.preventDefault()
+    stepActiveDigit(-1)
+    return
+  }
   if (e.key === "Backspace" || e.key === "Delete") {
     e.preventDefault()
     const i = activeDigit.value
@@ -385,6 +430,7 @@ function onKeydown(e: KeyboardEvent) {
         next[i] = "0"
         slots.value = next
         applySelection()
+        emitDraftError()
         return
       }
       if (i > 0) {
@@ -398,6 +444,7 @@ function onKeydown(e: KeyboardEvent) {
       next[i] = "0"
       slots.value = next
       applySelection()
+      emitDraftError()
       return
     }
     if (i < 7) {
@@ -432,17 +479,21 @@ function onPaste(e: ClipboardEvent) {
   applySelection()
   if (isSlotsInvalid(slots.value))
     showInvalidFormatFeedback()
+  emitDraftError()
 }
 
 watch(
-  () => props.modelValue,
+  () => modelValue.value,
   (v) => {
     if (isFocused.value)
       return
-    if (v)
+    if (v) {
       slots.value = calendarToSlots(v)
-    else
+      emitDraftError()
+    }
+    else {
       clearSlots()
+    }
   },
   { immediate: true },
 )
