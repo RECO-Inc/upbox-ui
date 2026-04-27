@@ -1,15 +1,10 @@
 import { HTMLAttributes } from 'vue';
-import { InputFrameVariantProps } from '../input-frame';
+import { InputFrameDesignProps } from '../input-frame';
 import { DatePeriodValue } from './datePeriodTypes';
-type __VLS_Props = {
+type __VLS_Props = InputFrameDesignProps & {
     modelValue?: DatePeriodValue | null;
     startPlaceholder?: string;
     endPlaceholder?: string;
-    variant?: InputFrameVariantProps["variant"];
-    size?: InputFrameVariantProps["size"];
-    error?: boolean;
-    readonly?: boolean;
-    disabled?: boolean;
     class?: HTMLAttributes["class"];
     popoverContentClass?: HTMLAttributes["class"];
 };
@@ -19,7 +14,6 @@ declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {
     "onUpdate:modelValue"?: ((value: DatePeriodValue | null | undefined) => any) | undefined;
 }>, {
     disabled: boolean;
-    modelValue: DatePeriodValue | null;
     size: "small" | "large" | "regular" | null;
     error: boolean;
     variant: "default" | "filled" | "bottomline" | null;

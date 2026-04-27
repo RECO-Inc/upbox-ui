@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { computed, ref, watch } from "vue"
+import { computed, inject, provide, ref, watch } from "vue"
 import type { CalendarDate, DateValue } from "@internationalized/date"
 import { Popover, PopoverContent } from "../popover"
 import { Calendar } from "../calendar"
@@ -11,23 +11,20 @@ import {
   type InputFrameDesignProps,
 } from "../input-frame"
 import DateTrigger from "./DateTrigger.vue"
+import DateInput from "./DateInput.vue"
+import { DATE_MOVE_MODEL_KEY } from "../date-move/dateMoveContext"
+import { isDatePeriodValue } from "../date-period-picker/datePeriodTypes"
+import { DATE_PICKER_CTX_KEY } from "./datePickerContext"
 
-/**
- * `InputFrame` 병합은 `getLocal().x ?? parent` 이다. optional boolean 이 런타임 `false` 면
- * 상위 `DateMove` 의 `disabled` 등을 쓸 수 없다. 미지정은 `DateInput` 과 같이 `undefined` 로 둔다.
- */
-const modelValue = defineModel<CalendarDate | null>();
+const localModel = defineModel<CalendarDate | null>()
 const props = withDefaults(
   defineProps<
     InputFrameDesignProps & {
-      modelValue?: CalendarDate | null
-      placeholder?: string
       class?: HTMLAttributes["class"]
       popoverContentClass?: HTMLAttributes["class"]
     }
   >(),
   {
-    placeholder: "날짜 선택",
     variant: undefined,
     size: undefined,
     error: undefined,
@@ -35,44 +32,59 @@ const props = withDefaults(
     disabled: undefined,
   },
 )
+
 const design = useInputFrameInjectProvide(() => pickInputFrameDesign(props))
-const emits = defineEmits<{
-  (e: "update:modelValue", value: CalendarDate | null | undefined): void
-}>()
+const dateMoveCtx = inject(DATE_MOVE_MODEL_KEY, null)
+
+const model = computed({
+  get(): CalendarDate | null | undefined {
+    if (localModel.value !== undefined) return localModel.value
+    const v = dateMoveCtx?.value
+    if (v === undefined || isDatePeriodValue(v)) return null
+    return v
+  },
+  set(v: CalendarDate | null | undefined) {
+    localModel.value = v
+    if (dateMoveCtx) dateMoveCtx.value = v ?? null
+  },
+})
+
+const draftError = ref(false)
+
+provide(DATE_PICKER_CTX_KEY, { model, draftError })
 
 const open = ref(false)
 
-const isCalendarLocked = computed(() => !!props.readonly || !!props.disabled)
+const isCalendarLocked = computed(() => design.readonly.value || design.disabled.value)
 
 watch(
   isCalendarLocked,
   (locked) => {
-    if (locked)
-      open.value = false
+    if (locked) open.value = false
   },
   { immediate: true },
 )
 
 function onCalendarUpdate(v: DateValue | DateValue[] | undefined) {
   if (v === undefined) {
-    modelValue.value = null
+    model.value = null
     open.value = false
     return
   }
-  if (Array.isArray(v))
-    return
-  modelValue.value = v as CalendarDate
+  if (Array.isArray(v)) return
+  model.value = v as CalendarDate
   open.value = false
 }
-
 </script>
 
 <template>
   <Popover v-model:open="open">
-    <DateTrigger
-      v-model="modelValue"
-      :class="props.class"
-    />
+    <DateTrigger :class="props.class">
+      <slot>
+        <!-- 기본은 DateInput -->
+        <DateInput />
+      </slot>
+    </DateTrigger>
     <PopoverContent
       align="end"
       :class="
@@ -83,7 +95,7 @@ function onCalendarUpdate(v: DateValue | DateValue[] | undefined) {
       "
     >
       <Calendar
-        :model-value="modelValue ?? undefined"
+        :model-value="model ?? undefined"
         @update:model-value="onCalendarUpdate"
       />
     </PopoverContent>

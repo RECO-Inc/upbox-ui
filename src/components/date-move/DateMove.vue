@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, type HTMLAttributes } from "vue"
+import { computed, provide, type HTMLAttributes } from "vue"
 import { CalendarDate, endOfMonth, getLocalTimeZone, today } from "@internationalized/date"
 import {
   ChevronLeft,
@@ -15,12 +15,16 @@ import {
 } from "../input-frame"
 import { cn } from "../../lib/utils"
 import { isDatePeriodValue, type DateMoveModel, type DatePeriodValue } from "../date-period-picker/datePeriodTypes"
+import { DATE_MOVE_MODEL_KEY } from "./dateMoveContext"
+import DatePicker from "../date-picker/DatePicker.vue"
 
 /**
  * # 이전, 다음 / 연, 월 단위로 `modelValue` 를 이동
  * - DatePicker 혹은 DatePeriodPicker 를 품고 그 데이터를 이동시킴
+ * - 기본 slot 은 DatePicker 
  */
 const modelValue = defineModel<DateMoveModel>();
+provide(DATE_MOVE_MODEL_KEY, modelValue)
 const props = defineProps<
   InputFrameDesignProps & {
     class?: HTMLAttributes["class"]
@@ -132,7 +136,10 @@ function onClickMove(delta: number, unit: "month" | "year" = "month") {
       </IconButton>
     </div>
     <div class="min-w-0 flex-1">
-      <slot />
+      <slot>
+        <!-- 기본은 DatePicker -->
+        <DatePicker />
+      </slot>
     </div>
     <div class="flex items-center gap-[4px]">
       <IconButton

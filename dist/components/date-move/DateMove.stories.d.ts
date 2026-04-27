@@ -3,23 +3,14 @@ declare const meta: {
     title: string;
     component: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
-            modelValue?: import('./dateMoveUtils').DateMoveModel;
-            variant?: import('../input-frame').InputFrameVariantProps["variant"];
-            size?: import('../input-frame').InputFrameVariantProps["size"];
-            error?: boolean;
-            readonly?: boolean;
-            disabled?: boolean;
+            modelValue?: import('../date-period-picker/datePeriodTypes').DateMoveModel;
+        } & import('../input-frame').InputFrameDesignProps & {
             class?: import('vue').HTMLAttributes["class"];
         }> & Readonly<{
-            "onUpdate:modelValue"?: ((value: import('./dateMoveUtils').DateMoveModel) => any) | undefined;
+            "onUpdate:modelValue"?: ((value: import('../date-period-picker/datePeriodTypes').DateMoveModel) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-            "update:modelValue": (value: import('./dateMoveUtils').DateMoveModel) => any;
-        }, import('vue').PublicProps, {
-            disabled: boolean;
-            size: "small" | "large" | "regular" | null;
-            error: boolean;
-            readonly: boolean;
-        }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
+            "update:modelValue": (value: import('../date-period-picker/datePeriodTypes').DateMoveModel) => any;
+        }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
@@ -27,46 +18,26 @@ declare const meta: {
             M: {};
             Defaults: {};
         }, Readonly<{
-            modelValue?: import('./dateMoveUtils').DateMoveModel;
-            variant?: import('../input-frame').InputFrameVariantProps["variant"];
-            size?: import('../input-frame').InputFrameVariantProps["size"];
-            error?: boolean;
-            readonly?: boolean;
-            disabled?: boolean;
+            modelValue?: import('../date-period-picker/datePeriodTypes').DateMoveModel;
+        } & import('../input-frame').InputFrameDesignProps & {
             class?: import('vue').HTMLAttributes["class"];
         }> & Readonly<{
-            "onUpdate:modelValue"?: ((value: import('./dateMoveUtils').DateMoveModel) => any) | undefined;
-        }>, {}, {}, {}, {}, {
-            disabled: boolean;
-            size: "small" | "large" | "regular" | null;
-            error: boolean;
-            readonly: boolean;
-        }>;
+            "onUpdate:modelValue"?: ((value: import('../date-period-picker/datePeriodTypes').DateMoveModel) => any) | undefined;
+        }>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
     } & import('vue').ComponentOptionsBase<Readonly<{
-        modelValue?: import('./dateMoveUtils').DateMoveModel;
-        variant?: import('../input-frame').InputFrameVariantProps["variant"];
-        size?: import('../input-frame').InputFrameVariantProps["size"];
-        error?: boolean;
-        readonly?: boolean;
-        disabled?: boolean;
+        modelValue?: import('../date-period-picker/datePeriodTypes').DateMoveModel;
+    } & import('../input-frame').InputFrameDesignProps & {
         class?: import('vue').HTMLAttributes["class"];
     }> & Readonly<{
-        "onUpdate:modelValue"?: ((value: import('./dateMoveUtils').DateMoveModel) => any) | undefined;
+        "onUpdate:modelValue"?: ((value: import('../date-period-picker/datePeriodTypes').DateMoveModel) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-        "update:modelValue": (value: import('./dateMoveUtils').DateMoveModel) => any;
-    }, string, {
-        disabled: boolean;
-        size: "small" | "large" | "regular" | null;
-        error: boolean;
-        readonly: boolean;
-    }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
+        "update:modelValue": (value: import('../date-period-picker/datePeriodTypes').DateMoveModel) => any;
+    }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
-            default?(_: {
-                size: import('vue').ComputedRef<import('../input-frame').InputFrameContextSize>;
-            }): any;
+            default?(_: {}): any;
         };
     });
     tags: string[];

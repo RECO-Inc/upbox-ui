@@ -2,7 +2,6 @@ import { HTMLAttributes } from 'vue';
 import { CalendarDate } from '@internationalized/date';
 import { InputFrameVariantProps } from '../input-frame';
 type __VLS_Props = {
-    modelValue?: CalendarDate | null;
     size?: InputFrameVariantProps["size"];
     readonly?: boolean;
     disabled?: boolean;
@@ -10,15 +9,17 @@ type __VLS_Props = {
     placeholder?: string;
     class?: HTMLAttributes["class"];
 };
-declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+type __VLS_PublicProps = {
+    modelValue?: CalendarDate | null;
+} & __VLS_Props;
+declare const _default: import('vue').DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: CalendarDate | null) => any;
     "update:draftError": (value: boolean) => any;
-}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
+}, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
     "onUpdate:modelValue"?: ((value: CalendarDate | null) => any) | undefined;
     "onUpdate:draftError"?: ((value: boolean) => any) | undefined;
 }>, {
     disabled: boolean;
-    modelValue: CalendarDate | null;
     size: "small" | "large" | "regular" | null;
     readonly: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {

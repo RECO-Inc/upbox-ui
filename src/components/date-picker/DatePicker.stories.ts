@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite"
 import { ref } from "vue"
 import { CalendarDate } from "@internationalized/date"
 import DatePicker from "./DatePicker.vue"
+import DateInput from "./DateInput.vue"
 
 const meta = {
   title: "Components/Date/DatePicker",
@@ -29,6 +30,28 @@ export const Default: Story = {
     template: `
       <div class="w-[360px]">
         <DatePicker v-model="v" v-bind="args" />
+      </div>
+    `,
+  }),
+}
+
+/**
+ * 슬롯에 DateInput을 명시적으로 넣는 방법.
+ * placeholder 등 DateInput 전용 props 를 직접 제어할 수 있다.
+ */
+export const WithExplicitDateInput: Story = {
+  name: "With explicit DateInput slot",
+  render: () => ({
+    components: { DatePicker, DateInput },
+    setup() {
+      const v = ref<CalendarDate | null>(null)
+      return { v }
+    },
+    template: `
+      <div class="w-[360px]">
+        <DatePicker v-model="v">
+          <DateInput placeholder="YYYY/MM/DD" />
+        </DatePicker>
       </div>
     `,
   }),

@@ -1,12 +1,10 @@
 import { HTMLAttributes } from 'vue';
-import { InputFrameVariantProps } from './inputFrameVariants';
-type __VLS_Props = {
-    variant?: InputFrameVariantProps["variant"];
-    size?: InputFrameVariantProps["size"];
-    error?: boolean;
-    readonly?: boolean;
-    /** `pointer-events-none`·비활성 톤(자식 `disabled`와 함께 쓰는 것을 권장) */
-    disabled?: boolean;
+import { InputFrameDesignProps } from './inputFrameContext';
+/**
+ * design 키는 미지정이면 `undefined` 로 둬서 inject 병합 시 상위를 따른다.
+ * (optional boolean 을 넘기지 않았을 때 런타임이 `false` 로 잡혀 `??` 가 상위를 덮는 것을 막음)
+ */
+type __VLS_Props = InputFrameDesignProps & {
     class?: HTMLAttributes["class"];
 };
 declare function __VLS_template(): {

@@ -29,7 +29,7 @@ export const WithDatePicker: Story = {
     template: `
       <div class="w-[400px] space-y-[8px] text-size-12 text-grey-60">
         <DateMove v-model="d" class="items-stretch">
-          <DatePicker v-model="d" />
+          <DatePicker />
         </DateMove>
       </div>
     `,
@@ -50,7 +50,7 @@ export const WithDatePeriodPicker: Story = {
     template: `
       <div class="w-[480px] space-y-[8px] text-size-12 text-grey-60">
         <DateMove v-model="p" class="items-stretch">
-          <DatePeriodPicker v-model="p" />
+          <DatePeriodPicker />
         </DateMove>
       </div>
     `,
@@ -77,13 +77,13 @@ export const Disabled: Story = {
         <div class="space-y-[6px]">
           <p class="font-bold text-grey-80">DatePicker (단일)</p>
           <DateMove v-model="d" disabled class="items-stretch">
-            <DatePicker v-model="d" />
+            <DatePicker />
           </DateMove>
         </div>
         <div class="space-y-[6px]">
           <p class="font-bold text-grey-80">DatePeriodPicker (기간)</p>
           <DateMove v-model="p" disabled class="items-stretch">
-            <DatePeriodPicker v-model="p" />
+            <DatePeriodPicker />
           </DateMove>
         </div>
       </div>
@@ -105,19 +105,19 @@ export const Sizes: Story = {
         <div class="space-y-[8px]">
           <p class="font-bold text-grey-80">small</p>
           <DateMove v-model="d" size="small" class="items-stretch">
-            <DatePicker v-model="d" />
+            <DatePicker />
           </DateMove>
         </div>
         <div class="space-y-[8px]">
           <p class="font-bold text-grey-80">regular (기본)</p>
           <DateMove v-model="d" class="items-stretch">
-            <DatePicker v-model="d" />
+            <DatePicker />
           </DateMove>
         </div>
         <div class="space-y-[8px]">
           <p class="font-bold text-grey-80">large</p>
           <DateMove v-model="d" size="large" class="items-stretch">
-            <DatePicker v-model="d" />
+            <DatePicker />
           </DateMove>
         </div>
       </div>

@@ -10,7 +10,7 @@ export interface InputFrameContext {
     disabled: ComputedRef<boolean>;
 }
 export declare const INPUT_FRAME_CONTEXT_KEY: InjectionKey<InputFrameContext>;
-type InputFrameLocalDesign = {
+export type InputFrameDesignProps = {
     variant?: InputFrameVariantProps["variant"];
     size?: InputFrameVariantProps["size"];
     error?: boolean;
@@ -18,14 +18,17 @@ type InputFrameLocalDesign = {
     disabled?: boolean;
 };
 /**
- * 상위 `InputFrame`에서 주입된 디자인이 있으면 그 값을 쓰고, 없을 때만 `local`을 사용한다.
- * `InputFrame` 내부·날짜 입력 등 껍데기 밖/안에서 동일한 규칙을 쓰기 위한 composable.
+ * # 공통 디자인 속성 추출
+ * - variant, size, error, readonly, disabled 속성을 추출
+ * @param p 컴포넌트 props
+ * @returns 공통 디자인 속성
  */
-export declare function useInputFrameDesign(getLocal: () => InputFrameLocalDesign): {
-    variant: ComputedRef<InputFrameContextVariant>;
-    size: ComputedRef<InputFrameContextSize>;
-    error: ComputedRef<boolean>;
-    readonly: ComputedRef<boolean>;
-    disabled: ComputedRef<boolean>;
-};
-export {};
+export declare function pickInputFrameDesign(p: InputFrameDesignProps & Record<string, unknown>): InputFrameDesignProps;
+/**
+ * props 를 넘기지 않은 필드(`undefined`)는 inject 된 상위 디자인을 쓴다. (최소 변경 useInputFrameDesign 쪽과 동일 규칙)
+ */
+export declare function useInputFrameDesign(getLocal: () => InputFrameDesignProps): InputFrameContext;
+/**
+ * inject → 병합 → provide 를 한 번에. InputFrame, DateMove, DatePicker 래퍼 등.
+ */
+export declare function useInputFrameInjectProvide(getLocal: () => InputFrameDesignProps): InputFrameContext;

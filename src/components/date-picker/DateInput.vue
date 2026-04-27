@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { computed, nextTick, ref, watch } from "vue"
+import { computed, inject, nextTick, ref, watch } from "vue"
 import { CalendarDate, parseDate } from "@internationalized/date"
 import { cn } from "../../lib/utils"
 import {
@@ -8,13 +8,14 @@ import {
   useInputFrameInjectProvide,
 } from "../input-frame"
 import type { InputFrameVariantProps } from "../input-frame"
+import { DATE_PICKER_CTX_KEY } from "./datePickerContext"
 
 /**
  * `readonly`/`disabled` 를 내려주지 않을 때(대부분 inject 에만 둘 때) 런타임 `false` 가 되면
  * `buildInputFrameContext` 가 상위 `readonly: true` 를 씹는다. 미지정은 `undefined` 로 둔다.
  */
 
-const modelValue = defineModel<CalendarDate | null>();
+const localModel = defineModel<CalendarDate | null>()
 const props = withDefaults(
   defineProps<{
     size?: InputFrameVariantProps["size"]
@@ -37,6 +38,25 @@ const emit = defineEmits<{
 
 const design = useInputFrameInjectProvide(() => pickInputFrameDesign(props))
 const isFrameDisabled = design.disabled
+
+const datePicker = inject(DATE_PICKER_CTX_KEY, null)
+
+/**
+ * DatePicker context가 있으면 inject된 모델 사용, 없으면 localModel (standalone용)
+ */
+const modelValue = computed({
+  get(): CalendarDate | null | undefined {
+    return datePicker ? datePicker.model.value : localModel.value
+  },
+  set(v: CalendarDate | null | undefined) {
+    if (datePicker) {
+      datePicker.model.value = v
+    }
+    else {
+      localModel.value = v
+    }
+  },
+})
 
 const inputRef = ref<HTMLInputElement | null>(null)
 /** 8자리: 연4·월2·일2 — 빈칸은 '' */
@@ -73,7 +93,13 @@ const inputTextClass = computed(() => {
 const draftError = computed(() => isSlotsInvalid(slots.value))
 
 function emitDraftError() {
-  emit("update:draftError", isSlotsInvalid(slots.value))
+  const hasError = isSlotsInvalid(slots.value)
+  if (datePicker) {
+    datePicker.draftError.value = hasError
+  }
+  else {
+    emit("update:draftError", hasError)
+  }
 }
 
 function clearSlots() {

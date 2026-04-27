@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { computed, ref, watch } from "vue"
+import { computed, inject, ref, watch } from "vue"
 import type { DateRange } from "reka-ui"
 import type { DateValue } from "@internationalized/date"
 import { CalendarDate } from "@internationalized/date"
@@ -13,7 +13,9 @@ import {
   type InputFrameDesignProps,
 } from "../input-frame"
 import type { DatePeriodValue } from "./datePeriodTypes"
+import { isDatePeriodValue } from "./datePeriodTypes"
 import DatePeriodTrigger from "./DatePeriodTrigger.vue"
+import { DATE_MOVE_MODEL_KEY } from "../date-move/dateMoveContext"
 
 const props = withDefaults(
   defineProps<
@@ -26,7 +28,6 @@ const props = withDefaults(
     }
   >(),
   {
-    modelValue: null,
     startPlaceholder: "시작일 선택",
     endPlaceholder: "종료일 선택",
     disabled: undefined,
@@ -41,17 +42,28 @@ const emits = defineEmits<{
   "update:modelValue": [value: DatePeriodValue | null | undefined]
 }>()
 
+const dateMoveCtx = inject(DATE_MOVE_MODEL_KEY, null)
+
 const open = ref(false)
 
+/**
+ * props.modelValue가 바인딩 되지 않은 경우(undefined) DateMove의 공유 모델을 읽고 씀
+ */
 const model = computed({
-  get: () => props.modelValue,
-  set: (v) => {
+  get(): DatePeriodValue | null | undefined {
+    if (props.modelValue !== undefined) return props.modelValue
+    const v = dateMoveCtx?.value
+    if (v === undefined || !isDatePeriodValue(v)) return null
+    return v
+  },
+  set(v: DatePeriodValue | null | undefined) {
     emits("update:modelValue", v)
+    if (dateMoveCtx) dateMoveCtx.value = v ?? null
   },
 })
 
 const rangeForCalendar = computed<DateRange | undefined>(() => {
-  const p = props.modelValue
+  const p = model.value
   if (!p || (!p.start && !p.end))
     return undefined
   return {
@@ -71,7 +83,7 @@ function toCalendarDate(v: DateValue | undefined): CalendarDate | null {
 function onRangeUpdate(v: DateRange) {
   const start = toCalendarDate(v.start)
   const end = toCalendarDate(v.end)
-  emits("update:modelValue", { start, end })
+  model.value = { start, end }
   if (end)
     open.value = false
 }

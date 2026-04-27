@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { computed, ref } from "vue"
+import { computed, inject } from "vue"
 import { Calendar as CalendarGlyph } from "lucide-vue-next"
-import { CalendarDate } from "@internationalized/date"
 import { PopoverTrigger } from "reka-ui"
 import { cn } from "../../lib/utils"
 import {
@@ -11,27 +10,23 @@ import {
   pickInputFrameDesign,
   useInputFrameInjectProvide,
 } from "../input-frame"
-import DateInput from "./DateInput.vue"
+import { DATE_PICKER_CTX_KEY } from "./datePickerContext"
 
-const modelValue = defineModel<CalendarDate | null>();
-const props = withDefaults(defineProps<{ 
-  class?: HTMLAttributes["class"] 
-}>(), { 
-  class: undefined 
+const props = withDefaults(defineProps<{
+  class?: HTMLAttributes["class"]
+}>(), {
+  class: undefined,
 })
-const design = useInputFrameInjectProvide(() => pickInputFrameDesign({}))
 
-const draftErrorFromInput = ref(false)
+const design = useInputFrameInjectProvide(() => pickInputFrameDesign({}))
+const datePicker = inject(DATE_PICKER_CTX_KEY, null)
+
 const isTriggerDisabled = computed(
   () => design.disabled.value || design.readonly.value,
 )
 const frameError = computed(
-  () => design.error.value || draftErrorFromInput.value,
+  () => design.error.value || (datePicker?.draftError.value ?? false),
 )
-
-function onUpdateDraftError(v: boolean) {
-  draftErrorFromInput.value = v
-}
 </script>
 
 <template>
@@ -40,10 +35,7 @@ function onUpdateDraftError(v: boolean) {
     :class="cn('w-full min-w-0', props.class)"
   >
     <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
-      <DateInput
-        v-model="modelValue"
-        @update:draft-error="onUpdateDraftError"
-      />
+      <slot />
       <PopoverTrigger
         v-if="!design.readonly.value"
         as-child

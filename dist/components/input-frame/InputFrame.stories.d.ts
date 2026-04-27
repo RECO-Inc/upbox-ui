@@ -2,12 +2,7 @@ import { StoryObj } from '@storybook/vue3-vite';
 declare const meta: {
     title: string;
     component: {
-        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
-            variant?: import('./inputFrameVariants').InputFrameVariantProps["variant"];
-            size?: import('./inputFrameVariants').InputFrameVariantProps["size"];
-            error?: boolean;
-            readonly?: boolean;
-            disabled?: boolean;
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('./inputFrameContext').InputFrameDesignProps & {
             class?: import('vue').HTMLAttributes["class"];
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {
             disabled: boolean;
@@ -22,12 +17,7 @@ declare const meta: {
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<{
-            variant?: import('./inputFrameVariants').InputFrameVariantProps["variant"];
-            size?: import('./inputFrameVariants').InputFrameVariantProps["size"];
-            error?: boolean;
-            readonly?: boolean;
-            disabled?: boolean;
+        }, Readonly<import('./inputFrameContext').InputFrameDesignProps & {
             class?: import('vue').HTMLAttributes["class"];
         }> & Readonly<{}>, {}, {}, {}, {}, {
             disabled: boolean;
@@ -39,12 +29,7 @@ declare const meta: {
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('vue').ComponentOptionsBase<Readonly<{
-        variant?: import('./inputFrameVariants').InputFrameVariantProps["variant"];
-        size?: import('./inputFrameVariants').InputFrameVariantProps["size"];
-        error?: boolean;
-        readonly?: boolean;
-        disabled?: boolean;
+    } & import('vue').ComponentOptionsBase<Readonly<import('./inputFrameContext').InputFrameDesignProps & {
         class?: import('vue').HTMLAttributes["class"];
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {
         disabled: boolean;
