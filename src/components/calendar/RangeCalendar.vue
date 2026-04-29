@@ -1,94 +1,89 @@
 <script lang="ts" setup>
 /**
- * RangeCalendar 컴포넌트
- * 날짜 범위를 선택할 수 있는 컴포넌트
- * - 시작일/종료일 선택
- * - 시간 선택 (시/분/초)
- * - 년/월 선택 모드
- * - 리셋/완료 버튼
+ * 날짜 범위 선택. 루트 상태·월/연 뷰 전환은 여기서 두고,
+ * `RangeCalendarRoot` 는 `CalendarRangeDateGrid`(DateCalendar→`CalendarDateGrid` 와 대응) 안에 둔다.
+ *
+ * 시작/종료 날짜 · 연·월 패널 · `datetime` 시간 영역 선택을 지원한다.
  */
-import type { RangeCalendarRootProps, DateRange } from "reka-ui"
+import type { DateRange, RangeCalendarRootProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import type { DateValue } from "@internationalized/date"
+import {
+  CalendarDate,
+  getLocalTimeZone,
+  today,
+} from "@internationalized/date"
 import { computed, ref, watch } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import {
-  RangeCalendarRoot,
-  RangeCalendarCell,
-  RangeCalendarCellTrigger,
-  RangeCalendarGrid,
-  RangeCalendarGridBody,
-  RangeCalendarGridHead,
-  RangeCalendarGridRow,
-  RangeCalendarHeadCell,
-  RangeCalendarHeader,
-  RangeCalendarHeading,
-  RangeCalendarNext,
-  RangeCalendarPrev,
-  useForwardPropsEmits
-} from "reka-ui"
-import { CalendarDate } from "@internationalized/date"
-import { ChevronLeft, ChevronRight } from "lucide-vue-next"
+import { useForwardPropsEmits } from "reka-ui"
 import { cn } from "../../lib/utils"
-import { buttonVariants } from "../button"
-import {
-  CalendarMonthGrid,
-  CalendarYearGrid,
-  CalendarTimeSelect,
-  CalendarFooter
-} from "."
+import CalendarMonthGrid from "./CalendarMonthGrid.vue"
+import CalendarYearGrid from "./CalendarYearGrid.vue"
+import CalendarRangeDateGrid from "./CalendarRangeDateGrid.vue"
 
-type ViewMode = 'DATE' | 'MONTH' | 'YEAR'
+type ViewMode = "DATE" | "MONTH" | "YEAR"
 
 interface Props extends RangeCalendarRootProps {
   class?: HTMLAttributes["class"]
-  /** 시간까지 선택할 수 있는지 여부 */
+  /** 시작·종료 시각 포함 */
   datetime?: boolean
-  /** 초까지 선택할 수 있는지 여부 */
+  /** 초 선택 */
   seconds?: boolean
-  /** 리셋/완료 버튼 표시 여부 */
   showFooter?: boolean
+  /** 1·3·6개월·1년 단축 (DateCalendar 와 동일) */
+  showQuickPresets?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   datetime: false,
   seconds: false,
-  showFooter: false
+  /** 다른 소비처(예: 기간 피커 팝업)에서는 푸터 없이 두는 경우가 많아 기본값은 낮춘다 */
+  showFooter: false,
+  /** `PeriodCalendar` 에서 명시하면 `DateCalendar` 와 같은 단축 막대 노출 */
+  showQuickPresets: false,
 })
 
 const emits = defineEmits<{
-  'update:modelValue': [value: DateRange]
-  'update:placeholder': [value: RangeCalendarRootProps['placeholder']]
-  'update:startValue': [value: RangeCalendarRootProps['placeholder'] | undefined]
-  'change': [value: { first: Date | null, last: Date | null }]
-  'reset': []
+  "update:modelValue": [value: DateRange]
+  "update:placeholder": [value: RangeCalendarRootProps["placeholder"]]
+  "update:startValue": [value: RangeCalendarRootProps["placeholder"] | undefined]
+  "change": [value: { first: Date | null, last: Date | null }]
+  "reset": []
 }>()
 
-const delegatedProps = reactiveOmit(props, "class", "datetime", "seconds", "showFooter")
+const delegatedProps = reactiveOmit(
+  props,
+  "class",
+  "datetime",
+  "seconds",
+  "showFooter",
+  "showQuickPresets",
+  "locale",
+  "weekStartsOn",
+)
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 
-// View mode state
-const viewMode = ref<ViewMode>('DATE')
+const localeResolved = computed(() => props.locale ?? "ko-KR")
+const weekStartsResolved = computed(() => props.weekStartsOn ?? 1)
 
-// Placeholder for controlling displayed month/year
+const viewMode = ref<ViewMode>("DATE")
+
 const now = new Date()
 const placeholder = ref(new CalendarDate(now.getFullYear(), now.getMonth() + 1, 1))
 
-// Time selection
 const hour = ref(now.getHours())
 const minute = ref(now.getMinutes())
 const second = ref(0)
 
-// Watch for model value changes to update placeholder and time
 watch(() => props.modelValue, (newVal) => {
-  if (newVal && typeof newVal === 'object') {
+  if (newVal && typeof newVal === "object") {
     const startVal = newVal.start as DateValue | undefined
-    if (startVal && typeof startVal === 'object' && 'year' in startVal && 'month' in startVal) {
+    if (startVal && typeof startVal === "object" && "year" in startVal && "month" in startVal) {
       placeholder.value = new CalendarDate(startVal.year, startVal.month, 1)
     }
-    if (startVal && 'hour' in startVal) {
-      const timeVal = startVal as { hour?: number; minute?: number; second?: number }
+    if (startVal && "hour" in startVal) {
+      const timeVal = startVal as { hour?: number, minute?: number, second?: number }
       hour.value = timeVal.hour ?? 0
       minute.value = timeVal.minute ?? 0
       second.value = timeVal.second ?? 0
@@ -96,35 +91,35 @@ watch(() => props.modelValue, (newVal) => {
   }
 }, { immediate: true })
 
-// Computed selected month for highlighting in month grid
-const selectedMonth = computed(() => {
+/** 표시 연(`placeholder`)과 시작일 연도가 같을 때만 월 패널에서 월 칩 강조 */
+const selectedMonthInMonthView = computed(() => {
   const start = props.modelValue?.start as DateValue | undefined
-  if (start && typeof start === 'object' && 'month' in start) {
-    return start.month
-  }
-  return undefined
+  if (!start || typeof start !== "object" || !("year" in start) || !("month" in start))
+    return undefined
+  if ((start as DateValue).year !== placeholder.value.year)
+    return undefined
+  return (start as CalendarDate).month
 })
 
 const selectedYear = computed(() => {
   const start = props.modelValue?.start as DateValue | undefined
-  if (start && typeof start === 'object' && 'year' in start) {
+  if (start && typeof start === "object" && "year" in start)
     return start.year
-  }
   return undefined
 })
 
 function onClickHeading() {
-  viewMode.value = 'MONTH'
+  viewMode.value = "MONTH"
 }
 
 function onSelectMonth(month: number) {
   placeholder.value = new CalendarDate(placeholder.value.year, month, 1)
-  viewMode.value = 'DATE'
+  viewMode.value = "DATE"
 }
 
 function onSelectYear(year: number) {
   placeholder.value = new CalendarDate(year, placeholder.value.month, 1)
-  viewMode.value = 'MONTH'
+  viewMode.value = "MONTH"
 }
 
 function onPrevYear() {
@@ -136,196 +131,110 @@ function onNextYear() {
 }
 
 function onClickYear() {
-  viewMode.value = 'YEAR'
+  viewMode.value = "YEAR"
 }
 
 function onReset() {
-  emits('reset')
+  emits("reset")
 }
 
 function onDone() {
   let firstDate: Date | null = null
   let lastDate: Date | null = null
 
-  if (props.modelValue && typeof props.modelValue === 'object') {
+  if (props.modelValue && typeof props.modelValue === "object") {
     const startVal = props.modelValue.start as any
     const endVal = props.modelValue.end as any
 
-    if (startVal && 'year' in startVal && 'month' in startVal && 'day' in startVal) {
+    if (startVal && "year" in startVal && "month" in startVal && "day" in startVal) {
       firstDate = new Date(startVal.year, startVal.month - 1, startVal.day, hour.value, minute.value, second.value)
     }
-    if (endVal && 'year' in endVal && 'month' in endVal && 'day' in endVal) {
+    if (endVal && "year" in endVal && "month" in endVal && "day" in endVal) {
       lastDate = new Date(endVal.year, endVal.month - 1, endVal.day, hour.value, minute.value, second.value)
     }
   }
 
-  emits('change', {
+  emits("change", {
     first: firstDate,
-    last: lastDate
+    last: lastDate,
   })
 }
+
+function onQuickAddMonths(offset: number) {
+  const tz = getLocalTimeZone()
+  const anchor = today(tz) as CalendarDate
+  const end = anchor.add({ months: offset })
+  emits("update:modelValue", {
+    start: anchor,
+    end,
+  })
+  placeholder.value = new CalendarDate(end.year, end.month, 1)
+}
+
 </script>
 
 <template>
-  <div class="calendar-wrapper">
-    <!-- Date selection mode -->
+  <div class="period-calendar-figma calendar-wrapper rounded-[8px] bg-grey-10">
     <template v-if="viewMode === 'DATE'">
-      <RangeCalendarRoot
-        v-slot="{ grid, weekDays }"
-        :class="cn('p-[16px]', props.class)"
+      <CalendarRangeDateGrid
         v-bind="forwarded"
+        :class="cn('rounded-t-[inherit] p-[16px] pb-[8px]', props.class)"
+        :locale="localeResolved"
         :placeholder="placeholder as unknown as RangeCalendarRootProps['placeholder']"
-        @update:placeholder="(val) => placeholder = val as CalendarDate"
+        :week-starts-on="weekStartsResolved"
+        :number-of-months="props.numberOfMonths"
+        :datetime="datetime"
+        :seconds="seconds"
+        :show-quick-presets="showQuickPresets"
+        :show-footer="showFooter"
+        v-model:hour="hour"
+        v-model:minute="minute"
+        v-model:second="second"
+        @update:placeholder="(val) => (placeholder = val as CalendarDate)"
+        @click-heading="onClickHeading"
+        @shortcut-select="onQuickAddMonths"
+        @reset="onReset"
+        @done="onDone"
       >
-        <RangeCalendarHeader class="relative flex w-full items-center justify-between pt-[4px]">
-          <RangeCalendarPrev
-            :class="cn(
-              buttonVariants({ variant: 'tertiary', style: 'outlined' }),
-              'h-[28px] w-[28px] bg-transparent p-0 opacity-50 hover:opacity-100'
-            )"
-          >
-            <ChevronLeft class="h-[16px] w-[16px]" />
-          </RangeCalendarPrev>
-          <RangeCalendarHeading
-            class="text-sm font-medium cursor-pointer select-none"
-            @click="onClickHeading"
-          />
-          <RangeCalendarNext
-            :class="cn(
-              buttonVariants({ variant: 'tertiary', style: 'outlined' }),
-              'h-[28px] w-[28px] bg-transparent p-0 opacity-50 hover:opacity-100'
-            )"
-          >
-            <ChevronRight class="h-[16px] w-[16px]" />
-          </RangeCalendarNext>
-        </RangeCalendarHeader>
-
-        <div class="flex flex-col gap-y-[16px] mt-[16px] sm:flex-row sm:gap-x-[16px] sm:gap-y-0">
-          <RangeCalendarGrid v-for="month in grid" :key="month.value.toString()">
-            <RangeCalendarGridHead>
-              <RangeCalendarGridRow class="range-calendar-grid-row flex">
-                <RangeCalendarHeadCell
-                  v-for="day in weekDays" :key="day"
-                  class="w-[36px] rounded-md text-[0.8rem] font-normal text-grey-60"
-                >
-                  {{ day }}
-                </RangeCalendarHeadCell>
-              </RangeCalendarGridRow>
-            </RangeCalendarGridHead>
-            <RangeCalendarGridBody>
-              <RangeCalendarGridRow v-for="(weekDates, index) in month.rows" :key="`weekDate-${index}`" class="range-calendar-grid-row flex mt-[8px] w-full">
-                <RangeCalendarCell
-                  v-for="weekDate in weekDates"
-                  :key="weekDate.toString()"
-                  :date="weekDate"
-                  :class="cn(
-                    'relative p-0 text-center text-sm w-[36px] h-[36px]',
-                    'focus-within:relative focus-within:z-20',
-                    // Range selection - highlight included dates (between start and end)
-                    '[&:has([data-selected]:not([data-selection-start]):not([data-selection-end]))]:bg-blue-20',
-                    // First selected (range start) - rounded-sm left, solid bg on cell too
-                    '[&:has([data-selection-start])]:rounded-l [&:has([data-selection-start])]:bg-blue-20',
-                    // Last selected (range end) - rounded-sm right, solid bg on cell too
-                    '[&:has([data-selection-end])]:rounded-r [&:has([data-selection-end])]:bg-blue-20',
-                    // When start and end are same date
-                    '[&:has([data-selection-start][data-selection-end])]:rounded',
-                    // Outside view selected
-                    '[&:has([data-selected][data-outside-view])]:bg-blue-20/50'
-                  )"
-                >
-                  <RangeCalendarCellTrigger
-                    :day="weekDate"
-                    :month="month.value"
-                    :class="cn(
-                      // Base styles - 36x36 cell size matching original
-                      'inline-flex items-center justify-center w-[36px] h-[36px] p-0 text-sm font-normal rounded-sm transition-colors cursor-pointer select-none',
-                      'text-grey-90 hover:bg-grey-30',
-                      // Today
-                      '[&[data-today]:not([data-selected])]:bg-grey-20 [&[data-today]:not([data-selected])]:text-navy-80 [&[data-today]:not([data-selected])]:font-semibold',
-                      // Selected dates in between (not start/end) - text color only, bg from cell
-                      '[&[data-selected]:not([data-selection-start]):not([data-selection-end])]:text-blue-90 [&[data-selected]:not([data-selection-start]):not([data-selection-end])]:bg-transparent',
-                      // Start/End dates - solid background
-                      'data-[selection-start]:bg-blue-80 data-[selection-start]:text-grey-10 data-[selection-start]:hover:bg-blue-90',
-                      'data-[selection-end]:bg-blue-80 data-[selection-end]:text-grey-10 data-[selection-end]:hover:bg-blue-90',
-                      // Disabled
-                      'data-[disabled]:text-grey-50 data-[disabled]:bg-grey-20 data-[disabled]:cursor-not-allowed',
-                      // Unavailable
-                      'data-[unavailable]:text-red-70 data-[unavailable]:line-through',
-                      // Outside months
-                      'data-[outside-view]:text-grey-50'
-                    )"
-                  />
-                </RangeCalendarCell>
-              </RangeCalendarGridRow>
-            </RangeCalendarGridBody>
-          </RangeCalendarGrid>
-
-          <!-- Time selection -->
-          <CalendarTimeSelect
-            v-if="datetime"
-            v-model:hour="hour"
-            v-model:minute="minute"
-            v-model:second="second"
-            :show-seconds="seconds"
-          />
-        </div>
-      </RangeCalendarRoot>
+        <template #reset="{ onReset: handleReset }">
+          <slot name="reset" :on-reset="handleReset" />
+        </template>
+        <template #done="{ onDone: handleDone }">
+          <slot name="done" :on-done="handleDone" />
+        </template>
+      </CalendarRangeDateGrid>
     </template>
 
-    <!-- Month selection mode -->
     <template v-else-if="viewMode === 'MONTH'">
-      <CalendarMonthGrid
-        :year="placeholder.year"
-        :selected-month="selectedMonth"
-        @select="onSelectMonth"
-        @prev-year="onPrevYear"
-        @next-year="onNextYear"
-        @click-year="onClickYear"
-      />
+      <div class="p-[16px]">
+        <CalendarMonthGrid
+          :year="placeholder.year"
+          :selected-month="selectedMonthInMonthView"
+          @select="onSelectMonth"
+          @prev-year="onPrevYear"
+          @next-year="onNextYear"
+          @click-year="onClickYear"
+        />
+      </div>
     </template>
 
-    <!-- Year selection mode -->
     <template v-else-if="viewMode === 'YEAR'">
-      <CalendarYearGrid
-        :selected-year="selectedYear"
-        :start-year="placeholder.year + 3"
-        @select="onSelectYear"
-      />
+      <div class="p-[16px]">
+        <CalendarYearGrid
+          :selected-year="selectedYear"
+          :start-year="placeholder.year + 3"
+          @select="onSelectYear"
+        />
+      </div>
     </template>
-
-    <!-- Footer with reset/done buttons -->
-    <CalendarFooter
-      v-if="showFooter"
-      @reset="onReset"
-      @done="onDone"
-    >
-      <template #reset="{ onReset: handleReset }">
-        <slot name="reset" :on-reset="handleReset" />
-      </template>
-      <template #done="{ onDone: handleDone }">
-        <slot name="done" :on-done="handleDone" />
-      </template>
-    </CalendarFooter>
   </div>
 </template>
 
 <style scoped>
-.calendar-wrapper {
-  background-color: var(--color-grey-10);
-}
-
-/* Sunday (first column) - red color for date cells */
-.range-calendar-grid-row :deep(> td:first-child button) {
-  color: var(--color-red-70) !important;
-}
-.range-calendar-grid-row :deep(> td:first-child button[data-outside-view]) {
-  color: var(--color-red-50) !important;
-}
-.range-calendar-grid-row :deep(> td:first-child button[data-selected]) {
-  color: var(--color-grey-10) !important;
-}
-/* Sunday header (first column) */
-.range-calendar-grid-row :deep(> th:first-child) {
-  color: var(--color-red-70) !important;
+/** 단일 패널 `DateCalendar` 와 동일 — 오늘(미선택): 밝은 파랑 포인트 */
+.period-calendar-figma :deep(.range-calendar-day-btn[data-today]:not([data-selected])) {
+  font-weight: 400;
+  color: var(--color-blue-80);
+  background-color: transparent !important;
 }
 </style>

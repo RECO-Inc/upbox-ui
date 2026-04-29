@@ -23,7 +23,7 @@ const { t } = useI18n()
 <template>
   <div
     :class="cn(
-      'flex items-center justify-between gap-[10px] px-[16px] pb-[8px]',
+      'flex items-center justify-between gap-[10px] pb-[8px]',
       props.class
     )"
   >

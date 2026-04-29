@@ -21,3 +21,4 @@ export { default as CalendarTimeSelect } from './CalendarTimeSelect';
 export { default as CalendarFooter } from './CalendarFooter';
 export { default as CalendarShortcut } from './CalendarShortcut';
 export { default as CalendarDateGrid } from './CalendarDateGrid';
+export { default as CalendarRangeDateGrid } from './CalendarRangeDateGrid';

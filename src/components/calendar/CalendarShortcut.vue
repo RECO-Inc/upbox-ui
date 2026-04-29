@@ -23,7 +23,7 @@ function emitShortcut(months: number) {
 </script>
 
 <template>
-  <div :class="cn('flex flex-wrap gap-[8px] px-[16px] py-[8px]', props.class)">
+  <div :class="cn('flex flex-wrap gap-[8px] py-[8px]', props.class)">
     <Button
       variant="tertiary"
       theme="filled"

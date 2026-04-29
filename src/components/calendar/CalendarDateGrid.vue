@@ -115,20 +115,20 @@ function isSundayColumnIndex(di: number) {
         </CalendarGridBody>
       </CalendarGrid>
     </div>
+    <CalendarShortcut
+      v-if="showQuickPresets"
+      @shortcut-select="emits('shortcutSelect', $event)" />
+    <CalendarFooter
+      v-if="showFooter"
+      class="pt-[8px]"
+      @reset="emits('reset')"
+      @done="emits('done')" >
+      <template #reset="{ onReset: handleReset }">
+        <slot name="reset" :on-reset="handleReset" />
+      </template>
+      <template #done="{ onDone: handleDone }">
+        <slot name="done" :on-done="handleDone" />
+      </template>
+    </CalendarFooter>
   </CalendarRoot>
-  <CalendarShortcut
-    v-if="showQuickPresets"
-    @shortcut-select="emits('shortcutSelect', $event)" />
-  <CalendarFooter
-    v-if="showFooter"
-    class="pt-[8px]"
-    @reset="emits('reset')"
-    @done="emits('done')" >
-    <template #reset="{ onReset: handleReset }">
-      <slot name="reset" :on-reset="handleReset" />
-    </template>
-    <template #done="{ onDone: handleDone }">
-      <slot name="done" :on-done="handleDone" />
-    </template>
-  </CalendarFooter>
 </template>

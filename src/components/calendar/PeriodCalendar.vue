@@ -1,7 +1,8 @@
 <script setup lang="ts">
 /**
  * 디자인 시스템 Figma `periodCalendar` (node `12247:8603`)에 대응.
- * 구현은 `RangeCalendar`와 동일하며, 기본적으로 **두 달 패널**(`numberOfMonths: 2`)을 쓴다.
+ * 래핑 레이아웃·헤더 네비·단축·푸터 순서 및 토큰은 `DateCalendar` 와 통일된다.
+ * 기본값은 **두 달 패널**(`numberOfMonths: 2`) + 페이지 단위 네비(`pagedNavigation`)이다.
  *
  * 범위 값 모델은 reka-ui `DateRange` (`{ start?, end? }`, `@internationalized/date` 호환).
  * 앱 레벨 `{ start: CalendarDate | null; end: CalendarDate | null }` 매핑은
@@ -39,7 +40,7 @@ const rangeCalendarAttrs = computed(() => {
 </script>
 
 <template>
-  <RangeCalendar v-bind="rangeCalendarAttrs">
+  <RangeCalendar v-bind="rangeCalendarAttrs" :show-footer="true" :show-quick-presets="true">
     <template v-if="$slots.reset" #reset="{ onReset }">
       <slot name="reset" :on-reset="onReset" />
     </template>
