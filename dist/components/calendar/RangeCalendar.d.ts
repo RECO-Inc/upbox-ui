@@ -43,9 +43,9 @@ declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, 
     }) => any) | undefined;
     "onUpdate:startValue"?: ((value: DateValue | undefined) => any) | undefined;
 }>, {
+    showFooter: boolean;
     datetime: boolean;
     seconds: boolean;
-    showFooter: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

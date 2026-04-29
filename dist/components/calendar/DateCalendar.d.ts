@@ -3,14 +3,8 @@ import { HTMLAttributes } from 'vue';
 import { DateValue } from '@internationalized/date';
 export interface Props extends CalendarRootProps {
     class?: HTMLAttributes["class"];
-    /** 날짜 선택을 할 수 없다. 년 월만 보여줌 */
-    noDate?: boolean;
-    /** 시간까지 선택할 수 있는지 여부 */
-    datetime?: boolean;
-    /** 초까지 선택할 수 있는지 여부 */
-    seconds?: boolean;
-    /** 리셋/완료 버튼 표시 여부 */
     showFooter?: boolean;
+    showQuickPresets?: boolean;
 }
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -37,9 +31,7 @@ declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, 
     "onUpdate:placeholder"?: ((value: DateValue | undefined) => any) | undefined;
     onChange?: ((value: Date | null) => any) | undefined;
 }>, {
-    noDate: boolean;
-    datetime: boolean;
-    seconds: boolean;
+    showQuickPresets: boolean;
     showFooter: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;

@@ -2,6 +2,7 @@ import { HTMLAttributes } from 'vue';
 interface Props {
     class?: HTMLAttributes["class"];
     year: number;
+    /** 해당 `year`와 동일한 연도 선택일 때만 강조할 월(1–12) */
     selectedMonth?: number;
 }
 declare const _default: import('vue').DefineComponent<Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {

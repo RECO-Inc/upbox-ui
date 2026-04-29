@@ -3,7 +3,7 @@ import type { HTMLAttributes } from "vue"
 import { computed, inject, provide, ref, watch } from "vue"
 import type { CalendarDate, DateValue } from "@internationalized/date"
 import { Popover, PopoverContent } from "../popover"
-import { Calendar } from "../calendar"
+import { DateCalendar } from "../calendar"
 import { cn } from "../../lib/utils"
 import {
   pickInputFrameDesign,
@@ -94,8 +94,10 @@ function onCalendarUpdate(v: DateValue | DateValue[] | undefined) {
         )
       "
     >
-      <Calendar
+      <DateCalendar
         :model-value="model ?? undefined"
+        :show-footer="false"
+        :show-quick-presets="false"
         @update:model-value="onCalendarUpdate"
       />
     </PopoverContent>

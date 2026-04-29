@@ -12,19 +12,19 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   startYear: new Date().getFullYear() + 3,
-  yearLength: new Date().getFullYear() + 3 - 2018
+  yearLength: new Date().getFullYear() + 3 - 2018,
 })
 
 const emit = defineEmits<{
-  (e: 'select', year: number): void
+  (e: "select", year: number): void
 }>()
 
 const years = computed(() => {
-  const result = []
+  const result: { value: number; label: string }[] = []
   for (let i = 0; i < props.yearLength; i++) {
     result.push({
       value: props.startYear - i,
-      label: `${props.startYear - i}`
+      label: `${props.startYear - i}`,
     })
   }
   return result
@@ -32,21 +32,22 @@ const years = computed(() => {
 </script>
 
 <template>
-  <div :class="cn('p-[16px]', props.class)">
+  <div :class="cn('p-[12px]', props.class)">
     <div class="grid grid-cols-4 gap-[4px]">
-      <div
+      <button
         v-for="year in years"
         :key="year.value"
+        type="button"
         :class="cn(
-          'py-[8px] px-[16px] text-sm font-bold text-grey-90 text-center cursor-pointer select-none transition-colors',
+          'min-h-[32px] px-[8px] py-[6px] text-size-12 font-semibold transition-colors',
           year.value === selectedYear
-            ? 'bg-navy-90 text-grey-20 rounded-sm hover:bg-navy-70'
-            : 'hover:bg-grey-30'
+            ? 'rounded-sm bg-blue-80 text-grey-10 shadow-small hover:bg-blue-90'
+            : 'rounded-sm text-grey-90 hover:bg-grey-30',
         )"
         @click="emit('select', year.value)"
       >
         {{ year.label }}
-      </div>
+      </button>
     </div>
   </div>
 </template>

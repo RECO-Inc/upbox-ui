@@ -4,6 +4,7 @@ import { cn } from "../../lib/utils"
 import { Button } from "../button"
 import { RotateCcw } from "lucide-vue-next"
 import { useI18n } from "vue-i18n"
+import TextButton from "../text-button/TextButton.vue"
 
 interface Props {
   class?: HTMLAttributes["class"]
@@ -27,10 +28,9 @@ const { t } = useI18n()
     )"
   >
     <slot name="reset" :on-reset="() => emit('reset')">
-      <Button
-        variant="tertiary"
-        style="text"
-        size="xsmall"
+      <TextButton
+        variant="secondary"
+        size="2xsmall"
         @focus.prevent
         @focusout.prevent.stop
         @mousedown.prevent
@@ -38,7 +38,7 @@ const { t } = useI18n()
       >
         <RotateCcw class="w-[16px] h-[16px] mr-[4px]" />
         {{ t('word.reset') }}
-      </Button>
+      </TextButton>
     </slot>
     <slot name="done" :on-done="() => emit('done')">
       <Button
