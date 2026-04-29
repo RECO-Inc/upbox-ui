@@ -145,7 +145,9 @@ function onDone() {
 </script>
 
 <template>
-  <div class="date-calendar-figma calendar-wrapper rounded-[8px] bg-grey-10">
+  <div
+    class="date-calendar-figma calendar-wrapper min-w-[288px] rounded-[8px] bg-grey-10"
+  >
     <template v-if="viewMode === 'DATE'">
       <CalendarDateGrid
         v-bind="forwarded"

@@ -111,7 +111,7 @@ function onCalendarReset() {
       align="end"
       :class="
         cn(
-          '!p-0 w-[min-content] !border-1 !border-grey-40 bg-transparent p-0 shadow-none',
+          '!p-0 w-max max-w-[calc(100vw-16px)] !border-1 !border-grey-40 bg-transparent p-0 shadow-none',
           props.popoverContentClass,
         )
       "
@@ -122,8 +122,8 @@ function onCalendarReset() {
         :show-quick-presets="true"
         @update:model-value="onCalendarDraftUpdate"
         @change="onCalendarChange"
-        @reset="onCalendarReset"
-      />
+        @reset="onCalendarReset">
+      </DateCalendar>
     </PopoverContent>
   </Popover>
 </template>

@@ -56,14 +56,14 @@ function onEndUpdate(v: CalendarDate | null | undefined) {
 <template>
   <div
     :class="cn(
-      'flex min-w-0 flex-1 flex-nowrap items-center gap-[4px] overflow-x-auto h-full',
+      'flex min-w-0 min-h-0 flex-1 flex-nowrap items-center gap-[4px] overflow-x-hidden h-full',
       props.class,
     )"
   >
     <DateInput
       :model-value="value.start"
       :placeholder="startPlaceholder"
-      class="min-w-[120px] flex-1 basis-0 shrink-0"
+      class="min-w-0 flex-1 basis-0 shrink"
       @update:model-value="onStartUpdate"
       @update:draft-error="onStartDraftError"
     />
@@ -74,7 +74,7 @@ function onEndUpdate(v: CalendarDate | null | undefined) {
     <DateInput
       :model-value="value.end"
       :placeholder="endPlaceholder"
-      class="min-w-[120px] flex-1 basis-0 shrink-0"
+      class="min-w-0 flex-1 basis-0 shrink"
       @update:model-value="onEndUpdate"
       @update:draft-error="onEndDraftError"
     />
