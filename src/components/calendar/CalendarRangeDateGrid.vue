@@ -78,23 +78,31 @@ function isSundayColumnIndex(di: number) {
     weekday-format="narrow"
     @update:placeholder="(val) => emits('update:placeholder', val)"
   >
-    <CalendarRangeHeader
-      class="relative flex w-full items-center justify-between pt-[4px]"
-      :placeholder="placeholder as CalendarDate"
-      @click-heading="emits('clickHeading')"
-    />
-
-    <div
-      :class="cn(
-        'mt-[16px] flex flex-col gap-y-[16px]',
-        (props.numberOfMonths ?? 1) > 1 && 'sm:flex-row sm:flex-wrap sm:gap-x-[16px] sm:gap-y-0',
-      )"
-    >
-      <RangeCalendarGrid
-        v-for="month in grid"
-        :key="month.value.toString()"
-        class="calendar-range-month-grid min-w-[252px] flex-1 border-collapse bg-transparent table-fixed [&_thead_tr]:border-0 [&_tbody_tr_td]:border-0"
+    <!-- 이동·연도 버튼 + 월 헤더: 다중 월이면 패널(그리드)마다 각각 두어 Figma `periodCalendar` 와 동일하게 맞춤 -->
+    <div class="flex flex-col gap-y-[16px]">
+      <div
+        :class="cn(
+          (props.numberOfMonths ?? 1) > 1
+            ? 'flex flex-row flex-nowrap items-start gap-x-[16px] overflow-x-auto'
+            : 'flex flex-col',
+        )"
       >
+        <div
+          v-for="month in grid"
+          :key="month.value.toString()"
+          :class="cn(
+            'calendar-range-month-column flex min-w-[252px] shrink-0 flex-col',
+            (props.numberOfMonths ?? 1) > 1 ? '' : 'w-full flex-1',
+          )"
+        >
+          <CalendarRangeHeader
+            class="relative flex w-full items-center justify-between pt-[4px]"
+            :placeholder="month.value as CalendarDate"
+            @click-heading="emits('clickHeading')"
+          />
+          <RangeCalendarGrid
+            class="calendar-range-month-grid mt-[16px] border-collapse bg-transparent table-fixed [&_thead_tr]:border-0 [&_tbody_tr_td]:border-0"
+          >
         <RangeCalendarGridHead>
           <RangeCalendarGridRow class="range-calendar-grid-row [&_th]:border-0">
             <RangeCalendarHeadCell
@@ -157,9 +165,12 @@ function isSundayColumnIndex(di: number) {
           </RangeCalendarGridRow>
         </RangeCalendarGridBody>
       </RangeCalendarGrid>
+        </div>
+      </div>
 
       <CalendarTimeSelect
         v-if="datetime"
+        class="w-full shrink-0"
         v-model:hour="hourModel"
         v-model:minute="minuteModel"
         v-model:second="secondModel"

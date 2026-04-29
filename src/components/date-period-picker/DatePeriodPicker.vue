@@ -2,10 +2,9 @@
 import type { HTMLAttributes } from "vue"
 import { computed, inject, ref, watch } from "vue"
 import type { DateRange } from "reka-ui"
-import type { DateValue } from "@internationalized/date"
 import { CalendarDate } from "@internationalized/date"
 import { Popover, PopoverContent } from "../popover"
-import { RangeCalendar } from "../calendar"
+import { PeriodCalendar } from "../calendar"
 import { cn } from "../../lib/utils"
 import {
   pickInputFrameDesign,
@@ -28,8 +27,8 @@ const props = withDefaults(
     }
   >(),
   {
-    startPlaceholder: "시작일 선택",
-    endPlaceholder: "종료일 선택",
+    startPlaceholder: "YYYY-MM-DD",
+    endPlaceholder: "YYYY-MM-DD",
     disabled: undefined,
     readonly: undefined,
     variant: undefined,
@@ -44,48 +43,64 @@ const emits = defineEmits<{
 
 const dateMoveCtx = inject(DATE_MOVE_MODEL_KEY, null)
 
-const open = ref(false)
-
 /**
  * props.modelValue가 바인딩 되지 않은 경우(undefined) DateMove의 공유 모델을 읽고 씀
  */
 const model = computed({
   get(): DatePeriodValue | null | undefined {
-    if (props.modelValue !== undefined) return props.modelValue
+    if (props.modelValue !== undefined)
+      return props.modelValue
     const v = dateMoveCtx?.value
-    if (v === undefined || !isDatePeriodValue(v)) return null
+    if (v === undefined || !isDatePeriodValue(v))
+      return null
     return v
   },
   set(v: DatePeriodValue | null | undefined) {
     emits("update:modelValue", v)
-    if (dateMoveCtx) dateMoveCtx.value = v ?? null
+    if (dateMoveCtx)
+      dateMoveCtx.value = v ?? null
   },
 })
 
-const rangeForCalendar = computed<DateRange | undefined>(() => {
-  const p = model.value
+function modelToDraftRange(
+  p: DatePeriodValue | null | undefined,
+): DateRange | undefined {
   if (!p || (!p.start && !p.end))
     return undefined
   return {
     start: p.start ?? undefined,
     end: p.end ?? undefined,
   } as DateRange
-})
-
-function toCalendarDate(v: DateValue | undefined): CalendarDate | null {
-  if (!v || typeof v !== "object")
-    return null
-  if (!("year" in v) || !("month" in v) || !("day" in v))
-    return null
-  return v as CalendarDate
 }
 
-function onRangeUpdate(v: DateRange) {
-  const start = toCalendarDate(v.start)
-  const end = toCalendarDate(v.end)
-  model.value = { start, end }
-  if (end)
-    open.value = false
+const open = ref(false)
+
+/** 팝업 안 범위 선택 — 완료 전에는 바깥 model 에 반영하지 않는다 */
+const rangeDraft = ref<DateRange | undefined>(undefined)
+
+watch(open, (isOpen) => {
+  if (isOpen)
+    rangeDraft.value = modelToDraftRange(model.value ?? null)
+})
+
+function jsDateToCalendarDate(d: Date): CalendarDate {
+  return new CalendarDate(d.getFullYear(), d.getMonth() + 1, d.getDate())
+}
+
+function onRangeDraftUpdate(v: DateRange | undefined) {
+  rangeDraft.value = v
+}
+
+function onPeriodCalendarChange(payload: { first: Date | null, last: Date | null }) {
+  model.value = {
+    start: payload.first ? jsDateToCalendarDate(payload.first) : null,
+    end: payload.last ? jsDateToCalendarDate(payload.last) : null,
+  }
+  open.value = false
+}
+
+function onRangeDraftReset() {
+  rangeDraft.value = undefined
 }
 
 const isPeriodLocked = computed(() => !!props.readonly || !!props.disabled)
@@ -119,9 +134,11 @@ useInputFrameInjectProvide(() => pickInputFrameDesign(props))
         )
       "
     >
-      <RangeCalendar
-        :model-value="rangeForCalendar"
-        @update:model-value="onRangeUpdate"
+      <PeriodCalendar
+        :model-value="rangeDraft"
+        @update:model-value="onRangeDraftUpdate"
+        @change="onPeriodCalendarChange"
+        @reset="onRangeDraftReset"
       />
     </PopoverContent>
   </Popover>

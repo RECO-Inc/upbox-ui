@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
+import type { CalendarRootProps } from "reka-ui"
 import { computed, inject, provide, ref, watch } from "vue"
-import type { CalendarDate, DateValue } from "@internationalized/date"
+import type { DateValue } from "@internationalized/date"
+import { CalendarDate } from "@internationalized/date"
 import { Popover, PopoverContent } from "../popover"
 import { DateCalendar } from "../calendar"
 import { cn } from "../../lib/utils"
@@ -55,6 +57,13 @@ provide(DATE_PICKER_CTX_KEY, { model, draftError })
 
 const open = ref(false)
 
+const calendarDraft = ref<CalendarDate | null>(null)
+
+watch(open, (isOpen) => {
+  if (isOpen)
+    calendarDraft.value = model.value ?? null
+})
+
 const isCalendarLocked = computed(() => design.readonly.value || design.disabled.value)
 
 watch(
@@ -65,15 +74,28 @@ watch(
   { immediate: true },
 )
 
-function onCalendarUpdate(v: DateValue | DateValue[] | undefined) {
+function onCalendarDraftUpdate(v: DateValue | DateValue[] | undefined) {
+  if (Array.isArray(v))
+    return
   if (v === undefined) {
+    calendarDraft.value = null
+    return
+  }
+  calendarDraft.value = v as CalendarDate
+}
+
+function onCalendarChange(d: Date | null) {
+  if (!d) {
     model.value = null
     open.value = false
     return
   }
-  if (Array.isArray(v)) return
-  model.value = v as CalendarDate
+  model.value = new CalendarDate(d.getFullYear(), d.getMonth() + 1, d.getDate())
   open.value = false
+}
+
+function onCalendarReset() {
+  calendarDraft.value = null
 }
 </script>
 
@@ -95,10 +117,12 @@ function onCalendarUpdate(v: DateValue | DateValue[] | undefined) {
       "
     >
       <DateCalendar
-        :model-value="model ?? undefined"
-        :show-footer="false"
-        :show-quick-presets="false"
-        @update:model-value="onCalendarUpdate"
+        :model-value="calendarDraft as unknown as CalendarRootProps['modelValue'] ?? undefined"
+        :show-footer="true"
+        :show-quick-presets="true"
+        @update:model-value="onCalendarDraftUpdate"
+        @change="onCalendarChange"
+        @reset="onCalendarReset"
       />
     </PopoverContent>
   </Popover>
