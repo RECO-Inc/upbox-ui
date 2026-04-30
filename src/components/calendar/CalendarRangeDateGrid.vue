@@ -13,6 +13,7 @@ import CalendarShortcut from "./CalendarShortcut.vue"
 import CalendarFooter from "./CalendarFooter.vue"
 import CalendarTimeSelect from "./CalendarTimeSelect.vue"
 import CalendarRangeHeader from "./CalendarRangeHeader.vue"
+import { getCalendarRangeDateCellTriggerClass } from "./calendarDateCellClasses"
 import {
   RangeCalendarGrid,
   RangeCalendarGridBody,
@@ -83,7 +84,7 @@ function isSundayColumnIndex(di: number) {
       <div
         :class="cn(
           (props.numberOfMonths ?? 1) > 1
-            ? 'flex flex-row flex-nowrap items-start gap-x-[16px] overflow-x-auto'
+            ? 'flex flex-row flex-nowrap items-start gap-x-[32px] overflow-x-hidden'
             : 'flex flex-col',
         )"
       >
@@ -91,7 +92,7 @@ function isSundayColumnIndex(di: number) {
           v-for="month in grid"
           :key="month.value.toString()"
           :class="cn(
-            'calendar-range-month-column flex min-w-[252px] shrink-0 flex-col',
+            'calendar-range-month-column flex min-w-[224px] shrink-0 flex-col',
             (props.numberOfMonths ?? 1) > 1 ? '' : 'w-full flex-1',
           )"
         >
@@ -110,7 +111,7 @@ function isSundayColumnIndex(di: number) {
               :key="String(day)"
               :class="cn(
                 'border-0 px-px py-[6px] align-middle text-center font-normal [&]:box-border',
-                'w-[36px] min-w-[36px]',
+                'w-[32px] min-w-[32px]',
                 'text-sm leading-none tracking-[0.02em]',
                 isSundayColumnIndex(wi) ? '!text-red-70' : '!text-grey-60',
               )"
@@ -130,7 +131,7 @@ function isSundayColumnIndex(di: number) {
               :key="weekDate.toString()"
               :date="weekDate"
               :class="cn(
-                'relative w-[36px] p-0 text-center text-sm',
+                'relative w-[32px] p-0 text-center text-sm',
                 'focus-within:relative focus-within:z-20',
                 '[&:has([data-selected]:not([data-selection-start]):not([data-selection-end]))]:bg-blue-20',
                 '[&:has([data-selection-start])]:rounded-l [&:has([data-selection-start])]:bg-blue-20',
@@ -142,22 +143,8 @@ function isSundayColumnIndex(di: number) {
               <RangeCalendarCellTrigger
                 :day="weekDate"
                 :month="month.value"
-                :class="cn(
-                  'inline-flex h-[36px] w-[36px] cursor-pointer items-center justify-center rounded-sm border-0 bg-transparent p-0 text-sm font-normal transition-colors select-none',
-                  'text-grey-90 hover:bg-grey-30',
-                  '[&[data-today]:not([data-selected])]:bg-grey-20 [&[data-today]:not([data-selected])]:font-semibold [&[data-today]:not([data-selected])]:text-navy-80',
-                  '[&[data-selected]:not([data-selection-start]):not([data-selection-end])]:bg-transparent [&[data-selected]:not([data-selection-start]):not([data-selection-end])]:text-blue-90',
-                  'data-[selection-start]:bg-blue-80 data-[selection-start]:text-grey-10 data-[selection-start]:hover:bg-blue-90',
-                  'data-[selection-end]:bg-blue-80 data-[selection-end]:text-grey-10 data-[selection-end]:hover:bg-blue-90',
-                  'data-[disabled]:cursor-not-allowed data-[disabled]:bg-grey-20 data-[disabled]:text-grey-50',
-                  'data-[unavailable]:text-red-70 data-[unavailable]:line-through',
-                  'data-[outside-view]:text-grey-50',
-                  isSundayColumnIndex(di)
-                    && cn(
-                      '!text-red-70 data-[outside-view]:text-red-50',
-                      '[&[data-selection-start]]:!text-grey-10 [&[data-selection-end]]:!text-grey-10',
-                      '[&[data-selected]:not([data-selection-start]):not([data-selection-end])]:!text-blue-90',
-                    ),
+                :class="getCalendarRangeDateCellTriggerClass(
+                  isSundayColumnIndex(di),
                   'range-calendar-day-btn',
                 )"
               />

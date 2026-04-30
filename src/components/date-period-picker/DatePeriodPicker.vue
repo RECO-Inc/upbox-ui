@@ -15,6 +15,7 @@ import type { DatePeriodValue } from "./datePeriodTypes"
 import { isDatePeriodValue } from "./datePeriodTypes"
 import DatePeriodTrigger from "./DatePeriodTrigger.vue"
 import { DATE_MOVE_MODEL_KEY } from "../date-move/dateMoveContext"
+import DatePeriodInput from "./DatePeriodInput.vue"
 
 const props = withDefaults(
   defineProps<
@@ -123,8 +124,11 @@ useInputFrameInjectProvide(() => pickInputFrameDesign(props))
       v-model="model"
       :start-placeholder="props.startPlaceholder"
       :end-placeholder="props.endPlaceholder"
-      :class="props.class"
-    />
+      :class="props.class">
+      <slot>
+        <DatePeriodInput />
+      </slot>
+    </DatePeriodTrigger>
     <PopoverContent
       align="end"
       :class="
@@ -132,14 +136,12 @@ useInputFrameInjectProvide(() => pickInputFrameDesign(props))
           '!p-0 w-max max-w-[calc(100vw-16px)] !border-1 !border-grey-40 bg-transparent p-0 shadow-none',
           props.popoverContentClass,
         )
-      "
-    >
+      " >
       <PeriodCalendar
         :model-value="rangeDraft"
         @update:model-value="onRangeDraftUpdate"
         @change="onPeriodCalendarChange"
-        @reset="onRangeDraftReset"
-      />
+        @reset="onRangeDraftReset" />
     </PopoverContent>
   </Popover>
 </template>

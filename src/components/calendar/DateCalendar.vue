@@ -146,7 +146,7 @@ function onDone() {
 
 <template>
   <div
-    class="date-calendar-figma calendar-wrapper min-w-[288px] rounded-[8px] bg-grey-10"
+    class="date-calendar-figma calendar-wrapper w-[256px] max-w-full rounded-[8px] bg-grey-10"
   >
     <template v-if="viewMode === 'DATE'">
       <CalendarDateGrid

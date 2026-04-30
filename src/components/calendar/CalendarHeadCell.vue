@@ -15,7 +15,7 @@ const forwardedProps = useForwardProps(delegatedProps)
 <template>
   <CalendarHeadCell
     :class="cn(
-      'box-border mb-[12px] h-[28px] w-[36px] max-w-[36px]',
+      'box-border mb-[12px] h-[28px] w-[32px] max-w-[32px]',
       'px-px py-[6px] text-center align-middle text-sm leading-none font-bold tracking-[0.02em]',
       'text-grey-90',
       props.class

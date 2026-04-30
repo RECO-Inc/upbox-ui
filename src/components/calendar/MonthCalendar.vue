@@ -91,7 +91,7 @@ function onDoneClick() {
 <template>
   <div
     :class="cn(
-      'month-calendar-root w-[320px] max-w-full rounded-[8px] bg-grey-10 shadow-regular',
+      'month-calendar-root w-[256px] max-w-full rounded-[8px] bg-grey-10 shadow-regular',
       props.class,
     )"
   >

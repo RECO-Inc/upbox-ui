@@ -160,15 +160,15 @@ function onDone() {
   })
 }
 
-/** DAY 뷰(그리드 min 252)·좌우 p-[16px] 기준 팝업이 MONTH/YEAR 에서 좁아지지 않도록 */
+/** Figma web periodCalendar: 224px month grid * n + 32px gap + 좌우 p-[16px] */
 const calendarShellMinStyle = computed(() => {
   const n = Math.max(1, Math.floor(props.numberOfMonths ?? 1))
-  const gridMinPx = 252
-  const gapPx = 16
+  const gridMinPx = 224
+  const gapPx = 32
   const horizontalPaddingPx = 32
   const intrinsic =
     horizontalPaddingPx + n * gridMinPx + Math.max(0, n - 1) * gapPx
-  return { minWidth: `${Math.max(288, intrinsic)}px` }
+  return { width: `${Math.max(256, intrinsic)}px` }
 })
 
 function onQuickAddMonths(offset: number) {
