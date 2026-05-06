@@ -6,10 +6,10 @@ import type { AcceptableValue } from "reka-ui"
 import { X, Calendar as CalendarGlyph } from "lucide-vue-next"
 import { cn } from "../../lib/utils"
 import { ToggleGroup, ToggleGroupItem } from "../toggle-group"
-import { DatePicker } from "../date-picker"
-import DateInput from "../date-picker/DateInput.vue"
 import { Button } from "../button"
 import { InputFrame, InputIcon } from "../input-frame"
+import { MobileDatePicker } from "../mobile-date-picker"
+import DateInput from "../date-picker/DateInput.vue"
 import type { DatePeriodValue } from "../date-period-picker/datePeriodTypes"
 
 export type DatePeriodPreset = "1m" | "3m" | "1y" | "custom"
@@ -223,23 +223,21 @@ function onClose() {
     </div>
 
     <div v-else class="flex w-full items-center gap-[8px]">
-      <DatePicker
+      <MobileDatePicker
         v-model="startModel"
         size="large"
         class="min-w-0 flex-1 basis-0"
-        popover-content-class="!max-w-[calc(100vw-32px)]"
       >
         <DateInput :placeholder="props.startPlaceholder" />
-      </DatePicker>
+      </MobileDatePicker>
       <span class="shrink-0 text-grey-60" aria-hidden="true">~</span>
-      <DatePicker
+      <MobileDatePicker
         v-model="endModel"
         size="large"
         class="min-w-0 flex-1 basis-0"
-        popover-content-class="!max-w-[calc(100vw-32px)]"
       >
         <DateInput :placeholder="props.endPlaceholder" />
-      </DatePicker>
+      </MobileDatePicker>
     </div>
 
     <Button

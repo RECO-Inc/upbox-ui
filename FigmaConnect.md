@@ -14,16 +14,18 @@
 
 | 피그마 노드 ID | 피그마 컴포넌트 | Vue 컴포넌트 |
 |----------------|----------------|--------------|
-| `3619:27807` | [`dateInput`](#dateinput) | `DatePicker` / `DatePeriodPicker` |
-| `3623:26811` | [`timeInput`](#timeinput) | `TimePicker` |
+| `3619:27807` | [`dateInput`](#dateinput) | `DatePicker` / `DatePeriodPicker` / `MobileDatePicker` / `MobileDatePeriodPicker` |
+| `3623:26811` | [`timeInput`](#timeinput) | `TimePicker` / `MobileTimePicker` |
+| `12247:7978` | [`periodInput` (mobile)](#mobiledateperiodselector) | `MobileDatePeriodSelector` |
 | `12247:8592` | [`dateCalendar` (mobile)](#datecalendar-mobile) | `MobileDateCalendar` |
 | `12247:8599` | [`monthPicker`](#monthpicker) | `MonthCalendar` |
 | `12247:8602` | [`dateCalendar`](#datecalendar) | `DateCalendar` |
 | `12247:8603` | [`periodCalendar`](#periodcalendar) | `PeriodCalendar` |
+| `12247:8598` | [`timePicker` (mobile)](#timepicker-mobile) | `MobileTimeDial` |
 | `12266:7051` | [`time` (panel)](#time-panel) | `TimePanel` |
 | `12381:8083` | [`moveContainer`](#movecontainer) | `DateMove` |
 
-> 컴포넌트 합성(`datePicker`, `datePeriodPicker`, `timePicker`)은 단일 노드가 없어 인덱스에서 제외. 본문 섹션 참고.
+> 컴포넌트 합성(`datePicker`, `datePeriodPicker`, `timePicker`, `mobileDatePicker`, `mobileDatePeriodPicker`, `mobileTimePicker`)은 단일 노드가 없어 인덱스에서 제외. 본문 섹션 참고.
 
 ---
 
@@ -76,8 +78,8 @@
 | 피그마 | Vue |
 |--------|-----|
 | 노드 `3619:27807` | — |
-| `variant=date` | `DatePicker.vue` (기본 슬롯에 `DateInput` 자동 포함) |
-| `variant=period` | `DatePeriodPicker.vue` (내부에 `DatePeriodInput` 자동 포함) |
+| `variant=date` | `DatePicker.vue` / `MobileDatePicker.vue` (기본 슬롯에 `DateInput` 자동 포함) |
+| `variant=period` | `DatePeriodPicker.vue` / `MobileDatePeriodPicker.vue` (내부에 `DatePeriodInput` 자동 포함) |
 | `size=small \| regular \| large` | `size` (`InputFrameDesignProps`) |
 | `state=placeholder` | 빈 `v-model` + `placeholder` |
 | `state=typed` | `v-model` 있음 |
@@ -269,7 +271,7 @@
 | 피그마 | Vue |
 |--------|-----|
 | 노드 `3623:26811` | — |
-| `variant=time` | `TimePicker.vue` (기본 슬롯에 `TimeInput` 자동 포함) |
+| `variant=time` | `TimePicker.vue` / `MobileTimePicker.vue` (기본 슬롯에 `TimeInput` 자동 포함) |
 | `variant=timeRange` | (미구현 — 추후 `TimePeriodPicker.vue`) |
 | `size=32px \| 40px \| 48px` → `small \| regular \| large` | `size` (`InputFrameDesignProps`) |
 | `state=placeholder` | 빈 `v-model` + `placeholder` |
@@ -317,6 +319,145 @@
 | AM/PM 세로 토글 | 직접 `<button>` 2개 (panel 내부) |
 | 선택 안함 | `Checkbox` (size=small) |
 | 완료 | `Button` (variant=primary, size=small) |
+
+---
+
+## `mobileTimePicker`
+
+| 피그마 | Vue |
+|--------|-----|
+| time input + mobileTimeDial 조합 | `MobileTimePicker.vue` |
+| 시각 값 | `v-model` (`Time \| null`) |
+| `size` | `size` (`InputFrameDesignProps`) |
+| `state=error` | `error` 또는 `TimeInput` draft error |
+| `state=disabled` | `disabled` |
+| `state=readonly` | `readonly` |
+| 드로어 제목 | `title` (기본 `"시간 선택"`) |
+| 입력 영역 `class` | `class` |
+| 드로어 `class` | `drawerContentClass` |
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| input frame | `MobileTimePicker` 외곽 `InputFrame` |
+| time input | 기본 슬롯 `TimeInput` |
+| clock icon | 외곽 `<button>` + `Clock` (드로어 트리거) |
+| time popup | `Drawer` + `DrawerContent` |
+| time dial | `MobileTimeDial` |
+
+---
+
+## `mobileDatePicker`
+
+| 피그마 | Vue |
+|--------|-----|
+| date input + mobile dateCalendar 조합 | `MobileDatePicker.vue` |
+| 날짜 값 | `v-model` (`CalendarDate \| null`) |
+| `size` | `size` (`InputFrameDesignProps`) |
+| `state=error` | `error` 또는 `DateInput` draft error |
+| `state=disabled` | `disabled` |
+| `state=readonly` | `readonly` |
+| 입력 영역 `class` | `class` |
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| input frame | `MobileDateTrigger` |
+| date input | 기본 슬롯 `DateInput` |
+| calendar icon | `MobileDateTrigger` 내부 `DrawerTrigger` 버튼 |
+| calendar popup | `Drawer` + `DrawerContent` |
+| date calendar panel | `MobileDateCalendar` |
+
+---
+
+## `mobileDatePeriodPicker`
+
+| 피그마 | Vue |
+|--------|-----|
+| period input + mobile dateCalendar 조합 | `MobileDatePeriodPicker.vue` |
+| 기간 값 | `v-model` (`{ start: CalendarDate \| null, end: CalendarDate \| null }`) |
+| `size` | `size` (`InputFrameDesignProps`) |
+| `state=error` | `error` 또는 `DatePeriodInput` draft error |
+| `state=disabled` | `disabled` |
+| `state=readonly` | `readonly` |
+| 시작 placeholder | `startPlaceholder` |
+| 종료 placeholder | `endPlaceholder` |
+| 입력 영역 `class` | `class` |
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| period input frame | `MobileDatePeriodTrigger` |
+| start / arrow / end | `DatePeriodInput` |
+| calendar icon | `MobileDatePeriodTrigger` 내부 `DrawerTrigger` 버튼 |
+| calendar popup | `Drawer` + `DrawerContent` |
+| 시작/종료 탭 | `ToggleGroup` (`type=single`, value `start \| end`) |
+| date calendar panel | `MobileDateCalendar` (`showFooter=false`) |
+| footer 초기화 | `Button variant=tertiary theme=filled size=xlarge` + `RotateCcw` |
+| footer 저장 | `Button variant=primary theme=filled size=xlarge` |
+
+---
+
+## `mobileDatePeriodSelector`
+
+| 피그마 | Vue |
+|--------|-----|
+| 노드 `12247:7978` (`periodInput`, mobile) | — |
+| 컴포넌트 | `MobileDatePeriodSelector.vue` |
+| `variant=fixed` (1개월·3개월·1년) | `preset=1m \| 3m \| 1y` (또는 `modelValue` 자동 감지) |
+| `variant=select` (직접 설정) | `preset=custom` |
+| 기간 값 | `v-model` (`{ start: CalendarDate \| null, end: CalendarDate \| null }`) |
+| 토글 활성 프리셋 | `v-model:preset` (`1m \| 3m \| 1y \| custom`) |
+| 헤더 제목 | `title` (기본 `"조회기간 설정"`) |
+| 닫기 버튼 노출 여부 | `showClose` |
+| 시작 placeholder (`select`) | `startPlaceholder` (기본 `"시작일 선택"`) |
+| 종료 placeholder (`select`) | `endPlaceholder` (기본 `"종료일 선택"`) |
+| 완료 버튼 텍스트 | `doneText` (기본 `"선택 완료"`) |
+| 완료 | `@done` (`{ start, end }`) |
+| 닫기 | `@close` |
+| 패널 `class` | `class` |
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| 헤더 제목 + 닫기 X | 인라인 `<header>` + `X` 아이콘 버튼 |
+| 프리셋 토글 (1개월·3개월·1년·직접 설정) | `ToggleGroup` (`type=single`) + `ToggleGroupItem` × 4 (세그먼티드 스타일) |
+| 합본 기간 표시 (`variant=fixed`) | `InputFrame size=large readonly` + `시작 → 종료` 텍스트 + `Calendar` 아이콘 |
+| 두 입력 필드 (`variant=select`) | `MobileDatePicker` × 2 (각각 `DateInput` 슬롯) |
+| 완료 버튼 | `Button variant=primary size=large block` |
+
+---
+
+## `timePicker` (mobile)
+
+| 피그마 | Vue |
+|--------|-----|
+| 노드 `12247:8598` | — |
+| 컴포넌트 | `MobileTimeDial.vue` |
+| 모바일 기준 크기 | `360px × 320px` (상단 라운드 `16/16/0/0`) |
+| 시각 값 | `v-model` (`Time \| null`) |
+| 헤더 제목 | `title` (기본 `"시간 선택"`) |
+| 닫기 버튼 노출 여부 | `showClose` |
+| 저장 | `@change` (`Time`) |
+| 선택 안함 | `@change` (`null`) |
+| 닫기 | `@close` |
+| 패널 `class` | `class` |
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| 헤더 제목 + 닫기 X | 인라인 `<header>` + `X` 아이콘 버튼 |
+| AM/PM 컬럼 (오전·오후) | 휠 컬럼 #1 (스크롤 스냅) |
+| 시 컬럼 (1~12, 12h 표기) | 휠 컬럼 #2 (스크롤 스냅) |
+| 분 컬럼 (00~59) | 휠 컬럼 #3 (스크롤 스냅) |
+| 선택 행 강조 배경 | 가운데 절대 배치 `bg-blue-20` |
+| 선택 안함 (tertiary outlined) | `Button variant=tertiary theme=outlined size=xlarge` |
+| 저장 (primary) | `Button variant=primary theme=filled size=xlarge` |
 
 ---
 

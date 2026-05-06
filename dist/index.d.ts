@@ -14,6 +14,8 @@ export * from './components/checkbox';
 export * from './components/dialog';
 export * from './components/date-picker';
 export * from './components/date-period-picker';
+export * from './components/mobile-date-picker';
+export * from './components/mobile-date-period-picker';
 export * from './components/mobile-date-period-selector';
 export * from './components/date-move';
 export * from './components/time-picker';
