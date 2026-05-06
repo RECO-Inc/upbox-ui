@@ -17,6 +17,7 @@
 | `3619:27807` | [`dateInput`](#dateinput) | `DatePicker` / `DatePeriodPicker` / `MobileDatePicker` / `MobileDatePeriodPicker` |
 | `3623:26811` | [`timeInput`](#timeinput) | `TimePicker` / `MobileTimePicker` |
 | `12247:7978` | [`periodInput` (mobile)](#mobiledateperiodselector) | `MobileDatePeriodSelector` |
+| `12247:8094` | [`periodCalendar` (mobile)](#periodcalendar-mobile) | `MobilePeriodCalendar` |
 | `12247:8592` | [`dateCalendar` (mobile)](#datecalendar-mobile) | `MobileDateCalendar` |
 | `12247:8599` | [`monthPicker`](#monthpicker) | `MonthCalendar` |
 | `12247:8602` | [`dateCalendar`](#datecalendar) | `DateCalendar` |
@@ -184,6 +185,35 @@
 | day 셀 트리거 | `CalendarCellTrigger` (`40 × 40` 라운드 `8`) |
 | selected day cell | `date` 노드 → `variant=selected, size=small` → `getCalendarDateCellTriggerClass()` |
 | `Frame 2530` 푸터 | 인라인 푸터 (`Button` × 2, `flex-1`) |
+| 초기화 (tertiary, xlarge, front icon) | `Button variant=tertiary theme=filled size=xlarge` + `RotateCcw` |
+| 저장 (primary, xlarge) | `Button variant=primary theme=filled size=xlarge` |
+
+---
+
+## `periodCalendar` (mobile)
+
+| 피그마 | Vue |
+|--------|-----|
+| 노드 `12247:8094` | — |
+| 컴포넌트 | `MobilePeriodCalendar.vue` |
+| 모바일 기준 크기 | `360px × 824px` (상단 라운드 `16/16/0/0`, 두 달 세로 스택) |
+| 범위 값 | `v-model` (reka `DateRange`) |
+| 로케·주 시작 등 | `RangeCalendarRootProps` 전부 (`locale`, `weekStartsOn`, …) |
+| 한 화면에 보이는 달 개수 | `numberOfMonths` (기본 `2`) |
+| 푸터(초기화·저장) 노출 여부 | `showFooter` |
+| 초기화 / 저장 슬롯 | `#reset`, `#done` |
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| `Title` (월별 좌·우 chevron 2쌍) | 인라인 헤더 (`IconButton size=small variant=tertiary` × 4, 월 패널마다) |
+| `month` 텍스트 | 일반 `<div>` (`label1` 16/24/Bold) |
+| `week` 행 | `<th>` (`label2` 15/24/Bold, `flex-1`, 일=`red-80`) |
+| `day` 행 | `RangeCalendarCell` × 7 (`flex-1 h-[48px]`) |
+| day 셀 트리거 | `RangeCalendarCellTrigger` (`40 × 40` 라운드 `8`) |
+| start/end selected cell | `date` 노드 → `variant=selected, size=small` → `getCalendarRangeDateCellTriggerClass()` |
+| range middle cell | `date` 노드 → `variant=durationDate, size=small` → 셀 `bg-blue-20` |
 | 초기화 (tertiary, xlarge, front icon) | `Button variant=tertiary theme=filled size=xlarge` + `RotateCcw` |
 | 저장 (primary, xlarge) | `Button variant=primary theme=filled size=xlarge` |
 

@@ -19,9 +19,9 @@ import {
   useInputFrameInjectProvide,
   type InputFrameDesignProps,
 } from "../input-frame"
-import TimeInput from "./TimeInput.vue"
+import TimeInput from "../time-picker/TimeInput.vue"
 import MobileTimeDial from "./MobileTimeDial.vue"
-import { TIME_PICKER_CTX_KEY } from "./timePickerContext"
+import { TIME_PICKER_CTX_KEY } from "../time-picker/timePickerContext"
 
 const localModel = defineModel<Time | null>()
 const props = withDefaults(

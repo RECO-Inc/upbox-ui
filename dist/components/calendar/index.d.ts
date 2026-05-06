@@ -1,6 +1,7 @@
 export { default as MonthCalendar } from './MonthCalendar';
 export { default as DateCalendar } from './DateCalendar';
 export { default as MobileDateCalendar } from './MobileDateCalendar';
+export { default as MobilePeriodCalendar } from './MobilePeriodCalendar';
 /** 하위 호환: `DateCalendar`와 동일 인스턴스 */
 export { default as Calendar } from './DateCalendar';
 export { default as PeriodCalendar } from './PeriodCalendar';

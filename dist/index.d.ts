@@ -19,6 +19,7 @@ export * from './components/mobile-date-period-picker';
 export * from './components/mobile-date-period-selector';
 export * from './components/date-move';
 export * from './components/time-picker';
+export * from './components/mobile-time-picker';
 export * from './components/drawer';
 export * from './components/dropdown-filter';
 export * from './components/dropdown-menu';

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite"
 import { ref } from "vue"
 import { Time } from "@internationalized/date"
 import MobileTimePicker from "./MobileTimePicker.vue"
-import TimeInput from "./TimeInput.vue"
+import TimeInput from "../time-picker/TimeInput.vue"
 
 const meta = {
   title: "Components/Time/MobileTimePicker",
