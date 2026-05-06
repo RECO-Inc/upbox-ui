@@ -41,6 +41,21 @@ CSS 변수로 정의. Figma 색상 이름 그대로 사용:
 | Red | `--color-red-{20-100}` | `bg-red-80`, `text-red-70` |
 | Orange | `--color-orange-{20-100}` | `bg-orange-80`, `text-orange-60` |
 
+#### Naming Convention History
+
+색상 네이밍이 Figma 기준으로 변경됨 (2026-03):
+
+| Before | After (Figma) |
+|--------|--------------|
+| `base` | `grey` |
+| `primary` | `navy` |
+| `info` | `blue` |
+| `positive` | `green` |
+| `error` | `red` |
+| `warning` | `orange` |
+
+CSS 변수, Tailwind 클래스, 컴포넌트 코드 모두 변경 완료.
+
 ### 2. Semantic Tokens (tokens.css, style.css)
 
 Primitive를 참조하는 의미 기반 토큰:
@@ -67,21 +82,6 @@ Primitive를 참조하는 의미 기반 토큰:
 import preset from '@reco-inc/upbox-ui/tailwind-preset'
 export default { presets: [preset] }
 ```
-
-## Naming Convention History
-
-색상 네이밍이 Figma 기준으로 변경됨 (2026-03):
-
-| Before | After (Figma) |
-|--------|--------------|
-| `base` | `grey` |
-| `primary` | `navy` |
-| `info` | `blue` |
-| `positive` | `green` |
-| `error` | `red` |
-| `warning` | `orange` |
-
-CSS 변수, Tailwind 클래스, 컴포넌트 코드 모두 변경 완료.
 
 ## Consumer Projects
 

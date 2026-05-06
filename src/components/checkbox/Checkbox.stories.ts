@@ -4,7 +4,7 @@ import Checkbox from './Checkbox.vue'
 import { Label } from '../label'
 
 const meta = {
-  title: 'Components/Checkbox',
+  title: 'Components/Form/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
   argTypes: {

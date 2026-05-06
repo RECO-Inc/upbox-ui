@@ -14,6 +14,7 @@
 
 | 피그마 노드 ID | 피그마 컴포넌트 | Vue 컴포넌트 |
 |----------------|----------------|--------------|
+| `3429:25321` | [`textArea`](#textarea) | `Textarea` |
 | `3619:27807` | [`dateInput`](#dateinput) | `DatePicker` / `DatePeriodPicker` / `MobileDatePicker` / `MobileDatePeriodPicker` |
 | `3623:26811` | [`timeInput`](#timeinput) | `TimePicker` / `MobileTimePicker` |
 | `12247:7978` | [`periodInput` (mobile)](#mobiledateperiodselector) | `MobileDatePeriodSelector` |
@@ -488,6 +489,39 @@
 | 선택 행 강조 배경 | 가운데 절대 배치 `bg-blue-20` |
 | 선택 안함 (tertiary outlined) | `Button variant=tertiary theme=outlined size=xlarge` |
 | 저장 (primary) | `Button variant=primary theme=filled size=xlarge` |
+
+---
+
+## `textArea`
+
+| 피그마 | Vue |
+|--------|-----|
+| 노드 `3429:25321` | — |
+| 컴포넌트 | `Textarea.vue` |
+| `size=small \| regular \| large` | `size` (`InputFrameDesignProps`) |
+| size 별 기본 높이 (placeholder 상태) | `small=72px`, `regular=92px`, `large=104px` (`minHeight` 미지정 시) |
+| `state=placeholder` | 빈 `v-model` + `placeholder` |
+| `state=typed` | `v-model` 있음 |
+| `state=focused` | 내부 focus 상태 (`focus-within`) |
+| `state=error` | `error` |
+| `state=disabled` | `disabled` |
+| `state=readonly` | `readonly` |
+| 우하단 카운터 (`0/N`) | `counter` + `maxLength` |
+| byte 단위 카운터 | `byteMode` |
+| 자동 높이 | `autoResize` (기본 `true`) |
+| 높이 상·하한 | `minHeight` / `maxHeight` (px) |
+| `autoResize=false` 일 때 행 수 | `rows` |
+
+> Figma 노드는 `default` variant 만 정의되어 있다. 코드에는 `TextField` 와의 일관성을 위해 `filled` / `bottomline` variant 도 유지한다.
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| frame (border + bg + padding) | `Textarea` 외곽 `<div>` (`textareaFrameVariants`) |
+| 본문 입력 영역 | 내부 `<textarea>` (`block flex-1 resize-none`) |
+| 우하단 카운터 | `TextareaCount` (자식 슬롯에 inject — `TEXTAREA_TRAILING_CONTEXT_KEY`) |
+| 카운터 자리(footer) 커스터마이즈 | `#footer` 슬롯 |
 
 ---
 
