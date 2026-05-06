@@ -1,3 +1,3 @@
-import { HTMLAttributes } from 'vue';
-export declare function getCalendarDateCellTriggerClass(extraClass?: HTMLAttributes["class"]): string;
-export declare function getCalendarRangeDateCellTriggerClass(isSunday: boolean, extraClass?: HTMLAttributes["class"]): string;
+import { ClassValue } from 'clsx';
+export declare function getCalendarDateCellTriggerClass(extraClass?: ClassValue): string;
+export declare function getCalendarRangeDateCellTriggerClass(isSunday: boolean, extraClass?: ClassValue): string;
