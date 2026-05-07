@@ -20,10 +20,11 @@ export const inputGroupAddonVariants = cva(
           "order-first pl-[12px] has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]",
         "inline-end":
           "order-last pr-[12px] has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem]",
+        // block addon은 자체 horizontal padding 없음 — wrapper의 px가 모든 column에 적용되어 input/textarea와 좌측 시작점이 자동 정렬됨
         "block-start":
-          "order-first w-full justify-start px-[12px] pt-[12px] [.border-b]:pb-[12px] group-has-[>input]/input-group:pt-[10px]",
+          "order-first w-full justify-start pt-[12px] [.border-b]:pb-[12px] group-has-[>input]/input-group:pt-[10px]",
         "block-end":
-          "order-last w-full justify-start px-[12px] pb-[12px] [.border-t]:pt-[12px] group-has-[>input]/input-group:pb-[10px]",
+          "order-last w-full justify-start pb-[12px] [.border-t]:pt-[12px] group-has-[>input]/input-group:pb-[10px]",
       },
     },
     defaultVariants: {
