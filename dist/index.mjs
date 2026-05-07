@@ -212,14 +212,14 @@ const Bd = /* @__PURE__ */ p({
   props: {
     variant: {},
     tone: {},
-    shape: {},
     size: {},
-    class: { type: [Boolean, null, String, Object, Array] }
+    round: { type: Boolean },
+    class: {}
   },
   setup(t) {
     const s = t, a = Yt();
     return (l, o) => (n(), v("div", {
-      class: h(e(g)(e(Ql)({ variant: s.variant, tone: s.tone, shape: s.shape, size: s.size }), s.class))
+      class: h(e(g)(e(Ql)({ variant: s.variant, tone: s.tone, round: s.round, size: s.size }), s.class))
     }, [
       y(l.$slots, "default"),
       e(a).icon ? (n(), v("span", Wl, [
@@ -245,13 +245,13 @@ const Bd = /* @__PURE__ */ p({
         warning: ""
       },
       tone: {
-        subtle: "",
+        soft: "",
         solid: "",
         outline: "bg-grey-10 border border-solid"
       },
-      shape: {
-        square: "rounded-[3px]",
-        round: "rounded-full"
+      round: {
+        true: "rounded-full",
+        false: "rounded-[3px]"
       },
       size: {
         "3xsmall": "h-[16px] px-[4px] text-size-12 leading-[16px]",
@@ -261,11 +261,11 @@ const Bd = /* @__PURE__ */ p({
     },
     compoundVariants: [
       // Subtle (filled 50%)
-      { variant: "neutral", tone: "subtle", class: "bg-grey-30 text-grey-90" },
-      { variant: "negative", tone: "subtle", class: "bg-red-30 text-red-80" },
-      { variant: "positive", tone: "subtle", class: "bg-green-30 text-green-80" },
-      { variant: "informative", tone: "subtle", class: "bg-blue-30 text-blue-80" },
-      { variant: "warning", tone: "subtle", class: "bg-orange-30 text-orange-80" },
+      { variant: "neutral", tone: "soft", class: "bg-grey-30 text-grey-90" },
+      { variant: "negative", tone: "soft", class: "bg-red-30 text-red-80" },
+      { variant: "positive", tone: "soft", class: "bg-green-30 text-green-80" },
+      { variant: "informative", tone: "soft", class: "bg-blue-30 text-blue-80" },
+      { variant: "warning", tone: "soft", class: "bg-orange-30 text-orange-80" },
       // Solid (filled 100%)
       { variant: "neutral", tone: "solid", class: "bg-grey-80 text-grey-10" },
       { variant: "negative", tone: "solid", class: "bg-red-80 text-grey-10" },
@@ -281,8 +281,8 @@ const Bd = /* @__PURE__ */ p({
     ],
     defaultVariants: {
       variant: "neutral",
-      tone: "subtle",
-      shape: "square",
+      tone: "soft",
+      round: !1,
       size: "2xsmall"
     }
   }
@@ -9722,7 +9722,7 @@ const Rc = /* @__PURE__ */ ze(Ki, [["render", qi]]), Ec = /* @__PURE__ */ p({
     state: { default: "enabled" },
     size: { default: "small" },
     mode: { default: "view" },
-    class: { type: [Boolean, null, String, Object, Array] }
+    class: {}
   },
   emits: ["close"],
   setup(t, { emit: s }) {
