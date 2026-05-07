@@ -6,3 +6,8 @@ export { default as PaginationItem } from './PaginationItem';
 export { default as PaginationLast } from './PaginationLast';
 export { default as PaginationNext } from './PaginationNext';
 export { default as PaginationPrevious } from './PaginationPrevious';
+export interface PaginationItemProps {
+    size?: "xsmall" | "small" | "regular" | "medium" | "large" | "icon";
+    isActive?: boolean;
+    class?: string;
+}

@@ -1,10 +1,4 @@
-import { HTMLAttributes } from 'vue';
-import { BadgeDividerVariants } from '.';
-type __VLS_Props = {
-    variant?: BadgeDividerVariants["variant"];
-    size?: BadgeDividerVariants["size"];
-    class?: HTMLAttributes["class"];
-};
+import { BadgeDividerProps } from '.';
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
@@ -14,7 +8,7 @@ declare function __VLS_template(): {
     rootEl: HTMLSpanElement;
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
-declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLSpanElement>;
+declare const __VLS_component: import('vue').DefineComponent<BadgeDividerProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<BadgeDividerProps> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLSpanElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {

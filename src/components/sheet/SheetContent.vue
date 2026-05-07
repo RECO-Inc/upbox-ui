@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { DialogContentEmits, DialogContentProps } from "reka-ui"
-import type { HTMLAttributes } from "vue"
-import type { SheetVariants } from "."
+import type { SheetContentProps as SheetContentVariantProps } from "."
 import { reactiveOmit } from "@vueuse/core"
 import { X } from "lucide-vue-next"
 import {
@@ -15,10 +14,7 @@ import {
 import { cn } from "../../lib/utils"
 import { sheetVariants } from "."
 
-interface SheetContentProps extends DialogContentProps {
-  class?: HTMLAttributes["class"]
-  side?: SheetVariants["side"]
-}
+interface SheetContentProps extends DialogContentProps, SheetContentVariantProps {}
 
 defineOptions({
   inheritAttrs: false,

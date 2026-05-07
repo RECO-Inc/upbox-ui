@@ -1,11 +1,6 @@
-import { TabsListProps } from 'reka-ui';
-import { HTMLAttributes } from 'vue';
-import { TabsListVariants } from '.';
-interface Props extends TabsListProps {
-    class?: HTMLAttributes["class"];
-    variant?: TabsListVariants["variant"];
-    color?: TabsListVariants["color"];
-    size?: TabsListVariants["size"];
+import { TabsListProps as RekaTabsListProps } from 'reka-ui';
+import { TabsListProps } from '.';
+interface Props extends RekaTabsListProps, TabsListProps {
 }
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -17,9 +12,9 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<Props> & Readonly<{}>, {
-    size: "small" | "large" | "regular" | "xlarge" | null;
-    color: "navy" | "grey" | null;
-    variant: "box" | "default" | "round" | null;
+    size: "small" | "regular" | "large" | "xlarge";
+    color: "navy" | "grey";
+    variant: "default" | "round" | "box";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

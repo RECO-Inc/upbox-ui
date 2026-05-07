@@ -35,3 +35,9 @@ export declare const sidebarMenuButtonVariants: (props?: ({
     size?: "small" | "large" | "regular" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type SidebarMenuButtonVariants = VariantProps<typeof sidebarMenuButtonVariants>;
+export interface SidebarMenuButtonChildProps {
+    variant?: "default" | "outline";
+    size?: "regular" | "small" | "large";
+    isActive?: boolean;
+    class?: string;
+}

@@ -11,6 +11,10 @@ export declare const inputGroupAddonVariants: (props?: ({
     align?: "inline-start" | "inline-end" | "block-start" | "block-end" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type InputGroupVariants = VariantProps<typeof inputGroupAddonVariants>;
+export interface InputGroupAddonProps {
+    align?: "inline-start" | "inline-end" | "block-start" | "block-end";
+    class?: string;
+}
 export declare const inputGroupButtonVariants: (props?: ({
     size?: "small" | "xsmall" | "icon-xs" | "icon-sm" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;

@@ -26,3 +26,9 @@ export const toggleVariants = cva(
 )
 
 export type ToggleVariants = VariantProps<typeof toggleVariants>
+
+export interface ToggleProps {
+  variant?: "default" | "outline"
+  size?: "regular" | "small" | "large"
+  class?: string
+}

@@ -7,3 +7,8 @@ export declare const avatarVariant: (props?: ({
     shape?: "circle" | "square" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type AvatarVariants = VariantProps<typeof avatarVariant>;
+export interface AvatarProps {
+    size?: "small" | "base" | "large";
+    shape?: "circle" | "square";
+    class?: string;
+}

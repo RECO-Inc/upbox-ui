@@ -45,8 +45,8 @@ const thumbVariants = cva(
 type SwitchVariants = VariantProps<typeof switchVariants>
 
 export interface Props extends SwitchRootProps {
-  class?: HTMLAttributes["class"]
-  size?: SwitchVariants["size"]
+  class?: string
+  size?: "small" | "regular" | "large"
 }
 
 const props = withDefaults(defineProps<Props>(), {

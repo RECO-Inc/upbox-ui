@@ -1,18 +1,12 @@
 <script setup lang="ts">
-import type { TabsListProps } from "reka-ui"
-import type { HTMLAttributes } from "vue"
-import type { TabsListVariants } from "."
+import type { TabsListProps as RekaTabsListProps } from "reka-ui"
+import type { TabsListProps } from "."
 import { reactiveOmit } from "@vueuse/core"
 import { TabsList } from "reka-ui"
 import { cn } from "../../lib/utils"
 import { tabsListVariants } from "."
 
-interface Props extends TabsListProps {
-  class?: HTMLAttributes["class"]
-  variant?: TabsListVariants["variant"]
-  color?: TabsListVariants["color"]
-  size?: TabsListVariants["size"]
-}
+interface Props extends RekaTabsListProps, TabsListProps {}
 
 const props = withDefaults(defineProps<Props>(), {
   variant: "default",

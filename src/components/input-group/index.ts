@@ -33,6 +33,11 @@ export const inputGroupAddonVariants = cva(
 
 export type InputGroupVariants = VariantProps<typeof inputGroupAddonVariants>
 
+export interface InputGroupAddonProps {
+  align?: "inline-start" | "inline-end" | "block-start" | "block-end"
+  class?: string
+}
+
 export const inputGroupButtonVariants = cva(
   "text-size-14 shadow-none flex gap-[8px] items-center",
   {

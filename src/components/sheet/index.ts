@@ -30,3 +30,8 @@ export const sheetVariants = cva(
 )
 
 export type SheetVariants = VariantProps<typeof sheetVariants>
+
+export interface SheetContentProps {
+  side?: "top" | "bottom" | "left" | "right"
+  class?: string
+}

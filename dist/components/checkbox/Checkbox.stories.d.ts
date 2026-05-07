@@ -8,9 +8,9 @@ declare const meta: {
             "update:modelValue": (value: boolean | "indeterminate") => any;
         }, import('vue').PublicProps, {
             disabled: boolean;
-            size: "small" | "large" | "regular" | null;
-            error: boolean | null;
-            readOnly: boolean | null;
+            size: "small" | "regular" | "large";
+            error: boolean;
+            readOnly: boolean;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLSpanElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -22,9 +22,9 @@ declare const meta: {
             "onUpdate:modelValue"?: ((value: boolean | "indeterminate") => any) | undefined;
         }>, {}, {}, {}, {}, {
             disabled: boolean;
-            size: "small" | "large" | "regular" | null;
-            error: boolean | null;
-            readOnly: boolean | null;
+            size: "small" | "regular" | "large";
+            error: boolean;
+            readOnly: boolean;
         }>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -35,9 +35,9 @@ declare const meta: {
         "update:modelValue": (value: boolean | "indeterminate") => any;
     }, string, {
         disabled: boolean;
-        size: "small" | "large" | "regular" | null;
-        error: boolean | null;
-        readOnly: boolean | null;
+        size: "small" | "regular" | "large";
+        error: boolean;
+        readOnly: boolean;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             default?(_: {}): any;

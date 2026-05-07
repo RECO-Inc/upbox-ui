@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { CheckboxRootEmits, CheckboxRootProps } from "reka-ui"
-import type { HTMLAttributes } from "vue"
 import { computed } from "vue"
 import { reactiveOmit } from "@vueuse/core"
 import { Check, Minus } from "lucide-vue-next"
@@ -78,10 +77,10 @@ const checkboxVariants = cva(
 
 type CheckboxVariants = VariantProps<typeof checkboxVariants>
 export interface Props extends Omit<CheckboxRootProps, "disabled"> {
-  class?: HTMLAttributes["class"]
-  size?: CheckboxVariants["size"]
-  error?: CheckboxVariants["error"]
-  readOnly?: CheckboxVariants["readOnly"]
+  class?: string
+  size?: "small" | "regular" | "large"
+  error?: boolean
+  readOnly?: boolean
   disabled?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {

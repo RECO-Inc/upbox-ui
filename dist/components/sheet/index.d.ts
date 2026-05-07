@@ -11,3 +11,7 @@ export declare const sheetVariants: (props?: ({
     side?: "bottom" | "left" | "right" | "top" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type SheetVariants = VariantProps<typeof sheetVariants>;
+export interface SheetContentProps {
+    side?: "top" | "bottom" | "left" | "right";
+    class?: string;
+}

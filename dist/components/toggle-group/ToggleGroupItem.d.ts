@@ -1,13 +1,6 @@
-import { VariantProps } from 'class-variance-authority';
 import { ToggleGroupItemProps } from 'reka-ui';
-import { HTMLAttributes } from 'vue';
-import { toggleVariants } from '../toggle';
-type ToggleGroupVariants = VariantProps<typeof toggleVariants>;
-type __VLS_Props = ToggleGroupItemProps & {
-    class?: HTMLAttributes["class"];
-    variant?: ToggleGroupVariants["variant"];
-    size?: ToggleGroupVariants["size"];
-};
+import { ToggleGroupExtraProps } from '.';
+type __VLS_Props = ToggleGroupItemProps & ToggleGroupExtraProps;
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {

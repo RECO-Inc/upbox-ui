@@ -1,11 +1,6 @@
 import { PaginationListItemProps } from 'reka-ui';
-import { HTMLAttributes } from 'vue';
-import { ButtonVariants } from '../button';
-type __VLS_Props = PaginationListItemProps & {
-    size?: ButtonVariants["size"];
-    class?: HTMLAttributes["class"];
-    isActive?: boolean;
-};
+import { PaginationItemProps } from '.';
+type __VLS_Props = PaginationListItemProps & PaginationItemProps;
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
@@ -16,7 +11,7 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {
-    size: "small" | "large" | "xsmall" | "regular" | "xlarge" | null;
+    size: "xsmall" | "small" | "regular" | "medium" | "large" | "icon";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

@@ -5,3 +5,8 @@ export declare const badgeDividerVariants: (props?: ({
     size?: "3xsmall" | "2xsmall" | "xsmall" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type BadgeDividerVariants = VariantProps<typeof badgeDividerVariants>;
+export interface BadgeDividerProps {
+    variant?: "green" | "navy";
+    size?: "3xsmall" | "2xsmall" | "xsmall";
+    class?: string;
+}

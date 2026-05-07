@@ -1,9 +1,6 @@
 import { DialogContentProps } from 'reka-ui';
-import { HTMLAttributes } from 'vue';
-import { SheetVariants } from '.';
-interface SheetContentProps extends DialogContentProps {
-    class?: HTMLAttributes["class"];
-    side?: SheetVariants["side"];
+import { SheetContentProps as SheetContentVariantProps } from '.';
+interface SheetContentProps extends DialogContentProps, SheetContentVariantProps {
 }
 declare function __VLS_template(): {
     attrs: Partial<{}>;

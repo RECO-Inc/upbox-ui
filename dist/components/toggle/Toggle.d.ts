@@ -1,11 +1,6 @@
-import { ToggleProps } from 'reka-ui';
-import { HTMLAttributes } from 'vue';
-import { ToggleVariants } from '.';
-type __VLS_Props = ToggleProps & {
-    class?: HTMLAttributes["class"];
-    variant?: ToggleVariants["variant"];
-    size?: ToggleVariants["size"];
-};
+import { ToggleProps as RekaToggleProps } from 'reka-ui';
+import { ToggleProps } from '.';
+type __VLS_Props = RekaToggleProps & ToggleProps;
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
@@ -21,8 +16,8 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
     "onUpdate:modelValue"?: ((value: boolean) => any) | undefined;
 }>, {
     disabled: boolean;
-    size: "small" | "large" | "regular" | null;
-    variant: "default" | "outline" | null;
+    size: "regular" | "small" | "large";
+    variant: "default" | "outline";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

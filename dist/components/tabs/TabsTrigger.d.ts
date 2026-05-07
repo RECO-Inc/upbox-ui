@@ -1,11 +1,6 @@
-import { TabsTriggerProps } from 'reka-ui';
-import { HTMLAttributes } from 'vue';
-import { TabsTriggerVariants } from '.';
-interface Props extends TabsTriggerProps {
-    class?: HTMLAttributes["class"];
-    variant?: TabsTriggerVariants["variant"];
-    color?: TabsTriggerVariants["color"];
-    size?: TabsTriggerVariants["size"];
+import { TabsTriggerProps as RekaTabsTriggerProps } from 'reka-ui';
+import { TabsTriggerProps } from '.';
+interface Props extends RekaTabsTriggerProps, TabsTriggerProps {
 }
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -17,9 +12,9 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<Props> & Readonly<{}>, {
-    size: "small" | "large" | "regular" | "xlarge" | null;
-    color: "navy" | "grey" | null;
-    variant: "box" | "default" | "round" | null;
+    size: "small" | "regular" | "large" | "xlarge";
+    color: "navy" | "grey";
+    variant: "default" | "round" | "box";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

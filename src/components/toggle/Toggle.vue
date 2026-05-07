@@ -1,17 +1,12 @@
 <script setup lang="ts">
-import type { ToggleEmits, ToggleProps } from "reka-ui"
-import type { HTMLAttributes } from "vue"
-import type { ToggleVariants } from "."
+import type { ToggleEmits, ToggleProps as RekaToggleProps } from "reka-ui"
+import type { ToggleProps } from "."
 import { reactiveOmit } from "@vueuse/core"
 import { Toggle, useForwardPropsEmits } from "reka-ui"
 import { cn } from "../../lib/utils"
 import { toggleVariants } from "."
 
-const props = withDefaults(defineProps<ToggleProps & {
-  class?: HTMLAttributes["class"]
-  variant?: ToggleVariants["variant"]
-  size?: ToggleVariants["size"]
-}>(), {
+const props = withDefaults(defineProps<RekaToggleProps & ToggleProps>(), {
   variant: "default",
   size: "regular",
   disabled: false,

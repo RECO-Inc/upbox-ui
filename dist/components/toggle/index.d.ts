@@ -5,3 +5,8 @@ export declare const toggleVariants: (props?: ({
     size?: "small" | "large" | "regular" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type ToggleVariants = VariantProps<typeof toggleVariants>;
+export interface ToggleProps {
+    variant?: "default" | "outline";
+    size?: "regular" | "small" | "large";
+    class?: string;
+}

@@ -25,3 +25,9 @@ export const badgeDividerVariants = cva(
 )
 
 export type BadgeDividerVariants = VariantProps<typeof badgeDividerVariants>
+
+export interface BadgeDividerProps {
+  variant?: "green" | "navy"
+  size?: "3xsmall" | "2xsmall" | "xsmall"
+  class?: string
+}

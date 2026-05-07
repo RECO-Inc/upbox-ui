@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { RadioGroupItemProps } from "reka-ui"
-import type { HTMLAttributes } from "vue"
 import { computed } from "vue"
 import { reactiveOmit } from "@vueuse/core"
 import {
@@ -8,6 +7,7 @@ import {
   RadioGroupItem,
   useForwardProps,
 } from "reka-ui"
+import { cn } from "../../lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const radioVariants = cva(
@@ -84,8 +84,8 @@ const radioVariants = cva(
 type RadioVariants = VariantProps<typeof radioVariants>
 
 interface Props extends RadioGroupItemProps {
-  class?: HTMLAttributes["class"]
-  size?: RadioVariants["size"]
+  class?: string
+  size?: "small" | "regular" | "large"
   error?: boolean
   readOnly?: boolean
 }
@@ -126,7 +126,7 @@ const indicatorFillClass = computed(() => {
       v-bind="forwardedProps"
       :disabled="disabled"
       :aria-readonly="readOnly ? true : undefined"
-      :class="[radioVariants({ size, error, readOnly, disabled }), props.class]"
+      :class="cn(radioVariants({ size, error, readOnly, disabled }), props.class)"
     >
       <RadioGroupIndicator class="flex items-center justify-center">
         <span

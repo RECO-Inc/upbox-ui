@@ -1,9 +1,4 @@
-import { HTMLAttributes } from 'vue';
-import { InputGroupVariants } from '.';
-type __VLS_Props = {
-    align?: InputGroupVariants["align"];
-    class?: HTMLAttributes["class"];
-};
+import { InputGroupAddonProps } from '.';
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
@@ -13,8 +8,8 @@ declare function __VLS_template(): {
     rootEl: HTMLDivElement;
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
-declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {
-    align: "inline-start" | "inline-end" | "block-start" | "block-end" | null;
+declare const __VLS_component: import('vue').DefineComponent<InputGroupAddonProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<InputGroupAddonProps> & Readonly<{}>, {
+    align: "inline-start" | "inline-end" | "block-start" | "block-end";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

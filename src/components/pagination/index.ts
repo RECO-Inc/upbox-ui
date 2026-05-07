@@ -6,3 +6,9 @@ export { default as PaginationItem } from "./PaginationItem.vue"
 export { default as PaginationLast } from "./PaginationLast.vue"
 export { default as PaginationNext } from "./PaginationNext.vue"
 export { default as PaginationPrevious } from "./PaginationPrevious.vue"
+
+export interface PaginationItemProps {
+  size?: "xsmall" | "small" | "regular" | "medium" | "large" | "icon"
+  isActive?: boolean
+  class?: string
+}

@@ -7,7 +7,7 @@ declare const meta: {
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
             "update:modelValue": (payload: boolean) => any;
         }, import('vue').PublicProps, {
-            size: "small" | "large" | "regular" | null;
+            size: "small" | "regular" | "large";
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -18,7 +18,7 @@ declare const meta: {
         }, Readonly<import('./Switch').Props> & Readonly<{
             "onUpdate:modelValue"?: ((payload: boolean) => any) | undefined;
         }>, {}, {}, {}, {}, {
-            size: "small" | "large" | "regular" | null;
+            size: "small" | "regular" | "large";
         }>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -28,7 +28,7 @@ declare const meta: {
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         "update:modelValue": (payload: boolean) => any;
     }, string, {
-        size: "small" | "large" | "regular" | null;
+        size: "small" | "regular" | "large";
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             thumb?(_: {}): any;

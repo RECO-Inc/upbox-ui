@@ -23,3 +23,9 @@ export const avatarVariant = cva(
 )
 
 export type AvatarVariants = VariantProps<typeof avatarVariant>
+
+export interface AvatarProps {
+  size?: "small" | "base" | "large"
+  shape?: "circle" | "square"
+  class?: string
+}

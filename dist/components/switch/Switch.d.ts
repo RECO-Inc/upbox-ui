@@ -1,13 +1,7 @@
 import { SwitchRootProps } from 'reka-ui';
-import { HTMLAttributes } from 'vue';
-import { VariantProps } from 'class-variance-authority';
-declare const switchVariants: (props?: ({
-    size?: "small" | "large" | "regular" | null | undefined;
-} & import('class-variance-authority/types').ClassProp) | undefined) => string;
-type SwitchVariants = VariantProps<typeof switchVariants>;
 export interface Props extends SwitchRootProps {
-    class?: HTMLAttributes["class"];
-    size?: SwitchVariants["size"];
+    class?: string;
+    size?: "small" | "regular" | "large";
 }
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -23,7 +17,7 @@ declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, 
 }, string, import('vue').PublicProps, Readonly<Props> & Readonly<{
     "onUpdate:modelValue"?: ((payload: boolean) => any) | undefined;
 }>, {
-    size: "small" | "large" | "regular" | null;
+    size: "small" | "regular" | "large";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

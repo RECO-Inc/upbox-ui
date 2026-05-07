@@ -157,3 +157,17 @@ export const tabsTriggerVariants = cva(
 
 export type TabsListVariants = VariantProps<typeof tabsListVariants>
 export type TabsTriggerVariants = VariantProps<typeof tabsTriggerVariants>
+
+export interface TabsListProps {
+  variant?: "default" | "round" | "box"
+  color?: "navy" | "grey"
+  size?: "small" | "regular" | "large" | "xlarge"
+  class?: string
+}
+
+export interface TabsTriggerProps {
+  variant?: "default" | "round" | "box"
+  color?: "navy" | "grey"
+  size?: "small" | "regular" | "large" | "xlarge"
+  class?: string
+}

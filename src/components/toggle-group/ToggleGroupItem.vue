@@ -1,22 +1,15 @@
 <script setup lang="ts">
-import type { VariantProps } from "class-variance-authority"
 import type { ToggleGroupItemProps } from "reka-ui"
-import type { HTMLAttributes } from "vue"
+import type { ToggleGroupExtraProps } from "."
 import { reactiveOmit } from "@vueuse/core"
 import { ToggleGroupItem, useForwardProps } from "reka-ui"
 import { inject } from "vue"
 import { cn } from "../../lib/utils"
 import { toggleVariants } from '../toggle'
 
-type ToggleGroupVariants = VariantProps<typeof toggleVariants>
+const props = defineProps<ToggleGroupItemProps & ToggleGroupExtraProps>()
 
-const props = defineProps<ToggleGroupItemProps & {
-  class?: HTMLAttributes["class"]
-  variant?: ToggleGroupVariants["variant"]
-  size?: ToggleGroupVariants["size"]
-}>()
-
-const context = inject<ToggleGroupVariants>("toggleGroup")
+const context = inject<ToggleGroupExtraProps>("toggleGroup")
 
 const delegatedProps = reactiveOmit(props, "class", "size", "variant")
 

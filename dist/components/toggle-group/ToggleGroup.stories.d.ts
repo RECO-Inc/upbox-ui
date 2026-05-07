@@ -2,11 +2,7 @@ import { StoryObj } from '@storybook/vue3-vite';
 declare const meta: {
     title: string;
     component: {
-        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('reka-ui').ToggleGroupRootProps<import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]> & {
-            class?: import('vue').HTMLAttributes["class"];
-            variant?: "default" | "outline" | null | undefined;
-            size?: "small" | "large" | "regular" | null | undefined;
-        }> & Readonly<{
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('reka-ui').ToggleGroupRootProps<import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]> & import('.').ToggleGroupExtraProps> & Readonly<{
             "onUpdate:modelValue"?: ((payload: import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
             "update:modelValue": (payload: import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]) => any;
@@ -17,21 +13,13 @@ declare const meta: {
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<import('reka-ui').ToggleGroupRootProps<import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]> & {
-            class?: import('vue').HTMLAttributes["class"];
-            variant?: "default" | "outline" | null | undefined;
-            size?: "small" | "large" | "regular" | null | undefined;
-        }> & Readonly<{
+        }, Readonly<import('reka-ui').ToggleGroupRootProps<import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]> & import('.').ToggleGroupExtraProps> & Readonly<{
             "onUpdate:modelValue"?: ((payload: import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]) => any) | undefined;
         }>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('vue').ComponentOptionsBase<Readonly<import('reka-ui').ToggleGroupRootProps<import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]> & {
-        class?: import('vue').HTMLAttributes["class"];
-        variant?: "default" | "outline" | null | undefined;
-        size?: "small" | "large" | "regular" | null | undefined;
-    }> & Readonly<{
+    } & import('vue').ComponentOptionsBase<Readonly<import('reka-ui').ToggleGroupRootProps<import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]> & import('.').ToggleGroupExtraProps> & Readonly<{
         "onUpdate:modelValue"?: ((payload: import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         "update:modelValue": (payload: import('reka-ui').AcceptableValue | import('reka-ui').AcceptableValue[]) => any;

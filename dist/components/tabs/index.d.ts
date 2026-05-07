@@ -29,3 +29,15 @@ export declare const tabsTriggerVariants: (props?: ({
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type TabsListVariants = VariantProps<typeof tabsListVariants>;
 export type TabsTriggerVariants = VariantProps<typeof tabsTriggerVariants>;
+export interface TabsListProps {
+    variant?: "default" | "round" | "box";
+    color?: "navy" | "grey";
+    size?: "small" | "regular" | "large" | "xlarge";
+    class?: string;
+}
+export interface TabsTriggerProps {
+    variant?: "default" | "round" | "box";
+    color?: "navy" | "grey";
+    size?: "small" | "regular" | "large" | "xlarge";
+    class?: string;
+}

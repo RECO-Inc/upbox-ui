@@ -58,3 +58,10 @@ export const sidebarMenuButtonVariants = cva(
 )
 
 export type SidebarMenuButtonVariants = VariantProps<typeof sidebarMenuButtonVariants>
+
+export interface SidebarMenuButtonChildProps {
+  variant?: "default" | "outline"
+  size?: "regular" | "small" | "large"
+  isActive?: boolean
+  class?: string
+}

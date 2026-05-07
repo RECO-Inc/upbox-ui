@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from "vue"
-import type { BadgeDividerVariants } from "."
+import type { BadgeDividerProps } from "."
 import { cn } from "../../lib/utils"
 import { badgeDividerVariants } from "."
 
-const props = defineProps<{
-  variant?: BadgeDividerVariants["variant"]
-  size?: BadgeDividerVariants["size"]
-  class?: HTMLAttributes["class"]
-}>()
+const props = defineProps<BadgeDividerProps>()
 </script>
 
 <template>
