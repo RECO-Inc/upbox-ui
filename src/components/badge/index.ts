@@ -15,13 +15,13 @@ export const badgeVariants = cva(
         warning: "",
       },
       tone: {
-        subtle: "",
+        soft: "",
         solid: "",
         outline: "bg-grey-10 border border-solid",
       },
-      shape: {
-        square: "rounded-[3px]",
-        round: "rounded-full",
+      round: {
+        true: "rounded-full",
+        false: "rounded-[3px]",
       },
       size: {
         "3xsmall": "h-[16px] px-[4px] text-size-12 leading-[16px]",
@@ -31,11 +31,11 @@ export const badgeVariants = cva(
     },
     compoundVariants: [
       // Subtle (filled 50%)
-      { variant: "neutral", tone: "subtle", class: "bg-grey-30 text-grey-90" },
-      { variant: "negative", tone: "subtle", class: "bg-red-30 text-red-80" },
-      { variant: "positive", tone: "subtle", class: "bg-green-30 text-green-80" },
-      { variant: "informative", tone: "subtle", class: "bg-blue-30 text-blue-80" },
-      { variant: "warning", tone: "subtle", class: "bg-orange-30 text-orange-80" },
+      { variant: "neutral", tone: "soft", class: "bg-grey-30 text-grey-90" },
+      { variant: "negative", tone: "soft", class: "bg-red-30 text-red-80" },
+      { variant: "positive", tone: "soft", class: "bg-green-30 text-green-80" },
+      { variant: "informative", tone: "soft", class: "bg-blue-30 text-blue-80" },
+      { variant: "warning", tone: "soft", class: "bg-orange-30 text-orange-80" },
       // Solid (filled 100%)
       { variant: "neutral", tone: "solid", class: "bg-grey-80 text-grey-10" },
       { variant: "negative", tone: "solid", class: "bg-red-80 text-grey-10" },
@@ -51,14 +51,22 @@ export const badgeVariants = cva(
     ],
     defaultVariants: {
       variant: "neutral",
-      tone: "subtle",
-      shape: "square",
+      tone: "soft",
+      round: false,
       size: "2xsmall",
     },
   },
 )
 
 export type BadgeVariants = VariantProps<typeof badgeVariants>
+
+export interface BadgeProps {
+  variant?: "neutral" | "negative" | "positive" | "informative" | "warning"
+  tone?: "soft" | "solid" | "outline"
+  size?: "3xsmall" | "2xsmall" | "xsmall"
+  round?: boolean
+  class?: string
+}
 
 export const badgeCountVariants = cva(
   "inline-flex items-center justify-center h-[14px] min-w-[14px] px-[4px] rounded-full text-[10px] leading-[16px] font-bold text-grey-10 shrink-0",

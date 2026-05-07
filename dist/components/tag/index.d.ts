@@ -5,4 +5,10 @@ export declare const tagVariants: (props?: ({
     size?: "small" | "3xsmall" | "2xsmall" | "xsmall" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type TagVariants = VariantProps<typeof tagVariants>;
+export interface TagProps {
+    state?: "enabled" | "disabled" | "error";
+    size?: "3xsmall" | "2xsmall" | "xsmall" | "small";
+    mode?: "view" | "edit";
+    class?: string;
+}
 export declare const tagCloseIconSize: Record<NonNullable<TagVariants["size"]>, string>;

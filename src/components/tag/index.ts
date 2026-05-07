@@ -28,6 +28,13 @@ export const tagVariants = cva(
 
 export type TagVariants = VariantProps<typeof tagVariants>
 
+export interface TagProps {
+  state?: "enabled" | "disabled" | "error"
+  size?: "3xsmall" | "2xsmall" | "xsmall" | "small"
+  mode?: "view" | "edit"
+  class?: string
+}
+
 export const tagCloseIconSize: Record<NonNullable<TagVariants["size"]>, string> = {
   "3xsmall": "size-[14px]",
   "2xsmall": "size-[14px]",

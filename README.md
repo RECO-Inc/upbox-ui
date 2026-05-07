@@ -72,7 +72,7 @@ import { Button, Card, CardHeader, CardTitle, CardContent } from '@reco-inc/upbo
 
 | Category | Components |
 |----------|-----------|
-| General | Button, Badge, Spinner, Skeleton, Empty, Stepper |
+| General | Button, Badge, BadgeDivider, Tag, Spinner, Skeleton, Empty, Stepper |
 | Form | Input, Textarea, Checkbox, Switch, RadioGroup, Select, NumberField, Label, Form, InputGroup |
 | Data Display | Card, Table, Accordion, Avatar, Tabs, Separator |
 | Overlay | Dialog, Sheet, Drawer, Popover, Tooltip, Sonner |
@@ -87,12 +87,14 @@ CSS variables for colors, typography, spacing are included in `style.css`.
 
 ### Color System
 
-- `base` (10-100): Grayscale
-- `primary` (20-100): Brand color
-- `info` (20-100): Blue accent
-- `positive` (20-100): Success/green
-- `error` (20-100): Error/red
-- `warning` (20-100): Warning/orange
+Figma 팔레트 이름을 그대로 사용:
+
+- `grey` (10-100): Grayscale
+- `navy` (20-100): Brand / primary CTA
+- `blue` (20-100): Informative
+- `green` (20-100): Positive
+- `red` (20-100): Negative / destructive
+- `orange` (20-100): Warning
 
 ### Dark Mode
 

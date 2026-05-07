@@ -13,11 +13,10 @@ const meta = {
     },
     tone: {
       control: "select",
-      options: ["subtle", "solid", "outline"],
+      options: ["soft", "solid", "outline"],
     },
-    shape: {
-      control: "select",
-      options: ["square", "round"],
+    round: {
+      control: "boolean",
     },
     size: {
       control: "select",
@@ -30,7 +29,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: { variant: "neutral", tone: "subtle", shape: "square", size: "2xsmall" },
+  args: { variant: "neutral", tone: "soft", round: false, size: "2xsmall" },
   render: (args) => ({
     components: { Badge },
     setup: () => ({ args }),
@@ -61,27 +60,27 @@ export const Tones: Story = {
     template: `
       <div class="flex flex-col gap-[12px]">
         <div class="flex flex-wrap gap-[8px] items-center">
-          <Badge variant="neutral" tone="subtle">subtle</Badge>
+          <Badge variant="neutral" tone="soft">soft</Badge>
           <Badge variant="neutral" tone="solid">solid</Badge>
           <Badge variant="neutral" tone="outline">outline</Badge>
         </div>
         <div class="flex flex-wrap gap-[8px] items-center">
-          <Badge variant="negative" tone="subtle">subtle</Badge>
+          <Badge variant="negative" tone="soft">soft</Badge>
           <Badge variant="negative" tone="solid">solid</Badge>
           <Badge variant="negative" tone="outline">outline</Badge>
         </div>
         <div class="flex flex-wrap gap-[8px] items-center">
-          <Badge variant="positive" tone="subtle">subtle</Badge>
+          <Badge variant="positive" tone="soft">soft</Badge>
           <Badge variant="positive" tone="solid">solid</Badge>
           <Badge variant="positive" tone="outline">outline</Badge>
         </div>
         <div class="flex flex-wrap gap-[8px] items-center">
-          <Badge variant="informative" tone="subtle">subtle</Badge>
+          <Badge variant="informative" tone="soft">soft</Badge>
           <Badge variant="informative" tone="solid">solid</Badge>
           <Badge variant="informative" tone="outline">outline</Badge>
         </div>
         <div class="flex flex-wrap gap-[8px] items-center">
-          <Badge variant="warning" tone="subtle">subtle</Badge>
+          <Badge variant="warning" tone="soft">soft</Badge>
           <Badge variant="warning" tone="solid">solid</Badge>
           <Badge variant="warning" tone="outline">outline</Badge>
         </div>
@@ -96,16 +95,16 @@ export const Shapes: Story = {
     template: `
       <div class="flex flex-col gap-[12px]">
         <div class="flex flex-wrap gap-[8px] items-center">
-          <Badge variant="positive" shape="square">square</Badge>
-          <Badge variant="positive" shape="round">round</Badge>
+          <Badge variant="positive">square</Badge>
+          <Badge variant="positive" round>round</Badge>
         </div>
         <div class="flex flex-wrap gap-[8px] items-center">
-          <Badge variant="informative" tone="solid" shape="square">square</Badge>
-          <Badge variant="informative" tone="solid" shape="round">round</Badge>
+          <Badge variant="informative" tone="solid">square</Badge>
+          <Badge variant="informative" tone="solid" round>round</Badge>
         </div>
         <div class="flex flex-wrap gap-[8px] items-center">
-          <Badge variant="warning" tone="outline" shape="square">square</Badge>
-          <Badge variant="warning" tone="outline" shape="round">round</Badge>
+          <Badge variant="warning" tone="outline">square</Badge>
+          <Badge variant="warning" tone="outline" round>round</Badge>
         </div>
       </div>
     `,
@@ -190,18 +189,18 @@ export const Matrix: Story = {
     template: `
       <div class="flex flex-col gap-[16px]">
         <div v-for="variant in ['neutral', 'negative', 'positive', 'informative', 'warning']" :key="variant" class="flex flex-wrap gap-[8px] items-center">
-          <Badge :variant="variant" tone="subtle" size="3xsmall">3xs</Badge>
-          <Badge :variant="variant" tone="subtle" size="2xsmall">2xs</Badge>
-          <Badge :variant="variant" tone="subtle" size="xsmall">xs</Badge>
+          <Badge :variant="variant" tone="soft" size="3xsmall">3xs</Badge>
+          <Badge :variant="variant" tone="soft" size="2xsmall">2xs</Badge>
+          <Badge :variant="variant" tone="soft" size="xsmall">xs</Badge>
           <Badge :variant="variant" tone="solid" size="3xsmall">3xs</Badge>
           <Badge :variant="variant" tone="solid" size="2xsmall">2xs</Badge>
           <Badge :variant="variant" tone="solid" size="xsmall">xs</Badge>
           <Badge :variant="variant" tone="outline" size="3xsmall">3xs</Badge>
           <Badge :variant="variant" tone="outline" size="2xsmall">2xs</Badge>
           <Badge :variant="variant" tone="outline" size="xsmall">xs</Badge>
-          <Badge :variant="variant" tone="subtle" shape="round" size="2xsmall">round</Badge>
-          <Badge :variant="variant" tone="solid" shape="round" size="2xsmall">round</Badge>
-          <Badge :variant="variant" tone="outline" shape="round" size="2xsmall">round</Badge>
+          <Badge :variant="variant" tone="soft" round size="2xsmall">round</Badge>
+          <Badge :variant="variant" tone="solid" round size="2xsmall">round</Badge>
+          <Badge :variant="variant" tone="outline" round size="2xsmall">round</Badge>
         </div>
       </div>
     `,

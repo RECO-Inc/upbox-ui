@@ -1,11 +1,4 @@
-import { HTMLAttributes } from 'vue';
-import { TagVariants } from '.';
-type __VLS_Props = {
-    state?: TagVariants["state"];
-    size?: TagVariants["size"];
-    mode?: "view" | "edit";
-    class?: HTMLAttributes["class"];
-};
+import { TagProps } from '.';
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
@@ -16,14 +9,14 @@ declare function __VLS_template(): {
     rootEl: HTMLDivElement;
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
-declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+declare const __VLS_component: import('vue').DefineComponent<TagProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     close: () => any;
-}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
+}, string, import('vue').PublicProps, Readonly<TagProps> & Readonly<{
     onClose?: (() => any) | undefined;
 }>, {
-    size: "small" | "3xsmall" | "2xsmall" | "xsmall" | null;
+    size: "3xsmall" | "2xsmall" | "xsmall" | "small";
     mode: "view" | "edit";
-    state: "disabled" | "error" | "enabled" | null;
+    state: "enabled" | "disabled" | "error";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

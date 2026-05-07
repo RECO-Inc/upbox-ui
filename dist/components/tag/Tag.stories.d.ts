@@ -2,19 +2,14 @@ import { StoryObj } from '@storybook/vue3-vite';
 declare const meta: {
     title: string;
     component: {
-        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
-            state?: import('.').TagVariants["state"];
-            size?: import('.').TagVariants["size"];
-            mode?: "view" | "edit";
-            class?: import('vue').HTMLAttributes["class"];
-        }> & Readonly<{
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('.').TagProps> & Readonly<{
             onClose?: (() => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
             close: () => any;
         }, import('vue').PublicProps, {
-            size: "small" | "3xsmall" | "2xsmall" | "xsmall" | null;
+            size: "3xsmall" | "2xsmall" | "xsmall" | "small";
             mode: "view" | "edit";
-            state: "disabled" | "error" | "enabled" | null;
+            state: "enabled" | "disabled" | "error";
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -22,34 +17,24 @@ declare const meta: {
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<{
-            state?: import('.').TagVariants["state"];
-            size?: import('.').TagVariants["size"];
-            mode?: "view" | "edit";
-            class?: import('vue').HTMLAttributes["class"];
-        }> & Readonly<{
+        }, Readonly<import('.').TagProps> & Readonly<{
             onClose?: (() => any) | undefined;
         }>, {}, {}, {}, {}, {
-            size: "small" | "3xsmall" | "2xsmall" | "xsmall" | null;
+            size: "3xsmall" | "2xsmall" | "xsmall" | "small";
             mode: "view" | "edit";
-            state: "disabled" | "error" | "enabled" | null;
+            state: "enabled" | "disabled" | "error";
         }>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('vue').ComponentOptionsBase<Readonly<{
-        state?: import('.').TagVariants["state"];
-        size?: import('.').TagVariants["size"];
-        mode?: "view" | "edit";
-        class?: import('vue').HTMLAttributes["class"];
-    }> & Readonly<{
+    } & import('vue').ComponentOptionsBase<Readonly<import('.').TagProps> & Readonly<{
         onClose?: (() => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         close: () => any;
     }, string, {
-        size: "small" | "3xsmall" | "2xsmall" | "xsmall" | null;
+        size: "3xsmall" | "2xsmall" | "xsmall" | "small";
         mode: "view" | "edit";
-        state: "disabled" | "error" | "enabled" | null;
+        state: "enabled" | "disabled" | "error";
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             badge?(_: {}): any;

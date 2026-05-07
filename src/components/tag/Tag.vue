@@ -1,24 +1,15 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from "vue"
 import { computed } from "vue"
 import { X } from "lucide-vue-next"
-import type { TagVariants } from "."
+import type { TagProps } from "."
 import { cn } from "../../lib/utils"
 import { tagCloseIconSize, tagVariants } from "."
 
-const props = withDefaults(
-  defineProps<{
-    state?: TagVariants["state"]
-    size?: TagVariants["size"]
-    mode?: "view" | "edit"
-    class?: HTMLAttributes["class"]
-  }>(),
-  {
-    state: "enabled",
-    size: "small",
-    mode: "view",
-  },
-)
+const props = withDefaults(defineProps<TagProps>(), {
+  state: "enabled",
+  size: "small",
+  mode: "view",
+})
 
 const emit = defineEmits<{
   close: []

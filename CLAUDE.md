@@ -120,3 +120,36 @@ npm run build-storybook # Storybook 정적 빌드
 - 색상은 항상 CSS 변수 → Tailwind preset → 유틸리티 클래스 체인으로 사용
 - `dist/`는 git에 포함 (GitHub 직접 참조 방식 배포)
 - 빌드 시 Tailwind 유틸리티는 포함되지 않음 (컨슈머에서 처리)
+
+## Component Conventions
+
+### Props 타입 패턴
+
+`defineProps<{ x?: VariantProps["x"] }>()` 같은 **인덱스드 액세스 타입**은 Storybook autodocs(vue-component-meta)가 풀어내지 못해서 Description 컬럼에 `TSIndexedAccessType`이 그대로 노출됨. 항상 별도 `interface XxxProps`를 export하고 인라인 union 리터럴로 작성:
+
+```ts
+// index.ts
+export interface BadgeProps {
+  variant?: "neutral" | "negative" | "positive" | "informative" | "warning"
+  tone?: "soft" | "solid" | "outline"
+  size?: "3xsmall" | "2xsmall" | "xsmall"
+  round?: boolean
+  class?: string
+}
+
+// Badge.vue
+defineProps<BadgeProps>()
+```
+
+CVA의 `VariantProps`는 컴포넌트 내부 타입 검증용으로만 사용.
+
+### Boolean prop 선호
+
+이항 상태(square/round, flat/raised 등)는 string union보다 boolean prop이 간결: `round: boolean` ✓ (`shape: "square" | "round"` ✗).
+
+### Tone 명명 규약
+
+색의 강도 축은 **`soft` / `solid` / `outline`** 사용 (Radix Themes·Tailwind UI 표준).
+- `soft`: 약하게 채색된 배경 (Figma `filled(50%)`)
+- `solid`: 완전 채색 (Figma `filled(100%)`)
+- `outline`: 테두리만
