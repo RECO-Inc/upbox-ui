@@ -5,26 +5,21 @@ import { reactiveOmit } from "@vueuse/core"
 import { ChevronRight } from "lucide-vue-next"
 import { CalendarNext, useForwardProps } from "reka-ui"
 import { cn } from "../../lib/utils"
-import { buttonVariants } from '../button'
+import { IconButton } from "../icon-button"
 
 const props = defineProps<CalendarNextProps & { class?: HTMLAttributes["class"] }>()
 
-const delegatedProps = reactiveOmit(props, "class")
+const delegatedProps = reactiveOmit(props, "class", "asChild")
 
 const forwardedProps = useForwardProps(delegatedProps)
 </script>
 
 <template>
-  <CalendarNext
-    :class="cn(
-      buttonVariants({ variant: 'tertiary', style: 'outlined' }),
-      'h-[28px] w-[28px] bg-transparent p-0 opacity-50 hover:opacity-100',
-      props.class,
-    )"
-    v-bind="forwardedProps"
-  >
-    <slot>
-      <ChevronRight class="h-[16px] w-[16px]" />
-    </slot>
+  <CalendarNext :as-child="true" v-bind="forwardedProps">
+    <IconButton variant="tertiary" size="xsmall" :class="cn('shrink-0', props.class)">
+      <slot>
+        <ChevronRight />
+      </slot>
+    </IconButton>
   </CalendarNext>
 </template>

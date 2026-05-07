@@ -20,6 +20,7 @@ declare module 'vue' {
         CalendarCell: typeof import('./components/calendar')['CalendarCell'];
         CalendarCellTrigger: typeof import('./components/calendar')['CalendarCellTrigger'];
         CalendarFooter: typeof import('./components/calendar')['CalendarFooter'];
+        CalendarShortcut: typeof import('./components/calendar')['CalendarShortcut'];
         CalendarGrid: typeof import('./components/calendar')['CalendarGrid'];
         CalendarGridBody: typeof import('./components/calendar')['CalendarGridBody'];
         CalendarGridHead: typeof import('./components/calendar')['CalendarGridHead'];
@@ -32,6 +33,7 @@ declare module 'vue' {
         CalendarPrevButton: typeof import('./components/calendar')['CalendarPrevButton'];
         CalendarTimeSelect: typeof import('./components/calendar')['CalendarTimeSelect'];
         CalendarYearGrid: typeof import('./components/calendar')['CalendarYearGrid'];
+        DateCalendar: typeof import('./components/calendar')['DateCalendar'];
         Card: typeof import('./components/card')['Card'];
         CardContent: typeof import('./components/card')['CardContent'];
         CardDescription: typeof import('./components/card')['CardDescription'];
@@ -78,7 +80,7 @@ declare module 'vue' {
         FormItem: typeof import('./components/form')['FormItem'];
         FormLabel: typeof import('./components/form')['FormLabel'];
         FormMessage: typeof import('./components/form')['FormMessage'];
-        Input: typeof import('./components/input')['Input'];
+        TextField: typeof import('./components/text-field')['TextField'];
         InputGroup: typeof import('./components/input-group')['InputGroup'];
         InputGroupAddon: typeof import('./components/input-group')['InputGroupAddon'];
         InputGroupButton: typeof import('./components/input-group')['InputGroupButton'];
@@ -104,6 +106,8 @@ declare module 'vue' {
         PopoverTrigger: typeof import('./components/popover')['PopoverTrigger'];
         RadioGroup: typeof import('./components/radio-group')['RadioGroup'];
         RadioGroupItem: typeof import('./components/radio-group')['RadioGroupItem'];
+        MonthCalendar: typeof import('./components/calendar')['MonthCalendar'];
+        PeriodCalendar: typeof import('./components/calendar')['PeriodCalendar'];
         RangeCalendar: typeof import('./components/calendar')['RangeCalendar'];
         Select: typeof import('./components/select')['Select'];
         SelectContent: typeof import('./components/select')['SelectContent'];

@@ -41,6 +41,21 @@ CSS 변수로 정의. Figma 색상 이름 그대로 사용:
 | Red | `--color-red-{20-100}` | `bg-red-80`, `text-red-70` |
 | Orange | `--color-orange-{20-100}` | `bg-orange-80`, `text-orange-60` |
 
+#### Naming Convention History
+
+색상 네이밍이 Figma 기준으로 변경됨 (2026-03):
+
+| Before | After (Figma) |
+|--------|--------------|
+| `base` | `grey` |
+| `primary` | `navy` |
+| `info` | `blue` |
+| `positive` | `green` |
+| `error` | `red` |
+| `warning` | `orange` |
+
+CSS 변수, Tailwind 클래스, 컴포넌트 코드 모두 변경 완료.
+
 ### 2. Semantic Tokens (tokens.css, style.css)
 
 Primitive를 참조하는 의미 기반 토큰:
@@ -67,21 +82,6 @@ Primitive를 참조하는 의미 기반 토큰:
 import preset from '@reco-inc/upbox-ui/tailwind-preset'
 export default { presets: [preset] }
 ```
-
-## Naming Convention History
-
-색상 네이밍이 Figma 기준으로 변경됨 (2026-03):
-
-| Before | After (Figma) |
-|--------|--------------|
-| `base` | `grey` |
-| `primary` | `navy` |
-| `info` | `blue` |
-| `positive` | `green` |
-| `error` | `red` |
-| `warning` | `orange` |
-
-CSS 변수, Tailwind 클래스, 컴포넌트 코드 모두 변경 완료.
 
 ## Consumer Projects
 
@@ -120,3 +120,45 @@ npm run build-storybook # Storybook 정적 빌드
 - 색상은 항상 CSS 변수 → Tailwind preset → 유틸리티 클래스 체인으로 사용
 - `dist/`는 git에 포함 (GitHub 직접 참조 방식 배포)
 - 빌드 시 Tailwind 유틸리티는 포함되지 않음 (컨슈머에서 처리)
+
+### Picker compound 패턴 (`DatePicker`, `DatePeriodPicker`, `TimePicker` …)
+
+- 외곽 wrapper(`*Picker.vue`)가 `defineModel` 로 값을 보관하고, `provide` 로 자식에 모델/draftError를 내려준다
+  - 컨텍스트 키는 `<picker>Context.ts` 에 분리한다 (`DATE_PICKER_CTX_KEY`, `TIME_PICKER_CTX_KEY` …)
+- 입력 자식(`*Input.vue`)은 `inject` 로 컨텍스트를 받고, 컨텍스트가 없으면 자체 `defineModel` 로 standalone 동작한다
+- 트리거 자식(`*Trigger.vue`)은 `InputFrame` 을 감싸고 `PopoverTrigger` 를 슬롯과 함께 둔다
+- 팝업 자식(`*Panel.vue` / 캘린더 등)은 wrapper 가 `panelDraft` 로 보관하다가 완료 이벤트 시점에만 모델에 반영한다
+- `InputFrameDesignProps` (`size`/`variant`/`error`/`readonly`/`disabled`)는 wrapper 가 `useInputFrameInjectProvide` 로 한 번만 주입하고, 자식들은 inject 만 받는다
+- 새 Picker 를 만들 때는 `date-picker/` 디렉터리 구조를 그대로 본따고 모델 타입만 갈아끼우는 것을 기본으로 한다
+
+### Mobile Picker 변형 (`MobileDateCalendar`, `MobileTimeDial`, `MobileTimePicker` …)
+
+- 모바일 변형은 데스크톱과 **같은 입력 컴포넌트**(`TimeInput` 등)와 **같은 컨텍스트 키**를 공유한다. 컨슈머가 입력부 코드를 두 벌 갖지 않게 한다.
+- 데스크톱 `*Panel` ↔ 모바일 `*Dial` / `Mobile*Calendar` 가 동일 모델 타입을 받는다 (값을 갈아끼우는 것만 다르다).
+- 데스크톱은 `Popover` + `*Panel`, 모바일은 `Drawer` + `*Dial` 을 쓰고, wrapper 단에서 `panelDraft` / `dialDraft` 로 임시값을 보관한다.
+- 모바일 패널은 `360px` 폭 + 상단 라운드 `16` 를 기본으로 한다 (`rounded-t-[16px]`).
+- 휠/스크롤 스냅 패널은 ITEM 높이 상수를 한 군데서 관리하고, 가운데 행이 선택값(절대 배치 배경 강조).
+
+## FigmaConnect.md 작성 규칙
+
+`FigmaConnect.md`는 **피그마 컴포넌트 속성(또는 변형 이름)과 Vue 컴포넌트의 `prop` / 이벤트 / `v-model`을 일치시키기 위한 매핑 문서**다. 동작 설명이나 구현 디테일은 넣지 않는다.
+
+### 구조
+
+- 최상단에 목적 한 줄 + Figma 파일 / 라이브러리 메타 표
+- 메타 표 바로 아래 **`## 인덱스`** — 피그마 노드 ID ↔ 컴포넌트 매핑 표. 노드 ID 오름차순. 단일 노드가 없는 합성 컴포넌트는 인덱스에서 제외하고 안내 문구로 분리.
+- 컴포넌트 단위로 `## <figmaComponentName>` 섹션을 만든다 (피그마 컴포넌트 이름 그대로, camelCase)
+- 각 섹션은 두 개의 표로 구성:
+  1. **속성 매핑 표** — `| 피그마 | Vue |` 두 컬럼. 첫 행에 `노드 <id>` 또는 컴포넌트 식별자, 그 아래로 variant·state·size 등 속성 행
+  2. **`### 하위 구조` 표** — 피그마 내부 노드 구조 ↔ Vue 하위 컴포넌트/슬롯 매핑
+- 섹션 사이에는 `---` 구분선
+
+### 작성 원칙
+
+- **피그마 열**은 Figma 우측 Properties 패널의 변형/속성 이름을 그대로 쓴다 (`variant=date`, `state=focused` 등)
+- **Vue 열**은 prop 이름, 컴포넌트 파일명, `v-model`, 슬롯명, 이벤트(`@done`) 등 코드에서 그대로 쓰이는 식별자를 쓴다
+- 동작·로직·렌더링 분기 설명은 넣지 않는다. 매핑만.
+- 디자인이 바뀌면 **같은 행만 갱신**한다. 새 속성이 추가되면 행을 추가하고, 사라지면 제거.
+- 노드 ID(`12247:8602`)는 피그마 원본을 추적하기 위한 것이므로 유지한다.
+- 표 안에서 `|`나 `\|`가 필요한 값(예: `small \| regular \| large`)은 백슬래시 이스케이프.
+- **인덱스 동기화** — 컴포넌트(섹션) 추가·삭제·이름 변경·노드 ID 변경이 발생하면 `## 인덱스` 표도 같은 PR 안에서 함께 갱신한다. 본문 섹션과 인덱스가 어긋나면 안 된다.

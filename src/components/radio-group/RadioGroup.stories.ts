@@ -80,7 +80,7 @@ function buildFigmaGroupModels() {
 }
 
 const meta = {
-  title: 'Components/RadioGroup',
+  title: 'Components/Form/RadioGroup',
   component: RadioGroup,
   tags: ['autodocs'],
 } satisfies Meta<typeof RadioGroup>

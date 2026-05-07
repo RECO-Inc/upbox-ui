@@ -1,1 +1,5 @@
 export { default as Textarea } from "./Textarea.vue"
+export { default as TextareaCount } from "./TextareaCount.vue"
+export { TEXTAREA_TRAILING_CONTEXT_KEY } from "./textareaContext"
+export type { TextareaTrailingContext } from "./textareaContext"
+export type { TextareaProps } from "./Textarea.vue"

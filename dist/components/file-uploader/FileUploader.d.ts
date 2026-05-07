@@ -47,10 +47,10 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_PublicProps, 
     "onUpdate:inputFiles"?: ((value: UploaderFile[]) => any) | undefined;
 }>, {
     readonly: boolean;
-    maxCount: number;
     downloadable: boolean;
     supportExt: string[];
     maxSize: number;
+    maxCount: number;
     removable: boolean;
     errorMessage: string;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {

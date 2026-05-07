@@ -1,14 +1,15 @@
-import { RangeCalendarRootProps, DateRange } from 'reka-ui';
+import { DateRange, RangeCalendarRootProps } from 'reka-ui';
 import { HTMLAttributes } from 'vue';
 import { DateValue } from '@internationalized/date';
 interface Props extends RangeCalendarRootProps {
     class?: HTMLAttributes["class"];
-    /** 시간까지 선택할 수 있는지 여부 */
+    /** 시작·종료 시각 포함 */
     datetime?: boolean;
-    /** 초까지 선택할 수 있는지 여부 */
+    /** 초 선택 */
     seconds?: boolean;
-    /** 리셋/완료 버튼 표시 여부 */
     showFooter?: boolean;
+    /** 1·3·6개월·1년 단축 (DateCalendar 와 동일) */
+    showQuickPresets?: boolean;
 }
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -43,9 +44,10 @@ declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, 
     }) => any) | undefined;
     "onUpdate:startValue"?: ((value: DateValue | undefined) => any) | undefined;
 }>, {
+    showQuickPresets: boolean;
+    showFooter: boolean;
     datetime: boolean;
     seconds: boolean;
-    showFooter: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
