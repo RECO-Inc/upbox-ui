@@ -1,30 +1,46 @@
 <script setup lang="ts">
-import type { ToggleEmits, ToggleProps as RekaToggleProps } from "reka-ui"
-import type { ToggleProps } from "."
+import { computed, useSlots } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { Toggle, useForwardPropsEmits } from "reka-ui"
+import { SwitchRoot, SwitchThumb, useForwardPropsEmits } from "reka-ui"
+import type { ToggleEmits, ToggleProps } from "."
 import { cn } from "../../lib/utils"
-import { toggleVariants } from "."
+import { toggleLabelVariants, toggleThumbVariants, toggleTrackVariants } from "."
 
-const props = withDefaults(defineProps<RekaToggleProps & ToggleProps>(), {
-  variant: "default",
-  size: "regular",
+const props = withDefaults(defineProps<ToggleProps>(), {
+  size: "2xsmall",
   disabled: false,
 })
 
 const emits = defineEmits<ToggleEmits>()
 
-const delegatedProps = reactiveOmit(props, "class", "size", "variant")
+const slots = useSlots()
+const hasLabel = computed(() => !!props.label || !!slots.label)
 
+const delegatedProps = reactiveOmit(props, "class", "size", "label")
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
-  <Toggle
-    v-slot="slotProps: any"
-    v-bind="forwarded"
-    :class="cn(toggleVariants({ variant, size }), props.class)"
+  <label
+    v-if="hasLabel"
+    :class="cn('inline-flex items-center gap-[8px]', !disabled && 'cursor-pointer', props.class)"
   >
-    <slot v-bind="slotProps" />
-  </Toggle>
+    <SwitchRoot
+      v-bind="forwarded"
+      :class="toggleTrackVariants({ size })"
+    >
+      <SwitchThumb :class="toggleThumbVariants({ size })" />
+    </SwitchRoot>
+    <span :class="toggleLabelVariants({ size })">
+      <slot name="label">{{ label }}</slot>
+    </span>
+  </label>
+
+  <SwitchRoot
+    v-else
+    v-bind="forwarded"
+    :class="cn(toggleTrackVariants({ size }), props.class)"
+  >
+    <SwitchThumb :class="toggleThumbVariants({ size })" />
+  </SwitchRoot>
 </template>

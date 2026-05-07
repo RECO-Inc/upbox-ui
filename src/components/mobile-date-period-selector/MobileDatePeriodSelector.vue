@@ -2,10 +2,9 @@
 import type { HTMLAttributes } from "vue"
 import { computed, ref, shallowRef, watch } from "vue"
 import { CalendarDate, getLocalTimeZone, today } from "@internationalized/date"
-import type { AcceptableValue } from "reka-ui"
 import { X, Calendar as CalendarGlyph } from "lucide-vue-next"
 import { cn } from "../../lib/utils"
-import { ToggleGroup, ToggleGroupItem } from "../toggle-group"
+import { Tabs, TabsList, TabsTrigger } from "../tabs"
 import { Button } from "../button"
 import { InputFrame, InputIcon } from "../input-frame"
 import { MobileDatePicker } from "../mobile-date-picker"
@@ -98,8 +97,8 @@ watch(
   },
 )
 
-function onPresetChange(payload: AcceptableValue | AcceptableValue[]) {
-  if (Array.isArray(payload) || payload === undefined || payload === null || typeof payload !== "string")
+function onPresetChange(payload: string | number) {
+  if (typeof payload !== "string")
     return
   const next = payload as DatePeriodPreset
   internalPreset.value = next
@@ -175,37 +174,38 @@ function onClose() {
       </button>
     </header>
 
-    <ToggleGroup
-      type="single"
+    <Tabs
       :model-value="internalPreset"
-      class="w-full gap-0 rounded-[6px] bg-grey-20 p-[2px]"
+      class="w-full"
       @update:model-value="onPresetChange"
     >
-      <ToggleGroupItem
-        value="1m"
-        class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=on]:bg-grey-10 data-[state=on]:text-grey-90 data-[state=on]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
-      >
-        1개월
-      </ToggleGroupItem>
-      <ToggleGroupItem
-        value="3m"
-        class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=on]:bg-grey-10 data-[state=on]:text-grey-90 data-[state=on]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
-      >
-        3개월
-      </ToggleGroupItem>
-      <ToggleGroupItem
-        value="1y"
-        class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=on]:bg-grey-10 data-[state=on]:text-grey-90 data-[state=on]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
-      >
-        1년
-      </ToggleGroupItem>
-      <ToggleGroupItem
-        value="custom"
-        class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=on]:bg-grey-10 data-[state=on]:text-grey-90 data-[state=on]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
-      >
-        직접 설정
-      </ToggleGroupItem>
-    </ToggleGroup>
+      <TabsList class="w-full gap-0 rounded-[6px] bg-grey-20 p-[2px]">
+        <TabsTrigger
+          value="1m"
+          class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=active]:bg-grey-10 data-[state=active]:text-grey-90 data-[state=active]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
+        >
+          1개월
+        </TabsTrigger>
+        <TabsTrigger
+          value="3m"
+          class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=active]:bg-grey-10 data-[state=active]:text-grey-90 data-[state=active]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
+        >
+          3개월
+        </TabsTrigger>
+        <TabsTrigger
+          value="1y"
+          class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=active]:bg-grey-10 data-[state=active]:text-grey-90 data-[state=active]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
+        >
+          1년
+        </TabsTrigger>
+        <TabsTrigger
+          value="custom"
+          class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=active]:bg-grey-10 data-[state=active]:text-grey-90 data-[state=active]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
+        >
+          직접 설정
+        </TabsTrigger>
+      </TabsList>
+    </Tabs>
 
     <div v-if="internalPreset !== 'custom'" class="w-full">
       <InputFrame size="large" readonly class="w-full">

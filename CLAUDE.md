@@ -189,6 +189,10 @@ CVA의 `VariantProps`는 컴포넌트 내부 타입 검증용으로만 사용.
 
 이항 상태(square/round, flat/raised 등)는 string union보다 boolean prop이 간결: `round: boolean` ✓ (`shape: "square" | "round"` ✗).
 
+### Toggle 컴포넌트 (on/off 스위치)
+
+`Toggle`은 단일 boolean 값을 ON/OFF로 전환하는 pill 스위치 (Reka-ui `SwitchRoot` 기반). 이전에 있던 별개의 버튼 스타일 토글(`Toggle`/`ToggleGroup`)과 `Switch`는 모두 제거됨. on/off 시각화가 필요한 곳은 모두 `Toggle` 사용. 사이즈는 Figma 그대로 `4xsmall` / `3xsmall` / `2xsmall`. segmented control(탭처럼 N중 1택)이 필요하면 `Tabs variant="box"`로 대체.
+
 ### Tone 명명 규약
 
 색의 강도 축은 **`soft` / `solid` / `outline`** 사용 (Radix Themes·Tailwind UI 표준).
