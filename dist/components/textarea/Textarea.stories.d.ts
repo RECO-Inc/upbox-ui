@@ -13,10 +13,10 @@ declare const meta: {
             variant: "default" | "filled" | "bottomline" | null;
             readonly: boolean;
             byteMode: boolean;
+            rows: number;
             counter: boolean;
             autoResize: boolean;
             maxHeight: number;
-            rows: number;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {
             textareaRef: HTMLTextAreaElement;
         }, any, import('vue').ComponentProvideOptions, {
@@ -35,10 +35,10 @@ declare const meta: {
             variant: "default" | "filled" | "bottomline" | null;
             readonly: boolean;
             byteMode: boolean;
+            rows: number;
             counter: boolean;
             autoResize: boolean;
             maxHeight: number;
-            rows: number;
         }>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -54,10 +54,10 @@ declare const meta: {
         variant: "default" | "filled" | "bottomline" | null;
         readonly: boolean;
         byteMode: boolean;
+        rows: number;
         counter: boolean;
         autoResize: boolean;
         maxHeight: number;
-        rows: number;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             footer?(_: {}): any;

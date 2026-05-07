@@ -43,10 +43,10 @@ declare const __VLS_component: import('vue').DefineComponent<TextareaProps, {}, 
     variant: "default" | "filled" | "bottomline" | null;
     readonly: boolean;
     byteMode: boolean;
+    rows: number;
     counter: boolean;
     autoResize: boolean;
     maxHeight: number;
-    rows: number;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
     textareaRef: HTMLTextAreaElement;
 }, any>;

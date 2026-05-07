@@ -1,18 +1,22 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { cn } from "../../lib/utils"
-import { Textarea } from '../textarea'
 
 const props = defineProps<{
   class?: HTMLAttributes["class"]
+  rows?: number
 }>()
 </script>
 
 <template>
-  <Textarea
+  <textarea
+    v-bind="$attrs"
     data-slot="input-group-control"
+    :rows="rows ?? 3"
     :class="cn(
-      'flex-1 resize-none rounded-none border-0 bg-transparent py-[12px] shadow-none focus-visible:ring-0 dark:bg-transparent',
+      'block w-full min-w-0 flex-1 resize-none border-0 bg-transparent py-[12px] outline-none',
+      'text-inherit placeholder:text-grey-50',
+      'disabled:cursor-not-allowed',
       props.class,
     )"
   />
