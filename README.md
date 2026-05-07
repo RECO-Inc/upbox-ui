@@ -73,7 +73,7 @@ import { Button, Card, CardHeader, CardTitle, CardContent } from '@reco-inc/upbo
 | Category | Components |
 |----------|-----------|
 | General | Button, Badge, BadgeDivider, Tag, Spinner, Skeleton, Empty, Stepper |
-| Form | Input, Textarea, Checkbox, Switch, RadioGroup, Select, NumberField, Label, Form, InputGroup |
+| Form | TextField, Textarea, Checkbox, Switch, RadioGroup, Select, NumberField, Label, Form, InputGroup |
 | Data Display | Card, Table, Accordion, Avatar, Tabs, Separator |
 | Overlay | Dialog, Sheet, Drawer, Popover, Tooltip, Sonner |
 | Navigation | Breadcrumb, Pagination, Sidebar, DropdownMenu |

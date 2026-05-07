@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { cn } from "../../lib/utils"
-import { Input } from '../input'
+import { TextField } from "../text-field"
 
 const props = defineProps<{
   class?: HTMLAttributes["class"]
@@ -9,7 +9,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Input
+  <TextField
     data-sidebar="input"
     :class="cn(
       'h-[32px] w-full bg-grey-10 shadow-none focus-visible:ring-2 focus-visible:ring-navy-80',
@@ -17,5 +17,5 @@ const props = defineProps<{
     )"
   >
     <slot />
-  </Input>
+  </TextField>
 </template>

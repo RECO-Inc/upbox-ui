@@ -1,4 +1,10 @@
-export { default as Calendar } from './Calendar';
+export { default as MonthCalendar } from './MonthCalendar';
+export { default as DateCalendar } from './DateCalendar';
+export { default as MobileDateCalendar } from './MobileDateCalendar';
+export { default as MobilePeriodCalendar } from './MobilePeriodCalendar';
+/** 하위 호환: `DateCalendar`와 동일 인스턴스 */
+export { default as Calendar } from './DateCalendar';
+export { default as PeriodCalendar } from './PeriodCalendar';
 export { default as RangeCalendar } from './RangeCalendar';
 export { default as CalendarCell } from './CalendarCell';
 export { default as CalendarCellTrigger } from './CalendarCellTrigger';
@@ -15,3 +21,6 @@ export { default as CalendarMonthGrid } from './CalendarMonthGrid';
 export { default as CalendarYearGrid } from './CalendarYearGrid';
 export { default as CalendarTimeSelect } from './CalendarTimeSelect';
 export { default as CalendarFooter } from './CalendarFooter';
+export { default as CalendarShortcut } from './CalendarShortcut';
+export { default as CalendarDateGrid } from './CalendarDateGrid';
+export { default as CalendarRangeDateGrid } from './CalendarRangeDateGrid';

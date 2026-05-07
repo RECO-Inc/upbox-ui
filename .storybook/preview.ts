@@ -17,6 +17,7 @@ const i18n = createI18n({
       word: {
         reset: '초기화',
         done: '완료',
+        save: '저장',
         hours: '시',
         minutes: '분',
         seconds: '초',

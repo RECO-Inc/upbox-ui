@@ -9,7 +9,7 @@ import SelectGroup from './SelectGroup.vue'
 import SelectLabel from './SelectLabel.vue'
 
 const meta = {
-  title: 'Components/Select',
+  title: 'Components/Form/Select',
   component: Select,
   tags: ['autodocs'],
 } satisfies Meta<typeof Select>

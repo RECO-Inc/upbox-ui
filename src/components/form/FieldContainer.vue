@@ -9,7 +9,7 @@ import FormControl from './FormControl.vue'
 import FormDescription from './FormDescription.vue'
 import FormMessage from './FormMessage.vue'
 import FieldControlProvider from './FieldControlProvider.vue'
-import { FORM_SIZE_INJECTION_KEY, type FieldSize } from './injectionKeys'
+import { FORM_SIZE_INJECTION_KEY, type FieldControlBindings, type FieldSize } from './injectionKeys'
 
 export interface FieldContainerProps {
   name: string
@@ -61,7 +61,9 @@ const requiredMarkSize = computed(() =>
           <slot name="tooltip" />
         </span>
       </div>
-      <FieldControlProvider :bindings="slotProps.componentField">
+      <FieldControlProvider
+        :bindings="slotProps.componentField as FieldControlBindings"
+      >
         <FormControl>
           <slot v-bind="slotProps" />
         </FormControl>

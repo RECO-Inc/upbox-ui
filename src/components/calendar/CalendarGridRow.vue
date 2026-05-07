@@ -14,7 +14,7 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 <template>
   <CalendarGridRow
-    :class="cn('calendar-grid-row flex', props.class)"
+    :class="cn('calendar-grid-row', props.class)"
     v-bind="forwardedProps"
   >
     <slot />
