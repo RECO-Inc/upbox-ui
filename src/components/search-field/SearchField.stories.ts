@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite"
 import { ref } from "vue"
 import SearchField from "./SearchField.vue"
+import Select from "../select/Select.vue"
+import SelectContent from "../select/SelectContent.vue"
+import SelectItem from "../select/SelectItem.vue"
+import SelectTrigger from "../select/SelectTrigger.vue"
+import SelectValue from "../select/SelectValue.vue"
 
 const meta = {
   title: "Components/Form/SearchField",
@@ -102,21 +107,28 @@ export const ClearableDemo: Story = {
 
 export const FilterVariantDemo: Story = {
   render: () => ({
-    components: { SearchField },
+    components: { SearchField, Select, SelectContent, SelectItem, SelectTrigger, SelectValue },
     setup() {
       const value = ref("")
-      const category = ref("전체")
-      const categories = ["전체", "제목", "내용", "작성자"]
-      return { value, category, categories }
+      const category = ref("all")
+      return { value, category }
     },
     template: `
       <div class="flex flex-col gap-[12px] w-[400px]">
-        <p class="text-size-12 text-grey-60">filter variant — #filter 슬롯에 Select 트리거</p>
+        <p class="text-size-12 text-grey-60">filter variant — #filter 슬롯에 upbox-ui Select</p>
         <SearchField v-model="value" variant="filter" placeholder="검색어를 입력하세요...">
           <template #filter>
-            <select v-model="category" class="bg-transparent border-0 outline-none text-size-14 text-grey-80 px-[8px] cursor-pointer">
-              <option v-for="c in categories" :key="c" :value="c">{{ c }}</option>
-            </select>
+            <Select v-model="category">
+              <SelectTrigger inline>
+                <SelectValue placeholder="전체" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">전체</SelectItem>
+                <SelectItem value="title">제목</SelectItem>
+                <SelectItem value="content">내용</SelectItem>
+                <SelectItem value="author">작성자</SelectItem>
+              </SelectContent>
+            </Select>
           </template>
         </SearchField>
         <p class="text-size-12 text-grey-60">카테고리: {{ category }} / 검색어: {{ value || '(비어있음)' }}</p>
