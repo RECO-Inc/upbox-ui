@@ -1,9 +1,13 @@
 import { VariantProps } from 'class-variance-authority';
 export { default as Badge } from './Badge';
 export declare const badgeVariants: (props?: ({
-    variant?: "base" | "error" | "primary" | "info" | "positive" | "warning" | null | undefined;
-    size?: "small" | "xxsmall" | "xsmall" | "regular" | null | undefined;
-    deep?: boolean | null | undefined;
-    outline?: boolean | null | undefined;
+    variant?: "neutral" | "negative" | "positive" | "informative" | "warning" | null | undefined;
+    tone?: "subtle" | "solid" | "outline" | null | undefined;
+    shape?: "square" | "round" | null | undefined;
+    size?: "3xsmall" | "2xsmall" | "xsmall" | null | undefined;
 } & import('class-variance-authority/types').ClassProp) | undefined) => string;
 export type BadgeVariants = VariantProps<typeof badgeVariants>;
+export declare const badgeCountVariants: (props?: ({
+    variant?: "neutral" | "negative" | "positive" | "informative" | "warning" | null | undefined;
+} & import('class-variance-authority/types').ClassProp) | undefined) => string;
+export type BadgeCountVariants = VariantProps<typeof badgeCountVariants>;

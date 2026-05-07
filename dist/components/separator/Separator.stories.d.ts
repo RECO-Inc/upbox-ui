@@ -6,7 +6,7 @@ declare const meta: {
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('reka-ui').SeparatorProps & {
         class?: import('vue').HTMLAttributes["class"];
     }> & Readonly<{}>, {
-        orientation: "vertical" | "horizontal";
+        orientation: import('node_modules/reka-ui/dist/index3').DataOrientation;
         decorative: boolean;
     }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
     tags: string[];

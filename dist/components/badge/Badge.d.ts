@@ -2,15 +2,17 @@ import { HTMLAttributes } from 'vue';
 import { BadgeVariants } from '.';
 type __VLS_Props = {
     variant?: BadgeVariants["variant"];
+    tone?: BadgeVariants["tone"];
+    shape?: BadgeVariants["shape"];
     size?: BadgeVariants["size"];
-    deep?: boolean;
-    outline?: boolean;
     class?: HTMLAttributes["class"];
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
         default?(_: {}): any;
+        icon?(_: {}): any;
+        count?(_: {}): any;
     };
     refs: {};
     rootEl: HTMLDivElement;
