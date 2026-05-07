@@ -1,8 +1,22 @@
 import { VariantProps } from 'class-variance-authority';
+import { Component } from 'vue';
 export { default as Tabs } from './Tabs';
 export { default as TabsContent } from './TabsContent';
 export { default as TabsList } from './TabsList';
 export { default as TabsTrigger } from './TabsTrigger';
+export interface TabsProps {
+    defaultValue?: string | number;
+    modelValue?: string | number;
+    orientation?: "horizontal" | "vertical";
+    dir?: "ltr" | "rtl";
+    activationMode?: "manual" | "automatic";
+    unmountOnHide?: boolean;
+    asChild?: boolean;
+    as?: string | Component;
+}
+export interface TabsEmits {
+    "update:modelValue": [payload: string | number];
+}
 export declare const tabsListVariants: (props?: ({
     variant?: "box" | "default" | "round" | null | undefined;
     color?: "navy" | "grey" | null | undefined;

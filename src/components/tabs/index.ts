@@ -1,10 +1,28 @@
 import type { VariantProps } from "class-variance-authority"
 import { cva } from "class-variance-authority"
+import type { Component } from "vue"
 
 export { default as Tabs } from "./Tabs.vue"
 export { default as TabsContent } from "./TabsContent.vue"
 export { default as TabsList } from "./TabsList.vue"
 export { default as TabsTrigger } from "./TabsTrigger.vue"
+
+// reka-ui의 internal DataOrientation/StringOrNumber는 public export가 아니라
+// d.ts emit 시 portable하게 표현되지 않음. 인라인 정의로 우회.
+export interface TabsProps {
+  defaultValue?: string | number
+  modelValue?: string | number
+  orientation?: "horizontal" | "vertical"
+  dir?: "ltr" | "rtl"
+  activationMode?: "manual" | "automatic"
+  unmountOnHide?: boolean
+  asChild?: boolean
+  as?: string | Component
+}
+
+export interface TabsEmits {
+  "update:modelValue": [payload: string | number]
+}
 
 export const tabsListVariants = cva(
   "relative inline-flex items-center",

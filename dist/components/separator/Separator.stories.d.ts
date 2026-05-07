@@ -1,12 +1,8 @@
 import { StoryObj } from '@storybook/vue3-vite';
 declare const meta: {
     title: string;
-    component: import('vue').DefineComponent<import('reka-ui').SeparatorProps & {
-        class?: import('vue').HTMLAttributes["class"];
-    }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('reka-ui').SeparatorProps & {
-        class?: import('vue').HTMLAttributes["class"];
-    }> & Readonly<{}>, {
-        orientation: import('node_modules/reka-ui/dist/index3').DataOrientation;
+    component: import('vue').DefineComponent<import('.').SeparatorProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('.').SeparatorProps> & Readonly<{}>, {
+        orientation: "horizontal" | "vertical";
         decorative: boolean;
     }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
     tags: string[];

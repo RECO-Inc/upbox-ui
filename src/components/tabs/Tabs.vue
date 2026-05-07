@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { TabsRootEmits, TabsRootProps } from "reka-ui"
 import { TabsRoot, useForwardPropsEmits } from "reka-ui"
+import type { TabsEmits, TabsProps } from "."
 
-const props = defineProps<TabsRootProps>()
-const emits = defineEmits<TabsRootEmits>()
+const props = defineProps<TabsProps>()
+const emits = defineEmits<TabsEmits>()
 
 const forwarded = useForwardPropsEmits(props, emits)
 </script>

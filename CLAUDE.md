@@ -195,3 +195,28 @@ CVA의 `VariantProps`는 컴포넌트 내부 타입 검증용으로만 사용.
 - `soft`: 약하게 채색된 배경 (Figma `filled(50%)`)
 - `solid`: 완전 채색 (Figma `filled(100%)`)
 - `outline`: 테두리만
+
+### reka-ui 래핑 컴포넌트 props 규약
+
+reka-ui는 `DataOrientation`, `StringOrNumber` 같은 일부 내부 타입을 public export(`reka-ui` 엔트리)로 노출하지 않음. 그 결과 `import type { TabsRootProps } from "reka-ui"`를 그대로 `defineProps`에 쓰면 d.ts 빌드 시 `import('node_modules/reka-ui/dist/index3').DataOrientation` 같은 비-portable 경로가 emit돼서 컨슈머에서 깨짐.
+
+**우회 방식**: 해당 컴포넌트의 props/emits를 우리 `index.ts`에 인라인 union 리터럴로 직접 정의하고 컴포넌트는 그것을 import.
+
+```ts
+// separator/index.ts
+export interface SeparatorProps {
+  orientation?: "horizontal" | "vertical"
+  decorative?: boolean
+  class?: string
+}
+
+// Separator.vue
+import type { SeparatorProps } from "."
+defineProps<SeparatorProps>()
+```
+
+reka-ui upstream에서 internal 타입을 public export 하는 PR이 머지되면 원복 가능. 적용 대상: `Separator`, `Tabs` 등 reka-ui props/emits를 직접 forward하는 컴포넌트.
+
+### tsconfig 주의사항
+
+`compilerOptions.baseUrl`은 의도적으로 설정하지 않음. 설정하면 위의 reka-ui 케이스에서 TS가 `node_modules/...` 경로를 silently emit해서 컨슈머 빌드가 깨짐. `paths`는 baseUrl 없어도 modern TS에서 동작.
