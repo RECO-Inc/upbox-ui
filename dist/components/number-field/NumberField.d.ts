@@ -6,7 +6,6 @@ declare const _default: import('vue').DefineComponent<NumberFieldProps, {}, {}, 
 }>, {
     disabled: boolean;
     size: "small" | "regular" | "large";
-    error: boolean;
     variant: "center" | "side";
     readonly: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;

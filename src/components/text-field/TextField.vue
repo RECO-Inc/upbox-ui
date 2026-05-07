@@ -46,7 +46,6 @@ export interface TextFieldProps {
 const props = withDefaults(defineProps<TextFieldProps>(), {
   variant: "default",
   size: "regular",
-  error: false,
   disabled: false,
   readonly: false,
   clearable: false,

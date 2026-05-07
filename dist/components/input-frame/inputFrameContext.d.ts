@@ -26,6 +26,7 @@ export type InputFrameDesignProps = {
 export declare function pickInputFrameDesign(p: InputFrameDesignProps & Record<string, unknown>): InputFrameDesignProps;
 /**
  * props 를 넘기지 않은 필드(`undefined`)는 inject 된 상위 디자인을 쓴다. (최소 변경 useInputFrameDesign 쪽과 동일 규칙)
+ * `error` 는 추가로 vee-validate(`FieldContainer`) 컨텍스트가 있으면 그것까지 fallback.
  */
 export declare function useInputFrameDesign(getLocal: () => InputFrameDesignProps): InputFrameContext;
 /**

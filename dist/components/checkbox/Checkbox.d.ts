@@ -22,7 +22,6 @@ declare const __VLS_component: import('vue').DefineComponent<Props, {}, {}, {}, 
 }>, {
     disabled: boolean;
     size: "small" | "regular" | "large";
-    error: boolean;
     readOnly: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLSpanElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { RadioGroupItemProps } from "reka-ui"
-import { computed } from "vue"
+import { computed, inject } from "vue"
 import { reactiveOmit } from "@vueuse/core"
 import {
   RadioGroupIndicator,
@@ -8,6 +8,7 @@ import {
   useForwardProps,
 } from "reka-ui"
 import { cn } from "../../lib/utils"
+import { FORM_ERROR_INJECTION_KEY } from "../form/injectionKeys"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const radioVariants = cva(
@@ -92,7 +93,6 @@ interface Props extends RadioGroupItemProps {
 
 const props = withDefaults(defineProps<Props>(), {
   size: "regular",
-  error: false,
   readOnly: false,
 })
 
@@ -100,6 +100,9 @@ const rootInert = computed(() => props.readOnly && !props.disabled)
 
 const delegatedProps = reactiveOmit(props, "class", "size", "error", "readOnly")
 const forwardedProps = useForwardProps(delegatedProps)
+
+const formError = inject(FORM_ERROR_INJECTION_KEY, null)
+const isError = computed<boolean>(() => props.error ?? formError?.value ?? false)
 
 const indicatorSize = computed(() => {
   switch (props.size) {
@@ -126,7 +129,7 @@ const indicatorFillClass = computed(() => {
       v-bind="forwardedProps"
       :disabled="disabled"
       :aria-readonly="readOnly ? true : undefined"
-      :class="cn(radioVariants({ size, error, readOnly, disabled }), props.class)"
+      :class="cn(radioVariants({ size, error: isError, readOnly, disabled }), props.class)"
     >
       <RadioGroupIndicator class="flex items-center justify-center">
         <span

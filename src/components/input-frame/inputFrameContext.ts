@@ -1,5 +1,6 @@
-import type { ComputedRef, InjectionKey } from "vue"
+import type { ComputedRef, InjectionKey, Ref } from "vue"
 import { computed, inject, provide } from "vue"
+import { FORM_ERROR_INJECTION_KEY } from "../form/injectionKeys"
 import type { InputFrameVariantProps } from "./inputFrameVariants"
 
 export type InputFrameContextSize = NonNullable<InputFrameVariantProps["size"]>
@@ -51,6 +52,7 @@ export function pickInputFrameDesign(
 function buildInputFrameContext(
   getLocal: () => InputFrameDesignProps,
   parent: InputFrameContext | null,
+  formError: Ref<boolean> | null,
 ): InputFrameContext {
   return {
     variant: computed(
@@ -66,6 +68,7 @@ function buildInputFrameContext(
     error: computed(
       () => getLocal().error
         ?? parent?.error.value
+        ?? formError?.value
         ?? false,
     ),
     readonly: computed(
@@ -83,12 +86,14 @@ function buildInputFrameContext(
 
 /**
  * props 를 넘기지 않은 필드(`undefined`)는 inject 된 상위 디자인을 쓴다. (최소 변경 useInputFrameDesign 쪽과 동일 규칙)
+ * `error` 는 추가로 vee-validate(`FieldContainer`) 컨텍스트가 있으면 그것까지 fallback.
  */
 export function useInputFrameDesign(
   getLocal: () => InputFrameDesignProps,
 ): InputFrameContext {
   const parent = inject(INPUT_FRAME_CONTEXT_KEY, null)
-  return buildInputFrameContext(getLocal, parent)
+  const formError = inject(FORM_ERROR_INJECTION_KEY, null)
+  return buildInputFrameContext(getLocal, parent, formError)
 }
 
 /**
@@ -98,7 +103,8 @@ export function useInputFrameInjectProvide(
   getLocal: () => InputFrameDesignProps,
 ): InputFrameContext {
   const parent = inject(INPUT_FRAME_CONTEXT_KEY, null)
-  const design = buildInputFrameContext(getLocal, parent)
+  const formError = inject(FORM_ERROR_INJECTION_KEY, null)
+  const design = buildInputFrameContext(getLocal, parent, formError)
   provide(INPUT_FRAME_CONTEXT_KEY, design)
   return design
 }

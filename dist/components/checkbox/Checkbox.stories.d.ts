@@ -9,7 +9,6 @@ declare const meta: {
         }, import('vue').PublicProps, {
             disabled: boolean;
             size: "small" | "regular" | "large";
-            error: boolean;
             readOnly: boolean;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLSpanElement, import('vue').ComponentProvideOptions, {
             P: {};
@@ -23,7 +22,6 @@ declare const meta: {
         }>, {}, {}, {}, {}, {
             disabled: boolean;
             size: "small" | "regular" | "large";
-            error: boolean;
             readOnly: boolean;
         }>;
         __isFragment?: never;
@@ -36,7 +34,6 @@ declare const meta: {
     }, string, {
         disabled: boolean;
         size: "small" | "regular" | "large";
-        error: boolean;
         readOnly: boolean;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {

@@ -10,7 +10,6 @@ declare const meta: {
             disabled: boolean;
             type: string;
             size: "small" | "regular" | "large";
-            error: boolean;
             variant: "default" | "filled" | "bottomline";
             readonly: boolean;
             clearable: boolean;
@@ -29,7 +28,6 @@ declare const meta: {
             disabled: boolean;
             type: string;
             size: "small" | "regular" | "large";
-            error: boolean;
             variant: "default" | "filled" | "bottomline";
             readonly: boolean;
             clearable: boolean;
@@ -47,7 +45,6 @@ declare const meta: {
         disabled: boolean;
         type: string;
         size: "small" | "regular" | "large";
-        error: boolean;
         variant: "default" | "filled" | "bottomline";
         readonly: boolean;
         clearable: boolean;

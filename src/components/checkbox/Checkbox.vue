@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import type { CheckboxRootEmits, CheckboxRootProps } from "reka-ui"
-import { computed } from "vue"
+import { computed, inject } from "vue"
 import { reactiveOmit } from "@vueuse/core"
 import { Check, Minus } from "lucide-vue-next"
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from "reka-ui"
 import { cva, type VariantProps } from "class-variance-authority"
+import { FORM_ERROR_INJECTION_KEY } from "../form/injectionKeys"
 
 
 const checkboxVariants = cva(
@@ -85,13 +86,15 @@ export interface Props extends Omit<CheckboxRootProps, "disabled"> {
 }
 const props = withDefaults(defineProps<Props>(), {
   size: "regular",
-  error: false,
   readOnly: false,
   disabled: false,
 })
 const emits = defineEmits<CheckboxRootEmits>()
 const delegatedProps = reactiveOmit(props, "class", "size", "error", "readOnly", "disabled")
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
+
+const formError = inject(FORM_ERROR_INJECTION_KEY, null)
+const isError = computed<boolean>(() => props.error ?? formError?.value ?? false)
 /**
  * # 부분 선택 여부
  * - modelValue === "indeterminate" 일 때 부분 선택임
@@ -120,7 +123,7 @@ const iconSize = computed(() => {
       :disabled="disabled"
       :aria-readonly="readOnly ? true : undefined"
       :class="[
-        checkboxVariants({ size, error, readOnly, disabled }),
+        checkboxVariants({ size, error: isError, readOnly, disabled }),
         props.class,
       ]"
     >

@@ -5,7 +5,7 @@ import { useVModel } from "@vueuse/core"
 import { NumberFieldRoot } from "reka-ui"
 import { cn } from "../../lib/utils"
 import { FIELD_CONTROL_INJECTION_KEY } from "../form/injectionKeys"
-import { InputFrame } from "../input-frame"
+import { InputFrame, useInputFrameInjectProvide } from "../input-frame"
 import type { NumberFieldProps } from "."
 import NumberFieldDecrement from "./NumberFieldDecrement.vue"
 import NumberFieldIncrement from "./NumberFieldIncrement.vue"
@@ -16,7 +16,6 @@ defineOptions({ inheritAttrs: false })
 const props = withDefaults(defineProps<NumberFieldProps>(), {
   variant: "center",
   size: "regular",
-  error: false,
   disabled: false,
   readonly: false,
 })
@@ -26,6 +25,14 @@ const emits = defineEmits<{
 }>()
 
 const fieldControl = inject(FIELD_CONTROL_INJECTION_KEY, null)
+
+const design = useInputFrameInjectProvide(() => ({
+  variant: "default",
+  error: props.error,
+  size: props.size,
+  readonly: props.readonly,
+  disabled: props.disabled,
+}))
 
 const localVModel = useVModel(props, "modelValue", emits, {
   passive: true,
@@ -62,7 +69,6 @@ const iconSize = computed(() => {
   }
 })
 
-const dividerClass = "border-l border-grey-40 group-[[data-disabled]]:border-grey-40 group-has-[[data-error]]:border-red-80"
 </script>
 
 <template>
@@ -82,22 +88,15 @@ const dividerClass = "border-l border-grey-40 group-[[data-disabled]]:border-gre
     :style="{ '--nf-icon': iconSize }"
     @blur="handleBlur"
   >
-    <InputFrame
-      variant="default"
-      :size="size"
-      :error="error"
-      :readonly="readonly"
-      :disabled="disabled"
-      class="!px-0 overflow-hidden"
-    >
+    <InputFrame class="!px-0 overflow-hidden">
       <template v-if="variant === 'center'">
-        <NumberFieldDecrement :class="['shrink-0 border-r border-grey-40', { 'border-red-80': error }]" />
+        <NumberFieldDecrement :class="['shrink-0 border-r border-grey-40', { 'border-red-80': design.error.value }]" />
         <NumberFieldInput
           v-bind="$attrs"
           :placeholder="placeholder"
           @blur="handleBlur"
         />
-        <NumberFieldIncrement :class="['shrink-0 border-l border-grey-40', { 'border-red-80': error }]" />
+        <NumberFieldIncrement :class="['shrink-0 border-l border-grey-40', { 'border-red-80': design.error.value }]" />
       </template>
       <template v-else>
         <NumberFieldInput
@@ -106,8 +105,8 @@ const dividerClass = "border-l border-grey-40 group-[[data-disabled]]:border-gre
           class="text-left px-[12px]"
           @blur="handleBlur"
         />
-        <NumberFieldDecrement :class="['shrink-0 border-l border-grey-40', { 'border-red-80': error }]" />
-        <NumberFieldIncrement :class="['shrink-0 border-l border-grey-40', { 'border-red-80': error }]" />
+        <NumberFieldDecrement :class="['shrink-0 border-l border-grey-40', { 'border-red-80': design.error.value }]" />
+        <NumberFieldIncrement :class="['shrink-0 border-l border-grey-40', { 'border-red-80': design.error.value }]" />
       </template>
     </InputFrame>
   </NumberFieldRoot>

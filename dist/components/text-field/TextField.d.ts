@@ -32,7 +32,6 @@ declare const __VLS_component: import('vue').DefineComponent<TextFieldProps, {},
     disabled: boolean;
     type: string;
     size: "small" | "regular" | "large";
-    error: boolean;
     variant: "default" | "filled" | "bottomline";
     readonly: boolean;
     clearable: boolean;
