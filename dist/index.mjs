@@ -9719,13 +9719,13 @@ const Rc = /* @__PURE__ */ ze(Ki, [["render", qi]]), Ec = /* @__PURE__ */ p({
   props: {
     state: { default: "enabled" },
     size: { default: "small" },
-    mode: { default: "view" },
+    closable: { type: Boolean, default: !1 },
     class: {}
   },
   emits: ["close"],
   setup(t, { emit: s }) {
     const a = t, l = s, o = B(
-      () => a.mode === "edit" && a.state !== "disabled"
+      () => a.closable && a.state !== "disabled"
     ), r = B(() => cd[a.size ?? "small"]), i = B(
       () => a.state === "error" ? "bg-red-80" : "bg-grey-90"
     );

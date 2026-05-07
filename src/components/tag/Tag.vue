@@ -8,7 +8,7 @@ import { tagCloseIconSize, tagVariants } from "."
 const props = withDefaults(defineProps<TagProps>(), {
   state: "enabled",
   size: "small",
-  mode: "view",
+  closable: false,
 })
 
 const emit = defineEmits<{
@@ -16,7 +16,7 @@ const emit = defineEmits<{
 }>()
 
 const showClose = computed(
-  () => props.mode === "edit" && props.state !== "disabled",
+  () => props.closable && props.state !== "disabled",
 )
 
 const closeIconClass = computed(() => tagCloseIconSize[props.size ?? "small"])

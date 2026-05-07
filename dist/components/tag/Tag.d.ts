@@ -15,8 +15,8 @@ declare const __VLS_component: import('vue').DefineComponent<TagProps, {}, {}, {
     onClose?: (() => any) | undefined;
 }>, {
     size: "3xsmall" | "2xsmall" | "xsmall" | "small";
-    mode: "view" | "edit";
     state: "enabled" | "disabled" | "error";
+    closable: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

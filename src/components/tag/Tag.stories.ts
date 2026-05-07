@@ -15,9 +15,8 @@ const meta = {
       control: "select",
       options: ["3xsmall", "2xsmall", "xsmall", "small"],
     },
-    mode: {
-      control: "select",
-      options: ["view", "edit"],
+    closable: {
+      control: "boolean",
     },
   },
 } satisfies Meta<typeof Tag>
@@ -26,7 +25,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: { state: "enabled", size: "small", mode: "edit" },
+  args: { state: "enabled", size: "small", closable: true },
   render: (args) => ({
     components: { Tag },
     setup: () => ({ args }),
@@ -40,23 +39,23 @@ export const States: Story = {
     template: `
       <div class="flex flex-col gap-[12px]">
         <div class="flex flex-wrap gap-[8px] items-center">
-          <Tag state="enabled" mode="edit">enabled</Tag>
-          <Tag state="disabled" mode="view">disabled</Tag>
-          <Tag state="error" mode="edit">error</Tag>
+          <Tag state="enabled" closable>enabled</Tag>
+          <Tag state="disabled">disabled</Tag>
+          <Tag state="error" closable>error</Tag>
         </div>
       </div>
     `,
   }),
 }
 
-export const Modes: Story = {
+export const Closable: Story = {
   render: () => ({
     components: { Tag },
     template: `
       <div class="flex flex-col gap-[12px]">
         <div class="flex flex-wrap gap-[8px] items-center">
-          <Tag mode="view">view 모드</Tag>
-          <Tag mode="edit" @close="() => alert('close')">edit 모드</Tag>
+          <Tag>읽기 전용</Tag>
+          <Tag closable @close="() => alert('close')">닫기 가능</Tag>
         </div>
       </div>
     `,
@@ -68,10 +67,10 @@ export const Sizes: Story = {
     components: { Tag },
     template: `
       <div class="flex flex-wrap gap-[8px] items-center">
-        <Tag size="3xsmall" mode="view">3xsmall</Tag>
-        <Tag size="2xsmall" mode="edit">2xsmall</Tag>
-        <Tag size="xsmall" mode="edit">xsmall</Tag>
-        <Tag size="small" mode="edit">small</Tag>
+        <Tag size="3xsmall">3xsmall</Tag>
+        <Tag size="2xsmall" closable>2xsmall</Tag>
+        <Tag size="xsmall" closable>xsmall</Tag>
+        <Tag size="small" closable>small</Tag>
       </div>
     `,
   }),
@@ -83,13 +82,13 @@ export const WithBadge: Story = {
     template: `
       <div class="flex flex-col gap-[12px]">
         <div class="flex flex-wrap gap-[8px] items-center">
-          <Tag size="small" mode="view">
+          <Tag size="small">
             <template #badge>
               <Badge size="2xsmall" tone="outline" variant="neutral">태그</Badge>
             </template>
             태그명
           </Tag>
-          <Tag size="xsmall" state="disabled" mode="view">
+          <Tag size="xsmall" state="disabled">
             <template #badge>
               <Badge size="3xsmall" tone="outline" variant="neutral">태그</Badge>
             </template>
@@ -107,10 +106,10 @@ export const Matrix: Story = {
     template: `
       <div class="flex flex-col gap-[16px]">
         <div v-for="state in ['enabled', 'disabled', 'error']" :key="state" class="flex flex-wrap gap-[8px] items-center">
-          <Tag :state="state" size="3xsmall" mode="view">3xsmall</Tag>
-          <Tag :state="state" size="2xsmall" mode="edit">2xsmall</Tag>
-          <Tag :state="state" size="xsmall" mode="edit">xsmall</Tag>
-          <Tag :state="state" size="small" mode="edit">small</Tag>
+          <Tag :state="state" size="3xsmall">3xsmall</Tag>
+          <Tag :state="state" size="2xsmall" closable>2xsmall</Tag>
+          <Tag :state="state" size="xsmall" closable>xsmall</Tag>
+          <Tag :state="state" size="small" closable>small</Tag>
         </div>
       </div>
     `,

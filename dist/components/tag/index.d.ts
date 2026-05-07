@@ -8,7 +8,7 @@ export type TagVariants = VariantProps<typeof tagVariants>;
 export interface TagProps {
     state?: "enabled" | "disabled" | "error";
     size?: "3xsmall" | "2xsmall" | "xsmall" | "small";
-    mode?: "view" | "edit";
+    closable?: boolean;
     class?: string;
 }
 export declare const tagCloseIconSize: Record<NonNullable<TagVariants["size"]>, string>;

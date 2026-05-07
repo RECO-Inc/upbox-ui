@@ -8,8 +8,8 @@ declare const meta: {
             close: () => any;
         }, import('vue').PublicProps, {
             size: "3xsmall" | "2xsmall" | "xsmall" | "small";
-            mode: "view" | "edit";
             state: "enabled" | "disabled" | "error";
+            closable: boolean;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -21,8 +21,8 @@ declare const meta: {
             onClose?: (() => any) | undefined;
         }>, {}, {}, {}, {}, {
             size: "3xsmall" | "2xsmall" | "xsmall" | "small";
-            mode: "view" | "edit";
             state: "enabled" | "disabled" | "error";
+            closable: boolean;
         }>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -33,8 +33,8 @@ declare const meta: {
         close: () => any;
     }, string, {
         size: "3xsmall" | "2xsmall" | "xsmall" | "small";
-        mode: "view" | "edit";
         state: "enabled" | "disabled" | "error";
+        closable: boolean;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             badge?(_: {}): any;
@@ -51,9 +51,8 @@ declare const meta: {
             control: "select";
             options: string[];
         };
-        mode: {
-            control: "select";
-            options: string[];
+        closable: {
+            control: "boolean";
         };
     };
 };
@@ -61,7 +60,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export declare const Default: Story;
 export declare const States: Story;
-export declare const Modes: Story;
+export declare const Closable: Story;
 export declare const Sizes: Story;
 export declare const WithBadge: Story;
 export declare const Matrix: Story;
