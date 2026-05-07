@@ -1,5 +1,5 @@
-import { NumberFieldDecrementProps } from 'reka-ui';
 import { HTMLAttributes } from 'vue';
+import { NumberFieldDecrementProps } from 'reka-ui';
 type __VLS_Props = NumberFieldDecrementProps & {
     class?: HTMLAttributes["class"];
 };

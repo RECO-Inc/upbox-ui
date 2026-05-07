@@ -1,26 +1,13 @@
-import { NumberFieldRootProps } from 'reka-ui';
-import { HTMLAttributes } from 'vue';
-type __VLS_Props = NumberFieldRootProps & {
-    class?: HTMLAttributes["class"];
-};
-declare function __VLS_template(): {
-    attrs: Partial<{}>;
-    slots: {
-        default?(_: {}): any;
-    };
-    refs: {};
-    rootEl: any;
-};
-type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
-declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-    "update:modelValue": (val: number) => any;
-}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
-    "onUpdate:modelValue"?: ((val: number) => any) | undefined;
-}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
-declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
+import { NumberFieldProps } from '.';
+declare const _default: import('vue').DefineComponent<NumberFieldProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+    "update:modelValue": (value: number) => any;
+}, string, import('vue').PublicProps, Readonly<NumberFieldProps> & Readonly<{
+    "onUpdate:modelValue"?: ((value: number) => any) | undefined;
+}>, {
+    disabled: boolean;
+    size: "small" | "regular" | "large";
+    error: boolean;
+    variant: "center" | "side";
+    readonly: boolean;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;
-type __VLS_WithTemplateSlots<T, S> = T & {
-    new (): {
-        $slots: S;
-    };
-};

@@ -89,6 +89,7 @@ declare module 'vue' {
     InputGroupTextarea: typeof import('./components/input-group')['InputGroupTextarea']
     Label: typeof import('./components/label')['Label']
     NumberField: typeof import('./components/number-field')['NumberField']
+    NumberFieldRoot: typeof import('./components/number-field')['NumberFieldRoot']
     NumberFieldContent: typeof import('./components/number-field')['NumberFieldContent']
     NumberFieldDecrement: typeof import('./components/number-field')['NumberFieldDecrement']
     NumberFieldIncrement: typeof import('./components/number-field')['NumberFieldIncrement']

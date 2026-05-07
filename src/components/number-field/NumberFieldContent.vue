@@ -8,7 +8,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div :class="cn('relative [&>[data-slot=input]]:has-[[data-slot=increment]]:pr-[20px] [&>[data-slot=input]]:has-[[data-slot=decrement]]:pl-[20px]', props.class)">
+  <div :class="cn('flex h-full w-full min-w-0 items-stretch', props.class)">
     <slot />
   </div>
 </template>
