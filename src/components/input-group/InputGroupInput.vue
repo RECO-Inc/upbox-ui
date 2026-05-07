@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { cn } from "../../lib/utils"
-import { TextField } from "../text-field"
 
 const props = defineProps<{
   class?: HTMLAttributes["class"]
@@ -9,10 +8,13 @@ const props = defineProps<{
 </script>
 
 <template>
-  <TextField
+  <input
+    v-bind="$attrs"
     data-slot="input-group-control"
     :class="cn(
-      'flex-1 rounded-none border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-transparent ring-offset-transparent dark:bg-transparent',
+      'min-h-0 h-full min-w-0 flex-1 border-0 bg-transparent outline-none',
+      'text-inherit placeholder:text-grey-50',
+      'disabled:cursor-not-allowed',
       props.class,
     )"
   />

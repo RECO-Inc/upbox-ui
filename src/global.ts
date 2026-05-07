@@ -110,6 +110,7 @@ declare module 'vue' {
     MonthCalendar: typeof import('./components/calendar')['MonthCalendar']
     PeriodCalendar: typeof import('./components/calendar')['PeriodCalendar']
     RangeCalendar: typeof import('./components/calendar')['RangeCalendar']
+    SearchField: typeof import('./components/search-field')['SearchField']
     Select: typeof import('./components/select')['Select']
     SelectContent: typeof import('./components/select')['SelectContent']
     SelectGroup: typeof import('./components/select')['SelectGroup']

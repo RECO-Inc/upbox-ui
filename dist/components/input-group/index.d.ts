@@ -2,6 +2,7 @@ import { VariantProps } from 'class-variance-authority';
 import { HTMLAttributes } from 'vue';
 import { ButtonVariants } from '../button';
 export { default as InputGroup } from './InputGroup';
+export type { InputGroupProps } from './InputGroup';
 export { default as InputGroupAddon } from './InputGroupAddon';
 export { default as InputGroupButton } from './InputGroupButton';
 export { default as InputGroupInput } from './InputGroupInput';

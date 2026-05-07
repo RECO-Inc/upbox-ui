@@ -35,6 +35,7 @@ export * from './components/number-field';
 export * from './components/pagination';
 export * from './components/popover';
 export * from './components/radio-group';
+export * from './components/search-field';
 export * from './components/select';
 export * from './components/separator';
 export * from './components/sheet';
