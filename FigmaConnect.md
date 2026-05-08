@@ -14,6 +14,9 @@
 
 | 피그마 노드 ID | 피그마 컴포넌트 | Vue 컴포넌트 |
 |----------------|----------------|--------------|
+| `3220:15782` | [`standardButton`](#standardbutton) | `Button` |
+| `3223:13667` | [`textButton`](#textbutton) | `TextButton` |
+| `3228:14621` | [`iconButton`](#iconbutton) | `IconButton` |
 | `3429:16714` | [`textField`](#textfield) | `TextField` |
 | `3429:25321` | [`textArea`](#textarea) | `Textarea` |
 | `3498:25583` | [`searchField`](#searchfield) | `SearchField` |
@@ -930,6 +933,134 @@
 | `Body/body3-sb` (14/20) | `xsmall`·`small` 본문 | `text-size-14 leading-[20px] font-semibold` |
 | 모서리 `3` (3xsmall·2xsmall·xsmall) / `4` (small) | 모서리 둥글기 | `rounded-[3px]` / `rounded-[4px]` |
 | 닫기 X 아이콘 크기 | 닫기 버튼 안의 X 크기 | `size-[14px]` (3xsmall·2xsmall·xsmall) / `size-[18px]` (small) |
+
+---
+
+## `standardButton`
+
+| 피그마 | Vue |
+|--------|-----|
+| 노드 `3220:15782` | — |
+| 컴포넌트 | `Button.vue` |
+| `variant=primary \| destructive \| secondary \| tertiary` | `variant` |
+| `theme=Filled \| Outline` | `theme=filled \| outlined` |
+| `size=xsmall \| small \| regular \| large \| xlarge` | `size` |
+| `state=Enabled \| Hovered \| Pressed` | CSS `:hover` / `:active` (자동) |
+| `disabled=false \| true` | `disabled` |
+| 본문 텍스트 | 기본 슬롯 |
+| 로딩 상태 | `loading` (`Spinner` 자동 노출, 클릭 무시) |
+| 가로 100% | `block` |
+| 클릭 | `@click` |
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| `wrapper` (텍스트·아이콘 컨테이너) | `Button` 내부 `<button>` |
+| 본문 텍스트 | 기본 슬롯 |
+| `front icon` / `end icon` (boolean) | 슬롯 내부 자유 배치 (`<lucide />` 직접) |
+| 로딩 스피너 | `loading=true` 시 `Spinner` 자동 |
+
+### Figma 변수
+
+| Figma 변수 | 의미 / 사용 위치 | upbox-ui 매핑 |
+|------------|------------------|---------------|
+| `CTA/primary` (`navy-80`) | primary filled 배경·border / outlined border·text | `bg-navy-80` / `border-navy-80` / `text-cta-primary` |
+| `CTA/destructive` (`red-80`) | destructive filled / outlined | `bg-red-80` / `border-red-80` / `text-red-80` |
+| `CTA/secondary` (`grey-60`) | secondary filled / outlined | `bg-grey-60` / `border-grey-60` / `text-grey-60` |
+| `CTA/tertiary` (`grey-30`) | tertiary filled · outlined border | `bg-grey-30` / `border-grey-30` / `text-grey-70` |
+| `primitive/grey-10` | filled 텍스트 (primary·destructive·secondary) / outlined 배경 | `text-grey-10` / `bg-grey-10` |
+| `primitive/navy-{20,30,90,100}` | primary outlined hover/active bg / filled hover·active | `bg-navy-20` / `bg-navy-30` / `bg-navy-90` / `bg-navy-100` |
+| `primitive/red-{20,30,90,100}` | destructive 변형 hover·active | `bg-red-20` / `bg-red-30` / `bg-red-90` / `bg-red-100` |
+| `primitive/grey-{20,30,40,50,70,80}` | tertiary·secondary hover·active·텍스트 | `bg-grey-{20,30,40,50}` / `text-grey-{70,80}` |
+| `xsmall=24` | 높이 (`h-[24px]`) | `size="xsmall"` |
+| `small=32` | 높이 (`h-[32px]`) | `size="small"` |
+| `regular=40` | 높이 (`h-[40px]`) | `size="regular"` |
+| `large=48` | 높이 (`h-[48px]`) | `size="large"` |
+| `xlarge=56` | 높이 (`h-[56px]`) | `size="xlarge"` |
+| `padding/padding-{6,8,16}` | 사이즈별 좌우 padding | `px-[6\|8\|16]px` |
+| 모서리 `3` (xsmall) / `4` (small 이상) | 둥글기 | `rounded-[3px]` / `rounded-[4px]` |
+| `font-2xs(12)` (xsmall) / `sm(14)` (regular) / `font-base(16)` (xlarge) | 사이즈별 본문 폰트 | `text-size-12` / `text-size-13` (small) / `text-size-14` / `text-size-15` (large) / `text-size-16` |
+| `font/weight/Bold` | 본문 폰트 굵기 | `font-bold` |
+
+---
+
+## `textButton`
+
+| 피그마 | Vue |
+|--------|-----|
+| 노드 `3223:13667` | — |
+| 컴포넌트 | `TextButton.vue` |
+| `Variant=destructive \| secondary` | `variant` |
+| `Size=2xsmall \| xsmall \| small` | `size` |
+| `Status=Enabled \| Hovered \| Disabled` | CSS `:hover` (자동) / `disabled` |
+| 본문 텍스트 | 기본 슬롯 |
+| 좌·우 아이콘 | 기본 슬롯 안에 `<lucide />` 직접 (svg 자동 사이즈) |
+| 클릭 | `@click` |
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| 외곽 (텍스트만, 배경 hover만) | `TextButton` 내부 `<button>` (`textButtonVariants`) |
+| 본문 텍스트 | 기본 슬롯 |
+| 좌·우 아이콘 자리 | 슬롯 내부에 직접 배치 (svg 사이즈 토큰 자동) |
+
+### Figma 변수
+
+| Figma 변수 | 의미 / 사용 위치 | upbox-ui 매핑 |
+|------------|------------------|---------------|
+| `status/fail, nagative` (`red-80`) | destructive 텍스트 | `text-red-80` |
+| `primitive/red-20` | destructive hover 배경 | `hover:bg-red-20` |
+| `primitive/grey-60` | secondary 텍스트 | `text-grey-60` |
+| `primitive/grey-20` | secondary hover 배경 | `hover:bg-grey-20` |
+| `2xsmall=20` | 높이 (`h-[20px]`) + svg `16` | `size="2xsmall"` |
+| `xsmall=24` | 높이 (`h-[24px]`) + svg `20` | `size="xsmall"` |
+| `small=32` | 높이 (`h-[32px]`) + svg `24` | `size="small"` |
+| `padding/padding-{2,4,8}` | 사이즈별 좌우·상하 padding | `px-[4]` (`2xsmall`/`xsmall`) / `px-[8] py-[4]` (`small`) |
+| `Body/body5-sb` (12/16) | `2xsmall` 본문 | `text-size-12` |
+| `Body/body3-sb` (14/20) | `xsmall` 본문 | `text-size-14` |
+| `Body/body1` (16/24) | `small` 본문 | `text-size-16` |
+| `font/weight/Bold` | 본문 폰트 굵기 | `font-bold` |
+| 모서리 `2` / `3` / `4` | 사이즈별 둥글기 | `rounded-[2px]` / `rounded-[3px]` / `rounded-[4px]` |
+
+---
+
+## `iconButton`
+
+| 피그마 | Vue |
+|--------|-----|
+| 노드 `3228:14621` | — |
+| 컴포넌트 | `IconButton.vue` |
+| `Variant=primary \| destructive \| secondary \| tertiary` | `variant` |
+| `Size=2xsmall \| xsmall \| small \| regular \| large \| xlarge` | `size` |
+| 비활성 | `disabled` |
+| 아이콘 | 기본 슬롯 (`<lucide />`, 사이즈는 토큰 자동) |
+| 클릭 | `@click` |
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| 외곽 (정사각형 + 배경 + radius) | `IconButton` 내부 `<button>` (`iconButtonVariants`) |
+| 중앙 아이콘 자리 | 기본 슬롯 (`size-[12\|16\|20\|24]px` 자동) |
+
+### Figma 변수
+
+| Figma 변수 | 의미 / 사용 위치 | upbox-ui 매핑 |
+|------------|------------------|---------------|
+| `primitive/blue-20` | primary 배경 | `bg-blue-20` (hover `blue-30`, active `blue-40`) |
+| `primitive/red-20` | destructive 배경 | `bg-red-20` (hover `red-30`, active `red-40`) |
+| `primitive/grey-20` | secondary 배경 | `bg-grey-20` (hover `grey-30`, active `grey-40`) |
+| `primitive/grey-10` | tertiary 배경 | `bg-grey-10` (hover `grey-20`, active `grey-30`) |
+| `primitive/grey-40` | tertiary border | `border-grey-40` |
+| `2xsmall=20` | `size-[20px]` + 아이콘 `12` | `size="2xsmall"` |
+| `xsmall=24` | `size-[24px]` + 아이콘 `16` | `size="xsmall"` |
+| `small=32` | `size-[32px]` + 아이콘 `20` | `size="small"` |
+| `regular=40` | `size-[40px]` + 아이콘 `20` | `size="regular"` |
+| `large=48` | `size-[48px]` + 아이콘 `24` | `size="large"` |
+| `xlarge=56` | `size-[56px]` + 아이콘 `24` | `size="xlarge"` |
+| 모서리 `2` (2xsmall) / `3` (xsmall) / `4` (small 이상) | 사이즈별 둥글기 | `rounded-[2\|3\|4]px` |
 
 ---
 
