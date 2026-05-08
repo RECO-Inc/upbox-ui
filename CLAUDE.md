@@ -83,6 +83,12 @@ import preset from '@reco-inc/upbox-ui/tailwind-preset'
 export default { presets: [preset] }
 ```
 
+### 4. DESIGN.md (루트, AI 디자인 툴 입력용)
+
+루트 `DESIGN.md`는 AI 디자인 툴(v0 / Stitch / Figma Make 등) 입력 및 디자인 의도/철학 문서. frontmatter YAML(토큰) + 본문(컨셉·shape 언어·컴포넌트 의도) 구조.
+
+**동기화 룰:** `tokens.css` / `style.css` / `tailwind-preset.*` 의 토큰 값(색상 hex, spacing, shadow, radius)이나 의미 매핑(semantic alias)을 수정하면 **같은 PR에서 `DESIGN.md` frontmatter도 함께 갱신한다.** 컴포넌트 추가·삭제·prop API 변경은 동기화 의무 대상이 아니다(Storybook과 소스 코드가 단일 진실).
+
 ## Consumer Projects
 
 이 라이브러리를 사용하는 프로젝트 (모두 Tailwind v4):
