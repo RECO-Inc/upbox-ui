@@ -32,7 +32,8 @@
     "src/style.css",
     "tailwind-preset.cjs",
     "tailwind-preset.mjs",
-    "tailwind-theme.css"
+    "tailwind-theme.css",
+    "FigmaConnect.md"
   ],
   "sideEffects": [
     "*.css"

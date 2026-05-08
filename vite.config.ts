@@ -5,10 +5,22 @@ import tailwindcss from '@tailwindcss/vite';
 import dts from 'vite-plugin-dts';
 import { resolve } from 'path';
 import path from 'node:path';
+import { copyFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
 const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
+
+const copyFigmaConnect = () => ({
+  name: 'copy-figma-connect',
+  apply: 'build' as const,
+  closeBundle() {
+    copyFileSync(
+      resolve(dirname, 'FigmaConnect.md'),
+      resolve(dirname, 'dist/FigmaConnect.md'),
+    );
+  },
+});
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
@@ -17,7 +29,7 @@ export default defineConfig({
     cleanVueFileName: true,
     insertTypesEntry: true,
     copyDtsFiles: true,
-  })],
+  }), copyFigmaConnect()],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src')
