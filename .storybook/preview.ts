@@ -70,7 +70,7 @@ const preview: Preview = {
           'Foundations',
           ['Token System'],
           'Patterns',
-          ['Field & InputFrame', 'Compound Picker', 'Toast Integration'],
+          ['Field & InputFrame', 'Compound Picker', 'Sidebar Integration', 'Toast Integration'],
           'Tokens',
           'Components',
         ],

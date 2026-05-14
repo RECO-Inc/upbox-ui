@@ -26,6 +26,7 @@
 | `3619:27807` | [`dateInput`](#dateinput) | `DatePicker` / `DatePeriodPicker` / `MobileDatePicker` / `MobileDatePeriodPicker` |
 | `3623:26811` | [`timeInput`](#timeinput) | `TimePicker` / `MobileTimePicker` |
 | `3837:27148` | [`select`](#select) | `Select` / `SelectTrigger` |
+| `4038:38723` | [`toast`](#toast) | `Toast` |
 | `12247:7978` | [`periodInput` (mobile)](#mobiledateperiodselector) | `MobileDatePeriodSelector` |
 | `12247:8094` | [`periodCalendar` (mobile)](#periodcalendar-mobile) | `MobilePeriodCalendar` |
 | `12247:8592` | [`dateCalendar` (mobile)](#datecalendar-mobile) | `MobileDateCalendar` |
@@ -992,6 +993,50 @@
 | `Body/body4-sb` (13/20) | small 본문 | `text-size-13` |
 | `Body/body5-b` (12/16, bold) | selected_multi count | `font-bold leading-[16px]` |
 | icon `16` / `20` | xsmall / small 우측 아이콘 (X · ChevronDown) | `size-[16px]` / `size-[20px]` |
+
+---
+
+## `toast`
+
+| 피그마 | Vue |
+|--------|-----|
+| 노드 `4038:38723` (Toast 페이지) | — |
+| 컴포넌트 | `Toast.vue` (vue-sonner Toaster wrapper) |
+| `state=success` | `toast.success(...)` |
+| `state=error` | `toast.error(...)` |
+| `state=infrom` (info) | `toast.info(...)` |
+| `state=warning` | `toast.warning(...)` |
+| 제목 (16/Bold 24 leading) | 첫 인자 string |
+| 부연 설명 (13/Regular 20 leading) | `{ description }` 옵션 |
+| 액션 버튼 (Bold 16, 밑줄, white) | `{ action: { label, onClick } }` 옵션 |
+| 닫기 X (24px) | `{ closeButton: true }` 또는 자동 dismiss |
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| 컨테이너 (앱 루트 한 번) | `<Toast />` 마운트 |
+| 토스트 카드 (396px 폭, rounded-8, px16/py8, drop-shadow) | `toastOptions.classes.toast` |
+| 좌측 24px 아이콘 (check_circle / cancel / info) | sonner 자동 + `toastOptions.classes.icon` |
+| 제목 행 (Bold 16/24, 흰색) | `toastOptions.classes.title` |
+| 설명 행 (Regular 13/20, 흰색) | `toastOptions.classes.description` |
+| 액션 텍스트 버튼 (밑줄) | `toastOptions.classes.actionButton` |
+
+### Figma 변수
+
+| Figma 변수 | 의미 / 사용 위치 | upbox-ui 매핑 |
+|------------|------------------|---------------|
+| `primitive/green-80` (#1a8766) | success 배경 | `bg-status-positive` |
+| `primitive/red-80` (#e11d1d) | error 배경 | `bg-status-negative` |
+| `primitive/blue-80` (#06f) | info 배경 | `bg-status-informative` |
+| `primitive/orange-80` | warning 배경 | `bg-status-warning` |
+| `primitive/grey-10` | 전체 텍스트 (제목·설명·아이콘) | `text-grey-10` |
+| `Body/body1-b` (16/24, bold) | 제목 폰트 | `text-size-16 leading-[24px] font-bold` |
+| `Body/body4-r` (13/20, regular) | 설명 폰트 | `text-size-13 leading-[20px] font-normal` |
+| `padding/16-8` | 컨테이너 좌우 16 · 상하 8 | `px-[16px] py-[8px]` |
+| `radius/8` | 카드 모서리 | `rounded-[8px]` |
+| `shadow/4-15` (0px 4 15 rgba(85,92,108,0.1)) | drop shadow | `shadow-[0_4px_15px_rgba(85,92,108,0.1)]` |
+| icon `24` | 좌측 status 아이콘 | `size-[24px]` |
 
 ---
 

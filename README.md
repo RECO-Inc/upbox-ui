@@ -61,13 +61,13 @@ import { Button, Card, CardHeader, CardTitle, CardContent } from '@reco-inc/upbo
 
 | Category | Components |
 |----------|-----------|
-| General | Button, IconButton, TextButton, Fab, Badge, BadgeDivider, Tag, Spinner, Skeleton, Empty, Stepper |
+| General | Button, IconButton, TextButton, Fab, Badge, BadgeDivider, Tag, Chip, Spinner, Skeleton, Empty, Stepper |
 | Form | TextField, Textarea, NumberField, SearchField, Checkbox, Toggle, RadioGroup, Select, Label, FieldContainer (vee-validate), InputFrame, InputGroup |
 | Data Display | Card, Table, Accordion, Avatar, Tabs, Separator |
-| Overlay | Dialog, Sheet, Drawer, Popover, Tooltip, Sonner |
+| Overlay | Dialog, Sheet, Drawer, Popover, Tooltip, Toast |
 | Navigation | Breadcrumb, Pagination, Sidebar, DropdownMenu |
 | Filter | DropdownFilter |
-| Date | Calendar, DatePicker, DatePeriodPicker, TimePicker (+ Mobile variants) |
+| Date | Calendar, DatePicker, DatePeriodPicker, TimePicker, DateMove (+ Mobile variants) |
 | File | FileUploader |
 
 ## Design Tokens
