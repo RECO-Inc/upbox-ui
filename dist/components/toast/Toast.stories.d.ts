@@ -1,11 +1,15 @@
 import { StoryObj } from '@storybook/vue3-vite';
 declare const meta: {
     title: string;
-    component: import('vue').DefineComponent<import('vue-sonner').ToasterProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue-sonner').ToasterProps> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+    component: import('vue').DefineComponent<import('vue-sonner').ToasterProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue-sonner').ToasterProps> & Readonly<{}>, {
+        position: "top-left" | "top-right" | "bottom-left" | "bottom-right" | "top-center" | "bottom-center";
+    }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
     tags: string[];
     decorators: (() => {
         components: {
-            Toast: import('vue').DefineComponent<import('vue-sonner').ToasterProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue-sonner').ToasterProps> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+            Toast: import('vue').DefineComponent<import('vue-sonner').ToasterProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue-sonner').ToasterProps> & Readonly<{}>, {
+                position: "top-left" | "top-right" | "bottom-left" | "bottom-right" | "top-center" | "bottom-center";
+            }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
         };
         template: string;
     })[];

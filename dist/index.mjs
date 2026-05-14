@@ -10034,7 +10034,7 @@ const tp = /* @__PURE__ */ Me(ld, [["render", nd]]), ap = /* @__PURE__ */ m({
     id: {},
     invert: { type: Boolean },
     theme: {},
-    position: {},
+    position: { default: "top-center" },
     closeButtonPosition: {},
     hotkey: {},
     richColors: { type: Boolean },
