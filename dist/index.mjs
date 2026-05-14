@@ -9333,7 +9333,7 @@ const wi = /* @__PURE__ */ m({
       }, null, 8, ["style"])
     ], 2));
   }
-}), ad = ["data-state"], sd = { class: "flex min-w-0 flex-col py-[4px] overflow-hidden" }, Jc = /* @__PURE__ */ m({
+}), ad = ["data-state"], sd = { class: "flex min-w-0 flex-col gap-[8px] py-[16px] overflow-hidden" }, Jc = /* @__PURE__ */ m({
   __name: "SidebarMenuSub",
   props: {
     open: { type: Boolean, default: !0 },

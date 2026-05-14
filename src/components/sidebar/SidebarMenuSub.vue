@@ -24,7 +24,7 @@ const props = withDefaults(
       props.class,
     )"
   >
-    <ul class="flex min-w-0 flex-col py-[4px] overflow-hidden">
+    <ul class="flex min-w-0 flex-col gap-[8px] py-[16px] overflow-hidden">
       <slot />
     </ul>
   </div>
