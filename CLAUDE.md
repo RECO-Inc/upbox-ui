@@ -97,9 +97,9 @@ Primitive를 참조하는 의미 기반 토큰:
 
 | 프로젝트 | Tailwind | 비고 |
 |---------|---------|------|
-| Upbox-2.0-Front-Boilerplate | v4 (`@tailwindcss/vite` ^4.2) | `@theme` 정의 + `@source`로 dist 스캔 |
+| Upbox-2.0-Front-Boilerplate | v4 (`@tailwindcss/vite` ^4.2) | `style.css` + `theme.css` import + `@source` dist 스캔 |
 | Upbox-2.0-Customer-Report | v4 (`@tailwindcss/vite` ^4.2) | 동일 |
-| Upbox-2.0-Front-Application | v4 (`@tailwindcss/vite` ^4.2) | 동일 |
+| Upbox-2.0-Front-Application | v4 (`@tailwindcss/vite` ^4.2) | 동일 + 앱 전용 `@theme` 추가 |
 
 ### Tailwind v4 컨슈머 주의사항
 
