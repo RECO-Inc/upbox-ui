@@ -1,9 +1,9 @@
 import { ComputedRef, Ref } from 'vue';
 export declare const SIDEBAR_COOKIE_NAME = "sidebar_state";
 export declare const SIDEBAR_COOKIE_MAX_AGE: number;
-export declare const SIDEBAR_WIDTH = "16rem";
-export declare const SIDEBAR_WIDTH_MOBILE = "18rem";
-export declare const SIDEBAR_WIDTH_ICON = "3rem";
+export declare const SIDEBAR_WIDTH = "220px";
+export declare const SIDEBAR_WIDTH_MOBILE = "220px";
+export declare const SIDEBAR_WIDTH_ICON = "88px";
 export declare const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 export declare const useSidebar: <T extends {
     state: ComputedRef<"expanded" | "collapsed">;

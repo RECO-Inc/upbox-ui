@@ -2,7 +2,6 @@
 import type { HTMLAttributes } from "vue"
 import { PanelLeft } from "lucide-vue-next"
 import { cn } from "../../lib/utils"
-import IconButton from '../icon-button/IconButton.vue'
 import { useSidebar } from "./utils"
 
 const props = defineProps<{
@@ -13,14 +12,19 @@ const { toggleSidebar } = useSidebar()
 </script>
 
 <template>
-  <IconButton
+  <button
+    type="button"
     data-sidebar="trigger"
-    variant="secondary"
-    size="small"
-    :class="cn('size-[28px] rounded-[4px] [&_svg]:size-[16px]', props.class)"
+    :class="cn(
+      'inline-flex size-[28px] items-center justify-center rounded-[4px] text-grey-90 cursor-pointer transition-colors',
+      'hover:bg-grey-20 active:bg-grey-30',
+      'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-cta-primary',
+      'disabled:pointer-events-none disabled:opacity-50',
+      props.class,
+    )"
     @click="toggleSidebar"
   >
-    <PanelLeft class="text-grey-90" />
+    <PanelLeft class="size-[20px]" />
     <span class="sr-only">Toggle Sidebar</span>
-  </IconButton>
+  </button>
 </template>

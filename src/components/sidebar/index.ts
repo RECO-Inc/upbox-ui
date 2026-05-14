@@ -36,18 +36,18 @@ export { default as SidebarTrigger } from "./SidebarTrigger.vue"
 export { useSidebar } from "./utils"
 
 export const sidebarMenuButtonVariants = cva(
-  "peer/menu-button flex w-full items-center gap-[16px] overflow-hidden rounded-sm p-[16px] text-left font-bold outline-hidden transition-[background-color,color] duration-200 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-[32px] aria-disabled:pointer-events-none aria-disabled:opacity-50 group-data-[collapsible=icon]:size-![32px] group-data-[collapsible=icon]:!p-[8px] group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:gap-0 [&>span:last-child]:truncate [&>svg]:size-[16px] [&>svg]:shrink-0 hover:bg-navy-20 data-[active=true]:bg-navy-80 data-[active=true]:text-grey-10 data-[active=true]:font-bold data-[active=true]:[&>svg]:text-grey-10",
+  "peer/menu-button flex h-[54px] w-full items-center gap-[12px] overflow-hidden rounded-[4px] p-[16px] text-left text-grey-60 font-bold cursor-pointer outline-hidden transition-[background-color,color] duration-200 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed group-has-[[data-sidebar=menu-action]]/menu-item:pr-[32px] aria-disabled:pointer-events-none aria-disabled:opacity-50 group-data-[collapsible=icon]:h-[54px] group-data-[collapsible=icon]:w-[56px] group-data-[collapsible=icon]:!p-[16px] group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:gap-0 [&>span:last-child]:truncate [&>svg]:size-[24px] [&>svg]:shrink-0 hover:bg-navy-20 data-[active=true]:bg-cta-primary data-[active=true]:text-grey-10 data-[active=true]:font-bold data-[active=true]:[&>svg]:text-grey-10",
   {
     variants: {
       variant: {
         default: "hover:bg-navy-20",
         outline:
-          "bg-grey-10 shadow-[0_0_0_1px_hsl(var(--grey-40))] hover:bg-navy-20 hover:shadow-[0_0_0_1px_hsl(var(--grey-30))]",
+          "bg-grey-10 border border-grey-40 hover:bg-navy-20 hover:border-grey-30",
       },
       size: {
-        regular: "text-size-16",
-        small: "text-size-14",
-        large: "text-size-18 group-data-[collapsible=icon]:p-0!",
+        regular: "text-size-16 leading-[24px]",
+        small: "text-size-14 leading-[20px]",
+        large: "text-size-18 leading-[26px]",
       },
     },
     defaultVariants: {
