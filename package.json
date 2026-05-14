@@ -21,17 +21,11 @@
     "./global": {
       "types": "./dist/global.d.ts"
     },
-    "./tailwind-preset": {
-      "import": "./tailwind-preset.mjs",
-      "require": "./tailwind-preset.cjs"
-    },
     "./tailwind-theme.css": "./tailwind-theme.css"
   },
   "files": [
     "dist",
     "src/style.css",
-    "tailwind-preset.cjs",
-    "tailwind-preset.mjs",
     "tailwind-theme.css",
     "FigmaConnect.md"
   ],

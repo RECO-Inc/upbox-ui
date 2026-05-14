@@ -16,30 +16,19 @@ npm install git+https://github.com/RECO-Inc/upbox-ui.git
 pnpm add git+https://github.com/RECO-Inc/upbox-ui.git
 ```
 
-## Setup
+## Setup (Tailwind v4)
 
-### 1. Tailwind Config
-
-```js
-// tailwind.config.cjs
-module.exports = {
-  presets: [require('@reco-inc/upbox-ui/tailwind-preset')],
-  content: [
-    './src/**/*.{vue,ts}',
-    './node_modules/@reco-inc/upbox-ui/dist/**/*.mjs',
-  ],
-}
-```
-
-### 2. CSS Import
+### 1. CSS Import
 
 ```css
 /* style.css */
-@import "@reco-inc/upbox-ui/style.css";
-@source "../../node_modules/@reco-inc/upbox-ui/dist/**/*.mjs";
+@import "tailwindcss";
+@import "@reco-inc/upbox-ui/style.css";   /* 컴파일된 라이브러리 CSS */
+@import "@reco-inc/upbox-ui/theme.css";   /* @theme 토큰 등록 */
+@source "../node_modules/@reco-inc/upbox-ui/dist/**/*.mjs";
 ```
 
-### 3. Vue Template Autocomplete (권장)
+### 2. Vue Template Autocomplete (권장)
 
 Consumer 프로젝트의 `env.d.ts` 또는 `vite-env.d.ts`에 추가:
 
@@ -49,7 +38,7 @@ Consumer 프로젝트의 `env.d.ts` 또는 `vite-env.d.ts`에 추가:
 
 이렇게 하면 `.vue` 파일 `<template>`에서 컴포넌트 자동완성이 동작합니다.
 
-### 4. Use Components
+### 3. Use Components
 
 ```vue
 <script setup lang="ts">
