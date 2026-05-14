@@ -56,10 +56,10 @@ export const Variants: Story = {
         <div>
           <p class="text-size-13 text-grey-60 mb-[8px]">Outlined</p>
           <div class="flex flex-wrap gap-[12px] items-center">
-            <Button variant="primary" buttonStyle="outlined">Primary</Button>
-            <Button variant="destructive" buttonStyle="outlined">Destructive</Button>
-            <Button variant="secondary" buttonStyle="outlined">Secondary</Button>
-            <Button variant="tertiary" buttonStyle="outlined">Tertiary</Button>
+            <Button variant="primary" theme="outlined">Primary</Button>
+            <Button variant="destructive" theme="outlined">Destructive</Button>
+            <Button variant="secondary" theme="outlined">Secondary</Button>
+            <Button variant="tertiary" theme="outlined">Tertiary</Button>
           </div>
         </div>
       </div>
@@ -108,10 +108,10 @@ export const Disabled: Story = {
         <div>
           <p class="text-size-13 text-grey-60 mb-[8px]">Outlined</p>
           <div class="flex flex-wrap gap-[12px] items-center">
-            <Button variant="primary" buttonStyle="outlined" disabled>Primary</Button>
-            <Button variant="destructive" buttonStyle="outlined" disabled>Destructive</Button>
-            <Button variant="secondary" buttonStyle="outlined" disabled>Secondary</Button>
-            <Button variant="tertiary" buttonStyle="outlined" disabled>Tertiary</Button>
+            <Button variant="primary" theme="outlined" disabled>Primary</Button>
+            <Button variant="destructive" theme="outlined" disabled>Destructive</Button>
+            <Button variant="secondary" theme="outlined" disabled>Secondary</Button>
+            <Button variant="tertiary" theme="outlined" disabled>Tertiary</Button>
           </div>
         </div>
       </div>
@@ -136,7 +136,7 @@ export const WithIcons: Story = {
         <Button>
           <Search class="w-[16px] h-[16px]" />
         </Button>
-        <Button buttonStyle="outlined">
+        <Button theme="outlined">
           <Plus class="w-[16px] h-[16px] mr-[4px]" />
           Add Item
         </Button>

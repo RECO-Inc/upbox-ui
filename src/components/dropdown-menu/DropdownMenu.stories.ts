@@ -11,6 +11,7 @@ import DropdownMenuSub from './DropdownMenuSub.vue'
 import DropdownMenuSubTrigger from './DropdownMenuSubTrigger.vue'
 import DropdownMenuSubContent from './DropdownMenuSubContent.vue'
 import DropdownMenuShortcut from './DropdownMenuShortcut.vue'
+import { Button } from '../button'
 
 const meta = {
   title: 'Components/DropdownMenu',
@@ -30,14 +31,13 @@ export const Default: Story = {
       DropdownMenuItem,
       DropdownMenuLabel,
       DropdownMenuSeparator,
+      Button,
     },
     template: `
       <div class="flex justify-center p-[32px]">
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Open Menu
-            </button>
+          <DropdownMenuTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Open Menu</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -64,14 +64,13 @@ export const WithShortcuts: Story = {
       DropdownMenuLabel,
       DropdownMenuSeparator,
       DropdownMenuShortcut,
+      Button,
     },
     template: `
       <div class="flex justify-center p-[32px]">
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Open Menu
-            </button>
+          <DropdownMenuTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Open Menu</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent class="w-[224px]">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -109,14 +108,13 @@ export const WithCheckboxItems: Story = {
       DropdownMenuCheckboxItem,
       DropdownMenuLabel,
       DropdownMenuSeparator,
+      Button,
     },
     template: `
       <div class="flex justify-center p-[32px]">
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              View Options
-            </button>
+          <DropdownMenuTrigger as-child>
+            <Button variant="tertiary" theme="outlined">View Options</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent class="w-[224px]">
             <DropdownMenuLabel>Appearance</DropdownMenuLabel>
@@ -144,14 +142,13 @@ export const WithSubMenu: Story = {
       DropdownMenuSub,
       DropdownMenuSubTrigger,
       DropdownMenuSubContent,
+      Button,
     },
     template: `
       <div class="flex justify-center p-[32px]">
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Open Menu
-            </button>
+          <DropdownMenuTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Open Menu</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent class="w-[224px]">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -184,14 +181,13 @@ export const WithDisabledItems: Story = {
       DropdownMenuContent,
       DropdownMenuItem,
       DropdownMenuSeparator,
+      Button,
     },
     template: `
       <div class="flex justify-center p-[32px]">
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Open Menu
-            </button>
+          <DropdownMenuTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Open Menu</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuItem>Profile</DropdownMenuItem>

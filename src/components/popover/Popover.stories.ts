@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import Popover from './Popover.vue'
 import PopoverTrigger from './PopoverTrigger.vue'
 import PopoverContent from './PopoverContent.vue'
+import { Button } from '../button'
+import { TextField } from '../text-field'
 
 const meta = {
   title: 'Components/Popover',
@@ -14,14 +16,12 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => ({
-    components: { Popover, PopoverTrigger, PopoverContent },
+    components: { Popover, PopoverTrigger, PopoverContent, Button },
     template: `
       <div class="flex justify-center p-[64px]">
         <Popover>
-          <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Open Popover
-            </button>
+          <PopoverTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Open Popover</Button>
           </PopoverTrigger>
           <PopoverContent>
             <p class="text-sm font-semibold mb-[4px]">Popover Title</p>
@@ -35,14 +35,12 @@ export const Default: Story = {
 
 export const Alignments: Story = {
   render: () => ({
-    components: { Popover, PopoverTrigger, PopoverContent },
+    components: { Popover, PopoverTrigger, PopoverContent, Button },
     template: `
       <div class="flex gap-[24px] justify-center p-[64px]">
         <Popover>
-          <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Start
-            </button>
+          <PopoverTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Start</Button>
           </PopoverTrigger>
           <PopoverContent align="start">
             <p class="text-sm font-semibold mb-[4px]">Align Start</p>
@@ -50,10 +48,8 @@ export const Alignments: Story = {
           </PopoverContent>
         </Popover>
         <Popover>
-          <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Center
-            </button>
+          <PopoverTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Center</Button>
           </PopoverTrigger>
           <PopoverContent align="center">
             <p class="text-sm font-semibold mb-[4px]">Align Center</p>
@@ -61,10 +57,8 @@ export const Alignments: Story = {
           </PopoverContent>
         </Popover>
         <Popover>
-          <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              End
-            </button>
+          <PopoverTrigger as-child>
+            <Button variant="tertiary" theme="outlined">End</Button>
           </PopoverTrigger>
           <PopoverContent align="end">
             <p class="text-sm font-semibold mb-[4px]">Align End</p>
@@ -78,44 +72,36 @@ export const Alignments: Story = {
 
 export const Sides: Story = {
   render: () => ({
-    components: { Popover, PopoverTrigger, PopoverContent },
+    components: { Popover, PopoverTrigger, PopoverContent, Button },
     template: `
       <div class="flex gap-[24px] flex-wrap justify-center p-[64px]">
         <Popover>
-          <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Top
-            </button>
+          <PopoverTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Top</Button>
           </PopoverTrigger>
           <PopoverContent side="top">
             <p class="text-sm">Opens above</p>
           </PopoverContent>
         </Popover>
         <Popover>
-          <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Bottom
-            </button>
+          <PopoverTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Bottom</Button>
           </PopoverTrigger>
           <PopoverContent side="bottom">
             <p class="text-sm">Opens below</p>
           </PopoverContent>
         </Popover>
         <Popover>
-          <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Left
-            </button>
+          <PopoverTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Left</Button>
           </PopoverTrigger>
           <PopoverContent side="left">
             <p class="text-sm">Opens left</p>
           </PopoverContent>
         </Popover>
         <Popover>
-          <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Right
-            </button>
+          <PopoverTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Right</Button>
           </PopoverTrigger>
           <PopoverContent side="right">
             <p class="text-sm">Opens right</p>
@@ -128,14 +114,12 @@ export const Sides: Story = {
 
 export const WithForm: Story = {
   render: () => ({
-    components: { Popover, PopoverTrigger, PopoverContent },
+    components: { Popover, PopoverTrigger, PopoverContent, Button, TextField },
     template: `
       <div class="flex justify-center p-[64px]">
         <Popover>
-          <PopoverTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Edit Profile
-            </button>
+          <PopoverTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Edit Profile</Button>
           </PopoverTrigger>
           <PopoverContent class="w-[320px]">
             <div class="grid gap-[16px]">
@@ -146,11 +130,11 @@ export const WithForm: Story = {
               <div class="grid gap-[8px]">
                 <div class="grid grid-cols-3 items-center gap-[16px]">
                   <label class="text-sm text-right">Width</label>
-                  <input class="col-span-2 h-[32px] rounded-sm border border-grey-40 px-[8px] text-sm" placeholder="100px" />
+                  <div class="col-span-2"><TextField size="small" placeholder="100px" /></div>
                 </div>
                 <div class="grid grid-cols-3 items-center gap-[16px]">
                   <label class="text-sm text-right">Height</label>
-                  <input class="col-span-2 h-[32px] rounded-sm border border-grey-40 px-[8px] text-sm" placeholder="auto" />
+                  <div class="col-span-2"><TextField size="small" placeholder="auto" /></div>
                 </div>
               </div>
             </div>

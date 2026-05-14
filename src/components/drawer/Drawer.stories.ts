@@ -6,6 +6,7 @@ import DrawerTitle from './DrawerTitle.vue'
 import DrawerDescription from './DrawerDescription.vue'
 import DrawerFooter from './DrawerFooter.vue'
 import { DrawerTrigger, DrawerClose } from 'vaul-vue'
+import { Button } from '../button'
 
 const meta = {
   title: 'Components/Drawer',
@@ -18,14 +19,12 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => ({
-    components: { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerTrigger, DrawerClose },
+    components: { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerTrigger, DrawerClose, Button },
     template: `
       <div class="flex justify-center p-[32px]">
         <Drawer>
           <DrawerTrigger as-child>
-            <button class="px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded-sm font-bold text-size-14">
-              Open Drawer
-            </button>
+            <Button variant="primary">Open Drawer</Button>
           </DrawerTrigger>
           <DrawerContent>
             <DrawerHeader>
@@ -39,14 +38,10 @@ export const Default: Story = {
             </div>
             <DrawerFooter>
               <DrawerClose as-child>
-                <button class="w-full px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded-sm font-bold text-size-14">
-                  Confirm
-                </button>
+                <Button variant="primary" block>Confirm</Button>
               </DrawerClose>
               <DrawerClose as-child>
-                <button class="w-full px-[16px] py-[8px] border border-grey-40 text-grey-70 rounded-sm font-bold text-size-14">
-                  Cancel
-                </button>
+                <Button variant="tertiary" theme="outlined" block>Cancel</Button>
               </DrawerClose>
             </DrawerFooter>
           </DrawerContent>
@@ -58,14 +53,12 @@ export const Default: Story = {
 
 export const WithLongContent: Story = {
   render: () => ({
-    components: { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerTrigger, DrawerClose },
+    components: { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter, DrawerTrigger, DrawerClose, Button },
     template: `
       <div class="flex justify-center p-[32px]">
         <Drawer>
           <DrawerTrigger as-child>
-            <button class="px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded-sm font-bold text-size-14">
-              Open Long Drawer
-            </button>
+            <Button variant="primary">Open Long Drawer</Button>
           </DrawerTrigger>
           <DrawerContent>
             <DrawerHeader>
@@ -88,9 +81,7 @@ export const WithLongContent: Story = {
             </div>
             <DrawerFooter>
               <DrawerClose as-child>
-                <button class="w-full px-[16px] py-[8px] bg-navy-80 text-grey-10 rounded-sm font-bold text-size-14">
-                  Accept
-                </button>
+                <Button variant="primary" block>Accept</Button>
               </DrawerClose>
             </DrawerFooter>
           </DrawerContent>

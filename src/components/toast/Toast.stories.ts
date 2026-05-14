@@ -52,10 +52,10 @@ export const States: Story = {
     },
     template: `
       <div class="flex flex-wrap gap-[12px]">
-        <Button variant="positive" @click="showSuccess">Success</Button>
-        <Button variant="error" @click="showError">Error</Button>
-        <Button variant="info" @click="showInfo">Info</Button>
-        <Button variant="usually" @click="showWarning">Warning</Button>
+        <Button variant="primary" @click="showSuccess">Success</Button>
+        <Button variant="destructive" @click="showError">Error</Button>
+        <Button variant="secondary" @click="showInfo">Info</Button>
+        <Button variant="tertiary" @click="showWarning">Warning</Button>
       </div>
     `,
   }),
@@ -131,7 +131,7 @@ export const CustomDuration: Story = {
     template: `
       <div class="flex gap-[12px]">
         <Button variant="primary" @click="showLong">Long (10s)</Button>
-        <Button variant="usually" @click="showShort">Short (1.5s)</Button>
+        <Button variant="tertiary" @click="showShort">Short (1.5s)</Button>
       </div>
     `,
   }),

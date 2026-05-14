@@ -21,7 +21,7 @@ export const Default: Story = {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger as-child>
-            <Button variant="assistant">Hover me</Button>
+            <Button variant="tertiary" theme="outlined">Hover me</Button>
           </TooltipTrigger>
           <TooltipContent>
             <p>Tooltip content</p>
@@ -39,19 +39,19 @@ export const Positions: Story = {
       <TooltipProvider>
         <div class="flex gap-[16px] p-[48px]">
           <Tooltip>
-            <TooltipTrigger as-child><Button variant="assistant">Top</Button></TooltipTrigger>
+            <TooltipTrigger as-child><Button variant="tertiary" theme="outlined">Top</Button></TooltipTrigger>
             <TooltipContent side="top"><p>Top tooltip</p></TooltipContent>
           </Tooltip>
           <Tooltip>
-            <TooltipTrigger as-child><Button variant="assistant">Bottom</Button></TooltipTrigger>
+            <TooltipTrigger as-child><Button variant="tertiary" theme="outlined">Bottom</Button></TooltipTrigger>
             <TooltipContent side="bottom"><p>Bottom tooltip</p></TooltipContent>
           </Tooltip>
           <Tooltip>
-            <TooltipTrigger as-child><Button variant="assistant">Left</Button></TooltipTrigger>
+            <TooltipTrigger as-child><Button variant="tertiary" theme="outlined">Left</Button></TooltipTrigger>
             <TooltipContent side="left"><p>Left tooltip</p></TooltipContent>
           </Tooltip>
           <Tooltip>
-            <TooltipTrigger as-child><Button variant="assistant">Right</Button></TooltipTrigger>
+            <TooltipTrigger as-child><Button variant="tertiary" theme="outlined">Right</Button></TooltipTrigger>
             <TooltipContent side="right"><p>Right tooltip</p></TooltipContent>
           </Tooltip>
         </div>

@@ -29,7 +29,7 @@ export const Default: Story = {
           <p>Card content area. You can put any content here.</p>
         </CardContent>
         <CardFooter class="flex justify-end gap-[8px]">
-          <Button variant="assistant">Cancel</Button>
+          <Button variant="tertiary" theme="outlined">Cancel</Button>
           <Button variant="primary">Save</Button>
         </CardFooter>
       </Card>
