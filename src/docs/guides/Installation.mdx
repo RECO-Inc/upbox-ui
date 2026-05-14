@@ -1,0 +1,122 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Guides/Installation" />
+
+# Installation
+
+## 설치
+
+GitHub URL 직접 참조 방식 (npm registry 미발행):
+
+```bash
+# pnpm (권장)
+pnpm add git+https://github.com/RECO-Inc/upbox-ui.git
+
+# npm
+npm install git+https://github.com/RECO-Inc/upbox-ui.git
+```
+
+> 업데이트 시 pnpm 캐시 때문에 그냥 `pnpm update` 로는 최신 main 이 안 가져와집니다. `pnpm remove @reco-inc/upbox-ui && pnpm add git+...` 로 다시 받기.
+
+## Tailwind v4 셋업 (현재 모든 컨슈머)
+
+Tailwind v4 는 v3 의 `tailwind.config.js` + `presets` 시스템이 아니라 **CSS-first 설정**입니다.
+이 라이브러리의 CSS 변수(`tokens.css`)만으로는 v4 가 자동으로 유틸리티를 생성하지 않으므로, 컨슈머 CSS 엔트리에 두 가지를 직접 선언해야 합니다.
+
+### 1. `@theme` 에 색상/스페이싱 등록
+
+컨슈머의 CSS 엔트리(`style.css` 등)에서:
+
+```css
+@import "tailwindcss";
+@import "@reco-inc/upbox-ui/style.css";
+
+@theme {
+  /* upbox-ui 색상 토큰을 v4 유틸리티로 노출 */
+  --color-grey-10: var(--color-grey-10);
+  --color-grey-20: var(--color-grey-20);
+  --color-grey-30: var(--color-grey-30);
+  /* ... grey-40 ~ grey-100 */
+  --color-navy-20: var(--color-navy-20);
+  /* ... navy / blue / green / red / orange 모두 동일 */
+
+  /* spacing, shadow, radius 등도 동일 패턴 */
+}
+```
+
+> 변수 값은 `@reco-inc/upbox-ui/style.css` 의 `:root` 에 이미 정의되어 있으므로, `@theme` 에서는 `var(...)` 로 재참조만 해도 됩니다.
+
+### 2. `@source` 로 dist 스캔
+
+v4 의 컨텐트 스캐너에 라이브러리의 컴파일된 JS 도 포함시켜야 dist 안의 클래스 문자열이 살아남습니다:
+
+```css
+@source "../node_modules/@reco-inc/upbox-ui/dist/**/*.{js,mjs}";
+```
+
+(경로는 CSS 파일 위치 기준 상대경로)
+
+### 3. Vue 템플릿 자동완성 (권장)
+
+`env.d.ts` 또는 `vite-env.d.ts` 에 추가:
+
+```ts
+/// <reference types="@reco-inc/upbox-ui/global" />
+```
+
+→ `.vue` 의 `<template>` 안에서 `<Button>` 같은 라이브러리 컴포넌트가 import 없이도 인텔리센스에 잡힙니다.
+
+## 사용 예시
+
+```vue
+<script setup lang="ts">
+import { Button, Card, CardHeader, CardTitle, CardContent } from '@reco-inc/upbox-ui'
+</script>
+
+<template>
+  <Card>
+    <CardHeader>
+      <CardTitle>Title</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <Button variant="primary" size="regular">Click</Button>
+    </CardContent>
+  </Card>
+</template>
+```
+
+## 다크 모드
+
+`<html class="dark">` 또는 `<body class="dark">` 클래스 토글만으로 모든 색 토큰이 자동 반전됩니다 (CSS 변수 레이어에서 처리).
+
+## 자주 묻는 문제
+
+### 컴포넌트 색이 안 입혀짐
+
+→ `@theme` 에 컬러 토큰을 등록 안 했거나, `@source` 에 dist 경로가 빠짐. 위의 1·2 단계를 모두 확인.
+
+### 업데이트해도 옛 버전이 잡힘
+
+→ pnpm 의 Git URL 캐싱. `pnpm remove @reco-inc/upbox-ui && pnpm add git+...` 로 강제 재설치.
+
+### v3 의 `tailwind-preset` 은?
+
+→ 레포에 `tailwind-preset.mjs/cjs` 가 남아 있지만 **현재 컨슈머는 모두 v4 라 사용하지 않습니다.** v3 컨슈머 합류 시에만 필요.
+
+### 컴포넌트 수정 후 컨슈머에 반영이 안 됨
+
+라이브러리 측에서:
+
+```bash
+npm run build          # dist/ 재생성
+git add dist/ src/     # dist 도 같이 커밋
+git commit -m "..."
+git push
+```
+
+컨슈머 측에서:
+
+```bash
+pnpm remove @reco-inc/upbox-ui
+pnpm add git+https://github.com/RECO-Inc/upbox-ui.git
+```

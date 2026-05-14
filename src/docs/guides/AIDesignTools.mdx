@@ -1,0 +1,148 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Guides/AI Design Tools" />
+
+# AI Design Tools
+
+upbox-ui 의 토큰 / 컴포넌트 의도를 **AI 디자인 툴(v0, Stitch, Figma Make 등)** 이 이해할 수 있는 형태로 별도 문서로 유지합니다. 이 페이지는 그 도구들을 사용할 때 무엇을 어디서 가져가야 하는지 가이드입니다.
+
+## 두 개의 문서
+
+| 파일 | 용도 |
+|------|------|
+| `DESIGN.md` (루트) | **AI 디자인 툴 입력용.** frontmatter YAML(토큰) + 본문(컨셉, shape 언어, 컴포넌트 의도) |
+| `FigmaConnect.md` (루트) | **Figma 노드 ID ↔ Vue 컴포넌트 매핑.** 디자인 변경 시 어느 컴포넌트가 영향받는지 추적 |
+
+## DESIGN.md
+
+v0 / Stitch / Figma Make 에 붙여넣으면 우리 디자인 시스템 스타일대로 화면을 그려주게 하는 입력 문서.
+
+### 구조
+
+```yaml
+---
+tokens:
+  colors:
+    grey:
+      10: '#FFFFFF'
+      20: '#F8F8F9'
+      # ...
+    navy:
+      80: '#1B233F'
+      # ...
+  spacing: [2, 4, 6, 8, 12, 16, 20, 24, ...]
+  radius: { small: 4, medium: 8 }
+  shadow: { small: ..., regular: ..., medium: ..., large: ... }
+semantic:
+  cta:
+    primary: navy.80
+    destructive: red.80
+  # ...
+---
+
+# Upbox Design Concept
+
+(컨셉, shape 언어, 컴포넌트 의도 본문)
+```
+
+### 동기화 룰 (중요)
+
+> **`tokens.css` / `style.css` / `tailwind-preset.*` 의 토큰 값(hex, spacing, shadow, radius) 이나 의미 매핑(semantic alias) 을 수정하면 같은 PR 에서 `DESIGN.md` frontmatter 도 함께 갱신합니다.**
+
+- 토큰 추가/변경/삭제 → 갱신 의무 **있음**
+- 컴포넌트 추가/삭제/prop API 변경 → 갱신 의무 **없음** (Storybook 과 소스가 단일 진실)
+
+### 사용 예시
+
+1. v0 / Stitch 에 새 화면 작업 요청 시 prompt 앞에 `DESIGN.md` 전체를 붙임
+2. AI 가 우리 팔레트/스페이싱/shape 으로 디자인 출력
+3. 출력 컴포넌트 이름이 우리 라이브러리와 매칭되면 그대로 import 가능
+
+## FigmaConnect.md
+
+Figma 노드 ID 와 우리 Vue 컴포넌트의 prop / 이벤트 / `v-model` 매핑.
+
+### 구조
+
+```markdown
+## 인덱스
+| Figma 노드 | 컴포넌트 | Vue |
+|------------|---------|------|
+| 3568:25144 | filterChips | Chip |
+| 4038:38723 | toast | Toast |
+| ...
+
+---
+
+## filterChips
+| 피그마 | Vue |
+|--------|------|
+| 노드 3568:25144 | Chip |
+| variant=square | round=false |
+| variant=circle | round=true |
+| state=default | state="default" |
+| ...
+
+### 하위 구조
+| 피그마 | Vue |
+|--------|------|
+| chip text | default slot |
+| chip badge | #badge slot |
+| chip X icon | removable=true (emits @remove) |
+```
+
+### 작성 원칙
+
+- **피그마 열**: 우측 Properties 패널의 variant/속성 이름 그대로 (`variant=date`, `state=focused` 등)
+- **Vue 열**: prop 이름, 컴포넌트 파일명, `v-model`, 슬롯명, 이벤트(`@done`) — 코드에서 그대로 쓰이는 식별자
+- **동작/로직 설명 안 함.** 매핑만.
+- 디자인이 바뀌면 **같은 행만 갱신** — 새 속성 추가 시 행 추가, 사라지면 제거
+- 노드 ID(`12247:8602`) 는 피그마 원본을 추적하기 위한 것이므로 유지
+- 표 안에서 `|` 가 필요한 값(예: `small | regular | large`) 은 `\|` 로 이스케이프
+
+### 인덱스 동기화 (중요)
+
+> 컴포넌트(섹션) 추가/삭제/이름 변경/노드 ID 변경 시 `## 인덱스` 표도 같은 PR 에서 함께 갱신. 본문 섹션과 인덱스가 어긋나면 안 됨.
+
+## 워크플로우 예시
+
+### 새 컴포넌트 추가 (Figma → 코드)
+
+1. 디자이너가 Figma 에 새 컴포넌트 추가, 노드 ID 공유
+2. 개발자가 Figma MCP / 스크린샷으로 디자인 확인
+3. Vue 컴포넌트 구현 (`src/components/<name>/`)
+4. `FigmaConnect.md` 인덱스 + 섹션 추가
+5. 토큰 신규 사용 시 `DESIGN.md` frontmatter 점검
+6. `npm run build` + dist 포함 커밋
+
+### 토큰 변경
+
+1. `tokens.css` / `style.css` / `tailwind-preset.*` 갱신
+2. **같은 PR 에서 `DESIGN.md` frontmatter 동기화** (의무)
+3. `FigmaConnect.md` 는 노드 매핑이 바뀌지 않으면 손 안 댐
+4. 영향받는 컴포넌트 시각 검증 (Storybook 으로)
+
+### 디자인 시안 변경 (Figma 만 바뀜)
+
+1. 디자이너가 prop 추가/이름 변경
+2. `FigmaConnect.md` 의 해당 컴포넌트 섹션 행 갱신
+3. Vue 컴포넌트 prop 업데이트
+4. 토큰 값 자체가 바뀌지 않았다면 `DESIGN.md` 는 손 안 댐
+
+## 도구별 팁
+
+### v0 (vercel)
+
+- 프롬프트 맨 앞에 `DESIGN.md` 전체를 코드 블록으로 붙임 (frontmatter 포함)
+- "Use these design tokens. Output Vue 3 + Tailwind v4." 명시
+- 출력이 우리 컴포넌트 이름(`<Button variant="primary">` 등) 으로 나오면 그대로 import
+
+### Stitch (Google)
+
+- 프로젝트 단위로 design system 등록 가능 — `DESIGN.md` 본문을 design system 설명으로 사용
+- 토큰을 변수로 등록하면 모든 화면에 자동 반영
+
+### Figma Make
+
+- 디자인을 Make 로 export 시 우리 토큰 이름이 살아 있도록 `DESIGN.md` 의 semantic alias 를 Figma 변수명과 일치시키는 것이 이상적
+- 노드 ID 가 바뀌면 `FigmaConnect.md` 도 갱신 필요

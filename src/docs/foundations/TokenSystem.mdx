@@ -1,0 +1,125 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Foundations/Token System" />
+
+# Token System
+
+토큰은 **3 layer** 로 구성됩니다. 위 레이어는 아래만 참조하고, 컴포넌트 코드는 **항상 가장 위 레이어 (Tailwind 유틸리티)** 만 사용합니다.
+
+```
+┌────────────────────────────────────────────────────┐
+│ Layer 3: Tailwind utilities                         │  ← 컴포넌트가 사용
+│   bg-grey-80, text-cta-primary, p-[16px], …        │
+└──────────────────┬─────────────────────────────────┘
+                   │
+┌──────────────────┴─────────────────────────────────┐
+│ Layer 2: Semantic tokens (의미 기반)                │
+│   --color-cta-primary, --color-status-positive, …  │
+└──────────────────┬─────────────────────────────────┘
+                   │
+┌──────────────────┴─────────────────────────────────┐
+│ Layer 1: Primitive tokens (Figma 팔레트 그대로)     │
+│   --color-grey-{10..100}, --color-navy-{20..100}, …│
+└────────────────────────────────────────────────────┘
+```
+
+## Layer 1 — Primitive
+
+Figma 디자인 시스템 GENERAL 페이지의 팔레트와 1:1 매칭. CSS 변수로 정의 (`src/tokens.css`, `src/style.css`).
+
+| Figma 팔레트 | CSS 변수 | Tailwind 클래스 |
+|-------------|---------|----------------|
+| Grey | `--color-grey-{10..100}` | `bg-grey-80`, `text-grey-60` |
+| Navy | `--color-navy-{20..100}` | `bg-navy-80`, `text-navy-100` |
+| Blue | `--color-blue-{20..100}` | `bg-blue-80`, `text-blue-60` |
+| Green | `--color-green-{20..100}` | `bg-green-80`, `text-green-70` |
+| Red | `--color-red-{20..100}` | `bg-red-80`, `text-red-70` |
+| Orange | `--color-orange-{20..100}` | `bg-orange-80`, `text-orange-60` |
+
+> ⚠️ **네이밍 변경 history (2026-03):** 이전엔 `base/primary/info/positive/error/warning` 였으나 Figma 기준으로 `grey/navy/blue/green/red/orange` 로 통일됨. 컨슈머에서 옛 이름을 쓰고 있으면 마이그레이션 필요.
+
+좌측 사이드바 `Tokens/Colours` 에 모든 색상 시각 자료가 있습니다.
+
+## Layer 2 — Semantic
+
+Primitive 를 참조하는 의미 기반 alias. 디자인 의도를 코드에 박는 용도.
+
+### CTA (행동)
+
+| Token | 매핑 | 용도 |
+|-------|------|------|
+| `--color-cta-primary` | `navy-80` | 핵심 행동 (저장, 확인) |
+| `--color-cta-destructive` | `red-80` | 파괴적 행동 (삭제) |
+| `--color-cta-secondary` | `grey-60` | 보조 행동 |
+| `--color-cta-tertiary` | `grey-30` | 최소 행동 (ghost, 옵션) |
+
+### Label / Background
+
+| Token | 매핑 |
+|-------|------|
+| `--color-label-1` | `grey-60` (보조 라벨) |
+| `--color-label-2` | `grey-90` (본문 라벨) |
+| `--color-bg-1` | `grey-20` |
+| `--color-bg-2` | `grey-30` |
+
+### Status
+
+| Token | 매핑 | 용도 |
+|-------|------|------|
+| `--color-status-informative` | `blue-80` | 정보 / 안내 |
+| `--color-status-positive` | `green-80` | 성공 |
+| `--color-status-negative` | `red-80` | 에러 / 실패 |
+| `--color-status-warning` | `orange-80` | 경고 |
+
+### Spacing / Shadow
+
+```
+--space-{2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 80, 112}
+--shadow-{small, regular, medium, large}
+```
+
+## Layer 3 — Tailwind 유틸리티
+
+컴포넌트가 실제로 쓰는 표면. CSS 클래스 형태.
+
+```vue
+<!-- ✅ 권장 -->
+<div class="bg-cta-primary text-grey-10 p-[16px] rounded-[8px] shadow-medium">
+  ...
+</div>
+
+<!-- ❌ 비권장 (primitive 직접 참조) -->
+<div class="bg-navy-80 text-white p-4">...</div>
+```
+
+### 왜 semantic 을 선호?
+
+`bg-navy-80` 으로 박힌 코드는 색상 정책이 바뀔 때(예: 핵심 CTA 를 navy → blue 로) **모든 컴포넌트를 일일이 수정**해야 합니다. `bg-cta-primary` 면 토큰 매핑 한 줄만 바꾸면 끝.
+
+### 언제 primitive 가 맞나
+
+- 디자인 시안이 명시적으로 `Green 80` 등 팔레트 색을 콜아웃 — 의미가 아니라 시각 표현 자체가 사양
+- semantic alias 가 아직 없는 신규 표현 — 우선 primitive 로 만들고, 반복되면 semantic 추가
+
+## 컴포넌트가 토큰을 쓰는 패턴
+
+CVA(`class-variance-authority`)의 variant 정의에 토큰 기반 클래스만 들어가게 합니다:
+
+```ts
+// button/index.ts
+export const buttonVariants = cva('font-bold', {
+  variants: {
+    variant: {
+      primary: 'bg-cta-primary text-grey-10 hover:bg-navy-90',
+      destructive: 'bg-cta-destructive text-grey-10',
+      // ...
+    },
+  },
+})
+```
+
+## DESIGN.md 동기화 룰
+
+루트의 `DESIGN.md` 는 AI 디자인 툴(v0, Stitch, Figma Make) 입력용 frontmatter YAML 토큰 + 컨셉 본문입니다.
+
+**`tokens.css` / `style.css` / `tailwind-preset.*` 의 토큰 값(hex, spacing, shadow, radius)이나 semantic alias 매핑을 수정하면 같은 PR 에서 `DESIGN.md` frontmatter 도 함께 갱신합니다.** 컴포넌트 추가/삭제/prop API 변경은 동기화 의무 대상이 아닙니다 (Storybook 과 소스 코드가 단일 진실).
