@@ -24,7 +24,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     v-bind="forwardedProps"
     :class="cn(tabsTriggerVariants({ variant, color, size }), props.class)"
   >
-    <span class="truncate">
+    <span class="inline-flex items-center gap-[6px] truncate">
       <slot />
     </span>
   </TabsTrigger>

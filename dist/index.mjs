@@ -4748,7 +4748,7 @@ const Do = /* @__PURE__ */ m({
       _: 3
     }, 16, ["class"]));
   }
-}), No = { class: "truncate" }, ot = /* @__PURE__ */ m({
+}), No = { class: "inline-flex items-center gap-[6px] truncate" }, ot = /* @__PURE__ */ m({
   __name: "TabsTrigger",
   props: {
     value: {},
