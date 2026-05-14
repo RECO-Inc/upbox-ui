@@ -12,6 +12,7 @@ export * from './components/text-button';
 export * from './components/calendar';
 export * from './components/card';
 export * from './components/checkbox';
+export * from './components/chip';
 export * from './components/dialog';
 export * from './components/date-picker';
 export * from './components/date-period-picker';
