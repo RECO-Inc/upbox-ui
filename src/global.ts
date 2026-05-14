@@ -171,7 +171,7 @@ declare module 'vue' {
     TabsList: typeof import('./components/tabs')['TabsList']
     TabsTrigger: typeof import('./components/tabs')['TabsTrigger']
     Textarea: typeof import('./components/textarea')['Textarea']
-    Toaster: typeof import('./components/sonner')['Toaster']
+    Toast: typeof import('./components/toast')['Toast']
     Toggle: typeof import('./components/toggle')['Toggle']
     Tooltip: typeof import('./components/tooltip')['Tooltip']
     TooltipContent: typeof import('./components/tooltip')['TooltipContent']

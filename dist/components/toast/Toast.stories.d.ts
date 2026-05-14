@@ -5,7 +5,7 @@ declare const meta: {
     tags: string[];
     decorators: (() => {
         components: {
-            Toaster: import('vue').DefineComponent<import('vue-sonner').ToasterProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue-sonner').ToasterProps> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+            Toast: import('vue').DefineComponent<import('vue-sonner').ToasterProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue-sonner').ToasterProps> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
         };
         template: string;
     })[];
@@ -13,8 +13,8 @@ declare const meta: {
 export default meta;
 type Story = StoryObj<typeof meta>;
 export declare const Default: Story;
-export declare const ToastTypes: Story;
-export declare const WithDescription: Story;
+export declare const States: Story;
+export declare const TitleOnly: Story;
 export declare const WithAction: Story;
-export declare const WithPromise: Story;
+export declare const PromiseToast: Story;
 export declare const CustomDuration: Story;
