@@ -1,4 +1,7 @@
 export { default as Select } from './Select';
+export { default as SelectField } from './SelectField';
+export type { SelectFieldProps } from './selectFieldProps';
+export type { SelectOption, SelectOption as SelectFieldOption } from '../../lib/options';
 export { default as SelectContent } from './SelectContent';
 export { default as SelectGroup } from './SelectGroup';
 export { default as SelectItem } from './SelectItem';

@@ -1,6 +1,6 @@
-export interface DropdownFilterOption<V = unknown> {
-    label: string;
-    value: V;
+import { SelectOption } from '../../lib/options';
+export interface DropdownFilterOption<V = unknown> extends SelectOption<V> {
+    /** false 면 목록에서 숨김 (필터 토글). 기본값 노출(true 취급) */
     isActive?: boolean;
 }
 declare const _default: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{

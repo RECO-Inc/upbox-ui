@@ -7,10 +7,10 @@ import { Checkbox } from "../checkbox";
 import { Button } from "../button";
 import { TextField } from "../text-field";
 import { cn } from "../../lib/utils";
+import type { SelectOption } from "../../lib/options";
 
-export interface DropdownFilterOption<V = unknown> {
-  label: string;
-  value: V;
+export interface DropdownFilterOption<V = unknown> extends SelectOption<V> {
+  /** false 면 목록에서 숨김 (필터 토글). 기본값 노출(true 취급) */
   isActive?: boolean;
 }
 

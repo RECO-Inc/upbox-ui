@@ -7,16 +7,38 @@ import { SelectIcon, SelectTrigger, useForwardProps } from "reka-ui"
 import { cn } from "../../lib/utils"
 import { InputFrame } from "../input-frame"
 
-const props = defineProps<SelectTriggerProps & {
+const props = withDefaults(defineProps<SelectTriggerProps & {
   class?: HTMLAttributes["class"]
   /**
    * SearchField/InputGroup 등 외부 frame을 가진 wrapper 안에 들어갈 때 사용.
    * 자체 InputFrame 없이 transparent inline trigger로 렌더링된다.
    */
   inline?: boolean
-}>()
+  /**
+   * InputFrame design props. 미지정(`undefined`)이면 SelectField / FieldContainer
+   * 가 provide 한 컨텍스트를 InputFrame 이 inject-merge 해서 따른다.
+   * standalone 사용 시 컨텍스트가 없으면 InputFrame 기본값(default/regular).
+   */
+  variant?: "default" | "filled" | "bottomline"
+  size?: "small" | "regular" | "large"
+  error?: boolean
+  readonly?: boolean
+}>(), {
+  variant: undefined,
+  size: undefined,
+  error: undefined,
+  readonly: undefined,
+})
 
-const delegatedProps = reactiveOmit(props, "class", "inline")
+const delegatedProps = reactiveOmit(
+  props,
+  "class",
+  "inline",
+  "variant",
+  "size",
+  "error",
+  "readonly",
+)
 
 const forwardedProps = useForwardProps(delegatedProps)
 </script>
@@ -42,9 +64,11 @@ const forwardedProps = useForwardProps(delegatedProps)
   </SelectTrigger>
   <InputFrame
     v-else
-    size="regular"
-    variant="default"
-    :disabled="!!props.disabled"
+    :variant="props.variant"
+    :size="props.size"
+    :error="props.error"
+    :readonly="props.readonly"
+    :disabled="props.disabled"
     class="w-full min-w-0"
   >
     <SelectTrigger

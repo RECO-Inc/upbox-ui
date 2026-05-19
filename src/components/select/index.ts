@@ -1,4 +1,7 @@
 export { default as Select } from "./Select.vue"
+export { default as SelectField } from "./SelectField.vue"
+export type { SelectFieldProps } from "./selectFieldProps"
+export type { SelectOption, SelectOption as SelectFieldOption } from "../../lib/options"
 export { default as SelectContent } from "./SelectContent.vue"
 export { default as SelectGroup } from "./SelectGroup.vue"
 export { default as SelectItem } from "./SelectItem.vue"
