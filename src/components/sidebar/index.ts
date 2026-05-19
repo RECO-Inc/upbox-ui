@@ -63,5 +63,5 @@ export interface SidebarMenuButtonChildProps {
   variant?: "default" | "outline"
   size?: "regular" | "small" | "large"
   isActive?: boolean
-  class?: string
+  class?: HTMLAttributes["class"]
 }
