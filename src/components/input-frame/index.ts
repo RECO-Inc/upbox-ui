@@ -11,6 +11,8 @@ export {
   type InputFrameDesignProps,
 } from "./inputFrameContext"
 export {
+  inputFrameSizes,
   inputFrameVariants,
+  type InputFrameSize,
   type InputFrameVariantProps,
 } from "./inputFrameVariants"

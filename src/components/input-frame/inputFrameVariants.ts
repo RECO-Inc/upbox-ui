@@ -1,6 +1,21 @@
 import { cva, type VariantProps } from "class-variance-authority"
 
 /**
+ * Field 류(InputFrame 사용)와 DropdownFilter 처럼 칩 형태이지만
+ * 같은 height/padding/typography 사이즈 체계를 따라야 하는 트리거가
+ * 공유하는 단일 진실 소스(size token).
+ *
+ * 시각 톤(bg/border/...) 은 각자 다르지만 사이즈 분기는 한 곳에서 관리한다.
+ */
+export const inputFrameSizes = {
+  small: "h-[32px] min-h-[32px] px-[8px] text-size-12",
+  regular: "h-[40px] min-h-[40px] px-[16px] text-size-14",
+  large: "h-[48px] min-h-[48px] px-[16px] text-size-16",
+} as const
+
+export type InputFrameSize = keyof typeof inputFrameSizes
+
+/**
  * input, select, date 등의 값 표시 부분 공통 껍데기
  * - 혹시나 재사용할까 싶어서..
  */
@@ -23,11 +38,7 @@ export const inputFrameVariants = cva(
         bottomline:
           "border-0 border-b border-grey-40 rounded-none bg-transparent",
       },
-      size: {
-        small: "h-[32px] min-h-[32px] px-[8px] text-size-12",
-        regular: "h-[40px] min-h-[40px] px-[16px] text-size-14",
-        large: "h-[48px] min-h-[48px] px-[16px] text-size-16",
-      },
+      size: inputFrameSizes,
       error: {
         true: "border-red-80 focus-within:border-red-80 focus-within:ring-0",
         false: "",

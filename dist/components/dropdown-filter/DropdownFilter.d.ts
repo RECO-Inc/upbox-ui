@@ -1,4 +1,5 @@
 import { SelectOption } from '../../lib/options';
+import { InputFrameSize } from '../input-frame';
 export interface DropdownFilterOption<V = unknown> extends SelectOption<V> {
     /** false 면 목록에서 숨김 (필터 토글). 기본값 노출(true 취급) */
     isActive?: boolean;
@@ -17,7 +18,7 @@ declare const _default: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>
         single?: boolean;
         search?: boolean;
         placeholder?: string;
-        size?: "small" | "regular" | "large";
+        size?: InputFrameSize;
         displayStyle?: "default" | "filled" | "highlight";
     }) & Partial<{}>> & import('vue').PublicProps;
     expose(exposed: import('vue').ShallowUnwrapRef<{}>): void;
