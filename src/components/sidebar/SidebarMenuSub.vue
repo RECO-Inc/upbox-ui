@@ -2,20 +2,30 @@
 import type { HTMLAttributes } from "vue"
 import { cn } from "../../lib/utils"
 
-const props = defineProps<{
-  class?: HTMLAttributes["class"]
-}>()
+const props = withDefaults(
+  defineProps<{
+    open?: boolean
+    class?: HTMLAttributes["class"]
+  }>(),
+  {
+    open: true,
+  },
+)
 </script>
 
 <template>
-  <ul
-    data-sidebar="menu-badge"
+  <div
+    data-sidebar="menu-sub"
+    :data-state="props.open ? 'open' : 'closed'"
     :class="cn(
-      'mx-[14px] flex min-w-0 translate-x-px flex-col gap-[4px] border-l border-grey-40 px-[10px] py-[2px]',
+      'grid transition-[grid-template-rows] duration-200 ease-out',
+      'data-[state=open]:grid-rows-[1fr] data-[state=closed]:grid-rows-[0fr]',
       'group-data-[collapsible=icon]:hidden',
       props.class,
     )"
   >
-    <slot />
-  </ul>
+    <ul class="flex min-w-0 flex-col gap-[8px] py-[16px] overflow-hidden">
+      <slot />
+    </ul>
+  </div>
 </template>

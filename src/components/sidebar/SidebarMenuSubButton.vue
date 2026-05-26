@@ -22,10 +22,10 @@ const props = withDefaults(defineProps<PrimitiveProps & {
     :data-size="size"
     :data-active="isActive"
     :class="cn(
-      'flex h-[28px] min-w-0 -translate-x-px items-center gap-[8px] overflow-hidden rounded-md px-[8px] text-grey-100 outline-hidden ring-navy-80 hover:bg-grey-30 hover:text-grey-100 focus-visible:ring-2 active:bg-grey-30 active:text-grey-100 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-[16px] [&>svg]:shrink-0 [&>svg]:text-grey-100',
-      'data-[active=true]:bg-grey-30 data-[active=true]:text-grey-100',
-      size === 'small' && 'text-xs',
-      size === 'regular' && 'text-sm',
+      'flex min-h-[28px] min-w-0 items-center gap-[8px] py-[4px] pl-[32px] pr-[8px] font-bold text-grey-60 cursor-pointer outline-hidden ring-cta-primary focus-visible:ring-2 hover:text-grey-90 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>svg]:size-[20px] [&>svg]:shrink-0',
+      'data-[active=true]:text-cta-primary',
+      size === 'small' && 'text-size-13 leading-[18px]',
+      size === 'regular' && 'text-size-14 leading-[20px]',
       'group-data-[collapsible=icon]:hidden',
       props.class,
     )"

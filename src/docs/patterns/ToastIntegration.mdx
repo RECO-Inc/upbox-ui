@@ -1,0 +1,168 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Patterns/Toast Integration" />
+
+# Toast Integration
+
+이 라이브러리의 `Toast` 는 [vue-sonner](https://github.com/xiaoluoboding/vue-sonner) 를 디자인 시스템 토큰으로 래핑한 것입니다.
+**디스플레이만** 책임지고, 비즈니스 로직(로깅, 영속화, history 등)은 컨슈머가 자기 store 에서 처리합니다.
+
+## 책임 분리
+
+```
+┌─────────────────────────────────────┐
+│  upbox-ui                            │
+│  ─────────                           │
+│  <Toast />        ← 디스플레이 컨테이너 │
+│  toast.success() ← 디스플레이 명령 API │
+│  toast.error()                       │
+│  ...                                 │
+└─────────────────────────────────────┘
+                ▲
+                │ 호출
+                │
+┌─────────────────────────────────────┐
+│  consumer/store/notification.ts      │
+│  ─────────                           │
+│  useNotiStore                        │
+│    error(msg) {                      │
+│      datadogLogs.logger.error(...)   │ → Datadog
+│      addToDatabase(...)              │ → IDB (history)
+│      toast.error(msg)                │ → DS 디스플레이
+│    }                                 │
+└─────────────────────────────────────┘
+```
+
+## 기본 사용
+
+### 1. 앱 루트에 컨테이너 한 번만 마운트
+
+```vue
+<!-- App.vue -->
+<script setup lang="ts">
+import { Toast } from "@reco-inc/upbox-ui"
+</script>
+
+<template>
+  <RouterView />
+  <!-- 한 번만 — 어디서 toast.* 를 호출해도 여기서 렌더됨 -->
+  <Toast />
+</template>
+```
+
+### 2. 어디서든 `toast.*` 호출
+
+```ts
+import { toast } from "@reco-inc/upbox-ui"
+
+toast.success("저장 완료")
+toast.error("저장 실패", { description: "네트워크 오류" })
+toast.info("세션 만료 5분 전")
+toast.warning("저장하지 않은 변경사항이 있습니다")
+```
+
+### 3. Promise (loading → success/error)
+
+```ts
+toast.promise(uploadPromise, {
+  loading: "업로드 중...",
+  success: (data) => `${data.name} 업로드 완료`,
+  error: "업로드 실패",
+})
+```
+
+### 4. Action button
+
+```ts
+toast("항목이 삭제되었습니다", {
+  description: "휴지통으로 이동했습니다.",
+  action: {
+    label: "되돌리기",
+    onClick: () => restore(),
+  },
+})
+```
+
+## 컨슈머 store 통합 (권장 패턴)
+
+도메인 로직 (datadog, IndexedDB, history) 은 컨슈머의 store 에 두고, **디스플레이는 항상 `toast.*` 로 위임** 합니다.
+
+### Before (자체 토스트 구현)
+
+```ts
+// store/notification.ts
+const notificationList = reactive<Notification[]>([])
+
+function error(msg, data) {
+  datadogLogs.logger.error(msg, { origin: "error noti" })
+  addNotification(msg, { ...data, type: "error" })  // ← 자체 배열 push
+}
+```
+
+```vue
+<!-- App.vue -->
+<NotificationToast />  <!-- 자체 컴포넌트가 notificationList 렌더 -->
+```
+
+### After (upbox-ui Toast 위임)
+
+```ts
+// store/notification.ts
+import { toast } from "@reco-inc/upbox-ui"
+
+function error(msg: string, data?: NotificationParams) {
+  // 도메인 로직은 그대로 유지
+  datadogLogs.logger.error(msg, { origin: "error noti" })
+  addToDatabase({ ... })
+
+  // 디스플레이만 라이브러리에 위임
+  toast.error(msg, {
+    description: data?.content,
+    duration: data?.timeout ?? 3000,
+  })
+}
+```
+
+```vue
+<!-- App.vue -->
+<script setup>
+import { Toast } from "@reco-inc/upbox-ui"
+</script>
+<template>
+  <div id="noti">
+    <Toast />
+  </div>
+</template>
+```
+
+### 외부 호출자 코드 변경 없음
+
+`useNotiStore.success/error/base` 시그니처가 그대로면 컴포넌트 측 코드는 안 바뀝니다:
+
+```ts
+const noti = useNotiStore()
+noti.error("저장 실패")  // ← Before 와 동일
+```
+
+## 디자인 시스템 보장 사항
+
+- **색상** — state 별 자동 매핑: `success` → green-80, `error` → red-80, `info` → blue-80, `warning` → orange-80
+- **타이포** — 16px Bold 제목 + 13px Regular 설명, Pretendard
+- **레이아웃** — 396px 폭, 16/8 padding, 8px 라운드, drop shadow
+- **다크 모드** — `<html class="dark">` 토글 시 자동 반전
+
+세부 디자인은 Figma node [`4038:38723` (Toast)](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/-%EC%B5%9C%EC%A2%85-Component-_v02?node-id=4038-38723) 기준.
+
+## Dialog / Alert 와의 구분
+
+| 상황 | 컴포넌트 |
+|------|---------|
+| 사용자 확인이 **필요** (확인/취소 버튼) | `Dialog` / 추후 `AlertDialog` |
+| 결과를 **알리기만** 함 (자동 사라짐) | `Toast` |
+| 페이지 안 인라인 상태 메시지 | `Badge` / 폼 에러 텍스트 |
+
+## 안 권장 패턴
+
+- **`<Toast>` 를 화면마다 여러 번 마운트** — 컨테이너는 앱 전체에 하나만. 여러 개 두면 토스트가 중복 렌더되거나 stack 이 꼬임.
+- **DS 에 비즈니스 로직(`useToast` stateful store) 을 두지 않기** — datadog/IDB 같은 도메인 동작은 컨슈머 책임. DS 가 가진 것은 디스플레이 API 뿐.
+- **자체 토스트 UI 컴포넌트 유지** — DS Toast 가 Figma 와 정합되므로 자체 UI 는 점진적으로 제거 (기존 코드는 store 위임으로 호환 유지).

@@ -1,0 +1,131 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Patterns/Compound Picker" />
+
+# Compound Picker
+
+`DatePicker`, `DatePeriodPicker`, `TimePicker` 같은 picker 들은 모두 **동일한 합성 구조** 를 따릅니다. 새 picker 를 만들 땐 `date-picker/` 디렉토리를 그대로 본떠서 모델 타입만 갈아끼우는 것을 기본으로 합니다.
+
+## 구성 요소
+
+```
+src/components/date-picker/
+├── DatePicker.vue          ← wrapper (defineModel, provide context, panelDraft 관리)
+├── DateTrigger.vue         ← InputFrame + PopoverTrigger
+├── DateInput.vue           ← 입력 자식 (inject context, 없으면 standalone)
+├── DatePanel.vue           ← 팝업 자식 (Calendar 등)
+├── datePickerContext.ts    ← context key 정의
+└── index.ts
+```
+
+## 책임 분리
+
+| 컴포넌트 | 책임 |
+|---------|------|
+| `*Picker.vue` (외곽 wrapper) | `defineModel` 로 값 보관, `provide` 로 자식에 모델·draftError 전달, `panelDraft` 로 임시값 관리 |
+| `*Trigger.vue` | `InputFrame` 으로 감싸고 `PopoverTrigger` 를 슬롯과 함께 둠 |
+| `*Input.vue` | `inject` 로 컨텍스트 받음. 컨텍스트가 없으면 자체 `defineModel` 로 **standalone 동작** |
+| `*Panel.vue` / 캘린더 | wrapper 가 `panelDraft` 로 보관한 임시값을 완료 이벤트 시점에만 모델에 반영 |
+
+## InputFrame 디자인 props 흐름
+
+```
+*Picker.vue (wrapper)
+  └ useInputFrameInjectProvide(() => pickInputFrameDesign(props))   ← 한 번만 provide
+      ├ *Input.vue  ← inject 만 함
+      └ *Trigger.vue → InputFrame → ...   ← inject 만 함
+```
+
+`size` / `variant` / `error` / `readonly` / `disabled` 는 wrapper 가 단 한 번 주입하고, 자식들은 inject 만 받습니다.
+
+## panelDraft 패턴
+
+캘린더에서 날짜를 클릭하는 순간마다 부모 모델을 업데이트하면 안 됩니다 (`완료` 버튼 누르기 전 미반영). wrapper 가 `panelDraft` ref 로 임시값을 보관하다가 완료 이벤트 시점에만 모델에 commit:
+
+```ts
+// wrapper
+const model = defineModel<Date>()
+const panelDraft = ref(model.value)
+
+provide(DATE_PICKER_CTX_KEY, {
+  panelDraft,
+  commit: () => { model.value = panelDraft.value },
+  cancel: () => { panelDraft.value = model.value },
+})
+```
+
+```vue
+<!-- panel -->
+<Calendar v-model="panelDraft" />
+<Button @click="commit">완료</Button>
+```
+
+## Context key 분리
+
+각 picker 별로 별도 파일에 분리:
+- `datePickerContext.ts` → `DATE_PICKER_CTX_KEY`
+- `timePickerContext.ts` → `TIME_PICKER_CTX_KEY`
+- ...
+
+```ts
+// datePickerContext.ts
+import type { InjectionKey, Ref } from "vue"
+
+export interface DatePickerCtx {
+  modelValue: Ref<Date | undefined>
+  panelDraft: Ref<Date | undefined>
+  commit: () => void
+  cancel: () => void
+}
+
+export const DATE_PICKER_CTX_KEY: InjectionKey<DatePickerCtx> = Symbol("DATE_PICKER_CTX")
+```
+
+## Standalone 동작
+
+`*Input.vue` 는 **context 가 없으면 자체 `defineModel`** 로 동작해야 합니다. 컨슈머가 wrapper 없이 input 만 단독으로 쓰는 케이스를 지원하기 위함:
+
+```vue
+<script setup lang="ts">
+import { inject } from "vue"
+import { DATE_PICKER_CTX_KEY } from "./datePickerContext"
+
+const ctx = inject(DATE_PICKER_CTX_KEY, null)
+const standaloneModel = defineModel<Date>()
+
+// ctx 가 있으면 wrapper 의 model, 없으면 standalone 모델
+const value = computed({
+  get: () => ctx?.modelValue.value ?? standaloneModel.value,
+  set: (v) => {
+    if (ctx) ctx.modelValue.value = v
+    else standaloneModel.value = v
+  },
+})
+</script>
+```
+
+## Mobile 변형
+
+데스크톱 ↔ 모바일 picker 는 **같은 입력 컴포넌트**와 **같은 컨텍스트 키**를 공유합니다.
+컨슈머가 입력부 코드를 두 벌 갖지 않게 하기 위함.
+
+| 데스크톱 | 모바일 |
+|---------|--------|
+| `Popover` + `*Panel` | `Drawer` + `*Dial` / `Mobile*Calendar` |
+| `panelDraft` 임시값 | `dialDraft` 임시값 |
+| Wrapper 가 `Popover` 안에서 panel 띄움 | Wrapper 가 `Drawer` 안에서 dial 띄움 |
+
+### Mobile UI 룰
+
+- 모바일 패널: `360px` 폭 + 상단 라운드 `16px` 기본 (`rounded-t-[16px]`)
+- 휠/스크롤 스냅 패널: ITEM 높이 상수를 한 군데서 관리, 가운데 행이 선택값 (절대 배치 배경 강조)
+
+## 새 picker 만들 때 체크리스트
+
+1. `date-picker/` 를 복사 → 이름/모델 타입만 교체
+2. `xxxPickerContext.ts` 에 `XXX_PICKER_CTX_KEY` + ctx interface 정의
+3. wrapper 에서 `defineModel` + `provide(XXX_PICKER_CTX_KEY, ...)` + `useInputFrameInjectProvide`
+4. trigger 에서 `<InputFrame>` + `<PopoverTrigger>` 합성
+5. input 에서 inject 로 ctx 받기, 없으면 standalone `defineModel`
+6. panel 은 `panelDraft` 만 갱신, 완료 시 wrapper 가 commit
+7. 모바일 변형은 데스크톱 input/ctx 재사용, Drawer + dial 로 분기

@@ -22,9 +22,11 @@
 | [`3498:25583`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3498-25583) | [`searchField`](#searchfield) | `SearchField` |
 | [`3540:25866`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3540-25866) | [`badge`](#badge) | `Badge` |
 | [`3570:25359`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3570-25359) | [`tag`](#tag) | `Tag` |
+| `3570:27908` | [`chips`](#chips) | `Chip` |
 | [`3619:27807`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3619-27807) | [`dateInput`](#dateinput) | `DateInput` / `DatePeriodInput` (Picker 내부) |
 | [`3623:26811`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3623-26811) | [`timeInput`](#timeinput) | `TimeInput` (Picker 내부) |
 | [`3837:27148`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3837-27148) | [`select`](#select) | `Select` / `SelectTrigger` |
+| `4038:38723` | [`toast`](#toast) | `Toast` |
 | [`12247:7978`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=12247-7978) | [`mobileDatePeriodSelector`](#mobiledateperiodselector) | `MobileDatePeriodSelector` |
 | [`12247:8094`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=12247-8094) | [`periodCalendar` (mobile)](#periodcalendar-mobile) | `MobilePeriodCalendar` |
 | [`12247:8592`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=12247-8592) | [`dateCalendar` (mobile)](#datecalendar-mobile) | `MobileDateCalendar` |
@@ -1040,6 +1042,108 @@
 | calendar icon | `DateTrigger` 내부 `PopoverTrigger` 버튼 |
 | calendar popup | `PopoverContent` |
 | date calendar panel | `DateCalendar` |
+
+---
+
+## `chips`
+
+| 피그마 | Vue |
+|--------|-----|
+| 노드 `3570:27908` (filterChips frame `4012:24597`) | — |
+| 컴포넌트 | `Chip.vue` |
+| `variant=square` | `round=false` (기본) |
+| `variant=circle` | `round=true` |
+| `size=xsmall` (24px, PC) | `size="xsmall"` (기본) |
+| `size=small` (32px, mobile) | `size="small"` |
+| `select=unselected` | `state="default"` (기본) |
+| `select=selected_single` | `state="selected"` |
+| `select=selected_multi` | `state="active"` |
+| `edit` (X 아이콘) | `removable` (기본 `false`) |
+| `multi` (expand_more 아이콘) / picker 트리거 | `dropdown` (기본 `false`) |
+| selected_multi 옆 굵은 숫자 | `count` (number \| string) |
+| 본문 텍스트 | 기본 슬롯 |
+| inner badge (3xsmall) | `#badge` 슬롯 (`Badge` 컴포넌트 그대로 받음) |
+| X 클릭 | `@remove` |
+
+> 합성 사용 패턴은 인덱스 단일 노드가 없어 컴포넌트 자체로만 등록. Storybook `사용 가이드 — N개중 1개 선택 / 나열식 / 선택식 N개중 N개` 참고.
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| 외곽 (bg + radius + padding) | `Chip` 외곽 `<div>` (`chipVariants`) |
+| 좌측 inner badge | `#badge` 슬롯 |
+| 본문 텍스트 | 기본 슬롯 (`<span>` wrapper, `px-[4px]`) |
+| selected_multi 의 count 숫자 | `count` prop (`font-bold`, `text-status-informative` 등 state 별 색) |
+| 우측 X (edit) | `removable=true` 시 `X` lucide |
+| 우측 expand_more | `dropdown=true` 시 `ChevronDown` lucide |
+
+### Figma 변수
+
+| Figma 변수 | 의미 / 사용 위치 | upbox-ui 매핑 |
+|------------|------------------|---------------|
+| `primitive/grey-20` (`#f8f8f9`) | `select=unselected` 배경 | `bg-grey-20` |
+| `primitive/grey-30` | unselected hover / inner badge default 배경 | `hover:bg-grey-30` |
+| `primitive/grey-80` | unselected 텍스트 | `text-grey-80` |
+| `primitive/grey-90` | inner badge default 텍스트 / count default | `text-grey-90` |
+| `CTA/primary` (`#264870`) | `select=selected_single` 배경 / `selected_multi` 텍스트 | `bg-cta-primary` / `text-cta-primary` |
+| `primitive/grey-10` | selected_single 텍스트 (white) | `text-grey-10` |
+| `primitive/blue-20` (`#f5f9ff`) | `select=selected_multi` 배경 | `bg-blue-20` |
+| `primitive/blue-30` (`#e1edff`) | selected_multi hover / inner badge active 배경 | `hover:bg-blue-30` |
+| `status/processing, informative` (`#06f`, = blue-80) | selected_multi count 색 / inner badge active 텍스트 | `text-status-informative` |
+| `xsmall=24` / `small=32` | chip 높이 | `size` (`h-[24px]` / `h-[32px]`) |
+| `padding/padding-04` | xsmall 좌우 padding | `px-[4px]` |
+| `padding/padding-08` | small 좌우 padding | `px-[8px]` (`py-[6px]`) |
+| 모서리 `4` | `round=false` 둥글기 | `rounded-[4px]` |
+| 모서리 `36` (full) | `round=true` 둥글기 | `rounded-full` |
+| `Body/body5-sb` (12/16) | xsmall 본문 | `text-size-12` |
+| `Body/body4-sb` (13/20) | small 본문 | `text-size-13` |
+| `Body/body5-b` (12/16, bold) | selected_multi count | `font-bold leading-[16px]` |
+| icon `16` / `20` | xsmall / small 우측 아이콘 (X · ChevronDown) | `size-[16px]` / `size-[20px]` |
+
+---
+
+## `toast`
+
+| 피그마 | Vue |
+|--------|-----|
+| 노드 `4038:38723` (Toast 페이지) | — |
+| 컴포넌트 | `Toast.vue` (vue-sonner Toaster wrapper) |
+| `state=success` | `toast.success(...)` |
+| `state=error` | `toast.error(...)` |
+| `state=infrom` (info) | `toast.info(...)` |
+| `state=warning` | `toast.warning(...)` |
+| 제목 (16/Bold 24 leading) | 첫 인자 string |
+| 부연 설명 (13/Regular 20 leading) | `{ description }` 옵션 |
+| 액션 버튼 (Bold 16, 밑줄, white) | `{ action: { label, onClick } }` 옵션 |
+| 닫기 X (24px) | `{ closeButton: true }` 또는 자동 dismiss |
+
+### 하위 구조
+
+| 피그마 구조 | Vue 구조 |
+|-------------|----------|
+| 컨테이너 (앱 루트 한 번) | `<Toast />` 마운트 |
+| 토스트 카드 (396px 폭, rounded-8, px16/py8, drop-shadow) | `toastOptions.classes.toast` |
+| 좌측 24px 아이콘 (check_circle / cancel / info) | sonner 자동 + `toastOptions.classes.icon` |
+| 제목 행 (Bold 16/24, 흰색) | `toastOptions.classes.title` |
+| 설명 행 (Regular 13/20, 흰색) | `toastOptions.classes.description` |
+| 액션 텍스트 버튼 (밑줄) | `toastOptions.classes.actionButton` |
+
+### Figma 변수
+
+| Figma 변수 | 의미 / 사용 위치 | upbox-ui 매핑 |
+|------------|------------------|---------------|
+| `primitive/green-80` (#1a8766) | success 배경 | `bg-status-positive` |
+| `primitive/red-80` (#e11d1d) | error 배경 | `bg-status-negative` |
+| `primitive/blue-80` (#06f) | info 배경 | `bg-status-informative` |
+| `primitive/orange-80` | warning 배경 | `bg-status-warning` |
+| `primitive/grey-10` | 전체 텍스트 (제목·설명·아이콘) | `text-grey-10` |
+| `Body/body1-b` (16/24, bold) | 제목 폰트 | `text-size-16 leading-[24px] font-bold` |
+| `Body/body4-r` (13/20, regular) | 설명 폰트 | `text-size-13 leading-[20px] font-normal` |
+| `padding/16-8` | 컨테이너 좌우 16 · 상하 8 | `px-[16px] py-[8px]` |
+| `radius/8` | 카드 모서리 | `rounded-[8px]` |
+| `shadow/4-15` (0px 4 15 rgba(85,92,108,0.1)) | drop shadow | `shadow-[0_4px_15px_rgba(85,92,108,0.1)]` |
+| icon `24` | 좌측 status 아이콘 | `size-[24px]` |
 
 ---
 

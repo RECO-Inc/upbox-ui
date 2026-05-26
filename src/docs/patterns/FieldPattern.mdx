@@ -1,0 +1,176 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Patterns/Field & InputFrame" />
+
+# Field & InputFrame
+
+입력형 컴포넌트(TextField, Textarea, NumberField, SearchField, DatePicker 트리거 등)는 모두 **`InputFrame` wrapper** 를 활용하는 monolithic 패턴을 따릅니다.
+
+## 책임 분리
+
+| 레이어 | 책임 |
+|--------|------|
+| `InputFrame` | size, variant, error, readonly, disabled, focus 의 **시각 상태** |
+| 내부 `<input>` / `<textarea>` / sub-elements | 입력값 자체, 증감 버튼, 검색 아이콘 등 |
+| `FieldContainer` (vee-validate) | form 통합 (modelValue / onBlur / 에러 메시지) |
+
+## 표준 구조
+
+```vue
+<script setup lang="ts">
+import { computed } from "vue"
+import { useInputFrameInjectProvide, pickInputFrameDesign } from "../input-frame/inputFrameContext"
+import { InputFrame } from "../input-frame"
+
+const props = defineProps<MyFieldProps>()
+const model = defineModel<string>()
+
+// design 컨텍스트를 한 번만 resolve + 자식에게 provide
+const design = useInputFrameInjectProvide(() => pickInputFrameDesign(props))
+</script>
+
+<template>
+  <InputFrame :error="design.error.value">
+    <input
+      v-model="model"
+      class="..."
+      :disabled="design.disabled.value"
+      :readonly="design.readonly.value"
+    />
+  </InputFrame>
+</template>
+```
+
+## `error` prop 자동 fallback
+
+`error` prop 을 명시하지 않아도 `FieldContainer` (vee-validate) 안에서 사용하면 자동으로 빨간 테두리가 됩니다.
+
+내부 메커니즘:
+- `inputFrameContext.ts` 의 `buildInputFrameContext` 가 `props.error` 가 `undefined` 일 때 `FORM_ERROR_INJECTION_KEY` (FormItem provide) 를 자동으로 inject 함
+
+```vue
+<!-- 자동 에러 시각화 -->
+<FieldContainer name="email" rules="required|email">
+  <TextField placeholder="email" />   <!-- validation 실패 시 자동 빨간 테두리 -->
+</FieldContainer>
+
+<!-- 명시적 override 가 필요할 때만 -->
+<TextField :error="customError" />
+```
+
+## Monolithic + Compound dual API
+
+복잡한 합성형 컴포넌트(`NumberField`, `Select`)는 **두 진입점** 을 함께 export 합니다.
+일반 사용처는 monolithic(99%), 디자인 시스템 외 특수 합성만 compound(escape hatch).
+
+### NumberField
+
+| 진입점 | 용도 |
+|--------|------|
+| `<NumberField>` (monolithic) | 모든 props 를 받아 자체 합성. **일반 사용처 default.** |
+| `<NumberFieldRoot>` + `<NumberFieldContent>` + `<NumberFieldInput>` + `<NumberFieldIncrement>` + `<NumberFieldDecrement>` (compound) | 디자인 시스템 외 특수 합성이 필요할 때만 |
+
+```vue
+<!-- ✅ 99% 의 경우 -->
+<NumberField v-model="qty" :min="0" :max="99" />
+
+<!-- 특수 합성이 필요할 때만 -->
+<NumberFieldRoot v-model="qty">
+  <NumberFieldContent>
+    <NumberFieldDecrement>−</NumberFieldDecrement>
+    <NumberFieldInput class="custom-input" />
+    <NumberFieldIncrement>＋</NumberFieldIncrement>
+  </NumberFieldContent>
+</NumberFieldRoot>
+```
+
+### Select
+
+| 진입점 | 용도 |
+|--------|------|
+| `<SelectField :options>` (monolithic, 제네릭 `<T>`) | 흔한 `{ label, value }[]` 드롭다운. **일반 사용처 default.** |
+| `<Select>` + `<SelectTrigger>` + `<SelectValue>` + `<SelectContent>` + `<SelectItem>` (compound) | 옵션 그룹/세퍼레이터/커스텀 아이템/인-드롭다운 검색 등 특수 합성 |
+
+```vue
+<!-- ✅ 99% 의 경우 -->
+<SelectField v-model="status" :options="statusOptions" placeholder="상태 선택" />
+
+<!-- 특수 합성(그룹/세퍼레이터/커스텀 아이템)이 필요할 때만 -->
+<Select v-model="status">
+  <SelectTrigger><SelectValue placeholder="상태 선택" /></SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>진행</SelectLabel>
+      <SelectItem value="active">진행중</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
+```
+
+`SelectField` 가 라이브러리 1회로 흡수하는 호출부 함정:
+
+| 함정 | compound 직접 사용 | `SelectField` |
+|------|------------------|---------------|
+| Trigger/Value/Content + `v-for` 스캐폴딩 | 매번 반복 | `:options` 한 줄 |
+| reka-ui 가 `value=""` 불가 (placeholder sentinel) | 호출부 sentinel 매핑 중복 | 빈 값(`''`/`null`/`undefined`) 옵션 1개를 내부 sentinel 로 흡수·역매핑 |
+| enum/`null` ↔ `AcceptableValue` TS 캐스트 | `@update:model-value` 캐스트 반복 | 제네릭 `<T>` 로 `v-model` 이 `T \| null` 추론, 캐스트 0 |
+| FieldContainer 연동 | (compound 도 됨) | 동일하게 자동 바인딩 + `error` 자동 fallback |
+
+> **빈 값 옵션 제약**: `''`/`null`/`undefined` 값 옵션("전체" 등)은 **1개만** 지원. 2개 이상이면 선택값 역매핑이 모호해져 dev 경고. 선택 시 원본 옵션의 선언값 그대로 round-trip.
+>
+> **readonly**: reka-ui `SelectRoot` 에는 readonly 가 없어 `SelectField` 는 상호작용을 차단(disabled)하되 InputFrame 은 readonly 톤으로 표시한다.
+
+### SelectField vs DropdownFilter — 경계
+
+둘 다 `{ label, value }[]` 기반이지만 **시맨틱이 다르다.** (옵션 계약은 `src/lib/options.ts` 의 `SelectOption<T>` 단일 소스를 공유 — `DropdownFilterOption` 은 `isActive` 만 추가 확장.)
+
+| | `SelectField` | `DropdownFilter` |
+|---|---------------|------------------|
+| 역할 | **폼 입력** (네이티브 리스트박스형, 단일 선택) | **목록 필터** (필터 pill, 다중 선택 기본) |
+| 시각 frame | `InputFrame` (size/variant/error/readonly/disabled 토큰) | 전용 pill 버튼 (navy 강조, displayStyle) |
+| 모델 | `T \| null` (단일) | `T[]` (다중, `single` 모드 시 1개) |
+| 폼 통합 | `FieldContainer` 자동 바인딩 (`FIELD_CONTROL_INJECTION_KEY`) | 없음 (`@change` 이벤트) |
+| 부가 | — | `search`, `canAll`("전체"), `reset` |
+
+**판단 기준**: 폼 필드로서의 단일 선택 입력이면 `SelectField`. 테이블/리스트 상단의 다중 필터 컨트롤이면 `DropdownFilter`.
+
+## InputFrame vs InputGroup
+
+둘 다 wrapper 지만 **용도가 다릅니다.**
+
+| | InputFrame | InputGroup |
+|---|-----------|-----------|
+| 책임 | 디자인 토큰 일관성 (size/variant/error/readonly/disabled/focus) | 자유로운 inline/block addon 합성 |
+| 사용처 | **Field 류** (TextField, Textarea, NumberField, SearchField, DatePicker 트리거 등) wrapper | 자체 변형 입력 UI 직접 조립 |
+| context | provide/inject 로 자식 트리에 design 전파 | 없음 (저수준) |
+| 부가 요소 | sub-element 가 InputFrame 외부에서 정의됨 | `InputGroupAddon` (inline-start/end, block-start/end) + `InputGroupInput`/`InputGroupTextarea`/`InputGroupButton`/`InputGroupText` |
+
+**판단 기준**: 새 Field 만들 땐 `InputFrame`. 그 외 부가 요소 합성이 필요할 땐 `InputGroup`.
+
+## SelectTrigger 의 `inline` 모드
+
+`SelectTrigger` 는 자체 `InputFrame` 으로 감싸진 standalone 트리거가 기본입니다. **다른 frame 을 가진 wrapper(예: `SearchField` filter 슬롯, `InputGroup`)** 안에 넣을 땐 이중 border 가 발생하므로 `<SelectTrigger inline>` 사용:
+
+```vue
+<SearchField variant="filter">
+  <template #filter>
+    <Select v-model="x">
+      <SelectTrigger inline>
+        <SelectValue placeholder="전체" />
+      </SelectTrigger>
+      <SelectContent>...</SelectContent>
+    </Select>
+  </template>
+</SearchField>
+```
+
+`inline` 모드는 InputFrame 없이 transparent inline 트리거로 렌더링됩니다.
+
+## 새 Field 만들 때 체크리스트
+
+1. `defineProps<MyFieldProps>()` 의 props 에 InputFrame design props (`size`, `variant`, `error`, `readonly`, `disabled`) 포함
+2. `useInputFrameInjectProvide(() => pickInputFrameDesign(props))` 로 컨텍스트 한 번 resolve + provide
+3. `<InputFrame>` 으로 감싼다 — error/readonly/disabled 모두 provide 된 design 의 값 사용
+4. 내부 input 은 `v-model` 만 처리. 시각 상태는 InputFrame 이 책임짐
+5. `FieldContainer` 통합이 필요하면 `FIELD_CONTROL_INJECTION_KEY` inject 로 modelValue/onBlur 연결
+6. props 타입을 별도 `interface XxxFieldProps` 로 export — autodocs 가 풀어내려면 인라인 union 리터럴 필수 (`VariantProps["x"]` 같은 인덱스드 액세스 X)

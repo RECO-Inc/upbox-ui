@@ -40,6 +40,6 @@ declare const meta: {
 export default meta;
 type Story = StoryObj<typeof meta>;
 export declare const Default: Story;
-export declare const NonCollapsible: Story;
-export declare const RightSide: Story;
-export declare const FloatingVariant: Story;
+export declare const WithSubMenu: Story;
+export declare const Collapsed: Story;
+export declare const Responsive: Story;

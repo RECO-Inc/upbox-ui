@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Introduction" />
+
+# Upbox UI
+
+Vue 3 컴포넌트 라이브러리. Figma 디자인 시스템을 코드로 구현한 내부 디자인 시스템.
+
+## 무엇이 들어있나
+
+- **컴포넌트**: Button, Field, Picker, Dialog/Drawer/Sheet/Popover, Table, Sidebar 등 50+개
+- **디자인 토큰**: Figma 팔레트(grey/navy/blue/green/red/orange) → CSS 변수 → Tailwind 유틸리티
+- **합성 패턴**: InputFrame 기반 Field, Compound Picker, Monolithic + Compound dual API
+- **모바일 변형**: 동일 입력 컴포넌트를 데스크톱 Popover / 모바일 Drawer 로 분기
+
+## 어디서부터 읽나
+
+| 목적 | 어디 |
+|------|------|
+| 처음 셋업 | [Guides → Installation](/?path=/docs/guides-installation--docs) |
+| 색·스페이싱 토큰 이해 | [Foundations → Token System](/?path=/docs/foundations-token-system--docs) + 좌측 `Tokens/` 카테고리 시각 자료 |
+| Field/Picker 합성 패턴 | [Patterns → Field Pattern](/?path=/docs/patterns-field-inputframe--docs) |
+| 앱 레이아웃 (Sidebar) | [Patterns → Sidebar Integration](/?path=/docs/patterns-sidebar-integration--docs) |
+| Toast 컨슈머 통합 | [Patterns → Toast Integration](/?path=/docs/patterns-toast-integration--docs) |
+| AI 디자인 툴 (v0, Stitch) 연동 | [Guides → AI Design Tools](/?path=/docs/guides-ai-design-tools--docs) |
+| 컴포넌트 사용법 | 좌측 `Components/` 카테고리 |
+
+## 컨슈머
+
+| 프로젝트 | Tailwind | 비고 |
+|---------|---------|------|
+| Upbox-2.0-Front-Boilerplate | v4 | `@theme` 정의 + `@source` 로 dist 스캔 |
+| Upbox-2.0-Customer-Report | v4 | 동일 |
+| Upbox-2.0-Front-Application | v4 | 동일 |
+
+모두 Tailwind v4 + `@tailwindcss/vite` 사용. 셋업 디테일은 Installation 가이드 참고.
+
+## 배포 방식
+
+`dist/` 가 git 에 포함되어 있고 컨슈머는 **GitHub URL 직접 참조** 방식으로 설치:
+
+```bash
+pnpm add git+https://github.com/RECO-Inc/upbox-ui.git
+```
+
+별도 npm registry 발행 없음. `main` 브랜치에 push → 컨슈머에서 `pnpm remove` 후 재설치로 업데이트.
+
+## 관련 문서
+
+- 루트 `README.md` — 설치 / 셋업 빠른 참조
+- 루트 `CLAUDE.md` — 개발자/AI용 내부 컨텍스트 (아키텍처, 컴포넌트 컨벤션)
+- 루트 `DESIGN.md` — AI 디자인 툴 입력용 (v0, Stitch, Figma Make)
+- 루트 `FigmaConnect.md` — Figma 노드 ↔ Vue 컴포넌트 매핑

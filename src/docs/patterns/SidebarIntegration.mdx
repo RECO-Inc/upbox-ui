@@ -1,0 +1,210 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Patterns/Sidebar Integration" />
+
+# Sidebar Integration
+
+앱 레이아웃용 사이드바 합성 패턴. 모든 컨슈머(`Upbox-2.0-Front-Boilerplate`, `Upbox-2.0-Customer-Report`)가 거의 동일한 구조로 사용 중이며, 본 문서가 그 표준 패턴입니다.
+
+## 구성 요소
+
+```ts
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarTrigger,
+} from "@reco-inc/upbox-ui"
+```
+
+| 컴포넌트 | 역할 |
+|---------|------|
+| `Sidebar` | 외곽 컨테이너. `side` / `collapsible` prop 제공 |
+| `SidebarHeader` | 상단 영역 (보통 로고 + collapse 트리거) |
+| `SidebarContent` | 메뉴 컨텐츠 영역. `SidebarGroup` 여러 개를 담음 |
+| `SidebarGroup` + `SidebarGroupContent` | 메뉴 그룹화 (구분선·라벨용) |
+| `SidebarMenu` / `SidebarMenuItem` / `SidebarMenuButton` | 실제 메뉴 항목 트리 |
+| `SidebarFooter` | 하단 영역 (버전·유저드롭다운 등) |
+| `SidebarTrigger` | collapse 토글 버튼 (어디서든 사용 가능) |
+
+## 표준 레이아웃 (`AppSidebar.vue`)
+
+```vue
+<script setup lang="ts">
+import { computed } from "vue"
+import { useRoute, useRouter } from "vue-router"
+import { useMediaQuery } from "@vueuse/core"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarTrigger,
+} from "@reco-inc/upbox-ui"
+import { LayoutGrid } from "lucide-vue-next"
+import Logo from "@/components/common/Logo.vue"
+
+const router = useRouter()
+const route = useRoute()
+
+// 모바일에서는 오른쪽, 데스크톱에서는 왼쪽
+const isMobile = useMediaQuery("(max-width: 768px)")
+const sidebarSide = computed(() => (isMobile.value ? "right" : "left"))
+
+const navigateTo = (path: string) => router.push(path)
+const isCurrentRoute = (path: string) => route.path === path
+</script>
+
+<template>
+  <div>
+    <!-- Mobile Header -->
+    <header class="fixed top-0 left-0 right-0 z-40 border-b md:hidden bg-grey-10">
+      <div class="flex h-16 items-center justify-between px-4">
+        <h1 class="text-size-20 font-bold">앱 이름</h1>
+        <SidebarTrigger />
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <Sidebar :side="sidebarSide" collapsible="icon">
+      <!-- Logo + collapse 토글 -->
+      <SidebarHeader class="py-8 px-4">
+        <div class="flex items-center justify-between group-data-[collapsible=icon]:justify-center">
+          <Logo
+            class="h-6 w-auto cursor-pointer group-data-[collapsible=icon]:hidden"
+            @click="navigateTo('/')"
+          />
+          <SidebarTrigger class="text-grey-100 shrink-0" />
+        </div>
+      </SidebarHeader>
+
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  :data-active="isCurrentRoute('/')"
+                  tooltip="Dashboard"
+                  @click="navigateTo('/')"
+                >
+                  <LayoutGrid />
+                  <span>Dashboard</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+
+      <SidebarFooter>
+        <div class="flex justify-end group-data-[collapsible=icon]:justify-center">
+          <!-- 버전/유저 등 -->
+        </div>
+      </SidebarFooter>
+    </Sidebar>
+
+    <!-- 모바일 헤더 공간 보존용 -->
+    <div class="h-16 md:hidden" />
+  </div>
+</template>
+```
+
+## 표준 규약
+
+### 반응형 side
+
+| 화면 | `side` 값 | 이유 |
+|------|----------|------|
+| Desktop (≥768px) | `"left"` | 일반적인 사이드내비 위치 |
+| Mobile (\<768px) | `"right"` | 우측에서 슬라이드 in (모바일 OS 패턴) |
+
+```ts
+const isMobile = useMediaQuery("(max-width: 768px)")
+const sidebarSide = computed(() => isMobile.value ? "right" : "left")
+```
+
+### `collapsible="icon"` 기본
+
+데스크톱에서 사이드바를 접어도 아이콘만 남는 모드. 폼팩터에 따라 자동 조정. `"offcanvas"` 는 mobile-only 와 같은 효과가 필요할 때.
+
+### 메뉴 아이템 표준 props
+
+| Prop | 용도 |
+|------|------|
+| `:data-active="isCurrentRoute(path)"` | 현재 라우트 강조 |
+| `tooltip="라벨"` | collapsed 상태에서 호버 시 표시 |
+| `@click="navigateTo(path)"` | 라우터 이동 |
+
+### `group-data-[collapsible=icon]:*` 유틸리티
+
+`Sidebar` 가 collapsed (`icon` 모드) 일 때 자식 요소 정렬/표시를 바꾸는 패턴.
+
+| 패턴 | 효과 |
+|------|------|
+| `group-data-[collapsible=icon]:hidden` | collapsed 시 숨김 (로고·이름) |
+| `group-data-[collapsible=icon]:justify-center` | collapsed 시 가운데 정렬 |
+
+### 모바일 헤더 + spacer
+
+`md:hidden` 의 모바일 전용 헤더를 사이드바 컨테이너 밖에 두고, 페이지 컨텐츠가 그 아래로 밀리지 않게 같은 높이의 `<div class="h-16 md:hidden" />` spacer 를 함께 둔다.
+
+## 확장 예시 — UserDropdown 추가
+
+`Customer-Report` 처럼 모바일 헤더에 유저 드롭다운을 추가하는 패턴:
+
+```vue
+<header class="fixed top-0 left-0 right-0 z-40 border-b md:hidden bg-grey-10">
+  <div class="flex h-16 items-center justify-between px-4">
+    <Logo class="h-5 w-auto" @click="navigateTo('/')" />
+    <div class="flex items-center gap-3">
+      <UserDropdown avatar-size="size-8" />
+      <SidebarTrigger />
+    </div>
+  </div>
+</header>
+```
+
+## 추가 메뉴 그룹
+
+라벨이나 구분선이 필요하면 `SidebarGroup` 을 여러 개 둔다:
+
+```vue
+<SidebarContent>
+  <SidebarGroup>
+    <SidebarGroupLabel>일반</SidebarGroupLabel>
+    <SidebarGroupContent>
+      <SidebarMenu>
+        <SidebarMenuItem>...</SidebarMenuItem>
+      </SidebarMenu>
+    </SidebarGroupContent>
+  </SidebarGroup>
+
+  <SidebarGroup>
+    <SidebarGroupLabel>관리</SidebarGroupLabel>
+    <SidebarGroupContent>
+      <SidebarMenu>
+        <SidebarMenuItem>...</SidebarMenuItem>
+      </SidebarMenu>
+    </SidebarGroupContent>
+  </SidebarGroup>
+</SidebarContent>
+```
+
+## 주의
+
+- `<SidebarTrigger />` 는 **여러 번 마운트해도 됨.** 모바일 헤더와 사이드바 헤더 양쪽에 두는 게 일반적 — 동일한 collapse 상태를 토글한다.
+- `useMediaQuery` 의 break point (`768px`) 는 컨슈머 표준. 변경 시 모든 페이지의 spacer 높이/숨김 클래스(`md:hidden`)와 일관성 유지 필요.
+- `collapsible="icon"` 모드에서 `<Logo>` 같은 가변폭 콘텐츠는 반드시 `group-data-[collapsible=icon]:hidden` 으로 숨겨야 레이아웃이 안 깨짐.
+- 새 메뉴 추가 시 `tooltip` 을 빠뜨리면 collapsed 모드에서 메뉴 식별 불가. 모든 `SidebarMenuButton` 에 tooltip 부여 권장.

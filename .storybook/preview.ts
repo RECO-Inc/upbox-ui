@@ -61,6 +61,21 @@ const preview: Preview = {
     a11y: {
       test: 'todo',
     },
+    options: {
+      storySort: {
+        order: [
+          'Introduction',
+          'Guides',
+          ['Installation', 'AI Design Tools'],
+          'Foundations',
+          ['Token System'],
+          'Patterns',
+          ['Field & InputFrame', 'Compound Picker', 'Sidebar Integration', 'Toast Integration'],
+          'Tokens',
+          'Components',
+        ],
+      },
+    },
   },
 }
 

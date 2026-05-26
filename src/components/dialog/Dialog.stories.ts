@@ -37,7 +37,7 @@ export const Default: Story = {
           <p class="text-size-14 text-grey-70">Dialog body content goes here.</p>
           <DialogFooter>
             <DialogClose as-child>
-              <Button variant="assistant">Cancel</Button>
+              <Button variant="tertiary" theme="outlined">Cancel</Button>
             </DialogClose>
             <Button variant="primary">Confirm</Button>
           </DialogFooter>

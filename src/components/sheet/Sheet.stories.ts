@@ -7,6 +7,7 @@ import SheetTitle from './SheetTitle.vue'
 import SheetDescription from './SheetDescription.vue'
 import SheetFooter from './SheetFooter.vue'
 import SheetClose from './SheetClose.vue'
+import { Button } from '../button'
 
 const meta = {
   title: 'Components/Sheet',
@@ -28,14 +29,13 @@ export const Default: Story = {
       SheetDescription,
       SheetFooter,
       SheetClose,
+      Button,
     },
     template: `
       <div class="flex justify-center p-[32px]">
         <Sheet>
-          <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Open Sheet
-            </button>
+          <SheetTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Open Sheet</Button>
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>
@@ -48,10 +48,8 @@ export const Default: Story = {
               <p class="text-sm text-grey-60">Sheet content goes here.</p>
             </div>
             <SheetFooter>
-              <SheetClose>
-                <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 text-sm font-medium">
-                  Close
-                </button>
+              <SheetClose as-child>
+                <Button variant="tertiary" theme="outlined">Close</Button>
               </SheetClose>
             </SheetFooter>
           </SheetContent>
@@ -70,14 +68,13 @@ export const RightSide: Story = {
       SheetHeader,
       SheetTitle,
       SheetDescription,
+      Button,
     },
     template: `
       <div class="flex justify-center p-[32px]">
         <Sheet>
-          <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Open Right Sheet
-            </button>
+          <SheetTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Open Right Sheet</Button>
           </SheetTrigger>
           <SheetContent side="right">
             <SheetHeader>
@@ -103,14 +100,13 @@ export const LeftSide: Story = {
       SheetHeader,
       SheetTitle,
       SheetDescription,
+      Button,
     },
     template: `
       <div class="flex justify-center p-[32px]">
         <Sheet>
-          <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Open Left Sheet
-            </button>
+          <SheetTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Open Left Sheet</Button>
           </SheetTrigger>
           <SheetContent side="left">
             <SheetHeader>
@@ -136,14 +132,13 @@ export const TopSide: Story = {
       SheetHeader,
       SheetTitle,
       SheetDescription,
+      Button,
     },
     template: `
       <div class="flex justify-center p-[32px]">
         <Sheet>
-          <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Open Top Sheet
-            </button>
+          <SheetTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Open Top Sheet</Button>
           </SheetTrigger>
           <SheetContent side="top">
             <SheetHeader>
@@ -169,14 +164,13 @@ export const BottomSide: Story = {
       SheetHeader,
       SheetTitle,
       SheetDescription,
+      Button,
     },
     template: `
       <div class="flex justify-center p-[32px]">
         <Sheet>
-          <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">
-              Open Bottom Sheet
-            </button>
+          <SheetTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Open Bottom Sheet</Button>
           </SheetTrigger>
           <SheetContent side="bottom">
             <SheetHeader>
@@ -202,12 +196,13 @@ export const AllSides: Story = {
       SheetHeader,
       SheetTitle,
       SheetDescription,
+      Button,
     },
     template: `
       <div class="flex flex-wrap gap-[12px] justify-center p-[32px]">
         <Sheet>
-          <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">Right</button>
+          <SheetTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Right</Button>
           </SheetTrigger>
           <SheetContent side="right">
             <SheetHeader>
@@ -217,8 +212,8 @@ export const AllSides: Story = {
           </SheetContent>
         </Sheet>
         <Sheet>
-          <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">Left</button>
+          <SheetTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Left</Button>
           </SheetTrigger>
           <SheetContent side="left">
             <SheetHeader>
@@ -228,8 +223,8 @@ export const AllSides: Story = {
           </SheetContent>
         </Sheet>
         <Sheet>
-          <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">Top</button>
+          <SheetTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Top</Button>
           </SheetTrigger>
           <SheetContent side="top">
             <SheetHeader>
@@ -239,8 +234,8 @@ export const AllSides: Story = {
           </SheetContent>
         </Sheet>
         <Sheet>
-          <SheetTrigger>
-            <button class="px-[16px] py-[8px] rounded-sm border border-grey-40 bg-grey-10 text-sm font-medium">Bottom</button>
+          <SheetTrigger as-child>
+            <Button variant="tertiary" theme="outlined">Bottom</Button>
           </SheetTrigger>
           <SheetContent side="bottom">
             <SheetHeader>

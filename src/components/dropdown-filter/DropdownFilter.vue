@@ -7,10 +7,11 @@ import { Checkbox } from "../checkbox";
 import { Button } from "../button";
 import { TextField } from "../text-field";
 import { cn } from "../../lib/utils";
+import type { SelectOption } from "../../lib/options";
+import { inputFrameSizes, type InputFrameSize } from "../input-frame";
 
-export interface DropdownFilterOption<V = unknown> {
-  label: string;
-  value: V;
+export interface DropdownFilterOption<V = unknown> extends SelectOption<V> {
+  /** false 면 목록에서 숨김 (필터 토글). 기본값 노출(true 취급) */
   isActive?: boolean;
 }
 
@@ -23,7 +24,7 @@ const props = withDefaults(defineProps<{
   single?: boolean;
   search?: boolean;
   placeholder?: string;
-  size?: 'small' | 'regular' | 'large';
+  size?: InputFrameSize;
   displayStyle?: 'default' | 'filled' | 'highlight';
 }>(), {
   disabled: false,
@@ -79,19 +80,8 @@ const multiCountText = computed(() => {
   return t('ui.component.dropdownFilter.countMore', { count: modelValue.value.length - 1 });
 });
 
-const sizeClasses = computed(() => {
-  switch (props.size) {
-    case 'small':
-      return 'h-[32px] px-[8px] text-size-12';
-    case 'large':
-      return 'h-[48px] px-[16px] text-size-16';
-    default:
-      return 'h-[40px] px-[12px] text-size-14';
-  }
-});
-
 const displayClasses = computed(() => {
-  const classes = [sizeClasses.value];
+  const classes: string[] = [inputFrameSizes[props.size]];
 
   if (isSelectSome.value) {
     if (props.displayStyle === 'highlight') {
@@ -163,7 +153,7 @@ function onReset() {
           type="button"
           :disabled="isPickerDisabled"
           :class="cn(
-            'flex w-full items-center justify-between rounded-sm border transition-colors cursor-pointer',
+            'flex w-full items-center justify-between rounded-[4px] border transition-colors cursor-pointer',
             displayClasses,
             isPickerDisabled && 'opacity-50 cursor-not-allowed'
           )"

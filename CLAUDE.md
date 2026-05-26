@@ -73,21 +73,23 @@ Primitive를 참조하는 의미 기반 토큰:
 **Spacing:** `--space-{2,4,6,8,12,16,20,24,28,32,36,40,48,56,64,80,112}`
 **Shadow:** `--shadow-{small,regular,medium,large}`
 
-### 3. Tailwind Preset (tailwind-preset.mjs / .cjs)
+### 3. Tailwind v4 Theme (`@reco-inc/upbox-ui/theme.css`)
 
-모든 토큰을 Tailwind 유틸리티로 매핑. 컨슈머 프로젝트에서 preset으로 import:
+`src/style.css` 가 모든 토큰을 `@theme` 블록에 노출함. 컨슈머는 이걸 import 만 하면 됨:
 
-```js
-// 컨슈머 프로젝트의 tailwind.config.js
-import preset from '@reco-inc/upbox-ui/tailwind-preset'
-export default { presets: [preset] }
+```css
+/* consumer style.css */
+@import "tailwindcss";
+@import "@reco-inc/upbox-ui/style.css";   /* 컴파일된 라이브러리 CSS */
+@import "@reco-inc/upbox-ui/theme.css";   /* @theme 토큰 등록 */
+@source "../node_modules/@reco-inc/upbox-ui/dist/**/*.mjs";
 ```
 
 ### 4. DESIGN.md (루트, AI 디자인 툴 입력용)
 
 루트 `DESIGN.md`는 AI 디자인 툴(v0 / Stitch / Figma Make 등) 입력 및 디자인 의도/철학 문서. frontmatter YAML(토큰) + 본문(컨셉·shape 언어·컴포넌트 의도) 구조.
 
-**동기화 룰:** `tokens.css` / `style.css` / `tailwind-preset.*` 의 토큰 값(색상 hex, spacing, shadow, radius)이나 의미 매핑(semantic alias)을 수정하면 **같은 PR에서 `DESIGN.md` frontmatter도 함께 갱신한다.** 컴포넌트 추가·삭제·prop API 변경은 동기화 의무 대상이 아니다(Storybook과 소스 코드가 단일 진실).
+**동기화 룰:** `tokens.css` / `style.css` 의 토큰 값(색상 hex, spacing, shadow, radius)이나 의미 매핑(semantic alias)을 수정하면 **같은 PR에서 `DESIGN.md` frontmatter도 함께 갱신한다.** 컴포넌트 추가·삭제·prop API 변경은 동기화 의무 대상이 아니다(Storybook과 소스 코드가 단일 진실).
 
 ## Consumer Projects
 
@@ -95,15 +97,13 @@ export default { presets: [preset] }
 
 | 프로젝트 | Tailwind | 비고 |
 |---------|---------|------|
-| Upbox-2.0-Front-Boilerplate | v4 (`@tailwindcss/vite` ^4.2) | `@theme` 정의 + `@source`로 dist 스캔 |
+| Upbox-2.0-Front-Boilerplate | v4 (`@tailwindcss/vite` ^4.2) | `style.css` + `theme.css` import + `@source` dist 스캔 |
 | Upbox-2.0-Customer-Report | v4 (`@tailwindcss/vite` ^4.2) | 동일 |
-| Upbox-2.0-Front-Application | v4 (`@tailwindcss/vite` ^4.2) | 동일 |
+| Upbox-2.0-Front-Application | v4 (`@tailwindcss/vite` ^4.2) | 동일 + 앱 전용 `@theme` 추가 |
 
 ### Tailwind v4 컨슈머 주의사항
 
-Tailwind v4는 `@theme` 블록에 색상이 등록되어야 유틸리티가 생성됨. upbox-ui의 CSS 변수(`tokens.css`)만으로는 v4 유틸리티가 자동 생성되지 않으므로, 컨슈머의 CSS 엔트리(예: `style.css`)에서 `@theme`에 `--color-grey-*` 등을 직접 정의하고 `@source '../node_modules/@reco-inc/upbox-ui/dist/**/*.{js,mjs}'`로 dist JS의 클래스 문자열을 스캔해야 함.
-
-`tailwind-preset.mjs`는 과거 v3 컨슈머용이며 현재 v4 컨슈머는 사용하지 않음.
+Tailwind v4는 `@theme` 블록에 토큰이 등록돼야 유틸리티가 생성됨. 라이브러리의 `theme.css` 가 그 등록을 담당하므로 컨슈머는 단순히 import 만 하면 됨 (위 "3. Tailwind v4 Theme" 참고). `@source`로 dist JS도 함께 스캔해야 미사용 클래스가 purge 되지 않음.
 
 ## Build & Development
 
