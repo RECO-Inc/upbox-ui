@@ -126,6 +126,8 @@ useInputFrameInjectProvide(() => pickInputFrameDesign(props))
   >
     <SelectTrigger
       v-bind="$attrs"
+      :disabled="props.disabled"
+      :readonly="props.readonly"
       :class="cn('w-full', props.class)"
     >
       <SelectValue :placeholder="placeholder" />
