@@ -103,6 +103,7 @@ declare module 'vue' {
         PaginationLast: typeof import('./components/pagination')['PaginationLast'];
         PaginationNext: typeof import('./components/pagination')['PaginationNext'];
         PaginationPrevious: typeof import('./components/pagination')['PaginationPrevious'];
+        Panel: typeof import('./components/panel')['Panel'];
         Popover: typeof import('./components/popover')['Popover'];
         PopoverContent: typeof import('./components/popover')['PopoverContent'];
         PopoverTrigger: typeof import('./components/popover')['PopoverTrigger'];
