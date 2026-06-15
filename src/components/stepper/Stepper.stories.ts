@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import Stepper from './Stepper.vue'
 
 const meta = {
-  title: 'Components/Stepper',
+  title: 'Components/Form/Stepper',
   component: Stepper,
   tags: ['autodocs'],
 } satisfies Meta<typeof Stepper>

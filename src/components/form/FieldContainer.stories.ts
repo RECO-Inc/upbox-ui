@@ -11,7 +11,7 @@ import SelectItem from '../select/SelectItem.vue'
 import Button from '../button/Button.vue'
 
 const meta = {
-  title: 'Components/FieldContainer',
+  title: 'Components/Form/FieldContainer',
   component: FieldContainer,
   tags: ['autodocs'],
   args: { name: 'field' },

@@ -7,7 +7,7 @@ import InputGroupText from './InputGroupText.vue'
 import InputGroupTextarea from './InputGroupTextarea.vue'
 
 const meta = {
-  title: 'Components/InputGroup',
+  title: 'Components/Form/InputGroup',
   component: InputGroup,
   tags: ['autodocs'],
 } satisfies Meta<typeof InputGroup>

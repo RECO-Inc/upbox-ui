@@ -4,7 +4,7 @@ import FileUploader from './FileUploader.vue'
 import type { UploaderFile } from './types'
 
 const meta = {
-  title: 'Components/FileUploader',
+  title: 'Components/Form/FileUploader',
   component: FileUploader,
   tags: ['autodocs'],
   args: { inputFiles: [] },
