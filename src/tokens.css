@@ -1,5 +1,7 @@
 :root {
   /* Text sizes */
+  --text-size-8: 0.5rem;
+  --text-size-8--line-height: 0.75rem;
   --text-size-9: 0.56rem;
   --text-size-9--line-height: 0.84rem;
   --text-size-10: 0.62rem;
