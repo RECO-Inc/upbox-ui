@@ -12,7 +12,7 @@ const props = defineProps<{
   <TextField
     data-sidebar="input"
     :class="cn(
-      'h-[32px] w-full bg-grey-10 shadow-none focus-visible:ring-2 focus-visible:ring-navy-80',
+      'h-[32px] w-full bg-grey-10 shadow-none focus-within:ring-2 focus-within:ring-navy-80',
       props.class,
     )"
   >

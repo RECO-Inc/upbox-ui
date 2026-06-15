@@ -2,7 +2,6 @@
 import type { HTMLAttributes } from "vue"
 import { computed, inject, provide, ref, useSlots } from "vue"
 import { useVModel } from "@vueuse/core"
-import { cva } from "class-variance-authority"
 import { cn } from "../../lib/utils"
 import { X, Eye, EyeOff } from "lucide-vue-next"
 import { FIELD_CONTROL_INJECTION_KEY } from "../form/injectionKeys"
@@ -10,21 +9,6 @@ import { InputFrame, InputIcon } from "../input-frame"
 import { TEXT_FIELD_TRAILING_CONTEXT_KEY } from "./textFieldContext"
 
 defineOptions({ inheritAttrs: false })
-
-const wrapperVariants = cva(
-  "relative w-full",
-  {
-    variants: {
-      disabled: {
-        true: "cursor-not-allowed",
-        false: "",
-      },
-    },
-    defaultVariants: {
-      disabled: false,
-    },
-  },
-)
 
 export interface TextFieldProps {
   variant?: "default" | "filled" | "bottomline"
@@ -127,59 +111,56 @@ const handleClear = () => {
 </script>
 
 <template>
-  <div :class="wrapperVariants({ disabled: props.disabled })">
-    <InputFrame
-      :variant="props.variant"
-      :size="props.size"
-      :error="props.error"
-      :readonly="props.readonly"
-      :disabled="props.disabled"
-      class="relative w-full"
-    >
-      <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
-        <input
-          v-bind="$attrs"
-          v-model="modelValue"
-          :type="inputType"
-          :disabled="disabled"
-          :readonly="readonly"
-          :placeholder="placeholder"
-          :maxlength="maxLength"
-          :class="cn(
-            'min-h-0 h-full min-w-0 flex-1 border-0 bg-transparent',
-            'text-inherit outline-none',
-            'file:border-0 file:bg-transparent file:text-sm file:font-medium',
-            'placeholder:text-inherit',
-            'disabled:cursor-not-allowed',
-            props.class,
-          )"
-          @blur="handleBlur"
-        />
-        <button
-          v-if="showClearButton"
-          type="button"
-          class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
-          @click="handleClear"
-        >
-          <InputIcon class="text-inherit">
-            <X />
-          </InputIcon>
-        </button>
-        <button
-          v-if="password"
-          type="button"
-          class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
-          @click="togglePasswordVisibility"
-        >
-          <InputIcon v-if="!showPassword" class="text-inherit">
-            <Eye />
-          </InputIcon>
-          <InputIcon v-else class="text-inherit">
-            <EyeOff />
-          </InputIcon>
-        </button>
-        <slot />
-      </div>
-    </InputFrame>
-  </div>
+  <InputFrame
+    :variant="props.variant"
+    :size="props.size"
+    :error="props.error"
+    :readonly="props.readonly"
+    :disabled="props.disabled"
+    :class="cn('relative w-full', props.class)"
+  >
+    <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
+      <input
+        v-bind="$attrs"
+        v-model="modelValue"
+        :type="inputType"
+        :disabled="disabled"
+        :readonly="readonly"
+        :placeholder="placeholder"
+        :maxlength="maxLength"
+        :class="cn(
+          'min-h-0 h-full min-w-0 flex-1 border-0 bg-transparent',
+          'text-inherit outline-none',
+          'file:border-0 file:bg-transparent file:text-sm file:font-medium',
+          'placeholder:text-inherit',
+          'disabled:cursor-not-allowed',
+        )"
+        @blur="handleBlur"
+      />
+      <button
+        v-if="showClearButton"
+        type="button"
+        class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
+        @click="handleClear"
+      >
+        <InputIcon class="text-inherit">
+          <X />
+        </InputIcon>
+      </button>
+      <button
+        v-if="password"
+        type="button"
+        class="shrink-0 text-inherit transition-opacity enabled:hover:opacity-100"
+        @click="togglePasswordVisibility"
+      >
+        <InputIcon v-if="!showPassword" class="text-inherit">
+          <Eye />
+        </InputIcon>
+        <InputIcon v-else class="text-inherit">
+          <EyeOff />
+        </InputIcon>
+      </button>
+      <slot />
+    </div>
+  </InputFrame>
 </template>
