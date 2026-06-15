@@ -248,7 +248,15 @@ const textareaStyle = computed(() => {
       :maxlength="byteMode ? undefined : maxLength"
       :rows="autoResize ? 1 : rows"
       :style="textareaStyle"
-      class="block w-full min-w-0 flex-1 resize-none border-0 bg-transparent text-inherit outline-none placeholder:text-grey-50 disabled:cursor-not-allowed"
+      :class="cn(
+        'block w-full min-w-0 resize-none border-0 bg-transparent text-inherit outline-none placeholder:text-grey-50 disabled:cursor-not-allowed',
+        // autoResize 는 인라인 height 로 높이를 직접 제어한다. flex column 의 main축에서
+        // flex-basis 가 height 를 덮으므로(definite-height 부모에선 flex-1=basis:0% 가
+        // 인라인 height 를 무시하고 1줄로 collapse), autoResize 시엔 flex-none(basis:auto)로
+        // 둬서 어떤 부모 레이아웃에서도 인라인 height 가 그대로 적용되게 한다.
+        // non-autoResize 는 프레임(고정 높이 가능)을 채우도록 flex-1 유지.
+        autoResize ? 'flex-none' : 'flex-1',
+      )"
       @blur="handleBlur"
     />
     <div v-if="counter || $slots.footer" class="flex justify-end pt-[4px]">
