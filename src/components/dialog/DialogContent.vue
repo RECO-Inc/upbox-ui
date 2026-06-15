@@ -39,13 +39,13 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 <template>
   <DialogPortal>
     <DialogOverlay
-      class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+      class="ui-dialog-overlay fixed inset-0 z-50 bg-black/50"
     />
     <DialogContent
       v-bind="forwarded"
       :class="
         cn(
-          'fixed left-1/2 top-1/2 z-50 grid w-[92%] -translate-x-1/2 -translate-y-1/2 gap-[16px] border border-grey-30 bg-grey-10 p-[24px] shadow-lg rounded-[8px] duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
+          'ui-dialog-content fixed left-1/2 top-1/2 z-50 grid w-[92%] gap-[16px] border border-grey-30 bg-grey-10 p-[24px] shadow-lg rounded-[8px]',
           DIALOG_SIZE_MAP[size],
           props.class,
         )"
@@ -61,3 +61,56 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     </DialogContent>
   </DialogPortal>
 </template>
+
+<!--
+  모션은 컴포넌트에 self-contained 로 둔다.
+  소비 앱이 `@import "tailwindcss" important` 인 경우 tw-animate-css 의
+  `data-[state]:animate-*` 유틸이 `!important` 가 되는데, CSS 스펙상
+  애니메이션은 `!important` 선언(특히 transform 계열 util)을 못 이겨
+  reka 의 exit 모션이 깨진다(닫을 때 휙 사라짐). 그래서 유틸 대신
+  scoped @keyframes 로 직접 처리 → 어떤 앱에서도 열기/닫기 모두 동작.
+  중앙 정렬 transform 도 util(`-translate-*`) 대신 여기서 소유해
+  important 충돌을 피한다.
+-->
+<style scoped>
+.ui-dialog-content {
+  transform: translate(-50%, -50%);
+}
+
+@keyframes ui-dialog-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes ui-dialog-overlay-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes ui-dialog-content-in {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes ui-dialog-content-out {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -50%) scale(0.96); }
+}
+
+.ui-dialog-overlay[data-state="open"] {
+  animation: ui-dialog-overlay-in 0.2s ease both;
+}
+.ui-dialog-overlay[data-state="closed"] {
+  animation: ui-dialog-overlay-out 0.2s ease both;
+}
+.ui-dialog-content[data-state="open"] {
+  animation: ui-dialog-content-in 0.2s ease both;
+}
+.ui-dialog-content[data-state="closed"] {
+  animation: ui-dialog-content-out 0.2s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-dialog-overlay[data-state],
+  .ui-dialog-content[data-state] {
+    animation-duration: 0.01ms;
+  }
+}
+</style>
