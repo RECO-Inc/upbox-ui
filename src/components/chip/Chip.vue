@@ -32,7 +32,7 @@ const hasCount = computed(
         <slot />
       </span>
       <span v-if="hasCount" class="font-semibold text-status-informative">
-        {{ props.count }}
+        +{{ props.count }}
       </span>
     </span>
     <ChevronDown

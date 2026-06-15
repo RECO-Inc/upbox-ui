@@ -1060,7 +1060,7 @@
 | `variant=square` / `variant=circle` | `round` | `boolean` (square=`false`, circle=`true`) | `false` |
 | `device=web` / `device=mobile` | `device` | `"web" \| "mobile"` | `"web"` |
 | `state=placeholder` / `state=typed` | `state` | `"placeholder" \| "typed"` | `"placeholder"` |
-| `+N` (typed 라벨 옆 숫자) | `count` | `number \| string` | — |
+| `+N` (typed 라벨 옆 숫자) | `count` | `number \| string` (`+` 접두는 자동) | — |
 | 우측 chevron | `chevron` | `boolean` | `true` |
 | 본문 텍스트 | 기본 슬롯 | children | — |
 | inner badge (3xsmall) | `#badge` 슬롯 | instance (`Badge`) | — |

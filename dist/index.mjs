@@ -3092,7 +3092,7 @@ const Aa = /* @__PURE__ */ m({
         }, [
           y(o.$slots, "default")
         ], 2),
-        l.value ? (n(), x("span", vo, G(s.count), 1)) : Y("", !0)
+        l.value ? (n(), x("span", vo, " +" + G(s.count), 1)) : Y("", !0)
       ]),
       s.chevron ? (n(), _(e(Le), {
         key: 0,
