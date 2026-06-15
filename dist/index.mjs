@@ -3066,7 +3066,7 @@ const Aa = /* @__PURE__ */ m({
   key: 0,
   class: "font-semibold text-status-informative"
 }, zu = /* @__PURE__ */ m({
-  __name: "Chip",
+  __name: "FilterChip",
   props: {
     round: { type: Boolean, default: !1 },
     device: { default: "web" },
@@ -10414,7 +10414,6 @@ export {
   ku as CardHeader,
   Bu as CardTitle,
   $t as Checkbox,
-  zu as Chip,
   jn as DateCalendar,
   He as DateInput,
   Gu as DateMove,
@@ -10465,6 +10464,7 @@ export {
   mc as FieldContainer,
   ni as FileItem,
   fc as FileUploader,
+  zu as FilterChip,
   Ep as Form,
   Bi as FormControl,
   Si as FormDescription,
@@ -10603,11 +10603,11 @@ export {
   an as badgeDividerVariants,
   en as badgeVariants,
   Et as buttonVariants,
-  ho as chipLabelColor,
-  bo as chipVariants,
   c as cn,
   yu as fabVariants,
   ei as fileToUploaderFile,
+  ho as filterChipLabelColor,
+  bo as filterChipVariants,
   Xr as getFileExtension,
   xu as iconButtonVariants,
   Fa as inputFrameSizes,

@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import { ChevronDown } from "lucide-vue-next"
-import type { ChipProps } from "."
+import type { FilterChipProps } from "."
 import { cn } from "../../lib/utils"
-import { chipLabelColor, chipVariants } from "."
+import { filterChipLabelColor, filterChipVariants } from "."
 
-const props = withDefaults(defineProps<ChipProps>(), {
+const props = withDefaults(defineProps<FilterChipProps>(), {
   round: false,
   device: "web",
   state: "placeholder",
   chevron: true,
 })
 
-const labelColor = computed(() => chipLabelColor[props.device][props.state])
+const labelColor = computed(() => filterChipLabelColor[props.device][props.state])
 
 const hasCount = computed(
   () => props.count !== undefined && props.count !== null && props.count !== "",
@@ -22,7 +22,7 @@ const hasCount = computed(
 <template>
   <div
     :class="cn(
-      chipVariants({ round: props.round, device: props.device, state: props.state }),
+      filterChipVariants({ round: props.round, device: props.device, state: props.state }),
       props.class,
     )"
   >

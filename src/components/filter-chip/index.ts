@@ -1,7 +1,7 @@
 import type { VariantProps } from "class-variance-authority"
 import { cva } from "class-variance-authority"
 
-export { default as Chip } from "./Chip.vue"
+export { default as FilterChip } from "./FilterChip.vue"
 
 /**
  * Figma `filterChips` (조회용 드롭다운 필터 칩).
@@ -10,7 +10,7 @@ export { default as Chip } from "./Chip.vue"
  * - mobile: 보더 없는 채움(placeholder=grey-20 / typed=blue-20), 13px semibold, justify-center
  * 생성·수정용 선택 UI 는 SelectField 를 쓴다.
  */
-export const chipVariants = cva(
+export const filterChipVariants = cva(
   "inline-flex items-center box-border h-[32px] px-[8px] py-[6px] gap-[4px] whitespace-nowrap transition-colors cursor-pointer focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
@@ -40,9 +40,9 @@ export const chipVariants = cva(
   },
 )
 
-export type ChipVariants = VariantProps<typeof chipVariants>
+export type FilterChipVariants = VariantProps<typeof filterChipVariants>
 
-export interface ChipProps {
+export interface FilterChipProps {
   /** square(false) / circle(true) */
   round?: boolean
   /** web=흰배경+보더 / mobile=채움. 기본 web */
@@ -57,9 +57,9 @@ export interface ChipProps {
 }
 
 /** 라벨 텍스트 색 — device × state 조합 */
-export const chipLabelColor: Record<
-  NonNullable<ChipProps["device"]>,
-  Record<NonNullable<ChipProps["state"]>, string>
+export const filterChipLabelColor: Record<
+  NonNullable<FilterChipProps["device"]>,
+  Record<NonNullable<FilterChipProps["state"]>, string>
 > = {
   web: {
     placeholder: "text-grey-60",

@@ -22,7 +22,7 @@
 | [`3498:25583`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3498-25583) | [`searchField`](#searchfield) | `SearchField` |
 | [`3540:25866`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3540-25866) | [`badge`](#badge) | `Badge` |
 | [`3570:25359`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3570-25359) | [`tag`](#tag) | `Tag` |
-| [`4012:24597`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=4012-24597) | [`filterChips`](#filterchips) | `Chip` |
+| [`4012:24597`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=4012-24597) | [`filterChips`](#filterchips) | `FilterChip` |
 | [`3619:27807`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3619-27807) | [`dateInput`](#dateinput) | `DateInput` / `DatePeriodInput` (Picker 내부) |
 | [`3623:26811`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3623-26811) | [`timeInput`](#timeinput) | `TimeInput` (Picker 내부) |
 | [`3837:27148`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3837-27148) | [`select`](#select) | `Select` / `SelectTrigger` |
@@ -1051,7 +1051,7 @@
 
 | Figma 노드 | Vue 컴포넌트 |
 |------------|--------------|
-| [`4012:24597`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=4012-24597) (`viewFilter` frame, `filterChips` set) | `Chip.vue` |
+| [`4012:24597`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=4012-24597) (`viewFilter` frame, `filterChips` set) | `FilterChip.vue` |
 
 ### Props 매핑
 
@@ -1086,7 +1086,7 @@
 
 | 피그마 노드 | Vue 구조 |
 |-------------|----------|
-| 외곽 (bg + border + radius + padding) | `Chip` 외곽 `<div>` (`chipVariants`) |
+| 외곽 (bg + border + radius + padding) | `FilterChip` 외곽 `<div>` (`filterChipVariants`) |
 | 좌측 inner badge | `#badge` 슬롯 |
 | 본문 텍스트 (`pl-4`) | 기본 슬롯 (`<span>`, device×state 별 색) |
 | typed 의 `+N` | `count` prop (`font-semibold text-status-informative`) |

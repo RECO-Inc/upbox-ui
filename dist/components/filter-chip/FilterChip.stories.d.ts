@@ -6,7 +6,7 @@ import { StoryObj } from '@storybook/vue3-vite';
 declare const meta: {
     title: string;
     component: {
-        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('.').ChipProps> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('.').FilterChipProps> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {
             round: boolean;
             state: "placeholder" | "typed";
             device: "web" | "mobile";
@@ -18,7 +18,7 @@ declare const meta: {
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<import('.').ChipProps> & Readonly<{}>, {}, {}, {}, {}, {
+        }, Readonly<import('.').FilterChipProps> & Readonly<{}>, {}, {}, {}, {}, {
             round: boolean;
             state: "placeholder" | "typed";
             device: "web" | "mobile";
@@ -27,7 +27,7 @@ declare const meta: {
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('vue').ComponentOptionsBase<Readonly<import('.').ChipProps> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {
+    } & import('vue').ComponentOptionsBase<Readonly<import('.').FilterChipProps> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {
         round: boolean;
         state: "placeholder" | "typed";
         device: "web" | "mobile";

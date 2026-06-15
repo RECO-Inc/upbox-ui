@@ -1,4 +1,4 @@
-import { ChipProps } from '.';
+import { FilterChipProps } from '.';
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
@@ -9,7 +9,7 @@ declare function __VLS_template(): {
     rootEl: HTMLDivElement;
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
-declare const __VLS_component: import('vue').DefineComponent<ChipProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<ChipProps> & Readonly<{}>, {
+declare const __VLS_component: import('vue').DefineComponent<FilterChipProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<FilterChipProps> & Readonly<{}>, {
     round: boolean;
     state: "placeholder" | "typed";
     device: "web" | "mobile";
