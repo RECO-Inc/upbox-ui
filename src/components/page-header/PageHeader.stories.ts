@@ -8,7 +8,7 @@ const meta = {
   component: PageHeader as any,
   tags: ['autodocs'],
   argTypes: {
-    size: { control: 'inline-radio', options: ['lg', 'md', 'sm'] },
+    size: { control: 'inline-radio', options: ['small', 'regular', 'large'] },
     back: { control: 'boolean' },
   },
 } satisfies Meta<typeof PageHeader>
@@ -66,9 +66,9 @@ export const Sizes: Story = {
     components: { PageHeader },
     template: `
       <div class="flex flex-col gap-[24px]">
-        <PageHeader size="lg" title="lg 28px (모바일 대타이틀)" description="설명" />
-        <PageHeader size="md" title="md 24px (웹 기본)" description="설명" />
-        <PageHeader size="sm" title="sm 22px (모바일 중타이틀)" description="설명" />
+        <PageHeader size="large" title="large 28px (모바일 대타이틀)" description="설명" />
+        <PageHeader size="regular" title="regular 24px (웹 기본)" description="설명" />
+        <PageHeader size="small" title="small 22px (모바일 중타이틀)" description="설명" />
       </div>
     `,
   }),

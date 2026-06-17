@@ -7994,16 +7994,16 @@ const ji = /* @__PURE__ */ g({
   props: {
     title: {},
     description: {},
-    size: { default: "md" },
+    size: { default: "regular" },
     back: { type: Boolean, default: !1 },
     class: { type: [Boolean, null, String, Object, Array] }
   },
   emits: ["back"],
   setup(a, { emit: l }) {
     const t = a, s = l, o = {
-      lg: "text-page-title-1",
-      md: "text-page-title-2",
-      sm: "text-page-title-3"
+      large: "text-page-title-1",
+      regular: "text-page-title-2",
+      small: "text-page-title-3"
     };
     return (r, i) => (n(), y("div", {
       class: b(e(m)("flex items-center justify-between gap-x-[10px] mb-[16px]", t.class))

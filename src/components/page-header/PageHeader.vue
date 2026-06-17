@@ -8,15 +8,15 @@ const props = withDefaults(defineProps<{
   /** 제목 옆 보조 설명 (인라인) */
   description?: string
   /**
-   * 제목 크기. 웹 기본은 md(24px). 모바일은 lg(28)/sm(22) 사용.
-   * lg=page-title-1(28), md=page-title-2(24), sm=page-title-3(22)
+   * 제목 크기. 웹 기본은 regular(24px). 모바일은 large(28)/small(22) 사용.
+   * large=page-title-1(28), regular=page-title-2(24), small=page-title-3(22)
    */
-  size?: "lg" | "md" | "sm"
+  size?: "small" | "regular" | "large"
   /** 좌측 back(<) 화살표 노출 → @back emit (라우팅은 소비자가 처리) */
   back?: boolean
   class?: HTMLAttributes["class"]
 }>(), {
-  size: "md",
+  size: "regular",
   back: false,
 })
 
@@ -30,9 +30,9 @@ defineSlots<{
 }>()
 
 const titleClass = {
-  lg: "text-page-title-1",
-  md: "text-page-title-2",
-  sm: "text-page-title-3",
+  large: "text-page-title-1",
+  regular: "text-page-title-2",
+  small: "text-page-title-3",
 } as const
 </script>
 
