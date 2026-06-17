@@ -74,7 +74,10 @@ const titleClass = {
 
       <div class="flex min-w-0 flex-col">
         <div class="flex min-w-0 items-center gap-x-[8px]">
-          <h2 class="truncate text-grey-100" :class="titleClass[size]">
+          <h2
+            class="text-grey-100"
+            :class="[titleClass[size], descriptionPlacement === 'block' ? 'grow min-w-0' : 'min-w-0 truncate']"
+          >
             <slot>{{ title }}</slot>
           </h2>
           <slot name="badge" />
