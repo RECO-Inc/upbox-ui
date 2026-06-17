@@ -7983,7 +7983,7 @@ const ji = /* @__PURE__ */ g({
       y(t.$slots, "default")
     ], 2));
   }
-}), qi = { class: "flex min-w-0 flex-col" }, Zi = { class: "flex min-w-0 items-center gap-x-[8px]" }, Wi = {
+}), qi = { class: "flex min-w-0 grow flex-col" }, Zi = { class: "flex min-w-0 items-center gap-x-[8px]" }, Wi = {
   key: 0,
   class: "min-w-0 truncate text-size-12 text-grey-60"
 }, Qi = {

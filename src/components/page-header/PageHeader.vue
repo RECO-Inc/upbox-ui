@@ -72,7 +72,7 @@ const titleClass = {
         <ChevronLeft class="size-[24px]" />
       </button>
 
-      <div class="flex min-w-0 flex-col">
+      <div class="flex min-w-0 grow flex-col">
         <div class="flex min-w-0 items-center gap-x-[8px]">
           <h2
             class="text-grey-100"
