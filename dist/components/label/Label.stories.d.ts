@@ -25,10 +25,17 @@ declare const meta: {
         };
     });
     tags: string[];
+    parameters: {
+        docs: {
+            description: {
+                component: string;
+            };
+        };
+    };
 };
 export default meta;
 type Story = StoryObj<typeof meta>;
-export declare const Default: Story;
-export declare const WithInput: Story;
-export declare const MultipleLabels: Story;
+/** 단독 컨트롤에 라벨 — Label 로 Checkbox 를 감싸면 라벨 클릭으로 토글됨 */
 export declare const WithCheckbox: Story;
+/** for/id 연결 — 비-DS(직접 만든) 컨트롤에 라벨을 연결할 때 */
+export declare const ForIdAssociation: Story;
