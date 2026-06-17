@@ -1,13 +1,18 @@
 import { HTMLAttributes } from 'vue';
 type __VLS_Props = {
     title: string;
-    /** 제목 옆 보조 설명 (인라인) */
+    /** 보조 설명 */
     description?: string;
     /**
-     * 제목 크기. 웹 기본은 regular(24px). 모바일은 large(28)/small(22) 사용.
+     * 제목 크기. 웹 기본 regular(24px). 모바일은 large(28)/small(22).
      * large=page-title-1(28), regular=page-title-2(24), small=page-title-3(22)
      */
     size?: "small" | "regular" | "large";
+    /**
+     * description 위치.
+     * inline = 제목 우측 인라인 12px (웹), block = 제목 아래 14px (모바일/스택)
+     */
+    descriptionPlacement?: "inline" | "block";
     /** 좌측 back(<) 화살표 노출 → @back emit (라우팅은 소비자가 처리) */
     back?: boolean;
     class?: HTMLAttributes["class"];
@@ -35,6 +40,7 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
     onBack?: (() => any) | undefined;
 }>, {
     size: "small" | "regular" | "large";
+    descriptionPlacement: "inline" | "block";
     back: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;

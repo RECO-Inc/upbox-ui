@@ -60,7 +60,21 @@ export const DetailWithBackAndBadge: Story = {
   }),
 }
 
-/** 사이즈 — 웹 md(24) / 모바일 lg(28)·sm(22) */
+/** 모바일/스택: description 이 제목 아래(14px)로 (descriptionPlacement=block) */
+export const StackedDescription: Story = {
+  name: '모바일 (description 아래 / block)',
+  render: () => ({
+    components: { PageHeader },
+    template: `
+      <div class="flex flex-col gap-[24px] max-w-[360px]">
+        <PageHeader size="large" title="대타이틀" description="해당 페이지에 대한 설명 문구" description-placement="block" />
+        <PageHeader size="small" title="중타이틀" description="해당 페이지에 대한 설명 문구" description-placement="block" />
+      </div>
+    `,
+  }),
+}
+
+/** 사이즈 — 웹 regular(24) / 모바일 large(28)·small(22) */
 export const Sizes: Story = {
   render: () => ({
     components: { PageHeader },

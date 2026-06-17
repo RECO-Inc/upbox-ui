@@ -21,5 +21,7 @@ export declare const Default: Story;
 export declare const WithActions: Story;
 /** 상세 페이지(웹): 같은 24px + back 화살표 + 배지 */
 export declare const DetailWithBackAndBadge: Story;
-/** 사이즈 — 웹 md(24) / 모바일 lg(28)·sm(22) */
+/** 모바일/스택: description 이 제목 아래(14px)로 (descriptionPlacement=block) */
+export declare const StackedDescription: Story;
+/** 사이즈 — 웹 regular(24) / 모바일 large(28)·small(22) */
 export declare const Sizes: Story;
