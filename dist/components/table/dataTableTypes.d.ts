@@ -6,6 +6,10 @@ export interface DataTableColumn<Row = any> {
     label: string;
     /** 컬럼 너비 (number → px) */
     width?: string | number;
+    /** 컬럼 최소 너비 (number → px). table-layout auto 에서 컬럼이 최소 이 폭을 유지 */
+    minWidth?: string | number;
+    /** 컬럼 최대 너비 (number → px). 초과 내용은 셀에서 wrap/clamp */
+    maxWidth?: string | number;
     /** 셀/헤더 정렬 (default: left) */
     align?: "left" | "center" | "right";
     /** 헤더 라벨 옆 question-mark tooltip */

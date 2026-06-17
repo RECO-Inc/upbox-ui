@@ -49,9 +49,14 @@ function alignClass(align?: "left" | "center" | "right") {
   return align === "center" ? "text-center" : align === "right" ? "text-right" : "text-left"
 }
 
-function colWidth(width?: string | number) {
-  if (width == null) return undefined
-  return typeof width === "number" ? `${width}px` : width
+function toLen(value?: string | number) {
+  if (value == null) return undefined
+  return typeof value === "number" ? `${value}px` : value
+}
+
+/** min/max 너비는 셀(th/td)에 적용 — table-layout auto 에서 컬럼 폭을 안정적으로 제어 */
+function cellStyle(column: DataTableColumn<Row>) {
+  return { minWidth: toLen(column.minWidth), maxWidth: toLen(column.maxWidth) }
 }
 
 function cellValue(column: DataTableColumn<Row>, row: Row, index: number) {
@@ -101,7 +106,7 @@ function onRowClick(row: Row, index: number) {
   <Table :class="props.class">
     <colgroup>
       <col v-if="selectable" style="width: 48px">
-      <col v-for="col in columns" :key="col.key" :style="{ width: colWidth(col.width) }">
+      <col v-for="col in columns" :key="col.key" :style="{ width: toLen(col.width) }">
     </colgroup>
 
     <TableHeader>
@@ -119,6 +124,7 @@ function onRowClick(row: Row, index: number) {
           :size="size"
           :align="col.align"
           :tooltip="col.headTooltip"
+          :style="cellStyle(col)"
         >
           <slot :name="`header-${col.key}`" :column="col">{{ col.label }}</slot>
         </TableHead>
@@ -163,6 +169,7 @@ function onRowClick(row: Row, index: number) {
             :key="col.key"
             :size="size"
             :class="alignClass(col.align)"
+            :style="cellStyle(col)"
           >
             <slot :name="`cell-${col.key}`" :row="row" :value="row[col.key]" :index="index">
               {{ cellValue(col, row, index) }}
