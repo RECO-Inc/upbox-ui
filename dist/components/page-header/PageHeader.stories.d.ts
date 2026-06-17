@@ -4,7 +4,7 @@ declare const meta: {
     component: any;
     tags: string[];
     argTypes: {
-        variant: {
+        size: {
             control: "inline-radio";
             options: string[];
         };
@@ -15,11 +15,11 @@ declare const meta: {
 };
 export default meta;
 type Story = StoryObj<typeof meta>;
-/** 리스트 페이지: 대타이틀 + 설명 */
+/** 웹 기본: md(24px) 타이틀 + 설명 */
 export declare const Default: Story;
 /** 우측 액션 버튼 */
 export declare const WithActions: Story;
-/** 상세 페이지: 중타이틀 + back + 배지 */
-export declare const SubWithBackAndBadge: Story;
-/** 대/중 타이틀 비교 */
-export declare const Variants: Story;
+/** 상세 페이지(웹): 같은 24px + back 화살표 + 배지 */
+export declare const DetailWithBackAndBadge: Story;
+/** 사이즈 — 웹 md(24) / 모바일 lg(28)·sm(22) */
+export declare const Sizes: Story;

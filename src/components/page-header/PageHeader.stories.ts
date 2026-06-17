@@ -8,7 +8,7 @@ const meta = {
   component: PageHeader as any,
   tags: ['autodocs'],
   argTypes: {
-    variant: { control: 'inline-radio', options: ['page', 'sub'] },
+    size: { control: 'inline-radio', options: ['lg', 'md', 'sm'] },
     back: { control: 'boolean' },
   },
 } satisfies Meta<typeof PageHeader>
@@ -16,7 +16,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-/** 리스트 페이지: 대타이틀 + 설명 */
+/** 웹 기본: md(24px) 타이틀 + 설명 */
 export const Default: Story = {
   args: { title: '대타이틀', description: '페이지 설명' },
   render: args => ({
@@ -42,14 +42,14 @@ export const WithActions: Story = {
   }),
 }
 
-/** 상세 페이지: 중타이틀 + back + 배지 */
-export const SubWithBackAndBadge: Story = {
-  name: '상세 (sub + back + badge)',
+/** 상세 페이지(웹): 같은 24px + back 화살표 + 배지 */
+export const DetailWithBackAndBadge: Story = {
+  name: '상세 (back + badge)',
   render: () => ({
     components: { PageHeader, Button, Badge },
     setup: () => ({ onBack: () => alert('back!') }),
     template: `
-      <PageHeader variant="sub" title="상세" description="페이지 설명" back @back="onBack">
+      <PageHeader title="상세" description="페이지 설명" back @back="onBack">
         <template #badge><Badge size="xsmall" color="green">xsmall</Badge></template>
         <template #actions>
           <Button variant="secondary" theme="outlined">버튼명</Button>
@@ -60,14 +60,15 @@ export const SubWithBackAndBadge: Story = {
   }),
 }
 
-/** 대/중 타이틀 비교 */
-export const Variants: Story = {
+/** 사이즈 — 웹 md(24) / 모바일 lg(28)·sm(22) */
+export const Sizes: Story = {
   render: () => ({
     components: { PageHeader },
     template: `
       <div class="flex flex-col gap-[24px]">
-        <PageHeader variant="page" title="페이지 (대)타이틀 28px" description="해당 페이지에 대한 설명 문구" />
-        <PageHeader variant="sub" title="페이지 (중)타이틀 22px" description="해당 페이지에 대한 설명 문구" />
+        <PageHeader size="lg" title="lg 28px (모바일 대타이틀)" description="설명" />
+        <PageHeader size="md" title="md 24px (웹 기본)" description="설명" />
+        <PageHeader size="sm" title="sm 22px (모바일 중타이틀)" description="설명" />
       </div>
     `,
   }),

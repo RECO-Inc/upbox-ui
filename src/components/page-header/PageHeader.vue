@@ -7,13 +7,16 @@ const props = withDefaults(defineProps<{
   title: string
   /** 제목 옆 보조 설명 (인라인) */
   description?: string
-  /** page = 대타이틀(28px), sub = 중타이틀(22px) */
-  variant?: "page" | "sub"
+  /**
+   * 제목 크기. 웹 기본은 md(24px). 모바일은 lg(28)/sm(22) 사용.
+   * lg=page-title-1(28), md=page-title-2(24), sm=page-title-3(22)
+   */
+  size?: "lg" | "md" | "sm"
   /** 좌측 back(<) 화살표 노출 → @back emit (라우팅은 소비자가 처리) */
   back?: boolean
   class?: HTMLAttributes["class"]
 }>(), {
-  variant: "page",
+  size: "md",
   back: false,
 })
 
@@ -25,6 +28,12 @@ defineSlots<{
   /** 우측 액션 버튼 그룹 */
   actions?: () => unknown
 }>()
+
+const titleClass = {
+  lg: "text-page-title-1",
+  md: "text-page-title-2",
+  sm: "text-page-title-3",
+} as const
 </script>
 
 <template>
@@ -39,13 +48,9 @@ defineSlots<{
       >
         <ChevronLeft class="size-[24px]" />
       </button>
-      <component
-        :is="variant === 'sub' ? 'h3' : 'h2'"
-        class="truncate text-grey-100"
-        :class="variant === 'sub' ? 'text-page-title-3' : 'text-page-title-1'"
-      >
+      <h2 class="truncate text-grey-100" :class="titleClass[size]">
         {{ title }}
-      </component>
+      </h2>
       <slot name="badge" />
       <span v-if="description" class="min-w-0 truncate text-size-12 text-grey-60">{{ description }}</span>
     </div>
