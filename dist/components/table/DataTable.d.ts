@@ -31,7 +31,9 @@ declare const _default: <Row extends Record<string, any> = Record<string, any>>(
         row: Row;
         value: any;
         index: number;
-    }) => any>>;
+    }) => any>> & {
+        empty?(_: {}): any;
+    };
     emit: ((evt: "update:selected", keys: DataTableRowKey[]) => void) & ((evt: "row-click", payload: {
         row: Row;
         index: number;

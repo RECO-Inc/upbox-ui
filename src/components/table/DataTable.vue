@@ -142,7 +142,9 @@ function onRowClick(row: Row, index: number) {
       </tr>
 
       <TableEmpty v-if="rows.length === 0 && !loading" :colspan="colCount">
-        <span class="text-grey-60 text-size-13">{{ emptyText }}</span>
+        <slot name="empty">
+          <span class="text-grey-60 text-size-13">{{ emptyText }}</span>
+        </slot>
       </TableEmpty>
       <!-- 로딩 + 데이터 없음: bar 아래 빈 높이만 유지 -->
       <TableEmpty v-else-if="rows.length === 0 && loading" :colspan="colCount">
