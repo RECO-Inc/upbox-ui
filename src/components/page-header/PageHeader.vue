@@ -47,7 +47,7 @@ defineSlots<{
         {{ title }}
       </component>
       <slot name="badge" />
-      <span v-if="description" class="shrink-0 text-size-12 text-grey-60">{{ description }}</span>
+      <span v-if="description" class="min-w-0 truncate text-size-12 text-grey-60">{{ description }}</span>
     </div>
 
     <div v-if="$slots.actions" class="flex shrink-0 items-center gap-x-[8px]">
