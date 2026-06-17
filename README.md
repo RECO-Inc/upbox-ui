@@ -61,14 +61,28 @@ import { Button, Card, CardHeader, CardTitle, CardContent } from '@reco-inc/upbo
 
 | Category | Components |
 |----------|-----------|
-| General | Button, IconButton, TextButton, Fab, Badge, BadgeDivider, Tag, Chip, Spinner, Skeleton, Empty, Stepper |
-| Form | TextField, Textarea, NumberField, SearchField, Checkbox, Toggle, RadioGroup, Select, Label, FieldContainer (vee-validate), InputFrame, InputGroup |
-| Data Display | Card, Table, Accordion, Avatar, Tabs, Separator |
-| Overlay | Dialog, Sheet, Drawer, Popover, Tooltip, Toast |
+| General | Button, IconButton, TextButton, Fab, Badge, BadgeDivider, Tag, Spinner, Skeleton, Empty, Stepper |
+| Layout | PageHeader |
+| Form | TextField, Textarea, NumberField, SearchField, Checkbox, Toggle, RadioGroup, RadioGroupField, Select, SelectField, Label, FieldContainer (vee-validate), InputFrame, InputGroup |
+| Data Display | Card, Table, DataTable, Accordion, Avatar, Tabs, TabsBar, Separator |
+| Overlay | Dialog, Modal, Sheet, Drawer, Popover, Tooltip, Toast |
 | Navigation | Breadcrumb, Pagination, Sidebar, DropdownMenu |
-| Filter | DropdownFilter |
+| Filter | DropdownFilter, FilterChip |
 | Date | Calendar, DatePicker, DatePeriodPicker, TimePicker, DateMove (+ Mobile variants) |
 | File | FileUploader |
+
+### Flat vs Compound
+
+일부 컴포넌트는 자주 쓰는 형태를 **flat(props 중심) API**로 제공하고, 같은 primitive 위에서 자유 조합이 필요할 땐 **compound**를 그대로 사용합니다 (escape hatch).
+
+| Flat (흔한 케이스) | Compound (자유 조합) |
+|----|----|
+| `Modal` (title/description/confirm·cancel/actions) | `Dialog` + `DialogContent`/`Header`/`Footer`… |
+| `DataTable` (`:columns`/`:rows`/선택/슬롯) | `Table` + `TableHeader`/`Row`/`Cell`… |
+| `TabsBar` (`:items`) | `Tabs` + `TabsList`/`Trigger`/`Content` |
+| `SelectField` (`:options`) | `Select` + `SelectTrigger`/`Content`/`Item` |
+| `RadioGroupField` (`:options`) | `RadioGroup` + `RadioGroupItem` |
+| `DropdownFilter` (`:options`) | `DropdownMenu` + … |
 
 ## Design Tokens
 
