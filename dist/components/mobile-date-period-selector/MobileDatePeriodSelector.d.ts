@@ -24,10 +24,10 @@ declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {
 }>, {
     modelValue: DatePeriodValue | null;
     title: string;
+    showClose: boolean;
     startPlaceholder: string;
     endPlaceholder: string;
     preset: DatePeriodPreset;
     doneText: string;
-    showClose: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLElement>;
 export default _default;

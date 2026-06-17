@@ -34,11 +34,11 @@ declare const meta: {
     }>, {
         modelValue: DatePeriodValue | null;
         title: string;
+        showClose: boolean;
         startPlaceholder: string;
         endPlaceholder: string;
         preset: DatePeriodPreset;
         doneText: string;
-        showClose: boolean;
     }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLElement>;
     tags: string[];
     parameters: {

@@ -14,6 +14,7 @@ export * from './components/card';
 export * from './components/checkbox';
 export * from './components/filter-chip';
 export * from './components/dialog';
+export * from './components/modal';
 export * from './components/date-picker';
 export * from './components/date-period-picker';
 export * from './components/mobile-date-picker';

@@ -26,12 +26,15 @@ const DIALOG_SIZE_MAP: Record<DialogSize, string> = {
 const props = withDefaults(defineProps<DialogContentProps & {
   class?: HTMLAttributes["class"]
   size?: DialogSize
+  /** 우상단 닫기(X) 버튼 숨김 (default: false) */
+  hideClose?: boolean
 }>(), {
   size: "regular",
+  hideClose: false,
 })
 const emits = defineEmits<DialogContentEmits>()
 
-const delegatedProps = reactiveOmit(props, "class", "size")
+const delegatedProps = reactiveOmit(props, "class", "size", "hideClose")
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
@@ -53,6 +56,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
       <slot />
 
       <DialogClose
+        v-if="!hideClose"
         class="absolute right-[16px] top-[16px] rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-hidden focus:ring-2 focus:ring-navy-80 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-grey-20 data-[state=open]:text-grey-60"
       >
         <X class="w-[16px] h-[16px] text-grey-90" />

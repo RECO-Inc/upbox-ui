@@ -4,6 +4,8 @@ export type DialogSize = "small" | "regular" | "large" | "xlarge" | "full";
 type __VLS_Props = DialogContentProps & {
     class?: HTMLAttributes["class"];
     size?: DialogSize;
+    /** 우상단 닫기(X) 버튼 숨김 (default: false) */
+    hideClose?: boolean;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -30,6 +32,7 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
     onCloseAutoFocus?: ((event: Event) => any) | undefined;
 }>, {
     size: DialogSize;
+    hideClose: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
