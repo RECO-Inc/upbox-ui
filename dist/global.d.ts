@@ -162,6 +162,7 @@ declare module 'vue' {
         Spinner: typeof import('./components/spinner')['Spinner'];
         Stepper: typeof import('./components/stepper')['Stepper'];
         Table: typeof import('./components/table')['Table'];
+        DataTable: typeof import('./components/table')['DataTable'];
         TableBody: typeof import('./components/table')['TableBody'];
         TableCaption: typeof import('./components/table')['TableCaption'];
         TableCell: typeof import('./components/table')['TableCell'];

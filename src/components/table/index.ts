@@ -1,4 +1,6 @@
 export { default as Table } from "./Table.vue"
+export { default as DataTable } from "./DataTable.vue"
+export type { DataTableColumn, DataTableRowKey } from "./dataTableTypes"
 export { default as TableBody } from "./TableBody.vue"
 export { default as TableCaption } from "./TableCaption.vue"
 export { default as TableCell } from "./TableCell.vue"

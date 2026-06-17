@@ -1,4 +1,6 @@
 export { default as Table } from './Table';
+export { default as DataTable } from './DataTable';
+export type { DataTableColumn, DataTableRowKey } from './dataTableTypes';
 export { default as TableBody } from './TableBody';
 export { default as TableCaption } from './TableCaption';
 export { default as TableCell } from './TableCell';
