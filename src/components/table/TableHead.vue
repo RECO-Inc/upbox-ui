@@ -11,6 +11,8 @@ const props = defineProps<{
   class?: HTMLAttributes["class"]
   size?: TableHeadSize
   tooltip?: string
+  /** 헤더 정렬 (default: left). 내부 flex 컨테이너를 justify 하므로 text-align 보다 안전 */
+  align?: "left" | "center" | "right"
 }>()
 
 const sizeClasses = computed(() => {
@@ -24,6 +26,10 @@ const sizeClasses = computed(() => {
       return "p-[16px]" // 16px
   }
 })
+
+const justifyClass = computed(() =>
+  props.align === "center" ? "justify-center" : props.align === "right" ? "justify-end" : "justify-start",
+)
 </script>
 
 <template>
@@ -36,7 +42,7 @@ const sizeClasses = computed(() => {
       )
     "
   >
-    <div class="flex items-center gap-[4px]">
+    <div class="flex items-center gap-[4px]" :class="justifyClass">
       <slot />
       <TooltipProvider v-if="tooltip">
         <Tooltip>
