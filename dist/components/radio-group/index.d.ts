@@ -1,4 +1,5 @@
 export { default as RadioGroup } from './RadioGroup';
+export { default as RadioGroupField } from './RadioGroupField';
 export { default as RadioGroupItem } from './RadioGroupItem';
 export interface RadioGroupItemProps {
     size?: "small" | "regular" | "large";

@@ -109,6 +109,7 @@ declare module 'vue' {
     PopoverContent: typeof import('./components/popover')['PopoverContent']
     PopoverTrigger: typeof import('./components/popover')['PopoverTrigger']
     RadioGroup: typeof import('./components/radio-group')['RadioGroup']
+    RadioGroupField: typeof import('./components/radio-group')['RadioGroupField']
     RadioGroupItem: typeof import('./components/radio-group')['RadioGroupItem']
     MonthCalendar: typeof import('./components/calendar')['MonthCalendar']
     PeriodCalendar: typeof import('./components/calendar')['PeriodCalendar']
