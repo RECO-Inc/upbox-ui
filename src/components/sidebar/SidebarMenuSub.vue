@@ -24,8 +24,11 @@ const props = withDefaults(
       props.class,
     )"
   >
-    <ul class="flex min-h-0 min-w-0 flex-col gap-[8px] py-[16px] overflow-hidden">
-      <slot />
-    </ul>
+    <!-- grid item 은 패딩 없는 clipper. 패딩을 grid item 에 두면 0fr 로 접혀도 패딩(py-16=32px)이 남아 잔여 높이가 보인다 → 안쪽 ul 로 분리 -->
+    <div class="min-h-0 overflow-hidden">
+      <ul class="flex min-w-0 flex-col gap-[8px] py-[16px]">
+        <slot />
+      </ul>
+    </div>
   </div>
 </template>
