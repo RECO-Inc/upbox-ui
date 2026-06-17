@@ -32,7 +32,7 @@ export declare const Destructive: Story;
 export declare const SingleButton: Story;
 /** 버튼 N개 — footer 슬롯으로 직접 구성 */
 export declare const MultipleButtons: Story;
-/** 비동기 제출 — persistOnConfirm 으로 성공 시 직접 닫기 */
+/** 비동기 제출 — 확인은 닫지 않고 emit만. 성공 시 부모가 open=false (기본 동작) */
 export declare const AsyncConfirm: Story;
 /** 커스텀 바디 + footer 슬롯 (compound escape hatch) */
 export declare const CustomBodyAndFooter: Story;

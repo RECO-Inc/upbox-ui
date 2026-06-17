@@ -24,7 +24,6 @@ const props = withDefaults(defineProps<ModalProps>(), {
   hideCancel: false,
   hideConfirm: false,
   footerButtonGrow: false,
-  persistOnConfirm: false,
 })
 
 const emit = defineEmits<{
@@ -57,8 +56,9 @@ function onCancel() {
 }
 
 function onConfirm() {
+  // 확인은 emit만 — 닫기는 소비자가 open(v-model)으로 결정한다 (shadcn AlertDialogAction 패턴).
+  // 취소/overlay/ESC 는 dismiss 라 자동 닫힘.
   emit("confirm")
-  if (!props.persistOnConfirm) close()
 }
 
 const showDefaultFooter = computed(() => !props.hideConfirm || !props.hideCancel)

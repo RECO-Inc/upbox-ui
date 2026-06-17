@@ -119,9 +119,9 @@ export const MultipleButtons: Story = {
   }),
 }
 
-/** 비동기 제출 — persistOnConfirm 으로 성공 시 직접 닫기 */
+/** 비동기 제출 — 확인은 닫지 않고 emit만. 성공 시 부모가 open=false (기본 동작) */
 export const AsyncConfirm: Story = {
-  name: '비동기 확인 (persistOnConfirm)',
+  name: '비동기 확인',
   render: () => ({
     components: { Modal, Button },
     setup() {
@@ -143,7 +143,6 @@ export const AsyncConfirm: Story = {
         title="제출하시겠어요?"
         confirm-text="제출"
         :confirm-loading="loading"
-        persist-on-confirm
         @confirm="onConfirm"
       />
     `,

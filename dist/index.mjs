@@ -3368,7 +3368,6 @@ const Aa = /* @__PURE__ */ m({
     hideCancel: { type: Boolean, default: !1 },
     hideConfirm: { type: Boolean, default: !1 },
     footerButtonGrow: { type: Boolean, default: !1 },
-    persistOnConfirm: { type: Boolean, default: !1 },
     class: { type: [Boolean, null, String, Object, Array] }
   },
   emits: ["update:open", "confirm", "cancel"],
@@ -3384,7 +3383,7 @@ const Aa = /* @__PURE__ */ m({
       l("cancel"), i();
     }
     function f() {
-      l("confirm"), t.persistOnConfirm || i();
+      l("confirm");
     }
     const c = w(() => !t.hideConfirm || !t.hideCancel), v = w(() => !!o.footer || c.value), C = w(() => t.footerButtonGrow ? "[&>*]:flex-1" : void 0);
     function D(M) {

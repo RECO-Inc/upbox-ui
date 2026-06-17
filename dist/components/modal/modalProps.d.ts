@@ -31,10 +31,5 @@ export interface ModalProps {
     hideConfirm?: boolean;
     /** footer 버튼을 가로로 꽉 채움 — 레거시 footerButtonGrow */
     footerButtonGrow?: boolean;
-    /**
-     * 확인 클릭 후 자동 닫기를 막는다 (비동기 제출 등에서 성공 시 직접 닫을 때).
-     * default: false (확인 시 자동 닫힘)
-     */
-    persistOnConfirm?: boolean;
     class?: HTMLAttributes["class"];
 }

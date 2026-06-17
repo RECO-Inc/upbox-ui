@@ -49,7 +49,6 @@ declare const __VLS_component: import('vue').DefineComponent<ModalProps, {}, {},
     hideCancel: boolean;
     hideConfirm: boolean;
     footerButtonGrow: boolean;
-    persistOnConfirm: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
