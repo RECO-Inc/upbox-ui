@@ -159,12 +159,15 @@ function onRowClick(row: Row, index: number) {
           :class="rowDisabled?.(row) ? 'opacity-50' : 'cursor-pointer'"
           @click="onRowClick(row, index)"
         >
-          <TableCell v-if="selectable" :size="size" class="w-[48px] px-0 text-center" @click.stop>
-            <Checkbox
-              :model-value="isSelected(row)"
-              :disabled="rowDisabled?.(row)"
-              @update:model-value="(value) => toggleRow(row, value)"
-            />
+          <TableCell v-if="selectable" :size="size" class="w-[48px] px-0" @click.stop>
+            <!-- flex-center 로 감싸 inline baseline 의존 제거 (체크 토글 시 행 높이 변동 방지) -->
+            <div class="flex items-center justify-center">
+              <Checkbox
+                :model-value="isSelected(row)"
+                :disabled="rowDisabled?.(row)"
+                @update:model-value="(value) => toggleRow(row, value)"
+              />
+            </div>
           </TableCell>
           <TableCell
             v-for="col in columns"
