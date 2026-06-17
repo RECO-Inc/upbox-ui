@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
+import { computed } from "vue"
 import { ChevronLeft } from "lucide-vue-next"
 import { cn } from "../../lib/utils"
 
 const props = withDefaults(defineProps<{
-  title: string
-  /** 보조 설명 */
+  /** 제목 (default 슬롯으로도 대체 가능) */
+  title?: string
+  /** 보조 설명 (#description 슬롯으로도 대체 가능) */
   description?: string
   /**
    * 제목 크기. 웹 기본 regular(24px). 모바일은 large(28)/small(22).
@@ -14,7 +16,7 @@ const props = withDefaults(defineProps<{
   size?: "small" | "regular" | "large"
   /**
    * description 위치.
-   * inline = 제목 우측 인라인 12px (웹), block = 제목 아래 14px (모바일/스택)
+   * inline = 제목 우측 12px (웹), block = 제목 아래 14px (모바일/스택)
    */
   descriptionPlacement?: "inline" | "block"
   /** 좌측 back(<) 화살표 노출 → @back emit (라우팅은 소비자가 처리) */
@@ -28,12 +30,18 @@ const props = withDefaults(defineProps<{
 
 const emit = defineEmits<{ back: [] }>()
 
-defineSlots<{
+const slots = defineSlots<{
+  /** 제목 (title prop 대체) */
+  default?: () => unknown
+  /** 보조 설명 (description prop 대체) */
+  description?: () => unknown
   /** 타이틀 우측 배지 등 */
   badge?: () => unknown
   /** 우측 액션 버튼 그룹 */
   actions?: () => unknown
 }>()
+
+const hasDescription = computed(() => !!props.description || !!slots.description)
 
 const titleClass = {
   large: "text-page-title-1",
@@ -67,22 +75,22 @@ const titleClass = {
       <div class="flex min-w-0 flex-col">
         <div class="flex min-w-0 items-center gap-x-[8px]">
           <h2 class="truncate text-grey-100" :class="titleClass[size]">
-            {{ title }}
+            <slot>{{ title }}</slot>
           </h2>
           <slot name="badge" />
           <span
-            v-if="description && descriptionPlacement === 'inline'"
+            v-if="hasDescription && descriptionPlacement === 'inline'"
             class="min-w-0 truncate text-size-12 text-grey-60"
-          >{{ description }}</span>
+          ><slot name="description">{{ description }}</slot></span>
         </div>
         <p
-          v-if="description && descriptionPlacement === 'block'"
+          v-if="hasDescription && descriptionPlacement === 'block'"
           class="mt-[8px] text-size-14 text-grey-70"
-        >{{ description }}</p>
+        ><slot name="description">{{ description }}</slot></p>
       </div>
     </div>
 
-    <div v-if="$slots.actions" class="flex shrink-0 items-center gap-x-[8px]">
+    <div v-if="slots.actions" class="flex shrink-0 items-center gap-x-[8px]">
       <slot name="actions" />
     </div>
   </div>

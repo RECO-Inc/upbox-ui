@@ -1,7 +1,8 @@
 import { HTMLAttributes } from 'vue';
 type __VLS_Props = {
-    title: string;
-    /** 보조 설명 */
+    /** 제목 (default 슬롯으로도 대체 가능) */
+    title?: string;
+    /** 보조 설명 (#description 슬롯으로도 대체 가능) */
     description?: string;
     /**
      * 제목 크기. 웹 기본 regular(24px). 모바일은 large(28)/small(22).
@@ -10,7 +11,7 @@ type __VLS_Props = {
     size?: "small" | "regular" | "large";
     /**
      * description 위치.
-     * inline = 제목 우측 인라인 12px (웹), block = 제목 아래 14px (모바일/스택)
+     * inline = 제목 우측 12px (웹), block = 제목 아래 14px (모바일/스택)
      */
     descriptionPlacement?: "inline" | "block";
     /** 좌측 back(<) 화살표 노출 → @back emit (라우팅은 소비자가 처리) */
@@ -20,11 +21,19 @@ type __VLS_Props = {
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: Readonly<{
+        /** 제목 (title prop 대체) */
+        default?: () => unknown;
+        /** 보조 설명 (description prop 대체) */
+        description?: () => unknown;
         /** 타이틀 우측 배지 등 */
         badge?: () => unknown;
         /** 우측 액션 버튼 그룹 */
         actions?: () => unknown;
     }> & {
+        /** 제목 (title prop 대체) */
+        default?: () => unknown;
+        /** 보조 설명 (description prop 대체) */
+        description?: () => unknown;
         /** 타이틀 우측 배지 등 */
         badge?: () => unknown;
         /** 우측 액션 버튼 그룹 */
