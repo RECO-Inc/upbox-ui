@@ -21,11 +21,14 @@ const props = withDefaults(defineProps<{
   descriptionPlacement?: "inline" | "block"
   /** 좌측 back(<) 화살표 노출 → @back emit (라우팅은 소비자가 처리) */
   back?: boolean
+  /** 제목 헤딩 태그 (시맨틱 레벨). size 와 독립. default h2 */
+  as?: "h1" | "h2" | "h3" | "h4"
   class?: HTMLAttributes["class"]
 }>(), {
   size: "regular",
   descriptionPlacement: "inline",
   back: false,
+  as: "h2",
 })
 
 const emit = defineEmits<{ back: [] }>()
@@ -74,12 +77,13 @@ const titleClass = {
 
       <div class="flex min-w-0 grow flex-col">
         <div class="flex min-w-0 items-center gap-x-[8px]">
-          <h2
+          <component
+            :is="as"
             class="text-grey-100"
             :class="[titleClass[size], descriptionPlacement === 'block' ? 'grow min-w-0' : 'min-w-0 truncate']"
           >
             <slot>{{ title }}</slot>
-          </h2>
+          </component>
           <slot name="badge" />
           <span
             v-if="hasDescription && descriptionPlacement === 'inline'"

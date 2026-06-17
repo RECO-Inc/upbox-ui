@@ -16,6 +16,8 @@ type __VLS_Props = {
     descriptionPlacement?: "inline" | "block";
     /** 좌측 back(<) 화살표 노출 → @back emit (라우팅은 소비자가 처리) */
     back?: boolean;
+    /** 제목 헤딩 태그 (시맨틱 레벨). size 와 독립. default h2 */
+    as?: "h1" | "h2" | "h3" | "h4";
     class?: HTMLAttributes["class"];
 };
 declare function __VLS_template(): {
@@ -48,6 +50,7 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
 }, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
     onBack?: (() => any) | undefined;
 }>, {
+    as: "h1" | "h2" | "h3" | "h4";
     size: "small" | "regular" | "large";
     descriptionPlacement: "inline" | "block";
     back: boolean;
