@@ -1,6 +1,8 @@
 import { VariantProps } from 'class-variance-authority';
 import { Component } from 'vue';
 export { default as Tabs } from './Tabs';
+export { default as TabsBar } from './TabsBar';
+export type { TabItem } from './TabsBar';
 export { default as TabsContent } from './TabsContent';
 export { default as TabsList } from './TabsList';
 export { default as TabsTrigger } from './TabsTrigger';

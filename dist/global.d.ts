@@ -171,6 +171,7 @@ declare module 'vue' {
         TableHeader: typeof import('./components/table')['TableHeader'];
         TableRow: typeof import('./components/table')['TableRow'];
         Tabs: typeof import('./components/tabs')['Tabs'];
+        TabsBar: typeof import('./components/tabs')['TabsBar'];
         TabsContent: typeof import('./components/tabs')['TabsContent'];
         TabsList: typeof import('./components/tabs')['TabsList'];
         TabsTrigger: typeof import('./components/tabs')['TabsTrigger'];

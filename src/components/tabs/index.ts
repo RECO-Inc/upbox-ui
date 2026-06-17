@@ -3,6 +3,8 @@ import { cva } from "class-variance-authority"
 import type { Component } from "vue"
 
 export { default as Tabs } from "./Tabs.vue"
+export { default as TabsBar } from "./TabsBar.vue"
+export type { TabItem } from "./TabsBar.vue"
 export { default as TabsContent } from "./TabsContent.vue"
 export { default as TabsList } from "./TabsList.vue"
 export { default as TabsTrigger } from "./TabsTrigger.vue"
