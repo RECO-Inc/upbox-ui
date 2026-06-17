@@ -98,85 +98,94 @@ function onRowClick(row: Row, index: number) {
 </script>
 
 <template>
-  <div class="relative w-full">
-    <!-- 로딩: 상단 indeterminate bar 오버레이 (행은 유지) -->
-    <div v-if="loading" class="ui-dt-progress" role="progressbar" aria-label="Loading">
-      <span class="ui-dt-progress__bar" />
-    </div>
+  <Table :class="props.class">
+    <colgroup>
+      <col v-if="selectable" style="width: 48px">
+      <col v-for="col in columns" :key="col.key" :style="{ width: colWidth(col.width) }">
+    </colgroup>
 
-    <Table :class="props.class">
-      <colgroup>
-        <col v-if="selectable" style="width: 48px">
-        <col v-for="col in columns" :key="col.key" :style="{ width: colWidth(col.width) }">
-      </colgroup>
+    <TableHeader>
+      <TableRow>
+        <TableHead v-if="selectable" :size="size" align="center" class="w-[48px] px-0">
+          <Checkbox
+            :model-value="headerState"
+            :disabled="loading || selectableRows.length === 0"
+            @update:model-value="toggleAll"
+          />
+        </TableHead>
+        <TableHead
+          v-for="col in columns"
+          :key="col.key"
+          :size="size"
+          :align="col.align"
+          :tooltip="col.headTooltip"
+        >
+          <slot :name="`header-${col.key}`" :column="col">{{ col.label }}</slot>
+        </TableHead>
+      </TableRow>
+    </TableHeader>
 
-      <TableHeader>
-        <TableRow>
-          <TableHead v-if="selectable" :size="size" align="center" class="w-[48px] px-0">
+    <TableBody>
+      <!-- 로딩: 헤더 바로 아래에 indeterminate bar 오버레이 (0-height 행, 본문 행 유지) -->
+      <tr v-if="loading" aria-hidden="true">
+        <td :colspan="colCount" class="ui-dt-progress-cell">
+          <div class="ui-dt-progress" role="progressbar" aria-label="Loading">
+            <span class="ui-dt-progress__bar" />
+          </div>
+        </td>
+      </tr>
+
+      <TableEmpty v-if="rows.length === 0 && !loading" :colspan="colCount">
+        <span class="text-grey-60 text-size-13">{{ emptyText }}</span>
+      </TableEmpty>
+      <!-- 로딩 + 데이터 없음: bar 아래 빈 높이만 유지 -->
+      <TableEmpty v-else-if="rows.length === 0 && loading" :colspan="colCount">
+        <span class="block h-[20px]" />
+      </TableEmpty>
+
+      <template v-else>
+        <TableRow
+          v-for="(row, index) in rows"
+          :key="keyOf(row)"
+          :data-state="isSelected(row) ? 'selected' : undefined"
+          :class="rowDisabled?.(row) ? 'opacity-50' : 'cursor-pointer'"
+          @click="onRowClick(row, index)"
+        >
+          <TableCell v-if="selectable" :size="size" class="w-[48px] px-0 text-center" @click.stop>
             <Checkbox
-              :model-value="headerState"
-              :disabled="loading || selectableRows.length === 0"
-              @update:model-value="toggleAll"
+              :model-value="isSelected(row)"
+              :disabled="rowDisabled?.(row)"
+              @update:model-value="(value) => toggleRow(row, value)"
             />
-          </TableHead>
-          <TableHead
+          </TableCell>
+          <TableCell
             v-for="col in columns"
             :key="col.key"
             :size="size"
-            :align="col.align"
-            :tooltip="col.headTooltip"
+            :class="alignClass(col.align)"
           >
-            <slot :name="`header-${col.key}`" :column="col">{{ col.label }}</slot>
-          </TableHead>
+            <slot :name="`cell-${col.key}`" :row="row" :value="row[col.key]" :index="index">
+              {{ cellValue(col, row, index) }}
+            </slot>
+          </TableCell>
         </TableRow>
-      </TableHeader>
-
-      <TableBody>
-        <TableEmpty v-if="rows.length === 0 && !loading" :colspan="colCount">
-          <span class="text-grey-60 text-size-13">{{ emptyText }}</span>
-        </TableEmpty>
-        <!-- 로딩 + 데이터 없음: bar 가 떠 있도록 빈 높이만 유지 -->
-        <TableEmpty v-else-if="rows.length === 0 && loading" :colspan="colCount">
-          <span class="block h-[20px]" />
-        </TableEmpty>
-
-        <template v-else>
-          <TableRow
-            v-for="(row, index) in rows"
-            :key="keyOf(row)"
-            :data-state="isSelected(row) ? 'selected' : undefined"
-            :class="rowDisabled?.(row) ? 'opacity-50' : 'cursor-pointer'"
-            @click="onRowClick(row, index)"
-          >
-            <TableCell v-if="selectable" :size="size" class="w-[48px] px-0 text-center" @click.stop>
-              <Checkbox
-                :model-value="isSelected(row)"
-                :disabled="rowDisabled?.(row)"
-                @update:model-value="(value) => toggleRow(row, value)"
-              />
-            </TableCell>
-            <TableCell
-              v-for="col in columns"
-              :key="col.key"
-              :size="size"
-              :class="alignClass(col.align)"
-            >
-              <slot :name="`cell-${col.key}`" :row="row" :value="row[col.key]" :index="index">
-                {{ cellValue(col, row, index) }}
-              </slot>
-            </TableCell>
-          </TableRow>
-        </template>
-      </TableBody>
-    </Table>
-  </div>
+      </template>
+    </TableBody>
+  </Table>
 </template>
 
 <!--
-  로딩 bar: 레거시 LoadingBar 와 동일한 MD indeterminate 모션. 테이블 상단에 오버레이.
-  소비 앱의 tailwindcss important 충돌을 피하려 유틸 대신 scoped @keyframes 로 소유.
+  로딩 bar: 헤더 바로 아래(헤더-바디 경계)에 오버레이되는 MD indeterminate 모션.
+  0-height td 안에서 absolute 로 띄워 레이아웃을 밀지 않는다. 유틸 대신 scoped
+  @keyframes 로 소유해 소비 앱의 tailwind important 충돌을 피한다.
 -->
 <style scoped>
+.ui-dt-progress-cell {
+  position: relative;
+  height: 0;
+  padding: 0;
+  border: 0;
+}
 .ui-dt-progress {
   position: absolute;
   top: 0;
