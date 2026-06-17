@@ -96,6 +96,7 @@ declare module 'vue' {
     NumberFieldDecrement: typeof import('./components/number-field')['NumberFieldDecrement']
     NumberFieldIncrement: typeof import('./components/number-field')['NumberFieldIncrement']
     NumberFieldInput: typeof import('./components/number-field')['NumberFieldInput']
+    PageHeader: typeof import('./components/page-header')['PageHeader']
     Pagination: typeof import('./components/pagination')['Pagination']
     PaginationContent: typeof import('./components/pagination')['PaginationContent']
     PaginationEllipsis: typeof import('./components/pagination')['PaginationEllipsis']
