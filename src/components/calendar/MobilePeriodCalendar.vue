@@ -21,6 +21,8 @@ import {
   RangeCalendarGridBody,
   RangeCalendarGridHead,
   RangeCalendarGridRow,
+  RangeCalendarNext,
+  RangeCalendarPrev,
   RangeCalendarRoot,
   useForwardPropsEmits,
 } from "reka-ui"
@@ -87,20 +89,18 @@ function isSundayColumnIndex(di: number) {
   return false
 }
 
-function onPrevYear() {
-  placeholder.value = placeholder.value.subtract({ years: 1 })
+/**
+ * 연/월 이동은 reka-ui `RangeCalendarPrev`/`RangeCalendarNext` 로 위임한다.
+ * placeholder 를 직접 ±1 하면 2달 뷰에서 새 달이 이미 화면에 보이는 달일 때
+ * reka-ui grid watch 가 갱신을 건너뛰어(한 클릭이 삼켜져) 이동이 꼬인다.
+ * (연 단위는 `prev-page`/`next-page` 로 스텝만 갈아끼운다)
+ */
+function prevYearPage(d: DateValue) {
+  return (d as CalendarDate).subtract({ years: 1 })
 }
 
-function onNextYear() {
-  placeholder.value = placeholder.value.add({ years: 1 })
-}
-
-function onPrevMonth() {
-  placeholder.value = placeholder.value.subtract({ months: 1 })
-}
-
-function onNextMonth() {
-  placeholder.value = placeholder.value.add({ months: 1 })
+function nextYearPage(d: DateValue) {
+  return (d as CalendarDate).add({ years: 1 })
 }
 
 function onReset() {
@@ -156,24 +156,26 @@ function headingLabel(p: CalendarDate) {
         <!-- Title -->
         <div class="flex w-full items-center justify-between h-[32px]">
           <div class="flex items-center gap-[8px]">
-            <IconButton
-              variant="tertiary"
-              size="small"
-              class="shrink-0"
-              aria-label="이전 연도"
-              @click="onPrevYear"
-            >
-              <ChevronsLeft />
-            </IconButton>
-            <IconButton
-              variant="tertiary"
-              size="small"
-              class="shrink-0"
-              aria-label="이전 월"
-              @click="onPrevMonth"
-            >
-              <ChevronLeft />
-            </IconButton>
+            <RangeCalendarPrev :as-child="true" :prev-page="prevYearPage">
+              <IconButton
+                variant="tertiary"
+                size="small"
+                class="shrink-0"
+                aria-label="이전 연도"
+              >
+                <ChevronsLeft />
+              </IconButton>
+            </RangeCalendarPrev>
+            <RangeCalendarPrev :as-child="true">
+              <IconButton
+                variant="tertiary"
+                size="small"
+                class="shrink-0"
+                aria-label="이전 월"
+              >
+                <ChevronLeft />
+              </IconButton>
+            </RangeCalendarPrev>
           </div>
           <div
             class="text-size-16 font-bold text-grey-90 select-none leading-[24px] tracking-[-0.01em]"
@@ -181,24 +183,26 @@ function headingLabel(p: CalendarDate) {
             {{ headingLabel(month.value as CalendarDate) }}
           </div>
           <div class="flex items-center gap-[8px]">
-            <IconButton
-              variant="tertiary"
-              size="small"
-              class="shrink-0"
-              aria-label="다음 월"
-              @click="onNextMonth"
-            >
-              <ChevronRight />
-            </IconButton>
-            <IconButton
-              variant="tertiary"
-              size="small"
-              class="shrink-0"
-              aria-label="다음 연도"
-              @click="onNextYear"
-            >
-              <ChevronsRight />
-            </IconButton>
+            <RangeCalendarNext :as-child="true">
+              <IconButton
+                variant="tertiary"
+                size="small"
+                class="shrink-0"
+                aria-label="다음 월"
+              >
+                <ChevronRight />
+              </IconButton>
+            </RangeCalendarNext>
+            <RangeCalendarNext :as-child="true" :next-page="nextYearPage">
+              <IconButton
+                variant="tertiary"
+                size="small"
+                class="shrink-0"
+                aria-label="다음 연도"
+              >
+                <ChevronsRight />
+              </IconButton>
+            </RangeCalendarNext>
           </div>
         </div>
 
