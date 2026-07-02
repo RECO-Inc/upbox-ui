@@ -19,7 +19,6 @@ import {
   type InputFrameDesignProps,
 } from "../input-frame"
 import MobileDatePeriodTrigger from "./MobileDatePeriodTrigger.vue"
-import DatePeriodInput from "../date-period-picker/DatePeriodInput.vue"
 import { DATE_MOVE_MODEL_KEY } from "../date-move/dateMoveContext"
 import type { DatePeriodValue } from "../date-period-picker/datePeriodTypes"
 import { isDatePeriodValue } from "../date-period-picker/datePeriodTypes"
@@ -129,9 +128,9 @@ function onSave() {
       :end-placeholder="props.endPlaceholder"
       :class="props.class"
     >
-      <slot>
-        <DatePeriodInput />
-      </slot>
+      <!-- 슬롯 미제공 시 MobileDatePeriodTrigger 의 배선된 DatePeriodInput fallback 이 뜨도록
+           여기서 propless DatePeriodInput 을 넣지 않는다 (넣으면 model 이 안 붙어 Input 이 빈다) -->
+      <slot />
     </MobileDatePeriodTrigger>
     <DrawerContent class="!border-0 !bg-transparent !p-0">
       <MobilePeriodCalendar

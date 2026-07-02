@@ -7,8 +7,7 @@ import { cn } from "../../lib/utils"
 import { Tabs, TabsList, TabsTrigger } from "../tabs"
 import { Button } from "../button"
 import { InputFrame, InputIcon } from "../input-frame"
-import { MobileDatePicker } from "../mobile-date-picker"
-import DateInput from "../date-picker/DateInput.vue"
+import { MobileDatePeriodPicker } from "../mobile-date-period-picker"
 import type { DatePeriodValue } from "../date-period-picker/datePeriodTypes"
 
 export type DatePeriodPreset = "1m" | "3m" | "1y" | "custom"
@@ -110,17 +109,15 @@ function onPresetChange(payload: string | number) {
   }
 }
 
-const startModel = computed({
-  get: () => draftStart.value,
-  set: (v: CalendarDate | null | undefined) => {
-    draftStart.value = v ?? null
+const periodModel = computed<DatePeriodValue | null>({
+  get: () => {
+    if (!draftStart.value && !draftEnd.value)
+      return null
+    return { start: draftStart.value, end: draftEnd.value }
   },
-})
-
-const endModel = computed({
-  get: () => draftEnd.value,
-  set: (v: CalendarDate | null | undefined) => {
-    draftEnd.value = v ?? null
+  set: (v) => {
+    draftStart.value = v?.start ?? null
+    draftEnd.value = v?.end ?? null
   },
 })
 
@@ -179,29 +176,17 @@ function onClose() {
       class="w-full"
       @update:model-value="onPresetChange"
     >
-      <TabsList class="w-full gap-0 rounded-[6px] bg-grey-20 p-[2px]">
-        <TabsTrigger
-          value="1m"
-          class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=active]:bg-grey-10 data-[state=active]:text-grey-90 data-[state=active]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
-        >
+      <TabsList variant="box" color="grey" size="large" class="w-full">
+        <TabsTrigger variant="box" color="grey" size="large" value="1m" class="h-[42px] min-w-0 flex-1 px-[8px]">
           1개월
         </TabsTrigger>
-        <TabsTrigger
-          value="3m"
-          class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=active]:bg-grey-10 data-[state=active]:text-grey-90 data-[state=active]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
-        >
+        <TabsTrigger variant="box" color="grey" size="large" value="3m" class="h-[42px] min-w-0 flex-1 px-[8px]">
           3개월
         </TabsTrigger>
-        <TabsTrigger
-          value="1y"
-          class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=active]:bg-grey-10 data-[state=active]:text-grey-90 data-[state=active]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
-        >
+        <TabsTrigger variant="box" color="grey" size="large" value="1y" class="h-[42px] min-w-0 flex-1 px-[8px]">
           1년
         </TabsTrigger>
-        <TabsTrigger
-          value="custom"
-          class="h-[32px] flex-1 min-w-0 rounded-[4px] text-size-14 font-bold data-[state=active]:bg-grey-10 data-[state=active]:text-grey-90 data-[state=active]:shadow-small text-grey-60 hover:bg-transparent hover:text-grey-80"
-        >
+        <TabsTrigger variant="box" color="grey" size="large" value="custom" class="h-[42px] min-w-0 flex-1 px-[8px]">
           직접 설정
         </TabsTrigger>
       </TabsList>
@@ -222,23 +207,14 @@ function onClose() {
       </InputFrame>
     </div>
 
-    <div v-else class="flex w-full items-center gap-[8px]">
-      <MobileDatePicker
-        v-model="startModel"
-        size="large"
-        class="min-w-0 flex-1 basis-0"
-      >
-        <DateInput :placeholder="props.startPlaceholder" />
-      </MobileDatePicker>
-      <span class="shrink-0 text-grey-60" aria-hidden="true">~</span>
-      <MobileDatePicker
-        v-model="endModel"
-        size="large"
-        class="min-w-0 flex-1 basis-0"
-      >
-        <DateInput :placeholder="props.endPlaceholder" />
-      </MobileDatePicker>
-    </div>
+    <MobileDatePeriodPicker
+      v-else
+      v-model="periodModel"
+      size="large"
+      class="w-full"
+      :start-placeholder="props.startPlaceholder"
+      :end-placeholder="props.endPlaceholder"
+    />
 
     <Button
       block
