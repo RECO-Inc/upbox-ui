@@ -180,6 +180,7 @@ declare module 'vue' {
     Textarea: typeof import('./components/textarea')['Textarea']
     Toast: typeof import('./components/toast')['Toast']
     Toggle: typeof import('./components/toggle')['Toggle']
+    Toolbar: typeof import('./components/toolbar')['Toolbar']
     Tooltip: typeof import('./components/tooltip')['Tooltip']
     TooltipContent: typeof import('./components/tooltip')['TooltipContent']
     TooltipProvider: typeof import('./components/tooltip')['TooltipProvider']
