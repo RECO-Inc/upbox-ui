@@ -10906,7 +10906,7 @@ const Ap = /* @__PURE__ */ ke(Td, [["render", Fd]]), jp = /* @__PURE__ */ g({
       class: x(
         e(m)(
           "flex h-[40px] items-center justify-between rounded-[4px] px-[16px]",
-          o.value ? "bg-grey-90" : "bg-grey-10 border border-grey-40 shadow-small",
+          o.value ? "bg-grey-90" : "bg-grey-10 border border-grey-30 shadow-small",
           t.class
         )
       )

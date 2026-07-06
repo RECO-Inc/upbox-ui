@@ -50,7 +50,7 @@ const buttonClass = computed(() => (isDark.value ? 'text-grey-10 hover:bg-grey-8
     :class="
       cn(
         'flex h-[40px] items-center justify-between rounded-[4px] px-[16px]',
-        isDark ? 'bg-grey-90' : 'bg-grey-10 border border-grey-40 shadow-small',
+        isDark ? 'bg-grey-90' : 'bg-grey-10 border border-grey-30 shadow-small',
         props.class
       )
     "
