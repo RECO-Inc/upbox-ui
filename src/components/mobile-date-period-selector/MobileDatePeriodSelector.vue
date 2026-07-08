@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { computed, ref, shallowRef, watch } from "vue"
+import type { DateValue } from "@internationalized/date"
 import { CalendarDate, getLocalTimeZone, today } from "@internationalized/date"
 import { X, Calendar as CalendarGlyph } from "lucide-vue-next"
 import { cn } from "../../lib/utils"
@@ -22,6 +23,12 @@ const props = withDefaults(
     endPlaceholder?: string
     showClose?: boolean
     class?: HTMLAttributes["class"]
+    /** 직접 설정 캘린더의 선택 가능한 최소 날짜(포함). */
+    minValue?: DateValue | null
+    /** 직접 설정 캘린더의 선택 가능한 최대 날짜(포함).(예: 오늘 → 미래 차단) */
+    maxValue?: DateValue | null
+    /** 최대 조회기간(일). 시작일로부터 초과 범위의 날짜 셀 비활성 + 완료 버튼 검증. */
+    maxRangeDays?: number
   }>(),
   {
     modelValue: null,
@@ -31,6 +38,9 @@ const props = withDefaults(
     startPlaceholder: "시작일 선택",
     endPlaceholder: "종료일 선택",
     showClose: true,
+    minValue: undefined,
+    maxValue: undefined,
+    maxRangeDays: undefined,
   },
 )
 
@@ -134,7 +144,16 @@ function formatDate(d: CalendarDate | null) {
 const startText = computed(() => formatDate(draftStart.value))
 const endText = computed(() => formatDate(draftEnd.value))
 
-const doneDisabled = computed(() => !draftStart.value || !draftEnd.value)
+/** maxRangeDays 초과 여부(시작일 기준). 초과면 완료 버튼 비활성. */
+const rangeOverMax = computed(() => {
+  if (props.maxRangeDays == null || !draftStart.value || !draftEnd.value)
+    return false
+  const upper = draftStart.value.add({ days: props.maxRangeDays })
+  const lower = draftStart.value.subtract({ days: props.maxRangeDays })
+  return draftEnd.value.compare(upper) > 0 || draftEnd.value.compare(lower) < 0
+})
+
+const doneDisabled = computed(() => !draftStart.value || !draftEnd.value || rangeOverMax.value)
 
 function onDone() {
   if (doneDisabled.value)
@@ -214,6 +233,9 @@ function onClose() {
       class="w-full"
       :start-placeholder="props.startPlaceholder"
       :end-placeholder="props.endPlaceholder"
+      :min-value="props.minValue ?? undefined"
+      :max-value="props.maxValue ?? undefined"
+      :max-range-days="props.maxRangeDays"
     />
 
     <Button

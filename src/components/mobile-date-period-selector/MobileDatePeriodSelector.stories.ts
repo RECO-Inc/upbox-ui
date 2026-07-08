@@ -102,3 +102,29 @@ export const Preselected3Months: Story = {
     `,
   }),
 }
+
+export const Constrained: Story = {
+  name: "제약 (최소 2023-01·미래 차단·최대 1년)",
+  render: () => ({
+    components: { MobileDatePeriodSelector },
+    setup() {
+      const value = ref<DatePeriodValue | null>({ start: null, end: null })
+      const preset = ref<DatePeriodPreset>("custom")
+      const minValue = new CalendarDate(2023, 1, 1)
+      const maxValue = end // 오늘 이후(미래) 셀 비활성
+      return { value, preset, minValue, maxValue }
+    },
+    template: `
+      <div class="w-[360px]">
+        <MobileDatePeriodSelector
+          v-model="value"
+          v-model:preset="preset"
+          :min-value="minValue"
+          :max-value="maxValue"
+          :max-range-days="366"
+          @done="(v) => console.log('done', v)"
+        />
+      </div>
+    `,
+  }),
+}

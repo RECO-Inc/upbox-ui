@@ -30,6 +30,15 @@ const props = withDefaults(
       startPlaceholder?: string
       endPlaceholder?: string
       class?: HTMLAttributes["class"]
+      /** 선택 가능한 최소 날짜(포함). 이전 날짜 셀은 비활성. */
+      minValue?: DateValue | null
+      /** 선택 가능한 최대 날짜(포함). 이후 날짜 셀은 비활성.(예: 오늘 → 미래 차단) */
+      maxValue?: DateValue | null
+      /**
+       * 최대 조회기간(일). 설정 시 시작일을 고른 뒤 그로부터 ±maxRangeDays 를 벗어난 날짜 셀을 비활성한다.
+       * 시작일 확정 전에는 제약이 없다.
+       */
+      maxRangeDays?: number
     }
   >(),
   {
@@ -40,6 +49,9 @@ const props = withDefaults(
     variant: undefined,
     size: undefined,
     error: undefined,
+    minValue: undefined,
+    maxValue: undefined,
+    maxRangeDays: undefined,
   },
 )
 
@@ -102,6 +114,31 @@ const saveDisabled = computed(
   () => !draft.value.start || !draft.value.end,
 )
 
+/**
+ * 셀 비활성 판정. reka `RangeCalendarCellTrigger` 가 이 함수를 직접 호출하므로
+ * 정적 경계(minValue/maxValue)와 최대 조회기간(maxRangeDays)을 모두 여기서 다룬다.
+ * - minValue/maxValue: 범위 밖 날짜 비활성(예: 2023-01 이전·오늘 이후).
+ * - maxRangeDays: 시작일을 고른 뒤(종료일 선택 단계) 시작일로부터 ±maxRangeDays 초과 비활성.
+ */
+function isDateDisabled(date: DateValue): boolean {
+  if (props.minValue && date.compare(props.minValue) < 0)
+    return true
+  if (props.maxValue && date.compare(props.maxValue) > 0)
+    return true
+  if (props.maxRangeDays != null) {
+    const start = draft.value.start as DateValue | undefined
+    const end = draft.value.end as DateValue | undefined
+    if (start && !end) {
+      const anchor = start as CalendarDate
+      const upper = anchor.add({ days: props.maxRangeDays })
+      const lower = anchor.subtract({ days: props.maxRangeDays })
+      if (date.compare(upper) > 0 || date.compare(lower) < 0)
+        return true
+    }
+  }
+  return false
+}
+
 function onCalendarUpdate(v: DateRange) {
   draft.value = v
 }
@@ -135,6 +172,9 @@ function onSave() {
     <DrawerContent class="!border-0 !bg-transparent !p-0">
       <MobilePeriodCalendar
         :model-value="draft"
+        :min-value="props.minValue ?? undefined"
+        :max-value="props.maxValue ?? undefined"
+        :is-date-disabled="isDateDisabled"
         class="mx-auto"
         @update:model-value="onCalendarUpdate"
         @reset="onReset"

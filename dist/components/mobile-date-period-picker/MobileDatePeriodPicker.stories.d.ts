@@ -8,6 +8,9 @@ declare const meta: {
             startPlaceholder?: string;
             endPlaceholder?: string;
             class?: import('vue').HTMLAttributes["class"];
+            minValue?: import('reka-ui').DateValue | null;
+            maxValue?: import('reka-ui').DateValue | null;
+            maxRangeDays?: number;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: DatePeriodValue | null | undefined) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
@@ -17,9 +20,12 @@ declare const meta: {
             size: "small" | "large" | "regular" | null;
             error: boolean;
             variant: "default" | "filled" | "bottomline" | null;
+            maxValue: import('reka-ui').DateValue | null;
+            minValue: import('reka-ui').DateValue | null;
             readonly: boolean;
             startPlaceholder: string;
             endPlaceholder: string;
+            maxRangeDays: number;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -32,6 +38,9 @@ declare const meta: {
             startPlaceholder?: string;
             endPlaceholder?: string;
             class?: import('vue').HTMLAttributes["class"];
+            minValue?: import('reka-ui').DateValue | null;
+            maxValue?: import('reka-ui').DateValue | null;
+            maxRangeDays?: number;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: DatePeriodValue | null | undefined) => any) | undefined;
         }>, {}, {}, {}, {}, {
@@ -39,9 +48,12 @@ declare const meta: {
             size: "small" | "large" | "regular" | null;
             error: boolean;
             variant: "default" | "filled" | "bottomline" | null;
+            maxValue: import('reka-ui').DateValue | null;
+            minValue: import('reka-ui').DateValue | null;
             readonly: boolean;
             startPlaceholder: string;
             endPlaceholder: string;
+            maxRangeDays: number;
         }>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -51,6 +63,9 @@ declare const meta: {
         startPlaceholder?: string;
         endPlaceholder?: string;
         class?: import('vue').HTMLAttributes["class"];
+        minValue?: import('reka-ui').DateValue | null;
+        maxValue?: import('reka-ui').DateValue | null;
+        maxRangeDays?: number;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: DatePeriodValue | null | undefined) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
@@ -60,9 +75,12 @@ declare const meta: {
         size: "small" | "large" | "regular" | null;
         error: boolean;
         variant: "default" | "filled" | "bottomline" | null;
+        maxValue: import('reka-ui').DateValue | null;
+        minValue: import('reka-ui').DateValue | null;
         readonly: boolean;
         startPlaceholder: string;
         endPlaceholder: string;
+        maxRangeDays: number;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             default?(_: {}): any;

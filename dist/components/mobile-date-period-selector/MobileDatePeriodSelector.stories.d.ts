@@ -12,6 +12,9 @@ declare const meta: {
         endPlaceholder?: string;
         showClose?: boolean;
         class?: import('vue').HTMLAttributes["class"];
+        minValue?: import('reka-ui').DateValue | null;
+        maxValue?: import('reka-ui').DateValue | null;
+        maxRangeDays?: number;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         "update:modelValue": (value: DatePeriodValue | null) => any;
         done: (value: DatePeriodValue) => any;
@@ -26,6 +29,9 @@ declare const meta: {
         endPlaceholder?: string;
         showClose?: boolean;
         class?: import('vue').HTMLAttributes["class"];
+        minValue?: import('reka-ui').DateValue | null;
+        maxValue?: import('reka-ui').DateValue | null;
+        maxRangeDays?: number;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: DatePeriodValue | null) => any) | undefined;
         onDone?: ((value: DatePeriodValue) => any) | undefined;
@@ -34,9 +40,12 @@ declare const meta: {
     }>, {
         modelValue: DatePeriodValue | null;
         title: string;
+        maxValue: import('reka-ui').DateValue | null;
+        minValue: import('reka-ui').DateValue | null;
         showClose: boolean;
         startPlaceholder: string;
         endPlaceholder: string;
+        maxRangeDays: number;
         preset: DatePeriodPreset;
         doneText: string;
     }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLElement>;
@@ -51,3 +60,4 @@ export declare const Fixed: Story;
 export declare const Select: Story;
 export declare const Empty: Story;
 export declare const Preselected3Months: Story;
+export declare const Constrained: Story;
