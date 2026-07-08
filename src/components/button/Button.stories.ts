@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { fn } from 'storybook/test'
 import { ChevronLeft, ChevronRight, Search, Plus } from 'lucide-vue-next'
+import { toast } from 'vue-sonner'
 import Button from './Button.vue'
+import Toast from '../toast/Toast.vue'
 
 const meta = {
   title: 'Components/Button/Button',
@@ -114,6 +116,42 @@ export const Disabled: Story = {
             <Button variant="tertiary" theme="outlined" disabled>Tertiary</Button>
           </div>
         </div>
+      </div>
+    `,
+  }),
+}
+
+/**
+ * 특정 조건에 걸려 액션을 수행할 수 없는 경우에는 버튼을 `disabled` 로 막지 않는다.
+ * 버튼은 **enabled 상태를 유지**하고, 클릭 시 왜 수행할 수 없는지 **토스트로 안내**한다.
+ *
+ * - `disabled` 는 "이 화면 맥락에서 애초에 눌러선 안 되는" 순수 시각/구조적 비활성에만 사용한다.
+ * - "조건 미충족(권한 없음·미선택·한도 초과 등)" 처럼 사유를 알려줘야 하는 경우는 enabled + 토스트.
+ * - 토스트를 띄우려면 앱 루트에 `<Toast />` 가 마운트되어 있어야 한다.
+ */
+export const BlockedActionShowsToast: Story = {
+  render: () => ({
+    components: { Button, Toast },
+    setup() {
+      const hasPermission = false
+      function submit() {
+        if (!hasPermission) {
+          toast.error('권한이 없어 실행할 수 없습니다', {
+            description: '관리자에게 권한을 요청하세요.',
+          })
+          return
+        }
+        toast.success('실행되었습니다')
+      }
+      return { submit }
+    },
+    template: `
+      <div class="flex flex-col gap-[12px] items-start">
+        <Button variant="primary" @click="submit">실행</Button>
+        <p class="text-size-13 text-grey-60">
+          조건 미충족 시에도 버튼은 enabled 상태이며, 클릭하면 사유를 토스트로 안내합니다.
+        </p>
+        <Toast />
       </div>
     `,
   }),
