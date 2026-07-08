@@ -13,10 +13,11 @@ import {
 } from "reka-ui"
 import { cn } from "../../lib/utils"
 
-export type DialogSize = "small" | "regular" | "large" | "xlarge" | "full"
+export type DialogSize = "xsmall" | "small" | "regular" | "large" | "xlarge" | "full"
 
 const DIALOG_SIZE_MAP: Record<DialogSize, string> = {
-  small: "max-w-[328px]",
+  xsmall: "max-w-[328px]",
+  small: "max-w-[364px]",
   regular: "max-w-[564px]",
   large: "max-w-[934px]",
   xlarge: "max-w-[1124px]",
