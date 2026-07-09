@@ -171,7 +171,7 @@ function onClose() {
 <template>
   <section
     :class="cn(
-      'flex w-full flex-col gap-[16px] rounded-[8px] bg-grey-10 p-[16px]',
+      'flex w-full flex-col gap-[16px] rounded-[8px] bg-grey-10',
       props.class,
     )"
   >

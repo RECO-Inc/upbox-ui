@@ -5189,7 +5189,7 @@ const Uo = /* @__PURE__ */ g({
     }
     return (S, P) => (n(), v("section", {
       class: x(e(m)(
-        "flex w-full flex-col gap-[16px] rounded-[8px] bg-grey-10 p-[16px]",
+        "flex w-full flex-col gap-[16px] rounded-[8px] bg-grey-10",
         t.class
       ))
     }, [
