@@ -234,7 +234,7 @@ function headingLabel(p: CalendarDate) {
                 :key="weekDate.toString()"
                 :date="weekDate"
                 :class="cn(
-                  'relative flex-1 h-[48px] !w-auto p-0 text-center flex items-center justify-center',
+                  'relative flex-1 h-[48px] w-auto p-0 text-center flex items-center justify-center',
                   'focus-within:relative focus-within:z-20',
                   '[&:has([data-selected]:not([data-selection-start]):not([data-selection-end]))]:bg-blue-20',
                   '[&:has([data-selection-start])]:rounded-l-[8px] [&:has([data-selection-start])]:bg-blue-20',
@@ -251,7 +251,7 @@ function headingLabel(p: CalendarDate) {
                       isSundayColumnIndex(di),
                       'mobile-period-calendar-day-btn',
                     ),
-                    '!h-[40px] !w-[40px] rounded-[8px] text-size-15',
+                    'h-[40px] w-[40px] rounded-[8px] text-size-15',
                   )"
                 />
               </RangeCalendarCell>

@@ -2166,7 +2166,7 @@ const Na = /* @__PURE__ */ g({
                           key: K.toString(),
                           date: K,
                           class: x(e(m)(
-                            "relative flex-1 h-[48px] !w-auto p-0 text-center flex items-center justify-center",
+                            "relative flex-1 h-[48px] w-auto p-0 text-center flex items-center justify-center",
                             "focus-within:relative focus-within:z-20",
                             "[&:has([data-selected]:not([data-selection-start]):not([data-selection-end]))]:bg-blue-20",
                             "[&:has([data-selection-start])]:rounded-l-[8px] [&:has([data-selection-start])]:bg-blue-20",
@@ -2184,7 +2184,7 @@ const Na = /* @__PURE__ */ g({
                                   $(Q),
                                   "mobile-period-calendar-day-btn"
                                 ),
-                                "!h-[40px] !w-[40px] rounded-[8px] text-size-15"
+                                "h-[40px] w-[40px] rounded-[8px] text-size-15"
                               ))
                             }, null, 8, ["day", "month", "class"])
                           ]),
@@ -2248,7 +2248,7 @@ const Na = /* @__PURE__ */ g({
       ])) : E("", !0)
     ], 2));
   }
-}), to = /* @__PURE__ */ ke(eo, [["__scopeId", "data-v-021a1d6f"]]), ao = { class: "flex flex-col flex-wrap py-[16px] px-[12px] h-[280px]" }, lo = { class: "h-[24px] text-sm font-bold mr-[14px]" }, so = ["onClick"], no = { class: "flex flex-col flex-wrap py-[16px] px-[12px] h-[280px]" }, oo = { class: "h-[24px] text-sm font-bold mr-[16px]" }, ro = ["onClick"], io = {
+}), to = /* @__PURE__ */ ke(eo, [["__scopeId", "data-v-70d624a8"]]), ao = { class: "flex flex-col flex-wrap py-[16px] px-[12px] h-[280px]" }, lo = { class: "h-[24px] text-sm font-bold mr-[14px]" }, so = ["onClick"], no = { class: "flex flex-col flex-wrap py-[16px] px-[12px] h-[280px]" }, oo = { class: "h-[24px] text-sm font-bold mr-[16px]" }, ro = ["onClick"], io = {
   key: 0,
   class: "flex flex-col flex-wrap py-[16px] px-[12px] h-[280px]"
 }, uo = { class: "h-[24px] text-sm font-bold mr-[16px]" }, co = ["onClick"], po = /* @__PURE__ */ g({
