@@ -88,7 +88,7 @@ const iconSize = computed(() => {
     :style="{ '--nf-icon': iconSize }"
     @blur="handleBlur"
   >
-    <InputFrame class="!px-0 overflow-hidden">
+    <InputFrame class="px-0! overflow-hidden">
       <template v-if="variant === 'center'">
         <NumberFieldDecrement :class="['shrink-0 border-r border-grey-40', { 'border-red-80': design.error.value }]" />
         <NumberFieldInput

@@ -43,9 +43,9 @@ export function getCalendarRangeDateCellTriggerClass(
     rangeSelectedDateCellClass,
     isSunday
     && cn(
-      "!text-red-70 data-[outside-view]:text-red-50",
-      "[&[data-selection-start]]:!text-grey-10 [&[data-selection-end]]:!text-grey-10",
-      "[&[data-selected]:not([data-selection-start]):not([data-selection-end])]:!text-blue-90",
+      "text-red-70! data-[outside-view]:text-red-50",
+      "[&[data-selection-start]]:text-grey-10! [&[data-selection-end]]:text-grey-10!",
+      "[&[data-selected]:not([data-selection-start]):not([data-selection-end])]:text-blue-90!",
     ),
     extraClass,
   )

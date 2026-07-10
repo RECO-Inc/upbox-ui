@@ -179,8 +179,8 @@ function onSave() {
            여기서 propless DatePeriodInput 을 넣지 않는다 (넣으면 model 이 안 붙어 Input 이 빈다) -->
       <slot />
     </MobileDatePeriodTrigger>
-    <!-- leading-bang(!bg-transparent 등)은 tailwind-merge 가 기본값과 같은 그룹으로 묶지 못해
-         DrawerContent 의 `border`/`bg-grey-10` 이 그대로 남는다(풀폭 흰 패널). bang 없이 써야 덮인다. -->
+    <!-- DrawerContent 기본값(border / bg-grey-10)을 덮어 캘린더 패널만 보이게 한다.
+         tailwind-merge 가 같은 그룹으로 인식해야 기본값이 제거되므로 leading-bang 을 쓰지 않는다. -->
     <DrawerContent :class="cn('border-0 bg-transparent p-0', props.drawerContentClass)">
       <!-- reka DialogContent 는 Title/Description 을 요구한다(스크린리더). 시각적으론 숨긴다. -->
       <DrawerTitle class="sr-only">

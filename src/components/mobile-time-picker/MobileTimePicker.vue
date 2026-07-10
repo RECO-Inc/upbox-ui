@@ -121,7 +121,7 @@ function onOpen() {
   </InputFrame>
 
   <Drawer v-model:open="open">
-    <DrawerContent :class="cn('!border-0 !bg-transparent !p-0', props.drawerContentClass)">
+    <DrawerContent :class="cn('border-0! bg-transparent! p-0!', props.drawerContentClass)">
       <MobileTimeDial
         :model-value="dialDraft as Time | null"
         :title="props.title"
