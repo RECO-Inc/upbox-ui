@@ -5,6 +5,8 @@ type __VLS_Props = {
     startPlaceholder?: string;
     endPlaceholder?: string;
     class?: HTMLAttributes["class"];
+    /** 타이핑 중 유효 날짜 완성 시 즉시 커밋 (DateInput.liveCommit) */
+    liveCommit?: boolean;
 };
 declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: DatePeriodValue | null) => any;
@@ -14,6 +16,7 @@ declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {
     "onUpdate:draftError"?: ((value: boolean) => any) | undefined;
 }>, {
     modelValue: DatePeriodValue | null;
+    liveCommit: boolean;
     startPlaceholder: string;
     endPlaceholder: string;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;

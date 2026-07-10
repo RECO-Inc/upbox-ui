@@ -12,11 +12,14 @@ const props = withDefaults(
     startPlaceholder?: string
     endPlaceholder?: string
     class?: HTMLAttributes["class"]
+    /** 타이핑 중 유효 날짜 완성 시 즉시 커밋 (DateInput.liveCommit) */
+    liveCommit?: boolean
   }>(),
   {
     modelValue: null,
     startPlaceholder: "YYYY-MM-DD",
     endPlaceholder: "YYYY-MM-DD",
+    liveCommit: false,
   },
 )
 
@@ -63,6 +66,7 @@ function onEndUpdate(v: CalendarDate | null | undefined) {
     <DateInput
       :model-value="value.start"
       :placeholder="startPlaceholder"
+      :live-commit="props.liveCommit"
       class="min-w-0 flex-1 basis-0 shrink"
       @update:model-value="onStartUpdate"
       @update:draft-error="onStartDraftError"
@@ -74,6 +78,7 @@ function onEndUpdate(v: CalendarDate | null | undefined) {
     <DateInput
       :model-value="value.end"
       :placeholder="endPlaceholder"
+      :live-commit="props.liveCommit"
       class="min-w-0 flex-1 basis-0 shrink"
       @update:model-value="onEndUpdate"
       @update:draft-error="onEndDraftError"

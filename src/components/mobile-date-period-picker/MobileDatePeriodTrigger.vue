@@ -23,12 +23,15 @@ const props = withDefaults(
     startPlaceholder?: string
     endPlaceholder?: string
     class?: HTMLAttributes["class"]
+    /** 타이핑 중 유효 날짜 완성 시 즉시 커밋 (DateInput.liveCommit) */
+    liveCommit?: boolean
   }>(),
-  { modelValue: null },
+  { modelValue: null, liveCommit: false },
 )
 
 const emit = defineEmits<{
   "update:modelValue": [value: DatePeriodValue | null]
+  "update:draftError": [value: boolean]
 }>()
 
 const design = useInputFrameInjectProvide(() => pickInputFrameDesign({}))
@@ -44,6 +47,7 @@ const frameError = computed(
 
 function onUpdateDraftError(v: boolean) {
   draftErrorFromInput.value = v
+  emit("update:draftError", v)
 }
 </script>
 
@@ -58,6 +62,7 @@ function onUpdateDraftError(v: boolean) {
           :model-value="modelValue"
           :start-placeholder="startPlaceholder"
           :end-placeholder="endPlaceholder"
+          :live-commit="props.liveCommit"
           @update:model-value="(v) => emit('update:modelValue', v)"
           @update:draft-error="onUpdateDraftError"
         />

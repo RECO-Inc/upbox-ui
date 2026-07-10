@@ -16,6 +16,8 @@ type __VLS_Props = InputFrameDesignProps & {
      * 시작일 확정 전에는 제약이 없다.
      */
     maxRangeDays?: number;
+    /** 타이핑 중 유효 날짜 완성 시 즉시 커밋 (DateInput.liveCommit) */
+    liveCommit?: boolean;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -28,8 +30,10 @@ declare function __VLS_template(): {
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: DatePeriodValue | null | undefined) => any;
+    "update:draftError": (value: boolean) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
     "onUpdate:modelValue"?: ((value: DatePeriodValue | null | undefined) => any) | undefined;
+    "onUpdate:draftError"?: ((value: boolean) => any) | undefined;
 }>, {
     disabled: boolean;
     size: "small" | "large" | "regular" | null;
@@ -38,6 +42,7 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
     maxValue: DateValue | null;
     minValue: DateValue | null;
     readonly: boolean;
+    liveCommit: boolean;
     startPlaceholder: string;
     endPlaceholder: string;
     maxRangeDays: number;

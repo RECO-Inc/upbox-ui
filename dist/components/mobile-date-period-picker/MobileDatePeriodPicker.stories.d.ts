@@ -11,10 +11,13 @@ declare const meta: {
             minValue?: import('reka-ui').DateValue | null;
             maxValue?: import('reka-ui').DateValue | null;
             maxRangeDays?: number;
+            liveCommit?: boolean;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: DatePeriodValue | null | undefined) => any) | undefined;
+            "onUpdate:draftError"?: ((value: boolean) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
             "update:modelValue": (value: DatePeriodValue | null | undefined) => any;
+            "update:draftError": (value: boolean) => any;
         }, import('vue').PublicProps, {
             disabled: boolean;
             size: "small" | "large" | "regular" | null;
@@ -23,6 +26,7 @@ declare const meta: {
             maxValue: import('reka-ui').DateValue | null;
             minValue: import('reka-ui').DateValue | null;
             readonly: boolean;
+            liveCommit: boolean;
             startPlaceholder: string;
             endPlaceholder: string;
             maxRangeDays: number;
@@ -41,8 +45,10 @@ declare const meta: {
             minValue?: import('reka-ui').DateValue | null;
             maxValue?: import('reka-ui').DateValue | null;
             maxRangeDays?: number;
+            liveCommit?: boolean;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: DatePeriodValue | null | undefined) => any) | undefined;
+            "onUpdate:draftError"?: ((value: boolean) => any) | undefined;
         }>, {}, {}, {}, {}, {
             disabled: boolean;
             size: "small" | "large" | "regular" | null;
@@ -51,6 +57,7 @@ declare const meta: {
             maxValue: import('reka-ui').DateValue | null;
             minValue: import('reka-ui').DateValue | null;
             readonly: boolean;
+            liveCommit: boolean;
             startPlaceholder: string;
             endPlaceholder: string;
             maxRangeDays: number;
@@ -66,10 +73,13 @@ declare const meta: {
         minValue?: import('reka-ui').DateValue | null;
         maxValue?: import('reka-ui').DateValue | null;
         maxRangeDays?: number;
+        liveCommit?: boolean;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: DatePeriodValue | null | undefined) => any) | undefined;
+        "onUpdate:draftError"?: ((value: boolean) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         "update:modelValue": (value: DatePeriodValue | null | undefined) => any;
+        "update:draftError": (value: boolean) => any;
     }, string, {
         disabled: boolean;
         size: "small" | "large" | "regular" | null;
@@ -78,6 +88,7 @@ declare const meta: {
         maxValue: import('reka-ui').DateValue | null;
         minValue: import('reka-ui').DateValue | null;
         readonly: boolean;
+        liveCommit: boolean;
         startPlaceholder: string;
         endPlaceholder: string;
         maxRangeDays: number;

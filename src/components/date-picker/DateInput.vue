@@ -24,11 +24,18 @@ const props = withDefaults(
     /** 비어 있을 때(입력 가능할 때)만 표시. 미지정이면 YYYY-MM-DD */
     placeholder?: string
     class?: HTMLAttributes["class"]
+    /**
+     * 타이핑 중 8자리 유효 날짜가 완성되면 즉시 모델에 반영한다.
+     * 기본(false)은 blur 시점에만 커밋 — 필터처럼 모델 변경이 조회를 유발하는 곳의 기존 동작 유지.
+     * 시트/다이얼로그처럼 입력 즉시 유효성·버튼 상태를 갱신해야 할 때만 켠다.
+     */
+    liveCommit?: boolean
   }>(),
   {
     size: undefined,
     readonly: undefined,
     disabled: undefined,
+    liveCommit: false,
   },
 )
 
@@ -213,6 +220,17 @@ function parseSlotsToCalendar(s: string[]): CalendarDate {
   return parseDate(iso)
 }
 
+/**
+ * liveCommit 일 때만, 타이핑 도중 완성된 유효 날짜를 모델에 즉시 반영한다.
+ * (modelValue watch 는 isFocused 가드가 있어 slots 를 되돌리지 않는다)
+ */
+function commitIfPossible() {
+  if (!props.liveCommit)
+    return
+  if (canCommit(slots.value))
+    modelValue.value = parseSlotsToCalendar(slots.value)
+}
+
 function digitIndexToDisplayRange(displayStr: string, di: number) {
   let diCur = 0
   for (let i = 0; i < displayStr.length; i++) {
@@ -326,6 +344,9 @@ function onBlur() {
     emitDraftError()
   }
   else {
+    // liveCommit 으로 타이핑 도중 이미 커밋됐을 수 있으므로 포커스 시점 값으로 되돌린다
+    if (props.liveCommit)
+      modelValue.value = snap ?? null
     if (snap) {
       slots.value = calendarToSlots(snap as CalendarDate)
       emitDraftError()
@@ -372,6 +393,7 @@ function insertDigit(d: string) {
   if (isSlotsInvalid(slots.value))
     showInvalidFormatFeedback()
   emitDraftError()
+  commitIfPossible()
 }
 
 /** 빈칸은 0으로 보고, 해당 자릿수만 0~9에서 순환 */
@@ -391,6 +413,7 @@ function stepActiveDigit(delta: 1 | -1) {
   if (isSlotsInvalid(slots.value))
     showInvalidFormatFeedback()
   emitDraftError()
+  commitIfPossible()
 }
 
 function onKeydown(e: KeyboardEvent) {
@@ -457,6 +480,7 @@ function onKeydown(e: KeyboardEvent) {
         slots.value = next
         applySelection()
         emitDraftError()
+        commitIfPossible()
         return
       }
       if (i > 0) {
@@ -471,6 +495,7 @@ function onKeydown(e: KeyboardEvent) {
       slots.value = next
       applySelection()
       emitDraftError()
+      commitIfPossible()
       return
     }
     if (i < 7) {
@@ -506,6 +531,7 @@ function onPaste(e: ClipboardEvent) {
   if (isSlotsInvalid(slots.value))
     showInvalidFormatFeedback()
   emitDraftError()
+  commitIfPossible()
 }
 
 watch(

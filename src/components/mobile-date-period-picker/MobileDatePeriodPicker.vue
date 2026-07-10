@@ -39,6 +39,8 @@ const props = withDefaults(
        * 시작일 확정 전에는 제약이 없다.
        */
       maxRangeDays?: number
+      /** 타이핑 중 유효 날짜 완성 시 즉시 커밋 (DateInput.liveCommit) */
+      liveCommit?: boolean
     }
   >(),
   {
@@ -52,11 +54,13 @@ const props = withDefaults(
     minValue: undefined,
     maxValue: undefined,
     maxRangeDays: undefined,
+    liveCommit: false,
   },
 )
 
 const emits = defineEmits<{
   "update:modelValue": [value: DatePeriodValue | null | undefined]
+  "update:draftError": [value: boolean]
 }>()
 
 const dateMoveCtx = inject(DATE_MOVE_MODEL_KEY, null)
@@ -163,7 +167,9 @@ function onSave() {
       v-model="model"
       :start-placeholder="props.startPlaceholder"
       :end-placeholder="props.endPlaceholder"
+      :live-commit="props.liveCommit"
       :class="props.class"
+      @update:draft-error="(v) => emits('update:draftError', v)"
     >
       <!-- 슬롯 미제공 시 MobileDatePeriodTrigger 의 배선된 DatePeriodInput fallback 이 뜨도록
            여기서 propless DatePeriodInput 을 넣지 않는다 (넣으면 model 이 안 붙어 Input 이 빈다) -->

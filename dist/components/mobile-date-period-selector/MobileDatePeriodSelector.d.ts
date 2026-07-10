@@ -17,6 +17,8 @@ type __VLS_Props = {
     maxValue?: DateValue | null;
     /** 최대 조회기간(일). 시작일로부터 초과 범위의 날짜 셀 비활성 + 완료 버튼 검증. */
     maxRangeDays?: number;
+    /** maxRangeDays 초과 시 입력 하단에 노출할 인라인 에러 문구. 미지정이면 표시하지 않는다. */
+    maxRangeMessage?: string;
 };
 declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: DatePeriodValue | null) => any;
@@ -39,5 +41,6 @@ declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {
     maxRangeDays: number;
     preset: DatePeriodPreset;
     doneText: string;
+    maxRangeMessage: string;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLElement>;
 export default _default;

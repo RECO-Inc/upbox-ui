@@ -29,6 +29,8 @@ const props = withDefaults(
     maxValue?: DateValue | null
     /** 최대 조회기간(일). 시작일로부터 초과 범위의 날짜 셀 비활성 + 완료 버튼 검증. */
     maxRangeDays?: number
+    /** maxRangeDays 초과 시 입력 하단에 노출할 인라인 에러 문구. 미지정이면 표시하지 않는다. */
+    maxRangeMessage?: string
   }>(),
   {
     modelValue: null,
@@ -41,6 +43,7 @@ const props = withDefaults(
     minValue: undefined,
     maxValue: undefined,
     maxRangeDays: undefined,
+    maxRangeMessage: undefined,
   },
 )
 
@@ -153,7 +156,17 @@ const rangeOverMax = computed(() => {
   return draftEnd.value.compare(upper) > 0 || draftEnd.value.compare(lower) < 0
 })
 
-const doneDisabled = computed(() => !draftStart.value || !draftEnd.value || rangeOverMax.value)
+/** 입력 중 날짜 형식이 유효하지 않은 상태(DateInput draftError) */
+const inputDraftError = ref(false)
+
+const doneDisabled = computed(
+  () => !draftStart.value || !draftEnd.value || rangeOverMax.value || inputDraftError.value,
+)
+
+/** 직접 설정에서 기간이 최대 조회기간을 초과할 때만 인라인 에러를 노출한다 */
+const showMaxRangeError = computed(
+  () => internalPreset.value === "custom" && rangeOverMax.value && !!props.maxRangeMessage,
+)
 
 function onDone() {
   if (doneDisabled.value)
@@ -226,17 +239,29 @@ function onClose() {
       </InputFrame>
     </div>
 
-    <MobileDatePeriodPicker
-      v-else
-      v-model="periodModel"
-      size="large"
-      class="w-full"
-      :start-placeholder="props.startPlaceholder"
-      :end-placeholder="props.endPlaceholder"
-      :min-value="props.minValue ?? undefined"
-      :max-value="props.maxValue ?? undefined"
-      :max-range-days="props.maxRangeDays"
-    />
+    <div v-else class="flex w-full flex-col gap-[4px]">
+      <MobileDatePeriodPicker
+        v-model="periodModel"
+        size="large"
+        class="w-full"
+        live-commit
+        :error="rangeOverMax"
+        :start-placeholder="props.startPlaceholder"
+        :end-placeholder="props.endPlaceholder"
+        :min-value="props.minValue ?? undefined"
+        :max-value="props.maxValue ?? undefined"
+        :max-range-days="props.maxRangeDays"
+        @update:draft-error="(v) => (inputDraftError = v)"
+      />
+      <p
+        v-if="showMaxRangeError"
+        class="text-size-12 text-red-70"
+        role="alert"
+        aria-live="polite"
+      >
+        {{ props.maxRangeMessage }}
+      </p>
+    </div>
 
     <Button
       block

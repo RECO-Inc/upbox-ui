@@ -122,6 +122,7 @@ export const Constrained: Story = {
           :min-value="minValue"
           :max-value="maxValue"
           :max-range-days="366"
+          max-range-message="조회 기간은 최대 1년까지 설정할 수 있습니다."
           @done="(v) => console.log('done', v)"
         />
       </div>

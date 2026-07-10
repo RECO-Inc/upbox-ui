@@ -15,6 +15,7 @@ declare const meta: {
         minValue?: import('reka-ui').DateValue | null;
         maxValue?: import('reka-ui').DateValue | null;
         maxRangeDays?: number;
+        maxRangeMessage?: string;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         "update:modelValue": (value: DatePeriodValue | null) => any;
         done: (value: DatePeriodValue) => any;
@@ -32,6 +33,7 @@ declare const meta: {
         minValue?: import('reka-ui').DateValue | null;
         maxValue?: import('reka-ui').DateValue | null;
         maxRangeDays?: number;
+        maxRangeMessage?: string;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: DatePeriodValue | null) => any) | undefined;
         onDone?: ((value: DatePeriodValue) => any) | undefined;
@@ -48,6 +50,7 @@ declare const meta: {
         maxRangeDays: number;
         preset: DatePeriodPreset;
         doneText: string;
+        maxRangeMessage: string;
     }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLElement>;
     tags: string[];
     parameters: {
