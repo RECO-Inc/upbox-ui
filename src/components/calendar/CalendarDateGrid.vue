@@ -88,7 +88,7 @@ function isSundayColumnIndex(di: number) {
             <CalendarHeadCell
               v-for="(day, wi) in weekDays"
               :key="String(day)"
-              :class="isSundayColumnIndex(wi) ? 'text-red-70!' : 'text-grey-60!'" >
+              :class="isSundayColumnIndex(wi) ? 'text-red-70' : 'text-grey-60'" >
               {{ day }}
             </CalendarHeadCell>
           </CalendarGridRow>
@@ -107,7 +107,7 @@ function isSundayColumnIndex(di: number) {
                 :month="month.value"
                 :class="cn(
                   isSundayColumnIndex(di) &&
-                    'text-red-70! data-[outside-view]:text-red-50 [&[data-selected]]:text-grey-10!',
+                    'text-red-70 data-[outside-view]:text-red-50 [&[data-selected]]:text-grey-10',
                   'date-calendar-day-btn',
                 )" />
             </CalendarCell>

@@ -112,7 +112,7 @@ function onCalendarReset() {
         <DateInput />
       </slot>
     </MobileDateTrigger>
-    <DrawerContent class="border-0! bg-transparent! p-0!">
+    <DrawerContent class="border-0 bg-transparent p-0">
       <MobileDateCalendar
         :model-value="calendarDraft as unknown as CalendarRootProps['modelValue'] ?? undefined"
         class="mx-auto"

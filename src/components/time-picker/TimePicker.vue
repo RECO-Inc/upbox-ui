@@ -83,7 +83,7 @@ function onPanelChange(t: Time | null) {
       align="end"
       :class="
         cn(
-          'p-0! w-max max-w-[calc(100vw-16px)] border-1! border-grey-40! bg-transparent p-0 shadow-none',
+          'p-0 w-max max-w-[calc(100vw-16px)] border-1 border-grey-40 bg-transparent p-0 shadow-none',
           props.popoverContentClass,
         )
       "

@@ -113,7 +113,7 @@ function isSundayColumnIndex(di: number) {
                 'border-0 px-px py-[6px] align-middle text-center font-normal [&]:box-border',
                 'w-[32px] min-w-[32px]',
                 'text-sm leading-none tracking-[0.02em]',
-                isSundayColumnIndex(wi) ? 'text-red-70!' : 'text-grey-60!',
+                isSundayColumnIndex(wi) ? 'text-red-70' : 'text-grey-60',
               )"
             >
               {{ day }}

@@ -257,15 +257,15 @@ function onDone() {
                 v-for="(weekDate, di) in weekDates"
                 :key="weekDate.toString()"
                 :date="weekDate"
-                class="flex-1 h-[48px] w-auto! flex items-center justify-center"
+                class="flex-1 h-[48px] w-auto flex items-center justify-center"
               >
                 <CalendarCellTrigger
                   :day="weekDate"
                   :month="month.value"
                   :class="cn(
-                    'h-[40px]! w-[40px]! rounded-[8px] text-size-15',
+                    'h-[40px] w-[40px] rounded-[8px] text-size-15',
                     isSundayColumnIndex(di) &&
-                      'text-red-70! data-[outside-view]:text-red-50! [&[data-selected]]:text-grey-10!',
+                      'text-red-70 data-[outside-view]:text-red-50 [&[data-selected]]:text-grey-10',
                     'mobile-date-calendar-day-btn',
                   )"
                 />

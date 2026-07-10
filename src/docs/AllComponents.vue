@@ -555,8 +555,8 @@ function showToast() {
         <div class="ac-item ac-col-2">
           <span class="ac-label">Sidebar</span>
           <div class="ac-demo p-0">
-            <div class="h-[220px] w-full overflow-hidden rounded-[8px] border border-grey-30 [&_[data-slot=sidebar-wrapper]]:min-h-0! [&_[data-slot=sidebar-wrapper]]:h-full">
-              <SidebarProvider class="min-h-0! h-full">
+            <div class="h-[220px] w-full overflow-hidden rounded-[8px] border border-grey-30 [&_[data-slot=sidebar-wrapper]]:min-h-0 [&_[data-slot=sidebar-wrapper]]:h-full">
+              <SidebarProvider class="min-h-0 h-full">
                 <Sidebar collapsible="none" class="h-full">
                   <SidebarContent>
                     <SidebarGroup>

@@ -36,7 +36,7 @@ const radioVariants = cva(
           "bg-grey-30",
           "border-grey-40",
           "text-grey-70",
-          "data-[state=checked]:border-grey-30! data-[state=checked]:bg-grey-30! data-[state=checked]:text-grey-70!",
+          "data-[state=checked]:border-grey-30 data-[state=checked]:bg-grey-30 data-[state=checked]:text-grey-70",
         ].join(" "),
         false: "",
       },
@@ -46,7 +46,7 @@ const radioVariants = cva(
           "bg-grey-30",
           "border-grey-30",
           "text-grey-50",
-          "data-[state=checked]:border-grey-30! data-[state=checked]:bg-grey-30! data-[state=checked]:text-grey-50!",
+          "data-[state=checked]:border-grey-30 data-[state=checked]:bg-grey-30 data-[state=checked]:text-grey-50",
         ].join(" "),
         false: "",
       },
@@ -76,7 +76,7 @@ const radioVariants = cva(
       {
         readOnly: true,
         error: true,
-        class: "data-[state=checked]:border-red-80! data-[state=checked]:bg-red-80!",
+        class: "data-[state=checked]:border-red-80 data-[state=checked]:bg-red-80",
       },
     ],
   }
