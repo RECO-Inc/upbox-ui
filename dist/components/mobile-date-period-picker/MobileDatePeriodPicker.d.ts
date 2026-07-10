@@ -18,6 +18,8 @@ type __VLS_Props = InputFrameDesignProps & {
     maxRangeDays?: number;
     /** 타이핑 중 유효 날짜 완성 시 즉시 커밋 (DateInput.liveCommit) */
     liveCommit?: boolean;
+    /** 캘린더 드로어 패널 클래스(폭 제한 등). 데스크톱 `DatePeriodPicker.popoverContentClass` 대응 */
+    drawerContentClass?: HTMLAttributes["class"];
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -46,6 +48,7 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
     startPlaceholder: string;
     endPlaceholder: string;
     maxRangeDays: number;
+    drawerContentClass: string | false | Record<string, any> | import('vue').ClassValue[] | null;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

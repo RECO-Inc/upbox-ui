@@ -16,6 +16,7 @@ declare const meta: {
         maxValue?: import('reka-ui').DateValue | null;
         maxRangeDays?: number;
         maxRangeMessage?: string;
+        drawerContentClass?: import('vue').HTMLAttributes["class"];
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         "update:modelValue": (value: DatePeriodValue | null) => any;
         done: (value: DatePeriodValue) => any;
@@ -34,6 +35,7 @@ declare const meta: {
         maxValue?: import('reka-ui').DateValue | null;
         maxRangeDays?: number;
         maxRangeMessage?: string;
+        drawerContentClass?: import('vue').HTMLAttributes["class"];
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: DatePeriodValue | null) => any) | undefined;
         onDone?: ((value: DatePeriodValue) => any) | undefined;
@@ -48,6 +50,7 @@ declare const meta: {
         startPlaceholder: string;
         endPlaceholder: string;
         maxRangeDays: number;
+        drawerContentClass: string | false | Record<string, any> | import('vue').ClassValue[] | null;
         preset: DatePeriodPreset;
         doneText: string;
         maxRangeMessage: string;

@@ -12,6 +12,7 @@ declare const meta: {
             maxValue?: import('reka-ui').DateValue | null;
             maxRangeDays?: number;
             liveCommit?: boolean;
+            drawerContentClass?: import('vue').HTMLAttributes["class"];
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: DatePeriodValue | null | undefined) => any) | undefined;
             "onUpdate:draftError"?: ((value: boolean) => any) | undefined;
@@ -30,6 +31,7 @@ declare const meta: {
             startPlaceholder: string;
             endPlaceholder: string;
             maxRangeDays: number;
+            drawerContentClass: string | false | Record<string, any> | import('vue').ClassValue[] | null;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -46,6 +48,7 @@ declare const meta: {
             maxValue?: import('reka-ui').DateValue | null;
             maxRangeDays?: number;
             liveCommit?: boolean;
+            drawerContentClass?: import('vue').HTMLAttributes["class"];
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: DatePeriodValue | null | undefined) => any) | undefined;
             "onUpdate:draftError"?: ((value: boolean) => any) | undefined;
@@ -61,6 +64,7 @@ declare const meta: {
             startPlaceholder: string;
             endPlaceholder: string;
             maxRangeDays: number;
+            drawerContentClass: string | false | Record<string, any> | import('vue').ClassValue[] | null;
         }>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -74,6 +78,7 @@ declare const meta: {
         maxValue?: import('reka-ui').DateValue | null;
         maxRangeDays?: number;
         liveCommit?: boolean;
+        drawerContentClass?: import('vue').HTMLAttributes["class"];
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: DatePeriodValue | null | undefined) => any) | undefined;
         "onUpdate:draftError"?: ((value: boolean) => any) | undefined;
@@ -92,6 +97,7 @@ declare const meta: {
         startPlaceholder: string;
         endPlaceholder: string;
         maxRangeDays: number;
+        drawerContentClass: string | false | Record<string, any> | import('vue').ClassValue[] | null;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             default?(_: {}): any;

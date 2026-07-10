@@ -10,9 +10,10 @@ import type { DateValue } from "@internationalized/date"
 import { CalendarDate } from "@internationalized/date"
 import { computed, inject, ref, shallowRef, watch } from "vue"
 import { useI18n } from "vue-i18n"
-import { Drawer, DrawerContent } from "../drawer"
+import { Drawer, DrawerContent, DrawerDescription, DrawerTitle } from "../drawer"
 import { MobilePeriodCalendar } from "../calendar"
 import { Button } from "../button"
+import { cn } from "../../lib/utils"
 import {
   pickInputFrameDesign,
   useInputFrameInjectProvide,
@@ -41,6 +42,8 @@ const props = withDefaults(
       maxRangeDays?: number
       /** 타이핑 중 유효 날짜 완성 시 즉시 커밋 (DateInput.liveCommit) */
       liveCommit?: boolean
+      /** 캘린더 드로어 패널 클래스(폭 제한 등). 데스크톱 `DatePeriodPicker.popoverContentClass` 대응 */
+      drawerContentClass?: HTMLAttributes["class"]
     }
   >(),
   {
@@ -55,6 +58,7 @@ const props = withDefaults(
     maxValue: undefined,
     maxRangeDays: undefined,
     liveCommit: false,
+    drawerContentClass: undefined,
   },
 )
 
@@ -175,7 +179,16 @@ function onSave() {
            여기서 propless DatePeriodInput 을 넣지 않는다 (넣으면 model 이 안 붙어 Input 이 빈다) -->
       <slot />
     </MobileDatePeriodTrigger>
-    <DrawerContent class="!border-0 !bg-transparent !p-0">
+    <!-- leading-bang(!bg-transparent 등)은 tailwind-merge 가 기본값과 같은 그룹으로 묶지 못해
+         DrawerContent 의 `border`/`bg-grey-10` 이 그대로 남는다(풀폭 흰 패널). bang 없이 써야 덮인다. -->
+    <DrawerContent :class="cn('border-0 bg-transparent p-0', props.drawerContentClass)">
+      <!-- reka DialogContent 는 Title/Description 을 요구한다(스크린리더). 시각적으론 숨긴다. -->
+      <DrawerTitle class="sr-only">
+        기간 선택
+      </DrawerTitle>
+      <DrawerDescription class="sr-only">
+        달력에서 조회 시작일과 종료일을 선택하세요.
+      </DrawerDescription>
       <MobilePeriodCalendar
         :model-value="draft"
         :min-value="props.minValue ?? undefined"

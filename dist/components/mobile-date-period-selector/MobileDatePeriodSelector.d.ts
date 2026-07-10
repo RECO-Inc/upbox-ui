@@ -19,6 +19,8 @@ type __VLS_Props = {
     maxRangeDays?: number;
     /** maxRangeDays 초과 시 입력 하단에 노출할 인라인 에러 문구. 미지정이면 표시하지 않는다. */
     maxRangeMessage?: string;
+    /** 캘린더 드로어 패널 클래스(폭 제한 등) */
+    drawerContentClass?: HTMLAttributes["class"];
 };
 declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: DatePeriodValue | null) => any;
@@ -39,6 +41,7 @@ declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {
     startPlaceholder: string;
     endPlaceholder: string;
     maxRangeDays: number;
+    drawerContentClass: string | false | Record<string, any> | import('vue').ClassValue[] | null;
     preset: DatePeriodPreset;
     doneText: string;
     maxRangeMessage: string;
