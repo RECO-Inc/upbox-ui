@@ -771,7 +771,7 @@
 | 피그마 노드 | Vue 구조 |
 |---|---|
 | 외곽 root | `NumberFieldRoot` (reka-ui) |
-| frame (border + bg) | `InputFrame` (`!px-0 overflow-hidden`) |
+| frame (border + bg) | `InputFrame` (`px-0! overflow-hidden`) |
 | `−` 버튼 | `NumberFieldDecrement` (`Minus` lucide) |
 | 숫자 입력 | `NumberFieldInput` |
 | `+` 버튼 | `NumberFieldIncrement` (`Plus` lucide) |
