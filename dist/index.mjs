@@ -2933,7 +2933,7 @@ const Ha = /* @__PURE__ */ g({
     const l = a;
     return (t, s) => (n(), y("h3", {
       class: x(
-        e(m)("font-semibold leading-none tracking-tight", l.class)
+        e(m)("text-size-16 font-semibold leading-none tracking-tight", l.class)
       )
     }, [
       v(t.$slots, "default")
