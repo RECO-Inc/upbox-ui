@@ -11,7 +11,7 @@ const props = defineProps<{
   <div
     :class="
       cn(
-        'rounded-xl border text-grey-100 shadow-sm',
+        'rounded-[2px] border border-grey-30 bg-grey-10 text-grey-100 [-webkit-tap-highlight-color:transparent]',
         props.class,
       )
     "
