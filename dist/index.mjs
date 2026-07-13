@@ -3987,7 +3987,7 @@ const Ka = {
       ], 34)
     ], 2));
   }
-}), ft = /* @__PURE__ */ Be(No, [["__scopeId", "data-v-8f5fdc7a"]]), _t = /* @__PURE__ */ g({
+}), ft = /* @__PURE__ */ Be(No, [["__scopeId", "data-v-121f5900"]]), _t = /* @__PURE__ */ g({
   __name: "Popover",
   props: {
     defaultOpen: { type: Boolean },
@@ -4992,7 +4992,7 @@ const Ko = /* @__PURE__ */ g({
   emits: ["update:modelValue"],
   setup(a, { emit: l }) {
     const t = a, s = l, o = _({
-      get: () => t.modelValue == null ? void 0 : String(t.modelValue),
+      get: () => t.modelValue === void 0 ? void 0 : String(t.modelValue),
       set: (r) => {
         const i = t.items.find((f) => String(f.value) === r);
         s("update:modelValue", i ? i.value : r);

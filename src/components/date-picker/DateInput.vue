@@ -346,7 +346,7 @@ function onBlur() {
   else {
     // liveCommit 으로 타이핑 도중 이미 커밋됐을 수 있으므로 포커스 시점 값으로 되돌린다
     if (props.liveCommit)
-      modelValue.value = snap ?? null
+      modelValue.value = (snap ?? null) as CalendarDate | null
     if (snap) {
       slots.value = calendarToSlots(snap as CalendarDate)
       emitDraftError()

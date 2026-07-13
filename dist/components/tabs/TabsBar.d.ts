@@ -1,11 +1,11 @@
 import { HTMLAttributes } from 'vue';
 export interface TabItem {
     label: string;
-    value: string | number;
+    value: string | number | null;
     disabled?: boolean;
 }
 type __VLS_Props = {
-    modelValue?: string | number;
+    modelValue?: string | number | null;
     items: TabItem[];
     variant?: "default" | "round" | "box";
     color?: "navy" | "grey";
@@ -24,9 +24,9 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-    "update:modelValue": (value: string | number) => any;
+    "update:modelValue": (value: string | number | null) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
-    "onUpdate:modelValue"?: ((value: string | number) => any) | undefined;
+    "onUpdate:modelValue"?: ((value: string | number | null) => any) | undefined;
 }>, {
     size: "small" | "regular" | "large" | "xlarge";
     color: "navy" | "grey";
