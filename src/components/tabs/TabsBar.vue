@@ -7,12 +7,12 @@ import TabsTrigger from "./TabsTrigger.vue"
 
 export interface TabItem {
   label: string
-  value: string | number
+  value: string | number | null
   disabled?: boolean
 }
 
 const props = withDefaults(defineProps<{
-  modelValue?: string | number
+  modelValue?: string | number | null
   items: TabItem[]
   variant?: "default" | "round" | "box"
   color?: "navy" | "grey"
@@ -26,14 +26,16 @@ const props = withDefaults(defineProps<{
   size: "regular",
 })
 
-const emit = defineEmits<{ "update:modelValue": [value: string | number] }>()
+const emit = defineEmits<{ "update:modelValue": [value: string | number | null] }>()
 
+// null 도 유효한 선택값이므로 undefined(미선택)만 "선택 없음"으로 취급한다.
+// String(null) === "null" 이 null 아이템의 트리거 value 와 일치해 active 로 렌더된다.
 const model = computed<string | undefined>({
-  get: () => (props.modelValue == null ? undefined : String(props.modelValue)),
+  get: () => (props.modelValue === undefined ? undefined : String(props.modelValue)),
   set: (raw) => {
-    // String 비교로 원본 value(number 등) 타입을 보존해 emit
+    // String 비교로 원본 value(number·null 등) 타입을 보존해 emit
     const matched = props.items.find((item) => String(item.value) === raw)
-    emit("update:modelValue", matched ? matched.value : (raw as string | number))
+    emit("update:modelValue", matched ? matched.value : (raw as string | number | null))
   },
 })
 </script>

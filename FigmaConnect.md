@@ -27,6 +27,7 @@
 | [`3623:26811`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3623-26811) | [`timeInput`](#timeinput) | `TimeInput` (Picker 내부) |
 | [`3837:27148`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=3837-27148) | [`select`](#select) | `Select` / `SelectTrigger` |
 | `4038:38723` | [`toast`](#toast) | `Toast` |
+| [`11726:2034`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=11726-2034) | [`fieldContainer`](#fieldcontainer) | `FieldContainer` |
 | [`12247:7978`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=12247-7978) | [`mobileDatePeriodSelector`](#mobiledateperiodselector) | `MobileDatePeriodSelector` |
 | [`12247:8094`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=12247-8094) | [`periodCalendar` (mobile)](#periodcalendar-mobile) | `MobilePeriodCalendar` |
 | [`12247:8592`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=12247-8592) | [`dateCalendar` (mobile)](#datecalendar-mobile) | `MobileDateCalendar` |
@@ -916,6 +917,76 @@
 | `small=32` / `regular=40` / `large=48` | trigger 높이 | `size="small\|regular\|large"` |
 | `padding/padding-08` / `margin/margin-04` | 좌우 padding · 아이콘 간격 | `px-[8px]` / `gap-[4px]` |
 | `Body/body5` / `body3` / `body1` | 사이즈별 텍스트 | `text-size-{12\|14\|16}` |
+
+---
+
+## fieldContainer
+
+| 항목 | 값 |
+|------|-----|
+| Figma 노드 | [`11726:2034`](https://www.figma.com/design/4eyRu4lbq9068LACdI8HMp/?node-id=11726-2034) |
+| Vue 컴포넌트 | `FieldContainer.vue` |
+
+라벨 · 필수 표시 · 입력 컨트롤 · 에러/도움말을 묶는 vee-validate 필드 래퍼. 입력 컨트롤 자체(`TextField`, `Select` 등)는 `default` slot 으로 주입한다.
+
+### Props 매핑
+
+| Figma 프로퍼티 | Vue Prop | 타입 / 허용값 | 기본값 |
+|---|---|---|---|
+| `Variant size` (small · regular · large) | `size` | `"small" \| "regular" \| "large"` | `"regular"` |
+| 라벨 텍스트 | `label` | `string` | — |
+| 라벨 앞 필수 표시 `*` (red) | `required` | `boolean` | `false` |
+| 하단 도움말 텍스트 | `description` | `string` | — |
+| 에러 메세지 (검증 실패 시 도움말 대체) | — (vee-validate 자동, `FormMessage`) | — | — |
+| 입력 컨트롤 자리 (중첩 인스턴스) | `default` slot | — | — |
+
+### Vue 전용 Props
+
+| Vue Prop | 타입 | 기본값 | 설명 |
+|---|---|---|---|
+| `name` | `string` | — | vee-validate 필드 이름 (필수) |
+| `rules` | `unknown` | — | 검증 규칙 (함수 / 스키마) |
+| `modelValue` | `unknown` | — | 제어형 값 바인딩 |
+| `initialValue` | `unknown` | — | 초기값 |
+| `validateOnMount` | `boolean` | `false` | 마운트 시 즉시 검증 |
+| `class` | `string` | — | 외곽(`FormItem`) 클래스 |
+
+### Slots
+
+| Slot | 설명 |
+|---|---|
+| `default` | 입력 컨트롤 (`v-slot` 로 `field` / `componentField` 바인딩 노출) |
+| `tooltip` | 라벨 우측 툴팁/아이콘 자리 |
+
+### Code Example
+
+```vue
+<Form class="w-full max-w-sm">
+  <FieldContainer name="email" label="이메일" description="등록된 주소를 입력하세요" required>
+    <TextField type="email" placeholder="you@example.com" />
+  </FieldContainer>
+</Form>
+```
+
+### 하위 구조
+
+| 피그마 노드 | Vue 구조 |
+|---|---|
+| 라벨 행 (`*` + Label + tooltip) | `required` `*` span + `FormLabel` + `#tooltip` slot |
+| 입력 컨트롤 | `FieldControlProvider` → `FormControl` → `default` slot |
+| 에러 메세지 | `FormMessage` (검증 실패 시 자동) |
+| 도움말 | `FormDescription` (`description` 있을 때) |
+
+### Figma 변수
+
+| Figma 변수 | 의미 / 사용 위치 | upbox-ui 매핑 |
+|------------|------------------|---------------|
+| `primitive/red-80` (`#e11d1d`) | 필수 표시 `*` | `text-red-80` |
+| `Label/label3` (14 · Bold) | `regular` / `large` 라벨 | `text-size-14 font-bold` |
+| `Label/label5` (12 · Bold) | `small` 라벨 | `text-size-12 font-bold` |
+| `Body/body3` (14) / `body5` (12) | 도움말 · 에러 텍스트 | `text-size-{14\|12}` |
+| `small=32` / `regular=40` / `large=48` | 컨트롤 높이 (자식 위임) | `size="small\|regular\|large"` |
+| `margin/margin-04` | 라벨 ↔ 컨트롤 · 필수표시 간격 | `gap-[4px]` / `mr-[2px]` |
 
 ---
 
