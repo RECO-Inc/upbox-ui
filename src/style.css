@@ -229,10 +229,13 @@
   --shadow-medium: 0px 4px 8px 0px rgba(13, 21, 42, 0.08);
   --shadow-large: 0px 8px 16px 0px rgba(13, 21, 42, 0.08);
 
-  /* Border radius */
-  --radius-lg: 0.125rem;
-  --radius-md: calc(0.125rem - 2px);
-  --radius-sm: calc(0.125rem - 4px);
+  /* Border radius
+   * shadcn 원본은 --radius(10px) 에서 빼는 공식이지만, Upbox 기준값은 2px 이라
+   * 그대로 두면 sm/md 가 0 이하로 무너져 모서리가 아예 깎이지 않았다(조용한 버그).
+   * Upbox 실사용 값(2/4/8px)으로 스케일을 직접 정의한다. */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
 
   /* Accordion animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;
