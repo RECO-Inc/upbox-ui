@@ -9431,7 +9431,9 @@ const Ni = /* @__PURE__ */ g({
     variants: {
       side: {
         top: "inset-x-0 top-0 border-b border-grey-30 data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
-        bottom: "inset-x-0 bottom-0 border-t border-grey-30 data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+        // 모바일 바텀시트(Figma modal/select/mobile 13189:5074): 상단 20px 라운드·하단 32px 패딩·
+        // flex-col(base gap-16 활성). 상단 테두리 없이 그림자로만 띄운다.
+        bottom: "inset-x-0 bottom-0 flex flex-col rounded-t-[20px] pb-[32px] data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
         left: "inset-y-0 left-0 h-full w-3/4 min-w-[320px] border-r border-grey-30 data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
         right: "inset-y-0 right-0 h-full w-3/4 min-w-[320px] border-l border-grey-30 data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm"
       }
