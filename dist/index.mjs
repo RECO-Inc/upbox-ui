@@ -4620,7 +4620,9 @@ const Ko = /* @__PURE__ */ g({
     error: { type: Boolean, default: void 0 },
     readonly: { type: Boolean, default: void 0 },
     disabled: { type: Boolean, default: void 0 },
-    class: { type: [Boolean, null, String, Object, Array] }
+    class: { type: [Boolean, null, String, Object, Array] },
+    minValue: { default: void 0 },
+    maxValue: { default: void 0 }
   }, {
     modelValue: {},
     modelModifiers: {}
@@ -4687,11 +4689,13 @@ const Ko = /* @__PURE__ */ g({
           default: d(() => [
             u(e(Wn), {
               "model-value": c.value ?? void 0,
+              "min-value": t.minValue ?? void 0,
+              "max-value": t.maxValue ?? void 0,
               class: "mx-auto",
               "onUpdate:modelValue": b,
               onChange: k,
               onReset: z
-            }, null, 8, ["model-value"])
+            }, null, 8, ["model-value", "min-value", "max-value"])
           ]),
           _: 1
         })

@@ -30,6 +30,10 @@ const props = withDefaults(
   defineProps<
     InputFrameDesignProps & {
       class?: HTMLAttributes["class"]
+      /** 선택 가능한 최소 날짜(포함). 이전 날짜 셀은 비활성. */
+      minValue?: DateValue | null
+      /** 선택 가능한 최대 날짜(포함). 이후 날짜 셀은 비활성.(예: 오늘 → 미래 차단) */
+      maxValue?: DateValue | null
     }
   >(),
   {
@@ -38,6 +42,8 @@ const props = withDefaults(
     error: undefined,
     readonly: undefined,
     disabled: undefined,
+    minValue: undefined,
+    maxValue: undefined,
   },
 )
 
@@ -115,6 +121,8 @@ function onCalendarReset() {
     <DrawerContent class="border-0 bg-transparent p-0">
       <MobileDateCalendar
         :model-value="calendarDraft as unknown as CalendarRootProps['modelValue'] ?? undefined"
+        :min-value="props.minValue ?? undefined"
+        :max-value="props.maxValue ?? undefined"
         class="mx-auto"
         @update:model-value="onCalendarDraftUpdate"
         @change="onCalendarChange"

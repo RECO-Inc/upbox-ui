@@ -7,6 +7,8 @@ declare const meta: {
             modelValue?: CalendarDate | null;
         } & import('../input-frame').InputFrameDesignProps & {
             class?: import('vue').HTMLAttributes["class"];
+            minValue?: import('reka-ui').DateValue | null;
+            maxValue?: import('reka-ui').DateValue | null;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: CalendarDate | null) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
@@ -16,6 +18,8 @@ declare const meta: {
             size: "small" | "large" | "regular" | null;
             error: boolean;
             variant: "default" | "filled" | "bottomline" | null;
+            maxValue: import('reka-ui').DateValue | null;
+            minValue: import('reka-ui').DateValue | null;
             readonly: boolean;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
@@ -28,6 +32,8 @@ declare const meta: {
             modelValue?: CalendarDate | null;
         } & import('../input-frame').InputFrameDesignProps & {
             class?: import('vue').HTMLAttributes["class"];
+            minValue?: import('reka-ui').DateValue | null;
+            maxValue?: import('reka-ui').DateValue | null;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: CalendarDate | null) => any) | undefined;
         }>, {}, {}, {}, {}, {
@@ -35,6 +41,8 @@ declare const meta: {
             size: "small" | "large" | "regular" | null;
             error: boolean;
             variant: "default" | "filled" | "bottomline" | null;
+            maxValue: import('reka-ui').DateValue | null;
+            minValue: import('reka-ui').DateValue | null;
             readonly: boolean;
         }>;
         __isFragment?: never;
@@ -44,6 +52,8 @@ declare const meta: {
         modelValue?: CalendarDate | null;
     } & import('../input-frame').InputFrameDesignProps & {
         class?: import('vue').HTMLAttributes["class"];
+        minValue?: import('reka-ui').DateValue | null;
+        maxValue?: import('reka-ui').DateValue | null;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: CalendarDate | null) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
@@ -53,6 +63,8 @@ declare const meta: {
         size: "small" | "large" | "regular" | null;
         error: boolean;
         variant: "default" | "filled" | "bottomline" | null;
+        maxValue: import('reka-ui').DateValue | null;
+        minValue: import('reka-ui').DateValue | null;
         readonly: boolean;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
