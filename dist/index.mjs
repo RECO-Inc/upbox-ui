@@ -1958,7 +1958,7 @@ const Ha = /* @__PURE__ */ g({
   }
 }), Wn = /* @__PURE__ */ Be(Zn, [["__scopeId", "data-v-d3a9ef30"]]), Qn = { class: "flex w-full items-center justify-between h-[32px]" }, Xn = { class: "flex items-center gap-[8px]" }, Jn = { class: "text-size-16 font-bold text-grey-90 select-none leading-[24px] tracking-[-0.01em]" }, eo = { class: "flex items-center gap-[8px]" }, to = {
   key: 0,
-  class: "flex items-stretch gap-[8px] w-full"
+  class: "flex items-stretch gap-[8px] w-full shrink-0"
 }, ao = /* @__PURE__ */ g({
   name: "MobilePeriodCalendar",
   __name: "MobilePeriodCalendar",
@@ -2039,12 +2039,14 @@ const Ha = /* @__PURE__ */ g({
     return (O, P) => (n(), y("div", {
       class: x(e(m)(
         "mobile-period-calendar w-[360px] max-w-full bg-grey-10 rounded-t-[16px] flex flex-col px-[16px] py-[24px]",
-        "gap-y-[24px]",
+        // 작은 화면에서 2개월 캘린더가 뷰포트를 넘겨 상단이 잘리지 않도록 패널 높이를 제한하고
+        // 캘린더 영역만 내부 스크롤(footer 초기화·저장은 항상 하단 고정).
+        "max-h-[90dvh] gap-y-[24px]",
         t.class
       ))
     }, [
       u(e(ga), I(e(r), {
-        class: "flex flex-col gap-y-[24px]",
+        class: "flex flex-col gap-y-[24px] min-h-0 overflow-y-auto",
         locale: f.value,
         placeholder: b.value,
         "week-starts-on": c.value,
@@ -2248,7 +2250,7 @@ const Ha = /* @__PURE__ */ g({
       ])) : E("", !0)
     ], 2));
   }
-}), lo = /* @__PURE__ */ Be(ao, [["__scopeId", "data-v-70d624a8"]]), so = { class: "flex flex-col flex-wrap py-[16px] px-[12px] h-[280px]" }, no = { class: "h-[24px] text-sm font-bold mr-[14px]" }, oo = ["onClick"], ro = { class: "flex flex-col flex-wrap py-[16px] px-[12px] h-[280px]" }, io = { class: "h-[24px] text-sm font-bold mr-[16px]" }, uo = ["onClick"], co = {
+}), lo = /* @__PURE__ */ Be(ao, [["__scopeId", "data-v-7a97dde7"]]), so = { class: "flex flex-col flex-wrap py-[16px] px-[12px] h-[280px]" }, no = { class: "h-[24px] text-sm font-bold mr-[14px]" }, oo = ["onClick"], ro = { class: "flex flex-col flex-wrap py-[16px] px-[12px] h-[280px]" }, io = { class: "h-[24px] text-sm font-bold mr-[16px]" }, uo = ["onClick"], co = {
   key: 0,
   class: "flex flex-col flex-wrap py-[16px] px-[12px] h-[280px]"
 }, po = { class: "h-[24px] text-sm font-bold mr-[16px]" }, fo = ["onClick"], mo = /* @__PURE__ */ g({

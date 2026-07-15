@@ -132,14 +132,16 @@ function headingLabel(p: CalendarDate) {
   <div
     :class="cn(
       'mobile-period-calendar w-[360px] max-w-full bg-grey-10 rounded-t-[16px] flex flex-col px-[16px] py-[24px]',
-      'gap-y-[24px]',
+      // 작은 화면에서 2개월 캘린더가 뷰포트를 넘겨 상단이 잘리지 않도록 패널 높이를 제한하고
+      // 캘린더 영역만 내부 스크롤(footer 초기화·저장은 항상 하단 고정).
+      'max-h-[90dvh] gap-y-[24px]',
       props.class,
     )"
   >
     <RangeCalendarRoot
       v-slot="{ grid, weekDays }"
       v-bind="forwarded"
-      class="flex flex-col gap-y-[24px]"
+      class="flex flex-col gap-y-[24px] min-h-0 overflow-y-auto"
       :locale="localeResolved"
       :placeholder="placeholder as RangeCalendarRootProps['placeholder']"
       :week-starts-on="weekStartsResolved"
@@ -262,7 +264,7 @@ function headingLabel(p: CalendarDate) {
     </RangeCalendarRoot>
 
     <!-- Footer -->
-    <div v-if="showFooter" class="flex items-stretch gap-[8px] w-full">
+    <div v-if="showFooter" class="flex items-stretch gap-[8px] w-full shrink-0">
       <slot name="reset" :on-reset="onReset">
         <Button
           variant="tertiary"
