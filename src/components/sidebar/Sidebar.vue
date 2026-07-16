@@ -62,7 +62,9 @@ const { isMobile, disableMobile, state, openMobile, setOpenMobile } = useSidebar
     />
     <div
       :class="cn(
-        'duration-200 fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] ease-linear md:flex',
+        'duration-200 fixed inset-y-0 z-10 h-svh w-(--sidebar-width) transition-[left,right,width] ease-linear',
+        // disableMobile 이면 md 이하에서도 항상 표시, 아니면 기존대로 md 미만 숨김
+        disableMobile ? 'flex' : 'hidden md:flex',
         side === 'left'
           ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
           : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',

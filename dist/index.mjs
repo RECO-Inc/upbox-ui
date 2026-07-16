@@ -9508,7 +9508,9 @@ const Ni = /* @__PURE__ */ g({
       }, null, 2),
       w("div", I({
         class: e(m)(
-          "duration-200 fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] ease-linear md:flex",
+          "duration-200 fixed inset-y-0 z-10 h-svh w-(--sidebar-width) transition-[left,right,width] ease-linear",
+          // disableMobile 이면 md 이하에서도 항상 표시, 아니면 기존대로 md 미만 숨김
+          e(s) ? "flex" : "hidden md:flex",
           a.side === "left" ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]" : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
           // Adjust the padding for floating and inset variants.
           a.variant === "floating" || a.variant === "inset" ? "p-[8px] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+_2px)]" : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)",
