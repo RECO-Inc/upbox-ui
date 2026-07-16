@@ -10,16 +10,22 @@ const props = withDefaults(defineProps<{
   defaultOpen?: boolean
   open?: boolean
   class?: HTMLAttributes["class"]
+  /** 데스크톱 전용 앱: 모바일(≤768px)에서 Sheet 모드로 전환하지 않고 항상 데스크톱 사이드바를 유지한다. */
+  disableMobile?: boolean
 }>(), {
   defaultOpen: !defaultDocument?.cookie.includes(`${SIDEBAR_COOKIE_NAME}=false`),
   open: undefined,
+  disableMobile: false,
 })
 
 const emits = defineEmits<{
   "update:open": [open: boolean]
 }>()
 
-const isMobile = useMediaQuery("(max-width: 768px)")
+const isMobileQuery = useMediaQuery("(max-width: 768px)")
+// disableMobile 이면 항상 데스크톱 사이드바(모바일 Sheet 전환 없음)
+const isMobile = computed(() => props.disableMobile ? false : isMobileQuery.value)
+const disableMobile = computed(() => props.disableMobile)
 const openMobile = ref(false)
 
 const open = useVModel(props, "open", emits, {
@@ -59,6 +65,7 @@ provideSidebarContext({
   open,
   setOpen,
   isMobile,
+  disableMobile,
   openMobile,
   setOpenMobile,
   toggleSidebar,

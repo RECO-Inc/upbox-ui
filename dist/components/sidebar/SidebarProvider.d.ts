@@ -3,6 +3,8 @@ type __VLS_Props = {
     defaultOpen?: boolean;
     open?: boolean;
     class?: HTMLAttributes["class"];
+    /** 데스크톱 전용 앱: 모바일(≤768px)에서 Sheet 모드로 전환하지 않고 항상 데스크톱 사이드바를 유지한다. */
+    disableMobile?: boolean;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -20,6 +22,7 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
 }>, {
     open: boolean;
     defaultOpen: boolean;
+    disableMobile: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

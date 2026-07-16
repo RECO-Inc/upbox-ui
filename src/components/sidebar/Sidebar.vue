@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<SidebarProps>(), {
   collapsible: "offcanvas",
 })
 
-const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
+const { isMobile, disableMobile, state, openMobile, setOpenMobile } = useSidebar()
 </script>
 
 <template>
@@ -43,7 +43,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
   </Sheet>
 
   <div
-    v-else class="group peer hidden md:block"
+    v-else :class="cn('group peer', disableMobile ? 'block' : 'hidden md:block')"
     :data-state="state"
     :data-collapsible="state === 'collapsed' ? collapsible : ''"
     :data-variant="variant"
