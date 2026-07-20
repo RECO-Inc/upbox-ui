@@ -49,6 +49,14 @@ declare const meta: {
         showFooter: boolean;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
+            shortcut?(_: {
+                items: {
+                    disabled: boolean;
+                    label: string;
+                    months: number;
+                }[];
+                select: (months: number) => void;
+            }): any;
             reset?(_: {
                 onReset: () => void;
             }): any;

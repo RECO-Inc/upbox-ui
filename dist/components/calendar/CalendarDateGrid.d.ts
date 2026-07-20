@@ -2,6 +2,7 @@ import { CalendarRootProps } from 'reka-ui';
 import { WeekStartsOn } from 'reka-ui/date';
 import { HTMLAttributes } from 'vue';
 import { DateValue } from '@internationalized/date';
+import { CalendarShortcutItem } from './calendarShortcutItems';
 type __VLS_Props = {
     class?: HTMLAttributes["class"];
     locale: string;
@@ -9,10 +10,22 @@ type __VLS_Props = {
     placeholder: CalendarRootProps["placeholder"];
     showQuickPresets?: boolean;
     showFooter?: boolean;
+    /** 단축 막대에 노출할 항목 (미지정 시 기본 5종) */
+    shortcutItems?: CalendarShortcutItem[];
+    minValue?: DateValue | null;
+    maxValue?: DateValue | null;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
+        shortcut?(_: {
+            items: {
+                disabled: boolean;
+                label: string;
+                months: number;
+            }[];
+            select: (months: number) => void;
+        }): any;
         reset?(_: {
             onReset: () => void;
         }): any;

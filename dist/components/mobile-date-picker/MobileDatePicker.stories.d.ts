@@ -18,8 +18,8 @@ declare const meta: {
             size: "small" | "large" | "regular" | null;
             error: boolean;
             variant: "default" | "filled" | "bottomline" | null;
-            maxValue: import('reka-ui').DateValue | null;
             minValue: import('reka-ui').DateValue | null;
+            maxValue: import('reka-ui').DateValue | null;
             readonly: boolean;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
@@ -41,8 +41,8 @@ declare const meta: {
             size: "small" | "large" | "regular" | null;
             error: boolean;
             variant: "default" | "filled" | "bottomline" | null;
-            maxValue: import('reka-ui').DateValue | null;
             minValue: import('reka-ui').DateValue | null;
+            maxValue: import('reka-ui').DateValue | null;
             readonly: boolean;
         }>;
         __isFragment?: never;
@@ -63,8 +63,8 @@ declare const meta: {
         size: "small" | "large" | "regular" | null;
         error: boolean;
         variant: "default" | "filled" | "bottomline" | null;
-        maxValue: import('reka-ui').DateValue | null;
         minValue: import('reka-ui').DateValue | null;
+        maxValue: import('reka-ui').DateValue | null;
         readonly: boolean;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {

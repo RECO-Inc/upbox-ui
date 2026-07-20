@@ -1,6 +1,7 @@
 import { DateRange, RangeCalendarRootProps } from 'reka-ui';
 import { HTMLAttributes } from 'vue';
 import { DateValue } from '@internationalized/date';
+import { CalendarShortcutItem } from './calendarShortcutItems';
 interface Props extends RangeCalendarRootProps {
     class?: HTMLAttributes["class"];
     /** 시작·종료 시각 포함 */
@@ -10,10 +11,20 @@ interface Props extends RangeCalendarRootProps {
     showFooter?: boolean;
     /** 1·3·6개월·1년 단축 (DateCalendar 와 동일) */
     showQuickPresets?: boolean;
+    /** 단축 막대에 노출할 항목. 정책상 일부만 필요하면 골라서 넘긴다. */
+    shortcutItems?: CalendarShortcutItem[];
 }
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
+        shortcut?(_: {
+            items: {
+                disabled: boolean;
+                label: string;
+                months: number;
+            }[];
+            select: (months: number) => void;
+        }): any;
         reset?(_: {
             onReset: () => void;
         }): any;

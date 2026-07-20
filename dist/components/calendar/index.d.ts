@@ -22,5 +22,6 @@ export { default as CalendarYearGrid } from './CalendarYearGrid';
 export { default as CalendarTimeSelect } from './CalendarTimeSelect';
 export { default as CalendarFooter } from './CalendarFooter';
 export { default as CalendarShortcut } from './CalendarShortcut';
+export { DEFAULT_CALENDAR_SHORTCUT_ITEMS, isShortcutOutOfRange, resolveShortcutDate, type CalendarShortcutItem, } from './calendarShortcutItems';
 export { default as CalendarDateGrid } from './CalendarDateGrid';
 export { default as CalendarRangeDateGrid } from './CalendarRangeDateGrid';

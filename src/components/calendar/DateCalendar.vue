@@ -21,6 +21,7 @@ import { reactiveOmit } from "@vueuse/core"
 import { useForwardPropsEmits } from "reka-ui"
 import { cn } from "../../lib/utils"
 import CalendarDateGrid from "./CalendarDateGrid.vue"
+import type { CalendarShortcutItem } from "./calendarShortcutItems"
 import CalendarMonthGrid from "./CalendarMonthGrid.vue"
 import CalendarYearGrid from "./CalendarYearGrid.vue"
 
@@ -32,6 +33,8 @@ export interface Props extends CalendarRootProps {
   class?: HTMLAttributes["class"]
   showFooter?: boolean // 초기화 완료
   showQuickPresets?: boolean // n 개월
+  /** 단축 막대에 노출할 항목. 정책상 일부만 필요하면 골라서 넘긴다. */
+  shortcutItems?: CalendarShortcutItem[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -51,6 +54,7 @@ const delegatedProps = reactiveOmit(
   "class",
   "showFooter",
   "showQuickPresets",
+  "shortcutItems",
   /** CalendarRoot 에 직접 넘기고 기본값을 덮어쓴다 */
   "locale",
   "weekStartsOn",
@@ -157,12 +161,16 @@ function onDone() {
         :week-starts-on="weekStartsResolved"
         :show-quick-presets="showQuickPresets"
         :show-footer="showFooter"
+        :shortcut-items="props.shortcutItems"
         @update:placeholder="(val) => (placeholder = val as CalendarDate)"
         @click-heading="onClickHeading"
         @shortcut-select="onQuickAddMonths"
         @reset="onReset"
         @done="onDone"
       >
+        <template v-if="$slots.shortcut" #shortcut="shortcutSlot">
+          <slot name="shortcut" v-bind="shortcutSlot" />
+        </template>
         <template #reset="{ onReset: handleReset }">
           <slot name="reset" :on-reset="handleReset" />
         </template>

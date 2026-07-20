@@ -35,8 +35,8 @@ declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {
 }>, {
     modelValue: DatePeriodValue | null;
     title: string;
-    maxValue: DateValue | null;
     minValue: DateValue | null;
+    maxValue: DateValue | null;
     showClose: boolean;
     startPlaceholder: string;
     endPlaceholder: string;

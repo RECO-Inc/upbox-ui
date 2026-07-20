@@ -41,8 +41,8 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
     size: "small" | "large" | "regular" | null;
     error: boolean;
     variant: "default" | "filled" | "bottomline" | null;
-    maxValue: DateValue | null;
     minValue: DateValue | null;
+    maxValue: DateValue | null;
     readonly: boolean;
     liveCommit: boolean;
     startPlaceholder: string;

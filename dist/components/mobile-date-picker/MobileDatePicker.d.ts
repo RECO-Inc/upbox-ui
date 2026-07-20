@@ -29,8 +29,8 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_PublicProps, 
     size: "small" | "large" | "regular" | null;
     error: boolean;
     variant: "default" | "filled" | "bottomline" | null;
-    maxValue: DateValue | null;
     minValue: DateValue | null;
+    maxValue: DateValue | null;
     readonly: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;

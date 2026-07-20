@@ -7,6 +7,7 @@ import { CalendarDate } from "@internationalized/date"
 import { CalendarRoot } from "reka-ui"
 import { cn } from "../../lib/utils"
 import CalendarShortcut from "./CalendarShortcut.vue"
+import type { CalendarShortcutItem } from "./calendarShortcutItems"
 import CalendarCell from "./CalendarCell.vue"
 import CalendarCellTrigger from "./CalendarCellTrigger.vue"
 import CalendarFooter from "./CalendarFooter.vue"
@@ -27,6 +28,10 @@ const props = withDefaults(
     placeholder: CalendarRootProps["placeholder"]
     showQuickPresets?: boolean
     showFooter?: boolean
+    /** 단축 막대에 노출할 항목 (미지정 시 기본 5종) */
+    shortcutItems?: CalendarShortcutItem[]
+    minValue?: DateValue | null
+    maxValue?: DateValue | null
   }>(),
   {
     showQuickPresets: true,
@@ -73,6 +78,8 @@ function isSundayColumnIndex(di: number) {
     :locale="locale"
     :placeholder="placeholder as unknown as CalendarRootProps['placeholder']"
     :week-starts-on="weekStartsOn"
+    :min-value="props.minValue ?? undefined"
+    :max-value="props.maxValue ?? undefined"
     weekday-format="narrow"
     @update:placeholder="(val) => emits('update:placeholder', val)" >
     <CalendarHeader 
@@ -117,7 +124,14 @@ function isSundayColumnIndex(di: number) {
     </div>
     <CalendarShortcut
       v-if="showQuickPresets"
-      @shortcut-select="emits('shortcutSelect', $event)" />
+      :items="props.shortcutItems"
+      :min-value="props.minValue"
+      :max-value="props.maxValue"
+      @shortcut-select="emits('shortcutSelect', $event)" >
+      <template v-if="$slots.shortcut" #default="shortcutSlot">
+        <slot name="shortcut" v-bind="shortcutSlot" />
+      </template>
+    </CalendarShortcut>
     <CalendarFooter
       v-if="showFooter"
       class="pt-[8px]"

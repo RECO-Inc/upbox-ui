@@ -1,14 +1,25 @@
 import { CalendarRootProps } from 'reka-ui';
 import { HTMLAttributes } from 'vue';
 import { DateValue } from '@internationalized/date';
+import { CalendarShortcutItem } from './calendarShortcutItems';
 export interface Props extends CalendarRootProps {
     class?: HTMLAttributes["class"];
     showFooter?: boolean;
     showQuickPresets?: boolean;
+    /** 단축 막대에 노출할 항목. 정책상 일부만 필요하면 골라서 넘긴다. */
+    shortcutItems?: CalendarShortcutItem[];
 }
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
+        shortcut?(_: {
+            items: {
+                disabled: boolean;
+                label: string;
+                months: number;
+            }[];
+            select: (months: number) => void;
+        }): any;
         reset?(_: {
             onReset: () => void;
         }): any;

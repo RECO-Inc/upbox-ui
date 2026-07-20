@@ -24,8 +24,8 @@ declare const meta: {
             size: "small" | "large" | "regular" | null;
             error: boolean;
             variant: "default" | "filled" | "bottomline" | null;
-            maxValue: import('reka-ui').DateValue | null;
             minValue: import('reka-ui').DateValue | null;
+            maxValue: import('reka-ui').DateValue | null;
             readonly: boolean;
             liveCommit: boolean;
             startPlaceholder: string;
@@ -57,8 +57,8 @@ declare const meta: {
             size: "small" | "large" | "regular" | null;
             error: boolean;
             variant: "default" | "filled" | "bottomline" | null;
-            maxValue: import('reka-ui').DateValue | null;
             minValue: import('reka-ui').DateValue | null;
+            maxValue: import('reka-ui').DateValue | null;
             readonly: boolean;
             liveCommit: boolean;
             startPlaceholder: string;
@@ -90,8 +90,8 @@ declare const meta: {
         size: "small" | "large" | "regular" | null;
         error: boolean;
         variant: "default" | "filled" | "bottomline" | null;
-        maxValue: import('reka-ui').DateValue | null;
         minValue: import('reka-ui').DateValue | null;
+        maxValue: import('reka-ui').DateValue | null;
         readonly: boolean;
         liveCommit: boolean;
         startPlaceholder: string;

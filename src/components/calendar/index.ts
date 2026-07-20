@@ -22,5 +22,11 @@ export { default as CalendarYearGrid } from "./CalendarYearGrid.vue"
 export { default as CalendarTimeSelect } from "./CalendarTimeSelect.vue"
 export { default as CalendarFooter } from "./CalendarFooter.vue"
 export { default as CalendarShortcut } from "./CalendarShortcut.vue"
+export {
+  DEFAULT_CALENDAR_SHORTCUT_ITEMS,
+  isShortcutOutOfRange,
+  resolveShortcutDate,
+  type CalendarShortcutItem,
+} from "./calendarShortcutItems"
 export { default as CalendarDateGrid } from "./CalendarDateGrid.vue"
 export { default as CalendarRangeDateGrid } from "./CalendarRangeDateGrid.vue"

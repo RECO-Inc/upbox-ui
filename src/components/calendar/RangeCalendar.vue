@@ -20,6 +20,7 @@ import { cn } from "../../lib/utils"
 import CalendarMonthGrid from "./CalendarMonthGrid.vue"
 import CalendarYearGrid from "./CalendarYearGrid.vue"
 import CalendarRangeDateGrid from "./CalendarRangeDateGrid.vue"
+import type { CalendarShortcutItem } from "./calendarShortcutItems"
 
 type ViewMode = "DATE" | "MONTH" | "YEAR"
 
@@ -32,6 +33,8 @@ interface Props extends RangeCalendarRootProps {
   showFooter?: boolean
   /** 1·3·6개월·1년 단축 (DateCalendar 와 동일) */
   showQuickPresets?: boolean
+  /** 단축 막대에 노출할 항목. 정책상 일부만 필요하면 골라서 넘긴다. */
+  shortcutItems?: CalendarShortcutItem[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -58,6 +61,7 @@ const delegatedProps = reactiveOmit(
   "seconds",
   "showFooter",
   "showQuickPresets",
+  "shortcutItems",
   "locale",
   "weekStartsOn",
 )
@@ -201,6 +205,7 @@ function onQuickAddMonths(offset: number) {
         :seconds="seconds"
         :show-quick-presets="showQuickPresets"
         :show-footer="showFooter"
+        :shortcut-items="props.shortcutItems"
         v-model:hour="hour"
         v-model:minute="minute"
         v-model:second="second"
@@ -210,6 +215,9 @@ function onQuickAddMonths(offset: number) {
         @reset="onReset"
         @done="onDone"
       >
+        <template v-if="$slots.shortcut" #shortcut="shortcutSlot">
+          <slot name="shortcut" v-bind="shortcutSlot" />
+        </template>
         <template #reset="{ onReset: handleReset }">
           <slot name="reset" :on-reset="handleReset" />
         </template>

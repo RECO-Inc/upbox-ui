@@ -44,8 +44,8 @@ declare const meta: {
     }>, {
         modelValue: DatePeriodValue | null;
         title: string;
-        maxValue: import('reka-ui').DateValue | null;
         minValue: import('reka-ui').DateValue | null;
+        maxValue: import('reka-ui').DateValue | null;
         showClose: boolean;
         startPlaceholder: string;
         endPlaceholder: string;
