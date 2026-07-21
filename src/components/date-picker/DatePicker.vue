@@ -24,6 +24,10 @@ const props = withDefaults(
     InputFrameDesignProps & {
       class?: HTMLAttributes["class"]
       popoverContentClass?: HTMLAttributes["class"]
+      /** 선택 가능한 최소 날짜(포함). 이전 날짜 셀·단축은 비활성. */
+      minValue?: DateValue | null
+      /** 선택 가능한 최대 날짜(포함). 이후 날짜 셀·단축은 비활성.(예: 오늘 → 미래 차단) */
+      maxValue?: DateValue | null
     }
   >(),
   {
@@ -32,6 +36,8 @@ const props = withDefaults(
     error: undefined,
     readonly: undefined,
     disabled: undefined,
+    minValue: undefined,
+    maxValue: undefined,
   },
 )
 
@@ -118,6 +124,8 @@ function onCalendarReset() {
     >
       <DateCalendar
         :model-value="calendarDraft as unknown as CalendarRootProps['modelValue'] ?? undefined"
+        :min-value="props.minValue ?? undefined"
+        :max-value="props.maxValue ?? undefined"
         :show-footer="true"
         :show-quick-presets="true"
         @update:model-value="onCalendarDraftUpdate"

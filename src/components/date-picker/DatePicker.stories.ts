@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite"
 import { ref } from "vue"
-import { CalendarDate } from "@internationalized/date"
+import { CalendarDate, getLocalTimeZone, today } from "@internationalized/date"
 import DatePicker from "./DatePicker.vue"
 import DateInput from "./DateInput.vue"
 
@@ -52,6 +52,35 @@ export const WithExplicitDateInput: Story = {
         <DatePicker v-model="v">
           <DateInput placeholder="YYYY/MM/DD" />
         </DatePicker>
+      </div>
+    `,
+  }),
+}
+
+/**
+ * 선택 범위 제한 — `minValue`/`maxValue` 로 캘린더 셀과 단축(오늘·n개월) 버튼을 비활성한다.
+ * 타이핑 입력까지 막지는 않으므로, 제출 차단이 필요하면 소비 앱에서 값 검증을 함께 둔다.
+ */
+export const WithBounds: Story = {
+  name: "선택 범위 제한 (minValue/maxValue)",
+  render: () => ({
+    components: { DatePicker },
+    setup() {
+      const todayValue = today(getLocalTimeZone())
+      const pastOnly = ref<CalendarDate | null>(null)
+      const futureOnly = ref<CalendarDate | null>(null)
+      return { pastOnly, futureOnly, todayValue }
+    },
+    template: `
+      <div class="flex w-[360px] flex-col gap-[20px]">
+        <div class="flex flex-col gap-[8px]">
+          <p class="text-size-12 text-grey-60">오늘까지만 (maxValue=오늘) — 미래 차단</p>
+          <DatePicker v-model="pastOnly" :max-value="todayValue" />
+        </div>
+        <div class="flex flex-col gap-[8px]">
+          <p class="text-size-12 text-grey-60">오늘부터만 (minValue=오늘) — 과거 차단</p>
+          <DatePicker v-model="futureOnly" :min-value="todayValue" />
+        </div>
       </div>
     `,
   }),

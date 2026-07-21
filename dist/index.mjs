@@ -4172,7 +4172,9 @@ const Wo = /* @__PURE__ */ y({
     readonly: { type: Boolean, default: void 0 },
     disabled: { type: Boolean, default: void 0 },
     class: { type: [Boolean, null, String, Object, Array] },
-    popoverContentClass: { type: [Boolean, null, String, Object, Array] }
+    popoverContentClass: { type: [Boolean, null, String, Object, Array] },
+    minValue: { default: void 0 },
+    maxValue: { default: void 0 }
   }, {
     modelValue: {},
     modelModifiers: {}
@@ -4248,12 +4250,14 @@ const Wo = /* @__PURE__ */ y({
           default: i(() => [
             c(t(Kn), {
               "model-value": u.value ?? void 0,
+              "min-value": e.minValue ?? void 0,
+              "max-value": e.maxValue ?? void 0,
               "show-footer": !0,
               "show-quick-presets": !0,
               "onUpdate:modelValue": b,
               onChange: k,
               onReset: S
-            }, null, 8, ["model-value"])
+            }, null, 8, ["model-value", "min-value", "max-value"])
           ]),
           _: 1
         }, 8, ["class"])

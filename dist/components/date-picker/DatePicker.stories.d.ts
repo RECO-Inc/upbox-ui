@@ -8,6 +8,8 @@ declare const meta: {
         } & import('../input-frame').InputFrameDesignProps & {
             class?: import('vue').HTMLAttributes["class"];
             popoverContentClass?: import('vue').HTMLAttributes["class"];
+            minValue?: import('reka-ui').DateValue | null;
+            maxValue?: import('reka-ui').DateValue | null;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: CalendarDate | null) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
@@ -17,6 +19,8 @@ declare const meta: {
             size: "small" | "large" | "regular" | null;
             error: boolean;
             variant: "default" | "filled" | "bottomline" | null;
+            minValue: import('reka-ui').DateValue | null;
+            maxValue: import('reka-ui').DateValue | null;
             readonly: boolean;
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
@@ -30,6 +34,8 @@ declare const meta: {
         } & import('../input-frame').InputFrameDesignProps & {
             class?: import('vue').HTMLAttributes["class"];
             popoverContentClass?: import('vue').HTMLAttributes["class"];
+            minValue?: import('reka-ui').DateValue | null;
+            maxValue?: import('reka-ui').DateValue | null;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: CalendarDate | null) => any) | undefined;
         }>, {}, {}, {}, {}, {
@@ -37,6 +43,8 @@ declare const meta: {
             size: "small" | "large" | "regular" | null;
             error: boolean;
             variant: "default" | "filled" | "bottomline" | null;
+            minValue: import('reka-ui').DateValue | null;
+            maxValue: import('reka-ui').DateValue | null;
             readonly: boolean;
         }>;
         __isFragment?: never;
@@ -47,6 +55,8 @@ declare const meta: {
     } & import('../input-frame').InputFrameDesignProps & {
         class?: import('vue').HTMLAttributes["class"];
         popoverContentClass?: import('vue').HTMLAttributes["class"];
+        minValue?: import('reka-ui').DateValue | null;
+        maxValue?: import('reka-ui').DateValue | null;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: CalendarDate | null) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
@@ -56,6 +66,8 @@ declare const meta: {
         size: "small" | "large" | "regular" | null;
         error: boolean;
         variant: "default" | "filled" | "bottomline" | null;
+        minValue: import('reka-ui').DateValue | null;
+        maxValue: import('reka-ui').DateValue | null;
         readonly: boolean;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
@@ -91,4 +103,9 @@ export declare const Default: Story;
  * placeholder 등 DateInput 전용 props 를 직접 제어할 수 있다.
  */
 export declare const WithExplicitDateInput: Story;
+/**
+ * 선택 범위 제한 — `minValue`/`maxValue` 로 캘린더 셀과 단축(오늘·n개월) 버튼을 비활성한다.
+ * 타이핑 입력까지 막지는 않으므로, 제출 차단이 필요하면 소비 앱에서 값 검증을 함께 둔다.
+ */
+export declare const WithBounds: Story;
 export declare const StatesAndSizes: Story;
