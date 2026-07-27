@@ -25,7 +25,7 @@ export function resolveShortcutDate(months: number): DateValue {
   return today(getLocalTimeZone()).add({ months })
 }
 
-/** min/max 범위 밖이면 true — 해당 단축 버튼을 비활성화한다. */
+/** min/max 범위 밖이면 true — 해당 단축 버튼을 렌더링에서 제외(숨김)한다. */
 export function isShortcutOutOfRange(
   months: number,
   minValue?: DateValue | null,

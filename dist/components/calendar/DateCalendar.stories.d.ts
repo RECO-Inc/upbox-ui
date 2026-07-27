@@ -50,11 +50,7 @@ declare const meta: {
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             shortcut?(_: {
-                items: {
-                    disabled: boolean;
-                    label: string;
-                    months: number;
-                }[];
+                items: import('./calendarShortcutItems').CalendarShortcutItem[];
                 select: (months: number) => void;
             }): any;
             reset?(_: {

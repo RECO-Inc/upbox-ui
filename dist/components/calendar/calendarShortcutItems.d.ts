@@ -12,5 +12,5 @@ export interface CalendarShortcutItem {
 export declare const DEFAULT_CALENDAR_SHORTCUT_ITEMS: CalendarShortcutItem[];
 /** 단축이 가리키는 날짜(오늘 + n개월) */
 export declare function resolveShortcutDate(months: number): DateValue;
-/** min/max 범위 밖이면 true — 해당 단축 버튼을 비활성화한다. */
+/** min/max 범위 밖이면 true — 해당 단축 버튼을 렌더링에서 제외(숨김)한다. */
 export declare function isShortcutOutOfRange(months: number, minValue?: DateValue | null, maxValue?: DateValue | null): boolean;

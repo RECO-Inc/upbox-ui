@@ -1015,10 +1015,9 @@ const Ra = /* @__PURE__ */ y({
       s("shortcutSelect", d);
     }
     const r = _(
-      () => e.items.map((d) => ({
-        ...d,
-        disabled: Sn(d.months, e.minValue, e.maxValue)
-      }))
+      () => e.items.filter(
+        (d) => !Sn(d.months, e.minValue, e.maxValue)
+      )
     );
     return (d, p) => (n(), v("div", {
       class: x(t(m)("flex flex-wrap gap-[8px] py-[8px]", e.class))
@@ -1034,14 +1033,13 @@ const Ra = /* @__PURE__ */ y({
           size: "xsmall",
           class: "font-normal",
           type: "button",
-          disabled: u.disabled,
           onClick: (f) => o(u.months)
         }, {
           default: i(() => [
             X(L(u.label), 1)
           ]),
           _: 2
-        }, 1032, ["disabled", "onClick"]))), 128))
+        }, 1032, ["onClick"]))), 128))
       ])
     ], 2));
   }

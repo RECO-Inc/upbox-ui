@@ -5,9 +5,9 @@ type __VLS_Props = {
     class?: HTMLAttributes["class"];
     /** 노출할 단축 목록. 정책상 일부만 필요하면 골라서 넘긴다. */
     items?: CalendarShortcutItem[];
-    /** 선택 가능한 최소 날짜(포함). 범위 밖 단축은 비활성. */
+    /** 선택 가능한 최소 날짜(포함). 범위 밖 단축은 숨긴다. */
     minValue?: DateValue | null;
-    /** 선택 가능한 최대 날짜(포함). 범위 밖 단축은 비활성. */
+    /** 선택 가능한 최대 날짜(포함). 범위 밖 단축은 숨긴다. */
     maxValue?: DateValue | null;
 };
 declare function emitShortcut(months: number): void;
@@ -15,11 +15,7 @@ declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
         default?(_: {
-            items: {
-                disabled: boolean;
-                label: string;
-                months: number;
-            }[];
+            items: CalendarShortcutItem[];
             select: typeof emitShortcut;
         }): any;
     };

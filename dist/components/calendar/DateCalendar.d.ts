@@ -13,11 +13,7 @@ declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
         shortcut?(_: {
-            items: {
-                disabled: boolean;
-                label: string;
-                months: number;
-            }[];
+            items: CalendarShortcutItem[];
             select: (months: number) => void;
         }): any;
         reset?(_: {
