@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'vue';
-import { CalendarDate } from '@internationalized/date';
+import { DateValue, CalendarDate } from '@internationalized/date';
 import { InputFrameVariantProps } from '../input-frame';
 type __VLS_Props = {
     size?: InputFrameVariantProps["size"];
@@ -14,6 +14,12 @@ type __VLS_Props = {
      * 시트/다이얼로그처럼 입력 즉시 유효성·버튼 상태를 갱신해야 할 때만 켠다.
      */
     liveCommit?: boolean;
+    /**
+     * 커밋 가능한 최소/최대 날짜(포함). 미지정이면 상위 `DatePicker` 컨텍스트 값을 쓴다.
+     * 범위를 벗어난 타이핑은 모델에 반영하지 않는다(blur 시 직전 값으로 되돌림).
+     */
+    minValue?: DateValue | null;
+    maxValue?: DateValue | null;
 };
 type __VLS_PublicProps = {
     modelValue?: CalendarDate | null;
@@ -27,6 +33,8 @@ declare const _default: import('vue').DefineComponent<__VLS_PublicProps, {}, {},
 }>, {
     disabled: boolean;
     size: "small" | "large" | "regular" | null;
+    minValue: DateValue | null;
+    maxValue: DateValue | null;
     readonly: boolean;
     liveCommit: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {

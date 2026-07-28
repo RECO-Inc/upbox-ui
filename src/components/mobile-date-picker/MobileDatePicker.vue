@@ -65,7 +65,11 @@ const model = computed({
 
 const draftError = ref(false)
 
-provide(DATE_PICKER_CTX_KEY, { model, draftError })
+// 범위는 캘린더뿐 아니라 DateInput 타이핑 커밋에도 적용된다(UP20-8581).
+const minValue = computed(() => props.minValue)
+const maxValue = computed(() => props.maxValue)
+
+provide(DATE_PICKER_CTX_KEY, { model, draftError, minValue, maxValue })
 
 const open = ref(false)
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { computed, inject, nextTick, ref, watch } from "vue"
+import type { DateValue } from "@internationalized/date"
 import { CalendarDate, parseDate } from "@internationalized/date"
 import { cn } from "../../lib/utils"
 import {
@@ -30,12 +31,20 @@ const props = withDefaults(
      * 시트/다이얼로그처럼 입력 즉시 유효성·버튼 상태를 갱신해야 할 때만 켠다.
      */
     liveCommit?: boolean
+    /**
+     * 커밋 가능한 최소/최대 날짜(포함). 미지정이면 상위 `DatePicker` 컨텍스트 값을 쓴다.
+     * 범위를 벗어난 타이핑은 모델에 반영하지 않는다(blur 시 직전 값으로 되돌림).
+     */
+    minValue?: DateValue | null
+    maxValue?: DateValue | null
   }>(),
   {
     size: undefined,
     readonly: undefined,
     disabled: undefined,
     liveCommit: false,
+    minValue: undefined,
+    maxValue: undefined,
   },
 )
 
@@ -47,6 +56,23 @@ const design = useInputFrameInjectProvide(() => pickInputFrameDesign(props))
 const isFrameDisabled = design.disabled
 
 const datePicker = inject(DATE_PICKER_CTX_KEY, null)
+
+/**
+ * 선택 가능 범위 — 자체 prop 우선, 없으면 상위 picker 컨텍스트.
+ * 시각 정보가 섞인 `DateValue` 도 올 수 있어 날짜 단위로 정규화한다.
+ */
+function toDateOnly(v?: DateValue | null): CalendarDate | null {
+  if (!v)
+    return null
+  return new CalendarDate(v.year, v.month, v.day)
+}
+
+const minBound = computed(() =>
+  toDateOnly(props.minValue ?? datePicker?.minValue?.value),
+)
+const maxBound = computed(() =>
+  toDateOnly(props.maxValue ?? datePicker?.maxValue?.value),
+)
 
 /**
  * DatePicker context가 있으면 inject된 모델 사용, 없으면 localModel (standalone용)
@@ -97,22 +123,42 @@ const inputTextClass = computed(() => {
   return "text-inherit"
 })
 
-const draftError = computed(() => isSlotsInvalid(slots.value))
+/** "" = 정상, "format" = 날짜 형식 오류, "range" = min/max 범위 밖 */
+type DraftErrorKind = "" | "format" | "range"
 
-function emitDraftError() {
-  const hasError = isSlotsInvalid(slots.value)
-  if (datePicker) {
-    datePicker.draftError.value = hasError
-  }
-  else {
-    emit("update:draftError", hasError)
-  }
+function slotsErrorKind(s: string[]): DraftErrorKind {
+  if (isSlotsInvalid(s))
+    return "format"
+  if (isSlotsOutOfRange(s))
+    return "range"
+  return ""
 }
+
+const draftErrorKind = computed<DraftErrorKind>(() => slotsErrorKind(slots.value))
+const draftError = computed(() => draftErrorKind.value !== "")
+
+/**
+ * 범위 오류는 말풍선을 띄우지 않는다 — 어떤 범위인지는 화면마다 사정이 달라 문구를 쓸 수 없고,
+ * 말풍선은 스크롤 컨테이너(모달 목록 등) 안에서 잘린다. 커밋 거부 + shake + error 테두리로만 알리고
+ * 구체적인 안내 문구는 소비자가 필드 아래 인라인으로 붙인다.
+ */
+const showFormatTooltip = computed(() => draftErrorKind.value === "format")
+
+// 범위(min/max)가 바깥에서 바뀌어도 상태가 따라가도록 값 자체를 관찰한다.
+watch(
+  draftError,
+  (hasError) => {
+    if (datePicker)
+      datePicker.draftError.value = hasError
+    else
+      emit("update:draftError", hasError)
+  },
+  { immediate: true },
+)
 
 function clearSlots() {
   slots.value = Array.from({ length: 8 }, () => "")
   activeDigit.value = 0
-  emitDraftError()
 }
 
 function calendarToSlots(c: CalendarDate): string[] {
@@ -192,6 +238,26 @@ function isSlotsInvalid(s: string[]): boolean {
   return false
 }
 
+/**
+ * min/max 범위 밖인지 — 8자리가 완성된 유효 날짜에 대해서만 판정한다.
+ * (입력 중인 부분 값은 아직 확정이 아니라 범위를 따지지 않는다)
+ */
+function isSlotsOutOfRange(s: string[]): boolean {
+  const f = flatDigits(s)
+  if (f.length !== 8 || isSlotsInvalid(s))
+    return false
+  const min = minBound.value
+  const max = maxBound.value
+  if (!min && !max)
+    return false
+  const d = parseSlotsToCalendar(s)
+  if (min && d.compare(min) < 0)
+    return true
+  if (max && d.compare(max) > 0)
+    return true
+  return false
+}
+
 function triggerInvalidateShake() {
   invalidateShake.value = false
   requestAnimationFrame(() => {
@@ -207,11 +273,15 @@ function onInvalidateShakeEnd() {
   invalidateShake.value = false
 }
 
+/**
+ * 커밋(모델 반영) 가능 조건 — 8자리 · 형식 유효 · min/max 범위 안.
+ * 범위 밖 값이 커밋되면 캘린더에서는 막히는 날짜가 타이핑으로 통과한다(UP20-8581).
+ */
 function canCommit(s: string[]): boolean {
   const f = flatDigits(s)
   if (f.length !== 8)
     return false
-  return !isSlotsInvalid(s)
+  return !isSlotsInvalid(s) && !isSlotsOutOfRange(s)
 }
 
 function parseSlotsToCalendar(s: string[]): CalendarDate {
@@ -322,7 +392,6 @@ function onFocus() {
   snapshotAtFocus.value = modelValue.value ?? null
   if (modelValue.value) {
     slots.value = calendarToSlots(modelValue.value)
-    emitDraftError()
   }
   else {
     clearSlots()
@@ -341,15 +410,13 @@ function onBlur() {
   if (canCommit(slots.value)) {
     const d = parseSlotsToCalendar(slots.value)
     modelValue.value = d
-    emitDraftError()
   }
   else {
-    // liveCommit 으로 타이핑 도중 이미 커밋됐을 수 있으므로 포커스 시점 값으로 되돌린다
+    // 형식 오류·범위 밖은 커밋하지 않는다. liveCommit 으로 타이핑 도중 이미 커밋됐을 수 있으므로 포커스 시점 값으로 되돌린다
     if (props.liveCommit)
       modelValue.value = (snap ?? null) as CalendarDate | null
     if (snap) {
       slots.value = calendarToSlots(snap as CalendarDate)
-      emitDraftError()
     }
     else {
       clearSlots()
@@ -390,9 +457,8 @@ function insertDigit(d: string) {
     activeDigit.value = i + 1
   }
   applySelection()
-  if (isSlotsInvalid(slots.value))
+  if (slotsErrorKind(slots.value))
     showInvalidFormatFeedback()
-  emitDraftError()
   commitIfPossible()
 }
 
@@ -410,9 +476,8 @@ function stepActiveDigit(delta: 1 | -1) {
   next[i] = String(newN)
   slots.value = next
   applySelection()
-  if (isSlotsInvalid(slots.value))
+  if (slotsErrorKind(slots.value))
     showInvalidFormatFeedback()
-  emitDraftError()
   commitIfPossible()
 }
 
@@ -479,7 +544,6 @@ function onKeydown(e: KeyboardEvent) {
         next[i] = "0"
         slots.value = next
         applySelection()
-        emitDraftError()
         commitIfPossible()
         return
       }
@@ -494,7 +558,6 @@ function onKeydown(e: KeyboardEvent) {
       next[i] = "0"
       slots.value = next
       applySelection()
-      emitDraftError()
       commitIfPossible()
       return
     }
@@ -528,9 +591,8 @@ function onPaste(e: ClipboardEvent) {
   slots.value = next
   activeDigit.value = Math.min(7, only.length)
   applySelection()
-  if (isSlotsInvalid(slots.value))
+  if (slotsErrorKind(slots.value))
     showInvalidFormatFeedback()
-  emitDraftError()
   commitIfPossible()
 }
 
@@ -541,7 +603,6 @@ watch(
       return
     if (v) {
       slots.value = calendarToSlots(v)
-      emitDraftError()
     }
     else {
       clearSlots()
@@ -556,7 +617,7 @@ watch(
     :class="cn('relative min-w-0 flex-1 h-full', props.class)"
   >
     <div
-      v-if="draftError"
+      v-if="showFormatTooltip"
       class="pointer-events-none absolute bottom-full left-0 z-50 mb-1 max-w-[min(100%,280px)] rounded-sm bg-grey-90 py-[6px] px-[10px] text-size-12 text-grey-10 shadow-md animate-in fade-in-0 zoom-in-95"
       role="status"
       aria-live="polite"
