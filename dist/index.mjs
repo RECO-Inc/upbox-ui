@@ -10329,7 +10329,7 @@ const ef = /* @__PURE__ */ Oe(lu, [["render", su]]), tf = /* @__PURE__ */ v({
     }
     return (o, r) => (n(), g("div", {
       class: x(t(m)(
-        "flex flex-wrap items-center justify-center bg-navy-100 rounded-md p-[12px] sm:p-[16px] gap-x-[16px] sm:gap-x-[44px] gap-y-[8px] text-size-13",
+        "flex flex-wrap items-center justify-center bg-cta-primary rounded-md p-[12px] sm:p-[16px] gap-x-[16px] sm:gap-x-[44px] gap-y-[8px] text-size-13",
         l.class
       ))
     }, [

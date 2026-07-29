@@ -33,7 +33,7 @@ function onClickStep(step: StepItem) {
 <template>
   <div
     :class="cn(
-      'flex flex-wrap items-center justify-center bg-navy-100 rounded-md p-[12px] sm:p-[16px] gap-x-[16px] sm:gap-x-[44px] gap-y-[8px] text-size-13',
+      'flex flex-wrap items-center justify-center bg-cta-primary rounded-md p-[12px] sm:p-[16px] gap-x-[16px] sm:gap-x-[44px] gap-y-[8px] text-size-13',
       props.class
     )"
   >
