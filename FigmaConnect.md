@@ -102,6 +102,10 @@ Figma 아이콘 세트(`Outlined` [11515:23745] / `Filled` [11515:23749], Materi
 
 > **미해결** — `IconPanelLeft`(Figma `side_panel_close` 추출 누락) · `IconSpinner` · `IconListX` 는
 > 아직 Figma/패키지에 없어 lucide 를 임시로 재export 중이다. 들어오는 대로 `src/icons/index.ts` 만 고치면 된다.
+>
+> 이름 충돌·추출 누락·live area 규약 등 **Figma 를 고쳐야 풀리는 항목 전체**는
+> [`upbox-icon/docs/figma-icon-issues.md`](https://github.com/RECO-Inc/upbox-icon/blob/main/docs/figma-icon-issues.md) 에 정리돼 있다.
+> 아이콘이 작아 보인다는 얘기가 나오면 CSS 로 보정하기 전에 그 문서와 `src/icons/index.ts` 상단 주석을 먼저 볼 것.
 
 ### 타이포그래피
 
