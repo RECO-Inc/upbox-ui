@@ -12,8 +12,8 @@ importers:
         specifier: ^3.10.0
         version: 3.12.1
       '@upbox-design/vue3-icon':
-        specifier: 1.0.18
-        version: 1.0.18(vue@3.5.32(typescript@5.9.3))
+        specifier: 1.1.0
+        version: 1.1.0(vue@3.5.32(typescript@5.9.3))
       '@vueuse/core':
         specifier: ^14.0.0
         version: 14.2.1(vue@3.5.32(typescript@5.9.3))
@@ -825,8 +825,8 @@ packages:
   '@types/web-bluetooth@0.0.21':
     resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
 
-  '@upbox-design/vue3-icon@1.0.18':
-    resolution: {integrity: sha512-wy0Zj8Q8wZVLpJx7H4drcjGS46Bia96tHqHuRDjJTAISs1LL9vg2ROscsI8MDumlWcBIEpdkjvhz0dDM0fDV0Q==}
+  '@upbox-design/vue3-icon@1.1.0':
+    resolution: {integrity: sha512-r1CGyAzAyebY3TE1xPqFgKJpyQEiO37tElz0xVD2nYhqHrgAQQlo9R7AcrJSh2S9DzM9Y3UcV1W8eu8XEufmYA==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -2902,7 +2902,7 @@ snapshots:
 
   '@types/web-bluetooth@0.0.21': {}
 
-  '@upbox-design/vue3-icon@1.0.18(vue@3.5.32(typescript@5.9.3))':
+  '@upbox-design/vue3-icon@1.1.0(vue@3.5.32(typescript@5.9.3))':
     dependencies:
       vue: 3.5.32(typescript@5.9.3)
 
