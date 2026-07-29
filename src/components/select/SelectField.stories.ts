@@ -53,7 +53,7 @@ export const Clearable: Story = {
     template: `
       <div class="w-[240px]">
         <SelectField v-model="value" :options="statusOptions" placeholder="상태 선택" v-bind="args" />
-        <p class="mt-[8px] text-size-12 text-grey-60">value: {{ JSON.stringify(value) }} — X 클릭 시 null</p>
+        <p class="mt-[8px] text-size-12 text-grey-60">value: {{ JSON.stringify(value) }} — X 클릭 시 undefined</p>
       </div>
     `,
   }),

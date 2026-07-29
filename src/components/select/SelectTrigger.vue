@@ -2,11 +2,12 @@
 import type { SelectTriggerProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { ChevronDown, X } from "lucide-vue-next"
+import { ChevronDown } from "lucide-vue-next"
 import { computed, inject } from "vue"
 import { injectSelectRootContext, SelectIcon, SelectTrigger, useForwardProps } from "reka-ui"
 import { cn } from "../../lib/utils"
-import { InputFrame, InputIcon } from "../input-frame"
+import { InputFrame } from "../input-frame"
+import SelectClearIcon from "./SelectClearIcon.vue"
 import { SELECT_CLEARABLE_KEY } from "./selectContext"
 
 const props = withDefaults(defineProps<SelectTriggerProps & {
@@ -93,7 +94,7 @@ function handleClear(event: Event) {
     v-if="props.inline"
     v-bind="forwardedProps"
     :class="cn(
-      'inline-flex h-full min-h-0 items-center gap-[4px] border-0 bg-transparent px-[8px] text-size-14 text-inherit shadow-none outline-none',
+      'inline-flex h-full min-h-0 items-center gap-[8px] border-0 bg-transparent px-[8px] text-size-14 text-inherit shadow-none outline-none',
       'whitespace-nowrap text-start',
       'cursor-pointer select-none',
       'disabled:cursor-not-allowed disabled:opacity-50',
@@ -103,22 +104,22 @@ function handleClear(event: Event) {
     )"
   >
     <slot />
-    <span
-      v-if="showClearButton"
-      role="button"
-      tabindex="-1"
-      class="shrink-0 cursor-pointer text-inherit opacity-50 transition-opacity hover:opacity-100"
-      aria-label="Clear"
-      @pointerdown="handleClear"
-      @click="handleClear"
-    >
-      <InputIcon class="text-inherit">
-        <X class="h-[16px] w-[16px]" />
-      </InputIcon>
+      <span class="flex shrink-0 items-center gap-[4px]">
+      <span
+        v-if="showClearButton"
+        role="button"
+        tabindex="-1"
+        class="inline-flex size-[16px] shrink-0 cursor-pointer items-center justify-center text-grey-40 transition-opacity hover:text-grey-60"
+        aria-label="Clear"
+        @pointerdown="handleClear"
+        @click="handleClear"
+      >
+        <SelectClearIcon />
+      </span>
+      <SelectIcon as-child>
+        <ChevronDown class="size-[16px] shrink-0 text-grey-50" />
+      </SelectIcon>
     </span>
-    <SelectIcon as-child>
-      <ChevronDown class="h-[16px] w-[16px] shrink-0 opacity-50" />
-    </SelectIcon>
   </SelectTrigger>
   <InputFrame
     v-else
@@ -132,7 +133,7 @@ function handleClear(event: Event) {
     <SelectTrigger
       v-bind="forwardedProps"
       :class="cn(
-        'flex h-full min-h-0 w-full min-w-0 flex-1 items-center justify-between border-0 bg-transparent',
+        'flex h-full min-h-0 w-full min-w-0 flex-1 items-center justify-between gap-[8px] border-0 bg-transparent',
         'px-0 py-0 text-size-14 text-inherit shadow-none outline-none transition-none',
         'whitespace-nowrap text-start',
         'cursor-pointer select-none',
@@ -148,17 +149,15 @@ function handleClear(event: Event) {
           v-if="showClearButton"
           role="button"
           tabindex="-1"
-          class="shrink-0 cursor-pointer text-inherit opacity-50 transition-opacity hover:opacity-100"
+          class="inline-flex size-[16px] shrink-0 cursor-pointer items-center justify-center text-grey-40 transition-opacity hover:text-grey-60"
           aria-label="Clear"
           @pointerdown="handleClear"
           @click="handleClear"
         >
-          <InputIcon class="text-inherit">
-            <X class="h-[16px] w-[16px]" />
-          </InputIcon>
+          <SelectClearIcon />
         </span>
         <SelectIcon as-child>
-          <ChevronDown class="h-[16px] w-[16px] shrink-0 opacity-50" />
+          <ChevronDown class="size-[16px] shrink-0 text-grey-50" />
         </SelectIcon>
       </span>
     </SelectTrigger>

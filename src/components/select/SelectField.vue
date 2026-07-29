@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<SelectFieldProps<T>>(), {
 })
 
 const emits = defineEmits<{
-  "update:modelValue": [value: T | null]
+  "update:modelValue": [value: T | null | undefined]
 }>()
 
 /**
@@ -50,7 +50,7 @@ const currentValue = computed<T | null | undefined>(() =>
     : (localVModel.value as T | null | undefined),
 )
 
-function commit(v: T | null) {
+function commit(v: T | null | undefined) {
   if (fieldControl) {
     fieldControl.value["onUpdate:modelValue"]?.(v)
   }
@@ -102,17 +102,17 @@ const selected = computed<AcceptableValue | undefined>({
     return hit ? hit.rk : undefined
   },
   set(rk) {
-    // clearable X / 명시적 비우기 → null (빈 옵션 sentinel 과 구분)
+    // clearable X / 명시적 비우기 → undefined (빈 옵션 sentinel 과 구분)
     if (rk === undefined || rk === null) {
-      commit(null)
+      commit(undefined)
       return
     }
     if (rk === EMPTY_SENTINEL) {
-      commit((emptyOption.value ? emptyOption.value.value : null) as T | null)
+      commit((emptyOption.value ? emptyOption.value.value : undefined) as T | null | undefined)
       return
     }
     const hit = internalOptions.value.find(o => o.rk === rk)
-    commit((hit ? hit.raw : (rk as unknown)) as T | null)
+    commit((hit ? hit.raw : (rk as unknown)) as T | null | undefined)
   },
 })
 

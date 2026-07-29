@@ -6,7 +6,7 @@ export interface SelectFieldProps<V = unknown> {
     placeholder?: string;
     disabled?: boolean;
     readonly?: boolean;
-    /** 선택한 항목을 지울 수 있음 (X 버튼 → null) */
+    /** 선택한 항목을 지울 수 있음 (X 버튼 → undefined) */
     clearable?: boolean;
     /** InputFrame design props (FieldPattern.mdx 표준) */
     variant?: "default" | "filled" | "bottomline";
