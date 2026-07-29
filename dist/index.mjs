@@ -129,9 +129,7 @@ const qp = /* @__PURE__ */ p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), ln = ["width", "height"], nn = ["fill"];
@@ -165,9 +163,7 @@ const rn = /* @__PURE__ */ W(sn, [["render", on]]), dn = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), un = ["width", "height"], cn = ["fill"];
@@ -201,9 +197,7 @@ const fn = /* @__PURE__ */ W(dn, [["render", pn]]), mn = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), gn = ["width", "height"], vn = ["fill"];
@@ -237,9 +231,7 @@ const Ra = /* @__PURE__ */ W(mn, [["render", yn]]), hn = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), xn = ["width", "height"], bn = {
@@ -290,9 +282,7 @@ const zn = /* @__PURE__ */ W(hn, [["render", $n]]), kn = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Bn = ["width", "height"], Sn = {
@@ -343,9 +333,7 @@ const On = /* @__PURE__ */ W(kn, [["render", Ln]]), An = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Pn = ["width", "height"], jn = ["fill"];
@@ -379,9 +367,7 @@ const ot = /* @__PURE__ */ W(An, [["render", In]]), Tn = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Hn = ["width", "height"], Fn = ["fill"];
@@ -415,9 +401,7 @@ const wt = /* @__PURE__ */ W(Tn, [["render", En]]), Rn = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Nn = ["width", "height"], Zn = ["fill"];
@@ -451,9 +435,7 @@ const Xp = /* @__PURE__ */ W(Rn, [["render", Un]]), Yn = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Gn = ["width", "height"], Kn = ["fill"];
@@ -487,9 +469,7 @@ const Wn = /* @__PURE__ */ W(Yn, [["render", qn]]), Qn = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Xn = ["width", "height"], Jn = ["fill"];
@@ -523,9 +503,7 @@ const Jp = /* @__PURE__ */ W(Qn, [["render", eo]]), to = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), ao = ["width", "height"], so = ["fill"];
@@ -559,9 +537,7 @@ const no = /* @__PURE__ */ W(to, [["render", lo]]), oo = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), ro = ["width", "height"], io = ["fill"];
@@ -595,9 +571,7 @@ const Na = /* @__PURE__ */ W(oo, [["render", uo]]), co = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), po = ["width", "height"], fo = ["fill"];
@@ -631,9 +605,7 @@ const go = /* @__PURE__ */ W(co, [["render", mo]]), vo = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), yo = ["width", "height"], ho = ["fill"];
@@ -667,9 +639,7 @@ const e2 = /* @__PURE__ */ W(vo, [["render", xo]]), bo = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Co = ["width", "height"], _o = {
@@ -720,9 +690,7 @@ const t2 = /* @__PURE__ */ W(bo, [["render", ko]]), Bo = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), So = ["width", "height"], Vo = ["fill"];
@@ -756,9 +724,7 @@ const a2 = /* @__PURE__ */ W(Bo, [["render", Mo]]), Do = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Lo = ["width", "height"], Oo = ["fill"];
@@ -792,9 +758,7 @@ const s2 = /* @__PURE__ */ W(Do, [["render", Ao]]), Po = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), jo = ["width", "height"], Io = ["fill"];
@@ -828,9 +792,7 @@ const l2 = /* @__PURE__ */ W(Po, [["render", To]]), Ho = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Fo = ["width", "height"], Eo = ["fill"];
@@ -864,9 +826,7 @@ const n2 = /* @__PURE__ */ W(Ho, [["render", Ro]]), No = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Zo = ["width", "height"], Uo = ["fill"];
@@ -900,9 +860,7 @@ const o2 = /* @__PURE__ */ W(No, [["render", Yo]]), Go = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Ko = ["width", "height"], qo = ["fill"];
@@ -936,9 +894,7 @@ const r2 = /* @__PURE__ */ W(Go, [["render", Wo]]), Qo = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Xo = ["width", "height"], Jo = ["fill"];
@@ -972,9 +928,7 @@ const i2 = /* @__PURE__ */ W(Qo, [["render", er]]), tr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), ar = ["width", "height"], sr = ["fill"];
@@ -1008,9 +962,7 @@ const d2 = /* @__PURE__ */ W(tr, [["render", lr]]), nr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), or = ["width", "height"], rr = ["fill"];
@@ -1044,9 +996,7 @@ const u2 = /* @__PURE__ */ W(nr, [["render", ir]]), dr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), ur = ["width", "height"], cr = ["fill"];
@@ -1080,9 +1030,7 @@ const Za = /* @__PURE__ */ W(dr, [["render", pr]]), fr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), mr = ["width", "height"], gr = ["fill"];
@@ -1116,9 +1064,7 @@ const $t = /* @__PURE__ */ W(fr, [["render", vr]]), yr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), hr = ["width", "height"], xr = ["fill"];
@@ -1152,9 +1098,7 @@ const Qt = /* @__PURE__ */ W(yr, [["render", br]]), Cr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), _r = ["width", "height"], wr = ["fill"];
@@ -1191,9 +1135,7 @@ const Ua = /* @__PURE__ */ W(Cr, [["render", $r]]), zr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), kr = ["width", "height"], Br = ["fill"];
@@ -1227,9 +1169,7 @@ const Vr = /* @__PURE__ */ W(zr, [["render", Sr]]), Mr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Dr = ["width", "height"], Lr = ["fill"];
@@ -1263,9 +1203,7 @@ const c2 = /* @__PURE__ */ W(Mr, [["render", Or]]), Ar = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Pr = ["width", "height"], jr = ["fill"];
@@ -1299,9 +1237,7 @@ const He = /* @__PURE__ */ W(Ar, [["render", Ir]]), Tr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Hr = ["width", "height"], Fr = ["fill"];
@@ -1335,9 +1271,7 @@ const Ie = /* @__PURE__ */ W(Tr, [["render", Er]]), Rr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Nr = ["width", "height"], Zr = ["fill"];
@@ -1371,9 +1305,7 @@ const We = /* @__PURE__ */ W(Rr, [["render", Ur]]), Yr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Gr = ["width", "height"], Kr = ["fill"];
@@ -1407,9 +1339,7 @@ const Wr = /* @__PURE__ */ W(Yr, [["render", qr]]), Qr = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), Xr = ["width", "height"], Jr = ["fill"];
@@ -1443,9 +1373,7 @@ const Fe = /* @__PURE__ */ W(Qr, [["render", ei]]), ti = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), ai = ["width", "height"], si = ["fill"];
@@ -1479,9 +1407,7 @@ const rt = /* @__PURE__ */ W(ti, [["render", li]]), ni = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), oi = ["width", "height"], ri = ["fill"];
@@ -1515,9 +1441,7 @@ const it = /* @__PURE__ */ W(ni, [["render", ii]]), di = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), ui = ["width", "height"], ci = ["fill"];
@@ -1551,9 +1475,7 @@ const p2 = /* @__PURE__ */ W(di, [["render", pi]]), fi = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), mi = ["width", "height"], gi = ["fill"];
@@ -1587,9 +1509,7 @@ const f2 = /* @__PURE__ */ W(fi, [["render", vi]]), yi = p({
   },
   setup(e) {
     return {
-      svg: A(null),
-      size: e.size,
-      color: e.color
+      svg: A(null)
     };
   }
 }), hi = ["width", "height"], xi = {
