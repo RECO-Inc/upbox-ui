@@ -9,7 +9,7 @@ declare const meta: {
         }, import('vue').PublicProps, {
             disabled: boolean;
             size: "2xsmall" | "xsmall" | "small";
-            variant: "destructive" | "secondary";
+            variant: "destructive" | "secondary" | "information";
         }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLButtonElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -22,7 +22,7 @@ declare const meta: {
         }>, {}, {}, {}, {}, {
             disabled: boolean;
             size: "2xsmall" | "xsmall" | "small";
-            variant: "destructive" | "secondary";
+            variant: "destructive" | "secondary" | "information";
         }>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -34,7 +34,7 @@ declare const meta: {
     }, string, {
         disabled: boolean;
         size: "2xsmall" | "xsmall" | "small";
-        variant: "destructive" | "secondary";
+        variant: "destructive" | "secondary" | "information";
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             default?(_: {}): any;

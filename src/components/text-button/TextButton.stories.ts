@@ -11,7 +11,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['destructive', 'secondary'],
+      options: ['destructive', 'secondary', 'information'],
     },
     size: {
       control: 'select',
@@ -40,6 +40,8 @@ export const Variants: Story = {
       <div class="flex flex-wrap gap-[12px] items-center">
         <TextButton variant="secondary">Secondary</TextButton>
         <TextButton variant="destructive">Destructive</TextButton>
+        <!-- information: 임시 variant -->
+        <TextButton variant="information">Information</TextButton>
       </div>
     `,
   }),
@@ -64,6 +66,14 @@ export const Sizes: Story = {
             <TextButton variant="destructive" size="2xsmall">2XSmall</TextButton>
             <TextButton variant="destructive" size="xsmall">XSmall</TextButton>
             <TextButton variant="destructive" size="small">Small</TextButton>
+          </div>
+        </div>
+        <div>
+          <p class="text-size-13 text-grey-60 mb-[8px]">Information (임시)</p>
+          <div class="flex flex-wrap gap-[12px] items-center">
+            <TextButton variant="information" size="2xsmall">2XSmall</TextButton>
+            <TextButton variant="information" size="xsmall">XSmall</TextButton>
+            <TextButton variant="information" size="small">Small</TextButton>
           </div>
         </div>
       </div>

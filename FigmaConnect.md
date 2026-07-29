@@ -198,7 +198,7 @@
 
 | Figma 프로퍼티 | Vue Prop | 타입 / 허용값 | 기본값 |
 |---|---|---|---|
-| `Variant` | `variant` | `"destructive" \| "secondary"` | `"secondary"` |
+| `Variant` | `variant` | `"destructive" \| "secondary" \| "information"` (`information` 은 임시) | `"secondary"` |
 | `Size` | `size` | `"2xsmall" \| "xsmall" \| "small"` | `"small"` |
 | `Status=disabled` | `disabled` | `boolean` | `false` |
 | `Status=enabled` / `hovered` | — (CSS `:hover` 자동) | — | — |

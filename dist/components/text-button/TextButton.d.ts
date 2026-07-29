@@ -1,5 +1,6 @@
 export interface TextButtonProps {
-    variant?: 'destructive' | 'secondary';
+    /** information: 임시 — Figma 미정의 파란 텍스트 링크 톤 */
+    variant?: 'destructive' | 'secondary' | 'information';
     size?: '2xsmall' | 'xsmall' | 'small';
     disabled?: boolean;
     class?: string;
@@ -20,7 +21,7 @@ declare const __VLS_component: import('vue').DefineComponent<TextButtonProps, {}
 }>, {
     disabled: boolean;
     size: "2xsmall" | "xsmall" | "small";
-    variant: "destructive" | "secondary";
+    variant: "destructive" | "secondary" | "information";
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLButtonElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

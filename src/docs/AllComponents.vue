@@ -229,6 +229,8 @@ function showToast() {
           <div class="ac-demo">
             <TextButton>더보기</TextButton>
             <TextButton variant="destructive">삭제</TextButton>
+            <!-- information: 임시 variant -->
+            <TextButton variant="information">추가</TextButton>
           </div>
         </div>
         <div class="ac-item">

@@ -9,6 +9,8 @@ const textButtonVariants = cva(
       variant: {
         destructive: 'text-red-80 hover:bg-red-20',
         secondary: 'text-grey-60 hover:bg-grey-20',
+        // 임시: Figma TextButton 에 없는 information 톤 (파란 텍스트 링크용)
+        information: 'text-blue-80 hover:bg-blue-20',
       },
       size: {
         '2xsmall': 'h-[20px] px-[4px] py-[2px] text-size-12 rounded-[2px] [&_svg]:size-[16px]',
@@ -24,7 +26,8 @@ const textButtonVariants = cva(
 )
 
 export interface TextButtonProps {
-  variant?: 'destructive' | 'secondary'
+  /** information: 임시 — Figma 미정의 파란 텍스트 링크 톤 */
+  variant?: 'destructive' | 'secondary' | 'information'
   size?: '2xsmall' | 'xsmall' | 'small'
   disabled?: boolean
   class?: string
