@@ -17,6 +17,7 @@ defineOptions({ inheritAttrs: false })
 const props = withDefaults(defineProps<SelectFieldProps<T>>(), {
   disabled: false,
   readonly: false,
+  clearable: false,
 })
 
 const emits = defineEmits<{
@@ -101,6 +102,11 @@ const selected = computed<AcceptableValue | undefined>({
     return hit ? hit.rk : undefined
   },
   set(rk) {
+    // clearable X / 명시적 비우기 → null (빈 옵션 sentinel 과 구분)
+    if (rk === undefined || rk === null) {
+      commit(null)
+      return
+    }
     if (rk === EMPTY_SENTINEL) {
       commit((emptyOption.value ? emptyOption.value.value : null) as T | null)
       return
@@ -128,6 +134,7 @@ useInputFrameInjectProvide(() => pickInputFrameDesign(props))
       v-bind="$attrs"
       :disabled="props.disabled"
       :readonly="props.readonly"
+      :clearable="props.clearable"
       :class="cn('w-full', props.class)"
     >
       <SelectValue :placeholder="placeholder" />

@@ -1,5 +1,11 @@
 import { AcceptableValue, SelectRootProps } from 'reka-ui';
-type __VLS_Props = SelectRootProps;
+type __VLS_Props = SelectRootProps & {
+    /**
+     * 선택한 항목을 지울 수 있음.
+     * true 이면 SelectTrigger 에 X 버튼이 표시된다.
+     */
+    clearable?: boolean;
+};
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
@@ -15,7 +21,9 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
 }, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
     "onUpdate:modelValue"?: ((value: AcceptableValue) => any) | undefined;
     "onUpdate:open"?: ((value: boolean) => any) | undefined;
-}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}>, {
+    clearable: boolean;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {

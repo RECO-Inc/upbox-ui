@@ -16,6 +16,11 @@ type __VLS_Props = SelectTriggerProps & {
     size?: "small" | "regular" | "large";
     error?: boolean;
     readonly?: boolean;
+    /**
+     * 선택한 항목을 지울 수 있음.
+     * 미지정 시 Select root 의 clearable provide 값을 따른다.
+     */
+    clearable?: boolean;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -27,11 +32,16 @@ declare function __VLS_template(): {
     rootEl: any;
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
-declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {
+declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+    clear: () => any;
+}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
+    onClear?: (() => any) | undefined;
+}>, {
     size: "small" | "regular" | "large";
     error: boolean;
     variant: "default" | "filled" | "bottomline";
     readonly: boolean;
+    clearable: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

@@ -12,6 +12,7 @@ const meta = {
     error: { control: 'boolean' },
     disabled: { control: 'boolean' },
     readonly: { control: 'boolean' },
+    clearable: { control: 'boolean' },
   },
 } satisfies Meta<typeof SelectField>
 
@@ -36,6 +37,23 @@ export const Default: Story = {
       <div class="w-[240px]">
         <SelectField v-model="value" :options="statusOptions" placeholder="상태 선택" v-bind="args" />
         <p class="mt-[8px] text-size-12 text-grey-60">value: {{ JSON.stringify(value) }}</p>
+      </div>
+    `,
+  }),
+}
+
+export const Clearable: Story = {
+  args: { clearable: true },
+  render: args => ({
+    components: { SelectField },
+    setup() {
+      const value = ref<string | null>('active')
+      return { value, args, statusOptions }
+    },
+    template: `
+      <div class="w-[240px]">
+        <SelectField v-model="value" :options="statusOptions" placeholder="상태 선택" v-bind="args" />
+        <p class="mt-[8px] text-size-12 text-grey-60">value: {{ JSON.stringify(value) }} — X 클릭 시 null</p>
       </div>
     `,
   }),

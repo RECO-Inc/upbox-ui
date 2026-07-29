@@ -21,10 +21,14 @@ declare const meta: {
         readonly: {
             control: "boolean";
         };
+        clearable: {
+            control: "boolean";
+        };
     };
 };
 export default meta;
 type Story = StoryObj<typeof meta>;
 export declare const Default: Story;
+export declare const Clearable: Story;
 export declare const EmptyValueOption: Story;
 export declare const Variants: Story;

@@ -42,6 +42,31 @@ export const Default: Story = {
   }),
 }
 
+export const Clearable: Story = {
+  render: () => ({
+    components: { Select, SelectTrigger, SelectValue, SelectContent, SelectItem },
+    setup() {
+      const value = ref('banana')
+      return { value }
+    },
+    template: `
+      <div class="w-[240px]">
+        <Select v-model="value" clearable>
+          <SelectTrigger>
+            <SelectValue placeholder="Select an option" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="cherry">Cherry</SelectItem>
+          </SelectContent>
+        </Select>
+        <p class="mt-[8px] text-size-12 text-grey-60">value: {{ JSON.stringify(value) }}</p>
+      </div>
+    `,
+  }),
+}
+
 export const WithGroups: Story = {
   render: () => ({
     components: { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel },

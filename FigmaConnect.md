@@ -857,6 +857,7 @@
 | `State=error` | (외곽 `InputFrame` 의 `error`) | `boolean` | — |
 | `State=disabled` | `disabled` | `boolean` | — |
 | `State=readonly` | — (현재 미노출) | — | — |
+| 우측 X 클리어 | `clearable` | `boolean` | `false` |
 | 값 | `v-model` | `AcceptableValue` (reka-ui) | — |
 
 ### Vue 전용 Props (`SelectTrigger`)
@@ -864,6 +865,7 @@
 | Prop | 타입 | 기본값 | 설명 |
 |---|---|---|---|
 | `inline` | `boolean` | `false` | 외부 frame(`SearchField` filter 슬롯, `InputGroup`) 안에서 이중 border 방지용 transparent 트리거 |
+| `clearable` | `boolean` | Select root provide / `false` | 선택값 X 클리어. 미지정 시 `Select` 의 `clearable` provide 를 따름 |
 | `class` | `string` | — | 추가 클래스 |
 
 ### Events
@@ -882,7 +884,7 @@
 ### Code Example
 
 ```vue
-<Select v-model="value">
+<Select v-model="value" clearable>
   <SelectTrigger><SelectValue placeholder="옵션 선택" /></SelectTrigger>
   <SelectContent>
     <SelectItem value="a">A</SelectItem>
