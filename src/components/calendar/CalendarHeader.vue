@@ -7,8 +7,7 @@ import { cn } from "../../lib/utils"
 import type { CalendarDate, DateValue } from "@internationalized/date"
 import CalendarPrevButton from "./CalendarPrevButton.vue"
 import CalendarNextButton from "./CalendarNextButton.vue"
-import { ChevronsLeft, ChevronsRight } from "lucide-vue-next"
-
+import { IconChevronsLeft, IconChevronsRight } from "../../icons"
 const props = defineProps<
   CalendarHeaderProps & { 
     class?: HTMLAttributes["class"] 
@@ -53,7 +52,7 @@ function addYears(d: DateValue, dy: number) {
         <CalendarPrevButton
           :prev-page="(d: DateValue) => subtractYears(d, 1)"
           :class="navBtnClass">
-          <ChevronsLeft />
+          <IconChevronsLeft />
         </CalendarPrevButton>
         <CalendarPrevButton :class="navBtnClass" />
       </div>
@@ -69,7 +68,7 @@ function addYears(d: DateValue, dy: number) {
         <CalendarNextButton
           :class="navBtnClass"
           :next-page="(d: DateValue) => addYears(d, 1)">
-          <ChevronsRight />
+          <IconChevronsRight />
         </CalendarNextButton>
       </div>
     </slot>

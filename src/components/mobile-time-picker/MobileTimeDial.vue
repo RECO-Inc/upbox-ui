@@ -10,7 +10,7 @@
 import type { HTMLAttributes } from "vue"
 import { Time } from "@internationalized/date"
 import { computed, nextTick, onMounted, ref, watch } from "vue"
-import { X } from "lucide-vue-next"
+import { IconClose } from "../../icons"
 import { cn } from "../../lib/utils"
 import { Button } from "../button"
 
@@ -224,7 +224,7 @@ const colClass = computed(() =>
         aria-label="닫기"
         @click="onClose"
       >
-        <X class="size-[20px]" />
+        <IconClose class="size-[20px]" />
       </button>
     </header>
 

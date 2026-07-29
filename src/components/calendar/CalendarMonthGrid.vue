@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from "vue"
-import { ChevronLeft, ChevronRight } from "lucide-vue-next"
+import { IconChevronLeft, IconChevronRight } from "../../icons"
 import { cn } from "../../lib/utils"
 import { buttonVariants } from "../button"
 
@@ -36,7 +36,7 @@ const emit = defineEmits<{
         aria-label="이전 연"
         @click="emit('prevYear')"
       >
-        <ChevronLeft class="h-[16px] w-[16px]" />
+        <IconChevronLeft class="h-[16px] w-[16px]" />
       </button>
       <button
         type="button"
@@ -54,7 +54,7 @@ const emit = defineEmits<{
         aria-label="다음 연"
         @click="emit('nextYear')"
       >
-        <ChevronRight class="h-[16px] w-[16px]" />
+        <IconChevronRight class="h-[16px] w-[16px]" />
       </button>
     </div>
 

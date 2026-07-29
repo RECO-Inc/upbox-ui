@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, inject, ref } from "vue"
 import { useVModel } from "@vueuse/core"
-import { Search, X } from "lucide-vue-next"
+import { IconSearch, IconClose } from "../../icons"
 import { cn } from "../../lib/utils"
 import { FIELD_CONTROL_INJECTION_KEY } from "../form/injectionKeys"
 import { InputFrame, InputIcon, useInputFrameInjectProvide } from "../input-frame"
@@ -106,7 +106,7 @@ const handleInputBlur = (e: FocusEvent) => {
         <!-- basic variant: search icon on the left -->
         <template v-if="props.variant === 'basic'">
           <InputIcon class="mr-[8px] shrink-0 text-grey-50">
-            <Search />
+            <IconSearch />
           </InputIcon>
         </template>
 
@@ -143,7 +143,7 @@ const handleInputBlur = (e: FocusEvent) => {
             @click="handleClear"
           >
             <InputIcon>
-              <X />
+              <IconClose />
             </InputIcon>
           </button>
         </template>
@@ -151,7 +151,7 @@ const handleInputBlur = (e: FocusEvent) => {
         <!-- filter variant: search icon on the right -->
         <template v-if="props.variant === 'filter'">
           <InputIcon class="ml-[8px] shrink-0 text-grey-50">
-            <Search />
+            <IconSearch />
           </InputIcon>
         </template>
       </div>

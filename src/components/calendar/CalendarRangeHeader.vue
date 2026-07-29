@@ -4,7 +4,7 @@ import type { CalendarDate, DateValue } from "@internationalized/date"
 import type { HTMLAttributes } from "vue"
 import { computed } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { ChevronsLeft, ChevronsRight } from "lucide-vue-next"
+import { IconChevronsLeft, IconChevronsRight } from "../../icons"
 import { RangeCalendarHeader, useForwardProps } from "reka-ui"
 import { cn } from "../../lib/utils"
 import RangeCalendarPrevButton from "./RangeCalendarPrevButton.vue"
@@ -51,7 +51,7 @@ function addYears(d: DateValue, dy: number) {
         :prev-page="(d: DateValue) => subtractYears(d, 1)"
         :class="navBtnClass"
       >
-        <ChevronsLeft />
+        <IconChevronsLeft />
       </RangeCalendarPrevButton>
       <RangeCalendarPrevButton :class="navBtnClass" />
     </div>
@@ -69,7 +69,7 @@ function addYears(d: DateValue, dy: number) {
         :class="navBtnClass"
         :next-page="(d: DateValue) => addYears(d, 1)"
       >
-        <ChevronsRight />
+        <IconChevronsRight />
       </RangeCalendarNextButton>
     </div>
   </RangeCalendarHeader>

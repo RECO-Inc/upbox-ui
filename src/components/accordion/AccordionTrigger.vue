@@ -2,7 +2,7 @@
 import type { AccordionTriggerProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { ChevronDown } from "lucide-vue-next"
+import { IconChevronDown } from "../../icons"
 import {
   AccordionHeader,
   AccordionTrigger,
@@ -28,7 +28,7 @@ const delegatedProps = reactiveOmit(props, "class")
     >
       <slot />
       <slot name="icon">
-        <ChevronDown
+        <IconChevronDown
           class="h-[16px] w-[16px] shrink-0 text-grey-60 transition-transform duration-200"
         />
       </slot>

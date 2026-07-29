@@ -3,7 +3,7 @@ import type { HTMLAttributes } from "vue"
 import { computed, inject, provide, ref, useSlots } from "vue"
 import { useVModel } from "@vueuse/core"
 import { cn } from "../../lib/utils"
-import { X, Eye, EyeOff } from "lucide-vue-next"
+import { IconClose, IconEye, IconEyeOff } from "../../icons"
 import { FIELD_CONTROL_INJECTION_KEY } from "../form/injectionKeys"
 import { InputFrame, InputIcon } from "../input-frame"
 import { TEXT_FIELD_TRAILING_CONTEXT_KEY } from "./textFieldContext"
@@ -144,7 +144,7 @@ const handleClear = () => {
         @click="handleClear"
       >
         <InputIcon class="text-inherit">
-          <X />
+          <IconClose />
         </InputIcon>
       </button>
       <button
@@ -154,10 +154,10 @@ const handleClear = () => {
         @click="togglePasswordVisibility"
       >
         <InputIcon v-if="!showPassword" class="text-inherit">
-          <Eye />
+          <IconEye />
         </InputIcon>
         <InputIcon v-else class="text-inherit">
-          <EyeOff />
+          <IconEyeOff />
         </InputIcon>
       </button>
       <slot />

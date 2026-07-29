@@ -56,3 +56,4 @@ export * from './components/toast';
 export * from './components/toggle';
 export * from './components/toolbar';
 export * from './components/tooltip';
+export * from './icons';

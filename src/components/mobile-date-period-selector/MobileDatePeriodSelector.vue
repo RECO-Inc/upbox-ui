@@ -3,7 +3,7 @@ import type { HTMLAttributes } from "vue"
 import { computed, ref, shallowRef, watch } from "vue"
 import type { DateValue } from "@internationalized/date"
 import { CalendarDate, getLocalTimeZone, today } from "@internationalized/date"
-import { X, Calendar as CalendarGlyph } from "lucide-vue-next"
+import { IconClose, IconCalendar as CalendarGlyph } from "../../icons"
 import { cn } from "../../lib/utils"
 import { Tabs, TabsList, TabsTrigger } from "../tabs"
 import { Button } from "../button"
@@ -202,7 +202,7 @@ function onClose() {
         aria-label="닫기"
         @click="onClose"
       >
-        <X class="size-[20px]" />
+        <IconClose class="size-[20px]" />
       </button>
     </header>
 

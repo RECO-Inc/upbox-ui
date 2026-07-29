@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { computed } from "vue"
-import { ChevronLeft } from "lucide-vue-next"
+import { IconChevronLeft } from "../../icons"
 import { cn } from "../../lib/utils"
 
 const props = withDefaults(defineProps<{
@@ -72,7 +72,7 @@ const titleClass = {
         class="shrink-0 cursor-pointer text-grey-100 transition-colors hover:text-grey-80"
         @click="emit('back')"
       >
-        <ChevronLeft class="size-[24px]" />
+        <IconChevronLeft class="size-[24px]" />
       </button>
 
       <div class="flex min-w-0 grow flex-col">

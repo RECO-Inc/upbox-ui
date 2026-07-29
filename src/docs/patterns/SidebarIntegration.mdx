@@ -51,8 +51,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
+  IconDashboard,
 } from "@reco-inc/upbox-ui"
-import { LayoutGrid } from "lucide-vue-next"
 import Logo from "@/components/common/Logo.vue"
 
 const router = useRouter()
@@ -99,7 +99,7 @@ const isCurrentRoute = (path: string) => route.path === path
                   tooltip="Dashboard"
                   @click="navigateTo('/')"
                 >
-                  <LayoutGrid />
+                  <IconDashboard />
                   <span>Dashboard</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>

@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "vue"
 import type { NumberFieldDecrementProps } from "reka-ui"
 import { reactiveOmit } from "@vueuse/core"
-import { Minus } from "lucide-vue-next"
+import { IconMinus } from "../../icons"
 import { NumberFieldDecrement, useForwardProps } from "reka-ui"
 import { cn } from "../../lib/utils"
 
@@ -25,7 +25,7 @@ const forwarded = useForwardProps(delegatedProps)
     )"
   >
     <slot>
-      <Minus class="size-[var(--nf-icon,20px)]" />
+      <IconMinus class="size-[var(--nf-icon,20px)]" />
     </slot>
   </NumberFieldDecrement>
 </template>

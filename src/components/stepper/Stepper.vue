@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { cn } from '../../lib/utils'
-import { CheckCircle } from 'lucide-vue-next'
-
+import { IconCheckCircle } from "../../icons"
 export interface StepItem {
   /** Step unique identifier */
   value: string | number
@@ -49,7 +48,7 @@ function onClickStep(step: StepItem) {
       >
         <!-- Complete Icon -->
         <template v-if="step.isComplete">
-          <CheckCircle class="w-[18px] h-[18px] text-grey-10 shrink-0" />
+          <IconCheckCircle class="w-[18px] h-[18px] text-grey-10 shrink-0" />
         </template>
         <!-- Step Number -->
         <template v-else>

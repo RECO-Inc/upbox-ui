@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue"
-import { ChevronDown } from "lucide-vue-next"
+import { IconChevronDown } from "../../icons"
 import type { FilterChipProps } from "."
 import { cn } from "../../lib/utils"
 import { filterChipLabelColor, filterChipVariants } from "."
@@ -35,10 +35,9 @@ const hasCount = computed(
         +{{ props.count }}
       </span>
     </span>
-    <ChevronDown
+    <IconChevronDown
       v-if="props.chevron"
       class="size-[16px] shrink-0 text-grey-60"
-      :stroke-width="2"
     />
   </div>
 </template>

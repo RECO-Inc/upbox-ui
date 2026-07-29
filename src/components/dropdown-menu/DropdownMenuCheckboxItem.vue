@@ -2,7 +2,7 @@
 import type { DropdownMenuCheckboxItemEmits, DropdownMenuCheckboxItemProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { Check } from "lucide-vue-next"
+import { IconCheck } from "../../icons"
 import {
   DropdownMenuCheckboxItem,
   DropdownMenuItemIndicator,
@@ -28,7 +28,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
   >
     <span class="absolute left-[8px] flex h-[14px] w-[14px] items-center justify-center">
       <DropdownMenuItemIndicator>
-        <Check class="w-[16px] h-[16px]" />
+        <IconCheck class="w-[16px] h-[16px]" />
       </DropdownMenuItemIndicator>
     </span>
     <slot />

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import { Check } from "lucide-vue-next"
+import { IconCheck } from "../../icons"
 import Badge from "./Badge.vue"
 
 const meta = {
@@ -126,17 +126,17 @@ export const Sizes: Story = {
 
 export const WithIcon: Story = {
   render: () => ({
-    components: { Badge, Check },
+    components: { Badge, IconCheck },
     template: `
       <div class="flex flex-col gap-[12px]">
         <div class="flex flex-wrap gap-[8px] items-center">
           <Badge variant="positive" size="xsmall">
             xsmall
-            <template #icon><Check :size="12" /></template>
+            <template #icon><IconCheck :size="12" /></template>
           </Badge>
           <Badge variant="informative" size="2xsmall">
             2xsmall
-            <template #icon><Check :size="12" /></template>
+            <template #icon><IconCheck :size="12" /></template>
           </Badge>
         </div>
       </div>
@@ -170,12 +170,12 @@ export const WithCount: Story = {
 
 export const WithIconAndCount: Story = {
   render: () => ({
-    components: { Badge, Check },
+    components: { Badge, IconCheck },
     template: `
       <div class="flex flex-wrap gap-[8px] items-center">
         <Badge variant="positive" size="xsmall">
           xsmall
-          <template #icon><Check :size="12" /></template>
+          <template #icon><IconCheck :size="12" /></template>
           <template #count>10</template>
         </Badge>
       </div>

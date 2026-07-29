@@ -2,7 +2,7 @@
 import type { PaginationLastProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { ChevronRightIcon } from "lucide-vue-next"
+import { IconChevronRight } from "../../icons"
 import { PaginationLast, useForwardProps } from "reka-ui"
 import { cn } from "../../lib/utils"
 
@@ -25,7 +25,7 @@ const forwarded = useForwardProps(delegatedProps)
   >
     <slot>
       <span class="hidden sm:block">Last</span>
-      <ChevronRightIcon class="h-[16px] w-[16px]" />
+      <IconChevronRight class="h-[16px] w-[16px]" />
     </slot>
   </PaginationLast>
 </template>

@@ -20,7 +20,7 @@ import {
   CalendarRoot,
   useForwardPropsEmits,
 } from "reka-ui"
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, RotateCcw } from "lucide-vue-next"
+import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconRefresh } from "../../icons"
 import { useI18n } from "vue-i18n"
 import { cn } from "../../lib/utils"
 import { Button } from "../button"
@@ -188,7 +188,7 @@ function onDone() {
               aria-label="이전 연도"
               @click="onPrevYear"
             >
-              <ChevronsLeft />
+              <IconChevronsLeft />
             </IconButton>
             <IconButton
               variant="tertiary"
@@ -197,7 +197,7 @@ function onDone() {
               aria-label="이전 월"
               @click="onPrevMonth"
             >
-              <ChevronLeft />
+              <IconChevronLeft />
             </IconButton>
           </div>
           <button
@@ -216,7 +216,7 @@ function onDone() {
               aria-label="다음 월"
               @click="onNextMonth"
             >
-              <ChevronRight />
+              <IconChevronRight />
             </IconButton>
             <IconButton
               variant="tertiary"
@@ -225,7 +225,7 @@ function onDone() {
               aria-label="다음 연도"
               @click="onNextYear"
             >
-              <ChevronsRight />
+              <IconChevronsRight />
             </IconButton>
           </div>
         </div>
@@ -288,7 +288,7 @@ function onDone() {
             @mousedown.prevent
             @click="onReset"
           >
-            <RotateCcw class="w-[16px] h-[16px] mr-[4px]" />
+            <IconRefresh class="w-[16px] h-[16px] mr-[4px]" />
             {{ t('word.reset') }}
           </Button>
         </slot>

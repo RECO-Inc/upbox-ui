@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { Search } from 'lucide-vue-next'
+import { IconSearch } from "../../icons"
 import InputFrame from './InputFrame.vue'
 import InputIcon from './InputIcon.vue'
 
@@ -63,14 +63,14 @@ export const Sizes: Story = {
 export const WithInputIcon: Story = {
   name: 'With InputIcon',
   render: () => ({
-    components: { InputFrame, InputIcon, Search },
+    components: { InputFrame, InputIcon, IconSearch },
     template: `
       <div class="flex w-[360px] flex-col gap-[12px]">
         <InputFrame size="small">
           <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
             <span class="min-w-0 flex-1 text-grey-80 text-size-12">텍스트 (small)</span>
             <InputIcon>
-              <Search />
+              <IconSearch />
             </InputIcon>
           </div>
         </InputFrame>
@@ -78,7 +78,7 @@ export const WithInputIcon: Story = {
           <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
             <span class="min-w-0 flex-1 text-grey-80 text-size-14">텍스트 (regular)</span>
             <InputIcon>
-              <Search />
+              <IconSearch />
             </InputIcon>
           </div>
         </InputFrame>
@@ -86,7 +86,7 @@ export const WithInputIcon: Story = {
           <div class="flex h-full w-full min-w-0 items-center gap-[8px]">
             <span class="min-w-0 flex-1 text-grey-80 text-size-16">텍스트 (large)</span>
             <InputIcon>
-              <Search />
+              <IconSearch />
             </InputIcon>
           </div>
         </InputFrame>

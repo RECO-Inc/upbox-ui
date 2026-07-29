@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "vue"
 import { computed } from "vue"
 import { cn } from "../../lib/utils"
-import { CircleHelp } from "lucide-vue-next"
+import { IconHelp } from "../../icons"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../tooltip"
 
 export type TableHeadSize = "small" | "regular" | "large"
@@ -47,7 +47,7 @@ const justifyClass = computed(() =>
       <TooltipProvider v-if="tooltip">
         <Tooltip>
           <TooltipTrigger as-child>
-            <CircleHelp class="h-[16px] w-[16px] text-grey-60 cursor-pointer" />
+            <IconHelp class="h-[16px] w-[16px] text-grey-60 cursor-pointer" />
           </TooltipTrigger>
           <TooltipContent>
             <p class="whitespace-pre-line">{{ tooltip }}</p>

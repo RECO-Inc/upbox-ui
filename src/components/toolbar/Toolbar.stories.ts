@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { fn } from 'storybook/test'
-import { Pencil } from 'lucide-vue-next'
+import { IconPen } from "../../icons"
 import { TextButton } from '../text-button'
 import Toolbar from './Toolbar.vue'
 
@@ -51,13 +51,13 @@ export const WithDownloadDelete: Story = {
 export const WithActions: Story = {
   args: { selectedCount: 2, variant: 'light', downloadable: true, deletable: true },
   render: (args) => ({
-    components: { Toolbar, TextButton, Pencil },
+    components: { Toolbar, TextButton, IconPen },
     setup: () => ({ args }),
     template: `
       <Toolbar v-bind="args">
         <template #actions>
           <TextButton size="2xsmall">스케줄 배정</TextButton>
-          <TextButton size="2xsmall"><Pencil />필드 편집</TextButton>
+          <TextButton size="2xsmall"><IconPen />필드 편집</TextButton>
         </template>
       </Toolbar>
     `,
@@ -68,13 +68,13 @@ export const WithActions: Story = {
 export const Dark: Story = {
   args: { selectedCount: 2, variant: 'dark', downloadable: true, deletable: true },
   render: (args) => ({
-    components: { Toolbar, TextButton, Pencil },
+    components: { Toolbar, TextButton, IconPen },
     setup: () => ({ args }),
     template: `
       <div class="bg-grey-20 p-[24px]">
         <Toolbar v-bind="args">
           <template #actions>
-            <TextButton size="2xsmall" class="text-grey-10 hover:bg-grey-80"><Pencil />편집</TextButton>
+            <TextButton size="2xsmall" class="text-grey-10 hover:bg-grey-80"><IconPen />편집</TextButton>
           </template>
         </Toolbar>
       </div>

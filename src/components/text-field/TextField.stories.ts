@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite"
 import { ref } from "vue"
-import { Search } from "lucide-vue-next"
+import { IconSearch } from "../../icons"
 import { InputIcon } from "../input-frame"
 import TextField from "./TextField.vue"
 import TextFieldCount from "./TextFieldCount.vue"
@@ -156,12 +156,12 @@ export const Clearable: Story = {
  */
 export const WithSuffixIcon: Story = {
   render: () => ({
-    components: { TextField, InputIcon, Search },
+    components: { TextField, InputIcon, IconSearch },
     template: `
       <div class="w-[320px]">
         <TextField placeholder="검색 (기본 슬롯 = 오른쪽)">
           <InputIcon>
-            <Search />
+            <IconSearch />
           </InputIcon>
         </TextField>
       </div>

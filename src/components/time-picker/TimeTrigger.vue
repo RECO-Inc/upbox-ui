@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { computed, inject } from "vue"
-import { Clock } from "lucide-vue-next"
+import { IconClock } from "../../icons"
 import { PopoverTrigger } from "reka-ui"
 import { cn } from "../../lib/utils"
 import {
@@ -48,7 +48,7 @@ const frameError = computed(
           aria-label="시간 선택 열기"
         >
           <InputIcon class="text-grey-60">
-            <Clock />
+            <IconClock />
           </InputIcon>
         </button>
       </PopoverTrigger>

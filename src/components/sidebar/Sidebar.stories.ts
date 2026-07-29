@@ -1,16 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite"
 import { computed, ref } from "vue"
 import { useMediaQuery } from "@vueuse/core"
-import {
-  LayoutGrid,
-  Store,
-  Truck,
-  CalendarDays,
-  Receipt,
-  Users,
-  HeadphonesIcon,
-  Info,
-} from "lucide-vue-next"
+import { IconDashboard, IconStore, IconTruck, IconCalendar, IconDocument, IconUsers, IconHeadset, IconInfo } from "../../icons"
 import Sidebar from "./Sidebar.vue"
 import SidebarContent from "./SidebarContent.vue"
 import SidebarFooter from "./SidebarFooter.vue"
@@ -40,33 +31,33 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const menuItems = [
-  { key: "dashboard", label: "대시보드", icon: LayoutGrid, subs: [] as string[] },
+  { key: "dashboard", label: "대시보드", icon: IconDashboard, subs: [] as string[] },
   {
     key: "ops-info",
     label: "운영정보 관리",
-    icon: Store,
+    icon: IconStore,
     subs: ["고객사 관리", "배출 그룹 관리", "파트너사 관리", "사업자 관리", "계약 관리"],
   },
   {
     key: "ops-asset",
     label: "운영자산 관리",
-    icon: Truck,
+    icon: IconTruck,
     subs: ["차량 관리", "센터 관리", "자산 모니터링"],
   },
   {
     key: "schedule",
     label: "스케줄 관리",
-    icon: CalendarDays,
+    icon: IconCalendar,
     subs: ["스케줄 리스트", "스케줄 모니터링", "작업 요청", "스케줄 수행 이력", "작업 리스트"],
   },
   {
     key: "settlement",
     label: "정산 관리",
-    icon: Receipt,
+    icon: IconDocument,
     subs: ["청구서 관리", "통합 청구서 그룹 관리", "미청구 작업 이력", "입출금 관리", "파트너 정산 내역"],
   },
-  { key: "account", label: "계정 관리", icon: Users, subs: [] },
-  { key: "support", label: "고객센터", icon: HeadphonesIcon, subs: [] },
+  { key: "account", label: "계정 관리", icon: IconUsers, subs: [] },
+  { key: "support", label: "고객센터", icon: IconHeadset, subs: [] },
 ]
 
 const SIDEBAR_COMPONENTS = {
@@ -85,7 +76,7 @@ const SIDEBAR_COMPONENTS = {
   SidebarProvider,
   SidebarTrigger,
   Logo,
-  Info,
+  IconInfo,
 }
 
 const GNB_TEMPLATE = `
@@ -129,7 +120,7 @@ const GNB_TEMPLATE = `
     </SidebarContent>
     <SidebarFooter>
       <div class="flex items-center gap-[4px] px-[16px] py-[16px] text-size-12 text-grey-60 group-data-[collapsible=icon]:hidden">
-        <Info class="size-[14px]" />
+        <IconInfo class="size-[14px]" />
         <span>서버정보보기</span>
       </div>
     </SidebarFooter>

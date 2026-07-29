@@ -9,7 +9,7 @@
 import type { HTMLAttributes } from "vue"
 import { computed, provide, ref, watch } from "vue"
 import { Time } from "@internationalized/date"
-import { Clock } from "lucide-vue-next"
+import { IconClock } from "../../icons"
 import { cn } from "../../lib/utils"
 import { Drawer, DrawerContent } from "../drawer"
 import {
@@ -114,7 +114,7 @@ function onOpen() {
         @click="onOpen"
       >
         <InputIcon class="text-grey-60">
-          <Clock />
+          <IconClock />
         </InputIcon>
       </button>
     </div>

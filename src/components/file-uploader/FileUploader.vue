@@ -12,7 +12,7 @@ import { useI18n } from 'vue-i18n'
 import type { UploaderFile, FileClickEvent } from './types'
 import { validateFile, fileToUploaderFile } from './types'
 import { cn } from '../../lib/utils'
-import { Cloud, AlertTriangle } from 'lucide-vue-next'
+import { IconCloud, IconWarning } from "../../icons"
 import FileItem from './FileItem.vue'
 
 const inputFiles = defineModel<UploaderFile[]>('inputFiles', { required: true, default: () => [] })
@@ -237,7 +237,7 @@ function onDownloadFile(index: number) {
       <div class="drop-grid grid grid-cols-[auto_auto] items-center">
         <!-- Icon -->
         <div class="drop-icon justify-self-end self-center">
-          <Cloud class="w-[48px] h-[48px] text-grey-50" />
+          <IconCloud class="w-[48px] h-[48px] text-grey-50" />
         </div>
 
         <!-- Content -->
@@ -274,7 +274,7 @@ function onDownloadFile(index: number) {
 
           <!-- Error state -->
           <div v-else-if="uploadState === 'error'" class="state-error flex items-center">
-            <AlertTriangle class="w-[24px] h-[24px] text-red-70 mr-[4px]" />
+            <IconWarning class="w-[24px] h-[24px] text-red-70 mr-[4px]" />
             <span class="error text-size-12 text-red-70 font-bold">
               {{ t('ui.component.fileUploader.uploadStatusError') }}
             </span>

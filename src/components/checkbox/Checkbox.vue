@@ -2,7 +2,7 @@
 import type { CheckboxRootEmits, CheckboxRootProps } from "reka-ui"
 import { computed, inject } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { Check, Minus } from "lucide-vue-next"
+import { IconCheck, IconMinus } from "../../icons"
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from "reka-ui"
 import { cva, type VariantProps } from "class-variance-authority"
 import { FORM_ERROR_INJECTION_KEY } from "../form/injectionKeys"
@@ -129,8 +129,8 @@ const iconSize = computed(() => {
     >
       <CheckboxIndicator class="grid place-content-center text-current">
         <slot>
-          <Minus v-if="isIndeterminate" :class="iconSize" stroke-width="3" />
-          <Check v-else :class="iconSize" stroke-width="3" />
+          <IconMinus v-if="isIndeterminate" :class="iconSize" />
+          <IconCheck v-else :class="iconSize" />
         </slot>
       </CheckboxIndicator>
     </CheckboxRoot>

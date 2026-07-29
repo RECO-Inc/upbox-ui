@@ -26,7 +26,7 @@ import {
   RangeCalendarRoot,
   useForwardPropsEmits,
 } from "reka-ui"
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, RotateCcw } from "lucide-vue-next"
+import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight, IconRefresh } from "../../icons"
 import { useI18n } from "vue-i18n"
 import { cn } from "../../lib/utils"
 import { Button } from "../button"
@@ -165,7 +165,7 @@ function headingLabel(p: CalendarDate) {
                 class="shrink-0"
                 aria-label="이전 연도"
               >
-                <ChevronsLeft />
+                <IconChevronsLeft />
               </IconButton>
             </RangeCalendarPrev>
             <RangeCalendarPrev :as-child="true">
@@ -175,7 +175,7 @@ function headingLabel(p: CalendarDate) {
                 class="shrink-0"
                 aria-label="이전 월"
               >
-                <ChevronLeft />
+                <IconChevronLeft />
               </IconButton>
             </RangeCalendarPrev>
           </div>
@@ -192,7 +192,7 @@ function headingLabel(p: CalendarDate) {
                 class="shrink-0"
                 aria-label="다음 월"
               >
-                <ChevronRight />
+                <IconChevronRight />
               </IconButton>
             </RangeCalendarNext>
             <RangeCalendarNext :as-child="true" :next-page="nextYearPage">
@@ -202,7 +202,7 @@ function headingLabel(p: CalendarDate) {
                 class="shrink-0"
                 aria-label="다음 연도"
               >
-                <ChevronsRight />
+                <IconChevronsRight />
               </IconButton>
             </RangeCalendarNext>
           </div>
@@ -276,7 +276,7 @@ function headingLabel(p: CalendarDate) {
           @mousedown.prevent
           @click="onReset"
         >
-          <RotateCcw class="w-[16px] h-[16px] mr-[4px]" />
+          <IconRefresh class="w-[16px] h-[16px] mr-[4px]" />
           {{ t('word.reset') }}
         </Button>
       </slot>

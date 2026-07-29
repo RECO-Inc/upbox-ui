@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { fn } from 'storybook/test'
-import { Search, Trash2, ChevronRight } from 'lucide-vue-next'
+import { IconSearch, IconTrash, IconChevronRight } from "../../icons"
 import TextButton from './TextButton.vue'
 
 const meta = {
@@ -83,20 +83,20 @@ export const Sizes: Story = {
 
 export const WithIcons: Story = {
   render: () => ({
-    components: { TextButton, Search, Trash2, ChevronRight },
+    components: { TextButton, IconSearch, IconTrash, IconChevronRight },
     template: `
       <div class="flex flex-wrap gap-[12px] items-center">
         <TextButton>
-          <Search />
+          <IconSearch />
           검색
         </TextButton>
         <TextButton variant="destructive">
-          <Trash2 />
+          <IconTrash />
           삭제
         </TextButton>
         <TextButton>
           더보기
-          <ChevronRight />
+          <IconChevronRight />
         </TextButton>
       </div>
     `,

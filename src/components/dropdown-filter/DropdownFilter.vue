@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T">
 import { computed, ref } from "vue";
 import { useI18n } from "vue-i18n";
-import { ChevronDown, Check, RotateCcw } from "lucide-vue-next";
+import { IconChevronDown, IconCheck, IconRefresh } from "../../icons"
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { Checkbox } from "../checkbox";
 import { Button } from "../button";
@@ -163,7 +163,7 @@ function onReset() {
             <span v-else class="text-grey-50">{{ props.placeholder }}</span>
             <span v-if="multiCountText" :class="cn('shrink-0 font-bold', props.displayStyle === 'highlight' ? 'text-grey-10' : 'text-navy-80')">{{ multiCountText }}</span>
           </div>
-          <ChevronDown
+          <IconChevronDown
             :class="cn(
               'shrink-0 transition-transform duration-200',
               props.size === 'small' ? 'h-[16px] w-[16px]' : 'h-[20px] w-[20px]',
@@ -215,7 +215,7 @@ function onReset() {
               <slot name="item" :item="item">
                 <span class="flex-1 text-size-14">{{ item.label }}</span>
               </slot>
-              <Check
+              <IconCheck
                 v-if="props.single && isItemSelected(item)"
                 class="h-[16px] w-[16px] text-blue-80"
               />
@@ -239,7 +239,7 @@ function onReset() {
             size="xsmall"
             @click="onReset"
           >
-            <RotateCcw class="mr-[4px] h-[12px] w-[12px]" />
+            <IconRefresh class="mr-[4px] h-[12px] w-[12px]" />
             {{ t('common.reset') }}
           </Button>
           <span class="text-size-12 text-grey-60">

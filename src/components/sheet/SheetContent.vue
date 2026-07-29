@@ -2,7 +2,7 @@
 import type { DialogContentEmits, DialogContentProps } from "reka-ui"
 import type { SheetContentProps as SheetContentVariantProps } from "."
 import { reactiveOmit } from "@vueuse/core"
-import { X } from "lucide-vue-next"
+import { IconClose } from "../../icons"
 import {
   DialogClose,
   DialogContent,
@@ -43,7 +43,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
       <DialogClose
         class="absolute right-[16px] top-[16px] rounded-sm opacity-70 ring-offset-grey-10 transition-opacity hover:opacity-100 focus:outline-hidden focus:ring-2 focus:ring-navy-80 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-grey-20"
       >
-        <X class="w-[16px] h-[16px]" />
+        <IconClose class="w-[16px] h-[16px]" />
       </DialogClose>
     </DialogContent>
   </DialogPortal>

@@ -2,7 +2,7 @@
 import type { SelectTriggerProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { ChevronDown } from "lucide-vue-next"
+import { IconChevronDown } from "../../icons"
 import { computed, inject } from "vue"
 import { injectSelectRootContext, SelectIcon, SelectTrigger, useForwardProps } from "reka-ui"
 import { cn } from "../../lib/utils"
@@ -117,7 +117,7 @@ function handleClear(event: Event) {
         <SelectClearIcon />
       </span>
       <SelectIcon as-child>
-        <ChevronDown class="size-[16px] shrink-0 text-grey-50" />
+        <IconChevronDown class="size-[16px] shrink-0 text-grey-50" />
       </SelectIcon>
     </span>
   </SelectTrigger>
@@ -157,7 +157,7 @@ function handleClear(event: Event) {
           <SelectClearIcon />
         </span>
         <SelectIcon as-child>
-          <ChevronDown class="size-[16px] shrink-0 text-grey-50" />
+          <IconChevronDown class="size-[16px] shrink-0 text-grey-50" />
         </SelectIcon>
       </span>
     </SelectTrigger>

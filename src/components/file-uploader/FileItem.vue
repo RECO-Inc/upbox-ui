@@ -2,8 +2,7 @@
 import { computed } from 'vue'
 import type { UploaderFile } from './types'
 import { cn } from '../../lib/utils'
-import { X, Download, Loader2, AlertCircle } from 'lucide-vue-next'
-
+import { IconClose, IconDownload, IconSpinner, IconWarning } from "../../icons"
 interface Props {
   file: UploaderFile
   readonly?: boolean
@@ -79,12 +78,12 @@ function handleDownload(e: Event) {
     <!-- Status (uploading/error) -->
     <div v-if="file.state !== 'done' && file.state !== 'download'" class="flex items-center ml-[8px]">
       <template v-if="file.state === 'error'">
-        <AlertCircle class="w-[20px] h-[20px] text-red-70 mr-[4px]" />
+        <IconWarning class="w-[20px] h-[20px] text-red-70 mr-[4px]" />
         <span class="text-[10px] text-red-70 whitespace-nowrap">업로드 실패</span>
       </template>
       <template v-else>
         <span class="text-[10px] text-grey-60 whitespace-nowrap mr-[8px]">업로드 중...</span>
-        <Loader2 class="w-[16px] h-[16px] text-grey-60 animate-spin" />
+        <IconSpinner class="w-[16px] h-[16px] text-grey-60 animate-spin" />
       </template>
     </div>
 
@@ -97,7 +96,7 @@ function handleDownload(e: Event) {
         class="p-[4px] rounded-sm hover:bg-grey-30 text-grey-80 transition-colors"
         @click="handleRemove"
       >
-        <X class="w-[20px] h-[20px]" />
+        <IconClose class="w-[20px] h-[20px]" />
       </button>
 
       <!-- Download button -->
@@ -108,7 +107,7 @@ function handleDownload(e: Event) {
         @click="handleDownload"
       >
         다운로드
-        <Download class="w-[20px] h-[20px]" />
+        <IconDownload class="w-[20px] h-[20px]" />
       </button>
     </div>
   </div>

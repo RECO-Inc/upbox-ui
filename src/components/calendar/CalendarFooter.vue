@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "vue"
 import { cn } from "../../lib/utils"
 import { Button } from "../button"
-import { RotateCcw } from "lucide-vue-next"
+import { IconRefresh } from "../../icons"
 import { useI18n } from "vue-i18n"
 import TextButton from "../text-button/TextButton.vue"
 
@@ -36,7 +36,7 @@ const { t } = useI18n()
         @mousedown.prevent
         @click="emit('reset')"
       >
-        <RotateCcw class="w-[16px] h-[16px] mr-[4px]" />
+        <IconRefresh class="w-[16px] h-[16px] mr-[4px]" />
         {{ t('word.reset') }}
       </TextButton>
     </slot>

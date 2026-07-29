@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue"
-import { X } from "lucide-vue-next"
+import { IconClose } from "../../icons"
 import type { TagProps } from "."
 import { cn } from "../../lib/utils"
 import { tagCloseIconSize, tagVariants } from "."
@@ -45,7 +45,7 @@ function handleClose(event: MouseEvent) {
       :class="[closeIconClass, closeBgClass]"
       @click="handleClose"
     >
-      <X class="size-[70%]" :stroke-width="2.5" />
+      <IconClose class="size-[70%]" />
     </button>
   </div>
 </template>

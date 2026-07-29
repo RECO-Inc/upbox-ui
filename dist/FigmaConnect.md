@@ -80,6 +80,29 @@
 
 > 피그마 변수명에 `nagative`(오타), `regualr`(오타) 등이 그대로 남아있어도 코드 토큰명은 `negative`, `regular` 로 정정해 사용한다.
 
+### 아이콘
+
+Figma 아이콘 세트(`Outlined` [11515:23745] / `Filled` [11515:23749], Material Symbols 기반)는
+`@upbox-design/vue3-icon` 으로 자동 추출되고, upbox-ui 는 `src/icons/index.ts` 에서 이름을 정규화해
+`Icon*` 으로 재export 한다. **컴포넌트·컨슈머 모두 `Icon*` 만 쓴다.**
+
+| Figma 노드 | upbox-ui |
+|---|---|
+| `Action/Chevron variant=keyboard_arrow_{left,right,up,down}` | `IconChevron{Left,Right,Up,Down}` |
+| `Action/Double_chevron direction={left,right,up,down}` | `IconChevrons{Left,Right,Up,Down}` |
+| `Action/X` | `IconClose` |
+| `24/Outlined/{check,search,add,minus,calender,schedule}` | `IconCheck` `IconSearch` `IconPlus` `IconMinus` `IconCalendar` `IconClock` |
+| `24/Outlined/{visibility,visibility_off,cloud,question,warning}` | `IconEye` `IconEyeOff` `IconCloud` `IconHelp` `IconWarning` |
+| `24/Outlined/{download01,refresh01,more width}` | `IconDownload` `IconRefresh` `IconMoreHorizontal` |
+| `24/Outlined/{setting,profile,alram,pen,document,dashbord,store,truck}` | `IconSettings` `IconUsers` `IconBell` `IconPen` `IconDocument` `IconDashboard` `IconStore` `IconTruck` |
+| `info Property3=outlined` | `IconInfo` |
+| `24/Filed/{delete,check}` | `IconTrash` `IconCheckCircle` |
+
+크기·색은 prop 이 아니라 유틸리티 클래스로 준다 — `<IconSearch class="size-[16px] text-grey-50" />`.
+
+> **미해결** — `IconPanelLeft`(Figma `side_panel_close` 추출 누락) · `IconSpinner` · `IconListX` 는
+> 아직 Figma/패키지에 없어 lucide 를 임시로 재export 중이다. 들어오는 대로 `src/icons/index.ts` 만 고치면 된다.
+
 ### 타이포그래피
 
 | Figma 변수 | upbox-ui 표현 |
@@ -148,7 +171,7 @@
 
 | Slot | 설명 |
 |---|---|
-| `default` | 본문 텍스트. 좌·우 아이콘은 슬롯 안에 `<lucide />` 직접 배치 |
+| `default` | 본문 텍스트. 좌·우 아이콘은 슬롯 안에 `<Icon* />` 직접 배치 (upbox-ui 아이콘 export) |
 
 ### Code Example
 
@@ -164,7 +187,7 @@
 |---|---|
 | `wrapper` (텍스트·아이콘 컨테이너) | `<button>` |
 | 본문 텍스트 | `default` slot |
-| `front icon` / `end icon` (boolean) | 슬롯 안에 `<lucide />` 직접 |
+| `front icon` / `end icon` (boolean) | 슬롯 안에 `<Icon* />` 직접 |
 | 로딩 스피너 | `loading=true` 시 `Spinner` 자동 |
 
 ### Figma 변수
@@ -220,7 +243,7 @@
 
 | Slot | 설명 |
 |---|---|
-| `default` | 본문 텍스트. 좌·우 아이콘은 슬롯 안에 `<lucide />` 직접 (사이즈 자동) |
+| `default` | 본문 텍스트. 좌·우 아이콘은 슬롯 안에 `<Icon* />` 직접 (사이즈 자동) |
 
 ### Code Example
 
@@ -270,7 +293,7 @@
 | `Variant` | `variant` | `"primary" \| "destructive" \| "secondary" \| "tertiary"` | `"primary"` |
 | `Size` | `size` | `"2xsmall" \| "xsmall" \| "small" \| "regular" \| "large" \| "xlarge"` | `"regular"` |
 | `Disabled` | `disabled` | `boolean` | `false` |
-| 아이콘 | `default` slot | `<lucide />` (사이즈 토큰 자동) | — |
+| 아이콘 | `default` slot | `<Icon* />` (사이즈 토큰 자동) | — |
 
 ### Vue 전용 Props
 
@@ -446,7 +469,7 @@
 | 외곽 (border + bg + padding) | `<div>` (`tagVariants`) |
 | 좌측 배지 | `badge` slot |
 | 본문 텍스트 | `default` slot |
-| 우측 X 닫기 | `closable=true && state!=='disabled'` 시 자동 (`X` lucide) |
+| 우측 X 닫기 | `closable=true && state!=='disabled'` 시 자동 (`IconClose`) |
 
 ### Figma 변수
 
@@ -527,8 +550,8 @@
 | frame (border + bg + padding) | `InputFrame` |
 | 본문 입력 영역 | 내부 `<input>` (`flex-1 bg-transparent outline-none`) |
 | 좌·우 아이콘 | `InputIcon` 슬롯 (자식으로 직접 배치) |
-| 우측 X 클리어 버튼 | `clearable=true` 시 자동 (`X` lucide) |
-| 우측 eye 토글 버튼 | `password=true` 시 자동 (`Eye` / `EyeOff` lucide) |
+| 우측 X 클리어 버튼 | `clearable=true` 시 자동 (`IconClose`) |
+| 우측 eye 토글 버튼 | `password=true` 시 자동 (`IconEye` / `IconEyeOff`) |
 | 우측 카운터 자리 | `<TextFieldCount>` (자식 슬롯) |
 
 ### Figma 변수
@@ -685,11 +708,11 @@
 | 피그마 노드 | Vue 구조 |
 |---|---|
 | frame (border + bg + padding) | `InputFrame` |
-| 좌측 search 아이콘 (`variant=basic`) | `InputIcon` + `Search` lucide |
+| 좌측 search 아이콘 (`variant=basic`) | `InputIcon` + `IconSearch` |
 | 좌측 필터 영역 (`variant=filter`) | `filter` slot + 세로 `bg-grey-40` 구분선 |
 | 본문 입력 영역 | 내부 `<input type="search">` (`flex-1 bg-transparent outline-none`) |
-| 우측 X 클리어 (`variant=basic`) | `X` lucide 아이콘 버튼 (`clearable && value`) |
-| 우측 search 아이콘 (`variant=filter`) | `InputIcon` + `Search` lucide |
+| 우측 X 클리어 (`variant=basic`) | `IconClose` 아이콘 버튼 (`clearable && value`) |
+| 우측 search 아이콘 (`variant=filter`) | `InputIcon` + `IconSearch` |
 
 ### Figma 변수
 
@@ -773,9 +796,9 @@
 |---|---|
 | 외곽 root | `NumberFieldRoot` (reka-ui) |
 | frame (border + bg) | `InputFrame` (`px-0 overflow-hidden`) |
-| `−` 버튼 | `NumberFieldDecrement` (`Minus` lucide) |
+| `−` 버튼 | `NumberFieldDecrement` (`IconMinus`) |
 | 숫자 입력 | `NumberFieldInput` |
-| `+` 버튼 | `NumberFieldIncrement` (`Plus` lucide) |
+| `+` 버튼 | `NumberFieldIncrement` (`IconPlus`) |
 | `−` / `+` 사이의 세로 구분선 | `border-grey-40` (error 시 `border-red-80`) |
 
 ---
@@ -1163,7 +1186,7 @@
 | 좌측 inner badge | `#badge` 슬롯 |
 | 본문 텍스트 (`pl-4`) | 기본 슬롯 (`<span>`, device×state 별 색) |
 | typed 의 `+N` | `count` prop (`font-semibold text-status-informative`) |
-| 우측 Action/Chevron `16` | `chevron=true` 시 `ChevronDown` lucide (`size-[16px]`) |
+| 우측 Action/Chevron `16` | `chevron=true` 시 `IconChevronDown` (`size-[16px]`) |
 
 ### Figma 변수
 

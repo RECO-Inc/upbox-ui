@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import { computed, provide, type HTMLAttributes } from "vue"
 import { CalendarDate, endOfMonth, getLocalTimeZone, today } from "@internationalized/date"
-import {
-  ChevronLeft,
-  ChevronRight,
-  ChevronsLeft,
-  ChevronsRight,
-} from "lucide-vue-next"
+import { IconChevronLeft, IconChevronRight, IconChevronsLeft, IconChevronsRight } from "../../icons"
 import { IconButton } from "../icon-button"
 import {
   type InputFrameDesignProps,
@@ -123,7 +118,7 @@ function onClickMove(delta: number, unit: "month" | "year" = "month") {
         aria-label="이전 연"
         @click="onClickMove(-1, 'year')"
       >
-        <ChevronsLeft />
+        <IconChevronsLeft />
       </IconButton>
       <IconButton
         variant="tertiary"
@@ -132,7 +127,7 @@ function onClickMove(delta: number, unit: "month" | "year" = "month") {
         aria-label="이전 달"
         @click="onClickMove(-1, 'month')"
       >
-        <ChevronLeft />
+        <IconChevronLeft />
       </IconButton>
     </div>
     <div class="min-w-0 flex-1">
@@ -149,7 +144,7 @@ function onClickMove(delta: number, unit: "month" | "year" = "month") {
         aria-label="다음 달"
         @click="onClickMove(1, 'month')"
       >
-        <ChevronRight />
+        <IconChevronRight />
       </IconButton>
       <IconButton
         variant="tertiary"
@@ -158,7 +153,7 @@ function onClickMove(delta: number, unit: "month" | "year" = "month") {
         aria-label="다음 연"
         @click="onClickMove(1, 'year')"
       >
-        <ChevronsRight />
+        <IconChevronsRight />
       </IconButton>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Download, ListX, Trash2 } from 'lucide-vue-next'
+import { IconDownload, IconListX, IconTrash } from "../../icons"
 import { cn } from '../../lib/utils'
 import TextButton from '../text-button/TextButton.vue'
 
@@ -65,7 +65,7 @@ const buttonClass = computed(() => (isDark.value ? 'text-grey-10 hover:bg-grey-8
       </p>
       <!-- 아이콘-텍스트 간격은 TextButton gap-[2px]만 적용되도록 붙여 쓴다(개행 공백 방지). -->
       <TextButton size="2xsmall" :class="buttonClass" @click="emit('deselect')">
-        <ListX />선택 해제
+        <IconListX />선택 해제
       </TextButton>
     </div>
 
@@ -73,10 +73,10 @@ const buttonClass = computed(() => (isDark.value ? 'text-grey-10 hover:bg-grey-8
       <!-- 화면별 커스텀 액션(TextButton 나열) — 구분선은 자동 -->
       <slot name="actions" />
       <TextButton v-if="downloadable" size="2xsmall" :class="buttonClass" @click="emit('download')">
-        <Download />다운로드
+        <IconDownload />다운로드
       </TextButton>
       <TextButton v-if="deletable" size="2xsmall" variant="destructive" @click="emit('delete')">
-        <Trash2 />삭제
+        <IconTrash />삭제
       </TextButton>
     </div>
   </div>

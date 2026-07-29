@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { computed, inject } from "vue"
-import { Calendar as CalendarGlyph } from "lucide-vue-next"
+import { IconCalendar as CalendarGlyph } from "../../icons"
 import { PopoverTrigger } from "reka-ui"
 import { cn } from "../../lib/utils"
 import {

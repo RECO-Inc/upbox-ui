@@ -63,3 +63,6 @@ export * from './components/toast'
 export * from './components/toggle'
 export * from './components/toolbar'
 export * from './components/tooltip'
+
+// 디자인 시스템 아이콘 (Figma 추출본). 컨슈머는 lucide 대신 이걸 쓴다.
+export * from './icons'

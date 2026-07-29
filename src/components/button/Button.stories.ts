@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { fn } from 'storybook/test'
-import { ChevronLeft, ChevronRight, Search, Plus } from 'lucide-vue-next'
+import { IconChevronLeft, IconChevronRight, IconSearch, IconPlus } from "../../icons"
 import { toast } from 'vue-sonner'
 import Button from './Button.vue'
 import Toast from '../toast/Toast.vue'
@@ -159,23 +159,23 @@ export const BlockedActionShowsToast: Story = {
 
 export const WithIcons: Story = {
   render: () => ({
-    components: { Button, ChevronLeft, ChevronRight, Search, Plus },
+    components: { Button, IconChevronLeft, IconChevronRight, IconSearch, IconPlus },
     setup: () => ({}),
     template: `
       <div class="flex flex-wrap gap-[12px] items-center">
         <Button>
-          <ChevronLeft class="w-[16px] h-[16px] mr-[4px]" />
+          <IconChevronLeft class="w-[16px] h-[16px] mr-[4px]" />
           Icon Left
         </Button>
         <Button>
           Icon Right
-          <ChevronRight class="w-[16px] h-[16px] ml-[4px]" />
+          <IconChevronRight class="w-[16px] h-[16px] ml-[4px]" />
         </Button>
         <Button>
-          <Search class="w-[16px] h-[16px]" />
+          <IconSearch class="w-[16px] h-[16px]" />
         </Button>
         <Button theme="outlined">
-          <Plus class="w-[16px] h-[16px] mr-[4px]" />
+          <IconPlus class="w-[16px] h-[16px] mr-[4px]" />
           Add Item
         </Button>
       </div>

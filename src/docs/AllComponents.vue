@@ -1,14 +1,6 @@
 <script setup lang="ts">
 import { ref, shallowRef } from "vue"
-import {
-  Plus,
-  Search,
-  Bell,
-  Settings,
-  Trash2,
-  LayoutDashboard,
-  FileText,
-} from "lucide-vue-next"
+import { IconPlus, IconSearch, IconBell, IconSettings, IconTrash, IconDashboard, IconDocument } from "../icons"
 import { CalendarDate, Time } from "@internationalized/date"
 
 import {
@@ -236,16 +228,16 @@ function showToast() {
         <div class="ac-item">
           <span class="ac-label">IconButton</span>
           <div class="ac-demo">
-            <IconButton variant="primary"><Plus /></IconButton>
-            <IconButton variant="secondary"><Settings /></IconButton>
-            <IconButton variant="tertiary"><Bell /></IconButton>
+            <IconButton variant="primary"><IconPlus /></IconButton>
+            <IconButton variant="secondary"><IconSettings /></IconButton>
+            <IconButton variant="tertiary"><IconBell /></IconButton>
           </div>
         </div>
         <div class="ac-item">
           <span class="ac-label">Fab</span>
           <div class="ac-demo">
-            <Fab fabStyle="basic"><Plus />추가</Fab>
-            <Fab fabStyle="colorfilled"><Plus /></Fab>
+            <Fab fabStyle="basic"><IconPlus />추가</Fab>
+            <Fab fabStyle="colorfilled"><IconPlus /></Fab>
           </div>
         </div>
         <div class="ac-item">
@@ -569,7 +561,7 @@ function showToast() {
                               :is-active="sidebarActive === 'dashboard'"
                               @click="sidebarActive = 'dashboard'"
                             >
-                              <LayoutDashboard /><span>대시보드</span>
+                              <IconDashboard /><span>대시보드</span>
                             </SidebarMenuButton>
                           </SidebarMenuItem>
                           <SidebarMenuItem>
@@ -577,7 +569,7 @@ function showToast() {
                               :is-active="sidebarActive === 'docs'"
                               @click="sidebarActive = 'docs'"
                             >
-                              <FileText /><span>문서</span>
+                              <IconDocument /><span>문서</span>
                             </SidebarMenuButton>
                           </SidebarMenuItem>
                           <SidebarMenuItem>
@@ -585,7 +577,7 @@ function showToast() {
                               :is-active="sidebarActive === 'settings'"
                               @click="sidebarActive = 'settings'"
                             >
-                              <Settings /><span>설정</span>
+                              <IconSettings /><span>설정</span>
                             </SidebarMenuButton>
                           </SidebarMenuItem>
                         </SidebarMenu>
@@ -719,7 +711,7 @@ function showToast() {
         <div class="ac-item">
           <span class="ac-label">Toast</span>
           <div class="ac-demo">
-            <Button variant="primary" @click="showToast"><Bell />토스트 띄우기</Button>
+            <Button variant="primary" @click="showToast"><IconBell />토스트 띄우기</Button>
           </div>
         </div>
       </div>
