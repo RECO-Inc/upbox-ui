@@ -51,5 +51,15 @@ export { PanelLeft as IconPanelLeft, Loader2 as IconSpinner, ListX as IconListX,
  * 보정이 남으면 원인이 코드에 묻혀 나중에 못 찾는다. 크기를 바꿔야 한다면
  * 호출부에서 땜질하지 말고 **Figma 스펙 자체를 고치고 그 값을 따라간다.**
  *
- * 예외: `DropdownMenuRadioItem` 의 라디오 점은 대응 글리프가 아예 없어 CSS 원으로 그린다.
+ * ## 아이콘 세트를 쓰지 않는 예외 2곳
+ *
+ * - `DropdownMenuRadioItem` 라디오 점 — 대응 글리프가 아예 없어 CSS 원으로 그린다.
+ * - `Checkbox` 체크 — 8~12px 로 렌더되는데 fill 글리프의 획이 viewBox 기준 약 2/24 라
+ *   실제 0.7~1.0px 로 떨어져 안티에일리어싱 회색이 된다("흐리다"의 원인).
+ *   컴포넌트 안에서 stroke 로 직접 그려 화면상 두께를 1.4px 로 고정했다.
+ *   측정(최대 농도 /255): 8px 에서 fill 148 → stroke 216 (lucide 시절 185).
+ *
+ * 둘 다 크기 보정이 아니라 **해당 크기에서 글리프가 물리적으로 표현 불가**한 경우다.
+ * 근본 해결은 Figma 에서 Material `weight` 축을 올리는 것 — 요청 목록에 포함돼 있다.
+ * 아이콘을 14px 미만으로 쓸 일이 또 생기면 같은 문제가 반복되니 이 주석을 먼저 볼 것.
  */

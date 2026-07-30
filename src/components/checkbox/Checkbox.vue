@@ -2,7 +2,6 @@
 import type { CheckboxRootEmits, CheckboxRootProps } from "reka-ui"
 import { computed, inject } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { IconCheck, IconMinus } from "../../icons"
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from "reka-ui"
 import { cva, type VariantProps } from "class-variance-authority"
 import { FORM_ERROR_INJECTION_KEY } from "../form/injectionKeys"
@@ -102,13 +101,34 @@ const isError = computed<boolean>(() => props.error ?? formError?.value ?? false
 const isIndeterminate = computed( () => props.modelValue === "indeterminate", );
 const rootInert = computed(() => props.readOnly && !props.disabled)
 /**
- * # 체크 표시 아이콘
+ * # 체크 표시
+ *
+ * 아이콘 세트(`IconCheck` / `IconMinus`)를 쓰지 않고 여기서 직접 그린다.
+ * 세트의 체크는 fill 기반이라 획 두께가 viewBox 기준 약 2/24 인데, 체크박스가 쓰는
+ * 8~12px 박스에서는 실제 0.7~1.0px 로 떨어져 안티에일리어싱 회색이 되어 흐려 보인다.
+ * (측정: 8px 에서 최대 농도 148/255, lucide 시절 stroke-width=3 은 185/255)
+ *
+ * stroke 로 그리면 두께를 박스 크기와 무관하게 고정할 수 있어 어떤 사이즈에서도 또렷하다.
+ * 라디오 점을 CSS 원으로 그린 것과 같은 이유의 예외 처리다.
+ * 근본 해결은 Figma 에서 Material `weight` 축을 올리는 것 — upbox-icon/docs/figma-icon-issues.md 참고.
  */
 const iconSize = computed(() => {
   switch (props.size) {
-    case "small": return "h-[8px] w-[8px]"   // 10px
-    case "large": return "h-[12px] w-[12px]"   // 16px
-    default: return "h-[10px] w-[10px]"        // 14px
+    case "small": return "h-[8px] w-[8px]"     // 체크박스 10px
+    case "large": return "h-[12px] w-[12px]"   // 체크박스 16px
+    default: return "h-[10px] w-[10px]"        // 체크박스 14px
+  }
+})
+
+/**
+ * viewBox(24) 기준 획 두께. 렌더 크기가 작을수록 키워야 화면상 두께가 유지된다.
+ * 목표는 약 1.4px — `1.4 / 박스크기 * 24`.
+ */
+const checkStrokeWidth = computed(() => {
+  switch (props.size) {
+    case "small": return 4.2   // 1.4 /  8 * 24
+    case "large": return 2.8   // 1.4 / 12 * 24
+    default: return 3.4        // 1.4 / 10 * 24
   }
 })
 </script>
@@ -129,8 +149,19 @@ const iconSize = computed(() => {
     >
       <CheckboxIndicator class="grid place-content-center text-current">
         <slot>
-          <IconMinus v-if="isIndeterminate" :class="iconSize" />
-          <IconCheck v-else :class="iconSize" />
+          <svg
+            :class="iconSize"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            :stroke-width="checkStrokeWidth"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path v-if="isIndeterminate" d="M5 12h14" />
+            <path v-else d="M20 6 9 17l-5-5" />
+          </svg>
         </slot>
       </CheckboxIndicator>
     </CheckboxRoot>
