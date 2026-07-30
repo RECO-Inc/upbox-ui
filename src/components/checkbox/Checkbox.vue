@@ -15,8 +15,6 @@ const checkboxVariants = cva(
     "text-grey-10",
     "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-navy-80",
     "transition-colors",
-    "data-[state=checked]:border-navy-70 data-[state=checked]:bg-navy-70 data-[state=checked]:text-grey-10",
-    "data-[state=indeterminate]:border-navy-70 data-[state=indeterminate]:bg-navy-70 data-[state=indeterminate]:text-grey-10",
   ].join(" "),
   {
     variants: {
@@ -25,9 +23,12 @@ const checkboxVariants = cva(
         regular: "h-[16px] w-[16px]",     // 16px
         large: "h-[20px] w-[20px]",       // 20px
       },
+      // RadioGroupItem 과 동일한 구조: 선택 색과 미선택 테두리를 여기서 함께 정한다.
+      // 이전에는 false 가 빈 문자열이라 미선택 테두리가 style.css 의 전역 fallback(grey-30)을
+      // 받아 흰 배경 대비 1.17:1 로 거의 보이지 않았다.
       error: {
         true: "border-red-80 data-[state=checked]:border-red-80 data-[state=checked]:bg-red-80 data-[state=indeterminate]:border-red-80 data-[state=indeterminate]:bg-red-80",
-        false: "",
+        false: "border-grey-40 data-[state=checked]:border-navy-80 data-[state=checked]:bg-navy-80 data-[state=indeterminate]:border-navy-80 data-[state=indeterminate]:bg-navy-80",
       },
       readOnly: {
         true: [
