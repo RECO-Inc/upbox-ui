@@ -535,6 +535,35 @@ function onKeydown(e: KeyboardEvent) {
   }
   if (e.key === "Backspace" || e.key === "Delete") {
     e.preventDefault()
+    /**
+     * 여러 자리 선택 삭제 (UP20-8625)
+     * 전체선택(Cmd+A/드래그) 후 삭제해도 아래 한 자리 로직만 타서 연도 첫 자리가 0 으로
+     * 치환된 값(2026 → 0026)이 유효 날짜로 커밋되던 문제. 선택이 두 글자 이상이면
+     * 한 자리 치환 대신 선택 구간을 비운다.
+     * - 전체 선택: 명시적 '지우기'로 보고 캘린더 초기화와 동일하게 모델도 비운다.
+     *   blur 복원 스냅샷도 함께 비워 포커스 아웃 뒤에도 빈 값이 유지된다.
+     * - 부분 선택: 슬롯 모델은 중간 빈칸을 표현할 수 없으므로 선택 시작부터 끝까지 비운다.
+     */
+    {
+      const el = inputRef.value
+      const t = display.value
+      const a = el?.selectionStart ?? 0
+      const b = el?.selectionEnd ?? 0
+      if (el && t.length > 0 && b - a > 1) {
+        const coversAll = a === 0 && b >= t.length
+        const startDigit = coversAll ? 0 : charOffsetToDigitIndex(t, a)
+        const next = [...slots.value] as string[]
+        for (let j = startDigit; j < 8; j++) next[j] = ""
+        slots.value = next
+        activeDigit.value = startDigit
+        if (coversAll) {
+          modelValue.value = null
+          snapshotAtFocus.value = null
+        }
+        applySelection()
+        return
+      }
+    }
     const i = activeDigit.value
     const next = [...slots.value] as string[]
     const cur = next[i] ?? ""
