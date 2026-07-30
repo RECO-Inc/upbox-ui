@@ -4550,10 +4550,7 @@ const Wa = /* @__PURE__ */ p({
       c(a(js), T(a(d), {
         disabled: e.disabled,
         "aria-readonly": e.readOnly ? !0 : void 0,
-        class: [
-          a(t)({ size: e.size, error: f.value, readOnly: e.readOnly, disabled: e.disabled }),
-          l.class
-        ]
+        class: a(v)(a(t)({ size: e.size, error: f.value, readOnly: e.readOnly, disabled: e.disabled }), l.class)
       }), {
         default: i(() => [
           c(a(Is), { class: "grid place-content-center text-current" }, {

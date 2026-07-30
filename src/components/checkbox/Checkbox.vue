@@ -2,6 +2,7 @@
 import type { CheckboxRootEmits, CheckboxRootProps } from "reka-ui"
 import { computed, inject } from "vue"
 import { reactiveOmit } from "@vueuse/core"
+import { cn } from "../../lib/utils"
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from "reka-ui"
 import { cva, type VariantProps } from "class-variance-authority"
 import { FORM_ERROR_INJECTION_KEY } from "../form/injectionKeys"
@@ -143,10 +144,7 @@ const checkStrokeWidth = computed(() => {
       v-bind="forwarded"
       :disabled="disabled"
       :aria-readonly="readOnly ? true : undefined"
-      :class="[
-        checkboxVariants({ size, error: isError, readOnly, disabled }),
-        props.class,
-      ]"
+      :class="cn(checkboxVariants({ size, error: isError, readOnly, disabled }), props.class)"
     >
       <CheckboxIndicator class="grid place-content-center text-current">
         <slot>
