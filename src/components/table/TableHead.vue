@@ -26,7 +26,7 @@ const justifyClass = computed(() =>
   <th
     :class="
       cn(
-        'text-left align-middle text-grey-90 bg-grey-20 text-size-13 whitespace-nowrap border-b border-grey-30 py-[6px] px-[8px] [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5',
+        'text-left align-middle text-grey-90 bg-grey-20 text-size-13 whitespace-nowrap border-b border-grey-40 py-[6px] px-[8px] [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5',
         props.class
       )
     "
