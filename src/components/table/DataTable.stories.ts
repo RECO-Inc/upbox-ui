@@ -8,7 +8,6 @@ const meta = {
   component: DataTable as any,
   tags: ['autodocs'],
   argTypes: {
-    size: { control: 'select', options: ['small', 'regular', 'large'] },
     loading: { control: 'boolean' },
     selectable: { control: 'boolean' },
   },

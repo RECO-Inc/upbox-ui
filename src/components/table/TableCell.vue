@@ -1,35 +1,24 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { computed } from "vue"
 import { cn } from "../../lib/utils"
-
-export type TableCellSize = "small" | "regular" | "large"
 
 const props = defineProps<{
   class?: HTMLAttributes["class"]
-  size?: TableCellSize
 }>()
 
-const sizeClasses = computed(() => {
-  switch (props.size) {
-    case "small":
-      return "p-[10px]" // 10px
-    case "large":
-      return "py-[24px] px-[16px]" // 24px 16px
-    case "regular":
-      return "p-[16px]" // 16px
-    default:
-      return "py-[8px] px-[16px]" // 8px 16px (기본값)
-  }
-})
+/**
+ * 패딩은 단일 값이다(size prop 없음).
+ * 시안(Component _v02)의 table 은 singleline / doubleLine variant 만 있고 밀도 축이 없다.
+ * 1줄 행 높이 32px = line-height 20px + 6px * 2 이므로 세로 6px / 가로 8px 로 고정한다.
+ * 2줄 이상은 콘텐츠가 늘어난 결과이므로 별도 prop 없이 자연스럽게 높아진다.
+ */
 </script>
 
 <template>
   <td
     :class="
       cn(
-        'align-middle text-grey-90 text-size-13 break-words max-w-full [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5',
-        sizeClasses,
+        'align-middle text-grey-90 text-size-13 break-words max-w-full py-[6px] px-[8px] [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5',
         props.class,
       )
     "

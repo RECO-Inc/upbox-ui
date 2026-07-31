@@ -9,5 +9,3 @@ export { default as TableFooter } from './TableFooter';
 export { default as TableHead } from './TableHead';
 export { default as TableHeader } from './TableHeader';
 export { default as TableRow } from './TableRow';
-export type { TableHeadSize } from './TableHead';
-export type { TableCellSize } from './TableCell';

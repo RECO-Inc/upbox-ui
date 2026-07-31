@@ -4,10 +4,6 @@ declare const meta: {
     component: any;
     tags: string[];
     argTypes: {
-        size: {
-            control: "select";
-            options: string[];
-        };
         loading: {
             control: "boolean";
         };

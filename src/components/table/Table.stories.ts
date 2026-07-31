@@ -133,58 +133,50 @@ export const WithFooter: Story = {
   }),
 }
 
-export const CellSizes: Story = {
+/**
+ * 셀 밀도는 단일 값이다(size prop 없음).
+ * 시안의 singleline / doubleLine 은 밀도 옵션이 아니라 콘텐츠가 몇 줄로 흐르느냐의 결과라,
+ * 별도 prop 없이 행 높이가 자연스럽게 32px / 52px 로 늘어난다.
+ */
+export const RowHeights: Story = {
   render: () => ({
     components: { Table, TableBody, TableCell, TableHead, TableHeader, TableRow },
     template: `
       <div class="flex flex-col gap-[24px]">
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Small cells</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">1줄 (행 높이 32px)</p>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead size="small">Name</TableHead>
-                <TableHead size="small">Value</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell size="small">Row 1</TableCell>
-                <TableCell size="small">Data</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </div>
-        <div>
-          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Regular cells (default)</p>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Name</TableHead>
+                <TableHead class="w-[160px]">Name</TableHead>
                 <TableHead>Value</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
                 <TableCell>Row 1</TableCell>
-                <TableCell>Data</TableCell>
+                <TableCell>한 줄로 끝나는 셀</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Row 2</TableCell>
+                <TableCell>한 줄로 끝나는 셀</TableCell>
               </TableRow>
             </TableBody>
           </Table>
         </div>
         <div>
-          <p class="text-size-13 font-bold mb-[8px] text-grey-80">Large cells</p>
+          <p class="text-size-13 font-bold mb-[8px] text-grey-80">2줄 (행 높이 52px — 줄바꿈 결과)</p>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead size="large">Name</TableHead>
-                <TableHead size="large">Value</TableHead>
+                <TableHead class="w-[160px]">Name</TableHead>
+                <TableHead>Value</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell size="large">Row 1</TableCell>
-                <TableCell size="large">Data</TableCell>
+                <TableCell>Row 1</TableCell>
+                <TableCell class="w-[240px]">두 줄짜리 컴포넌트가 사용되는 테이블 유형입니다_최대 두 줄까지 노출</TableCell>
               </TableRow>
             </TableBody>
           </Table>
