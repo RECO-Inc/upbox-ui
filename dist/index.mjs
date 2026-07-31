@@ -10363,7 +10363,7 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
       ], 64))), 128))
     ], 2));
   }
-}), gu = { class: "relative w-full overflow-x-auto overflow-y-visible bg-grey-10" }, yu = /* @__PURE__ */ v({
+}), gu = { class: "relative w-full overflow-x-auto overflow-y-clip bg-grey-10" }, yu = /* @__PURE__ */ v({
   __name: "Table",
   props: {
     class: { type: [Boolean, null, String, Object, Array] }
