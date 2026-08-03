@@ -10430,13 +10430,8 @@ const df = /* @__PURE__ */ Oe(cu, [["render", pu]]), uf = /* @__PURE__ */ v({
           key: 0,
           ref_key: "textRef",
           ref: o,
-          class: "min-w-0",
-          style: he({
-            display: "-webkit-box",
-            WebkitBoxOrient: "vertical",
-            WebkitLineClamp: String(a.clampLines),
-            overflow: "hidden"
-          })
+          class: "min-w-0 overflow-hidden [-webkit-box-orient:vertical] [display:-webkit-box]",
+          style: he({ WebkitLineClamp: String(a.clampLines) })
         }, [
           g(p.$slots, "default")
         ], 4)) : g(p.$slots, "default", { key: 1 }),

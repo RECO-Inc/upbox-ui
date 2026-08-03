@@ -93,20 +93,17 @@ onBeforeUnmount(() => {
   >
     <div v-if="needsWrapper" :class="['flex items-center gap-[4px]', justifyClass]">
       <!--
-        line-clamp 는 줄 수가 동적이라 유틸리티 대신 인라인 스타일로 지정한다.
+        display / box-orient 는 클래스로 준다. 벤더 프리픽스를 JS 스타일 객체로 넘기면
+        환경에 따라 조용히 누락될 수 있는데, -webkit-box-orient 가 빠지면 line-clamp 가
+        아예 동작하지 않는다(브라우저 실측 확인). 줄 수만 동적이라 인라인으로 남긴다.
         flex-1 을 주지 않는 이유 — 짧은 내용은 폭을 차지하지 않아야 align 이 먹고,
         긴 내용은 flex: 0 1 auto 로 남는 폭까지 늘어난 뒤 줄바꿈된다.
       -->
       <div
         v-if="truncate"
         ref="textRef"
-        class="min-w-0"
-        :style="{
-          display: '-webkit-box',
-          WebkitBoxOrient: 'vertical',
-          WebkitLineClamp: String(clampLines),
-          overflow: 'hidden',
-        }"
+        class="min-w-0 overflow-hidden [-webkit-box-orient:vertical] [display:-webkit-box]"
+        :style="{ WebkitLineClamp: String(clampLines) }"
       >
         <slot />
       </div>
