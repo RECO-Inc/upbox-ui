@@ -12,7 +12,6 @@ declare const _default: <Row extends Record<string, any> = Record<string, any>>(
         rows: Row[];
         /** 행 고유키: 속성명 또는 (row) => key */
         rowKey: string | ((row: Row) => DataTableRowKey);
-        size?: "small" | "regular" | "large";
         loading?: boolean;
         emptyText?: string;
         /** 체크박스 선택 컬럼 노출 (v-model:selected 와 함께 사용) */

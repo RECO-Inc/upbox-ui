@@ -1,8 +1,6 @@
 import { HTMLAttributes } from 'vue';
-export type TableHeadSize = "small" | "regular" | "large";
 type __VLS_Props = {
     class?: HTMLAttributes["class"];
-    size?: TableHeadSize;
     tooltip?: string;
     /** 헤더 정렬 (default: left). 내부 flex 컨테이너를 justify 하므로 text-align 보다 안전 */
     align?: "left" | "center" | "right";

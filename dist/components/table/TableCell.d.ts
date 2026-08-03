@@ -1,8 +1,6 @@
 import { HTMLAttributes } from 'vue';
-export type TableCellSize = "small" | "regular" | "large";
 type __VLS_Props = {
     class?: HTMLAttributes["class"];
-    size?: TableCellSize;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;

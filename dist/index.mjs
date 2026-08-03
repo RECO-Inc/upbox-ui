@@ -10363,7 +10363,7 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
       ], 64))), 128))
     ], 2));
   }
-}), gu = { class: "relative w-full overflow-x-auto overflow-y-visible bg-grey-10" }, yu = /* @__PURE__ */ v({
+}), gu = { class: "relative w-full overflow-x-auto overflow-y-clip bg-grey-10" }, yu = /* @__PURE__ */ v({
   __name: "Table",
   props: {
     class: { type: [Boolean, null, String, Object, Array] }
@@ -10394,35 +10394,19 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
 }), Ft = /* @__PURE__ */ v({
   __name: "TableCell",
   props: {
-    class: { type: [Boolean, null, String, Object, Array] },
-    size: {}
+    class: { type: [Boolean, null, String, Object, Array] }
   },
   setup(a) {
-    const l = a, e = _(() => {
-      switch (l.size) {
-        case "small":
-          return "p-[10px]";
-        // 10px
-        case "large":
-          return "py-[24px] px-[16px]";
-        // 24px 16px
-        case "regular":
-          return "p-[16px]";
-        // 16px
-        default:
-          return "py-[8px] px-[16px]";
-      }
-    });
-    return (s, o) => (n(), g("td", {
+    const l = a;
+    return (e, s) => (n(), g("td", {
       class: x(
         t(m)(
-          "align-middle text-grey-90 text-size-13 break-words max-w-full [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5",
-          e.value,
+          "align-middle text-grey-90 text-size-13 break-words max-w-full py-[6px] px-[8px] [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5",
           l.class
         )
       )
     }, [
-      y(s.$slots, "default")
+      y(e.$slots, "default")
     ], 2));
   }
 }), It = /* @__PURE__ */ v({
@@ -10469,37 +10453,25 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
   __name: "TableHead",
   props: {
     class: { type: [Boolean, null, String, Object, Array] },
-    size: {},
     tooltip: {},
     align: {}
   },
   setup(a) {
-    const l = a, e = _(() => {
-      switch (l.size) {
-        case "small":
-          return "p-[10px]";
-        // 10px
-        case "large":
-          return "py-[24px] px-[16px]";
-        default:
-          return "p-[16px]";
-      }
-    }), s = _(
+    const l = a, e = _(
       () => l.align === "center" ? "justify-center" : l.align === "right" ? "justify-end" : "justify-start"
     );
-    return (o, r) => (n(), g("th", {
+    return (s, o) => (n(), g("th", {
       class: x(
         t(m)(
-          "text-left align-middle text-grey-90 bg-grey-20 text-size-13 whitespace-nowrap border-b border-grey-30 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5",
-          e.value,
+          "text-left align-middle text-grey-90 bg-grey-20 text-size-13 whitespace-nowrap border-b border-grey-40 py-[6px] px-[8px] [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5",
           l.class
         )
       )
     }, [
       w("div", {
-        class: x(["flex items-center gap-[4px]", s.value])
+        class: x(["flex items-center gap-[4px]", e.value])
       }, [
-        y(o.$slots, "default"),
+        y(s.$slots, "default"),
         a.tooltip ? (n(), b(t(su), { key: 0 }, {
           default: i(() => [
             u(t(fl), null, {
@@ -10550,7 +10522,6 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
     columns: {},
     rows: {},
     rowKey: {},
-    size: { default: "regular" },
     loading: { type: Boolean, default: !1 },
     emptyText: { default: "조회 결과가 없습니다." },
     selectable: { type: Boolean, default: !1 },
@@ -10620,7 +10591,6 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
               default: i(() => [
                 a.selectable ? (n(), b(xa, {
                   key: 0,
-                  size: a.size,
                   align: "center",
                   class: "w-[48px] px-0"
                 }, {
@@ -10632,10 +10602,9 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
                     }, null, 8, ["model-value", "disabled"])
                   ]),
                   _: 1
-                }, 8, ["size"])) : I("", !0),
+                })) : I("", !0),
                 (n(!0), g(X, null, se(a.columns, (E) => (n(), b(xa, {
                   key: E.key,
-                  size: a.size,
                   align: E.align,
                   tooltip: E.headTooltip,
                   style: we(c(E))
@@ -10646,7 +10615,7 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
                     ], !0)
                   ]),
                   _: 2
-                }, 1032, ["size", "align", "tooltip", "style"]))), 128))
+                }, 1032, ["align", "tooltip", "style"]))), 128))
               ]),
               _: 3
             })
@@ -10696,7 +10665,6 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
               default: i(() => [
                 a.selectable ? (n(), b(Ft, {
                   key: 0,
-                  size: a.size,
                   class: "w-[48px] px-0",
                   onClick: T[0] || (T[0] = ge(() => {
                   }, ["stop"]))
@@ -10711,10 +10679,9 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
                     ])
                   ]),
                   _: 2
-                }, 1032, ["size"])) : I("", !0),
+                }, 1024)) : I("", !0),
                 (n(!0), g(X, null, se(a.columns, (C) => (n(), b(Ft, {
                   key: C.key,
-                  size: a.size,
                   class: x(d(C.align)),
                   style: we(c(C))
                 }, {
@@ -10728,7 +10695,7 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
                     ], !0)
                   ]),
                   _: 2
-                }, 1032, ["size", "class", "style"]))), 128))
+                }, 1032, ["class", "style"]))), 128))
               ]),
               _: 2
             }, 1032, ["data-state", "class", "onClick"]))), 128))
@@ -10739,7 +10706,7 @@ const nf = /* @__PURE__ */ Oe(iu, [["render", du]]), of = /* @__PURE__ */ v({
       _: 3
     }, 8, ["class"]));
   }
-}), pf = /* @__PURE__ */ Oe(Bu, [["__scopeId", "data-v-b9bd922e"]]), ff = /* @__PURE__ */ v({
+}), pf = /* @__PURE__ */ Oe(Bu, [["__scopeId", "data-v-4bcdba30"]]), ff = /* @__PURE__ */ v({
   __name: "TableCaption",
   props: {
     class: { type: [Boolean, null, String, Object, Array] }

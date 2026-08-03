@@ -16,7 +16,6 @@ const props = withDefaults(defineProps<{
   rows: Row[]
   /** 행 고유키: 속성명 또는 (row) => key */
   rowKey: string | ((row: Row) => DataTableRowKey)
-  size?: "small" | "regular" | "large"
   loading?: boolean
   emptyText?: string
   /** 체크박스 선택 컬럼 노출 (v-model:selected 와 함께 사용) */
@@ -27,7 +26,6 @@ const props = withDefaults(defineProps<{
   rowDisabled?: (row: Row) => boolean
   class?: HTMLAttributes["class"]
 }>(), {
-  size: "regular",
   loading: false,
   emptyText: "조회 결과가 없습니다.",
   selectable: false,
@@ -111,7 +109,7 @@ function onRowClick(row: Row, index: number) {
 
     <TableHeader>
       <TableRow>
-        <TableHead v-if="selectable" :size="size" align="center" class="w-[48px] px-0">
+        <TableHead v-if="selectable" align="center" class="w-[48px] px-0">
           <Checkbox
             :model-value="headerState"
             :disabled="loading || selectableRows.length === 0"
@@ -121,7 +119,6 @@ function onRowClick(row: Row, index: number) {
         <TableHead
           v-for="col in columns"
           :key="col.key"
-          :size="size"
           :align="col.align"
           :tooltip="col.headTooltip"
           :style="cellStyle(col)"
@@ -159,7 +156,7 @@ function onRowClick(row: Row, index: number) {
           :class="rowDisabled?.(row) ? 'opacity-50' : 'cursor-pointer'"
           @click="onRowClick(row, index)"
         >
-          <TableCell v-if="selectable" :size="size" class="w-[48px] px-0" @click.stop>
+          <TableCell v-if="selectable" class="w-[48px] px-0" @click.stop>
             <!-- flex-center 로 감싸 inline baseline 의존 제거 (체크 토글 시 행 높이 변동 방지) -->
             <div class="flex items-center justify-center">
               <Checkbox
@@ -172,7 +169,6 @@ function onRowClick(row: Row, index: number) {
           <TableCell
             v-for="col in columns"
             :key="col.key"
-            :size="size"
             :class="alignClass(col.align)"
             :style="cellStyle(col)"
           >
