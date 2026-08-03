@@ -138,6 +138,76 @@ export const WithFooter: Story = {
  * 시안의 singleline / doubleLine 은 밀도 옵션이 아니라 콘텐츠가 몇 줄로 흐르느냐의 결과라,
  * 별도 prop 없이 행 높이가 자연스럽게 32px / 52px 로 늘어난다.
  */
+/**
+ * truncate — 셀 내용을 clampLines 줄에서 말줄임하고, 실제로 잘렸을 때만
+ * 전문 보기 아이콘을 노출한다. 아이콘 hover 시 전체 텍스트가 툴팁으로 뜬다.
+ * 잘리지 않은 셀에는 아이콘이 붙지 않는다.
+ */
+export const TruncatedCell: Story = {
+  render: () => ({
+    components: { Table, TableBody, TableCell, TableHead, TableHeader, TableRow },
+    template: `
+      <div class="w-[420px]">
+        <Table class="table-fixed">
+          <TableHeader>
+            <TableRow>
+              <TableHead class="w-[100px]">이름</TableHead>
+              <TableHead>비고 (truncate)</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>짧은 내용</TableCell>
+              <TableCell truncate>한 줄로 끝나 아이콘이 붙지 않는다</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>긴 내용</TableCell>
+              <TableCell truncate>
+                두 줄을 넘겨서 말줄임되는 셀이다. 잘린 경우에만 오른쪽에 아이콘이 붙고,
+                아이콘에 hover 하면 잘리지 않은 전체 텍스트를 툴팁으로 보여준다.
+                이 문장은 clamp 를 확실히 넘기기 위한 것이다.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>1줄 clamp</TableCell>
+              <TableCell truncate :clamp-lines="1">
+                clampLines 로 노출 줄 수를 바꿀 수 있다. 여기서는 한 줄만 보여준다.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+    `,
+  }),
+}
+
+/** tooltip-icon 슬롯으로 전문 보기 트리거를 교체할 수 있다 */
+export const TruncatedCellCustomIcon: Story = {
+  render: () => ({
+    components: { Table, TableBody, TableCell, TableHead, TableHeader, TableRow },
+    template: `
+      <div class="w-[360px]">
+        <Table class="table-fixed">
+          <TableHeader>
+            <TableRow><TableHead>비고</TableHead></TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell truncate>
+                <template #tooltip-icon>
+                  <span class="text-size-12 text-blue-80 underline">더보기</span>
+                </template>
+                기본 아이콘 대신 원하는 트리거를 넣을 수 있다. 두 줄을 넘겨야 노출되므로
+                이 문장은 충분히 길게 작성한다. 잘리지 않으면 트리거도 나타나지 않는다.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+    `,
+  }),
+}
+
 export const RowHeights: Story = {
   render: () => ({
     components: { Table, TableBody, TableCell, TableHead, TableHeader, TableRow },
