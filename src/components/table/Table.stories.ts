@@ -174,6 +174,14 @@ export const TruncatedCell: Story = {
                 clampLines 로 노출 줄 수를 바꿀 수 있다. 여기서는 한 줄만 보여준다.
               </TableCell>
             </TableRow>
+            <TableRow>
+              <TableCell align="center">가운데</TableCell>
+              <TableCell truncate align="center">짧으면 가운데</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell align="right">오른쪽</TableCell>
+              <TableCell truncate align="right">짧으면 오른쪽</TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </div>

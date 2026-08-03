@@ -8,6 +8,11 @@ type __VLS_Props = {
     truncate?: boolean;
     /** truncate 시 노출할 최대 줄 수 */
     clampLines?: number;
+    /**
+     * 셀 내용 정렬 (default: left).
+     * 내부 flex 컨테이너를 justify 하므로 text-align 보다 안전하다. TableHead 의 align 과 대응한다.
+     */
+    align?: "left" | "center" | "right";
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;

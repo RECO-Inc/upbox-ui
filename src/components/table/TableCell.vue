@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { onBeforeUnmount, onMounted, onUpdated, ref } from "vue"
+import { computed, onBeforeUnmount, onMounted, onUpdated, ref } from "vue"
 import { TextAlignStart } from "lucide-vue-next"
 import { cn } from "../../lib/utils"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../tooltip"
@@ -15,11 +15,23 @@ const props = withDefaults(
     truncate?: boolean
     /** truncate 시 노출할 최대 줄 수 */
     clampLines?: number
+    /**
+     * 셀 내용 정렬 (default: left).
+     * 내부 flex 컨테이너를 justify 하므로 text-align 보다 안전하다. TableHead 의 align 과 대응한다.
+     */
+    align?: "left" | "center" | "right"
   }>(),
   {
     truncate: false,
     clampLines: 2,
   },
+)
+
+/** align 이나 truncate 가 필요하면 내부 flex 래퍼를 렌더한다 */
+const needsWrapper = computed(() => props.truncate || props.align != null)
+
+const justifyClass = computed(() =>
+  props.align === "center" ? "justify-center" : props.align === "right" ? "justify-end" : "justify-start",
 )
 
 defineSlots<{
@@ -79,11 +91,16 @@ onBeforeUnmount(() => {
       )
     "
   >
-    <div v-if="truncate" class="flex items-center gap-[4px]">
-      <!-- line-clamp 는 줄 수가 동적이라 유틸리티 대신 인라인 스타일로 지정한다 -->
+    <div v-if="needsWrapper" :class="['flex items-center gap-[4px]', justifyClass]">
+      <!--
+        line-clamp 는 줄 수가 동적이라 유틸리티 대신 인라인 스타일로 지정한다.
+        flex-1 을 주지 않는 이유 — 짧은 내용은 폭을 차지하지 않아야 align 이 먹고,
+        긴 내용은 flex: 0 1 auto 로 남는 폭까지 늘어난 뒤 줄바꿈된다.
+      -->
       <div
+        v-if="truncate"
         ref="textRef"
-        class="min-w-0 flex-1"
+        class="min-w-0"
         :style="{
           display: '-webkit-box',
           WebkitBoxOrient: 'vertical',
@@ -93,7 +110,8 @@ onBeforeUnmount(() => {
       >
         <slot />
       </div>
-      <TooltipProvider v-if="isTruncated">
+      <slot v-else />
+      <TooltipProvider v-if="truncate && isTruncated">
         <Tooltip>
           <TooltipTrigger as-child>
             <!-- 행 클릭 핸들러가 있는 테이블에서 아이콘 조작이 행 클릭으로 새지 않게 막는다 -->
@@ -113,6 +131,6 @@ onBeforeUnmount(() => {
         </Tooltip>
       </TooltipProvider>
     </div>
-    <slot v-else />
+    <slot v-else-if="!needsWrapper" />
   </td>
 </template>
