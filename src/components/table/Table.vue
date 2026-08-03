@@ -3,7 +3,14 @@ import type { HTMLAttributes } from "vue"
 import { cn } from "../../lib/utils"
 
 const props = defineProps<{
+  /** <table> 에 적용할 클래스 */
   class?: HTMLAttributes["class"]
+  /**
+   * 스크롤 래퍼 div 에 적용할 클래스.
+   * 바깥에 이미 스크롤 컨테이너가 있어 이 래퍼의 overflow 를 끄고 싶을 때 쓴다
+   * (예: overflow-visible). class prop 은 <table> 로 가므로 래퍼는 이 prop 으로 제어한다.
+   */
+  wrapperClass?: HTMLAttributes["class"]
 }>()
 
 /**
@@ -17,7 +24,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="relative w-full overflow-x-auto overflow-y-clip bg-grey-10">
+  <div :class="cn('relative w-full overflow-x-auto overflow-y-clip bg-grey-10', props.wrapperClass)">
     <table :class="cn('w-full caption-bottom text-size-13 min-w-full border border-grey-30 rounded-sm', props.class)">
       <slot />
     </table>

@@ -4,6 +4,7 @@ declare const meta: {
     component: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
             class?: import('vue').HTMLAttributes["class"];
+            wrapperClass?: import('vue').HTMLAttributes["class"];
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -13,12 +14,14 @@ declare const meta: {
             Defaults: {};
         }, Readonly<{
             class?: import('vue').HTMLAttributes["class"];
+            wrapperClass?: import('vue').HTMLAttributes["class"];
         }> & Readonly<{}>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
     } & import('vue').ComponentOptionsBase<Readonly<{
         class?: import('vue').HTMLAttributes["class"];
+        wrapperClass?: import('vue').HTMLAttributes["class"];
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: {
             default?(_: {}): any;
