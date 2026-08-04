@@ -16,6 +16,12 @@ type __VLS_Props = DialogContentProps & {
      * 전체화면을 컴포넌트가 소유해서 애초에 `left-1/2`/`top-1/2` 를 방출하지 않는다.
      */
     fullscreen?: boolean;
+    /**
+     * 오버레이(dim)에 얹을 클래스. 비모달 패널처럼 dim 을 투명하게 하거나
+     * 클릭을 통과시켜야 할 때 쓴다 (`bg-transparent pointer-events-none`).
+     * 오버레이는 포털 내부라 소비자가 바깥에서 잡을 수 없어 prop 으로 연다.
+     */
+    overlayClass?: HTMLAttributes["class"];
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
