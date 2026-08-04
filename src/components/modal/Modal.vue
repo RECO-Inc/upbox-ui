@@ -15,7 +15,7 @@ import type { ModalProps } from "./modalProps"
 const props = withDefaults(defineProps<ModalProps>(), {
   size: "regular",
   showClose: true,
-  closeOnOverlay: true,
+  closeOnOverlay: false,
   closeOnEscape: true,
   confirmText: "확인",
   cancelText: "닫기",

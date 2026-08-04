@@ -3477,7 +3477,7 @@ const nl = /* @__PURE__ */ v({
     description: {},
     size: { default: "regular" },
     showClose: { type: Boolean, default: !0 },
-    closeOnOverlay: { type: Boolean, default: !0 },
+    closeOnOverlay: { type: Boolean, default: !1 },
     closeOnEscape: { type: Boolean, default: !0 },
     confirmText: { default: "확인" },
     cancelText: { default: "닫기" },
