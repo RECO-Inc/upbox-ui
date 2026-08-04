@@ -3469,7 +3469,7 @@ const nl = /* @__PURE__ */ v({
       _: 3
     }, 16));
   }
-}), nr = { class: "grid content-start gap-[16px] min-h-0 overflow-y-auto" }, Oc = /* @__PURE__ */ v({
+}), nr = { class: "grid content-start gap-[16px] min-h-0 overflow-y-auto text-size-15 text-grey-90" }, Oc = /* @__PURE__ */ v({
   __name: "Modal",
   props: {
     open: { type: Boolean },
