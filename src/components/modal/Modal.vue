@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue"
+import { cn } from "../../lib/utils"
 import { Button } from "../button"
 import {
   Dialog,
@@ -81,11 +82,11 @@ function onEscapeKeyDown(event: KeyboardEvent) {
     <DialogContent
       :size="size"
       :hide-close="!showClose"
-      :class="props.class"
+      :class="cn('flex flex-col max-h-[calc(var(--vh,1vh)*94)]', props.class)"
       @interact-outside="onInteractOutside"
       @escape-key-down="onEscapeKeyDown"
     >
-      <DialogHeader v-if="title || description || slots.header">
+      <DialogHeader v-if="title || description || slots.header" class="shrink-0">
         <slot name="header">
           <DialogTitle v-if="title">
             {{ title }}
@@ -96,9 +97,18 @@ function onEscapeKeyDown(event: KeyboardEvent) {
         </slot>
       </DialogHeader>
 
-      <slot />
+      <!--
+        본문만 스크롤한다. 헤더/푸터는 고정.
+        `grid gap-[16px]` 인 이유: 예전에는 본문 내용이 DialogContent(grid) 의 직접
+        자식이라 최상위 요소끼리 16px 간격을 가졌다. 그냥 div 로 감싸면 그 간격이
+        사라지므로 wrapper 가 같은 grid/gap 을 이어받는다.
+        높이 상한은 앱의 `--vh`(모바일 주소창 보정)를 쓰되 없으면 94vh 로 떨어진다.
+      -->
+      <div class="grid content-start gap-[16px] min-h-0 overflow-y-auto">
+        <slot />
+      </div>
 
-      <DialogFooter v-if="hasFooter" :class="footerClass">
+      <DialogFooter v-if="hasFooter" :class="cn('shrink-0', footerClass)">
         <slot name="footer" :close="close" :confirm="onConfirm" :cancel="onCancel">
           <Button
             v-if="!hideCancel"
