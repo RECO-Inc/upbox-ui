@@ -12,7 +12,13 @@ export interface ModalProps {
   size?: DialogSize
   /** 우상단 닫기(X) 버튼 노출 (default: true) — 레거시 canDefaultClose 대응 */
   showClose?: boolean
-  /** 배경(overlay) 클릭으로 닫기 (default: true) */
+  /**
+   * 배경(overlay) 클릭으로 닫기 (default: **false**)
+   *
+   * 확인 다이얼로그·폼에서 배경을 잘못 눌러 입력이 날아가는 사고가 크기 때문에
+   * 닫지 않는 쪽을 기본으로 둔다. 레거시 `Popup` 의 `closeOnTouchBackground`
+   * 기본값과도 같아, 그쪽에서 넘어오는 화면이 옵션 없이 동작을 유지한다.
+   */
   closeOnOverlay?: boolean
   /** ESC 키로 닫기 (default: true) */
   closeOnEscape?: boolean
