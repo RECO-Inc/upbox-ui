@@ -3293,7 +3293,8 @@ const nl = /* @__PURE__ */ v({
     as: {},
     class: { type: [Boolean, null, String, Object, Array] },
     size: { default: "regular" },
-    hideClose: { type: Boolean, default: !1 }
+    hideClose: { type: Boolean, default: !1 },
+    fullscreen: { type: Boolean, default: !1 }
   },
   emits: ["escapeKeyDown", "pointerDownOutside", "focusOutside", "interactOutside", "openAutoFocus", "closeAutoFocus"],
   setup(a, { emit: l }) {
@@ -3304,14 +3305,14 @@ const nl = /* @__PURE__ */ v({
       large: "max-w-[934px]",
       xlarge: "max-w-[1124px]",
       full: "max-w-[100vw]"
-    }, s = a, o = l, r = G(s, "class", "size", "hideClose"), d = de(r, o);
+    }, s = a, o = l, r = G(s, "class", "size", "hideClose", "fullscreen"), d = de(r, o);
     return (f, c) => (n(), b(t(Et), null, {
       default: i(() => [
         u(t(Ht), { class: "ui-dialog-overlay fixed inset-0 z-50 bg-black/50" }),
         u(t(Nt), F(t(d), {
           class: t(m)(
-            "ui-dialog-content fixed left-1/2 top-1/2 z-50 grid w-[92%] gap-[16px] border border-grey-30 bg-grey-10 p-[24px] shadow-lg rounded-[8px]",
-            e[a.size],
+            "ui-dialog-content fixed z-50 grid gap-[16px] border border-grey-30 bg-grey-10 p-[24px] shadow-lg",
+            a.fullscreen ? "ui-dialog-content--fullscreen inset-0 w-full max-w-none rounded-none border-0" : ["left-1/2 top-1/2 w-[92%] rounded-[8px]", e[a.size]],
             s.class
           )
         }), {
@@ -3334,7 +3335,7 @@ const nl = /* @__PURE__ */ v({
       _: 3
     }));
   }
-}), Jo = /* @__PURE__ */ Oe(Xo, [["__scopeId", "data-v-a4834c0d"]]), er = /* @__PURE__ */ v({
+}), Jo = /* @__PURE__ */ Oe(Xo, [["__scopeId", "data-v-c970a411"]]), er = /* @__PURE__ */ v({
   __name: "DialogDescription",
   props: {
     asChild: { type: Boolean },

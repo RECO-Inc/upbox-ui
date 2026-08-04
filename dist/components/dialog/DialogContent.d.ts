@@ -6,6 +6,16 @@ type __VLS_Props = DialogContentProps & {
     size?: DialogSize;
     /** 우상단 닫기(X) 버튼 숨김 (default: false) */
     hideClose?: boolean;
+    /**
+     * 뷰포트를 꽉 채우는 전체화면 모드. `size` 는 무시된다.
+     *
+     * 소비 앱이 `@import "tailwindcss" important` 인 경우 DS dist 를 `@source` 로
+     * 스캔하면서 여기서 쓰는 `left-1/2`/`top-1/2` 까지 `!important` 가 된다.
+     * 그래서 앱이 바깥에서 `inset-0` 같은 유틸로 덮으려 하면 둘 다 important 라
+     * Tailwind 내부 정렬 순서에 승패가 좌우된다(= 불안정).
+     * 전체화면을 컴포넌트가 소유해서 애초에 `left-1/2`/`top-1/2` 를 방출하지 않는다.
+     */
+    fullscreen?: boolean;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -33,6 +43,7 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
 }>, {
     size: DialogSize;
     hideClose: boolean;
+    fullscreen: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

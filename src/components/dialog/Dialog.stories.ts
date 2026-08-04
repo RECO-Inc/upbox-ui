@@ -78,3 +78,29 @@ export const WithForm: Story = {
     `,
   }),
 }
+
+export const Fullscreen: Story = {
+  render: () => ({
+    components: { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose, Button },
+    template: `
+      <Dialog>
+        <DialogTrigger as-child>
+          <Button>Open Fullscreen Dialog</Button>
+        </DialogTrigger>
+        <DialogContent fullscreen class="flex flex-col">
+          <DialogHeader>
+            <DialogTitle>Fullscreen Dialog</DialogTitle>
+            <DialogDescription>size 는 무시되고 뷰포트를 꽉 채운다. 모바일 전체화면 팝업에 쓴다.</DialogDescription>
+          </DialogHeader>
+          <p class="flex-1 text-size-14 text-grey-70">본문이 남은 높이를 차지한다.</p>
+          <DialogFooter>
+            <DialogClose as-child>
+              <Button variant="tertiary" theme="outlined">Cancel</Button>
+            </DialogClose>
+            <Button variant="primary">Confirm</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    `,
+  }),
+}

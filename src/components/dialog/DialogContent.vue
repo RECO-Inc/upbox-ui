@@ -29,13 +29,24 @@ const props = withDefaults(defineProps<DialogContentProps & {
   size?: DialogSize
   /** 우상단 닫기(X) 버튼 숨김 (default: false) */
   hideClose?: boolean
+  /**
+   * 뷰포트를 꽉 채우는 전체화면 모드. `size` 는 무시된다.
+   *
+   * 소비 앱이 `@import "tailwindcss" important` 인 경우 DS dist 를 `@source` 로
+   * 스캔하면서 여기서 쓰는 `left-1/2`/`top-1/2` 까지 `!important` 가 된다.
+   * 그래서 앱이 바깥에서 `inset-0` 같은 유틸로 덮으려 하면 둘 다 important 라
+   * Tailwind 내부 정렬 순서에 승패가 좌우된다(= 불안정).
+   * 전체화면을 컴포넌트가 소유해서 애초에 `left-1/2`/`top-1/2` 를 방출하지 않는다.
+   */
+  fullscreen?: boolean
 }>(), {
   size: "regular",
   hideClose: false,
+  fullscreen: false,
 })
 const emits = defineEmits<DialogContentEmits>()
 
-const delegatedProps = reactiveOmit(props, "class", "size", "hideClose")
+const delegatedProps = reactiveOmit(props, "class", "size", "hideClose", "fullscreen")
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
@@ -49,8 +60,10 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
       v-bind="forwarded"
       :class="
         cn(
-          'ui-dialog-content fixed left-1/2 top-1/2 z-50 grid w-[92%] gap-[16px] border border-grey-30 bg-grey-10 p-[24px] shadow-lg rounded-[8px]',
-          DIALOG_SIZE_MAP[size],
+          'ui-dialog-content fixed z-50 grid gap-[16px] border border-grey-30 bg-grey-10 p-[24px] shadow-lg',
+          fullscreen
+            ? 'ui-dialog-content--fullscreen inset-0 w-full max-w-none rounded-none border-0'
+            : ['left-1/2 top-1/2 w-[92%] rounded-[8px]', DIALOG_SIZE_MAP[size]],
           props.class,
         )"
     >
@@ -110,6 +123,29 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 }
 .ui-dialog-content[data-state="closed"] {
   animation: ui-dialog-content-out 0.2s ease both;
+}
+
+/* 전체화면은 중앙 정렬이 아니라 뷰포트를 채우므로 translate 를 지운다.
+   위의 `.ui-dialog-content*` 규칙들과 specificity 가 같아 순서로 이긴다 — 반드시 뒤에 둘 것.
+   모션도 scale/translate 없이 페이드만 (전체화면이 확대되며 들어오면 과하다). */
+.ui-dialog-content--fullscreen {
+  transform: none;
+}
+
+@keyframes ui-dialog-content-fullscreen-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes ui-dialog-content-fullscreen-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.ui-dialog-content--fullscreen[data-state="open"] {
+  animation: ui-dialog-content-fullscreen-in 0.2s ease both;
+}
+.ui-dialog-content--fullscreen[data-state="closed"] {
+  animation: ui-dialog-content-fullscreen-out 0.2s ease both;
 }
 
 @media (prefers-reduced-motion: reduce) {
