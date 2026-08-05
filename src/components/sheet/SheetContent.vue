@@ -31,8 +31,17 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 
 <template>
   <DialogPortal>
+    <!--
+      `ui-sheet-overlay` 는 소비자가 "진짜 배경(dim) 을 건드렸는가" 를 판정하기 위한
+      훅이다. `DialogContent` 의 `ui-dialog-overlay` 와 대칭.
+
+      reka 기준 "바깥" 은 SheetContent 밖 전부라, body 로 포털되는 시트 **내부** 컨트롤
+      (Select 옵션 목록 등)까지 바깥으로 잡힌다. 소비자가 배경 클릭 닫기를 켠 채로
+      그걸 걸러내려면 오버레이를 특정할 안정적인 이름이 필요한데, 유틸리티 클래스만
+      있으면 잡을 수가 없다. 오버레이는 포털 내부라 바깥에서 클래스를 주입할 수도 없다.
+    -->
     <DialogOverlay
-      class="fixed inset-0 z-50 bg-grey-90/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+      class="ui-sheet-overlay fixed inset-0 z-50 bg-grey-90/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
     />
     <DialogContent
       :class="cn(sheetVariants({ side }), props.class)"

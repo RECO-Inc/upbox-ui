@@ -68,8 +68,29 @@ const hasFooter = computed(() => !!slots.footer || showDefaultFooter.value)
 
 const footerClass = computed(() => (props.footerButtonGrow ? "[&>*]:flex-1" : undefined))
 
+/**
+ * 진짜 배경(dim) 을 건드린 것인지 판별한다.
+ *
+ * reka 기준 "바깥" 은 DialogContent 밖 전부라, body 로 포털되는 모달 **내부** 컨트롤
+ * 까지 바깥으로 잡힌다 — 소비 앱의 레거시 Select 는 옵션 목록을 `<teleport to="body">`
+ * 로 내보내고, DS 의 Select/Dropdown/Popover 도 `[data-reka-popper-content-wrapper]`
+ * 로 body 에 붙는다. 그대로 두면 모달 안 Select 에서 옵션을 고르는 순간 모달이 닫힌다.
+ *
+ * 포털되는 루트를 열거하면 새 컴포넌트가 생길 때마다 빠지므로, 반대로
+ * "오버레이를 직접 건드렸을 때만 배경" 으로 판정한다.
+ */
+function isBackdropInteraction(target: EventTarget | null): boolean {
+  return target instanceof Element && target.closest(".ui-dialog-overlay") !== null
+}
+
 function onInteractOutside(event: Event) {
-  if (!props.closeOnOverlay) event.preventDefault()
+  if (!props.closeOnOverlay) {
+    event.preventDefault()
+    return
+  }
+  const detail = (event as CustomEvent<{ originalEvent?: Event }>).detail
+  const target = detail?.originalEvent?.target ?? event.target
+  if (!isBackdropInteraction(target)) event.preventDefault()
 }
 
 function onEscapeKeyDown(event: KeyboardEvent) {
