@@ -103,8 +103,12 @@ function onEscapeKeyDown(event: KeyboardEvent) {
         자식이라 최상위 요소끼리 16px 간격을 가졌다. 그냥 div 로 감싸면 그 간격이
         사라지므로 wrapper 가 같은 grid/gap 을 이어받는다.
         높이 상한은 앱의 `--vh`(모바일 주소창 보정)를 쓰되 없으면 94vh 로 떨어진다.
+
+        본문 타이포(`text-size-15 text-grey-90`)를 Modal 이 소유한다. 지정하지 않으면
+        브라우저 기본 16px 를 상속해서, 소비 앱의 base 설정에 따라 팝업마다 본문
+        크기가 달라진다. 자식이 자기 `text-*` 를 주면 그쪽이 이긴다.
       -->
-      <div class="grid content-start gap-[16px] min-h-0 overflow-y-auto">
+      <div class="grid content-start gap-[16px] min-h-0 overflow-y-auto text-size-15 text-grey-90">
         <slot />
       </div>
 
