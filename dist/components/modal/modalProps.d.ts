@@ -28,6 +28,15 @@ export interface ModalProps {
      * 팝업(알림함·약관·필터 등)이 이 옵션 없이는 Modal 로 넘어오지 못했다.
      */
     fullscreen?: boolean;
+    /**
+     * 본문 영역에 얹을 클래스 — 레거시 `Popup` 의 `bodyClass` 대응.
+     *
+     * 좌우 패딩 조정(`px-0`/`px-16`)에 주로 쓴다. Modal 이 본문 `div` 를 소유해
+     * 소비자가 바깥에서 잡을 수 없기 때문에 prop 으로 연다(`class` 는 DialogContent
+     * 로 간다). 본문이 자기 패딩을 갖도록 구조를 바꿨기 때문에 `px-0` 이 실제로
+     * 가장자리까지 붙는다.
+     */
+    bodyClass?: HTMLAttributes["class"];
     /** 확인 버튼 텍스트 (default: 확인) — 레거시 confirmButtonText */
     confirmText?: string;
     /** 취소 버튼 텍스트 (default: 닫기) — 레거시 cancelButtonText */

@@ -67,6 +67,8 @@ const showDefaultFooter = computed(() => !props.hideConfirm || !props.hideCancel
 
 const hasFooter = computed(() => !!slots.footer || showDefaultFooter.value)
 
+const hasHeader = computed(() => !!props.title || !!props.description || !!slots.header)
+
 const footerClass = computed(() => (props.footerButtonGrow ? "[&>*]:flex-1" : undefined))
 
 /**
@@ -106,7 +108,8 @@ function onEscapeKeyDown(event: KeyboardEvent) {
       :fullscreen="fullscreen"
       :hide-close="!showClose"
       :class="cn(
-        'flex flex-col',
+        // 패딩은 DialogContent 가 아니라 각 섹션이 갖는다(아래 참고). p-0 으로 걷어낸다.
+        'flex flex-col p-0',
         // 전체화면은 뷰포트를 채우므로 높이 상한을 두지 않는다
         !fullscreen && 'max-h-[calc(var(--vh,1vh)*94)]',
         props.class,
@@ -114,7 +117,7 @@ function onEscapeKeyDown(event: KeyboardEvent) {
       @interact-outside="onInteractOutside"
       @escape-key-down="onEscapeKeyDown"
     >
-      <DialogHeader v-if="title || description || slots.header" class="shrink-0">
+      <DialogHeader v-if="hasHeader" class="shrink-0 px-[24px] pt-[24px]">
         <slot name="header">
           <DialogTitle v-if="title">
             {{ title }}
@@ -139,14 +142,20 @@ function onEscapeKeyDown(event: KeyboardEvent) {
       <div
         :class="cn(
           'grid content-start gap-[16px] min-h-0 overflow-y-auto text-size-15 text-grey-90',
+          // 좌우 패딩은 본문이 소유한다 → bodyClass 의 px-0 이 실제로 가장자리까지 붙는다
+          'px-[24px]',
+          // 헤더/푸터가 없으면 그쪽 24px 을 본문이 대신 갖는다(기존 여백 유지)
+          !hasHeader && 'pt-[24px]',
+          !hasFooter && 'pb-[24px]',
           // 전체화면에서는 본문이 남는 높이를 모두 차지해야 푸터가 바닥에 붙는다
           fullscreen && 'flex-1',
+          props.bodyClass,
         )"
       >
         <slot />
       </div>
 
-      <DialogFooter v-if="hasFooter" :class="cn('shrink-0', footerClass)">
+      <DialogFooter v-if="hasFooter" :class="cn('shrink-0 px-[24px] pb-[24px]', footerClass)">
         <slot name="footer" :close="close" :confirm="onConfirm" :cancel="onCancel">
           <Button
             v-if="!hideCancel"
