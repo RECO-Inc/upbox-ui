@@ -3366,7 +3366,7 @@ const nl = /* @__PURE__ */ v({
     return (e, s) => (n(), y("div", {
       class: x(
         t(m)(
-          "flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-x-[8px]",
+          "flex flex-row items-center justify-end gap-x-[8px]",
           l.class
         )
       )
@@ -9535,7 +9535,7 @@ const ud = /* @__PURE__ */ v({
     return (e, s) => (n(), y("div", {
       class: x(
         t(m)(
-          "flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-x-[8px]",
+          "flex flex-row items-center justify-end gap-x-[8px]",
           l.class
         )
       )
