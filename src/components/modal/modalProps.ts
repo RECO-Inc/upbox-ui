@@ -22,6 +22,13 @@ export interface ModalProps {
   closeOnOverlay?: boolean
   /** ESC 키로 닫기 (default: true) */
   closeOnEscape?: boolean
+  /**
+   * 뷰포트를 꽉 채우는 전체화면 모드 (default: false). `size` 는 무시된다.
+   *
+   * `DialogContent` 가 이미 갖고 있던 것을 Modal 이 위임만 한다. 모바일 전체화면
+   * 팝업(알림함·약관·필터 등)이 이 옵션 없이는 Modal 로 넘어오지 못했다.
+   */
+  fullscreen?: boolean
 
   // ── 기본 footer (흔한 confirm/cancel 케이스) ──
   /** 확인 버튼 텍스트 (default: 확인) — 레거시 confirmButtonText */

@@ -39,6 +39,7 @@ declare const __VLS_component: import('vue').DefineComponent<ModalProps, {}, {},
 }>, {
     size: import('../dialog').DialogSize;
     destructive: boolean;
+    fullscreen: boolean;
     showClose: boolean;
     closeOnOverlay: boolean;
     closeOnEscape: boolean;

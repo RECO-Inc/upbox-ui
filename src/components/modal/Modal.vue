@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<ModalProps>(), {
   showClose: true,
   closeOnOverlay: false,
   closeOnEscape: true,
+  fullscreen: false,
   confirmText: "확인",
   cancelText: "닫기",
   destructive: false,
@@ -102,8 +103,14 @@ function onEscapeKeyDown(event: KeyboardEvent) {
   <Dialog v-model:open="open">
     <DialogContent
       :size="size"
+      :fullscreen="fullscreen"
       :hide-close="!showClose"
-      :class="cn('flex flex-col max-h-[calc(var(--vh,1vh)*94)]', props.class)"
+      :class="cn(
+        'flex flex-col',
+        // 전체화면은 뷰포트를 채우므로 높이 상한을 두지 않는다
+        !fullscreen && 'max-h-[calc(var(--vh,1vh)*94)]',
+        props.class,
+      )"
       @interact-outside="onInteractOutside"
       @escape-key-down="onEscapeKeyDown"
     >
@@ -129,7 +136,13 @@ function onEscapeKeyDown(event: KeyboardEvent) {
         브라우저 기본 16px 를 상속해서, 소비 앱의 base 설정에 따라 팝업마다 본문
         크기가 달라진다. 자식이 자기 `text-*` 를 주면 그쪽이 이긴다.
       -->
-      <div class="grid content-start gap-[16px] min-h-0 overflow-y-auto text-size-15 text-grey-90">
+      <div
+        :class="cn(
+          'grid content-start gap-[16px] min-h-0 overflow-y-auto text-size-15 text-grey-90',
+          // 전체화면에서는 본문이 남는 높이를 모두 차지해야 푸터가 바닥에 붙는다
+          fullscreen && 'flex-1',
+        )"
+      >
         <slot />
       </div>
 
