@@ -138,10 +138,17 @@ function onEscapeKeyDown(event: KeyboardEvent) {
         본문 타이포(`text-size-15 text-grey-90`)를 Modal 이 소유한다. 지정하지 않으면
         브라우저 기본 16px 를 상속해서, 소비 앱의 base 설정에 따라 팝업마다 본문
         크기가 달라진다. 자식이 자기 `text-*` 를 주면 그쪽이 이긴다.
+
+        `grid-cols-[minmax(0,1fr)]` 는 세로쪽 `min-h-0` 의 가로쪽 짝이다. 암시적 컬럼은
+        `auto` 라 최소 폭이 내용의 min-content 로 잡히는데, 줄바꿈되지 않는 넓은 내용
+        (`white-space: nowrap` 이 걸린 목록 카드의 긴 이름 등)이 들어오면 그만큼 컬럼이
+        벌어져 본문에 가로 스크롤이 생긴다. 안쪽에서 `truncate` 를 걸어도 min-content
+        기여는 줄지 않아 소비처가 스스로 막을 수 없다. 최소 폭을 0 으로 열어 준다.
+        소비처가 `bodyClass` 로 `grid-cols-*` 를 주면 tailwind-merge 가 그쪽을 남긴다.
       -->
       <div
         :class="cn(
-          'grid content-start gap-[16px] min-h-0 overflow-y-auto text-size-15 text-grey-90',
+          'grid grid-cols-[minmax(0,1fr)] content-start gap-[16px] min-h-0 overflow-y-auto text-size-15 text-grey-90',
           // 좌우 패딩은 본문이 소유한다 → bodyClass 의 px-0 이 실제로 가장자리까지 붙는다
           'px-[24px]',
           // 헤더/푸터가 없으면 그쪽 24px 을 본문이 대신 갖는다(기존 여백 유지)

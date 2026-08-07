@@ -3565,7 +3565,7 @@ const nl = /* @__PURE__ */ v({
             })) : I("", !0),
             w("div", {
               class: x(t(m)(
-                "grid content-start gap-[16px] min-h-0 overflow-y-auto text-size-15 text-grey-90",
+                "grid grid-cols-[minmax(0,1fr)] content-start gap-[16px] min-h-0 overflow-y-auto text-size-15 text-grey-90",
                 // 좌우 패딩은 본문이 소유한다 → bodyClass 의 px-0 이 실제로 가장자리까지 붙는다
                 "px-[24px]",
                 // 헤더/푸터가 없으면 그쪽 24px 을 본문이 대신 갖는다(기존 여백 유지)
